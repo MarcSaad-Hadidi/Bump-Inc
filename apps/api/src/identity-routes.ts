@@ -15,6 +15,7 @@ import { fromNodeHeaders } from 'better-auth/node';
 import { and, desc, eq, sql } from 'drizzle-orm';
 import type { FastifyInstance, FastifyRequest } from 'fastify';
 import { z } from 'zod';
+import { registerEngagementRoutes } from './engagement-routes.js';
 
 export interface IdentityContext {
   database: Database;
@@ -92,6 +93,8 @@ export async function registerIdentityRoutes(app: FastifyInstance, context: Iden
       if (request.headers.origin !== env.AUTH_BASE_URL) throw denied();
     }
   });
+
+  await registerEngagementRoutes(app, database, sessionFor);
 
   app.route({
     method: ['GET', 'POST'],

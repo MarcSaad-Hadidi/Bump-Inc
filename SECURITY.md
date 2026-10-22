@@ -29,6 +29,8 @@ See [identity validation](docs/IDENTITY_VALIDATION.md) for actual acceptance evi
 
 ## Remaining controls
 
-PR 03/04 must enforce mandates before execution. PR 05/08 protect evidence, redaction and retention. PR 09 restricts model/tool permissions and requires sensitive-action approval. PR 15/16 add recovery drills, operations and authorized deployment hardening. PR 03 is next after the identity gate passes.
+PR 03 adds versioned mandate authorization with [passing acceptance checks](docs/ENGAGEMENT_VALIDATION.md). Approval binds an immutable revision and plaintext document digest; it does not verify a legal signature. Scope uses exact targets/actions with exclusions, current membership and responsible-operator checks. The preview launches no job or scan. PR 04 must call the same authorization service again before execution and retry; future network connectors must validate actual resolved destinations and redirects.
+
+PR 05/08 protect binary evidence, redaction and retention. PR 09 restricts model/tool permissions and requires sensitive-action approval. PR 15/16 add recovery drills, operations and authorized deployment hardening.
 
 OWASP ASVS 5.0 and applicable Quebec Law 25 obligations inform future acceptance criteria. This foundation claims no certification, legal compliance, tested recovery objective or production security guarantee. Threat modeling, control-to-test mapping and qualified legal review remain required before relevant production use.

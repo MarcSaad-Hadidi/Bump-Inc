@@ -44,7 +44,11 @@ export async function assertRuntimeRole(pool: Database['pool']): Promise<void> {
     SELECT r.rolsuper OR r.rolbypassrls OR r.rolcreaterole
       OR EXISTS (
         SELECT 1 FROM pg_class c
-        WHERE c.oid IN ('public.organization_settings'::regclass, 'public.organization_audit'::regclass)
+        WHERE c.oid IN (
+          'public.organization_settings'::regclass, 'public.organization_audit'::regclass,
+          'public.engagement'::regclass, 'public.engagement_version'::regclass,
+          'public.engagement_approval'::regclass
+        )
           AND pg_has_role(current_user, c.relowner, 'MEMBER')
       )
       OR EXISTS (

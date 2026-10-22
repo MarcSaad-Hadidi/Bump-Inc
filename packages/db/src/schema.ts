@@ -11,6 +11,7 @@ export {
   user,
   verification,
 } from './auth-schema.js';
+export { engagement, engagementApproval, engagementVersion } from './engagement-schema.js';
 
 export const systemProbes = pgTable('system_probes', {
   id: uuid('id').primaryKey(),

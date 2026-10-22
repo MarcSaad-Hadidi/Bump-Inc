@@ -3,6 +3,7 @@ import pg from 'pg';
 import * as schema from './schema.js';
 
 export { authSchema } from './auth-schema.js';
+export { engagement, engagementApproval, engagementVersion } from './engagement-schema.js';
 export { migrateDatabase } from './migration.js';
 export { organizationAudit, organizationSettings, systemProbes } from './schema.js';
 export {

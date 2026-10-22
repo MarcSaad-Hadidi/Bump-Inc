@@ -2,6 +2,8 @@
 
 Technology consulting platform. PR 01 supplies the verified TypeScript/Fastify/PostgreSQL/Redis foundation. PR 02 adds Better Auth identity, organizations, invitations, role checks, tenant settings, PostgreSQL row security and transactional administrative events. **Both PRs are READY FOR REVIEW with passing CI.** See [the PR roadmap](docs/PR_ROADMAP.md) for delivery gates.
 
+PR 03 adds [versioned mandates and explicit authorization](docs/ENGAGEMENTS.md) and is **READY FOR REVIEW**, with [all required checks passed](docs/ENGAGEMENT_VALIDATION.md). The authorization preview performs no scan or job execution. [The handoff](docs/HANDOFF.md) records the next session's starting point and PR04 acceptance criteria.
+
 Use synthetic local data only. The diagnostic web page and health endpoints remain unauthenticated and internal; identity operations are exposed through the API. Public production signup, initial production account provisioning and deployment hardening are not delivered. Production deployment has not been authorized or verified.
 
 ## Local setup
@@ -68,4 +70,4 @@ GitHub Actions supplies automated checks, dependency analysis and secret scannin
 | `tests/e2e`              | Essential browser behavior                             |
 | `docs`                   | Architecture, roadmap, decisions and validation        |
 
-See [architecture](docs/ARCHITECTURE.md), [contributing](CONTRIBUTING.md), [security reporting](SECURITY.md), [the foundation ADR](docs/adr/0001-modular-monolith.md), and [the identity ADR](docs/adr/0002-identity-and-tenant-isolation.md). PR 03 (mandates and authorization) is the next priority on the verified PR 02 base.
+See [architecture](docs/ARCHITECTURE.md), [contributing](CONTRIBUTING.md), [security reporting](SECURITY.md), [the foundation ADR](docs/adr/0001-modular-monolith.md), and [the identity ADR](docs/adr/0002-identity-and-tenant-isolation.md). PR 03 is based on verified PR 02; PR 04 execution depends on its authorization gate.

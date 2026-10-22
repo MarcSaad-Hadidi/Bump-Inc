@@ -105,7 +105,7 @@ describe('tenant PostgreSQL authorization', () => {
     }
   });
 
-  it('replays migrations without duplicating the journal and forces both RLS tables', async () => {
+  it('replays migrations without duplicating the journal and forces every tenant table', async () => {
     const result = await admin.pool.query<{ count: string }>(
       'SELECT count(*) FROM drizzle.__drizzle_migrations',
     );
@@ -115,12 +115,10 @@ describe('tenant PostgreSQL authorization', () => {
       relrowsecurity: boolean;
       relforcerowsecurity: boolean;
     }>(
-      "SELECT relrowsecurity, relforcerowsecurity FROM pg_class WHERE oid IN ('public.organization_settings'::regclass, 'public.organization_audit'::regclass)",
+      "SELECT relrowsecurity, relforcerowsecurity FROM pg_class WHERE oid IN ('public.organization_settings'::regclass, 'public.organization_audit'::regclass, 'public.engagement'::regclass, 'public.engagement_version'::regclass, 'public.engagement_approval'::regclass)",
     );
-    expect(policies.rows).toEqual([
-      { relrowsecurity: true, relforcerowsecurity: true },
-      { relrowsecurity: true, relforcerowsecurity: true },
-    ]);
+    expect(policies.rows).toHaveLength(5);
+    expect(policies.rows.every((row) => row.relrowsecurity && row.relforcerowsecurity)).toBe(true);
   });
 
   it('rejects privileged application credentials and prevents the runtime from disabling RLS', async () => {

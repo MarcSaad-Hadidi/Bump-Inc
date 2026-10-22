@@ -72,6 +72,20 @@ describe('identity HTTP boundaries', () => {
   it('rejects unauthenticated organization access', async () => {
     expect((await setup().inject('/organizations')).statusCode).toBe(401);
   });
+  it('shares session and CSRF protection with engagement routes', async () => {
+    const app = setup();
+    const base = '/organizations/00000000-0000-4000-8000-000000000001/engagements';
+    expect((await app.inject(base)).statusCode).toBe(401);
+    const withoutOrigin = await app.inject({ method: 'POST', url: base, payload: {} });
+    expect(withoutOrigin.statusCode).toBe(403);
+    const withoutSession = await app.inject({
+      method: 'POST',
+      url: base,
+      headers: { origin: env.AUTH_BASE_URL },
+      payload: {},
+    });
+    expect(withoutSession.statusCode).toBe(401);
+  });
   it('keeps callback origin validation active in the test environment', async () => {
     const response = await setup().inject(
       '/api/auth/verify-email?token=invalid&callbackURL=https%3A%2F%2Fattacker.example',

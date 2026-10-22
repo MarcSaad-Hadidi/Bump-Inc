@@ -96,6 +96,9 @@ importers:
       '@bump/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
+      '@bump/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@bump/db':
         specifier: workspace:*
         version: link:../../packages/db

@@ -47,7 +47,10 @@ export async function assertRuntimeRole(pool: Database['pool']): Promise<void> {
         WHERE c.oid IN (
           'public.organization_settings'::regclass, 'public.organization_audit'::regclass,
           'public.engagement'::regclass, 'public.engagement_version'::regclass,
-          'public.engagement_approval'::regclass
+          'public.engagement_approval'::regclass,
+          'public.execution_job'::regclass, 'public.execution_event'::regclass,
+          'public.execution_attempt'::regclass, 'public.execution_control'::regclass,
+          'public.execution_outbox'::regclass
         )
           AND pg_has_role(current_user, c.relowner, 'MEMBER')
       )

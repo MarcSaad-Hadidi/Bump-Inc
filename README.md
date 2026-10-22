@@ -51,7 +51,7 @@ pnpm test:e2e
 
 Integration and browser tests require PostgreSQL and Redis. Identity integration checks additionally require separately provisioned runtime/migration credentials and exercise synthetic users, tenant denial, session revocation and audit rollback. The full-stack identity smoke uses Mailpit. Run checks only against isolated local test services; shell-provided values override environment files. [Foundation validation evidence](docs/VALIDATION.md) applies to PR 01; [identity validation](docs/IDENTITY_VALIDATION.md) records PR 02's passing real-service gates.
 
-The browser smoke test expects healthy API dependencies. Unit tests cover unreachable API behavior, non-success health responses and invalid internal URLs. The worker's internal probe verifies queue-to-database delivery; it is not a customer job API or full execution engine.
+The browser smoke test expects healthy API dependencies. Unit tests cover unreachable API behavior, non-success health responses and invalid internal URLs. The internal worker probe remains a foundation diagnostic. PR04 adds a separate durable execution path with transactional PostgreSQL state, BullMQ notifications and a local synthetic handler; see [execution API and operations](docs/EXECUTION.md), [validation](docs/EXECUTION_VALIDATION.md) and [progress](docs/PROGRESS.md). New capabilities are not considered verified until their recorded acceptance gates pass.
 
 GitHub Actions supplies automated checks, dependency analysis and secret scanning. A configured workflow is not evidence that it passed. No required check may be skipped to mark a PR ready for review.
 
@@ -64,10 +64,11 @@ GitHub Actions supplies automated checks, dependency analysis and secret scannin
 | `apps/web`               | Internal foundation diagnostics                        |
 | `packages/db`            | Database schema and versioned migrations               |
 | `packages/contracts`     | Shared boundary validation                             |
+| `packages/core`          | Mandate authorization and durable execution services   |
 | `packages/identity`      | Better Auth configuration and organization integration |
 | `packages/integrations`  | Validated SMTP delivery                                |
 | `packages/observability` | Structured logging without sensitive payloads          |
 | `tests/e2e`              | Essential browser behavior                             |
 | `docs`                   | Architecture, roadmap, decisions and validation        |
 
-See [architecture](docs/ARCHITECTURE.md), [contributing](CONTRIBUTING.md), [security reporting](SECURITY.md), [the foundation ADR](docs/adr/0001-modular-monolith.md), and [the identity ADR](docs/adr/0002-identity-and-tenant-isolation.md). PR 03 is based on verified PR 02; PR 04 execution depends on its authorization gate.
+See [architecture](docs/ARCHITECTURE.md), [contributing](CONTRIBUTING.md), [security reporting](SECURITY.md), [the foundation ADR](docs/adr/0001-modular-monolith.md), and [the identity ADR](docs/adr/0002-identity-and-tenant-isolation.md). PR04 stacks on verified PR03; ingestion remains dependent on PR04 acceptance.

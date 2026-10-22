@@ -112,6 +112,43 @@ assert.equal(approved.status, 201, 'Owner must explicitly approve the exact docu
 const authorized = await post(decisionPath, decisionInput, cookie);
 assert.equal(authorized.status, 200);
 assert.equal((await authorized.json()).allowed, true, 'Approved exact scope must authorize');
+const executionBase = `/organizations/${organization.id}/executions`;
+const submitted = await post(
+  executionBase,
+  {
+    engagementId: engagement.id,
+    ...decisionInput,
+    kind: 'synthetic',
+    payload: { durationMs: 0, failUntilAttempt: 1 },
+    idempotencyKey: `compose-${unique}`,
+    backoffMs: 100,
+  },
+  cookie,
+);
+assert.equal(submitted.status, 201, 'Synthetic execution must persist');
+const execution = await submitted.json();
+assert.equal(execution.leaseToken, undefined, 'Internal lease must not be exposed');
+let completed;
+const executionDeadline = performance.now() + 30_000;
+while (performance.now() < executionDeadline) {
+  const response = await fetch(`${origin}${executionBase}/${execution.id}`, {
+    headers: { cookie },
+    signal: AbortSignal.timeout(5_000),
+  });
+  assert.equal(response.status, 200);
+  completed = await response.json();
+  if (completed.status === 'succeeded') break;
+  await new Promise((resolve) => setTimeout(resolve, 200));
+}
+assert.equal(completed?.status, 'succeeded', 'Separate worker must finish synthetic retry');
+assert.deepEqual(
+  completed.attempts.map((attempt) => attempt.outcome),
+  ['failed', 'succeeded'],
+);
+assert.ok(completed.attempts.every((attempt) => attempt.token === undefined));
+console.log(
+  'Compose durable execution submission, separate worker, bounded retry and history passed.',
+);
 const revoked = await post(
   `${engagementBase}/${engagement.id}/revoke`,
   { expectedRevision: 1, reason: 'Synthetic fixture completed' },

@@ -12,6 +12,13 @@ export {
   verification,
 } from './auth-schema.js';
 export { engagement, engagementApproval, engagementVersion } from './engagement-schema.js';
+export {
+  executionAttempt,
+  executionControl,
+  executionEvent,
+  executionJob,
+  executionOutbox,
+} from './execution-schema.js';
 
 export const systemProbes = pgTable('system_probes', {
   id: uuid('id').primaryKey(),

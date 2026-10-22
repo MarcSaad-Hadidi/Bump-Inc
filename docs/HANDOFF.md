@@ -1,5 +1,17 @@
 # Passage de relais — Bump OS
 
+## Reprise PR04 du 2026-10-22
+
+La consigne d'arrêt après PR03 ci-dessous décrit la session précédente. L'utilisateur a ensuite demandé PR04 et la continuation selon les dépendances. La reprise actuelle est sur `codex/distributed-execution-engine`, depuis la base PR03 vérifiée `6b8562f8e0db378f8fc129e4f577f9aa10499f6a`.
+- Jalon PR04 : [PR GitHub #5](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/5), READY FOR REVIEW après vérification, cible `codex/engagement-authorization`. GitHub #4 concerne une autre proposition documentaire ; elle n'est pas le moteur PR04.
+- Implémentation initiale : `101d574c0c86b98b80405650a1b5423c026f657e`. Jobs/états/tentatives/historique/outbox PostgreSQL, transport BullMQ, autorisation transactionnelle courante à chaque claim/retry/checkpoint/finalisation, limites distribuées par organisation, timeout/reprise avec jeton, annulation/arrêt d'urgence et handler synthétique local uniquement.
+- `pnpm check` local réussi : 122 unitaires, lint, typechecks stricts et builds. Audit : zéro haute/critique, une modérée déjà évaluée. Gitleaks diff indexé : réussi. Exécution hors bac à sable nécessaire pour les liens Windows Next standalone.
+- Services réels indisponibles localement : Docker absent, `.env.test` absente. Tentatives d'intégration/E2E échouées sur leurs prérequis, aucune validation réelle locale acquise.
+- Correction fonctionnelle `eee336bffdde06662fbfe2915a6c6a5df5ceb200` vérifiée par [CI 39867661216](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39867661216) : 122 unitaires, 72 intégrations PostgreSQL/Redis, un Chromium, Compose, audit et Gitleaks réussis. Un test SIGKILL a reproduit un défaut de déduplication transport, corrigé en laissant BullMQ générer une nouvelle identité de notification ; PostgreSQL conserve l'idempotence et le fencing. PR04 est READY FOR REVIEW, sans fusion.
+- Références actuelles : [suivi vivant](PROGRESS.md), [validation PR04](EXECUTION_VALIDATION.md), [exploitation](EXECUTION.md), [plan](EXECUTION_PLAN.md), [ADR 0004](adr/0004-durable-execution.md). Ces fichiers ont priorité pour l'état PR04 sur les paragraphes historiques ci-dessous.
+
+Avant la suite : lire les résultats CI et la revue, corriger toute anomalie, mettre à jour les preuves. PR05 attend PR02 + PR04 vérifiées ; toute capacité suivante reste dans sa propre branche/PR empilée. Aucune fusion automatique, donnée client, action externe réelle ou mise en production autorisée.
+
 ## Consigne pour l’IA suivante
 
 Reprends le développement de Bump OS à partir du dépôt existant. Termine les vérifications du jalon PR03 si nécessaire, puis prépare PR04 uniquement après confirmation de sa base vérifiée. Ne recrée pas la fondation, ne fusionne aucune PR automatiquement et ne déploie rien en production. L’utilisateur a demandé l’arrêt de cette session après PR03 ; PR04 appartient à la prochaine session.

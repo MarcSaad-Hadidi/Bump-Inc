@@ -16,6 +16,7 @@ import { and, desc, eq, sql } from 'drizzle-orm';
 import type { FastifyInstance, FastifyRequest } from 'fastify';
 import { z } from 'zod';
 import { registerEngagementRoutes } from './engagement-routes.js';
+import { registerExecutionRoutes } from './execution-routes.js';
 
 export interface IdentityContext {
   database: Database;
@@ -95,6 +96,7 @@ export async function registerIdentityRoutes(app: FastifyInstance, context: Iden
   });
 
   await registerEngagementRoutes(app, database, sessionFor);
+  await registerExecutionRoutes(app, database, sessionFor);
 
   app.route({
     method: ['GET', 'POST'],

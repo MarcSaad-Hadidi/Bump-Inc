@@ -41,16 +41,16 @@ Statut : **VÉRIFIÉ — READY FOR REVIEW**, [PR GitHub #5](https://github.com/M
 
 ## PR05 — Universal Audit Ingestion (dernière PR de cette session)
 
-Statut : **DRAFT — [PR GitHub #12](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/12), CI de services en cours**. L'utilisateur a demandé l'arrêt après cette prochaine PR ; PR06 ne sera pas commencée. [Validation détaillée](INGESTION_VALIDATION.md).
+Statut : **VÉRIFIÉ sur `ea8f736` — [PR GitHub #12](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/12)**. [CI complète 39872257617](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39872257617) réussie : 173 unitaires, 117 intégrations réelles, Chromium, Compose, audit et Gitleaks. La PR devient READY FOR REVIEW après les contrôles du commit de preuves. L'utilisateur a demandé l'arrêt après cette PR ; PR06 ne sera pas commencée. [Validation détaillée](INGESTION_VALIDATION.md).
 - [x] Base exacte PR04 `5939330` vérifiée par CI 39868997076 ; branche `codex/audit-ingestion` créée.
 - [x] Préparer [la conception et le plan](INGESTION_PLAN.md), vérifier le SDK S3 et un service compatible maintenu dans leurs sources primaires.
 - [x] Écrire parser JSON Bump / SARIF / CycloneDX bornés, observations déclaratives et provenance ; 55 tests ciblés réussis. Revue : refus NUL PostgreSQL corrigé, six régressions reproduites puis passées.
-- [x] Écrire réservations tenant/quota, staging reprenable, alias d'idempotence et déduplication ; tests réels ajoutés, exécution attendue.
-- [x] Écrire stockage privé local/S3 ; 32 tests stockage réussis sous Windows, 1 ignoré. Authentification/écriture conditionnelle/intégrité S3 restent à exécuter réellement.
-- [x] Raccorder job import PR04, recontrôles actuels et finalisation atomique observations/succès ; tests réels ajoutés, exécution attendue.
+- [x] Réservations tenant/quota, staging reprenable, alias d'idempotence et déduplication ; tests réels passés.
+- [x] Stockage privé local/S3 ; 33 tests stockage passés sous Linux, authentification/écriture conditionnelle/intégrité S3 réelles vérifiées.
+- [x] Job import PR04, recontrôles actuels et finalisation atomique observations/succès ; tests réels passés.
 - [x] `pnpm check` après correction NUL : 172 unitaires réussis, 1 ignoré Windows ; lint/typechecks et tous builds réussis. Audit : zéro haute/critique, 1 modérée existante ; Gitleaks diff indexé réussi.
-- [ ] API/worker, intégrations, Compose, Chromium, audit et Gitleaks.
-- [ ] Documenter preuves/limites, ouvrir la PR distincte, mettre à jour le handoff et s'arrêter.
+- [x] API/worker, 117 intégrations (45 nouvelles), Compose, Chromium, audit et Gitleaks réussis en CI.
+- [x] Documenter preuves/limites, ouvrir la PR distincte et mettre à jour le handoff. Arrêt après finalisation des preuves PR05 ; aucune PR06 commencée.
 
 ## Dépendances suivantes
 

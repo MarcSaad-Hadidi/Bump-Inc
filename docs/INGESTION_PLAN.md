@@ -50,11 +50,11 @@ Tests de service S3 : SeaweedFS `chrislusf/seaweedfs:4.48`, distribution publiqu
 
 ## Acceptation et arrêt
 
-- [ ] Contrats et profils avec refus explicites et limites.
-- [ ] RLS/provenance immuable, quota atomique, alias et doublons concurrents.
-- [ ] Stockage local privé et S3 réel : auth, conditionnel, lectures bornées, corruption et pannes.
-- [ ] Import bout en bout ; doublons, reprise staging/worker, rollback final sans observations partielles, annulation/arrêt/retrait d'autorisation et jeton obsolète.
-- [ ] API authentifiée et générique ; aucune donnée source dans Redis/logs.
-- [ ] `pnpm check`, intégrations réelles, Chromium, Compose, audit et Gitleaks ; résultats réels et indisponibilités distincts.
-- [ ] PR distincte ciblant `codex/distributed-execution-engine`, dépendance #5 et SHA exact documentés ; DRAFT si une exigence reste non vérifiée.
-- [ ] Mettre à jour PROGRESS/HANDOFF puis **s'arrêter après PR05**. Aucune PR06, fusion automatique ou production.
+- [x] Contrats et profils avec refus explicites et limites.
+- [x] RLS/provenance immuable, quota atomique, alias et doublons concurrents.
+- [x] Stockage local privé et S3 réel : auth, conditionnel, lectures bornées, corruption et pannes.
+- [x] Import bout en bout ; doublons, reprise staging/worker, rollback final sans observations partielles, annulation/arrêt/retrait d'autorisation et jeton obsolète.
+- [x] API authentifiée et générique ; aucune donnée source dans Redis/logs.
+- [x] `pnpm check`, intégrations réelles, Chromium, Compose, audit et Gitleaks ; résultats réels dans [INGESTION_VALIDATION.md](INGESTION_VALIDATION.md), CI 39872257617.
+- [x] [PR distincte #12](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/12) ciblant `codex/distributed-execution-engine`, dépendance #5 et SHA exact documentés ; DRAFT jusqu'aux contrôles documentaires finaux.
+- [x] Mettre à jour PROGRESS/HANDOFF ; **arrêt après finalisation PR05**. Aucune PR06, fusion automatique ou production.

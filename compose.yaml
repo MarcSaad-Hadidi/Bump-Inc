@@ -7,11 +7,14 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:?Copy .env.example to .env first}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set the local database password}
       POSTGRES_DB: ${POSTGRES_DB:-bump}
+      APP_DATABASE_PASSWORD: ${APP_DATABASE_PASSWORD:?Set the local application database password}
     ports:
       - "127.0.0.1:5432:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ./infra/postgres/init-test-db.sql:/docker-entrypoint-initdb.d/10-test-db.sql:ro
+      - ./infra/postgres/init-runtime.sh:/docker-entrypoint-initdb.d/20-runtime.sh:ro
+      - ./infra/postgres/create-runtime.sql:/opt/bump/create-runtime.sql:ro
     healthcheck:
       test: ["CMD-SHELL", 'pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"']
       interval: 5s
@@ -33,6 +36,14 @@ services:
       retries: 20
     restart: unless-stopped
 
+  mailpit:
+    image: axllent/mailpit:v1.31.6
+    ports:
+      - "127.0.0.1:1025:1025"
+      - "127.0.0.1:8025:8025"
+    environment:
+      MP_MAX_MESSAGES: 100
+
   migrate:
     profiles: [app]
     build:
@@ -41,7 +52,7 @@ services:
     command: ["node", "node_modules/@bump/db/dist/migrate.js"]
     environment:
       NODE_ENV: development
-      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-bump}
+      MIGRATION_DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-bump}
     depends_on:
       postgres:
         condition: service_healthy
@@ -56,11 +67,20 @@ services:
       NODE_ENV: development
       HOST: 0.0.0.0
       API_PORT: 3001
-      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-bump}
+      DATABASE_URL: postgresql://bump_app:${APP_DATABASE_PASSWORD}@postgres:5432/${POSTGRES_DB:-bump}
       REDIS_URL: redis://redis:6379
+      AUTH_SECRET: ${AUTH_SECRET:?Set the local auth signing secret}
+      AUTH_BASE_URL: http://127.0.0.1:3001
+      AUTH_ALLOW_SIGNUP: ${AUTH_ALLOW_SIGNUP:-false}
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      SMTP_SECURE: "false"
+      MAIL_FROM: noreply@bump.local
     ports:
       - "127.0.0.1:3001:3001"
     depends_on:
+      mailpit:
+        condition: service_started
       migrate:
         condition: service_completed_successfully
       redis:
@@ -91,7 +111,7 @@ services:
       NODE_ENV: development
       HOST: 0.0.0.0
       WORKER_PORT: 3002
-      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-bump}
+      DATABASE_URL: postgresql://bump_app:${APP_DATABASE_PASSWORD}@postgres:5432/${POSTGRES_DB:-bump}
       REDIS_URL: redis://redis:6379
     ports:
       - "127.0.0.1:3002:3002"

@@ -5,6 +5,16 @@ const local = {
   DATABASE_URL: 'postgresql://bump:secret@localhost:5432/bump',
   REDIS_URL: 'redis://localhost:6379',
 };
+const productionIdentity = {
+  AUTH_SECRET: 'test-only-production-shaped-secret-value',
+  AUTH_BASE_URL: 'https://bump.example',
+  SMTP_HOST: 'smtp.example',
+  SMTP_PORT: '465',
+  SMTP_SECURE: 'true',
+  SMTP_USER: 'test-user',
+  SMTP_PASSWORD: 'test-password',
+  MAIL_FROM: 'test@bump.example',
+};
 
 describe('environment trust boundary', () => {
   it('parses integers and rejects invalid ports, protocols and concurrency', () => {
@@ -38,6 +48,7 @@ describe('environment trust boundary', () => {
     expect(
       parseEnv(apiEnvSchema, {
         ...local,
+        ...productionIdentity,
         NODE_ENV: 'production',
         DATABASE_URL: `${local.DATABASE_URL}?sslmode=verify-full`,
         REDIS_URL: 'rediss://localhost:6379',
@@ -67,6 +78,34 @@ describe('environment trust boundary', () => {
         }),
       ).toThrow('DATABASE_URL');
     }
+  });
+  it('requires explicit secure identity settings in production and parses boolean flags exactly', () => {
+    const valid = {
+      ...local,
+      ...productionIdentity,
+      NODE_ENV: 'production',
+      DATABASE_URL: `${local.DATABASE_URL}?sslmode=verify-full`,
+      REDIS_URL: 'rediss://localhost:6379',
+    };
+    expect(parseEnv(apiEnvSchema, valid).SMTP_SECURE).toBe(true);
+    for (const overrides of [
+      { AUTH_SECRET: 'local-development-only-change-this-secret' },
+      { AUTH_BASE_URL: 'http://example.com' },
+      { AUTH_BASE_URL: 'https://example.com/?token=secret' },
+      { AUTH_ALLOW_SIGNUP: 'true' },
+      { SMTP_SECURE: 'false' },
+      { SMTP_USER: undefined },
+      { MAIL_FROM: 'noreply@bump.local' },
+    ])
+      expect(() => parseEnv(apiEnvSchema, { ...valid, ...overrides })).toThrow(
+        'Invalid environment',
+      );
+    expect(parseEnv(apiEnvSchema, { ...local, AUTH_ALLOW_SIGNUP: 'false' }).AUTH_ALLOW_SIGNUP).toBe(
+      false,
+    );
+    expect(() => parseEnv(apiEnvSchema, { ...local, AUTH_ALLOW_SIGNUP: 'yes' })).toThrow(
+      'AUTH_ALLOW_SIGNUP',
+    );
   });
 });
 

@@ -3,7 +3,7 @@ import { migrateDatabase } from './migration.js';
 
 try {
   const env = parseEnv(databaseEnvSchema);
-  await migrateDatabase(env.DATABASE_URL);
+  await migrateDatabase(env.MIGRATION_DATABASE_URL);
   process.stdout.write('Database migrations applied.\n');
 } catch {
   process.stderr.write(

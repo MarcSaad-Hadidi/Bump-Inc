@@ -2,9 +2,20 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 import pg from 'pg';
 import * as schema from './schema.js';
 
+export { authSchema } from './auth-schema.js';
 export { migrateDatabase } from './migration.js';
-export { systemProbes } from './schema.js';
+export { organizationAudit, organizationSettings, systemProbes } from './schema.js';
+export {
+  assertRuntimeRole,
+  setTenantContext,
+  TenantAccessError,
+  type TenantRole,
+  type Transaction,
+  withTenant,
+} from './tenant.js';
 export { schema };
+
+export type Database = ReturnType<typeof createDatabase>;
 
 export function createDatabase(url: string) {
   const pool = new pg.Pool({

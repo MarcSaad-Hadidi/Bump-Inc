@@ -32,6 +32,7 @@ export const serviceEnvSchema = z.object({
 function requireDatabaseTransport(
   env: { NODE_ENV: string; DATABASE_URL: string },
   ctx: z.RefinementCtx,
+  field = 'DATABASE_URL',
 ) {
   if (env.NODE_ENV !== 'production' || !URL.canParse(env.DATABASE_URL)) return;
   const database = new URL(env.DATABASE_URL);
@@ -39,14 +40,17 @@ function requireDatabaseTransport(
   if (sslModes.length !== 1 || sslModes[0] !== 'verify-full') {
     ctx.addIssue({
       code: 'custom',
-      path: ['DATABASE_URL'],
+      path: [field],
       message: 'Production PostgreSQL requires sslmode=verify-full',
     });
   }
-  if (database.password === 'bump_local_development_only' || !database.password) {
+  if (
+    ['bump_local_development_only', 'bump_local_runtime_only'].includes(database.password) ||
+    !database.password
+  ) {
     ctx.addIssue({
       code: 'custom',
-      path: ['DATABASE_URL'],
+      path: [field],
       message: 'Production PostgreSQL requires a non-example credential',
     });
   }
@@ -63,13 +67,76 @@ function requireProductionTransport(env: z.infer<typeof serviceEnvSchema>, ctx: 
   }
 }
 
-export const databaseEnvSchema = serviceEnvSchema
-  .pick({ NODE_ENV: true, DATABASE_URL: true })
-  .superRefine(requireDatabaseTransport);
+export const databaseEnvSchema = z
+  .object({
+    NODE_ENV: serviceEnvSchema.shape.NODE_ENV,
+    MIGRATION_DATABASE_URL: databaseUrl,
+  })
+  .superRefine((env, ctx) =>
+    requireDatabaseTransport(
+      { NODE_ENV: env.NODE_ENV, DATABASE_URL: env.MIGRATION_DATABASE_URL },
+      ctx,
+      'MIGRATION_DATABASE_URL',
+    ),
+  );
+
+const origin = z.url().refine((value) => {
+  if (!URL.canParse(value)) return false;
+  const url = new URL(value);
+  return (
+    ['http:', 'https:'].includes(url.protocol) &&
+    !url.username &&
+    !url.password &&
+    url.pathname === '/' &&
+    !url.search &&
+    !url.hash
+  );
+}, 'Must be an HTTP(S) origin');
 
 export const apiEnvSchema = serviceEnvSchema
-  .extend({ API_PORT: port.default(3001) })
-  .superRefine(requireProductionTransport);
+  .extend({
+    API_PORT: port.default(3001),
+    AUTH_SECRET: z.string().min(32).default('local-development-only-change-this-secret'),
+    AUTH_BASE_URL: origin.default('http://127.0.0.1:3001'),
+    AUTH_ALLOW_SIGNUP: z.stringbool({ truthy: ['true'], falsy: ['false'] }).default(false),
+    SMTP_HOST: z
+      .string()
+      .min(1)
+      .max(253)
+      .regex(/^[a-zA-Z0-9.:-]+$/)
+      .default('127.0.0.1'),
+    SMTP_PORT: port.default(1025),
+    SMTP_SECURE: z.stringbool({ truthy: ['true'], falsy: ['false'] }).default(false),
+    SMTP_USER: z.string().min(1).optional(),
+    SMTP_PASSWORD: z.string().min(1).optional(),
+    MAIL_FROM: z.email().default('noreply@bump.local'),
+  })
+  .superRefine((env, ctx) => {
+    requireProductionTransport(env, ctx);
+    if (Boolean(env.SMTP_USER) !== Boolean(env.SMTP_PASSWORD)) {
+      ctx.addIssue({
+        code: 'custom',
+        path: ['SMTP_USER'],
+        message: 'SMTP credentials must be provided together',
+      });
+    }
+    if (env.NODE_ENV !== 'production') return;
+    for (const [field, valid] of [
+      ['AUTH_SECRET', !env.AUTH_SECRET.startsWith('local-')],
+      ['AUTH_BASE_URL', env.AUTH_BASE_URL.startsWith('https://')],
+      ['AUTH_ALLOW_SIGNUP', !env.AUTH_ALLOW_SIGNUP],
+      ['SMTP_SECURE', env.SMTP_SECURE],
+      ['SMTP_USER', Boolean(env.SMTP_USER && env.SMTP_PASSWORD)],
+      ['MAIL_FROM', env.MAIL_FROM !== 'noreply@bump.local'],
+    ] as const) {
+      if (!valid)
+        ctx.addIssue({
+          code: 'custom',
+          path: [field],
+          message: 'Production identity requires secure explicit configuration',
+        });
+    }
+  });
 export const workerEnvSchema = serviceEnvSchema
   .extend({
     WORKER_PORT: port.default(3002),

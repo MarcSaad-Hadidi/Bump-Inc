@@ -1,9 +1,13 @@
 import type { ApiEnv } from '@bump/contracts';
-import { createDatabase } from '@bump/db';
+import { assertRuntimeRole, createDatabase } from '@bump/db';
+import { createAuth } from '@bump/identity';
+import { createMailer } from '@bump/integrations';
 import type { FastifyBaseLogger } from 'fastify';
 import { Redis } from 'ioredis';
+import type { IdentityContext } from './identity-routes.js';
 
 export interface Dependencies {
+  identity?: IdentityContext;
   start(): Promise<void>;
   database(): Promise<unknown>;
   redis(): Promise<unknown>;
@@ -11,7 +15,18 @@ export interface Dependencies {
 }
 
 export function createDependencies(env: ApiEnv, logger: FastifyBaseLogger): Dependencies {
-  const { pool } = createDatabase(env.DATABASE_URL);
+  const database = createDatabase(env.DATABASE_URL);
+  const { pool } = database;
+  const mailer = createMailer(env);
+  const sendMail = async (message: Parameters<typeof mailer.send>[0]) => {
+    try {
+      await mailer.send(message);
+    } catch (error) {
+      logger.error('Identity email delivery failed');
+      throw error;
+    }
+  };
+  const auth = createAuth(database.db, env, sendMail);
   const redis = new Redis(env.REDIS_URL, {
     lazyConnect: true,
     enableOfflineQueue: false,
@@ -28,14 +43,17 @@ export function createDependencies(env: ApiEnv, logger: FastifyBaseLogger): Depe
   });
 
   return {
+    identity: { database, env, auth, sendMail },
     async start() {
-      // Liveness must remain available during a dependency outage; readiness reports failure.
+      await assertRuntimeRole(pool);
+      // A Redis outage affects readiness without preventing startup.
       await redis.connect().catch(() => undefined);
     },
     database: () => pool.query('SELECT 1'),
     redis: () => redis.ping(),
     async close() {
       redis.disconnect();
+      mailer.close();
       await pool.end();
     },
   };

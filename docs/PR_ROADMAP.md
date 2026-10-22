@@ -1,6 +1,6 @@
 # Bump OS PR roadmap
 
-Every row is a separate reviewable feature boundary. [PR 01](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/1) is implemented and its foundation CI gates have passed; PR 02–16 are planned, unimplemented and blocked by their prerequisite gates. No future row represents a created GitHub PR.
+Every row is a separate reviewable feature boundary. [PR 01](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/1) is implemented and its foundation CI gates have passed. PR 02 is implemented as a stacked **DRAFT pending real-service validation**; no PR 02 success is implied by foundation evidence. PR 03–16 remain planned and unimplemented. A roadmap row is not evidence of a created GitHub PR.
 
 | PR  | Capability                              | Direct prerequisites   | Acceptance evidence                                                                                                                                                   |
 | --- | --------------------------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -76,4 +76,8 @@ Each PR description records delivered behavior, architecture changes, tests actu
 
 ## Current delivery gate
 
-Foundation implementation commit `39eba332430568d331e459b2b7ebcd412b444549` passed every gate in CI run 39840127776: 33 unit tests, 5 real-service integration tests, 1 Chromium E2E, Compose startup, dependency audit threshold and secret scan. The next feature priority is PR 02 on the verified foundation branch. PR 03/04 depend on its real security boundaries and cannot be simulated with permissive stubs. No PR has been merged.
+Foundation implementation commit `39eba332430568d331e459b2b7ebcd412b444549` passed every gate in CI run 39840127776: 33 unit tests, 5 real-service integration tests, 1 Chromium E2E, Compose startup, dependency audit threshold and secret scan. No PR has been merged.
+
+PR 02 adds library-backed identity, verified email, database sessions, organizations, owner/admin/member checks, invitations, scoped settings, forced RLS and transactional administrative events. SMTP delivery uses local Mailpit for validation. Acceptance rejects invitations after inviter demotion/removal; reissuing creates a fresh invitation under the current actor. See [the identity API](IDENTITY.md) and [ADR 0002](adr/0002-identity-and-tenant-isolation.md).
+
+PR 02 remains **DRAFT** until its own required checks, including real-service isolation, revocation, audit rollback and SMTP flows, pass and are recorded in [identity validation](IDENTITY_VALIDATION.md). Production onboarding, MFA, owner transfer, organization/account deletion and external mail-provider setup are explicitly outside this slice. PR 03 (Engagement & Authorization Engine) is the next priority once that gate passes and the PR is opened. PR 03/04 cannot rely on unverified identity boundaries or permissive stubs.

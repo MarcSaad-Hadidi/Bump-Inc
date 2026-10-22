@@ -305,54 +305,71 @@ export type AuthorizeEngagementInput = z.infer<typeof authorizeSchema>;
 // This decision is a snapshot, not a reusable permit. Future executors must call at execution time.
 export async function authorizeEngagement(database: Database, input: AuthorizeEngagementInput) {
   const parsed = authorizeSchema.parse(input);
-  return withTenant(database, parsed, async (tx) => {
-    const head = await headFor(tx, parsed);
-    const version = await currentVersion(tx, parsed, head.currentRevision);
-    const metadata = () => ({
-      revision: head.currentRevision,
-      evaluatedAt: new Date(),
-      validUntil: version.validUntil,
-    });
-    const deny = (reason: string) => ({ allowed: false as const, reason, ...metadata() });
-    if (head.currentRevision !== parsed.expectedRevision) return deny('revision_conflict');
-    if (head.revokedAt) return deny('revoked');
-    const [approval] = await tx
-      .select()
-      .from(engagementApproval)
-      .where(
-        and(
-          eq(engagementApproval.organizationId, parsed.organizationId),
-          eq(engagementApproval.engagementId, parsed.engagementId),
-          eq(engagementApproval.revision, head.currentRevision),
-        ),
-      );
-    if (!approval) return deny('not_approved');
-    const [approver] = await tx
-      .select({ role: authSchema.member.role })
-      .from(authSchema.member)
-      .where(
-        and(
-          eq(authSchema.member.organizationId, parsed.organizationId),
-          eq(authSchema.member.userId, approval.approverUserId),
-        ),
-      )
-      .for('share');
-    if (approver?.role !== 'owner') return deny('approver_not_authorized');
-    const evaluated = metadata();
-    const decision = evaluateEngagementPolicy(
-      {
-        scope: version.scope,
-        responsibleUserId: version.responsibleUserId,
-        actorUserId: parsed.userId,
-        validFrom: version.validFrom,
-        validUntil: version.validUntil,
-        authorizationText: version.authorizationText,
-        authorizationSha256: version.authorizationSha256,
-        target: parsed.target,
-        action: parsed.action,
-      },
-      evaluated.evaluatedAt,
+  return withTenant(database, parsed, (tx) => authorizeEngagementInTransaction(tx, parsed));
+}
+
+// The caller must hold the current membership lock through withTenant.
+export async function authorizeEngagementInTransaction(
+  tx: Transaction,
+  parsed: AuthorizeEngagementInput,
+) {
+  const head = await headFor(tx, parsed);
+  const version = await currentVersion(tx, parsed, head.currentRevision);
+  const metadata = async () => {
+    const result = await tx.execute<{ evaluated_at: string }>(
+      sql`select clock_timestamp() as evaluated_at`,
     );
-    return { ...decision, ...evaluated };
+    const timestamp = result.rows[0]?.evaluated_at;
+    if (!timestamp) throw new EngagementError(409);
+    return {
+      revision: head.currentRevision,
+      evaluatedAt: new Date(timestamp),
+      validUntil: version.validUntil,
+    };
+  };
+  const deny = async (reason: string) => ({
+    allowed: false as const,
+    reason,
+    ...(await metadata()),
   });
+  if (head.currentRevision !== parsed.expectedRevision) return deny('revision_conflict');
+  if (head.revokedAt) return deny('revoked');
+  const [approval] = await tx
+    .select()
+    .from(engagementApproval)
+    .where(
+      and(
+        eq(engagementApproval.organizationId, parsed.organizationId),
+        eq(engagementApproval.engagementId, parsed.engagementId),
+        eq(engagementApproval.revision, head.currentRevision),
+      ),
+    );
+  if (!approval) return deny('not_approved');
+  const [approver] = await tx
+    .select({ role: authSchema.member.role })
+    .from(authSchema.member)
+    .where(
+      and(
+        eq(authSchema.member.organizationId, parsed.organizationId),
+        eq(authSchema.member.userId, approval.approverUserId),
+      ),
+    )
+    .for('share');
+  if (approver?.role !== 'owner') return deny('approver_not_authorized');
+  const evaluated = await metadata();
+  const decision = evaluateEngagementPolicy(
+    {
+      scope: version.scope,
+      responsibleUserId: version.responsibleUserId,
+      actorUserId: parsed.userId,
+      validFrom: version.validFrom,
+      validUntil: version.validUntil,
+      authorizationText: version.authorizationText,
+      authorizationSha256: version.authorizationSha256,
+      target: parsed.target,
+      action: parsed.action,
+    },
+    evaluated.evaluatedAt,
+  );
+  return { ...decision, ...evaluated };
 }

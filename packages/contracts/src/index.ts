@@ -161,3 +161,4 @@ export const probeJobSchema = z.strictObject({ id: z.uuid() });
 export type ProbeJob = z.infer<typeof probeJobSchema>;
 
 export * from './engagement.js';
+export * from './execution.js';

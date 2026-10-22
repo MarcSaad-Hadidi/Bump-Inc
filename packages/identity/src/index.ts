@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import { drizzleAdapter } from '@better-auth/drizzle-adapter';
 import type { ApiEnv } from '@bump/contracts';
 import { authSchema, type Database, type Transaction } from '@bump/db';
@@ -23,7 +24,7 @@ export function createAuth(
     advanced: {
       disableOriginCheck: false,
       disableCSRFCheck: false,
-      database: { generateId: 'uuid' },
+      database: { generateId: () => randomUUID() },
       ipAddress: { ipAddressHeaders: ['x-bump-client-ip'] },
       useSecureCookies: env.NODE_ENV === 'production',
     },

@@ -20,7 +20,10 @@ import { z } from 'zod';
 import { authorizationDigest, evaluateEngagementPolicy } from './policy.js';
 
 const scopeSchema = z.strictObject({ organizationId: z.uuid(), userId: z.uuid() });
-const selectedSchema = scopeSchema.extend({ engagementId: z.uuid() });
+const selectedSchema = scopeSchema.extend({
+  // PostgreSQL UUID equality ignores case; advisory-lock identity must do the same.
+  engagementId: z.uuid().transform((value) => value.toLowerCase()),
+});
 const revisionSchema = z.number().int().min(1).max(2_147_483_646);
 const mutationSchema = selectedSchema.extend({
   expectedRevision: revisionSchema,

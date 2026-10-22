@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { setImmediate } from 'node:timers/promises';
 import { apiEnvSchema, type EngagementRevisionInput, parseEnv } from '@bump/contracts';
 import { authorizeEngagement } from '@bump/core';
 import { assertRuntimeRole, authSchema, createDatabase, migrateDatabase } from '@bump/db';
@@ -390,6 +391,59 @@ describe('engagement authorization lifecycle', () => {
     const approvals = await Promise.all([approve(updated), approve(updated)]);
     expect(approvals.map((result) => result.statusCode).sort()).toEqual([201, 409]);
     expect((await preview(head.id, 2)).json().allowed).toBe(true);
+  });
+
+  it('serializes mixed-case UUID amendments on the same canonical advisory lock', async () => {
+    const head = await create();
+    const holder = await admin.pool.connect();
+    const changes: ReturnType<typeof request>[] = [];
+    let settled = 0;
+    try {
+      await holder.query('BEGIN');
+      await holder.query('SELECT pg_advisory_xact_lock(hashtextextended($1, 2))', [head.id]);
+      for (const id of [head.id, head.id.toUpperCase()]) {
+        changes.push(
+          request('POST', `${base()}/${id}/versions`, manager, {
+            expectedRevision: 1,
+            revision: revision({ objective: `Mixed-case amendment ${id}` }),
+          }).finally(() => {
+            settled += 1;
+          }),
+        );
+      }
+      // Observe actual lock contention instead of relying on request scheduling or a sleep.
+      let waiting = 0;
+      const deadline = performance.now() + 1_500;
+      while (waiting < 2 && settled === 0 && performance.now() < deadline) {
+        const result = await holder.query<{ waiting: number }>(`
+          SELECT count(*)::integer AS waiting
+          FROM pg_locks blocked JOIN pg_locks held
+            ON blocked.locktype = held.locktype
+            AND blocked.database = held.database
+            AND blocked.classid = held.classid
+            AND blocked.objid = held.objid
+            AND blocked.objsubid = held.objsubid
+          WHERE held.pid = pg_backend_pid() AND held.locktype = 'advisory'
+            AND held.granted AND NOT blocked.granted
+        `);
+        waiting = result.rows[0]?.waiting ?? 0;
+        if (waiting < 2) await setImmediate();
+      }
+      expect(waiting, 'Both UUID spellings must wait for the canonical lock').toBe(2);
+    } finally {
+      try {
+        await holder.query('ROLLBACK');
+      } finally {
+        holder.release();
+      }
+      await Promise.allSettled(changes);
+    }
+    const results = await Promise.all(changes);
+    expect(results.map((response) => response.statusCode).sort()).toEqual([201, 409]);
+    expect((await preview(head.id, 2)).json()).toMatchObject({
+      revision: 2,
+      reason: 'not_approved',
+    });
   });
 
   it('serializes approval against amendment and never authorizes an unapproved newer revision', async () => {

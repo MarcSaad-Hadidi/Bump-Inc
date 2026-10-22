@@ -66,7 +66,6 @@ Begin with one coordinating agent. Delegate only truly independent work to separ
 ## Actual architecture and invariants
 
 Verify current versions against manifests. The current foundation uses strict TypeScript, Node 24, pnpm workspaces, Fastify API, minimal Next.js web UI, PostgreSQL/Drizzle migrations, Redis/BullMQ workers, Better Auth, Zod, Vitest, Playwright and Docker Compose.
-
 - Maintain a modular monolith with separate workers. Do not add microservices or a second source of truth without demonstrated need.
 - **PostgreSQL owns durable business/job state; Redis/BullMQ is transport.** Define atomic transitions, retries, idempotence, cancellation and recovery when implementing execution.
 - Migrations are sequential and reviewed. Never rewrite a migration applied to a shared environment. Runtime credentials must never be migration credentials.
@@ -100,7 +99,6 @@ Verify current versions against manifests. The current foundation uses strict Ty
 ## Testing philosophy
 
 Tests exist to prove changed behavior, not inflate counts.
-
 1. Identify the accepted behavior and meaningful failure modes.
 2. Inspect and run relevant existing tests first when practical.
 3. For a genuinely new isolated behavior, write a minimal failing test before implementation when practical, then make it pass.

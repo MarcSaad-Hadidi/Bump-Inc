@@ -1,6 +1,6 @@
 # Bump OS PR roadmap
 
-Every row is a separate reviewable feature boundary. PR 01 is in progress; PR 02–16 are planned, unimplemented and blocked by their prerequisite gates. No future row represents a created GitHub PR.
+Every row is a separate reviewable feature boundary. [PR 01](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/1) is implemented and its foundation CI gates have passed; PR 02–16 are planned, unimplemented and blocked by their prerequisite gates. No future row represents a created GitHub PR.
 
 | PR  | Capability                              | Direct prerequisites   | Acceptance evidence                                                                                                                                                   |
 | --- | --------------------------------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -76,4 +76,4 @@ Each PR description records delivered behavior, architecture changes, tests actu
 
 ## Current delivery gate
 
-Foundation implementation and validation are in progress. Docker availability, exact supported runtime, install/build/test results and GitHub push/PR permissions must be recorded from execution evidence. Until the PR 01 gate is verified, the next feature priority is PR 02 planning only. PR 03/04 depend on its real security boundaries and cannot be simulated with permissive stubs.
+Foundation implementation commit `39eba332430568d331e459b2b7ebcd412b444549` passed every gate in CI run 39840127776: 33 unit tests, 5 real-service integration tests, 1 Chromium E2E, Compose startup, dependency audit threshold and secret scan. The next feature priority is PR 02 on the verified foundation branch. PR 03/04 depend on its real security boundaries and cannot be simulated with permissive stubs. No PR has been merged.

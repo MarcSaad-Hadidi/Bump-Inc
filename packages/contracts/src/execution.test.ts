@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { executionControlInputSchema, executionJobInputSchema } from './execution.js';
+import {
+  executionControlInputSchema,
+  executionJobInputSchema,
+  executionWorkInputSchema,
+} from './execution.js';
 
 const input = {
   engagementId: '123e4567-e89b-42d3-a456-426614174000',
@@ -12,6 +16,25 @@ const input = {
 };
 
 describe('execution trust boundaries', () => {
+  it('permits internal audit work while the public submission remains synthetic only', () => {
+    const audit = {
+      ...input,
+      kind: 'audit.import',
+      action: 'audit.import',
+      payload: { importId: input.engagementId },
+    };
+    expect(executionWorkInputSchema.parse(audit)).toMatchObject({
+      kind: 'audit.import',
+      payload: { importId: input.engagementId },
+    });
+    expect(executionJobInputSchema.safeParse(audit).success).toBe(false);
+    for (const change of [
+      { action: 'network.scan' },
+      { payload: { importId: 'bad' } },
+      { payload: { importId: input.engagementId, sourceText: '{}' } },
+    ])
+      expect(executionWorkInputSchema.safeParse({ ...audit, ...change }).success).toBe(false);
+  });
   it('canonicalizes targets and bounds the synthetic work and retry policy', () => {
     expect(executionJobInputSchema.parse(input)).toMatchObject({
       target: { value: 'example.test' },

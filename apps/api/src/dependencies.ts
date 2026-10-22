@@ -1,7 +1,7 @@
 import type { ApiEnv } from '@bump/contracts';
 import { assertRuntimeRole, createDatabase } from '@bump/db';
 import { createAuth } from '@bump/identity';
-import { createMailer } from '@bump/integrations';
+import { createArtifactStore, createMailer } from '@bump/integrations';
 import type { FastifyBaseLogger } from 'fastify';
 import { Redis } from 'ioredis';
 import type { IdentityContext } from './identity-routes.js';
@@ -18,6 +18,7 @@ export function createDependencies(env: ApiEnv, logger: FastifyBaseLogger): Depe
   const database = createDatabase(env.DATABASE_URL);
   const { pool } = database;
   const mailer = createMailer(env);
+  const artifactStore = createArtifactStore(process.env);
   const sendMail = async (message: Parameters<typeof mailer.send>[0]) => {
     try {
       await mailer.send(message);
@@ -43,7 +44,7 @@ export function createDependencies(env: ApiEnv, logger: FastifyBaseLogger): Depe
   });
 
   return {
-    identity: { database, env, auth, sendMail },
+    identity: { database, env, auth, sendMail, artifactStore },
     async start() {
       await assertRuntimeRole(pool);
       // A Redis outage affects readiness without preventing startup.
@@ -54,6 +55,7 @@ export function createDependencies(env: ApiEnv, logger: FastifyBaseLogger): Depe
     async close() {
       redis.disconnect();
       mailer.close();
+      artifactStore.close();
       await pool.end();
     },
   };

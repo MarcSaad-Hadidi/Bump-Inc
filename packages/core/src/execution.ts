@@ -1,5 +1,10 @@
 import { createHash, randomUUID } from 'node:crypto';
-import { executionControlInputSchema, executionJobInputSchema } from '@bump/contracts';
+import {
+  type ExecutionWorkInput,
+  executionControlInputSchema,
+  executionJobInputSchema,
+  executionWorkInputSchema,
+} from '@bump/contracts';
 import {
   type Database,
   executionAttempt,
@@ -162,50 +167,58 @@ export async function submitExecution(
   input: Scope & { requestId: string; job: unknown },
 ) {
   const parsed = scopeSchema.extend({ requestId: uuid, job: executionJobInputSchema }).parse(input);
-  return withTenant(database, parsed, async (tx) => {
-    await lockOrganization(tx, parsed);
-    const requestHash = createHash('sha256').update(JSON.stringify(parsed.job)).digest('hex');
-    const [existing] = await tx
-      .select()
-      .from(executionJob)
-      .where(
-        and(
-          eq(executionJob.organizationId, parsed.organizationId),
-          eq(executionJob.actorUserId, parsed.userId),
-          eq(executionJob.idempotencyKey, parsed.job.idempotencyKey),
-        ),
-      );
-    if (existing) {
-      if (existing.requestHash !== requestHash)
-        throw new ExecutionError(409, 'idempotency_conflict');
-      return existing;
-    }
-    const decision = await authorizeEngagementInTransaction(tx, {
-      organizationId: parsed.organizationId,
-      userId: parsed.userId,
-      engagementId: parsed.job.engagementId,
-      expectedRevision: parsed.job.expectedRevision,
-      target: parsed.job.target,
-      action: parsed.job.action,
-    });
-    if (!decision.allowed) throw new ExecutionError(403, 'authorization_denied');
-    const control = await controlFor(tx, parsed);
-    if (control.emergencyStop) throw new ExecutionError(409, 'emergency_stop');
-    const [job] = await tx
-      .insert(executionJob)
-      .values({
-        ...parsed.job,
-        organizationId: parsed.organizationId,
-        actorUserId: parsed.userId,
-        requestId: parsed.requestId,
-        requestHash,
-      })
-      .returning();
-    if (!job) throw new ExecutionError(409, 'state_conflict');
-    await schedule(tx, job);
-    await event(tx, job, null);
-    return job;
+  return withTenant(database, parsed, (tx) => submitExecutionInTransaction(tx, parsed));
+}
+
+// Internal submissions share the caller's membership transaction and outbox commit.
+export async function submitExecutionInTransaction(
+  tx: Transaction,
+  input: Scope & { requestId: string; job: ExecutionWorkInput },
+) {
+  const parsed = scopeSchema
+    .extend({ requestId: uuid, job: executionWorkInputSchema })
+    .parse(input);
+  await lockOrganization(tx, parsed);
+  const requestHash = createHash('sha256').update(JSON.stringify(parsed.job)).digest('hex');
+  const decision = await authorizeEngagementInTransaction(tx, {
+    organizationId: parsed.organizationId,
+    userId: parsed.userId,
+    engagementId: parsed.job.engagementId,
+    expectedRevision: parsed.job.expectedRevision,
+    target: parsed.job.target,
+    action: parsed.job.action,
   });
+  if (!decision.allowed) throw new ExecutionError(403, 'authorization_denied');
+  const [existing] = await tx
+    .select()
+    .from(executionJob)
+    .where(
+      and(
+        eq(executionJob.organizationId, parsed.organizationId),
+        eq(executionJob.actorUserId, parsed.userId),
+        eq(executionJob.idempotencyKey, parsed.job.idempotencyKey),
+      ),
+    );
+  if (existing) {
+    if (existing.requestHash !== requestHash) throw new ExecutionError(409, 'idempotency_conflict');
+    return existing;
+  }
+  const control = await controlFor(tx, parsed);
+  if (control.emergencyStop) throw new ExecutionError(409, 'emergency_stop');
+  const [job] = await tx
+    .insert(executionJob)
+    .values({
+      ...parsed.job,
+      organizationId: parsed.organizationId,
+      actorUserId: parsed.userId,
+      requestId: parsed.requestId,
+      requestHash,
+    })
+    .returning();
+  if (!job) throw new ExecutionError(409, 'state_conflict');
+  await schedule(tx, job);
+  await event(tx, job, null);
+  return job;
 }
 
 export async function readExecution(database: Database, input: Selected) {
@@ -440,6 +453,7 @@ export async function executionCheckpoint(database: Database, input: Selected & 
 export async function finishExecution(
   database: Database,
   input: Selected & { token: string; outcome: Outcome; result?: { completed: true } },
+  onSuccess?: (tx: Transaction, job: Job) => Promise<void>,
 ) {
   const scope = attemptSchema
     .extend({
@@ -465,6 +479,11 @@ export async function finishExecution(
       if (!decision.allowed) return terminal(tx, job, 'denied', decision.reason, timestamp);
       const outcome = !job.deadlineAt || job.deadlineAt <= timestamp ? 'timed_out' : scope.outcome;
       if (outcome === 'cancelled') return terminal(tx, job, 'cancelled', 'cancelled', timestamp);
+      if (outcome === 'succeeded') {
+        if (job.kind === 'audit.import' && !onSuccess)
+          throw new ExecutionError(409, 'import_finalization_required');
+        await onSuccess?.(tx, job);
+      }
       const retry = outcome !== 'succeeded' && job.attempt < job.maxAttempts;
       const status = outcome === 'succeeded' ? 'succeeded' : retry ? 'retry_wait' : 'dead_letter';
       const code =
@@ -472,7 +491,9 @@ export async function finishExecution(
           ? null
           : outcome === 'timed_out'
             ? 'timed_out'
-            : 'synthetic_failure';
+            : job.kind === 'audit.import'
+              ? 'import_failed'
+              : 'synthetic_failure';
       const availableAt = retry
         ? new Date(timestamp.getTime() + Math.min(60_000, job.backoffMs * 2 ** (job.attempt - 1)))
         : job.availableAt;

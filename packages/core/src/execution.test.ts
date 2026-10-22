@@ -38,6 +38,7 @@ describe('execution input trust boundary', () => {
   it('rejects executable handlers and actor spoofing before entering a transaction', async () => {
     for (const unsafe of [
       { ...job, kind: 'shell', payload: { command: 'anything' } },
+      { ...job, kind: 'audit.import', action: 'audit.import', payload: { importId: jobId } },
       { ...job, actorUserId: scope.userId },
       { ...job, payload: { durationMs: 30_001 } },
     ]) {

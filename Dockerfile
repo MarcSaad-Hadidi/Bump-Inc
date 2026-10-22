@@ -13,6 +13,7 @@ RUN pnpm --filter @bump/api deploy --legacy --prod /out/api \
 FROM node:24.22.1-bookworm-slim AS api
 ENV NODE_ENV=production
 WORKDIR /app
+RUN mkdir -p /var/lib/bump/artifacts && chown node:node /var/lib/bump/artifacts && chmod 700 /var/lib/bump/artifacts
 COPY --from=build --chown=node:node /out/api/ ./
 USER node
 EXPOSE 3001
@@ -21,6 +22,7 @@ CMD ["node", "dist/index.js"]
 FROM node:24.22.1-bookworm-slim AS worker
 ENV NODE_ENV=production
 WORKDIR /app
+RUN mkdir -p /var/lib/bump/artifacts && chown node:node /var/lib/bump/artifacts && chmod 700 /var/lib/bump/artifacts
 COPY --from=build --chown=node:node /out/worker/ ./
 USER node
 EXPOSE 3002

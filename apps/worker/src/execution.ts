@@ -1,11 +1,21 @@
+import { createHash } from 'node:crypto';
 import { setTimeout as delay } from 'node:timers/promises';
 import {
+  auditImportPayloadSchema,
   EXECUTION_QUEUE_NAME,
   executionJobInputSchema,
   executionNotificationSchema,
+  parseAuditSource,
 } from '@bump/contracts';
-import { claimExecution, executionCheckpoint, finishExecution } from '@bump/core';
+import {
+  claimExecution,
+  executionCheckpoint,
+  finishAuditImport,
+  finishExecution,
+  readAuditImportForExecution,
+} from '@bump/core';
 import type { Database } from '@bump/db';
+import type { ArtifactStore } from '@bump/integrations';
 import { type Job, type Queue, UnrecoverableError, Worker } from 'bullmq';
 import type { Redis } from 'ioredis';
 
@@ -58,12 +68,15 @@ export function startExecutionDispatcher(
 
 export function createExecutionProcessor(
   database: Database,
-  options: { signal?: AbortSignal } = {},
+  options: { signal?: AbortSignal; artifactStore?: ArtifactStore } = {},
 ) {
   return async (notification: Pick<Job<unknown>, 'name' | 'data'>): Promise<void> => {
     const payload = executionNotificationSchema.safeParse(notification.data);
     if (notification.name !== 'execute' || !payload.success)
       throw new UnrecoverableError('Invalid execution notification');
+    let active:
+      | { jobId: string; organizationId: string; userId: string; token: string }
+      | undefined;
     try {
       const routes = await database.pool.query<Routing>('SELECT * FROM execution_route($1::uuid)', [
         payload.data.jobId,
@@ -78,6 +91,35 @@ export function createExecutionProcessor(
       const job = await claimExecution(database, scope);
       if (!job) return;
       const attempt = { ...scope, token: job.token };
+      active = attempt;
+      if (job.kind === 'audit.import') {
+        const store = options.artifactStore;
+        if (!store) throw new Error('Import storage unavailable');
+        const input = auditImportPayloadSchema.parse(job.payload);
+        const receipt = await readAuditImportForExecution(database, {
+          ...attempt,
+          importId: input.importId,
+        });
+        if (receipt.storageBackend !== store.backend) throw new Error('Import storage unavailable');
+        const bytes = await store.get(receipt.storageKey, receipt.byteCount);
+        if (
+          bytes.length !== receipt.byteCount ||
+          createHash('sha256').update(bytes).digest('hex') !== receipt.sourceSha256
+        )
+          throw new Error('Import integrity failed');
+        const sourceText = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+        const observations = parseAuditSource(receipt.format, sourceText);
+        if (options.signal?.aborted) {
+          await finishExecution(database, { ...attempt, outcome: 'failed' });
+          return;
+        }
+        if (!(await executionCheckpoint(database, attempt))) {
+          await finishExecution(database, { ...attempt, outcome: 'cancelled' });
+          return;
+        }
+        await finishAuditImport(database, { ...attempt, observations });
+        return;
+      }
       const work = executionJobInputSchema.shape.payload.parse(job.payload);
       const end = performance.now() + work.durationMs;
       const deadline = performance.now() + job.timeoutMs;
@@ -104,6 +146,14 @@ export function createExecutionProcessor(
           : { ...attempt, outcome: 'succeeded', result: { completed: true } },
       );
     } catch {
+      if (active) {
+        try {
+          await finishExecution(database, { ...active, outcome: 'failed' });
+          return;
+        } catch {
+          // An unavailable database leaves the attempt for durable lease recovery.
+        }
+      }
       // BullMQ stores exceptions in Redis; never persist raw SQL or downstream errors there.
       throw new Error('Execution processing unavailable');
     }
@@ -115,6 +165,7 @@ export function createExecutionWorker(options: {
   database: Database;
   concurrency: number;
   signal?: AbortSignal;
+  artifactStore?: ArtifactStore;
 }) {
   return new Worker(EXECUTION_QUEUE_NAME, createExecutionProcessor(options.database, options), {
     connection: options.connection,

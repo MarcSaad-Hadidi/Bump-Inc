@@ -1,5 +1,15 @@
 # Passage de relais — Bump OS
 
+## État courant : PR05 et arrêt demandé
+
+L'utilisateur a demandé **l'arrêt après la prochaine PR**, soit PR05 ingestion. PR06 ne doit pas commencer dans cette session. La branche courante est `codex/audit-ingestion`, depuis la base PR04 vérifiée `5939330f6959c34ae577895fe9db05d097fdfe3a` ([CI 39868997076](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39868997076)). Sa PR doit cibler `codex/distributed-execution-engine` tant que [#5](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/5) reste non fusionnée.
+
+PR05 est [GitHub #12](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/12), source fonctionnelle `ea8f736d5b22b145fa1a567666d9452930ebaf72`, [CI complète 39872257617](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39872257617) réussie : **173 unitaires, 117 intégrations PostgreSQL/Redis/S3, 1 Chromium, Compose, audit et Gitleaks**. Localement 172 unitaires + 1 ignoré Windows, tous builds/typechecks/lint réussis ; services indisponibles localement, vérifiés en CI. Le commit documentaire de preuves doit également passer ses contrôles avant transition READY FOR REVIEW.
+
+Le code comprend profils JSON Bump/SARIF/CycloneDX bornés, action explicite `audit.import`, stockage privé local/S3, provenance immuable, quota/alias/staging et observations finalisées atomiquement par le moteur PR04 réautorisé. Migration nouvelle 0004, API/worker et volume Compose partagé privé. Revue indépendante : correction NUL incompatible JSONB avec six régressions reproduites/passées ; aucun autre défaut confirmé. Limites : pas de replay manuel après DLQ/annulation, contenu dédupliqué conserve le même job terminal ; quota 64 MiB tenant inclut les stagings conservés sans purge automatique. Rétention/export attendent PR08. Pas de verdict de sécurité, scanner, UI métier, usage client ni production.
+
+[PROGRESS.md](PROGRESS.md) est le suivi demandé par l'utilisateur ; [INGESTION_VALIDATION.md](INGESTION_VALIDATION.md) conserve les résultats réels, [INGESTION.md](INGESTION.md) les limites/procédures et [ADR 0005](adr/0005-passive-audit-ingestion.md) les choix. Ces sections actuelles priment sur les consignes historiques ci-dessous. Aucune fusion ni production autorisée.
+
 ## Reprise PR04 du 2026-10-22
 
 La consigne d'arrêt après PR03 ci-dessous décrit la session précédente. L'utilisateur a ensuite demandé PR04 et la continuation selon les dépendances. La reprise actuelle est sur `codex/distributed-execution-engine`, depuis la base PR03 vérifiée `6b8562f8e0db378f8fc129e4f577f9aa10499f6a`.

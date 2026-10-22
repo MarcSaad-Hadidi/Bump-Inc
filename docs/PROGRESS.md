@@ -13,7 +13,7 @@ Dernière mise à jour : 2026-10-22 (America/Toronto). Ce fichier distingue le t
 ## PR04 — Distributed Execution Engine
 
 Statut : **VÉRIFIÉ — READY FOR REVIEW**, [PR GitHub #5](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/5). Source `eee336b` : [CI complète 39867661216](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39867661216), 122 unitaires, 72 intégrations réelles, Chromium, Compose, audit et Gitleaks réussis. Aucune fusion effectuée.
-- [x] Écrire l'implémentation, les contrats, la migration 0003, les routes, le worker et les nouveaux tests ; revue par fichiers attribués terminée. Les critères fonctionnels ci-dessous attendent encore les tests réels.
+- [x] Écrire l'implémentation, les contrats, la migration 0003, les routes, le worker et les nouveaux tests ; revue par fichiers attribués terminée, critères vérifiés en CI.
 - [x] Ajouter [le plan](EXECUTION_PLAN.md), [l'exploitation](EXECUTION.md), [ADR 0004](adr/0004-durable-execution.md) et [le registre des validations](EXECUTION_VALIDATION.md).
 - [x] `pnpm check` : réussi, 122 tests unitaires (12 fichiers), lint, typechecks stricts et tous les builds. Relance hors bac à sable nécessaire pour les liens Windows du build Next standalone.
 - [x] Audit npm : aucun problème haut/critique, une modérée déjà évaluée. Gitleaks sur le diff indexé : aucune fuite détectée.
@@ -30,7 +30,7 @@ Statut : **VÉRIFIÉ — READY FOR REVIEW**, [PR GitHub #5](https://github.com/M
 - [x] Tests de sécurité, concurrence, interruptions et reprise contre PostgreSQL/Redis réels en CI.
 - [x] `pnpm test:integration` : indisponible localement, étape CI réussie sur le correctif.
 - [x] `pnpm test:e2e` : indisponible localement, Chromium réussi dans la CI complète du correctif.
-- [x] PR distincte [#5](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/5) ouverte en DRAFT. CI initiale [39866355404](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39866355404) intégralement réussie sur `101d574`. Une nouvelle CI doit valider les trois tests complémentaires.
+- [x] PR distincte [#5](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/5) passée de DRAFT à READY FOR REVIEW après la CI complète du correctif et la CI documentaire [39868997076](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39868997076) sur `5939330`.
 
 ## Journal de cette reprise
 
@@ -39,10 +39,22 @@ Statut : **VÉRIFIÉ — READY FOR REVIEW**, [PR GitHub #5](https://github.com/M
 | Inspection initiale | Documents, Git, PR et CI contrôlés ; branche dédiée créée | Base et liens ci-dessus ; aucune modification préexistante à préserver |
 | Suivi demandé       | Création de ce fichier                                    | Mis à jour à chaque jalon significatif                                 |
 
+## PR05 — Universal Audit Ingestion (dernière PR de cette session)
+
+Statut : **VÉRIFIÉ sur `ea8f736` — [PR GitHub #12](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/12)**. [CI complète 39872257617](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39872257617) réussie : 173 unitaires, 117 intégrations réelles, Chromium, Compose, audit et Gitleaks. La PR devient READY FOR REVIEW après les contrôles du commit de preuves. L'utilisateur a demandé l'arrêt après cette PR ; PR06 ne sera pas commencée. [Validation détaillée](INGESTION_VALIDATION.md).
+- [x] Base exacte PR04 `5939330` vérifiée par CI 39868997076 ; branche `codex/audit-ingestion` créée.
+- [x] Préparer [la conception et le plan](INGESTION_PLAN.md), vérifier le SDK S3 et un service compatible maintenu dans leurs sources primaires.
+- [x] Écrire parser JSON Bump / SARIF / CycloneDX bornés, observations déclaratives et provenance ; 55 tests ciblés réussis. Revue : refus NUL PostgreSQL corrigé, six régressions reproduites puis passées.
+- [x] Réservations tenant/quota, staging reprenable, alias d'idempotence et déduplication ; tests réels passés.
+- [x] Stockage privé local/S3 ; 33 tests stockage passés sous Linux, authentification/écriture conditionnelle/intégrité S3 réelles vérifiées.
+- [x] Job import PR04, recontrôles actuels et finalisation atomique observations/succès ; tests réels passés.
+- [x] `pnpm check` après correction NUL : 172 unitaires réussis, 1 ignoré Windows ; lint/typechecks et tous builds réussis. Audit : zéro haute/critique, 1 modérée existante ; Gitleaks diff indexé réussi.
+- [x] API/worker, 117 intégrations (45 nouvelles), Compose, Chromium, audit et Gitleaks réussis en CI.
+- [x] Documenter preuves/limites, ouvrir la PR distincte et mettre à jour le handoff. Arrêt après finalisation des preuves PR05 ; aucune PR06 commencée.
+
 ## Dépendances suivantes
 
-Code PR04 et ses 27 nouveaux cas d'intégration vérifiés avec les services. Le scénario de mort réelle du worker a reproduit puis validé la correction d'un blocage par verrou Redis abandonné. La démonstration Compose de soumission/retry/historique via le worker séparé a réussi.
-- [ ] PR05 ingestion : prérequis PR02 + PR04 désormais vérifiés ; prochaine capacité. Conception minimale préparée en lecture seule : JSON Bump, SARIF 2.1.0, profil CycloneDX 1.6, stockage privé local/S3, observations/provenance et import idempotent via PR04. Code à réaliser dans une nouvelle branche/PR.
+Nouvelle inspection GitHub avant publication PR05 : #1, #2 et #3 sont désormais MERGED (horodatages 2026-10-22 22:55–22:56 UTC). Aucune fusion effectuée par cette reprise. #5 reste ouverte, READY FOR REVIEW, commit `5939330` inchangé ; PR05 cible donc toujours sa branche.
 - PR06 connecteurs : attend PR03 + PR04 + PR05 vérifiées.
 - PR07–16 : suivre les dépendances directes et transitives de [PR_ROADMAP.md](PR_ROADMAP.md). Rien n'est déclaré livré à ce stade.
 

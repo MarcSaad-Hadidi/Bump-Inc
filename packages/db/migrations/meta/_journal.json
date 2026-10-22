@@ -15,6 +15,13 @@
       "when": 1792697783416,
       "tag": "0001_identity_tenancy",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792699349571,
+      "tag": "0002_engagement_authorization",
+      "breakpoints": true
     }
   ]
 }

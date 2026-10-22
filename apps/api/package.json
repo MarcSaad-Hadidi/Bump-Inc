@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@bump/contracts": "workspace:*",
+    "@bump/core": "workspace:*",
     "@bump/db": "workspace:*",
     "@bump/identity": "workspace:*",
     "@bump/integrations": "workspace:*",

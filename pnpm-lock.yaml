@@ -32,6 +32,9 @@ importers:
       '@bump/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
+      '@bump/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@bump/db':
         specifier: workspace:*
         version: link:../../packages/db
@@ -118,6 +121,21 @@ importers:
 
   packages/contracts:
     dependencies:
+      zod:
+        specifier: 4.6.7
+        version: 4.6.7
+
+  packages/core:
+    dependencies:
+      '@bump/contracts':
+        specifier: workspace:*
+        version: link:../contracts
+      '@bump/db':
+        specifier: workspace:*
+        version: link:../db
+      drizzle-orm:
+        specifier: 0.45.4
+        version: 0.45.4(@types/pg@8.23.1)(kysely@0.29.7)(pg@8.23.1)
       zod:
         specifier: 4.6.7
         version: 4.6.7

@@ -80,6 +80,48 @@ const settings = await fetch(`${origin}/organizations/${organization.id}/setting
 });
 assert.equal(settings.status, 200);
 assert.equal((await settings.json()).locale, 'fr');
+const signedInUser = (await signedIn.json()).user;
+const target = { kind: 'hostname', value: 'lab.example.invalid' };
+const engagementBase = `/organizations/${organization.id}/engagements`;
+const drafted = await post(
+  engagementBase,
+  {
+    objective: 'Validate a synthetic local authorization lifecycle',
+    responsibleUserId: signedInUser.id,
+    scope: { assets: [target], actions: ['configuration.read'], exclusions: [] },
+    authorizationText: 'Synthetic CI authorization only; no external action is performed.',
+    sourceReference: 'Disposable Compose smoke fixture',
+    validFrom: new Date(Date.now() - 60_000).toISOString(),
+    validUntil: new Date(Date.now() + 3_600_000).toISOString(),
+  },
+  cookie,
+);
+assert.equal(drafted.status, 201, 'Mandate creation must persist');
+const engagement = await drafted.json();
+const decisionPath = `${engagementBase}/${engagement.id}/authorize`;
+const decisionInput = { expectedRevision: 1, target, action: 'configuration.read' };
+const beforeApproval = await post(decisionPath, decisionInput, cookie);
+assert.equal(beforeApproval.status, 200);
+assert.equal((await beforeApproval.json()).allowed, false, 'Draft cannot authorize an action');
+const approved = await post(
+  `${engagementBase}/${engagement.id}/approve`,
+  { expectedRevision: 1, authorizationSha256: engagement.version.authorizationSha256 },
+  cookie,
+);
+assert.equal(approved.status, 201, 'Owner must explicitly approve the exact document revision');
+const authorized = await post(decisionPath, decisionInput, cookie);
+assert.equal(authorized.status, 200);
+assert.equal((await authorized.json()).allowed, true, 'Approved exact scope must authorize');
+const revoked = await post(
+  `${engagementBase}/${engagement.id}/revoke`,
+  { expectedRevision: 1, reason: 'Synthetic fixture completed' },
+  cookie,
+);
+assert.equal(revoked.status, 200);
+const afterRevocation = await post(decisionPath, decisionInput, cookie);
+assert.equal(afterRevocation.status, 200);
+assert.equal((await afterRevocation.json()).allowed, false, 'Revocation must deny further actions');
+console.log('Compose mandate draft, explicit approval, exact authorization and revocation passed.');
 assert.equal((await post('/api/auth/sign-out', {}, cookie)).status, 200);
 assert.equal(
   (await fetch(`${origin}/me`, { headers: { cookie }, signal: AbortSignal.timeout(5_000) })).status,

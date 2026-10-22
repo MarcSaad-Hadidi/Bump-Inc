@@ -1,6 +1,6 @@
 # Bump OS architecture
 
-Status: PR 01 foundation and PR 02 identity are verified and **READY FOR REVIEW**. This document records design and implemented boundaries, not production readiness. See [the roadmap](PR_ROADMAP.md) and separate [identity validation](IDENTITY_VALIDATION.md) for delivery gates.
+Status: PR 01 foundation and PR 02 identity are verified and **READY FOR REVIEW**. PR 03 mandates are **DRAFT pending validation**. This document records design and implemented boundaries, not production readiness. See [the roadmap](PR_ROADMAP.md), [identity validation](IDENTITY_VALIDATION.md) and [engagement validation](ENGAGEMENT_VALIDATION.md) for delivery gates.
 
 ## Decision: a modular monolith with separate workers
 
@@ -28,7 +28,7 @@ Exact patch versions are recorded in package manifests and the lockfile. Depende
 
 `apps/api` exposes liveness and dependency readiness checks. `apps/worker` consumes an internal probe job and records completion in PostgreSQL `system_probes`; this verifies a real queue-to-database path without adding a customer-facing execution API. `apps/web` displays API health, fetching only its configured internal API origin with a bounded timeout. `packages/db` owns migrations. `packages/contracts` owns shared validation schemas where used.
 
-Health endpoints and the diagnostic page have no customer data or privileged actions. They remain unauthenticated and internal. PR 01 did not include identity; PR 02 adds the separate API boundaries below. Mandates, audit ingestion, scanner execution and the AI gateway remain unimplemented. The internal probe is not the PR 04 execution engine.
+Health endpoints and the diagnostic page have no customer data or privileged actions. They remain unauthenticated and internal. PR 01 did not include identity; PR 02 adds the separate API boundaries below. Audit ingestion, scanner execution and the AI gateway remain unimplemented. The internal probe is not the PR 04 execution engine.
 
 API readiness indicates whether its dependencies respond. Liveness indicates whether a process responds; it does not promise its dependencies are ready. Neither substitutes for a measured availability guarantee. Tests must exercise failed dependencies as well as successful paths.
 
@@ -46,7 +46,9 @@ The UI remains diagnostic. Local signup is explicitly configured; public product
 
 ## Domain evolution and security gates
 
-PR 03 is the next priority after PR 02 validation and adds explicit, expiring mandates and allowed assets/actions. PR 04 must recheck tenant access and mandate validity at execution, including retries. No customer jobs exist in PR 02. Connectors cannot execute arbitrary commands, and model output cannot become executable shell input. Active security operations require documented authorization and confinement to approved environments.
+PR 03 introduces `packages/core` for actual mandate services and deterministic authorization policy. Immutable revisions snapshot the objective, responsible operator, exact targets/actions, exclusions, dates and plaintext authorization evidence. Owner approval binds the exact document digest and revision. Amendments require new approval; revocation is irreversible. API routes and future workers share the domain authorization function, which rechecks current membership, operator assignment and approver authority. Three new tenant tables enforce RLS and immutable history privileges. [ADR 0003](adr/0003-versioned-engagement-authorization.md) explains locking and scope limits.
+
+PR 04 must recheck tenant access and mandate validity at execution, including retries. No customer jobs or scanners are launched by PR 03's authorization preview. Connectors cannot execute arbitrary commands, and model output cannot become executable shell input. Active security operations require documented authorization and confinement to approved environments.
 
 S3-compatible storage with a local development adapter arrives with ingestion/evidence, when artifact semantics exist. OpenTelemetry is introduced in PR 15 alongside measured reliability needs; foundation structured logs and health checks remain the initial diagnostics. AI integrations arrive in PR 09 and do not include Cyber AI training.
 

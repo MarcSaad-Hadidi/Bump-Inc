@@ -17,6 +17,9 @@ Statut : **DRAFT — implémentation initiale vérifiée, tests complémentaires
 - [x] Ajouter [le plan](EXECUTION_PLAN.md), [l'exploitation](EXECUTION.md), [ADR 0004](adr/0004-durable-execution.md) et [le registre des validations](EXECUTION_VALIDATION.md).
 - [x] `pnpm check` : réussi, 122 tests unitaires (12 fichiers), lint, typechecks stricts et tous les builds. Relance hors bac à sable nécessaire pour les liens Windows du build Next standalone.
 - [x] Audit npm : aucun problème haut/critique, une modérée déjà évaluée. Gitleaks sur le diff indexé : aucune fuite détectée.
+- [x] Commit initial `101d574` : CI complète réussie, 122 unitaires, 68 intégrations PostgreSQL/Redis, Chromium et Compose. Revue indépendante : aucun blocage identifié sur ce delta.
+- [x] Compléments backoff exponentiel exact, révocation active et arrêt coopératif : passés en CI sur `b7c8413`.
+- [ ] Crash réel : régression reproduite en CI [39867128707](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39867128707), 71 intégrations réussies et une échouée. Correction : identifiant de notification Redis frais à chaque publication ; nouvelle CI requise.
 - [ ] Contrats Zod, stockage SQL des jobs, tentatives, historique et outbox transactionnel.
 - [ ] Idempotence et transitions atomiques ; doublons sans double exécution concurrente.
 - [ ] Vérification actuelle de l'appartenance et du mandat au démarrage et à chaque retry.

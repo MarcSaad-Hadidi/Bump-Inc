@@ -4,6 +4,10 @@ Status: **DRAFT — service-backed PR04 acceptance pending**. Base PR03 commit `
 
 Initial implementation `101d574c0c86b98b80405650a1b5423c026f657e` passed all gates in [push CI 39866355404](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39866355404): unit/build/typecheck/lint, isolated PostgreSQL/Redis integration, Chromium, full Compose synthetic submission/retry/history smoke, dependency audit threshold and Gitleaks. The subsequent acceptance follow-up adds explicit exponential backoff, active mandate revocation and cooperative shutdown/retry tests; it requires a fresh successful CI before closing the PR04 gate. The GitHub PR for this roadmap capability is [#5](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/5).
 
+The initial run's observed counts were 122 unit tests, 68 real-service integration tests and one Chromium test. A read-only independent source review found no actionable blocker, while identifying the absence of an actual process-death test. Commit `b7c8413` adds a child worker killed with SIGKILL after PostgreSQL records its active attempt; CI [39867123130](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39867123130) must establish recovery while Redis still retains that worker's active notification. The pinned BullMQ worker uses a 30-second transport lock by default; this transport state must not block the shorter PostgreSQL recovery policy.
+
+The actual process-death regression failed as intended in [CI 39867128707](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39867128707): 71 integrations passed, one remained `retry_wait` because the abandoned Redis notification retained the same transport job ID. The correction removes the fixed BullMQ ID so every publication gets a fresh notification identity; PostgreSQL continues to enforce idempotence and fencing. The corrected commit requires its own complete successful run. Backoff, active revocation and cooperative shutdown tests passed in that failing run; a failed suite still keeps the PR DRAFT.
+
 ## Checks observed during development
 
 - Contracts: two new unit tests passed.

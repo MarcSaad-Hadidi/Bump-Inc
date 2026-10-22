@@ -19,7 +19,7 @@ export async function dispatchExecutions(database: Database, queue: Pick<Queue, 
       'execute',
       { jobId: route.job_id },
       {
-        jobId: route.job_id,
+        // Fresh notification IDs bypass abandoned Redis locks; PostgreSQL fences attempts.
         removeOnComplete: true,
         removeOnFail: true,
         attempts: 1,

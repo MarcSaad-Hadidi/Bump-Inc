@@ -1,4 +1,6 @@
+import { fork } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
+import { once } from 'node:events';
 import { setTimeout as delay } from 'node:timers/promises';
 import { EXECUTION_QUEUE_NAME, type ExecutionJobInput } from '@bump/contracts';
 import {
@@ -535,6 +537,46 @@ describe('durable synthetic execution against PostgreSQL and Redis', () => {
     const stored = await read(f, job.id);
     expect(stored.status).toBe('succeeded');
     expect(stored.attempts.map((attempt) => attempt.outcome)).toEqual(['timed_out', 'succeeded']);
+  });
+
+  it('recovers after an actual worker process dies while Redis still holds its active notification', async () => {
+    const f = await fixture();
+    const child = fork(new URL('../test/execution-child.mjs', import.meta.url), [], {
+      execArgv: [],
+      stdio: ['ignore', 'ignore', 'ignore', 'ipc'],
+      env: { NODE_ENV: 'test', DATABASE_URL: databaseUrl, REDIS_URL: redisUrl },
+    });
+    const exited = once(child, 'exit');
+    let jobId: string;
+    try {
+      const ready = await Promise.race([
+        once(child, 'message'),
+        exited.then(() => {
+          throw new Error('Synthetic child worker exited before readiness');
+        }),
+        delay(5_000).then(() => {
+          throw new Error('Synthetic child worker readiness deadline exceeded');
+        }),
+      ]);
+      expect(ready[0]).toBe('ready');
+      const job = await submit(f, {
+        payload: { durationMs: 400, failUntilAttempt: 0 },
+        timeoutMs: 1_000,
+      });
+      jobId = job.id;
+      await until(f, jobId, (row) => row.status === 'running');
+    } finally {
+      child.kill('SIGKILL');
+      await exited;
+    }
+    await until(f, jobId, (row) => row.status === 'retry_wait');
+    await withWorkers(async () => {
+      const recovered = await until(f, jobId, (row) => row.status === 'succeeded');
+      expect(recovered.attempts.map((attempt) => attempt.outcome)).toEqual([
+        'timed_out',
+        'succeeded',
+      ]);
+    });
   });
 
   it('keeps the outbox after failed publication and republishes a notification removed from Redis', async () => {

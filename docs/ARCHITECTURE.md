@@ -1,6 +1,6 @@
 # Bump OS architecture
 
-Status: PR 01 foundation verified; PR 02 identity implementation is **DRAFT pending real-service validation**. This document records design and implemented boundaries, not production readiness. See [the roadmap](PR_ROADMAP.md) and separate [identity validation](IDENTITY_VALIDATION.md) for delivery gates.
+Status: PR 01 foundation and PR 02 identity are verified and **READY FOR REVIEW**. This document records design and implemented boundaries, not production readiness. See [the roadmap](PR_ROADMAP.md) and separate [identity validation](IDENTITY_VALIDATION.md) for delivery gates.
 
 ## Decision: a modular monolith with separate workers
 
@@ -42,7 +42,7 @@ Environment variables are validated on application startup or first server acces
 
 Invitations require the verified intended recipient, an unexpired grant and the inviter's current owner/admin membership at acceptance. Demotion or removal of the inviter prevents acceptance. Reissue creates a fresh invitation attributed to the current actor. Delivery occurs after transaction commit; failure preserves a pending invitation and reports failure. `packages/integrations` validates bounded plaintext mail and explicit SMTP configuration; production requires verified TLS. Local Mailpit captures messages without external delivery.
 
-The UI remains diagnostic. Local signup is explicitly configured; public production signup and initial production account provisioning are unavailable. MFA, owner transfer, organization/account deletion, advanced pagination and production mail operations are outside this slice. Cross-tenant denial, revocation, forced audit rollback and real SMTP/verification flows remain acceptance gates: implementation alone is not a passing result.
+The UI remains diagnostic. Local signup is explicitly configured; public production signup and initial production account provisioning are unavailable. MFA, owner transfer, organization/account deletion, advanced pagination and production mail operations are outside this slice. Cross-tenant denial, revocation, forced audit rollback and real SMTP/verification flows passed the acceptance run linked in identity validation.
 
 ## Domain evolution and security gates
 

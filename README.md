@@ -1,6 +1,6 @@
 # Bump OS
 
-Technology consulting platform. PR 01 supplies the verified TypeScript/Fastify/PostgreSQL/Redis foundation. PR 02 adds Better Auth identity, organizations, invitations, role checks, tenant settings, PostgreSQL row security and transactional administrative events. **PR 02 remains DRAFT pending real-service validation.** See [the PR roadmap](docs/PR_ROADMAP.md) for delivery gates.
+Technology consulting platform. PR 01 supplies the verified TypeScript/Fastify/PostgreSQL/Redis foundation. PR 02 adds Better Auth identity, organizations, invitations, role checks, tenant settings, PostgreSQL row security and transactional administrative events. **Both PRs are READY FOR REVIEW with passing CI.** See [the PR roadmap](docs/PR_ROADMAP.md) for delivery gates.
 
 Use synthetic local data only. The diagnostic web page and health endpoints remain unauthenticated and internal; identity operations are exposed through the API. Public production signup, initial production account provisioning and deployment hardening are not delivered. Production deployment has not been authorized or verified.
 
@@ -47,7 +47,7 @@ pnpm test:e2e
 
 `pnpm check` runs lint, typecheck, unit tests and build. Integration tests load `.env.test`; its example uses database `bump_test` and Redis database 1. Compose initializes the test database when its PostgreSQL volume is first created. For an existing volume, create that test database explicitly without deleting development data. Browser tests use separate application ports 3100 and 3101.
 
-Integration and browser tests require PostgreSQL and Redis. Identity integration checks additionally require separately provisioned runtime/migration credentials and exercise synthetic users, tenant denial, session revocation and audit rollback. The full-stack identity smoke uses Mailpit. Run checks only against isolated local test services; shell-provided values override environment files. [Foundation validation evidence](docs/VALIDATION.md) applies to PR 01; [identity validation](docs/IDENTITY_VALIDATION.md) separately tracks PR 02, whose real-service gates remain pending.
+Integration and browser tests require PostgreSQL and Redis. Identity integration checks additionally require separately provisioned runtime/migration credentials and exercise synthetic users, tenant denial, session revocation and audit rollback. The full-stack identity smoke uses Mailpit. Run checks only against isolated local test services; shell-provided values override environment files. [Foundation validation evidence](docs/VALIDATION.md) applies to PR 01; [identity validation](docs/IDENTITY_VALIDATION.md) records PR 02's passing real-service gates.
 
 The browser smoke test expects healthy API dependencies. Unit tests cover unreachable API behavior, non-success health responses and invalid internal URLs. The worker's internal probe verifies queue-to-database delivery; it is not a customer job API or full execution engine.
 
@@ -68,4 +68,4 @@ GitHub Actions supplies automated checks, dependency analysis and secret scannin
 | `tests/e2e`              | Essential browser behavior                             |
 | `docs`                   | Architecture, roadmap, decisions and validation        |
 
-See [architecture](docs/ARCHITECTURE.md), [contributing](CONTRIBUTING.md), [security reporting](SECURITY.md), [the foundation ADR](docs/adr/0001-modular-monolith.md), and [the identity ADR](docs/adr/0002-identity-and-tenant-isolation.md). After PR 02 passes its gates and is opened for review, PR 03 (mandates and authorization) is the next priority.
+See [architecture](docs/ARCHITECTURE.md), [contributing](CONTRIBUTING.md), [security reporting](SECURITY.md), [the foundation ADR](docs/adr/0001-modular-monolith.md), and [the identity ADR](docs/adr/0002-identity-and-tenant-isolation.md). PR 03 (mandates and authorization) is the next priority on the verified PR 02 base.

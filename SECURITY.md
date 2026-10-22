@@ -1,6 +1,6 @@
 # Security policy
 
-Bump OS is pre-release internal development software. PR 02 implements identity and tenant controls but remains **DRAFT pending real-service validation**. It is not approved for public hosting or customer data. The diagnostic page and health endpoints remain unauthenticated; production hardening and operational assurance are separate gates.
+Bump OS is pre-release internal development software. PR 02's identity and tenant controls passed their real-service acceptance checks and are **READY FOR REVIEW**. It is not approved for public hosting or customer data. The diagnostic page and health endpoints remain unauthenticated; production hardening and operational assurance are separate gates.
 
 ## Reporting vulnerabilities
 
@@ -17,7 +17,7 @@ If private reporting is unavailable, contact a maintainer through an existing ve
 - Forbid arbitrary command execution, AI-generated shell execution, unauthorized scanning and automatic production remediation. Security tests require an explicit mandate and approved scope.
 - Scan dependencies and secrets in CI. Resolve or assess findings with evidence and recheck dependency changes.
 
-## Implemented controls awaiting PR 02 acceptance
+## Verified PR 02 controls
 
 Better Auth manages passwords, verified email, reset and database sessions. Cookie caching is disabled; organization operations recheck authoritative membership. Cookie-authenticated mutations require the exact configured Origin, and forwarded client-IP headers cannot override the socket identity. Raw organization-plugin HTTP routes are blocked so they cannot bypass Bump's transactional authorization and administrative audit.
 

@@ -29,7 +29,7 @@ See [identity validation](docs/IDENTITY_VALIDATION.md) for actual acceptance evi
 
 ## Remaining controls
 
-PR 03 adds versioned mandate authorization and is pending its own [acceptance checks](docs/ENGAGEMENT_VALIDATION.md). Approval binds an immutable revision and plaintext document digest; it does not verify a legal signature. Scope uses exact targets/actions with exclusions, current membership and responsible-operator checks. The preview launches no job or scan. PR 04 must call the same authorization service again before execution and retry; future network connectors must validate actual resolved destinations and redirects.
+PR 03 adds versioned mandate authorization with [passing acceptance checks](docs/ENGAGEMENT_VALIDATION.md). Approval binds an immutable revision and plaintext document digest; it does not verify a legal signature. Scope uses exact targets/actions with exclusions, current membership and responsible-operator checks. The preview launches no job or scan. PR 04 must call the same authorization service again before execution and retry; future network connectors must validate actual resolved destinations and redirects.
 
 PR 05/08 protect binary evidence, redaction and retention. PR 09 restricts model/tool permissions and requires sensitive-action approval. PR 15/16 add recovery drills, operations and authorized deployment hardening.
 

@@ -1,6 +1,6 @@
 # ADR 0003: versioned engagement authorization
 
-Date: 2026-10-22. Status: implementation in progress for PR03.
+Date: 2026-10-22. Status: implemented and verified in PR03; ready for review.
 
 ## Decision
 

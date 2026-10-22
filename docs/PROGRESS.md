@@ -41,7 +41,7 @@ Statut : **VÉRIFIÉ — READY FOR REVIEW**, [PR GitHub #5](https://github.com/M
 
 ## PR05 — Universal Audit Ingestion (dernière PR de cette session)
 
-Statut : **EN COURS — code écrit, tests de services attendus**. L'utilisateur a demandé l'arrêt après cette prochaine PR ; PR06 ne sera pas commencée. [Validation détaillée](INGESTION_VALIDATION.md).
+Statut : **DRAFT — [PR GitHub #12](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/12), CI de services en cours**. L'utilisateur a demandé l'arrêt après cette prochaine PR ; PR06 ne sera pas commencée. [Validation détaillée](INGESTION_VALIDATION.md).
 - [x] Base exacte PR04 `5939330` vérifiée par CI 39868997076 ; branche `codex/audit-ingestion` créée.
 - [x] Préparer [la conception et le plan](INGESTION_PLAN.md), vérifier le SDK S3 et un service compatible maintenu dans leurs sources primaires.
 - [x] Écrire parser JSON Bump / SARIF / CycloneDX bornés, observations déclaratives et provenance ; 55 tests ciblés réussis. Revue : refus NUL PostgreSQL corrigé, six régressions reproduites puis passées.
@@ -55,7 +55,6 @@ Statut : **EN COURS — code écrit, tests de services attendus**. L'utilisateur
 ## Dépendances suivantes
 
 Nouvelle inspection GitHub avant publication PR05 : #1, #2 et #3 sont désormais MERGED (horodatages 2026-10-22 22:55–22:56 UTC). Aucune fusion effectuée par cette reprise. #5 reste ouverte, READY FOR REVIEW, commit `5939330` inchangé ; PR05 cible donc toujours sa branche.
-
 - PR06 connecteurs : attend PR03 + PR04 + PR05 vérifiées.
 - PR07–16 : suivre les dépendances directes et transitives de [PR_ROADMAP.md](PR_ROADMAP.md). Rien n'est déclaré livré à ce stade.
 

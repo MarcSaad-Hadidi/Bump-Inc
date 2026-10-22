@@ -2,7 +2,7 @@
 
 Base vérifiée : PR04 / [GitHub #5](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/5), commit `5939330f6959c34ae577895fe9db05d097fdfe3a`, [CI 39868997076](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39868997076). Branche `codex/audit-ingestion`, cible `codex/distributed-execution-engine`. Les preuves PR04 ne valident pas ce delta.
 
-Statut : **DRAFT — contrôles PR05 en cours**. Aucune intégration PR05 réelle n'est encore déclarée réussie.
+Statut : **DRAFT — contrôles PR05 en cours**, [PR GitHub #12](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/12), commit initial `6d3a59b1dbc21ed7b93cc62679531d350d1e2395`. [CI push 39872026334](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39872026334) et [CI PR 39872076127](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39872076127) lancées. Aucune intégration PR05 réelle n'est encore déclarée réussie.
 
 ## Résultats locaux observés
 

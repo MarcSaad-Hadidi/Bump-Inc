@@ -2,6 +2,8 @@
 
 Status: **DRAFT — service-backed PR04 acceptance pending**. Base PR03 commit `6b8562f8e0db378f8fc129e4f577f9aa10499f6a` passed CI [39847969234](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39847969234), independently checked during this session. This prior success does not validate PR04.
 
+Initial implementation `101d574c0c86b98b80405650a1b5423c026f657e` passed all gates in [push CI 39866355404](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39866355404): unit/build/typecheck/lint, isolated PostgreSQL/Redis integration, Chromium, full Compose synthetic submission/retry/history smoke, dependency audit threshold and Gitleaks. The subsequent acceptance follow-up adds explicit exponential backoff, active mandate revocation and cooperative shutdown/retry tests; it requires a fresh successful CI before closing the PR04 gate. The GitHub PR for this roadmap capability is [#5](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/5).
+
 ## Checks observed during development
 
 - Contracts: two new unit tests passed.

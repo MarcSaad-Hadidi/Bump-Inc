@@ -347,6 +347,37 @@ describe('durable synthetic execution against PostgreSQL and Redis', () => {
     });
   });
 
+  it('persists exponential backoff and refuses a claim before the retry is due', async () => {
+    const f = await fixture();
+    const job = await submit(f, { backoffMs: 1_000 });
+    const first = await claim(f, job.id);
+    expect(first).not.toBeNull();
+    const retry = await finishExecution(database, {
+      ...f.actor,
+      jobId: job.id,
+      token: first!.token,
+      outcome: 'failed',
+    });
+    const history = await read(f, job.id);
+    expect(retry!.availableAt.getTime() - history.attempts[0]!.finishedAt!.getTime()).toBe(1_000);
+    expect(await claim(f, job.id)).toBeNull();
+    await admin.pool.query(
+      "UPDATE execution_job SET available_at = now() - interval '1 second' WHERE id = $1",
+      [job.id],
+    );
+    const second = await claim(f, job.id);
+    expect(second).not.toBeNull();
+    const next = await finishExecution(database, {
+      ...f.actor,
+      jobId: job.id,
+      token: second!.token,
+      outcome: 'failed',
+    });
+    const updated = await read(f, job.id);
+    expect(next!.availableAt.getTime() - updated.attempts[1]!.finishedAt!.getTime()).toBe(2_000);
+    await cancelExecution(database, { ...f.actor, jobId: job.id, requestId: randomUUID() });
+  });
+
   it('cancels queued and active jobs and stops an active handler on emergency stop', async () => {
     const f = await fixture();
     const queued = await submit(f);
@@ -363,6 +394,52 @@ describe('durable synthetic execution against PostgreSQL and Redis', () => {
       await control(f, { emergencyStop: true });
       expect((await until(f, stopped.id, (row) => row.status === 'cancelled')).result).toBeNull();
       await expect(submit(f)).rejects.toMatchObject({ statusCode: 409, code: 'emergency_stop' });
+    });
+  });
+
+  it('stops an active handler when its approved mandate is revoked', async () => {
+    const f = await fixture();
+    const job = await submit(f, {
+      payload: { durationMs: 5_000, failUntilAttempt: 0 },
+      timeoutMs: 10_000,
+    });
+    await withWorkers(async () => {
+      await until(f, job.id, (row) => row.status === 'running');
+      await revokeEngagement(database, {
+        ...f.owner,
+        engagementId: f.engagementId,
+        expectedRevision: 1,
+        requestId: randomUUID(),
+        reason: 'Withdraw permission during synthetic work',
+      });
+      const stopped = await until(f, job.id, (row) => row.status === 'denied');
+      expect(stopped.attempts).toHaveLength(1);
+      expect(stopped.attempts[0]?.outcome).toBe('denied');
+      expect(stopped.errorCode).toBe('revoked');
+      expect(stopped.result).toBeNull();
+    });
+  });
+
+  it('persists interrupted work as retryable and resumes it through a fresh worker', async () => {
+    const f = await fixture();
+    const job = await submit(f, { payload: { durationMs: 400, failUntilAttempt: 0 } });
+    const stop = new AbortController();
+    const processing = createExecutionProcessor(database, { signal: stop.signal })({
+      name: 'execute',
+      data: { jobId: job.id },
+    });
+    try {
+      await until(f, job.id, (row) => row.status === 'running');
+    } finally {
+      stop.abort();
+      await processing;
+    }
+    const interrupted = await read(f, job.id);
+    expect(interrupted.status).toBe('retry_wait');
+    expect(interrupted.attempts[0]?.outcome).toBe('failed');
+    await withWorkers(async () => {
+      const resumed = await until(f, job.id, (row) => row.status === 'succeeded');
+      expect(resumed.attempts.map((attempt) => attempt.outcome)).toEqual(['failed', 'succeeded']);
     });
   });
 

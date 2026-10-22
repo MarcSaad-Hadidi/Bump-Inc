@@ -34,7 +34,9 @@ jobs:
           --health-cmd "redis-cli ping"
           --health-interval 5s --health-timeout 3s --health-retries 20
     env:
-      DATABASE_URL: postgresql://bump:ci_disposable_database_only@127.0.0.1:5432/bump_test
+      DATABASE_URL: postgresql://bump_app:ci_disposable_runtime_only@127.0.0.1:5432/bump_test
+      MIGRATION_DATABASE_URL: postgresql://bump:ci_disposable_database_only@127.0.0.1:5432/bump_test
+      APP_DATABASE_PASSWORD: ci_disposable_runtime_only
       REDIS_URL: redis://127.0.0.1:6379/1
       NEXT_TELEMETRY_DISABLED: "1"
     steps:
@@ -47,6 +49,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
       - run: pnpm audit:dependencies
+      - run: psql "$MIGRATION_DATABASE_URL" --set=ON_ERROR_STOP=1 --set=app_password="$APP_DATABASE_PASSWORD" --file=infra/postgres/create-runtime.sql
+      - run: pnpm db:migrate
       - run: pnpm test:integration
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:e2e

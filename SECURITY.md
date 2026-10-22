@@ -1,6 +1,6 @@
 # Security policy
 
-The foundation is pre-release internal development software. It lacks authentication and tenant isolation and is not approved for public hosting or customer data. Production hardening and operational assurance are separate gates.
+Bump OS is pre-release internal development software. PR 02's identity and tenant controls passed their real-service acceptance checks and are **READY FOR REVIEW**. It is not approved for public hosting or customer data. The diagnostic page and health endpoints remain unauthenticated; production hardening and operational assurance are separate gates.
 
 ## Reporting vulnerabilities
 
@@ -17,8 +17,18 @@ If private reporting is unavailable, contact a maintainer through an existing ve
 - Forbid arbitrary command execution, AI-generated shell execution, unauthorized scanning and automatic production remediation. Security tests require an explicit mandate and approved scope.
 - Scan dependencies and secrets in CI. Resolve or assess findings with evidence and recheck dependency changes.
 
-## Planned controls
+## Verified PR 02 controls
 
-PR 02 adds proven authentication, secure sessions, tenant authorization and cross-tenant tests. PR 03/04 enforce mandates before execution. PR 05/08 protect evidence, redaction and retention. PR 09 restricts model/tool permissions and requires sensitive-action approval. PR 15/16 add recovery drills, operations and authorized deployment hardening.
+Better Auth manages passwords, verified email, reset and database sessions. Cookie caching is disabled; organization operations recheck authoritative membership. Cookie-authenticated mutations require the exact configured Origin, and forwarded client-IP headers cannot override the socket identity. Raw organization-plugin HTTP routes are blocked so they cannot bypass Bump's transactional authorization and administrative audit.
+
+Tenant settings and administrative events use forced PostgreSQL row security plus transaction-local user/organization context. Runtime logins cannot own these tables, bypass RLS, or modify/delete audit rows. Better Auth's shared identity tables remain within the trusted authentication subsystem; RLS does not protect against a compromised runtime process impersonating another user or a privileged migration credential. Administrative history is not the tamper-evident evidence system planned for PR 08.
+
+Invitation acceptance requires its verified recipient, a valid expiry and the inviter's current owner/admin membership. Inviter demotion or removal denies acceptance; reissue creates a fresh grant under the current actor. SMTP messages are validated and bounded, with production TLS and certificate verification. Mail errors are sanitized; local Mailpit does not relay messages externally. Production signup and initial account provisioning remain unavailable pending an approved onboarding procedure.
+
+See [identity validation](docs/IDENTITY_VALIDATION.md) for actual acceptance evidence. MFA, owner transfer, organization/account deletion and production mail-provider operations are outside this slice.
+
+## Remaining controls
+
+PR 03/04 must enforce mandates before execution. PR 05/08 protect evidence, redaction and retention. PR 09 restricts model/tool permissions and requires sensitive-action approval. PR 15/16 add recovery drills, operations and authorized deployment hardening. PR 03 is next after the identity gate passes.
 
 OWASP ASVS 5.0 and applicable Quebec Law 25 obligations inform future acceptance criteria. This foundation claims no certification, legal compliance, tested recovery objective or production security guarantee. Threat modeling, control-to-test mapping and qualified legal review remain required before relevant production use.

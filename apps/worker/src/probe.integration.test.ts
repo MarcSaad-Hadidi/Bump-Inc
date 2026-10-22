@@ -8,12 +8,16 @@ import { createProbeWorker } from './probe.js';
 
 const databaseUrl = process.env.DATABASE_URL;
 const redisUrl = process.env.REDIS_URL;
-if (process.env.NODE_ENV !== 'test' || !databaseUrl || !redisUrl) {
+const migrationUrl = process.env.MIGRATION_DATABASE_URL;
+if (process.env.NODE_ENV !== 'test' || !databaseUrl || !redisUrl || !migrationUrl) {
   throw new Error(
     'Integration tests require NODE_ENV=test, DATABASE_URL and REDIS_URL for dedicated test services',
   );
 }
-if (!new URL(databaseUrl).pathname.endsWith('_test')) {
+if (
+  !new URL(databaseUrl).pathname.endsWith('_test') ||
+  !new URL(migrationUrl).pathname.endsWith('_test')
+) {
   throw new Error('Integration database name must end in _test');
 }
 if (new URL(redisUrl).pathname !== '/1') {
@@ -21,6 +25,7 @@ if (new URL(redisUrl).pathname !== '/1') {
 }
 
 const database = createDatabase(databaseUrl);
+const migrationDatabase = createDatabase(migrationUrl);
 const connection = new Redis(redisUrl, { maxRetriesPerRequest: null });
 const producerConnection = new Redis(redisUrl, { maxRetriesPerRequest: 1 });
 const queue = new Queue(PROBE_QUEUE_NAME, { connection: producerConnection });
@@ -45,12 +50,12 @@ async function enqueue(name: string, data: unknown) {
 
 describe('PostgreSQL / Redis / worker integration', () => {
   beforeAll(async () => {
-    await migrateDatabase(databaseUrl);
-    const firstMigration = await database.pool.query<{ count: string }>(
+    await migrateDatabase(migrationUrl);
+    const firstMigration = await migrationDatabase.pool.query<{ count: string }>(
       'SELECT count(*) FROM drizzle.__drizzle_migrations',
     );
     migrationCount = Number(firstMigration.rows[0]?.count);
-    await migrateDatabase(databaseUrl);
+    await migrateDatabase(migrationUrl);
     await Promise.all([worker.waitUntilReady(), events.waitUntilReady(), queue.waitUntilReady()]);
   }, 20_000);
 
@@ -59,11 +64,16 @@ describe('PostgreSQL / Redis / worker integration', () => {
     for (const job of jobs) await job.remove();
     await database.pool.query('DELETE FROM system_probes WHERE id = ANY($1::uuid[])', [probeIds]);
     await Promise.all([queue.close(), events.close()]);
-    await Promise.all([connection.quit(), producerConnection.quit(), database.pool.end()]);
+    await Promise.all([
+      connection.quit(),
+      producerConnection.quit(),
+      database.pool.end(),
+      migrationDatabase.pool.end(),
+    ]);
   }, 20_000);
 
   it('applies the reviewed migration once even when the migrator runs twice', async () => {
-    const result = await database.pool.query<{ count: string }>(
+    const result = await migrationDatabase.pool.query<{ count: string }>(
       'SELECT count(*) FROM drizzle.__drizzle_migrations',
     );
     expect(migrationCount).toBeGreaterThan(0);

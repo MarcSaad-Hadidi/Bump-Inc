@@ -1,5 +1,5 @@
 import { parseEnv, workerEnvSchema } from '@bump/contracts';
-import { createDatabase } from '@bump/db';
+import { assertRuntimeRole, createDatabase } from '@bump/db';
 import { loggerOptions } from '@bump/observability';
 import { Redis } from 'ioredis';
 import { pino } from 'pino';
@@ -10,6 +10,13 @@ const env = parseEnv(workerEnvSchema);
 const logger = pino(loggerOptions('worker', env.LOG_LEVEL));
 const database = createDatabase(env.DATABASE_URL);
 database.pool.on('error', () => logger.error('Idle database connection failed'));
+try {
+  await assertRuntimeRole(database.pool);
+} catch {
+  logger.error('Database runtime role is unsafe or unavailable');
+  await database.pool.end();
+  process.exit(1);
+}
 const connection = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null, connectTimeout: 3_000 });
 connection.on('error', () => logger.error('Redis connection failed'));
 const worker = createProbeWorker({ connection, database, concurrency: env.WORKER_CONCURRENCY });

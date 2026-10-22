@@ -1,0 +1,36 @@
+{
+  "name": "bump-os",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.34.7",
+  "engines": {
+    "node": ">=24.22.1 <25",
+    "pnpm": ">=10.34.7 <11"
+  },
+  "scripts": {
+    "build:packages": "pnpm --filter \"./packages/*\" -r build",
+    "build": "pnpm -r build",
+    "dev": "pnpm build:packages && pnpm --parallel --filter \"./apps/*\" dev",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "typecheck": "pnpm build:packages && pnpm -r typecheck && tsc --noEmit",
+    "test": "pnpm build:packages && vitest run",
+    "test:integration": "pnpm build:packages && node --env-file-if-exists=.env.test node_modules/vitest/vitest.mjs run --config vitest.integration.config.ts",
+    "test:e2e": "node --env-file-if-exists=.env.test node_modules/@playwright/test/cli.js test",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "db:generate": "pnpm --filter @bump/db generate",
+    "db:migrate": "pnpm --filter @bump/db migrate",
+    "infra:up": "docker compose up -d --wait postgres redis",
+    "infra:down": "docker compose down",
+    "audit:dependencies": "pnpm audit --audit-level=high"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.2",
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.19.2",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "4.1.12"
+  }
+}

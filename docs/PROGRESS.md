@@ -12,24 +12,24 @@ Dernière mise à jour : 2026-10-22 (America/Toronto). Ce fichier distingue le t
 
 ## PR04 — Distributed Execution Engine
 
-Statut : **DRAFT — implémentation initiale vérifiée, tests complémentaires en attente de CI**.
+Statut : **VÉRIFIÉ — READY FOR REVIEW**, [PR GitHub #5](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/5). Source `eee336b` : [CI complète 39867661216](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39867661216), 122 unitaires, 72 intégrations réelles, Chromium, Compose, audit et Gitleaks réussis. Aucune fusion effectuée.
 - [x] Écrire l'implémentation, les contrats, la migration 0003, les routes, le worker et les nouveaux tests ; revue par fichiers attribués terminée. Les critères fonctionnels ci-dessous attendent encore les tests réels.
 - [x] Ajouter [le plan](EXECUTION_PLAN.md), [l'exploitation](EXECUTION.md), [ADR 0004](adr/0004-durable-execution.md) et [le registre des validations](EXECUTION_VALIDATION.md).
 - [x] `pnpm check` : réussi, 122 tests unitaires (12 fichiers), lint, typechecks stricts et tous les builds. Relance hors bac à sable nécessaire pour les liens Windows du build Next standalone.
 - [x] Audit npm : aucun problème haut/critique, une modérée déjà évaluée. Gitleaks sur le diff indexé : aucune fuite détectée.
 - [x] Commit initial `101d574` : CI complète réussie, 122 unitaires, 68 intégrations PostgreSQL/Redis, Chromium et Compose. Revue indépendante : aucun blocage identifié sur ce delta.
 - [x] Compléments backoff exponentiel exact, révocation active et arrêt coopératif : passés en CI sur `b7c8413`.
-- [ ] Crash réel : régression reproduite en CI [39867128707](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39867128707), 71 intégrations réussies et une échouée. Correction : identifiant de notification Redis frais à chaque publication ; nouvelle CI requise.
-- [ ] Contrats Zod, stockage SQL des jobs, tentatives, historique et outbox transactionnel.
-- [ ] Idempotence et transitions atomiques ; doublons sans double exécution concurrente.
-- [ ] Vérification actuelle de l'appartenance et du mandat au démarrage et à chaque retry.
-- [ ] Retries bornés, backoff, timeouts et DLQ persistante.
-- [ ] Annulation, arrêt d'urgence et limites distribuées de débit/concurrence.
-- [ ] Publication/republication et récupération après interruption ou perte Redis.
-- [ ] API authentifiée et worker séparé avec démonstration synthétique inoffensive.
-- [ ] Tests de sécurité, concurrence, interruptions et reprise contre PostgreSQL/Redis réels.
-- [ ] `pnpm test:integration` : tentative locale échouée, configuration PostgreSQL/Redis absente ; validation CI attendue.
-- [ ] `pnpm test:e2e` : tentative locale échouée au démarrage du serveur sans environnement ; validation CI attendue.
+- [x] Crash réel : régression reproduite en CI [39867128707](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39867128707), puis corrigée par notifications Redis fraîches. L'étape intégration de [39867655509](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39867655509) réussit sur `eee336b`, avec 72 cas dont la mort réelle du processus.
+- [x] Contrats Zod, stockage SQL des jobs, tentatives, historique et outbox transactionnel.
+- [x] Idempotence et transitions atomiques ; doublons sans double exécution concurrente.
+- [x] Vérification actuelle de l'appartenance et du mandat au démarrage et à chaque retry.
+- [x] Retries bornés, backoff, timeouts et DLQ persistante.
+- [x] Annulation, arrêt d'urgence et limites distribuées de débit/concurrence.
+- [x] Publication/republication et récupération après interruption ou perte Redis.
+- [x] API authentifiée et worker séparé avec démonstration synthétique inoffensive ; Compose réussie sur le correctif.
+- [x] Tests de sécurité, concurrence, interruptions et reprise contre PostgreSQL/Redis réels en CI.
+- [x] `pnpm test:integration` : indisponible localement, étape CI réussie sur le correctif.
+- [x] `pnpm test:e2e` : indisponible localement, Chromium réussi dans la CI complète du correctif.
 - [x] PR distincte [#5](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/5) ouverte en DRAFT. CI initiale [39866355404](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39866355404) intégralement réussie sur `101d574`. Une nouvelle CI doit valider les trois tests complémentaires.
 
 ## Journal de cette reprise
@@ -41,8 +41,8 @@ Statut : **DRAFT — implémentation initiale vérifiée, tests complémentaires
 
 ## Dépendances suivantes
 
-Code PR04 écrit : stockage et historique, autorisation transactionnelle, worker/dispatch, contrôles et routes. Les nouveaux cas d'intégration restent à valider avec les services ; une assertion explicite du backoff exponentiel a été ajoutée après l'implémentation initiale. La démonstration Compose couvre désormais une soumission avec retry et historique via le worker séparé ; son exécution reste attendue.
-- PR05 ingestion : attend PR02 + PR04 vérifiées.
+Code PR04 et ses 27 nouveaux cas d'intégration vérifiés avec les services. Le scénario de mort réelle du worker a reproduit puis validé la correction d'un blocage par verrou Redis abandonné. La démonstration Compose de soumission/retry/historique via le worker séparé a réussi.
+- [ ] PR05 ingestion : prérequis PR02 + PR04 désormais vérifiés ; prochaine capacité. Conception minimale préparée en lecture seule : JSON Bump, SARIF 2.1.0, profil CycloneDX 1.6, stockage privé local/S3, observations/provenance et import idempotent via PR04. Code à réaliser dans une nouvelle branche/PR.
 - PR06 connecteurs : attend PR03 + PR04 + PR05 vérifiées.
 - PR07–16 : suivre les dépendances directes et transitives de [PR_ROADMAP.md](PR_ROADMAP.md). Rien n'est déclaré livré à ce stade.
 

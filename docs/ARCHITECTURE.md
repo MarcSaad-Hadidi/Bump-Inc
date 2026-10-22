@@ -1,6 +1,6 @@
 # Bump OS architecture
 
-Status: PR 01 foundation, PR 02 identity and PR 03 mandates are verified and **READY FOR REVIEW**. This document records design and implemented boundaries, not production readiness. See [the roadmap](PR_ROADMAP.md), [identity validation](IDENTITY_VALIDATION.md) and [engagement validation](ENGAGEMENT_VALIDATION.md) for delivery gates.
+Status: PR01 foundation, PR02 identity, PR03 mandates and PR04 execution are verified and **READY FOR REVIEW**. This document records design and implemented boundaries, not production readiness. See [the roadmap](PR_ROADMAP.md), [identity validation](IDENTITY_VALIDATION.md), [engagement validation](ENGAGEMENT_VALIDATION.md) and [execution validation](EXECUTION_VALIDATION.md) for delivery gates.
 
 ## Decision: a modular monolith with separate workers
 

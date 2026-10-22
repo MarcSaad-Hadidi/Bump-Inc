@@ -21,11 +21,11 @@ Le coordinateur possède les contrats, routes, worker, documentation, configurat
 
 ## Contrôles et jalons
 
-- [ ] Écrire les contrats et interfaces, puis les tests ciblant les invariants avant l'implémentation concernée.
-- [ ] Implémenter SQL et domaine ; compiler les packages et vérifier la compatibilité de PR03.
-- [ ] Raccorder les routes et le worker ; exécuter les tests unitaires et contrôles stricts.
-- [ ] Exécuter les tests PostgreSQL/Redis, Chromium, Compose, audit et Gitleaks ; consigner toute indisponibilité.
-- [ ] Revoir la sécurité et les courses, documenter les limites, publier une PR distincte ciblant PR03 et observer sa CI.
+- [x] Écrire les contrats, interfaces et tests ciblant les invariants ; reproduire le défaut de crash avant sa correction.
+- [x] Implémenter SQL et domaine ; compiler les packages et vérifier la compatibilité de PR03.
+- [x] Raccorder les routes et le worker ; exécuter les tests unitaires et contrôles stricts.
+- [x] Exécuter les tests PostgreSQL/Redis, Chromium, Compose, audit et Gitleaks ; consigner toute indisponibilité.
+- [x] Revoir la sécurité et les courses, documenter les limites, publier une PR distincte ciblant PR03 et observer sa CI.
 - [ ] Poursuivre PR05 uniquement si tous les prérequis PR04 sont vérifiés, dans une branche et une PR séparées.
 
 Risques à vérifier explicitement : perte d'appartenance après mise en file, concurrence multi-workers, annulation contre finalisation, crash après publication ou effet, restauration du transport vide. Aucun handler externe ne fait partie de PR04.

@@ -1,4 +1,4 @@
-import type { EngagementAction, EngagementTarget } from '@bump/contracts';
+import type { EngagementAction, EngagementTarget, ExecutionWorkInput } from '@bump/contracts';
 import { sql } from 'drizzle-orm';
 import {
   boolean,
@@ -39,10 +39,10 @@ export const executionJob = pgTable(
     expectedRevision: integer('expected_revision').notNull(),
     target: jsonb('target').$type<EngagementTarget>().notNull(),
     action: text('action').$type<EngagementAction>().notNull(),
-    kind: text('kind', { enum: ['synthetic'] })
+    kind: text('kind', { enum: ['synthetic', 'audit.import'] })
       .notNull()
       .default('synthetic'),
-    payload: jsonb('payload').$type<{ durationMs: number; failUntilAttempt: number }>().notNull(),
+    payload: jsonb('payload').$type<ExecutionWorkInput['payload']>().notNull(),
     idempotencyKey: text('idempotency_key').notNull(),
     requestHash: text('request_hash').notNull(),
     requestId: uuid('request_id').notNull(),
@@ -89,7 +89,7 @@ export const executionJob = pgTable(
     ),
     check(
       'execution_job_identity_check',
-      sql`${table.requestHash} ~ '^[a-f0-9]{64}$' AND length(${table.idempotencyKey}) BETWEEN 1 AND 128 AND ${table.kind} = 'synthetic'`,
+      sql`${table.requestHash} ~ '^[a-f0-9]{64}$' AND length(${table.idempotencyKey}) BETWEEN 1 AND 128 AND ${table.kind} IN ('synthetic','audit.import')`,
     ),
     check(
       'execution_job_lease_check',

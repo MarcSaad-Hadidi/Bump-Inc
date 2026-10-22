@@ -88,7 +88,7 @@ const drafted = await post(
   {
     objective: 'Validate a synthetic local authorization lifecycle',
     responsibleUserId: signedInUser.id,
-    scope: { assets: [target], actions: ['configuration.read'], exclusions: [] },
+    scope: { assets: [target], actions: ['configuration.read', 'audit.import'], exclusions: [] },
     authorizationText: 'Synthetic CI authorization only; no external action is performed.',
     sourceReference: 'Disposable Compose smoke fixture',
     validFrom: new Date(Date.now() - 60_000).toISOString(),
@@ -148,6 +148,61 @@ assert.deepEqual(
 assert.ok(completed.attempts.every((attempt) => attempt.token === undefined));
 console.log(
   'Compose durable execution submission, separate worker, bounded retry and history passed.',
+);
+const importBase = `/organizations/${organization.id}/audit-imports`;
+const importInput = {
+  engagementId: engagement.id,
+  expectedRevision: 1,
+  target,
+  format: 'bump-json-v1',
+  sourceName: 'compose-fixture.json',
+  sourceText: JSON.stringify({
+    version: 1,
+    observations: [
+      {
+        kind: 'issue',
+        title: 'Synthetic imported observation',
+        reportedSeverity: 'unknown',
+        sourcePointer: '/observations/0',
+      },
+    ],
+  }),
+  idempotencyKey: `import-${unique}`,
+};
+const imported = await post(importBase, importInput, cookie);
+assert.equal(imported.status, 201, 'Authorized passive import must persist');
+const receipt = await imported.json();
+assert.equal(receipt.storageKey, undefined);
+assert.equal(receipt.sourceText, undefined);
+let importComplete;
+const importDeadline = performance.now() + 30_000;
+while (performance.now() < importDeadline) {
+  const response = await fetch(`${origin}${importBase}/${receipt.id}`, {
+    headers: { cookie },
+    signal: AbortSignal.timeout(5_000),
+  });
+  assert.equal(response.status, 200);
+  importComplete = await response.json();
+  if (importComplete.executionStatus === 'succeeded') break;
+  await new Promise((resolve) => setTimeout(resolve, 200));
+}
+assert.equal(
+  importComplete?.executionStatus,
+  'succeeded',
+  'Worker must read shared private source',
+);
+assert.equal(importComplete.observationCount, 1);
+const observations = await fetch(`${origin}${importBase}/${receipt.id}/observations`, {
+  headers: { cookie },
+  signal: AbortSignal.timeout(5_000),
+});
+assert.equal(observations.status, 200);
+assert.equal((await observations.json())[0].observation.title, 'Synthetic imported observation');
+const duplicateImport = await post(importBase, importInput, cookie);
+assert.equal(duplicateImport.status, 201);
+assert.equal((await duplicateImport.json()).executionJobId, receipt.executionJobId);
+console.log(
+  'Compose private source, separate import worker, observations and deduplication passed.',
 );
 const revoked = await post(
   `${engagementBase}/${engagement.id}/revoke`,

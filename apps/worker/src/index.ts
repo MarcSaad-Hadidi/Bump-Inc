@@ -1,5 +1,6 @@
 import { EXECUTION_QUEUE_NAME, parseEnv, workerEnvSchema } from '@bump/contracts';
 import { assertRuntimeRole, createDatabase } from '@bump/db';
+import { createArtifactStore } from '@bump/integrations';
 import { loggerOptions } from '@bump/observability';
 import { Queue } from 'bullmq';
 import { Redis } from 'ioredis';
@@ -26,11 +27,13 @@ worker.on('error', () => logger.error('Queue worker error'));
 worker.on('failed', () => logger.warn('System probe job failed'));
 
 const executionStop = new AbortController();
+const artifactStore = createArtifactStore(process.env);
 const executionWorker = createExecutionWorker({
   connection,
   database,
   concurrency: env.WORKER_CONCURRENCY,
   signal: executionStop.signal,
+  artifactStore,
 });
 executionWorker.on('error', () => logger.error('Execution worker error'));
 executionWorker.on('failed', () =>
@@ -70,6 +73,7 @@ async function shutdown() {
     await dispatcher.close();
     await Promise.all([worker.close(), executionWorker.close()]);
     await executionQueue.close();
+    artifactStore.close();
     await producer.quit();
     await database.pool.end();
     await connection.quit();

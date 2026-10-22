@@ -28,7 +28,7 @@ Exact patch versions are recorded in package manifests and the lockfile. Depende
 
 `apps/api` exposes liveness and dependency readiness checks. `apps/worker` consumes an internal probe job and records completion in PostgreSQL `system_probes`; this verifies a real queue-to-database path without adding a customer-facing execution API. `apps/web` displays API health, fetching only its configured internal API origin with a bounded timeout. `packages/db` owns migrations. `packages/contracts` owns shared validation schemas where used.
 
-Health endpoints and the diagnostic page have no customer data or privileged actions. They remain unauthenticated and internal. PR 01 did not include identity; PR 02 adds the separate API boundaries below. Audit ingestion, scanner execution and the AI gateway remain unimplemented. The internal probe is not the PR 04 execution engine.
+Health endpoints and the diagnostic page have no customer data or privileged actions. They remain unauthenticated and internal. PR 01 did not include identity; PR 02 adds the separate API boundaries below. PR05 adds the passive ingestion boundary described below; scanner execution and the AI gateway remain unimplemented. The internal probe is not the PR 04 execution engine.
 
 API readiness indicates whether its dependencies respond. Liveness indicates whether a process responds; it does not promise its dependencies are ready. Neither substitutes for a measured availability guarantee. Tests must exercise failed dependencies as well as successful paths.
 
@@ -52,7 +52,9 @@ PR 04 adds durable jobs, attempts, append-only events, organization controls and
 
 Only a local synthetic handler is delivered in PR04. No customer jobs or scanners are launched by PR03's authorization preview. Connectors cannot execute arbitrary commands, and model output cannot become executable shell input. Active security operations require documented authorization and confinement to approved environments.
 
-S3-compatible storage with a local development adapter arrives with ingestion/evidence, when artifact semantics exist. OpenTelemetry is introduced in PR 15 alongside measured reliability needs; foundation structured logs and health checks remain the initial diagnostics. AI integrations arrive in PR 09 and do not include Cyber AI training.
+PR05 implements passive ingestion with bounded JSON Bump, SARIF and CycloneDX profiles. API reserves a tenant quota and immutable receipt, stores private bytes through the local/S3 adapter in `packages/integrations`, then atomically creates its internal PR04 job. The worker checks source integrity and current authorization before committing observations and job success in one transaction. PostgreSQL retains provenance and idempotence; Redis carries only the job ID. See [ADR 0005](adr/0005-passive-audit-ingestion.md), [operations](INGESTION.md) and [validation](INGESTION_VALIDATION.md) for supported profiles, storage and actual delivery gates. No scanner or connector is introduced.
+
+OpenTelemetry is introduced in PR 15 alongside measured reliability needs; foundation structured logs and health checks remain the initial diagnostics. AI integrations arrive in PR 09 and do not include Cyber AI training.
 
 OWASP ASVS 5.0 and applicable Quebec Law 25 requirements are future acceptance inputs: identity/session controls (PR 02), authorization (PR 03–04), protected evidence and retention (PR 05/08), data minimization for AI (PR 09), controlled reporting (PR 12), and operational safeguards (PR 15–16). Requirements need a traceable control/test matrix and qualified legal assessment before any compliance claim. The repository makes no legal-compliance claim.
 

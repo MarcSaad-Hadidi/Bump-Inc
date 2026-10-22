@@ -10,19 +10,21 @@ import {
   withTenant,
 } from '@bump/db';
 import { type Auth, createAuth, type SendMail } from '@bump/identity';
-import type { MailMessage } from '@bump/integrations';
+import type { ArtifactStore, MailMessage } from '@bump/integrations';
 import { fromNodeHeaders } from 'better-auth/node';
 import { and, desc, eq, sql } from 'drizzle-orm';
 import type { FastifyInstance, FastifyRequest } from 'fastify';
 import { z } from 'zod';
 import { registerEngagementRoutes } from './engagement-routes.js';
 import { registerExecutionRoutes } from './execution-routes.js';
+import { registerIngestionRoutes } from './ingestion-routes.js';
 
 export interface IdentityContext {
   database: Database;
   env: ApiEnv;
   auth: Auth;
   sendMail: SendMail;
+  artifactStore?: ArtifactStore;
 }
 
 const authEndpoints = new Set([
@@ -97,6 +99,8 @@ export async function registerIdentityRoutes(app: FastifyInstance, context: Iden
 
   await registerEngagementRoutes(app, database, sessionFor);
   await registerExecutionRoutes(app, database, sessionFor);
+  if (context.artifactStore)
+    await registerIngestionRoutes(app, database, context.artifactStore, sessionFor);
 
   app.route({
     method: ['GET', 'POST'],

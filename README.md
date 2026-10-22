@@ -8,7 +8,7 @@ Use synthetic local data only. The diagnostic web page and health endpoints rema
 
 ## Local setup
 
-Use Node.js **24.22.1**, pnpm **10.34.7** and Docker with Docker Compose. Start Docker first. Ports 3000 (web), 3001 (API), 3002 (worker health), 5432 (PostgreSQL), 6379 (Redis), 1025 (local SMTP) and 8025 (Mailpit) must be available.
+Use Node.js **24.22.1**, pnpm **10.34.7** and Docker with Docker Compose. Start Docker first. Ports 3000 (web), 3001 (API), 3002 (worker health), 5432 (PostgreSQL), 6379 (Redis), 1025 (local SMTP), 8025 (Mailpit) and 8333 (disposable test S3) must be available.
 
 From the repository root, in PowerShell:
 
@@ -53,6 +53,8 @@ Integration and browser tests require PostgreSQL and Redis. Identity integration
 
 The browser smoke test expects healthy API dependencies. Unit tests cover unreachable API behavior, non-success health responses and invalid internal URLs. The internal worker probe remains a foundation diagnostic. PR04 adds a separate durable execution path with transactional PostgreSQL state, BullMQ notifications and a local synthetic handler; see [execution API and operations](docs/EXECUTION.md), [validation](docs/EXECUTION_VALIDATION.md) and [progress](docs/PROGRESS.md). New capabilities are not considered verified until their recorded acceptance gates pass.
 
+PR05 adds [passive audit ingestion](docs/INGESTION.md): bounded JSON Bump/SARIF/CycloneDX sources in private local/S3 storage, immutable provenance and observations through the PR04 worker. Its [validation record](docs/INGESTION_VALIDATION.md) distinguishes passed checks from pending ones. `pnpm infra:up` includes an authenticated disposable S3 service for integration tests. No report reference triggers external requests.
+
 GitHub Actions supplies automated checks, dependency analysis and secret scanning. A configured workflow is not evidence that it passed. No required check may be skipped to mark a PR ready for review.
 
 ## Repository map
@@ -66,9 +68,9 @@ GitHub Actions supplies automated checks, dependency analysis and secret scannin
 | `packages/contracts`     | Shared boundary validation                             |
 | `packages/core`          | Mandate authorization and durable execution services   |
 | `packages/identity`      | Better Auth configuration and organization integration |
-| `packages/integrations`  | Validated SMTP delivery                                |
+| `packages/integrations`  | Validated SMTP and private artifact storage            |
 | `packages/observability` | Structured logging without sensitive payloads          |
 | `tests/e2e`              | Essential browser behavior                             |
 | `docs`                   | Architecture, roadmap, decisions and validation        |
 
-See [architecture](docs/ARCHITECTURE.md), [contributing](CONTRIBUTING.md), [security reporting](SECURITY.md), [the foundation ADR](docs/adr/0001-modular-monolith.md), and [the identity ADR](docs/adr/0002-identity-and-tenant-isolation.md). PR04 stacks on verified PR03; ingestion remains dependent on PR04 acceptance.
+See [architecture](docs/ARCHITECTURE.md), [contributing](CONTRIBUTING.md), [security reporting](SECURITY.md), [the foundation ADR](docs/adr/0001-modular-monolith.md), and [the identity ADR](docs/adr/0002-identity-and-tenant-isolation.md). PR05 stacks on verified PR04; this session stops after PR05 as recorded in [progress](docs/PROGRESS.md).

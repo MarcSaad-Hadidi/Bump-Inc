@@ -19,6 +19,7 @@ export {
   executionJob,
   executionOutbox,
 } from './execution-schema.js';
+export { auditImport, auditImportRequest, auditObservation } from './ingestion-schema.js';
 
 export const systemProbes = pgTable('system_probes', {
   id: uuid('id').primaryKey(),

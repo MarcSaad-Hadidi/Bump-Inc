@@ -20,6 +20,19 @@ export const executionJobInputSchema = z.strictObject({
 });
 export type ExecutionJobInput = z.infer<typeof executionJobInputSchema>;
 
+export const auditImportPayloadSchema = z.strictObject({
+  importId: z.uuid().transform((value) => value.toLowerCase()),
+});
+export const executionWorkInputSchema = z.discriminatedUnion('kind', [
+  executionJobInputSchema,
+  executionJobInputSchema.extend({
+    kind: z.literal('audit.import'),
+    action: z.literal('audit.import'),
+    payload: auditImportPayloadSchema,
+  }),
+]);
+export type ExecutionWorkInput = z.infer<typeof executionWorkInputSchema>;
+
 export const executionControlInputSchema = z.strictObject({
   emergencyStop: z.boolean(),
   concurrencyLimit: z.number().int().min(1).max(32),

@@ -3,6 +3,7 @@ import {
   engagementRevisionInputSchema,
   engagementScopeSchema,
   engagementTargetSchema,
+  isEngagementActionCompatible,
 } from './engagement.js';
 
 const asset = { kind: 'hostname', value: 'api.example.test' };
@@ -61,6 +62,14 @@ describe('exact engagement targets', () => {
 });
 
 describe('engagement declarations', () => {
+  it('allows passive import on every exact target without changing scanner compatibility', () => {
+    for (const kind of ['hostname', 'ip', 'repository'] as const)
+      expect(isEngagementActionCompatible(kind, 'audit.import')).toBe(true);
+    expect(engagementScopeSchema.safeParse({ ...scope, actions: ['audit.import'] }).success).toBe(
+      true,
+    );
+    expect(isEngagementActionCompatible('repository', 'network.scan')).toBe(false);
+  });
   it('rejects canonical duplicates in either target list and duplicate actions', () => {
     for (const field of ['assets', 'exclusions']) {
       expect(

@@ -44,6 +44,19 @@ services:
     environment:
       MP_MAX_MESSAGES: 100
 
+  s3-test:
+    profiles: [test]
+    image: chrislusf/seaweedfs:4.48
+    command: ["mini", "-dir=/data"]
+    environment:
+      AWS_ACCESS_KEY_ID: bump_ci_disposable
+      AWS_SECRET_ACCESS_KEY: bump_ci_s3_disposable_only
+      S3_BUCKET: bump-ingestion-test
+    ports:
+      - "127.0.0.1:8333:8333"
+    logging:
+      driver: none
+
   migrate:
     profiles: [app]
     build:
@@ -76,6 +89,10 @@ services:
       SMTP_PORT: 1025
       SMTP_SECURE: "false"
       MAIL_FROM: noreply@bump.local
+      ARTIFACT_BACKEND: local
+      ARTIFACT_LOCAL_ROOT: /var/lib/bump/artifacts
+    volumes:
+      - audit-artifacts:/var/lib/bump/artifacts
     ports:
       - "127.0.0.1:3001:3001"
     depends_on:
@@ -113,6 +130,10 @@ services:
       WORKER_PORT: 3002
       DATABASE_URL: postgresql://bump_app:${APP_DATABASE_PASSWORD}@postgres:5432/${POSTGRES_DB:-bump}
       REDIS_URL: redis://redis:6379
+      ARTIFACT_BACKEND: local
+      ARTIFACT_LOCAL_ROOT: /var/lib/bump/artifacts
+    volumes:
+      - audit-artifacts:/var/lib/bump/artifacts
     ports:
       - "127.0.0.1:3002:3002"
     depends_on:
@@ -170,3 +191,4 @@ services:
 volumes:
   postgres-data:
   redis-data:
+  audit-artifacts:

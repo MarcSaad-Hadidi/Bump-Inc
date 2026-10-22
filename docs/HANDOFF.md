@@ -1,5 +1,13 @@
 # Passage de relais — Bump OS
 
+## État courant : PR05 et arrêt demandé
+
+L'utilisateur a demandé **l'arrêt après la prochaine PR**, soit PR05 ingestion. PR06 ne doit pas commencer dans cette session. La branche courante est `codex/audit-ingestion`, depuis la base PR04 vérifiée `5939330f6959c34ae577895fe9db05d097fdfe3a` ([CI 39868997076](https://github.com/MarcSaad-Hadidi/Bump-Inc/actions/runs/39868997076)). Sa PR doit cibler `codex/distributed-execution-engine` tant que [#5](https://github.com/MarcSaad-Hadidi/Bump-Inc/pull/5) reste non fusionnée.
+
+Le code PR05 est écrit : profils JSON Bump/SARIF/CycloneDX bornés, action explicite `audit.import`, stockage privé local/S3, provenance immuable, quota/alias/staging, observations finalisées atomiquement par le moteur PR04 réautorisé. Migration nouvelle 0004, API/worker, Compose et tests réels ajoutés. Revue indépendante : correction des textes NUL incompatibles JSONB ; limite de replay après DLQ documentée. Les intégrations PR05 sont encore à exécuter en CI ; ne pas présenter le code comme vérifié par la preuve PR04.
+
+[PROGRESS.md](PROGRESS.md) est le suivi demandé par l'utilisateur ; [INGESTION_VALIDATION.md](INGESTION_VALIDATION.md) conserve les résultats réels, [INGESTION.md](INGESTION.md) les limites/procédures et [ADR 0005](adr/0005-passive-audit-ingestion.md) les choix. Ces sections actuelles priment sur les consignes historiques ci-dessous. Aucune fusion ni production autorisée.
+
 ## Reprise PR04 du 2026-10-22
 
 La consigne d'arrêt après PR03 ci-dessous décrit la session précédente. L'utilisateur a ensuite demandé PR04 et la continuation selon les dépendances. La reprise actuelle est sur `codex/distributed-execution-engine`, depuis la base PR03 vérifiée `6b8562f8e0db378f8fc129e4f577f9aa10499f6a`.

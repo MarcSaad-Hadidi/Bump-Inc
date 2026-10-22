@@ -64,6 +64,7 @@ export const engagementActionSchema = z.enum([
   'code.scan',
   'dependencies.scan',
   'secrets.scan',
+  'audit.import',
 ]);
 export type EngagementTarget = z.infer<typeof engagementTargetSchema>;
 export type EngagementAction = z.infer<typeof engagementActionSchema>;
@@ -72,6 +73,7 @@ export function isEngagementActionCompatible(
   kind: EngagementTarget['kind'],
   action: EngagementAction,
 ): boolean {
+  if (action === 'audit.import') return true;
   return kind === 'repository'
     ? ['repository.read', 'code.scan', 'dependencies.scan', 'secrets.scan'].includes(action)
     : ['configuration.read', 'network.scan'].includes(action);

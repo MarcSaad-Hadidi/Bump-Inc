@@ -1,4 +1,4 @@
-FROM node:24.22.1-bookworm-slim AS build
+FROM node:26.11.1-bookworm-slim AS build
 ENV PNPM_HOME=/pnpm
 ENV PATH=$PNPM_HOME:$PATH
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -10,7 +10,7 @@ RUN pnpm build
 RUN pnpm --filter @bump/api deploy --legacy --prod /out/api \
     && pnpm --filter @bump/worker deploy --legacy --prod /out/worker
 
-FROM node:24.22.1-bookworm-slim AS api
+FROM node:26.11.1-bookworm-slim AS api
 ENV NODE_ENV=production
 WORKDIR /app
 COPY --from=build --chown=node:node /out/api/ ./
@@ -18,7 +18,7 @@ USER node
 EXPOSE 3001
 CMD ["node", "dist/index.js"]
 
-FROM node:24.22.1-bookworm-slim AS worker
+FROM node:26.11.1-bookworm-slim AS worker
 ENV NODE_ENV=production
 WORKDIR /app
 COPY --from=build --chown=node:node /out/worker/ ./
@@ -26,7 +26,7 @@ USER node
 EXPOSE 3002
 CMD ["node", "dist/index.js"]
 
-FROM node:24.22.1-bookworm-slim AS web
+FROM node:26.11.1-bookworm-slim AS web
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app

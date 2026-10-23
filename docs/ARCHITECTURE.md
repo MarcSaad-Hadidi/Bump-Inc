@@ -2,6 +2,12 @@
 
 Status: PR 01 foundation under implementation. This document records the chosen design; it does not certify deployment readiness or successful validation. See [the roadmap](PR_ROADMAP.md) for gates and dependencies.
 
+Branch note: `loi-25` adds a [local passive audit prototype](LOI25.md). PostgreSQL owns reports,
+the existing BullMQ worker owns queued scans, and development runs the same scanner directly
+in the API with PostgreSQL or a memory fallback. Business endpoints deny production and
+non-loopback access until the identity/tenant/mandate modules exist; this branch does not
+claim to deliver or unblock those roadmap modules.
+
 ## Decision: a modular monolith with separate workers
 
 The API owns synchronous HTTP operations. A separate worker executes asynchronous jobs through Redis and BullMQ. PostgreSQL is the source of truth. Both processes share versioned contracts and database code inside one pnpm workspace. Separate deployable processes do not imply independent microservices or distributed domain ownership.

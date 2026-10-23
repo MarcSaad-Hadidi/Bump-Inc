@@ -1,10 +1,12 @@
 import { randomUUID } from 'node:crypto';
 import { PROBE_QUEUE_NAME } from '@bump/contracts';
-import { createDatabase, migrateDatabase } from '@bump/db';
+import { createAuditRepository, createDatabase, migrateDatabase } from '@bump/db';
 import { type Job, Queue, QueueEvents } from 'bullmq';
 import { Redis } from 'ioredis';
-import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 import { createProbeWorker } from './probe.js';
+import * as dns from './scanners/loi25/dns-email.js';
+import * as http from './scanners/loi25/http-security.js';
 
 const databaseUrl = process.env.DATABASE_URL;
 const redisUrl = process.env.REDIS_URL;
@@ -85,6 +87,49 @@ describe('PostgreSQL / Redis / worker integration', () => {
     expect(result.rows).toHaveLength(1);
     expect(result.rows[0]?.completed_at).toBeInstanceOf(Date);
   }, 15_000);
+
+  it('runs the Loi 25 scanner through Redis and persists evidence only in PostgreSQL', async () => {
+    const repository = createAuditRepository(database.db);
+    const id = await repository.create({
+      companyName: 'Exemple synthétique',
+      domain: 'example.com',
+    });
+    vi.spyOn(http, 'createPassiveFetcher').mockReturnValue({
+      close() {},
+      async fetch(url) {
+        return {
+          url: 'https://example.com/',
+          status: 200,
+          html: '<form><input type="email"></form><script>fbq("init", "synthetic")</script>',
+          headers: {},
+          cookies: [],
+          redirects: url.startsWith('http:') ? [url] : [],
+        };
+      },
+    });
+    vi.spyOn(dns, 'collectEmailDns').mockResolvedValue({
+      spf: [],
+      dmarc: ['v=DMARC1; p=none'],
+      mx: [],
+    });
+    try {
+      const job = await enqueue('loi25', { id });
+      await job.waitUntilFinished(events, 15_000);
+      const report = await repository.get(id);
+      expect(report?.status).toBe('COMPLETED');
+      expect(
+        report?.findings.some((f) => f.evidence['check'] === 'trackers' && f.severity === 'ELEVE'),
+      ).toBe(true);
+      expect(report?.findings.every((f) => !f.humanVerified)).toBe(true);
+      expect(report?.score).toBeLessThan(100);
+      const completed = await queue.getJob(job.id!);
+      expect(completed?.returnvalue).toBeNull();
+      expect(completed?.data).toEqual({ id });
+    } finally {
+      vi.restoreAllMocks();
+      await database.pool.query('DELETE FROM audits WHERE id = $1', [id]);
+    }
+  }, 20_000);
 
   it.each(['invalid-payload', 'invalid-name'])(
     'fails %s permanently without persisting data',

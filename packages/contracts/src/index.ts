@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+export * from './loi25.js';
+
 const databaseUrl = z.url().refine((value) => {
   if (!URL.canParse(value)) return false;
   const url = new URL(value);
@@ -67,10 +69,17 @@ export const databaseEnvSchema = serviceEnvSchema
   .pick({ NODE_ENV: true, DATABASE_URL: true })
   .superRefine(requireDatabaseTransport);
 
-export const apiEnvSchema = serviceEnvSchema
+const runtimeEnvSchema = serviceEnvSchema.extend({
+  DATABASE_URL: databaseUrl.default(
+    'postgresql://bump:bump_local_development_only@127.0.0.1:5432/bump',
+  ),
+  REDIS_URL: redisUrl.default('redis://127.0.0.1:6379'),
+});
+
+export const apiEnvSchema = runtimeEnvSchema
   .extend({ API_PORT: port.default(3001) })
   .superRefine(requireProductionTransport);
-export const workerEnvSchema = serviceEnvSchema
+export const workerEnvSchema = runtimeEnvSchema
   .extend({
     WORKER_PORT: port.default(3002),
     WORKER_CONCURRENCY: z.coerce.number().int().min(1).max(32).default(2),

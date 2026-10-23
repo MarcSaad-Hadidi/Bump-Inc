@@ -6,6 +6,7 @@ import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
 import Fastify from 'fastify';
 import { ZodError } from 'zod';
+import { registerAuditRoutes } from './audits.js';
 import { createDependencies, type Dependencies } from './dependencies.js';
 
 export function buildServer(env: ApiEnv, injectedDependencies?: Dependencies) {
@@ -68,6 +69,15 @@ export function buildServer(env: ApiEnv, injectedDependencies?: Dependencies) {
       return { status: 'ok' };
     });
   });
+
+  registerAuditRoutes(
+    app,
+    async () => {
+      if (!dependencies.audits) throw new Error('Audit service unavailable');
+      return dependencies.audits();
+    },
+    env.NODE_ENV !== 'production' && ['127.0.0.1', '::1', 'localhost'].includes(env.HOST),
+  );
 
   return app;
 }

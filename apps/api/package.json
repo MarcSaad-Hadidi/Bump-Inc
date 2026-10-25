@@ -16,7 +16,7 @@
     "@fastify/helmet": "13.2.0",
     "@fastify/rate-limit": "10.3.0",
     "fastify": "5.12.7",
-    "ioredis": "5.11.1",
+    "ioredis": "6.0.0",
     "zod": "4.6.7",
     "@bump/worker": "workspace:*",
     "bullmq": "5.81.5"

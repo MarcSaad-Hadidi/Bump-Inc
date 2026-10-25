@@ -2,8 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main, "codex/**"]
+    branches: [main]
   pull_request:
+    branches: [main]
 
 permissions:
   contents: read
@@ -14,8 +15,9 @@ concurrency:
 
 jobs:
   quality:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # Pin the OS so ubuntu-latest upgrades do not introduce slow browser setup.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     services:
       postgres:
         image: postgres:17-alpine
@@ -48,7 +50,11 @@ jobs:
       - run: pnpm check
       - run: pnpm audit:dependencies
       - run: pnpm test:integration
-      - run: pnpm exec playwright install --with-deps chromium
+      # Tests use headless Chromium; install its shell only. Do not run apt on
+      # every CI execution (Ubuntu runners already contain browser system libs).
+      - name: Install Playwright headless Chromium
+        run: pnpm exec playwright install --only-shell chromium
+        timeout-minutes: 5
       - run: pnpm test:e2e
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()

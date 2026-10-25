@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {build} from 'esbuild';
 import {mountWorkflowPlayback} from '../src/bump/machines/suppliedWorkflowPlayback.js';
+import {mountDemoTransport,demoIsPaused} from '../src/bump/ui/demoTransport.js';
 const result=await build({entryPoints:['src/components/bump-anatomy/workflow/model.ts'],bundle:true,platform:'node',format:'esm',write:false});
 const {createWorkflow}=await import('data:text/javascript;base64,'+Buffer.from(result.outputFiles[0].text).toString('base64'));
 
@@ -17,7 +18,9 @@ test('Workflow waits for arrival, leaves copy readable and approves through its 
   setAttribute(k,v){this.attrs[k]=v;}getAttribute(k){return this.attrs[k]??null;}closest(){return this;}matches(){return false;}
   getBoundingClientRect(){return{top:this.top,bottom:this.top+150,left:0,width:300,height:150};}getAnimations(){return[];}animate(){}append(){}remove(){}click(){this.action?.();}
  }
- const root=new Node(),readout=new Node(),reset=new Node(),pause=new Node(),button=new Node(),fields=new Map();
+ const root=new Node(),transport=new Node(),readout=new Node(),reset=new Node(),pause=new Node(),button=new Node(),fields=new Map();
+ root.closest=selector=>selector==='[data-bump-transport]'?transport:root;transport.closest=()=>transport;
+ let toolbar;transport.append=node=>{toolbar=node;};
  let cursorApproach=0,cursorTravel=0,waitingDetected=false;
  root.dataset=new Proxy(root.dataset,{set(target,key,value){if(key==='workflowWaiting'&&value==='true'){waitingDetected=true;assert.equal(flow.steps.get().index,3,'Only the actual approval gate is highlighted');}if(key==='workflowCursor'&&value==='approach')cursorApproach=now;if(key==='workflowCursor'&&value==='click')cursorTravel=now-cursorApproach;target[key]=value;return true;}});
  function select(i,approved=false){
@@ -33,8 +36,9 @@ test('Workflow waits for arrival, leaves copy readable and approves through its 
  const document=new EventTarget(),window=new EventTarget(),media=new EventTarget();media.matches=false;document.hidden=false;document.documentElement=new Node();document.documentElement.dataset={bumpOpening:'scene',bumpAssistedScroll:'true',bumpScrollMoving:'true'};document.createElement=()=>new Node();
  set('document',document);set('window',window);set('innerHeight',900);set('matchMedia',()=>media);set('performance',{now:()=>now});set('setTimeout',later);set('clearTimeout',id=>timers.delete(id));set('requestAnimationFrame',fn=>later(()=>fn(now),16));set('cancelAnimationFrame',id=>timers.delete(id));set('MouseEvent',class extends Event{});
  set('IntersectionObserver',class{constructor(fn){ios.push(fn);}observe(){}disconnect(){}});set('MutationObserver',class{constructor(fn){this.fn=fn;observers.push(this);}observe(node){this.node=node;}disconnect(){this.node=null;}});
- let cleanup;
+ let cleanup,removeTransport;
  try{
+  removeTransport=mountDemoTransport(transport,'le workflow');
   cleanup=mountWorkflowPlayback(root);advance(15000);assert.equal(flow.steps.get().index,0);assert.equal(transitions.length,0);
   const arrived=now;document.documentElement.dataset.bumpScrollMoving='false';window.dispatchEvent(new Event('bump:scroll-settled'));advance(2175);assert.equal(flow.steps.get().index,0);advance(1);assert.equal(flow.steps.get().index,1);
   for(let i=0;i<1000&&Number(root.dataset.workflowCycle)<2;i++)advance(100);
@@ -58,6 +62,18 @@ test('Workflow waits for arrival, leaves copy readable and approves through its 
   document.hidden=true;document.dispatchEvent(new Event('visibilitychange'));advance(10000);document.hidden=false;document.dispatchEvent(new Event('visibilitychange'));
   advance(28999);assert.equal(root.dataset.workflowCycle,resumedCycle);assert.equal(flow.steps.get().index,1);
   advance(1);assert.equal(Number(root.dataset.workflowCycle),Number(resumedCycle)+1,'Input grace is frozen while the tab is hidden');
+  advance(800);const pausedCycle=root.dataset.workflowCycle,pausedIndex=flow.steps.get().index;
+  const key=(repeat=false)=>{
+   let stopped=false;const event={isTrusted:true,type:'keydown',key:' ',code:'Space',repeat,target:{closest:selector=>selector==='.iso-stage'?{}:null},preventDefault(){},stopPropagation(){stopped=true;}};
+   for(const fn of transport.handlers.get('keydown')||[])fn(event);
+   if(!stopped){root.handlers.get('keydown')[0](event);flow.steps.pause();}
+   window.dispatchEvent(Object.assign(new Event('keyup'),{code:'Space'}));
+  };
+  key();assert.equal(demoIsPaused(root),true);assert.equal(toolbar.getAttribute('aria-pressed'),'true');key(true);
+  advance(45000);document.hidden=true;document.dispatchEvent(new Event('visibilitychange'));advance(10000);document.hidden=false;document.dispatchEvent(new Event('visibilitychange'));advance(45000);
+  assert.equal(root.dataset.workflowCycle,pausedCycle);assert.equal(flow.steps.get().index,pausedIndex,'Keyboard Pause survives every idle deadline and tab return');
+  key();assert.equal(demoIsPaused(root),false);assert.equal(toolbar.getAttribute('aria-pressed'),'false');
+  advance(1375);assert.equal(flow.steps.get().index,pausedIndex);advance(1);assert.equal(flow.steps.get().index,1,'Space resumes the same remaining reading delay');
   document.documentElement.dataset.bumpScrollMoving='true';observers.find(o=>o.node===document.documentElement).fn([]);const cycle=root.dataset.workflowCycle;advance(30000);assert.equal(root.dataset.workflowCycle,cycle);assert.equal(root.dataset.workflowPlaying,'false');
- }finally{cleanup?.();for(const[k,v]of originals){if(v)Object.defineProperty(globalThis,k,v);else delete globalThis[k];}}
+ }finally{cleanup?.();removeTransport?.();for(const[k,v]of originals){if(v)Object.defineProperty(globalThis,k,v);else delete globalThis[k];}}
 });

@@ -65,3 +65,30 @@ test('lazy Anatomy controls align with each local heading below the navigation a
   }
  }finally{clean.forEach(fn=>fn());for(const[k,v]of saved){if(v)Object.defineProperty(globalThis,k,v);else delete globalThis[k];}}
 });
+
+test('all six Anatomy transports share Space pause, ignore repeats and leave editing/control keys alone',()=>{
+ const saved=new Map(),set=(key,value)=>{saved.set(key,Object.getOwnPropertyDescriptor(globalThis,key));Object.defineProperty(globalThis,key,{value,configurable:true,writable:true});};
+ class Node extends EventTarget{
+  constructor(){super();this.dataset={};this.children=[];this.attrs={};this.handlers=new Map();}
+  closest(){return this;}append(node){this.children.push(node);}remove(){}setAttribute(k,v){this.attrs[k]=v;}
+  addEventListener(type,fn,options){super.addEventListener(type,fn,options);this.handlers.set(type,[...(this.handlers.get(type)||[]),fn]);}
+ }
+ const cleanup=[];
+ try{
+  set('window',new EventTarget());set('document',{createElement:()=>new Node()});
+  set('CustomEvent',class extends Event{constructor(type,init){super(type);this.detail=init.detail;}});
+  for(const kind of ['workflow','integration','security','method','vision','port']){
+   const root=new Node();root.dataset.bumpMachine=kind;cleanup.push(mountDemoTransport(root));
+   const button=root.children[0],handler=root.handlers.get('keydown')[0];let prevented=0,stopped=0;
+   const part={closest:selector=>selector==='.iso-stage'?{}:null};
+   const key=(overrides={})=>handler({key:' ',target:part,repeat:false,preventDefault(){prevented++;},stopPropagation(){stopped++;},...overrides});
+   key();assert.equal(demoIsPaused(root),true);assert.equal(button.attrs['aria-pressed'],'true');
+   key({repeat:true});assert.equal(demoIsPaused(root),true,'Holding Space never toggles playback again');
+   key({key:'ArrowRight'});key({target:{closest:()=>null}});
+   key({target:{closest:()=>({})}});assert.equal(demoIsPaused(root),true,'Editing fields retain their own Space behaviour');
+   assert.equal(prevented,2);assert.equal(stopped,2);
+   button.dispatchEvent(new Event('click'));assert.equal(demoIsPaused(root),false,'The visible icon resumes the same keyboard pause');
+   key();assert.equal(demoIsPaused(root),true);key();assert.equal(demoIsPaused(root),false,'Space can also resume explicitly');
+  }
+ }finally{cleanup.forEach(fn=>fn());for(const[key,value]of saved){if(value)Object.defineProperty(globalThis,key,value);else delete globalThis[key];}}
+});

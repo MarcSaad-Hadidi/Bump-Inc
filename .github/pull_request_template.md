@@ -14,7 +14,6 @@ Describe changed modules, public interfaces, data flows, permissions and any del
 
 Check a box only after running the command successfully; explain any non-applicable or unavailable check.
 A failed, skipped or unavailable required check keeps this PR **DRAFT / BLOCKED**.
-
 - [ ] `pnpm check` (or documented narrower checks)
 - [ ] `pnpm test:integration` when data, authorization or queue behavior changes
 - [ ] `pnpm test:e2e` when web or cross-application behavior changes

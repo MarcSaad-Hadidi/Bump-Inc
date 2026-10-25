@@ -27,8 +27,8 @@ The application is not authorized for a public production deployment.
 
 ## Branch model and pull requests
 
-- §main§ is the integration branch. Work in a §codex/<scope>§ branch with one
-  coherent change per PR. Do not push directly to §main§.
+- `main` is the integration branch. Work in a `codex/<scope>` branch with one
+  coherent change per PR. Do not push directly to `main`.
 - Use draft PRs while dependencies, tests or documentation are incomplete.
   Explain why when a check is unavailable; never mark an unchecked gate passed.
 - Require review by another human contributor and resolve review conversations.
@@ -45,19 +45,18 @@ The application is not authorized for a public production deployment.
 
 ## Ruleset to activate manually (GitHub Settings > Rules > Rulesets)
 
-Create an **active branch ruleset** covering the default branch §main§:
-
+Create an **active branch ruleset** covering the default branch `main`:
 1. Require pull requests before merging and at least **one approval from a
    person other than the PR author**. Dismiss stale approvals when the diff
    changes; require conversation resolution.
-2. Require passing status checks; select the *exact checks shown on a completed
-   PR run*. Existing CI job names are §quality§, §secrets§, and §compose§.
-   Once the new workflows have executed successfully, also include §codeql§
-   and §dependency-review§. Do not guess check names or mark a failing/unrun
+2. Require passing status checks; select the _exact checks shown on a completed
+   PR run_. Existing CI job names are `quality`, `secrets`, and `compose`.
+   Once the new workflows have executed successfully, also include `codeql`
+   and `dependency-review`. Do not guess check names or mark a failing/unrun
    workflow as required before validating it.
 3. Block force pushes and branch deletion. Do not provide a permanent human
    bypass unless a documented emergency procedure truly requires it.
-4. Optionally require branches to be current with §main§ before merging,
+4. Optionally require branches to be current with `main` before merging,
    balancing stricter verification against extra CI reruns.
 5. Open a disposable PR and confirm that failed checks and missing human
    approval actually prevent merging; also verify an authorized reviewer can
@@ -68,13 +67,13 @@ visibility and plan. Confirm coverage before changing the repo to private.
 
 ## Automated checks supplied by repository files
 
-- Existing CI: §quality§ (lint/types/tests/build/integration/browser/dependency
-  audit), §secrets§ (Gitleaks), and §compose§ (stack smoke test).
-- CodeQL: TypeScript/JavaScript and GitHub Actions analysis on §main§, PRs,
+- Existing CI: `quality` (lint/types/tests/build/integration/browser/dependency
+  audit), `secrets` (Gitleaks), and `compose` (stack smoke test).
+- CodeQL: TypeScript/JavaScript and GitHub Actions analysis on `main`, PRs,
   and weekly schedule. Only use **one** CodeQL setup mode: do not duplicate
   an already enabled Default Setup with this Advanced Setup workflow.
 - Dependency Review: evaluates new risky dependencies in PRs. The existing
-  §pnpm audit:dependencies§ remains complementary and checks the lockfile.
+  `pnpm audit:dependencies` remains complementary and checks the lockfile.
 - Dependabot: weekly npm, GitHub Actions and Docker update PRs. Human review,
   tests, and support-window validation remain mandatory.
 - Workflows use pinned third-party commit SHAs; review and update those pins
@@ -87,7 +86,7 @@ can affect these checks: verify access before requiring them.
 
 ## Security settings requiring manual administration
 
-- Inspect §Settings > Security / Code security and analysis§: enable supported
+- Inspect `Settings > Security / Code security and analysis`: enable supported
   secret scanning and push protection, security advisories/private vulnerability
   reporting and Dependabot security updates. Availability depends on plan.
 - Review GitHub Actions policy: trusted actions only, least privilege token,
@@ -95,7 +94,7 @@ can affect these checks: verify access before requiring them.
 - Enable alert notifications for the maintainers; triage code scanning alerts,
   dependency alerts and leaked secrets. Do not silence findings just to pass CI.
 - Protect releases/tags with an appropriate tag ruleset when production
-  versioning starts. Configure environments (§staging§ and §production§)
+  versioning starts. Configure environments (`staging` and `production`)
   only once explicit deployment approval, external secrets, rollback and
   recovery procedures are in place.
 - Audit collaborator access, app permissions and settings periodically.
@@ -109,7 +108,7 @@ can affect these checks: verify access before requiring them.
 3. Wait for the real GitHub CI results; fix failures instead of weakening gates.
 4. Request human review, respond to comments, and merge only after required
    checks are green. Do not auto-merge.
-5. Review the §main§ checks after merge. For a future authorized deployment,
+5. Review the `main` checks after merge. For a future authorized deployment,
    promote a validated build through staging with manual production approval,
    documented migrations, rollback, evidence and post-deploy verification.
 

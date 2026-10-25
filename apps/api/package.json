@@ -19,7 +19,7 @@
     "ioredis": "5.11.1",
     "zod": "4.6.7",
     "@bump/worker": "workspace:*",
-    "bullmq": "5.81.5"
+    "bullmq": "6.4.0"
   },
   "files": [
     "dist"

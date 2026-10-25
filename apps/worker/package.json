@@ -13,7 +13,7 @@
     "@bump/contracts": "workspace:*",
     "@bump/db": "workspace:*",
     "@bump/observability": "workspace:*",
-    "bullmq": "5.81.5",
+    "bullmq": "6.4.0",
     "fastify": "5.12.7",
     "ioredis": "5.11.1",
     "pino": "10.4.0"

@@ -30,7 +30,7 @@ export function mountHoverDemonstration(root,kind){
  // The model waits, while this one finite cursor timer keeps visiting parts.
  const timer=createDemoTimeout(root,allowed,{ignoreInspection:true});
  const leave=()=>{if(!current)return;current.removeAttribute('data-bump-demo-hover');current.dispatchEvent(new PointerEvent('pointerleave',{pointerType:'mouse'}));current.closest('svg')?.dispatchEvent(new PointerEvent('pointerleave',{pointerType:'mouse'}));current.dispatchEvent(new CustomEvent('bump:demo-inspect',{bubbles:true,detail:{active:false}}));current=null;};
- const stop=()=>{timer.clear();cancelAnimationFrame(frame);leave();cursor.hidden=true;root.dataset.bumpHoverDemo='idle';setDemoInspectionPaused(root,false);};
+ const stop=()=>{timer.clear();cancelAnimationFrame(frame);leave();cursor.hidden=true;root.dataset.bumpHoverDemo='idle';setDemoInspectionPaused(root,root.dataset.bumpTouchInspected==='true');};
  const bounds=element=>(kind==='security'?element.querySelector(':scope > .iso-solid > .iso-fill')||element:kind==='port'?element.querySelector('.port-cargo-label')||element:element).getBoundingClientRect();
  const inspect=element=>{element.setAttribute('data-bump-demo-hover','true');const b=bounds(element),init={bubbles:true,pointerType:'mouse',clientX:b.left+b.width*.5,clientY:b.top+b.height*.5};element.dispatchEvent(new PointerEvent('pointerenter',{...init,bubbles:false}));element.dispatchEvent(new PointerEvent('pointermove',init));element.dispatchEvent(new CustomEvent('bump:demo-inspect',{bubbles:true,detail:{active:true}}));};
  const point=(element,approach=false)=>{const b=bounds(element),h=root.getBoundingClientRect();cursor.style.left=(b.left-h.left+b.width*.5-3-(approach?52:0))+'px';cursor.style.top=(b.top-h.top+b.height*.5-2+(approach?34:0))+'px';};
@@ -69,7 +69,7 @@ export function mountHoverDemonstration(root,kind){
   if(!run.length){timer.schedule(200,begin);return;}index=0;visited=[];root.dataset.bumpHoverVisited='';visit();
  }
  const interactive='[data-bump-info],[data-card],[data-tool],[data-adapter],[data-drawer],[data-need],[data-dome],[data-knob],.company-flow-pill,.company-flow-hub';
- const user=event=>{if(!event.isTrusted)return;const part=event.target?.closest?.(interactive)||null;
+ const user=event=>{if(!event.isTrusted||event.type==='pointermove'&&event.pointerType==='touch')return;const part=event.target?.closest?.(interactive)||null;
   if(event.type==='pointermove'&&!part){if(hovered){hovered=null;manualUntil=Math.max(manualUntil,performance.now()+6000);if(!completed){stop();timer.schedule(6000,begin);}}return;}
   hovered=event.type==='pointermove'?part:null;manualUntil=Math.max(manualUntil,performance.now()+(event.type==='pointermove'?6000:30000));stop();if(hovered)inspect(hovered);if(!completed&&!hovered)timer.schedule(30000,begin);
  };

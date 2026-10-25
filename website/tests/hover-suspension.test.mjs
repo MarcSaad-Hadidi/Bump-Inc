@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {mountHoverDemonstration} from '../src/bump/ui/hoverDemonstration.js';
+import {setDemoInspectionPaused} from '../src/bump/ui/demoTransport.js';
 
 function fixture() {
   const saved = new Map(), timers = new Map(), observers = [];
@@ -36,7 +37,7 @@ function fixture() {
         if (!next) break; now = next[1].at; timers.delete(next[0]); next[1].fn();} now = end;},
     tab(hidden) {document.hidden = hidden; document.dispatchEvent(new Event('visibilitychange'));},
     view(value) {inView = value; observers[0]();},
-    user(type, target = root) {for (const fn of root.handlers.get(type) || []) fn({isTrusted: true, type, target});},
+    user(type, target = root, extra = {}) {for (const fn of root.handlers.get(type) || []) fn({isTrusted: true, type, target, ...extra});},
     dispose() {stop(); for (const [key, descriptor] of saved) {
       if (descriptor) Object.defineProperty(globalThis, key, descriptor); else delete globalThis[key];
     }},
@@ -69,5 +70,24 @@ test('a real hovered selection survives tab suspension and pointer movement cann
     assert.equal(f.visits, 1); assert.equal(f.root.dataset.bumpDemoInspecting, 'false');
     f.user('pointerout'); f.advance(28999); assert.equal(f.visits, 1);
     f.advance(1); f.advance(380); assert.equal(f.visits, 2);
+  } finally {f.dispose();}
+});
+
+test('suspending the cursor tour never releases a latched touch inspection', () => {
+  const f = fixture(); try {
+    f.root.dataset.bumpTouchInspected = 'true'; setDemoInspectionPaused(f.root, true);
+    f.tab(true); f.advance(10000); f.tab(false); f.advance(10000);
+    assert.equal(f.root.dataset.bumpDemoInspecting, 'true'); assert.equal(f.visits, 0);
+    delete f.root.dataset.bumpTouchInspected; setDemoInspectionPaused(f.root, false);
+    f.view(false); f.view(true); f.advance(1180); assert.equal(f.visits, 1);
+  } finally {f.dispose();}
+});
+
+test('touch movement leaves inspection ownership to the touch registry', () => {
+  const f = fixture(); try {
+    f.advance(100); f.user('pointerdown', f.part, {pointerType: 'touch'});
+    f.user('pointermove', f.part, {pointerType: 'touch'});
+    assert.equal(f.visits, 0, 'a swipe must not synthesize a desktop hover after touch dismissal');
+    f.user('pointermove', f.part, {pointerType: 'mouse'}); assert.equal(f.visits, 1, 'real mouse inspection still works');
   } finally {f.dispose();}
 });

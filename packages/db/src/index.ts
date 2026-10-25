@@ -2,8 +2,9 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 import pg from 'pg';
 import * as schema from './schema.js';
 
+export { createAuditRepository } from './audits.js';
 export { migrateDatabase } from './migration.js';
-export { systemProbes } from './schema.js';
+export { auditFindings, audits, systemProbes } from './schema.js';
 export { schema };
 
 export function createDatabase(url: string) {

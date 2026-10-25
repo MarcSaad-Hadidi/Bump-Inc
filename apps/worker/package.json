@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node --env-file-if-exists=../../.env --import tsx --watch src/index.ts",
+    "dev": "tsx watch --clear-screen=false --env-file-if-exists=../../.env src/index.ts",
     "start": "node --env-file-if-exists=../../.env dist/index.js",
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json --noEmit"
@@ -23,5 +23,11 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "exports": {
+    "./loi25": {
+      "types": "./dist/scanners/loi25/index.d.ts",
+      "default": "./dist/scanners/loi25/index.js"
+    }
+  }
 }

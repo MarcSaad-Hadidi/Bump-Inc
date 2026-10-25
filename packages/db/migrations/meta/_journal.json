@@ -8,6 +8,13 @@
       "when": 1792696712121,
       "tag": "0000_marvelous_invaders",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792787734535,
+      "tag": "0001_bizarre_slyde",
+      "breakpoints": true
     }
   ]
 }

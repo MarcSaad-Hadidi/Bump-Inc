@@ -1,0 +1,56 @@
+name: Feature request
+description: Propose a product or engineering improvement with acceptance criteria.
+title: "feat: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Public issue: share no secrets, client documents, private audit artifacts,
+        or personally identifiable customer information. Link relevant architecture
+        and roadmap decisions without exposing confidential data.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or user need
+      description: Describe the outcome needed rather than prescribing an implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Explain the smallest useful change.
+    validations:
+      required: true
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Acceptance criteria
+      description: Describe observable behavior, tests and failure cases.
+      placeholder: |
+        - Given ..., when ..., then ...
+        - Unauthorized requests are denied ...
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Web
+        - API / authentication
+        - Worker / jobs
+        - Database / data lifecycle
+        - Security / privacy
+        - CI / developer experience
+        - Architecture / documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and risks
+      description: Identify related roadmap PRs, migrations, permissions, or rollout risks.
+    validations:
+      required: false

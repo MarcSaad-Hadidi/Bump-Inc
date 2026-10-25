@@ -1,0 +1,270 @@
+.loi25 {
+  color-scheme: light;
+  color: #172a2e;
+  background: #f4f5f0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+.loi25 main {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 36px 28px 80px;
+}
+.loi25 header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #cbd3cc;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+.loi25 .brand {
+  font-size: 23px;
+  font-weight: 900;
+  text-decoration: none;
+  color: #173e36;
+}
+.loi25 h1 {
+  font-size: clamp(36px, 6vw, 64px);
+  letter-spacing: -0.04em;
+  max-width: 850px;
+  margin: 20px 0;
+}
+.loi25 h2 {
+  font-size: 26px;
+  margin-top: 32px;
+}
+.loi25 h3 {
+  font-size: 19px;
+}
+.loi25 p {
+  max-width: 80ch;
+}
+.loi25 .eyebrow {
+  margin-top: 40px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: #376955;
+  font-weight: bold;
+}
+.loi25 .notice {
+  background: #fff5d9;
+  border-left: 4px solid #9e6917;
+  padding: 14px 18px;
+}
+.loi25 .scan-form,
+.loi25 .finding {
+  background: #fff;
+  border: 1px solid #d7ded6;
+  padding: 24px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+.loi25 label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-weight: 600;
+  margin: 16px 0;
+}
+.loi25 input,
+.loi25 textarea {
+  font: inherit;
+  padding: 12px;
+  border: 1px solid #6e7f78;
+  border-radius: 5px;
+  color: #172a2e;
+  background: white;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.loi25 .checkbox {
+  flex-direction: row;
+  align-items: center;
+  font-weight: normal;
+}
+.loi25 .checkbox input {
+  width: 20px;
+  height: 20px;
+}
+.loi25 button,
+.loi25 .button {
+  cursor: pointer;
+  display: inline-block;
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 5px;
+  background: #174d3c;
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+.loi25 button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+.loi25 :focus-visible {
+  outline: 3px solid #976015;
+  outline-offset: 4px;
+}
+.loi25 a {
+  color: #17513e;
+}
+.loi25 .score {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  align-items: center;
+  background: #e4ede5;
+  padding: 30px;
+  border-radius: 12px;
+  margin: 30px 0;
+}
+.loi25 .score strong {
+  font-size: 64px;
+  letter-spacing: -0.06em;
+}
+.loi25 .score small {
+  font-size: 21px;
+  letter-spacing: 0;
+}
+.loi25 .score h2 {
+  margin: 0;
+}
+.loi25 .grade {
+  font-size: 34px;
+  border: 2px solid #27604a;
+  padding: 7px 22px;
+  border-radius: 50%;
+}
+.loi25 .badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 5px 12px;
+  background: #e3ebe4;
+}
+.loi25 .CRITIQUE {
+  background: #781f30;
+  color: white;
+}
+.loi25 .ELEVE {
+  background: #fce3de;
+  color: #922c1d;
+}
+.loi25 .MOYEN {
+  background: #fff0cc;
+  color: #79530e;
+}
+.loi25 .article {
+  display: inline-block;
+  margin: 8px;
+  font-size: 12px;
+}
+.loi25 details {
+  margin: 16px 0;
+  font-size: 14px;
+}
+.loi25 summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.loi25 pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: 15px;
+  background: #f3f6f2;
+  max-height: 350px;
+  overflow: auto;
+}
+.loi25 .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  margin: 24px 0;
+}
+.loi25 .report-page {
+  padding: 25px 0 55px;
+}
+.loi25 .preview {
+  border: 3px solid #9c5620;
+  padding: 15px;
+  font-weight: bold;
+}
+.loi25 .subtotal {
+  font-weight: bold;
+  text-align: right;
+}
+.loi25 .proposal-total {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 28px;
+  background: #174d3c;
+  color: white;
+  font-size: 24px;
+}
+.loi25 .fine-print {
+  font-size: 12px;
+}
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+  .loi25 {
+    background: white;
+    color: black;
+    print-color-adjust: exact;
+  }
+  .loi25 main {
+    padding: 0;
+    max-width: none;
+    font-size: 10pt;
+  }
+  .loi25 .no-print {
+    display: none;
+  }
+  .loi25 .report-page {
+    break-before: page;
+    padding: 0;
+  }
+  .loi25 .report-page:first-of-type {
+    break-before: auto;
+  }
+  .loi25 .finding {
+    break-inside: avoid;
+    padding: 12px;
+  }
+  .loi25 h1 {
+    font-size: 32pt;
+  }
+  .loi25 h2 {
+    font-size: 20pt;
+  }
+  .loi25 h3 {
+    font-size: 13pt;
+  }
+  .loi25 .score {
+    padding: 20px;
+  }
+  .loi25 pre {
+    max-height: none;
+    overflow: visible;
+  }
+  .loi25 details:not([open]) {
+    display: none;
+  }
+  .loi25 .preview {
+    position: fixed;
+    bottom: 0;
+    font-size: 9pt;
+    background: white;
+  }
+}

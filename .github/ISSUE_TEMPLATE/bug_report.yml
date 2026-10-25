@@ -1,0 +1,72 @@
+name: Bug report
+description: Report a reproducible bug using synthetic data only.
+title: "bug: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repository is public. Never include credentials, real customer data,
+        audit evidence, private URLs, or security exploit details. Follow SECURITY.md
+        for vulnerabilities and sensitive findings.
+  - type: input
+    id: summary
+    attributes:
+      label: Problem
+      description: What is not working?
+      placeholder: A request to the local API returns an unexpected validation error.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Component
+      options:
+        - Web
+        - API
+        - Worker
+        - Database / migrations
+        - Contracts
+        - Infrastructure / CI
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps (synthetic data only)
+      description: Include a minimal repeatable example, without credentials or customer information.
+      placeholder: |
+        1. Run ...
+        2. Open ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Version / commit / branch
+      description: Include a commit SHA or branch when known.
+    validations:
+      required: false
+  - type: dropdown
+    id: privacy
+    attributes:
+      label: Data safety
+      options:
+        - I used only synthetic or sanitized examples.
+        - No examples or logs were included.
+    validations:
+      required: true

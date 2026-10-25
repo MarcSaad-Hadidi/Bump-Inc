@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { apiEnvSchema, parseEnv, probeJobSchema, workerEnvSchema } from './index.js';
+import {
+  apiEnvSchema,
+  databaseEnvSchema,
+  parseEnv,
+  probeJobSchema,
+  workerEnvSchema,
+} from './index.js';
 
 const local = {
   DATABASE_URL: 'postgresql://bump:secret@localhost:5432/bump',
@@ -25,8 +31,16 @@ describe('environment trust boundary', () => {
       expect(() => parseEnv(apiEnvSchema, { ...local, REDIS_URL })).toThrow('REDIS_URL');
     }
   });
-  it('fails closed for missing configuration without exposing values', () => {
-    expect(() => parseEnv(apiEnvSchema, {})).toThrow('DATABASE_URL');
+  it('defaults local runtimes but fails closed for production and migrations without configuration', () => {
+    expect(parseEnv(apiEnvSchema, {})).toMatchObject({
+      NODE_ENV: 'development',
+      HOST: '127.0.0.1',
+      API_PORT: 3001,
+    });
+    expect(parseEnv(workerEnvSchema, {}).WORKER_PORT).toBe(3002);
+    expect(() => parseEnv(apiEnvSchema, { NODE_ENV: 'production' })).toThrow('DATABASE_URL');
+    expect(() => parseEnv(workerEnvSchema, { NODE_ENV: 'production' })).toThrow('REDIS_URL');
+    expect(() => parseEnv(databaseEnvSchema, {})).toThrow('DATABASE_URL');
     expect(() =>
       parseEnv(apiEnvSchema, { ...local, DATABASE_URL: 'password-super-secret' }),
     ).not.toThrow('password-super-secret');

@@ -2,11 +2,18 @@
 
 Technology consulting platform foundation. PR 01 supplies a strict TypeScript workspace, Fastify API, PostgreSQL migrations, Redis/BullMQ worker, minimal Next.js diagnostics, local containers and automated checks. Business features remain planned in [the PR roadmap](docs/PR_ROADMAP.md).
 
+The `loi-25` branch adds a local passive audit prototype at `/loi-25`; see [setup, scope and restrictions](docs/LOI25.md).
+
 This is an internal development foundation. Authentication and tenant isolation are not implemented. Do not expose the diagnostic applications publicly or import customer data. Production deployment has not been authorized or verified.
 
 ## Local setup
 
-Use Node.js **24.22.1**, pnpm **10.34.7** and Docker with Docker Compose. Start Docker first. Ports 3000 (web), 3001 (API), 3002 (worker health), 5432 (PostgreSQL) and 6379 (Redis) must be available.
+For the local Loi 25 console without infrastructure, run `pnpm install --frozen-lockfile`
+then `pnpm dev`. API (3001) and web (3000) start together with local defaults; no `.env`
+or feature flag is needed. Missing PostgreSQL/audit tables select the labelled memory
+fallback. See [Loi 25 development behavior](docs/LOI25.md) before enabling persistence.
+
+For the full foundation stack, use Node.js **24.22.1**, pnpm **10.34.7** and Docker with Docker Compose. Start Docker first. Ports 3000 (web), 3001 (API), 3002 (worker health), 5432 (PostgreSQL) and 6379 (Redis) must be available.
 
 From the repository root, in PowerShell:
 

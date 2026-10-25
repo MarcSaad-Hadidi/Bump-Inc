@@ -40,7 +40,7 @@ export function mountPortPresentation(root){
  cargo.forEach(part=>{const j=Number(part.dataset.cargo??part.dataset.portRestock);
   const element=part.querySelector('[data-need]');if(!element)return;
   const need=Number(element.dataset.need),copy=PORT_CONTAINERS[j],b=part.getBBox();
-  element.setAttribute('tabindex','0');element.setAttribute('role','group');element.setAttribute('aria-label',SERVICES[need][0]+' : '+copy[0]+'. '+copy[1]);
+  element.setAttribute('data-bump-info','port-cargo-'+j);element.setAttribute('tabindex','0');element.setAttribute('role','group');element.setAttribute('aria-label',SERVICES[need][0]+' : '+copy[0]+'. '+copy[1]);
   const mark=document.createElementNS('http://www.w3.org/2000/svg','text');mark.setAttribute('class','port-cargo-label');mark.setAttribute('x',String(b.x+6));mark.setAttribute('y',String(b.y+b.height-13));mark.setAttribute('transform',`rotate(17.4 ${b.x+6} ${b.y+b.height-13})`);mark.textContent=labels[j];mark.dataset.portLabel=String(need);element.append(mark);listeners.push(()=>mark.remove());
   const show=()=>{
    highlightHoveredPart(root,element);root.dataset.portInspect=String(j);tip.replaceChildren();const title=document.createElement('strong'),detail=document.createElement('p');title.textContent=copy[0]+' · '+SERVICES[need][0];detail.textContent=copy[1];tip.append(title,detail);tip.hidden=false;

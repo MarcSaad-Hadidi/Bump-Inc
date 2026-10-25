@@ -51,9 +51,10 @@ Create an **active branch ruleset** covering the default branch `main`:
    changes; require conversation resolution.
 2. Require passing status checks; select the _exact checks shown on a completed
    PR run_. Existing CI job names are `quality`, `secrets`, and `compose`.
-   Once the new workflows have executed successfully, also include `codeql`
-   and `dependency-review`. Do not guess check names or mark a failing/unrun
-   workflow as required before validating it.
+   Once the new dependency-review workflow has executed successfully, add
+   `dependency-review`. For CodeQL, use the check name shown by the already
+   enabled GitHub Default Setup; do not guess its check name or require an
+   unrun or failing workflow.
 3. Block force pushes and branch deletion. Do not provide a permanent human
    bypass unless a documented emergency procedure truly requires it.
 4. Optionally require branches to be current with `main` before merging,
@@ -69,9 +70,10 @@ visibility and plan. Confirm coverage before changing the repo to private.
 
 - Existing CI: `quality` (lint/types/tests/build/integration/browser/dependency
   audit), `secrets` (Gitleaks), and `compose` (stack smoke test).
-- CodeQL: TypeScript/JavaScript and GitHub Actions analysis on `main`, PRs,
-  and weekly schedule. Only use **one** CodeQL setup mode: do not duplicate
-  an already enabled Default Setup with this Advanced Setup workflow.
+- CodeQL: GitHub-managed **Default Setup is already active**. Keep it active
+  rather than adding a conflicting Advanced Setup workflow. Verify its
+  language coverage, schedule, alert routing and actual check name in the
+  repository's Code Security settings.
 - Dependency Review: evaluates new risky dependencies in PRs. The existing
   `pnpm audit:dependencies` remains complementary and checks the lockfile.
 - Dependabot: weekly npm, GitHub Actions and Docker update PRs. Human review,

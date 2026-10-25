@@ -39,10 +39,11 @@ export function mountDemoTransport(root,label='la démonstration'){
 // Preserve the remaining reading/approval delay through a user or inspection pause.
 // The existing native clock still owns every rendered animation frame.
 export function createDemoTimeout(root,allowed=()=>true,{ignoreInspection=false}={}){
- let timer=0,callback=null,remaining=0,deadline=0,disposed=false;
- const isPaused=()=> (ignoreInspection?demoIsPaused:demoTimelineIsPaused)(root);
+ let timer=0,callback=null,remaining=0,deadline=0,disposed=false,suspended=false;
+ const isPaused=()=>suspended||(ignoreInspection?demoIsPaused:demoTimelineIsPaused)(root);
  const arm=()=>{if(disposed||!callback||isPaused())return;deadline=performance.now()+remaining;timer=setTimeout(()=>{timer=0;const fn=callback;callback=null;if(allowed())fn?.();},remaining);};
- const stop=observeDemoPaused(root,paused=>{if(paused&&timer){remaining=Math.max(0,deadline-performance.now());clearTimeout(timer);timer=0;}else if(!paused&&callback&&!timer)arm();},{ignoreInspection});
+ const update=()=>{if(isPaused()&&timer){remaining=Math.max(0,deadline-performance.now());clearTimeout(timer);timer=0;}else if(!isPaused()&&callback&&!timer)arm();};
+ const stop=observeDemoPaused(root,update,{ignoreInspection});
  const clear=()=>{clearTimeout(timer);timer=0;callback=null;remaining=0;};
- return{get pending(){return callback!==null;},schedule(ms,fn){if(callback||disposed)return;remaining=ms;callback=fn;arm();},clear,destroy(){disposed=true;clear();stop();}};
+ return{get pending(){return callback!==null;},schedule(ms,fn){if(callback||disposed)return;remaining=ms;callback=fn;arm();},suspend(){suspended=true;update();},resume(){suspended=false;update();},clear,destroy(){disposed=true;clear();stop();}};
 }

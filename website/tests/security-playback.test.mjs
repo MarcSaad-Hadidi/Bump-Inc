@@ -11,7 +11,8 @@ test('assembly, nine stages, approval click, repetition and viewport restart',()
  const flush=()=>{while(microtasks.length)microtasks.shift()();};
  const advance=ms=>{const end=now+ms;let count=0;while(true){const next=[...timers.entries()].filter(([,t])=>t.at<=end).sort((a,b)=>a[1].at-b[1].at)[0];if(!next)break;if(++count>2000)throw Error('Unbounded host scheduling');timers.delete(next[0]);now=next[1].at;next[1].fn();flush();}now=end;flush();};
  class Node extends EventTarget{
-  constructor(){super();this.dataset={};this.style={};this.hidden=false;this.attributes={};this._text='';}
+  constructor(){super();this.dataset={};this.style={};this.hidden=false;this.attributes={};this._text='';this.handlers=new Map();}
+  addEventListener(type,fn,options){super.addEventListener(type,fn,options);this.handlers.set(type,[...(this.handlers.get(type)||[]),fn]);}
   set textContent(v){this._text=v;for(const o of observers)if(o.node===this)microtasks.push(()=>o.fn([]));}get textContent(){return this._text;}
   setAttribute(k,v){this.attributes[k]=v;}getAttribute(k){return this.attributes[k]??null;}closest(){return this;}
   getBoundingClientRect(){return{left:0,top:this.top??100,bottom:(this.top??100)+150,width:300,height:150};}getAnimations(){return[];}animate(){}append(){}remove(){}click(){this.action?.();}
@@ -38,6 +39,14 @@ test('assembly, nine stages, approval click, repetition and viewport restart',()
   assert.equal(root.dataset.securityCursor,'none');
   root.top=1200;intersections[0].fn([{isIntersecting:false,intersectionRatio:0}]);assert.equal(root.dataset.securityPlaying,'false');const cycle=root.dataset.securityCycle;advance(20000);assert.equal(root.dataset.securityCycle,cycle);
   root.top=100;intersections[0].fn([{isIntersecting:true,intersectionRatio:1}]);assert.equal(Number(root.dataset.securityCycle),Number(cycle)+1);assert.equal(index,0);
+  advance(2200);advance(1000);const resumedCycle=root.dataset.securityCycle;
+  document.hidden=true;document.dispatchEvent(new Event('visibilitychange'));advance(10000);document.hidden=false;document.dispatchEvent(new Event('visibilitychange'));
+  assert.equal(root.dataset.securityCycle,resumedCycle);advance(919);assert.equal(index,0);advance(1);assert.equal(index,1);advance(300);
+  root.handlers.get('keydown')[0]({isTrusted:true,type:'keydown',target:root,key:'ArrowRight',code:'ArrowRight'});
+  window.dispatchEvent(Object.assign(new Event('keyup'),{code:'ArrowRight'}));advance(1000);
+  document.hidden=true;document.dispatchEvent(new Event('visibilitychange'));advance(10000);document.hidden=false;document.dispatchEvent(new Event('visibilitychange'));
+  advance(28999);assert.equal(root.dataset.securityCycle,resumedCycle);assert.equal(index,1);
+  advance(1);assert.equal(Number(root.dataset.securityCycle),Number(resumedCycle)+1);
   calm.matches=true;calm.dispatchEvent(new Event('change'));advance(600);assert.equal(index,8);assert.equal(root.dataset.securityPlaying,'false');const stillCycle=root.dataset.securityCycle;advance(30000);assert.equal(root.dataset.securityCycle,stillCycle);assert.equal(root.dataset.securityCursor,'none');
  }finally{cleanup?.();for(const[k,v]of saved){if(v)Object.defineProperty(globalThis,k,v);else delete globalThis[k];}}
 });

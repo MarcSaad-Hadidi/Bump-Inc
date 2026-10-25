@@ -35,6 +35,13 @@ test('inspection holds the model delay but not its cursor, and never releases a 
   setDemoInspectionPaused(root,false);assert.equal(demoTimelineIsPaused(root),true);advance(10000);assert.equal(model,0);
   root.dataset.bumpDemoPaused='false';root.dispatchEvent(new Event('bump:demo-pause'));
   advance(699);assert.equal(model,0);advance(1);assert.equal(model,1,'Only the original remaining 700ms is consumed');
+  modelTimer.schedule(1000,()=>model++);advance(250);modelTimer.suspend();advance(10000);
+  root.dataset.bumpDemoPaused='true';root.dispatchEvent(new Event('bump:demo-pause'));
+  modelTimer.resume();advance(10000);assert.equal(model,1,'Returning to a section never releases an explicit pause');
+  root.dataset.bumpDemoPaused='false';root.dispatchEvent(new Event('bump:demo-pause'));
+  advance(749);assert.equal(model,1);advance(1);assert.equal(model,2,'Visibility suspension preserves the original remaining delay');
+  modelTimer.schedule(1000,()=>model++);modelTimer.suspend();modelTimer.clear();modelTimer.resume();advance(1000);
+  assert.equal(model,2,'A reset cannot revive a suspended callback');
  }finally{modelTimer?.destroy();cursorTimer?.destroy();for(const[k,v]of saved){if(v)Object.defineProperty(globalThis,k,v);else delete globalThis[k];}}
 });
 

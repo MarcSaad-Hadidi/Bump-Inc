@@ -14,7 +14,7 @@ export const TOOLS_COPY=[
 export function mountVosOutilsPlayback(root){
  if(!root)return()=>{};
  const readout=root.querySelector('[data-readout]'),calm=matchMedia('(prefers-reduced-motion: reduce)');
- let visible=false,disposed=false,idle=0,startFrame=0,cursorFrame=0,manualUntil=0,cycle=0,demonstrating=false,adapterShown=false,lastCopy='';
+ let visible=false,disposed=false,idle=0,startFrame=0,cursorFrame=0,manualUntil=0,cycle=0,demonstrating=false,adapterShown=false,lastCopy='',entered=false,reenter=false,suspendedAt=null;
  const held=new Set();
  const pointer=document.createElement('span');pointer.className='bump-demo-cursor';pointer.hidden=true;pointer.setAttribute('aria-hidden','true');
  pointer.innerHTML='<svg viewBox="0 0 28 32"><path d="m3 2 20 17-9 1-4 9z"/></svg>';
@@ -33,7 +33,7 @@ export function mountVosOutilsPlayback(root){
  const clear=()=>{timer.clear();clearTimeout(idle);idle=0;cancelAnimationFrame(cursorFrame);pointer.hidden=true;ring.hidden=true;demonstrating=false;root.dataset.toolsCursor='none';};
  const timer=createDemoTimeout(root,allowed);
  const later=(ms,fn)=>{if(!allowed())return;timer.schedule(ms*.8,fn);};
- function pause(){clear();const button=root.querySelector('[data-pause]');if(!calm.matches&&button?.getAttribute('aria-pressed')!=='true')button?.click();root.dataset.toolsPlaying='false';}
+ function pause(){timer.suspend();clearTimeout(idle);idle=0;root.dataset.toolsPlaying='false';}
  function restart(){
   clear();if(calm.matches||!allowed()){root.dataset.toolsPlaying='false';return;}
   adapterShown=false;control('[data-reset]');root.dataset.toolsCycle=String(++cycle);root.dataset.toolsPlaying='true';advance();
@@ -74,14 +74,20 @@ export function mountVosOutilsPlayback(root){
   held.add(event.type==='keydown'?'key-'+event.code:'pointer-'+event.pointerId);scheduleIdle();
  };
  const release=event=>{const key=event.type==='keyup'?'key-'+event.code:'pointer-'+event.pointerId;if(!held.delete(key))return;scheduleIdle();};
- const onVisibility=()=>{if(document.hidden){pause();return;}if(!visible)return;if(manualUntil>performance.now())scheduleIdle();else restart();};
  const onMotion=()=>{clear();if(calm.matches){root.dataset.toolsPlaying='false';control('[data-reset]');control('[data-step="5"]');}else if(visible&&!document.hidden)restart();};
  let stopReady=()=>{};
- const observeReady=()=>{stopReady=observeDemoReady(root,next=>{if(next===visible)return;visible=next;if(!visible){pause();return;}manualUntil=0;held.clear();if(calm.matches){control('[data-reset]');control('[data-step="5"]');root.dataset.toolsPlaying='false';}else restart();});};
+ const observeReady=()=>{stopReady=observeDemoReady(root,next=>{
+  if(next===visible)return;visible=next;
+  if(!next){suspendedAt=performance.now();held.clear();pause();return;}
+  if(suspendedAt!==null&&manualUntil>suspendedAt)manualUntil+=performance.now()-suspendedAt;
+  suspendedAt=null;timer.resume();
+  if(!entered||reenter){entered=true;reenter=false;manualUntil=0;held.clear();if(calm.matches){control('[data-reset]');control('[data-step="5"]');root.dataset.toolsPlaying='false';}else restart();return;}
+  if(manualUntil>performance.now())scheduleIdle();else{root.dataset.toolsPlaying=String(!calm.matches&&!demoIsPaused(root));advance();}
+ },{onReenter:()=>{reenter=true;}});};
  const stopPause=observeDemoPaused(root,paused=>{if(paused||!visible||calm.matches)return;const button=root.querySelector('[data-pause]');if(button?.getAttribute('aria-pressed')==='true')button.click();if(manualUntil>performance.now())scheduleIdle();else advance();});
- root.addEventListener('pointerdown',onUser,true);root.addEventListener('keydown',onUser,true);window.addEventListener('pointerup',release);window.addEventListener('pointercancel',release);window.addEventListener('keyup',release);document.addEventListener('visibilitychange',onVisibility);calm.addEventListener('change',onMotion);
+ root.addEventListener('pointerdown',onUser,true);root.addEventListener('keydown',onUser,true);window.addEventListener('pointerup',release);window.addEventListener('pointercancel',release);window.addEventListener('keyup',release);calm.addEventListener('change',onMotion);
  // The generated illustration contains the assembled pose. Expose it only
  // after the delivered live renderer has drawn its real isolated-tool pose.
  startFrame=requestAnimationFrame(()=>{if(disposed)return;control('[data-reset]');describe();root.dataset.toolsReady='true';observeReady();});
- return()=>{disposed=true;clear();stopPause();timer.destroy();cancelAnimationFrame(startFrame);stopReady();watch.disconnect();pointer.remove();ring.remove();root.removeEventListener('pointerdown',onUser,true);root.removeEventListener('keydown',onUser,true);window.removeEventListener('pointerup',release);window.removeEventListener('pointercancel',release);window.removeEventListener('keyup',release);document.removeEventListener('visibilitychange',onVisibility);calm.removeEventListener('change',onMotion);};
+ return()=>{disposed=true;clear();stopPause();timer.destroy();cancelAnimationFrame(startFrame);stopReady();watch.disconnect();pointer.remove();ring.remove();root.removeEventListener('pointerdown',onUser,true);root.removeEventListener('keydown',onUser,true);window.removeEventListener('pointerup',release);window.removeEventListener('pointercancel',release);window.removeEventListener('keyup',release);calm.removeEventListener('change',onMotion);};
 }

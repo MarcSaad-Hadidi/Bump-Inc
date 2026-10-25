@@ -6,7 +6,7 @@ import {observeDemoReady,demoReadingMs,DEMO_START_MS,DEMO_REPLAY_MS} from '../ui
 export function mountWorkflowPlayback(root){
  if(!root)return()=>{};
  const readout=root.querySelector('[data-readout]'),calm=matchMedia('(prefers-reduced-motion: reduce)');
- let visible=false,disposed=false,idle=0,startFrame=0,cursorFrame=0,manualUntil=0,cycle=0,approving=false;
+ let visible=false,disposed=false,idle=0,startFrame=0,cursorFrame=0,manualUntil=0,cycle=0,approving=false,entered=false,reenter=false,suspendedAt=null;
  const held=new Set();
  const pointer=document.createElement('span');pointer.className='bump-demo-cursor';pointer.hidden=true;pointer.setAttribute('aria-hidden','true');pointer.style.transitionDuration='240ms';
  pointer.innerHTML='<svg viewBox="0 0 28 32"><path d="m3 2 20 17-9 1-4 9z"/></svg>';
@@ -33,7 +33,7 @@ export function mountWorkflowPlayback(root){
  const clear=()=>{timer.clear();clearTimeout(idle);idle=0;cancelAnimationFrame(cursorFrame);pointer.hidden=true;ring.hidden=true;approving=false;root.dataset.workflowCursor='none';};
  const timer=createDemoTimeout(root,allowed);
  const later=(ms,fn)=>{if(!allowed())return;timer.schedule(ms*.68,fn);};
- function pause(){clear();const button=root.querySelector('[data-pause]');if(!calm.matches&&button?.getAttribute('aria-pressed')!=='true')button?.click();root.dataset.workflowPlaying='false';}
+ function pause(){timer.suspend();clearTimeout(idle);idle=0;root.dataset.workflowPlaying='false';}
  function restart(){
   clear();if(calm.matches){control('[data-reset]');root.dataset.workflowPlaying='false';return;}if(!allowed())return;
   control('[data-reset]');root.dataset.workflowCycle=String(++cycle);root.dataset.workflowPlaying='true';root.dataset.workflowWaiting='false';
@@ -84,19 +84,21 @@ export function mountWorkflowPlayback(root){
  };
  const release=event=>{held.delete(event.type==='keyup'?'key-'+event.code:'pointer-'+event.pointerId);scheduleIdle();};
  const onKind=event=>{if(!event.target.matches('[data-kind]'))return;manualUntil=0;held.clear();restart();};
- const onVisibility=()=>{if(document.hidden){pause();return;}if(!visible)return;if(manualUntil>performance.now())scheduleIdle();else restart();};
  const onMotion=()=>{if(calm.matches){clear();root.dataset.workflowPlaying='false';}else if(visible&&!document.hidden)restart();};
  let stopReady=()=>{};
  const observeReady=()=>{stopReady=observeDemoReady(root,next=>{
   if(next===visible)return;visible=next;
-  if(!visible){pause();return;}
-  manualUntil=0;held.clear();restart();
- });};
+  if(!visible){suspendedAt=performance.now();held.clear();pause();return;}
+  if(suspendedAt!==null&&manualUntil>suspendedAt)manualUntil+=performance.now()-suspendedAt;
+  suspendedAt=null;timer.resume();
+  if(!entered||reenter){entered=true;reenter=false;manualUntil=0;held.clear();restart();return;}
+  if(manualUntil>performance.now())scheduleIdle();else{root.dataset.workflowPlaying=String(!calm.matches&&!demoIsPaused(root));advance();}
+ },{onReenter:()=>{reenter=true;}});};
  const stopPause=observeDemoPaused(root,paused=>{if(paused||!visible||calm.matches)return;const button=root.querySelector('[data-pause]');if(button?.getAttribute('aria-pressed')==='true')button.click();if(manualUntil>performance.now())scheduleIdle();else advance();});
  root.addEventListener('pointerdown',onUser,true);root.addEventListener('keydown',onUser,true);root.addEventListener('change',onKind);
  window.addEventListener('pointerup',release);window.addEventListener('pointercancel',release);window.addEventListener('keyup',release);
- document.addEventListener('visibilitychange',onVisibility);calm.addEventListener('change',onMotion);
+ calm.addEventListener('change',onMotion);
  // Child effects have installed all original listeners before the first action.
  startFrame=requestAnimationFrame(()=>{if(disposed)return;control('[data-reset]');observeReady();});
- return()=>{disposed=true;clear();stopPause();timer.destroy();cancelAnimationFrame(startFrame);stopReady();watch.disconnect();pointer.remove();ring.remove();root.removeEventListener('pointerdown',onUser,true);root.removeEventListener('keydown',onUser,true);root.removeEventListener('change',onKind);window.removeEventListener('pointerup',release);window.removeEventListener('pointercancel',release);window.removeEventListener('keyup',release);document.removeEventListener('visibilitychange',onVisibility);calm.removeEventListener('change',onMotion);};
+ return()=>{disposed=true;clear();stopPause();timer.destroy();cancelAnimationFrame(startFrame);stopReady();watch.disconnect();pointer.remove();ring.remove();root.removeEventListener('pointerdown',onUser,true);root.removeEventListener('keydown',onUser,true);root.removeEventListener('change',onKind);window.removeEventListener('pointerup',release);window.removeEventListener('pointercancel',release);window.removeEventListener('keyup',release);calm.removeEventListener('change',onMotion);};
 }

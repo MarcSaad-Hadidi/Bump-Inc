@@ -11,7 +11,8 @@ test('Workflow waits for arrival, leaves copy readable and approves through its 
  const later=(fn,ms=0)=>{timers.set(++serial,{at:now+ms,fn});return serial;},flush=()=>{while(microtasks.length)microtasks.shift()();};
  const advance=ms=>{const end=now+ms;let count=0;while(true){const next=[...timers].filter(([,t])=>t.at<=end).sort((a,b)=>a[1].at-b[1].at)[0];if(!next)break;assert.ok(++count<2000);timers.delete(next[0]);now=next[1].at;next[1].fn();flush();}now=end;flush();};
  class Node extends EventTarget{
-  constructor(){super();this.dataset={};this.style={};this.attrs={};this._text='';this.top=120;}
+  constructor(){super();this.dataset={};this.style={};this.attrs={};this._text='';this.top=120;this.handlers=new Map();}
+  addEventListener(type,fn,options){super.addEventListener(type,fn,options);this.handlers.set(type,[...(this.handlers.get(type)||[]),fn]);}
   set textContent(v){this._text=v;for(const o of observers)if(o.node===this)microtasks.push(()=>o.fn([]));}get textContent(){return this._text;}
   setAttribute(k,v){this.attrs[k]=v;}getAttribute(k){return this.attrs[k]??null;}closest(){return this;}matches(){return false;}
   getBoundingClientRect(){return{top:this.top,bottom:this.top+150,left:0,width:300,height:150};}getAnimations(){return[];}animate(){}append(){}remove(){}click(){this.action?.();}
@@ -42,6 +43,16 @@ test('Workflow waits for arrival, leaves copy readable and approves through its 
   assert.ok(cursorApproach-transitions[2].at>=1500&&cursorApproach-transitions[2].at<1550,'The cursor appears about 1.2s after the native arrival at validation');
   assert.ok(waitingDetected);assert.equal(root.dataset.workflowWaiting,'false');assert.equal(transitions[3].approved,true);assert.equal(root.dataset.workflowStage,'0');
   assert.ok(cursorTravel>=320&&cursorTravel<=330,'Approval cursor arrives and clicks sooner, after its 240ms travel');
+  root.top=1200;ios[0]();root.top=120;ios[0]();const resumedCycle=root.dataset.workflowCycle;
+  advance(1000);document.hidden=true;document.dispatchEvent(new Event('visibilitychange'));advance(10000);
+  document.hidden=false;document.dispatchEvent(new Event('visibilitychange'));
+  assert.equal(root.dataset.workflowCycle,resumedCycle);assert.equal(flow.steps.get().index,0);
+  advance(1175);assert.equal(flow.steps.get().index,0);advance(1);assert.equal(flow.steps.get().index,1,'Resume only the original remaining reading delay');advance(300);
+  root.handlers.get('keydown')[0]({isTrusted:true,type:'keydown',target:root,key:'ArrowRight',code:'ArrowRight'});
+  window.dispatchEvent(Object.assign(new Event('keyup'),{code:'ArrowRight'}));advance(1000);
+  document.hidden=true;document.dispatchEvent(new Event('visibilitychange'));advance(10000);document.hidden=false;document.dispatchEvent(new Event('visibilitychange'));
+  advance(28999);assert.equal(root.dataset.workflowCycle,resumedCycle);assert.equal(flow.steps.get().index,1);
+  advance(1);assert.equal(Number(root.dataset.workflowCycle),Number(resumedCycle)+1,'Input grace is frozen while the tab is hidden');
   document.documentElement.dataset.bumpScrollMoving='true';observers.find(o=>o.node===document.documentElement).fn([]);const cycle=root.dataset.workflowCycle;advance(30000);assert.equal(root.dataset.workflowCycle,cycle);assert.equal(root.dataset.workflowPlaying,'false');
  }finally{cleanup?.();for(const[k,v]of originals){if(v)Object.defineProperty(globalThis,k,v);else delete globalThis[k];}}
 });

@@ -4,4 +4,4 @@ export function demoTimelineIsPaused(node:Element|null):boolean;
 export function setDemoInspectionPaused(node:Element|null,paused:boolean):void;
 export function observeDemoPaused(node:Element|null,changed:(paused:boolean)=>void,options?:{ignoreInspection?:boolean}):()=>void;
 export function mountDemoTransport(node:HTMLElement|null,label?:string):()=>void;
-export function createDemoTimeout(node:Element,allowed?:()=>boolean,options?:{ignoreInspection?:boolean}):{readonly pending:boolean;schedule(ms:number,fn:()=>void):void;clear():void;destroy():void};
+export function createDemoTimeout(node:Element,allowed?:()=>boolean,options?:{ignoreInspection?:boolean}):{readonly pending:boolean;schedule(ms:number,fn:()=>void):void;suspend():void;resume():void;clear():void;destroy():void};

@@ -24,7 +24,7 @@ export function mountHoverDemonstration(root,kind){
  const media=matchMedia('(prefers-reduced-motion: reduce)'),cursor=document.createElement('span');
  cursor.className='bump-demo-cursor bump-demo-hover-cursor';cursor.hidden=true;cursor.setAttribute('aria-hidden','true');
  cursor.innerHTML='<svg viewBox="0 0 28 32"><path d="m3 2 20 17-9 1-4 9z"/></svg>';root.append(cursor);
- let visible=false,disposed=false,completed=false,hovered=null,manualUntil=0,current=null,index=0,frame=0,run=[],visited=[];
+ let visible=false,disposed=false,completed=false,hovered=null,manualUntil=0,suspendedAt=null,current=null,index=0,frame=0,run=[],visited=[];
  const completion=value=>{completed=value;root.dataset.bumpHoverComplete=String(value);};completion(false);
  const allowed=()=>visible&&!disposed&&!media.matches&&!document.hidden&&!demoIsPaused(root);
  // The model waits, while this one finite cursor timer keeps visiting parts.
@@ -70,14 +70,22 @@ export function mountHoverDemonstration(root,kind){
  }
  const interactive='[data-bump-info],[data-card],[data-tool],[data-adapter],[data-drawer],[data-need],[data-dome],[data-knob],.company-flow-pill,.company-flow-hub';
  const user=event=>{if(!event.isTrusted)return;const part=event.target?.closest?.(interactive)||null;
-  if(event.type==='pointermove'&&!part){if(hovered){hovered=null;manualUntil=performance.now()+6000;if(!completed){stop();timer.schedule(6000,begin);}}return;}
-  hovered=event.type==='pointermove'?part:null;manualUntil=performance.now()+(event.type==='pointermove'?6000:30000);stop();if(hovered)inspect(hovered);if(!completed&&!hovered)timer.schedule(30000,begin);
+  if(event.type==='pointermove'&&!part){if(hovered){hovered=null;manualUntil=Math.max(manualUntil,performance.now()+6000);if(!completed){stop();timer.schedule(6000,begin);}}return;}
+  hovered=event.type==='pointermove'?part:null;manualUntil=Math.max(manualUntil,performance.now()+(event.type==='pointermove'?6000:30000));stop();if(hovered)inspect(hovered);if(!completed&&!hovered)timer.schedule(30000,begin);
  };
- const userLeave=event=>{if(!event.isTrusted||!hovered)return;if(event.relatedTarget?.closest?.(interactive)===hovered)return;hovered=null;manualUntil=performance.now()+6000;if(!completed){stop();timer.schedule(6000,begin);}};
+ const userLeave=event=>{if(!event.isTrusted||!hovered)return;if(event.relatedTarget?.closest?.(interactive)===hovered)return;hovered=null;manualUntil=Math.max(manualUntil,performance.now()+6000);if(!completed){stop();timer.schedule(6000,begin);}};
  for(const name of ['pointermove','pointerdown','keydown'])root.addEventListener(name,user,true);
  root.addEventListener('pointerout',userLeave,true);
  const observer=new MutationObserver(()=>{if(busy()){stop();if(!completed)timer.schedule(600,begin);}else if(kind==='port'&&completed&&root.querySelector('.bump-port-live')?.dataset.portStage==='0'){completion(false);timer.schedule(800,begin);}});observer.observe(root,{subtree:true,attributes:true,attributeFilter:['data-workflow-cursor','data-tools-cursor','data-security-cursor','data-port-stage']});
- const stopReady=observeDemoReady(root,ready=>{visible=ready;stop();if(ready){completion(false);hovered=null;manualUntil=0;timer.schedule(800,begin);}});
- const motion=()=>{stop();if(visible&&!media.matches){completion(false);hovered=null;manualUntil=0;timer.schedule(800,begin);}};media.addEventListener('change',motion);
+ const resume=()=>{if(!completed&&!hovered)timer.schedule(Math.max(800,manualUntil-performance.now()),begin);};
+ const stopReady=observeDemoReady(root,ready=>{
+  visible=ready;stop();
+  if(!ready){suspendedAt=performance.now();return;}
+  // Preserve the remaining visitor-priority time while the tab/scroll is
+  // suspended. Only physical section re-entry resets this finite introduction.
+  if(suspendedAt!==null&&manualUntil>suspendedAt)manualUntil+=performance.now()-suspendedAt;
+  suspendedAt=null;resume();
+ },{onReenter:()=>{completion(false);hovered=null;manualUntil=0;}});
+ const motion=()=>{stop();if(visible&&!media.matches)resume();};media.addEventListener('change',motion);
  return()=>{disposed=true;stop();timer.destroy();stopReady();observer.disconnect();media.removeEventListener('change',motion);for(const name of ['pointermove','pointerdown','keydown'])root.removeEventListener(name,user,true);root.removeEventListener('pointerout',userLeave,true);cursor.remove();};
 }

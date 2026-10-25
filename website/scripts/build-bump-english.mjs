@@ -1,6 +1,7 @@
 import {readFileSync,writeFileSync,readdirSync,mkdirSync,rmSync} from 'node:fs';
 import {parse} from '@babel/parser';
 import {translateText,translateHtml,translateValue} from '../src/bump/locales/translate.js';
+import {translateOutsideScripts,replaceLoaderStream} from './html-scripts.mjs';
 
 const source='public/runtime/assets',destination='public/runtime/en/assets';
 // Only text literals change. Vertex data, animation code, timing, shared media
@@ -46,9 +47,9 @@ export function buildEnglishEdition(){
  let shell=readFileSync('src/reference-shell.html','utf8');
  // Keep scripts out of the markup translator; the complete English loader
  // stream uses the same deterministic encoder as the retained React shell.
- shell=shell.split(/(<script\b[\s\S]*?<\/script>)/gi).map(part=>part.startsWith('<script')?part:translateHtml(part)).join('');
+ shell=translateOutsideScripts(shell,translateHtml);
  shell=shell.replace('<html lang="fr"','<html lang="en"').replace(/\/runtime\/assets\/([^\s"'<>]*\.js)/g,'/runtime/en/assets/$1');
- shell=shell.replace(/window\.__remixContext\.streamController\.enqueue\([\s\S]*?\);<\/script>/,()=>`window.__remixContext.streamController.enqueue(${encodeStream(data)});</script>`);
+ shell=replaceLoaderStream(shell,encodeStream(data));
  // Heading fragments and description markup are already localized above.
  writeFileSync('public/en.html',shell);
  console.log(`Built English Bump edition (${count} JavaScript modules; shared original media).`);

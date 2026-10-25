@@ -5,8 +5,10 @@ import {readFileSync,writeFileSync,existsSync,readdirSync,copyFileSync} from 'no
 import postcss from 'postcss';
 import {resolve} from 'node:path';
 import {stabilizeMobileViewport} from './stabilize-mobile-viewport.mjs';
+import {secureThreeIdentifiers,hardenRetainedIdentifiers} from './secure-render-identifiers.mjs';
+await build({entryPoints:['src/bump/ui/secureUuid.js'],bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,outfile:'public/runtime/secure-uuid.js'});
 await build({entryPoints:{BumpViewport:'src/bump/ui/viewport.js',BumpDeviceMotion:'src/bump/ui/deviceMotion.js',BumpSceneCamera:'src/bump/ui/sceneCamera.js'},bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,outdir:'public/runtime/assets'});
-await build({entryPoints:{BumpUI:'src/bump/ui/index.js',BumpAssistedScroll:'src/bump/ui/assistedScroll.js',BumpPlayback:'src/bump/ui/playback.js',BumpContrast:'src/bump/ui/contrast.js',BumpGaze:'src/bump/security/gaze.js',BumpMethodSurfaces:'src/bump/method/MethodSurfaces.js',BumpMethodAppearance:'src/bump/method/appearance.js',BumpNav:'src/bump/ui/BumpNav.js',BumpContent:'src/bump/chapters/Content.js',BumpGlobe:'src/bump/ui/globe/renderer.js'},bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,external:['/runtime/*'],outdir:'public/runtime/assets',legalComments:'linked'});
+await build({entryPoints:{BumpUI:'src/bump/ui/index.js',BumpAssistedScroll:'src/bump/ui/assistedScroll.js',BumpPlayback:'src/bump/ui/playback.js',BumpContrast:'src/bump/ui/contrast.js',BumpGaze:'src/bump/security/gaze.js',BumpMethodSurfaces:'src/bump/method/MethodSurfaces.js',BumpMethodAppearance:'src/bump/method/appearance.js',BumpNav:'src/bump/ui/BumpNav.js',BumpContent:'src/bump/chapters/Content.js',BumpGlobe:'src/bump/ui/globe/renderer.js'},bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,external:['/runtime/*'],plugins:[secureThreeIdentifiers()],outdir:'public/runtime/assets',legalComments:'linked'});
 // The retained scene is React 18. Share that exact runtime with the new UI
 // libraries; bundling package.json's separate React would break their hooks.
 const reactExports=['Children','Component','PureComponent','StrictMode','Suspense','Fragment','Profiler','createElement','cloneElement','createContext','createFactory','createRef','forwardRef','isValidElement','lazy','memo','startTransition','useCallback','useContext','useDebugValue','useDeferredValue','useEffect','useId','useImperativeHandle','useInsertionEffect','useLayoutEffect','useMemo','useReducer','useRef','useState','useSyncExternalStore','useTransition','version','__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED'];
@@ -34,4 +36,5 @@ writeFileSync('public/runtime/assets/BumpUI.css',':root{--bump-paper:'+BUMP_PAPE
 for(const name of readdirSync('src/bump/chapters/runtime'))copyFileSync('src/bump/chapters/runtime/'+name,'public/runtime/assets/'+name);
 writeFileSync('public/runtime/assets/BumpUI.css',readFileSync('public/runtime/assets/BumpUI.css','utf8')+'\n'+readFileSync('src/bump/ui/mobile.css','utf8'));
 stabilizeMobileViewport();
+hardenRetainedIdentifiers();
 console.log('Built Bump motion components with the existing React runtime.');

@@ -2,10 +2,10 @@ import {r as React} from '/runtime/assets/components-BdJai906.js';
 
 // One cancellable idle timeout per visible demo. Activity extends the deadline;
 // pointer holds and editable focus protect unfinished visitor input indefinitely.
-export function useIdleReplay({root,visible,foreground=true,reduced,finished,interrupted=false,manualPaused=false,canRestart=true,onReplay,restMs=3000,idleMs=30000}){
- const state=React.useRef({timer:null,touched:false,lastActivity:0,finishedAt:0,wasFinished:false,wasVisible:false,wasIntersecting:false,hasEntered:false,pointers:new Set()});
+export function useIdleReplay({root,visible,intersecting,foreground=true,reduced,finished,interrupted=false,manualPaused=false,canRestart=true,onReplay,restMs=3000,idleMs=30000}){
+ const state=React.useRef({timer:null,touched:false,lastActivity:0,finishedAt:0,wasFinished:false,wasVisible:false,viewportExited:false,hasEntered:false,pointers:new Set()});
  const current=React.useRef(null),schedule=React.useRef(()=>{});
- current.current={visible,foreground,reduced,finished,interrupted,manualPaused,canRestart,onReplay,restMs,idleMs};
+ current.current={visible,intersecting,foreground,reduced,finished,interrupted,manualPaused,canRestart,onReplay,restMs,idleMs};
  schedule.current=()=>{
   const s=state.current,c=current.current,node=root.current;
   clearTimeout(s.timer);s.timer=null;
@@ -28,14 +28,15 @@ export function useIdleReplay({root,visible,foreground=true,reduced,finished,int
  };
  React.useEffect(()=>{
   const s=state.current,now=performance.now(),inView=visible&&foreground;
-  const returned=visible&&!s.wasIntersecting&&s.hasEntered;
-  s.wasIntersecting=visible;if(visible)s.hasEntered=true;
+  if(!intersecting&&s.hasEntered)s.viewportExited=true;
+  const returned=inView&&intersecting&&s.viewportExited&&s.hasEntered;
+  if(inView&&intersecting){s.hasEntered=true;s.viewportExited=false;}
   const focused=document.activeElement,node=root.current;
   const editing=node?.contains(focused)&&focused?.matches('input,textarea,[contenteditable="true"],[role="textbox"]');
-  if(returned&&!reduced&&!editing&&!s.pointers.size){
+  if(returned&&!reduced&&!manualPaused&&!editing&&!s.pointers.size){
    clearTimeout(s.timer);s.timer=null;s.touched=false;s.finishedAt=0;
    s.wasVisible=inView;s.wasFinished=false;
-   queueMicrotask(()=>{if(current.current.visible&&!current.current.reduced)current.current.onReplay();});
+   queueMicrotask(()=>{const c=current.current;if(c.visible&&c.intersecting&&c.foreground&&!c.reduced&&!c.manualPaused)c.onReplay();});
    return;
   }
   if(finished&&!s.wasFinished)s.finishedAt=now;
@@ -45,7 +46,7 @@ export function useIdleReplay({root,visible,foreground=true,reduced,finished,int
   if(inView&&!s.wasVisible){if(finished)s.finishedAt=now;if(s.touched)s.lastActivity=now;}
   s.wasVisible=inView;s.wasFinished=finished;schedule.current();
   return()=>{clearTimeout(s.timer);s.timer=null;};
- },[root,visible,foreground,reduced,finished,interrupted,manualPaused,canRestart,restMs,idleMs]);
+ },[root,visible,intersecting,foreground,reduced,finished,interrupted,manualPaused,canRestart,restMs,idleMs]);
  React.useEffect(()=>{
   const node=root.current;if(!node)return;const s=state.current;
   const activity=()=>{s.touched=true;s.lastActivity=performance.now();if(!s.timer)schedule.current();};

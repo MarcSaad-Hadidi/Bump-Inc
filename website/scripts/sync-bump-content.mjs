@@ -1,4 +1,5 @@
 import {readFileSync,writeFileSync} from 'node:fs';
+import {replaceLoaderStream} from './html-scripts.mjs';
 
 // Keep the retained client stream and the interactive cards on the same content.
 const content=JSON.parse(readFileSync('src/bump/content.json','utf8'));
@@ -42,7 +43,7 @@ function encode(value){
 }
 encode(data);
 const stream=JSON.stringify(JSON.stringify(slots)+'\n').replaceAll('</','<\\/');
-const shell=readFileSync('src/reference-shell.html','utf8').replace(/window\.__remixContext\.streamController\.enqueue\([\s\S]*?\);<\/script>/,()=>`window.__remixContext.streamController.enqueue(${stream});</script>`);
+const shell=replaceLoaderStream(readFileSync('src/reference-shell.html','utf8'),stream);
 writeFileSync('src/reference-shell.html',shell);
 writeFileSync('src/bump/loader-data.json',JSON.stringify(data));
 writeFileSync('public/runtime/assets/BumpData.js',`export const content=${JSON.stringify(content)};\n`);

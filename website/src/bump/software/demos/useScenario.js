@@ -12,6 +12,7 @@ export function useScenario(checkpoints, end, sequenceId) {
   const generation = useRef(0);
   const [time, setTime] = useState(0);
   const [visible, setVisible] = useState(false);
+  const [intersecting, setIntersecting] = useState(false);
   const [foreground, setForeground] = useState(!document.hidden);
   const [reduced, setReduced] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
   const [playing, setPlaying] = useState(true);
@@ -21,7 +22,7 @@ export function useScenario(checkpoints, end, sequenceId) {
 
 
   useEffect(() => {
-    const stop=observeDemoReady(root.current,setVisible);
+    const stop=observeDemoReady(root.current,setVisible,{onViewportChange:setIntersecting});
     const media = matchMedia('(prefers-reduced-motion: reduce)');
     const changed = () => setReduced(media.matches);
     const visibility = () => setForeground(!document.hidden);
@@ -61,7 +62,7 @@ export function useScenario(checkpoints, end, sequenceId) {
   const seek = (next, run=true) => {
     generation.current++; elapsed.current=next; setTime(next); setPlaying(run && !reduced); if(run)setManualPaused(false);setInterrupted(!run);setRevision(x=>x+1);
   };
-  useIdleReplay({root,visible,foreground,reduced,finished:time>=end,interrupted,manualPaused,canRestart,onReplay:()=>replayHandler.current?replayHandler.current():seek(0)});
+  useIdleReplay({root,visible,intersecting,foreground,reduced,finished:time>=end,interrupted,manualPaused,canRestart,onReplay:()=>replayHandler.current?replayHandler.current():seek(0)});
   function toggle(){if(time>=end){if(manualPaused)seek(0);else{setManualPaused(true);setPlaying(false);}return;}if(playing){setManualPaused(true);setPlaying(false);}else{setManualPaused(false);setPlaying(true);}}
   return {root,time,visible,active,reduced,playing,revision,manualPaused,replayHandler,finished:time>=end,
     replay:()=>seek(reduced?end:0), seek, pause:()=>{setPlaying(false);setInterrupted(true);},

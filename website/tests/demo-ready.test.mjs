@@ -31,3 +31,21 @@ test('native mixers only spend frames on visible scenes and never jump after a s
  assert.equal(sceneFrameNeeded(2,{...state,finalOverlayPosition:0}),false);assert.equal(sceneFrameNeeded(3,{...state,finalOverlayPosition:0}),true);assert.equal(sceneFrameNeeded(2,state,true),false);
  assert.equal(sceneFrameDelta(.8),1/30);assert.equal(sceneFrameDelta(1/60),1/60);
 });
+
+test('document suspension does not masquerade as viewport departure',()=>{
+ const originals=new Map(),set=(k,v)=>{originals.set(k,Object.getOwnPropertyDescriptor(globalThis,k));Object.defineProperty(globalThis,k,{value:v,configurable:true,writable:true});};
+ const root={dataset:{bumpOpening:'scene',bumpAssistedScroll:'true',bumpScrollMoving:'false'}},document=new EventTarget(),window=new EventTarget();document.documentElement=root;document.hidden=false;
+ let bounds={top:100,bottom:850,width:800,height:750},stop;
+ const node={dataset:{},getBoundingClientRect:()=>bounds},eligible=[],viewport=[],observers=[];
+ try{
+  set('document',document);set('window',window);set('innerHeight',900);
+  set('IntersectionObserver',class{constructor(fn){observers.push(fn);}observe(){}disconnect(){}});set('MutationObserver',class{observe(){}disconnect(){}});
+  stop=observeDemoReady(node,value=>eligible.push(value),{onViewportChange:value=>viewport.push(value)});
+  document.hidden=true;document.dispatchEvent(new Event('visibilitychange'));
+  document.hidden=false;document.dispatchEvent(new Event('visibilitychange'));
+  assert.deepEqual(eligible,[true,false,true]);assert.deepEqual(viewport,[true]);
+  bounds={top:1000,bottom:1750,width:800,height:750};observers[0]();
+  bounds={top:100,bottom:850,width:800,height:750};observers[0]();
+  assert.deepEqual(viewport,[true,false,true]);
+ }finally{stop?.();for(const[k,v]of originals){if(v)Object.defineProperty(globalThis,k,v);else delete globalThis[k];}}
+});

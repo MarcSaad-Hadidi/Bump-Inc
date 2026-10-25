@@ -37,7 +37,9 @@ export function useWorkflowJourney(stages,ref) {
   // This explanatory diagram has no editable data. Hover explanations and
   // choosing an example must not create the apps' 30-second editing delay.
   // Pointer holds, offscreen/background pause and reduced motion stay protected.
-  useIdleReplay({root:ref,visible,foreground,reduced,finished:atEnd,onReplay:reset,restMs:2200,idleMs:0});
+  // This legacy diagram's visibility comes directly from IntersectionObserver;
+  // foreground is separate, so it already represents physical intersection.
+  useIdleReplay({root:ref,visible,intersecting:visible,foreground,reduced,finished:atEnd,onReplay:reset,restMs:2200,idleMs:0});
   const active=playing&&visible&&foreground&&!atEnd&&!reduced;
   return {index,stage,waiting,atEnd,reduced,run,approve,approvalPhase,
     animationPlaying:active&&!waiting,

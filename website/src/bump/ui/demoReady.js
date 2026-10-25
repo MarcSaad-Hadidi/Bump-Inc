@@ -1,19 +1,26 @@
 import {getBumpViewportHeight} from './viewport.js';
 // A glimpse during a chapter journey is not an arrival. All timed demos share
 // this gate; the existing assisted controller remains the sole scroll owner.
-export function demoIsReady(bounds,{height,opening,assisted,moving,hidden}){
- if(hidden||moving==='true'||opening&&opening!=='scene'||bounds.width<=0||bounds.height<=0)return false;
+export function demoInViewport(bounds,{height,assisted}){
+ if(bounds.width<=0||bounds.height<=0)return false;
  const top=assisted?72:0,bottom=height-16,visible=Math.max(0,Math.min(bottom,bounds.bottom)-Math.max(top,bounds.top));
  return visible>=Math.min(bounds.height,bottom-top)*.65;
 }
+export function demoIsReady(bounds,{height,opening,assisted,moving,hidden}){
+ if(hidden||moving==='true'||opening&&opening!=='scene')return false;
+ return demoInViewport(bounds,{height,assisted});
+}
 
-export function observeDemoReady(node,onChange){
+export function observeDemoReady(node,onChange,{onViewportChange}={}){
  if(!node)return()=>{};
- let ready=null,disposed=false;
+ let ready=null,intersecting=null,disposed=false;
  const root=document.documentElement;
  const update=()=>{
   if(disposed)return;
-  const next=demoIsReady(node.getBoundingClientRect(),{height:getBumpViewportHeight(),opening:root.dataset.bumpOpening,assisted:root.dataset.bumpAssistedScroll==='true',moving:root.dataset.bumpScrollMoving,hidden:document.hidden});
+  const bounds=node.getBoundingClientRect(),options={height:getBumpViewportHeight(),opening:root.dataset.bumpOpening,assisted:root.dataset.bumpAssistedScroll==='true',moving:root.dataset.bumpScrollMoving,hidden:document.hidden};
+  const inViewport=demoInViewport(bounds,options);
+  if(inViewport!==intersecting){intersecting=inViewport;onViewportChange?.(inViewport);}
+  const next=demoIsReady(bounds,options);
   node.dataset.bumpDemoReady=String(next);
   if(next!==ready){ready=next;onChange(next);}
  };

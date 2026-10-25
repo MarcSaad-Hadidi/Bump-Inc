@@ -1,6 +1,10 @@
 packages:
   - apps/*
   - packages/*
+# Drizzle's legacy loader pins vulnerable esbuild 0.18.x (GHSA-67mh-4wv8-2f99).
+# Keep its transform API on the same patched version Drizzle already uses.
+overrides:
+  "@esbuild-kit/core-utils>esbuild": "0.25.12"
 onlyBuiltDependencies:
   - "@biomejs/biome"
   - esbuild

@@ -1,0 +1,4 @@
+# Review routing only. Enforcement requires a branch ruleset.
+# Add at least one additional active maintainer before requiring CODEOWNERS
+# approval for every PR: authors cannot approve their own pull requests.
+* @MarcSaad-Hadidi

@@ -1,0 +1,9 @@
+Render Workflow Visualizer
+https://github.com/render-examples/workflow-visualizer
+
+Upstream README license declaration: MIT.
+Sources: src/WorkflowVisualizer.tsx, src/WorkflowEdge.tsx,
+src/WorkflowNode.tsx, src/WorkflowControls.tsx, src/types.ts.
+
+Adapted portions retain the original component structure and configuration
+vocabulary. No copyright notice was present in the upstream source files.

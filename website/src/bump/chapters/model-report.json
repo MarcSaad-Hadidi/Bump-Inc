@@ -1,0 +1,128 @@
+[
+  {
+    "input": "sidekick-1.glb",
+    "output": "workflow-1-v3.glb",
+    "originalBinarySha256": "5cf36d8eb85e530d3df8572bafce6cd804658d1321352124c60cb6f5a1fa134a",
+    "originalBinaryRetained": true,
+    "animations": 5,
+    "skins": 0,
+    "replaced": [
+      {
+        "textureIndex": 0,
+        "filename": "../branding/workflow-branded-0",
+        "bytes": 645842
+      }
+    ]
+  },
+  {
+    "input": "online-1.glb",
+    "output": "software-1-v3.glb",
+    "originalBinarySha256": "563b340bc98f6d76e00a12bbf3730e0a6b351009fd8a5bbd391604cb469da386",
+    "originalBinaryRetained": true,
+    "animations": 4,
+    "skins": 2,
+    "replaced": [
+      {
+        "textureIndex": 0,
+        "filename": "../branding/software-board-0",
+        "bytes": 81256
+      },
+      {
+        "textureIndex": 1,
+        "filename": "../branding/software-maker-1",
+        "bytes": 797354
+      }
+    ]
+  },
+  {
+    "input": "operations-1.glb",
+    "output": "security-1-v2.glb",
+    "originalBinarySha256": "cef48236d1fca9b825100c41c31c91e6593a17375fda9e23cd9c41fa3ca0ef08",
+    "originalBinaryRetained": true,
+    "animations": 6,
+    "skins": 1,
+    "replaced": [
+      {
+        "textureIndex": 0,
+        "filename": "security-0",
+        "bytes": 624372
+      }
+    ]
+  },
+  {
+    "input": "operations-3.glb",
+    "output": "security-3-v2.glb",
+    "originalBinarySha256": "214f57371ca40d39cd242813bf0e329aacf2d640b3980e8a6af5e44f597e0030",
+    "originalBinaryRetained": true,
+    "animations": 0,
+    "skins": 0,
+    "replaced": []
+  },
+  {
+    "input": "retail-1.glb",
+    "output": "method-1-v2.glb",
+    "originalBinarySha256": "2890b7481ba0732d0c0ab039ebbe0b2e170003e094ee7f5d45ce84f2d6db0cf8",
+    "originalBinaryRetained": true,
+    "animations": 1,
+    "skins": 0,
+    "replaced": []
+  },
+  {
+    "input": "retail-2.glb",
+    "output": "method-2-v3.glb",
+    "originalBinarySha256": "7436d1646ec726d9d291eed473f1d8ea61b591ae6725e718d22d0ab69ad3ee64",
+    "originalBinaryRetained": true,
+    "animations": 1,
+    "skins": 0,
+    "replaced": []
+  },
+  {
+    "input": "retail-3.glb",
+    "output": "method-3-v3.glb",
+    "originalBinarySha256": "360fe040d17115fb0c3c75183e5b4ed77fb5d9da83b7d74528b9419f4a158d47",
+    "originalBinaryRetained": true,
+    "animations": 1,
+    "skins": 5,
+    "replaced": [
+      {
+        "textureIndex": 0,
+        "filename": "method-wall-0",
+        "bytes": 554870
+      },
+      {
+        "textureIndex": 1,
+        "filename": "../branding/method-display",
+        "bytes": 25604
+      }
+    ]
+  },
+  {
+    "input": "developer-1.glb",
+    "output": "vision-1-v2.glb",
+    "originalBinarySha256": "f36ce48a8c2d4c66583b9c21594d0118f60b5eab4ea416c33e3447858010cbf8",
+    "originalBinaryRetained": true,
+    "animations": 1,
+    "skins": 2,
+    "replaced": []
+  },
+  {
+    "input": "b2b-1.glb",
+    "output": "contact-1-v3.glb",
+    "originalBinarySha256": "a5bb22002bd8f5b1b5f33cc2218866c24c7092b7073aa0f62571e6dbe6029120",
+    "originalBinaryRetained": true,
+    "animations": 1,
+    "skins": 4,
+    "replaced": [
+      {
+        "textureIndex": 0,
+        "filename": "../branding/company-branded-0",
+        "bytes": 635392
+      },
+      {
+        "textureIndex": 1,
+        "filename": "contact-faces-1",
+        "bytes": 114188
+      }
+    ]
+  }
+]

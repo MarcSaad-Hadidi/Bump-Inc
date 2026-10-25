@@ -1,0 +1,91 @@
+{
+  "source": "public/bump/models/security-1-v2.glb",
+  "output": "public/bump/models/security-1-v20.glb",
+  "sourceBinarySha256": "35b9d5edbb7843a4e90c49976f85ee4117035aa07b241d1713bea98bfb663300",
+  "sourceBinaryRetained": true,
+  "skinnedHeadVertices": 40495,
+  "headTriangles": 79104,
+  "bodyTriangles": 32435,
+  "skins": 1,
+  "animations": [
+    "Operations People",
+    "eyes-m-01Action",
+    "eyes-m-02Action",
+    "eyes-m-03Action",
+    "eyes-w-01Action",
+    "eyes-w-02Action"
+  ],
+  "registeredEyes": [
+    {
+      "name": "eyes-m-01",
+      "eyes": [
+        [
+          489,
+          611
+        ],
+        [
+          543,
+          615
+        ]
+      ],
+      "nativeTrack": "eyes-m-01Action"
+    },
+    {
+      "name": "eyes-m-02",
+      "eyes": [
+        [
+          722,
+          595
+        ],
+        [
+          773,
+          621
+        ]
+      ],
+      "nativeTrack": "eyes-m-02Action"
+    },
+    {
+      "name": "eyes-m-03",
+      "eyes": [
+        [
+          1008,
+          611
+        ],
+        [
+          1064,
+          608
+        ]
+      ],
+      "nativeTrack": "eyes-m-03Action"
+    },
+    {
+      "name": "eyes-w-01",
+      "eyes": [
+        [
+          1317,
+          622
+        ],
+        [
+          1368,
+          619
+        ]
+      ],
+      "nativeTrack": "eyes-w-01Action"
+    },
+    {
+      "name": "eyes-w-02",
+      "eyes": [
+        [
+          1545,
+          699
+        ],
+        [
+          1604,
+          704
+        ]
+      ],
+      "nativeTrack": "eyes-w-02Action"
+    }
+  ],
+  "globeUnchangedSha256": "6f47cfc7815700b458d542cbf43e27ce5d14de474c9431dd6828f9ef9c3ca4fd"
+}

@@ -1,0 +1,23 @@
+{
+  "source": "bump-methode-05.zip",
+  "sharedRuntimeNote": "Existing identical shared runtime retained; archive only adds a trailing newline.",
+  "sha256": {
+    "kit/LICENSE-anatomy": "87c078ab9d90a3044f359e6b563d4e6afea7aa060897cf4f21618687b3856796",
+    "kit/iso-kit.ts": "e9fc988c61a11bfac1f097e62419915ea86b2130ab091f1b50c0e019c907e253",
+    "kit/iso.css": "ef19bac5a42ba9be42b56b2c1cf7fc7e21d332a8060765e9ca1d987b8ab23924",
+    "methode/MethodLab.tsx": "02e5aeb4342bea487ae83c05b09f8cec0695cdda5b231ffee242aaa5ff49f70d",
+    "methode/art.generated.ts": "96b499e956d9ad1996b08ea863e411657b144f4730034af5945756339db6115c",
+    "methode/live.ts": "fd3aea707bd976ab620d548a35173f0debe0256200c1780b3996622e91813452",
+    "methode/model.ts": "53b05b88c888a5604fb210be0ee57ebe0815287158cf2109db8aef9ae473c5b0",
+    "shared/AnatomyFigure.tsx": "45e49948f7b79706000625778d8c5e302fc118940da4f52bddb3c9531fd872d6",
+    "shared/bump-theme.css": "bf30a94b820fab62d14a275d307059e1f7b6ac4ac0c54dd8a23e515c7c31892e",
+    "shared/controller.ts": "62b8621c173e14f474e0dd0458ebc6a3dcc45486a3863ab6dfbe6a7ae6572168",
+    "shared/runtime.ts": "6594ac2445214885bfebe6d5d309c9c11f5ae2fc970608cf1de51a181693a0be"
+  },
+  "upstreamUpdates": {
+    "shared/bump-theme.css": {
+      "source": "bump-port-07.zip",
+      "change": "Original palette preserved verbatim; supplied model 03\u201307 rules appended."
+    }
+  }
+}

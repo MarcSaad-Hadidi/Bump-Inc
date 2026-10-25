@@ -1,0 +1,10 @@
+Earth surface: NASA Blue Marble Next Generation, August 2004, with topography.
+Credit: Reto Stockli, NASA Earth Observatory / NASA GSFC.
+Source: https://svs.gsfc.nasa.gov/12564
+Original image: https://svs.gsfc.nasa.gov/vis/a010000/a012500/a012564/frames/5400x2700_2x1_60p/world.topo.2004-08.png
+Optimized to 4096x2048 WebP for this globe. No NASA endorsement is implied.
+Montreal pin: 45.5019 N, 73.5674 W.
+
+Montreal close-up: Sentinel-2 cloudless 2016 - https://s2maps.eu by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016 & 2017). CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+WMS EPSG:4326 extent [-75,44,-72,47], optimized to WebP.
+Request: https://tiles.maps.eox.at/wms?service=WMS&version=1.1.1&request=GetMap&layers=s2cloudless&styles=&srs=EPSG%3A4326&bbox=-75%2C44%2C-72%2C47&width=2048&height=2048&format=image%2Fjpeg

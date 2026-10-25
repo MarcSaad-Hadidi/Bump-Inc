@@ -1,0 +1,175 @@
+{
+  "initial": {
+    "title": "Bump — L’élan technologique",
+    "url": "https://bump.test/",
+    "y": 0,
+    "h": 19425,
+    "gl": {
+      "contexts": [
+        {
+          "type": "webgl",
+          "draws": 0,
+          "canvasId": 0,
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 1.0 (OpenGL ES 2.0 Chromium)",
+          "skinningUniforms": 0
+        },
+        {
+          "type": "webgl2",
+          "draws": 0,
+          "canvasId": 1,
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "skinningUniforms": 0
+        },
+        {
+          "type": "webgl2",
+          "draws": 3361,
+          "canvasId": 2,
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "skinningUniforms": 3
+        }
+      ],
+      "frames": 0
+    },
+    "canvases": [
+      {
+        "qa": "2",
+        "engine": "three.js r181",
+        "width": 1774,
+        "height": 887,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 1774,
+          "h": 887
+        }
+      }
+    ],
+    "broken": []
+  },
+  "interactions": [
+    {
+      "menu": "×\n\nL’ÉLAN TECHNOLOGIQUE\n\n01\nWorkflow\n02\nIA & Logiciels\n03\nCybersécurité\n04\nNotre méthode\n05\nNotre vision\n06\nBump\n\nTrois expertises. Un accompagnement complet.",
+      "links": 6
+    },
+    {
+      "brief": "×\n\nFAISONS LE PREMIER PAS\n\nQuel élan donner à votre entreprise ?\n\nPréparez un premier brief, relisez-le et copiez-le pour la suite. Ce brouillon reste sur cet appareil ; aucune demande n’est envoyée automatiquement.\n\nVotre entreprise\nVotre nom\nVotre courriel\nLe sujet de votre projet\nChoisir un sujet\nWorkflow Optimization\nAI Integration & Software Development\nCybersecurity\nPlusieurs divisions\nCe que vous souhaitez améliorer\nTélécharger mon brief\n↗\nCopier le texte",
+      "fields": 5
+    },
+    {
+      "chapter": {
+        "title": "Bump — L’élan technologique",
+        "url": "https://bump.test/#sidekick",
+        "y": 1341,
+        "h": 19425,
+        "gl": {
+          "contexts": [
+            {
+              "type": "webgl",
+              "draws": 0,
+              "canvasId": 0,
+              "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+              "version": "WebGL 1.0 (OpenGL ES 2.0 Chromium)",
+              "skinningUniforms": 0
+            },
+            {
+              "type": "webgl2",
+              "draws": 0,
+              "canvasId": 1,
+              "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+              "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+              "skinningUniforms": 0
+            },
+            {
+              "type": "webgl2",
+              "draws": 7135,
+              "canvasId": 2,
+              "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+              "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+              "skinningUniforms": 3
+            }
+          ],
+          "frames": 0
+        },
+        "canvases": [
+          {
+            "qa": "2",
+            "engine": "three.js r181",
+            "width": 1774,
+            "height": 887,
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "w": 1774,
+              "h": 887
+            }
+          }
+        ],
+        "broken": []
+      }
+    },
+    {
+      "homeY": 10
+    }
+  ],
+  "mobile": {
+    "title": "Bump — L’élan technologique",
+    "url": "https://bump.test/",
+    "y": 0,
+    "h": 17500,
+    "gl": {
+      "contexts": [
+        {
+          "type": "webgl",
+          "draws": 0,
+          "canvasId": 0,
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 1.0 (OpenGL ES 2.0 Chromium)",
+          "skinningUniforms": 0
+        },
+        {
+          "type": "webgl2",
+          "draws": 0,
+          "canvasId": 1,
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "skinningUniforms": 0
+        },
+        {
+          "type": "webgl2",
+          "draws": 4582,
+          "canvasId": 2,
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "skinningUniforms": 3
+        }
+      ],
+      "frames": 0
+    },
+    "canvases": [
+      {
+        "qa": "2",
+        "engine": "three.js r181",
+        "width": 390,
+        "height": 844,
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844
+        }
+      }
+    ],
+    "broken": [],
+    "width": {
+      "inner": 390,
+      "scroll": 390
+    }
+  },
+  "errors": [],
+  "consoleErrors": [],
+  "missing": [],
+  "external": []
+}

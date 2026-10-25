@@ -1,0 +1,74 @@
+.bic {
+  --bic-ink: #20372b;
+  --bic-paper: #f1ede3;
+  --bic-rule: #c2c0b1;
+  --anatomy-hi: #20372b;
+  --anatomy-mid: #465348;
+  --anatomy-lo: #747d70;
+  --anatomy-faint: #b9b9a9;
+  --anatomy-lit: #f5f1e7;
+  --anatomy-weight: .62px;
+  color: var(--bic-ink);
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+  font-family: 'EB Garamond', Georgia, serif;
+  contain: layout style;
+  touch-action: pan-y;
+  display: grid;
+  grid-template-rows: auto minmax(0,1fr) auto;
+  height: min(460px, calc(100svh - 160px));
+}
+.bic-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; font-family: 'IM FELL English', Georgia, serif; font-size: clamp(18px, 1.8vw, 23px); line-height: 1.3; }
+.bic-count { font-family: 'EB Garamond', Georgia, serif; font-size: 12px; letter-spacing: .07em; white-space: nowrap; opacity: .68; }
+.bic-art { width: 100%; min-height: 0; }
+.bic-svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.bic-ground { fill: #20372b; opacity: .055; transform: translateY(3px); }
+.bic-part { --anatomy-paper: #dedbcf; --anatomy-top: #f5f1e6; --anatomy-shade-0: #d0cdbf; --anatomy-shade-1: #d9d6c9; --anatomy-shade-2: #e3dfd2; --anatomy-shade-3: #eae6d9; }
+.bic-material-base { --anatomy-paper: #dad9c9; --anatomy-top: #e8e6d9; --anatomy-shade-0: #bec3b1; --anatomy-shade-1: #c8ccbb; --anatomy-shade-2: #d1d4c4; --anatomy-shade-3: #dce0ce; }
+.bic-material-brass { --anatomy-paper: #b4a06a; --anatomy-top: #d3bf89; --anatomy-shade-0: #a18c56; --anatomy-shade-1: #ad9963; --anatomy-shade-2: #bca873; --anatomy-shade-3: #c9b781; --anatomy-faint: #a28e5c; }
+.bic-material-green { --anatomy-paper: #203d2c; --anatomy-top: #3e5d42; --anatomy-shade-0: #183424; --anatomy-shade-1: #24412d; --anatomy-shade-2: #304e36; --anatomy-shade-3: #3b5b3e; --anatomy-hi: #ebe8d9; --anatomy-mid: #9aa78c; --anatomy-lo: #6a8064; --anatomy-faint: #68795d; }
+.bic-material-ink { --anatomy-paper: #2f3c30; --anatomy-top: #445141; --anatomy-shade-0: #263226; --anatomy-shade-1: #2f3b2c; --anatomy-shade-2: #394635; --anatomy-shade-3: #44513e; }
+.bic .iso-fill { fill: var(--anatomy-paper); stroke: none; }
+.bic .iso-top { fill: var(--anatomy-top); stroke: none; }
+.bic .iso-shade { stroke: none; }
+.bic .iso-shade[data-shade='0'] { fill: var(--anatomy-shade-0); }
+.bic .iso-shade[data-shade='1'] { fill: var(--anatomy-shade-1); }
+.bic .iso-shade[data-shade='2'] { fill: var(--anatomy-shade-2); }
+.bic .iso-shade[data-shade='3'] { fill: var(--anatomy-shade-3); }
+.bic .iso-line { fill: none; stroke: var(--anatomy-lo); stroke-width: var(--anatomy-weight); stroke-linecap: round; stroke-linejoin: round; }
+.bic .iso-line[data-tone='hi'] { stroke: var(--anatomy-hi); }
+.bic .iso-line[data-tone='mid'] { stroke: var(--anatomy-mid); }
+.bic .iso-line[data-tone='lo'] { stroke: var(--anatomy-lo); }
+.bic .iso-line[data-tone='faint'] { stroke: var(--anatomy-faint); }
+.bic .iso-line[data-tone='lit'] { stroke: var(--anatomy-lit); }
+.bic .iso-dots { fill: var(--anatomy-mid); }
+.bic .iso-face-text { fill: var(--anatomy-hi); font-family: 'EB Garamond', Georgia, serif; letter-spacing: .045em; }
+.bic .bic-needle { stroke-width: .9px; }
+.bic .bic-contact-led { fill: #294f32; }
+.bic .bic-signal { fill: #294f32; stroke: #f1ede3; stroke-width: .35px; opacity: 0; }
+.bic-controls { min-height: 100px; display: flex; align-items: flex-start; gap: 22px; border-top: 1px solid var(--bic-rule); padding-top: 16px; }
+.bic-readout { display: flex; align-items: baseline; gap: 12px; min-width: 0; flex: 1; }
+.bic-step { font-size: 12px; letter-spacing: .08em; opacity: .7; }
+.bic-explanation { min-width: 0; max-width: 580px; }
+.bic-explanation h4 { font: 400 20px/1.15 'IM FELL English', Georgia, serif; margin: 0 0 7px; color: inherit; }
+.bic-explanation p { font: 400 17px/1.35 'EB Garamond', Georgia, serif; margin: 0; color: #465348; }
+.bic-stages { display: flex; gap: 3px; }
+.bic button { color: inherit; font-family: inherit; cursor: pointer; border-radius: 0; -webkit-tap-highlight-color: transparent; }
+.bic button:focus-visible { outline: 1px solid var(--bic-ink); outline-offset: 3px; }
+.bic-stage { border: 0; background: transparent; width: 32px; height: 44px; font-size: 13px; opacity: .45; position: relative; }
+.bic-stage::after { content: ''; position: absolute; width: 15px; height: 1px; background: currentColor; left: 50%; bottom: 8px; transform: translateX(-50%); opacity: 0; }
+.bic-stage[aria-pressed='true'] { opacity: 1; }.bic-stage[aria-pressed='true']::after { opacity: 1; }
+.bic-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+@media (max-width: 640px) {
+  .bic { grid-template-columns: minmax(0,1fr); height: min(520px, calc(100svh - 150px)); }
+  .bic-heading { font-size: 19px; gap: 8px; flex-wrap: wrap; }
+  .bic-count { display: none; }
+  .bic-svg { overflow: hidden; }
+  .bic-controls { display: grid; grid-template-columns: minmax(0,1fr); gap: 8px; padding-top: 12px; min-width: 0; min-height: 150px; }
+  .bic-readout { min-width: 0; gap: 9px; }
+  .bic-explanation h4 { font-size: 18px; margin-bottom: 6px; }
+  .bic-explanation p { font-size: 16px; line-height: 1.25; }
+  .bic-stages { grid-column: 1; grid-row: 2; justify-content: space-between; gap: 0; }
+  .bic-stage { width: 44px; height: 44px; }
+}

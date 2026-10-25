@@ -1,0 +1,44 @@
+/* File-folder cascade interaction adapted to Bump's native four-stop story.
+   Reference: https://kit.cuedesign.space/components/sticky-cascade-services-and-timeline */
+.bump-software-narration.bump-software-cascade{--cascade-tab:29px;display:grid;isolation:isolate;position:relative;overflow:clip;border:0;padding:0;margin-top:25px;min-height:225px}
+.bump-software-cascade-card{--cascade-paper:#f7ae88;--cascade-accent:#752b20;--cascade-arrival:clamp(0,calc((var(--software-progress,0) - var(--cascade-from))*4),1);grid-area:1/1;position:relative;display:flex;flex-direction:column;margin-top:calc(var(--cascade-index)*var(--cascade-tab));transform:translate3d(0,calc((1 - var(--cascade-arrival))*125%),0);opacity:clamp(0,calc(var(--cascade-arrival)*12),1);color:#302e28;filter:drop-shadow(0 -2px 4px #382d1010)}
+.bump-software-cascade-tab{position:relative;isolation:isolate;display:flex;align-items:center;gap:11px;width:max-content;min-width:210px;height:var(--cascade-tab);padding:0 19px 0 13px;border-radius:6px 0 0 0;background:var(--cascade-paper)}
+.bump-software-cascade-tab::after{content:"";position:absolute;z-index:-1;inset:0 -21px 0 auto;width:40px;transform:skewX(34deg);transform-origin:bottom left;border-top-right-radius:6px;background:inherit}
+.bump-software-cascade-tab small{font:400 9px/1.2 Arial,sans-serif;letter-spacing:.065em;text-transform:uppercase;color:#27382d;white-space:nowrap}
+.bump-software-cascade-tab>span:last-child{font:400 8px/1 Arial,sans-serif;margin-left:auto;color:#34493b}
+.bump-software-cascade-tab .bump-software-step{font-size:22px;line-height:1;color:var(--cascade-accent)}
+.bump-software-cascade-body{flex:1;position:relative;background:var(--cascade-paper);border-radius:0 7px 7px 7px;padding:14px 19px 19px}
+.bump-software-cascade-body h4{font-size:26px;margin:0 0 10px;line-height:1.14}
+.bump-software-cascade-body p{font-size:17px;line-height:1.35;margin:0;color:#2d3e34}
+.bump-software-cascade-card{--cascade-cover:clamp(0,calc((var(--software-progress,0) - var(--cascade-cover-from))*4),1)}
+.bump-software-cascade-body>:is(h4,p){opacity:clamp(0,calc(1 - var(--cascade-cover)*3),1)}
+.bump-software-cascade-card:nth-child(2){--cascade-paper:#94bcf5;--cascade-accent:#163f76}
+.bump-software-cascade-card:nth-child(3){--cascade-paper:#f0cc59;--cascade-accent:#67450c}
+.bump-software-cascade-card:nth-child(4){--cascade-paper:#8acba9;--cascade-accent:#154f39}
+@media(min-width:701px) and (max-height:760px){.bump-software-narration.bump-software-cascade{--cascade-tab:25px;min-height:204px;margin-top:16px}.bump-software-cascade-body{padding:12px 15px 15px}.bump-software-cascade-body h4{font-size:23px;margin-bottom:8px}.bump-software-cascade-body p{font-size:16px}}
+@media(max-width:700px){.bump-software-narration.bump-software-cascade{--cascade-tab:22px;min-height:187px;margin-top:12px;max-width:none}.bump-software-cascade-tab{padding-left:10px;min-width:188px;gap:9px}.bump-software-cascade-tab .bump-software-step{font-size:18px}.bump-software-cascade-tab small{font-size:8px}.bump-software-cascade-body{padding:10px 12px 12px}.bump-software-cascade-body h4{font-size:22px;line-height:1.08;margin:0 0 7px}.bump-software-cascade-body p{font-size:14px;line-height:1.24}.bump-software-story-copy>p:not(.bump-software-eyebrow){display:none}}
+@media(max-width:700px) and (max-height:750px){.bump-software-narration.bump-software-cascade{--cascade-tab:20px;min-height:171px;margin-top:8px}.bump-software-cascade-body h4{font-size:20px}.bump-software-cascade-body p{font-size:13px}.bump-software-cascade-body{padding:9px 11px 11px}}
+@media(prefers-reduced-motion:reduce){.bump-software-cascade-card{transform:none;opacity:0}.bump-software-cascade-card[data-state=past],.bump-software-cascade-card[data-state=current]{opacity:1}.bump-software-cascade-card[data-state=current] .bump-software-cascade-body>:is(h4,p){opacity:1}}
+
+/* Fit the complete four-folder story above its separate scroll hint. */
+@media(min-width:701px){
+ .bump-software-stage{box-sizing:border-box;grid-template-rows:minmax(0,1fr);column-gap:clamp(28px,4vw,72px);padding:clamp(16px,2.4svh,28px) clamp(20px,2.2vw,40px) 72px 0}
+ .bump-software-story-copy{max-width:520px;padding:0}
+ .bump-software-eyebrow{margin-bottom:clamp(12px,1.8svh,20px)}
+ .bump-software-story h3{font-size:clamp(34px,min(3.1vw,5.3svh),56px);margin-bottom:clamp(14px,2svh,22px)}
+ .bump-software-story-copy>p:not(.bump-software-eyebrow){font-size:clamp(18px,min(1.45vw,2.55svh),23px);line-height:1.35}
+ .bump-software-narration.bump-software-cascade{--cascade-tab:clamp(22px,2.8svh,28px);min-height:220px;margin-top:clamp(14px,2svh,22px)}
+ .bump-software-cascade-body{padding:12px 18px 15px}
+ .bump-software-cascade-body h4{font-size:clamp(22px,2.7svh,26px);margin-bottom:7px}
+ .bump-software-cascade-body p{font-size:clamp(15px,1.9svh,17px);line-height:1.35}
+ .bump-software-explore{margin-top:clamp(14px,2.2svh,20px);font-size:17px;line-height:1.2}
+ .bump-software-device{min-height:0}
+ .bump-software-scroll{bottom:28px}
+}
+@media(min-width:701px) and (max-height:800px){
+ .bump-software-stage{padding-top:14px;padding-bottom:60px}
+ .bump-software-story h3{font-size:clamp(32px,min(3.1vw,5svh),40px);margin-bottom:14px}
+ .bump-software-eyebrow{margin-bottom:12px}
+ .bump-software-narration.bump-software-cascade{min-height:200px}
+ .bump-software-scroll{bottom:22px}
+}

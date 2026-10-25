@@ -1,0 +1,23 @@
+{
+  "source": "bump-security-engine-04.zip",
+  "sha256": {
+    "kit/LICENSE-anatomy": "87c078ab9d90a3044f359e6b563d4e6afea7aa060897cf4f21618687b3856796",
+    "kit/iso-kit.ts": "e9fc988c61a11bfac1f097e62419915ea86b2130ab091f1b50c0e019c907e253",
+    "kit/iso.css": "ef19bac5a42ba9be42b56b2c1cf7fc7e21d332a8060765e9ca1d987b8ab23924",
+    "security-engine/SecurityEngine.tsx": "3d49e34401977a88400c5c8be1f861680cc3d2996b8d772f947378647944814a",
+    "security-engine/art.generated.ts": "d5b56aedfa527b3f70c60ddc5767f4f37ec8eae96641d3058fa630a118ff6840",
+    "security-engine/door.ts": "8d915a7c86c17b8f56ce3395c33b34e4135fb35e922955e86d52ffb773f69150",
+    "security-engine/live.ts": "0fc22650840da13e97ece374ca0409d1de882f00df8b32394e4685ecdb23e718",
+    "security-engine/model.ts": "9026a0f6496c3032e722c91a50b14384d9e30298ae6540c5546afcdbd2a0563d",
+    "shared/AnatomyFigure.tsx": "45e49948f7b79706000625778d8c5e302fc118940da4f52bddb3c9531fd872d6",
+    "shared/bump-theme.css": "bf30a94b820fab62d14a275d307059e1f7b6ac4ac0c54dd8a23e515c7c31892e",
+    "shared/controller.ts": "62b8621c173e14f474e0dd0458ebc6a3dcc45486a3863ab6dfbe6a7ae6572168",
+    "shared/runtime.ts": "6594ac2445214885bfebe6d5d309c9c11f5ae2fc970608cf1de51a181693a0be"
+  },
+  "upstreamUpdates": {
+    "shared/bump-theme.css": {
+      "source": "bump-port-07.zip",
+      "change": "Original palette preserved verbatim; supplied model 03\u201307 rules appended."
+    }
+  }
+}

@@ -1,0 +1,4358 @@
+{
+  "format": "WebP",
+  "quality": 94,
+  "resize": false,
+  "images": [
+    {
+      "original": "backgrounds/Agentic_fg_251207.png",
+      "optimized": "backgrounds/Agentic_fg_251207-optimized.webp",
+      "original_bytes": 15177675,
+      "optimized_bytes": 1307982,
+      "width": 4800,
+      "height": 2700,
+      "sha256": "fd59fea9db5e24748e2c27fe760f7ccbaade3780dcdce30f0335b259c4b6b0dc"
+    },
+    {
+      "original": "demos/03cf615f7c023dd5afc16904b8e4b619.png",
+      "optimized": "demos/03cf615f7c023dd5afc16904b8e4b619-optimized.webp",
+      "original_bytes": 1179155,
+      "optimized_bytes": 177120,
+      "width": 1300,
+      "height": 764,
+      "sha256": "09a31c0b2bf4f72fe955738cf5ef17178891d5801978e90932af13965ed87b57"
+    },
+    {
+      "original": "demos/1a10e8fb22411e7ae54bedde20ff1ec5.png",
+      "optimized": "demos/1a10e8fb22411e7ae54bedde20ff1ec5-optimized.webp",
+      "original_bytes": 420966,
+      "optimized_bytes": 103970,
+      "width": 1300,
+      "height": 924,
+      "sha256": "82a47e0baf49eb0e4b8e46ecfb11a1ded7731d76e94c58a9fa5ad744a8b07a83"
+    },
+    {
+      "original": "demos/1bf084da109bb3fe83016948c3c88b1f.png",
+      "optimized": "demos/1bf084da109bb3fe83016948c3c88b1f-optimized.webp",
+      "original_bytes": 1198817,
+      "optimized_bytes": 185028,
+      "width": 1300,
+      "height": 1022,
+      "sha256": "b8134d1709a0c3635b1581b7c8b888d5c91adb4d51e12ecd1890b82ae8e44140"
+    },
+    {
+      "original": "demos/228361bfc05b3d2c5260a542aa8c61c6.png",
+      "optimized": "demos/228361bfc05b3d2c5260a542aa8c61c6-optimized.webp",
+      "original_bytes": 843803,
+      "optimized_bytes": 120686,
+      "width": 1300,
+      "height": 1090,
+      "sha256": "d54ca9a319483db5f87cd108b914dec47af7a20c319c0b5ee8abc2ec45cda49f"
+    },
+    {
+      "original": "demos/251201-W26-ProductNetwork-Preroroll_92123bfc-8331-4763-958d-c5ddf6562248.png",
+      "optimized": "demos/251201-W26-ProductNetwork-Preroroll_92123bfc-8331-4763-958d-c5ddf6562248-optimized.webp",
+      "original_bytes": 3263933,
+      "optimized_bytes": 122238,
+      "width": 1920,
+      "height": 1080,
+      "sha256": "5d86add164352fa5fcd186c164d7dab4d3991b4cc07aa7ac290c8b70d5e7c690"
+    },
+    {
+      "original": "demos/26605fc719dba38d9d2a5da83312810f.png",
+      "optimized": "demos/26605fc719dba38d9d2a5da83312810f-optimized.webp",
+      "original_bytes": 1213142,
+      "optimized_bytes": 178226,
+      "width": 800,
+      "height": 1488,
+      "sha256": "d19e53305da4e33c82a43b6bdcd2e1078fc20be6211954a8ab0961cdff95be06"
+    },
+    {
+      "original": "demos/2ec3c3abe46eb728b0f37a9e09348011.png",
+      "optimized": "demos/2ec3c3abe46eb728b0f37a9e09348011-optimized.webp",
+      "original_bytes": 1534412,
+      "optimized_bytes": 274094,
+      "width": 1300,
+      "height": 1020,
+      "sha256": "188d2b714226fb61bef2f7b5002eeee68a611b8bd7cff769f94cd877be1564c5"
+    },
+    {
+      "original": "demos/3c99cfd21a3a19f095a10ee6ca179ee6.png",
+      "optimized": "demos/3c99cfd21a3a19f095a10ee6ca179ee6-optimized.webp",
+      "original_bytes": 1499929,
+      "optimized_bytes": 267474,
+      "width": 1300,
+      "height": 1074,
+      "sha256": "2018eccd27c8756c1fdaeb60db067dd16ce8106e3974a46c667f79509db80e46"
+    },
+    {
+      "original": "demos/3fb74ac5ef61aeaa88b78374d3b1ab19.png",
+      "optimized": "demos/3fb74ac5ef61aeaa88b78374d3b1ab19-optimized.webp",
+      "original_bytes": 880616,
+      "optimized_bytes": 171988,
+      "width": 1300,
+      "height": 752,
+      "sha256": "72d9abb330cf404639f3dd0103da309d411184856a0d984e042f807edaeabaea"
+    },
+    {
+      "original": "demos/5b3c2862e3c5dcf950d0b912867ebdeb.png",
+      "optimized": "demos/5b3c2862e3c5dcf950d0b912867ebdeb-optimized.webp",
+      "original_bytes": 1050567,
+      "optimized_bytes": 145918,
+      "width": 1300,
+      "height": 1300,
+      "sha256": "2730a86f99ddc8c2442c7eaf004180b1c72ece7b0f5eeae3c13e02e78a4dbdf1"
+    },
+    {
+      "original": "demos/6f0d7e6128d962253121b3aec1527854.png",
+      "optimized": "demos/6f0d7e6128d962253121b3aec1527854-optimized.webp",
+      "original_bytes": 423452,
+      "optimized_bytes": 104728,
+      "width": 1300,
+      "height": 924,
+      "sha256": "104d534d7fa95746a818ebb4d3725e2a81a6acc3783f9912241a14fee3a5d828"
+    },
+    {
+      "original": "demos/786dd1f1b8096bb6116dcbf0fe12893a.png",
+      "optimized": "demos/786dd1f1b8096bb6116dcbf0fe12893a-optimized.webp",
+      "original_bytes": 910120,
+      "optimized_bytes": 177302,
+      "width": 1300,
+      "height": 752,
+      "sha256": "ab44f56e98f72783927c10af1acff253e4daf46d7a8ab4091678625b50d5f396"
+    },
+    {
+      "original": "demos/92261b18c8eb7e532e60f23ee5682d04.png",
+      "optimized": "demos/92261b18c8eb7e532e60f23ee5682d04-optimized.webp",
+      "original_bytes": 1270988,
+      "optimized_bytes": 143484,
+      "width": 1300,
+      "height": 1300,
+      "sha256": "1a42b9f51aba80c68af14261e333c5897a17406124ef161fe647e4332715a4f5"
+    },
+    {
+      "original": "demos/AGENTIC_First_Frame.png",
+      "optimized": "demos/AGENTIC_First_Frame-optimized.webp",
+      "original_bytes": 1450288,
+      "optimized_bytes": 183674,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "b9958e0a6ab48665e85cb75679355de9fafb40c2d33d1691f6160bfa9870ccf2"
+    },
+    {
+      "original": "demos/Sidekick_Preroll.00_00_00_00.Still002.png",
+      "optimized": "demos/Sidekick_Preroll.00_00_00_00.Still002-optimized.webp",
+      "original_bytes": 2315252,
+      "optimized_bytes": 157850,
+      "width": 1920,
+      "height": 1080,
+      "sha256": "43c09aebeadae446bc6866a4f5e34d4c1153b63ad2e37bc02f9788cbabb414f3"
+    },
+    {
+      "original": "demos/TINKER_PREROLL_FRAME_1.1.1.png",
+      "optimized": "demos/TINKER_PREROLL_FRAME_1.1.1-optimized.webp",
+      "original_bytes": 1785359,
+      "optimized_bytes": 93906,
+      "width": 1920,
+      "height": 1080,
+      "sha256": "1b7bbdf04e7b773fe7ed7ea70003faa37991d792e18c141fcb34165c44b74ab5"
+    },
+    {
+      "original": "demos/U105_Shopify_Email_SMS_marketing.png",
+      "optimized": "demos/U105_Shopify_Email_SMS_marketing-optimized.webp",
+      "original_bytes": 2529495,
+      "optimized_bytes": 927194,
+      "width": 1686,
+      "height": 1617,
+      "sha256": "507db9b90774a08235a34ddfc0223fe272052c790987d65c8f46471673ce6d7d"
+    },
+    {
+      "original": "demos/U109_Forms_translations.png",
+      "optimized": "demos/U109_Forms_translations-optimized.webp",
+      "original_bytes": 994519,
+      "optimized_bytes": 374008,
+      "width": 1671,
+      "height": 1215,
+      "sha256": "cef5252262ffa23fe45474f5d0d1982b5d832ec99367781c1f5587b0ff58db18"
+    },
+    {
+      "original": "demos/U113_Shop_campaigns_b91abd7b-cce5-4609-8d43-051fce88982d.png",
+      "optimized": "demos/U113_Shop_campaigns_b91abd7b-cce5-4609-8d43-051fce88982d-optimized.webp",
+      "original_bytes": 2721917,
+      "optimized_bytes": 358480,
+      "width": 1686,
+      "height": 1413,
+      "sha256": "e460adbd018ccf294a42742cfc2c4e964f87231e401a4cd9ee50aaaab924adbf"
+    },
+    {
+      "original": "demos/U117_FedEx_One_Rate_Return_Labels_6-col.png",
+      "optimized": "demos/U117_FedEx_One_Rate_Return_Labels_6-col-optimized.webp",
+      "original_bytes": 882524,
+      "optimized_bytes": 450478,
+      "width": 1686,
+      "height": 1242,
+      "sha256": "bd8def74fa8a7e71231abce29c45582b5202437fb5926cd6188ba308459882e8"
+    },
+    {
+      "original": "demos/U122_Variant_default_packaging.png",
+      "optimized": "demos/U122_Variant_default_packaging-optimized.webp",
+      "original_bytes": 1397307,
+      "optimized_bytes": 733056,
+      "width": 1686,
+      "height": 1242,
+      "sha256": "5ccf516a877a75aab29b52258e4dddba8803150b10a97d3e91ca2386d01d8d1a"
+    },
+    {
+      "original": "demos/U132_Quick_sale_in_Shopify_Mobile_fd663056-4f60-4747-920f-e1b1d890383e.png",
+      "optimized": "demos/U132_Quick_sale_in_Shopify_Mobile_fd663056-4f60-4747-920f-e1b1d890383e-optimized.webp",
+      "original_bytes": 1527987,
+      "optimized_bytes": 289978,
+      "width": 1113,
+      "height": 1990,
+      "sha256": "6e62638b9b2b0b7501c13bb8a858189679d21450c0434e7017c2d02c622f0439"
+    },
+    {
+      "original": "demos/U132_Quick_sale_in_Shopify_Mobile_mobile-fallback_06e42a0e-a477-4848-b7fa-760ac275943a.png",
+      "optimized": "demos/U132_Quick_sale_in_Shopify_Mobile_mobile-fallback_06e42a0e-a477-4848-b7fa-760ac275943a-optimized.webp",
+      "original_bytes": 1043048,
+      "optimized_bytes": 185844,
+      "width": 1113,
+      "height": 1113,
+      "sha256": "3035ef1a7c9b1a2fc425e193b02a4e138830d2e19f1900f1f7a84b40edac4a19"
+    },
+    {
+      "original": "demos/U133_Apple_watch_app_redesign.png",
+      "optimized": "demos/U133_Apple_watch_app_redesign-optimized.webp",
+      "original_bytes": 1039983,
+      "optimized_bytes": 475338,
+      "width": 1113,
+      "height": 1245,
+      "sha256": "8127a1dbc41cf8dbab34b60f408819e8562d2ca0372696b366935da2d045b9e0"
+    },
+    {
+      "original": "demos/U143_Flexible_inventory_transfers.png",
+      "optimized": "demos/U143_Flexible_inventory_transfers-optimized.webp",
+      "original_bytes": 570579,
+      "optimized_bytes": 396598,
+      "width": 1113,
+      "height": 1023,
+      "sha256": "533eb6ab9dd157ae32e380e882ee267d43bda490a08fb1f52ace913a50962fc6"
+    },
+    {
+      "original": "demos/U151_Personalized_Shop_storefronts.png",
+      "optimized": "demos/U151_Personalized_Shop_storefronts-optimized.webp",
+      "original_bytes": 2994759,
+      "optimized_bytes": 388546,
+      "width": 1113,
+      "height": 2025,
+      "sha256": "667fc455ff319d5fe8370ba47a230f1083a70220a70383fe7f76614eaf844cff"
+    },
+    {
+      "original": "demos/U151_Personalized_Shop_storefronts_mobile-fallback_36563654-7887-4241-8439-deef7a4fbac5.png",
+      "optimized": "demos/U151_Personalized_Shop_storefronts_mobile-fallback_36563654-7887-4241-8439-deef7a4fbac5-optimized.webp",
+      "original_bytes": 1767583,
+      "optimized_bytes": 276762,
+      "width": 1113,
+      "height": 1113,
+      "sha256": "318323e5461271cec5fd11c56759dfdfdd36feda46d788e4112d9243c90fa6e7"
+    },
+    {
+      "original": "demos/U153_Offers_in_Shop.png",
+      "optimized": "demos/U153_Offers_in_Shop-optimized.webp",
+      "original_bytes": 1146588,
+      "optimized_bytes": 443182,
+      "width": 1113,
+      "height": 1662,
+      "sha256": "bd64389f254a991ef5915d6940db84a1ff22fa58e5d3cfde6fdb47e8f51b05ab"
+    },
+    {
+      "original": "demos/U158_Automated_transfers_for_Shopify_Balance_payouts.png",
+      "optimized": "demos/U158_Automated_transfers_for_Shopify_Balance_payouts-optimized.webp",
+      "original_bytes": 520768,
+      "optimized_bytes": 316552,
+      "width": 828,
+      "height": 981,
+      "sha256": "97776d99f1ba6191045e3aed69c026f3f6ae2bfa500c70845c0077605347b717"
+    },
+    {
+      "original": "demos/U15_Sidekick_navigates.png",
+      "optimized": "demos/U15_Sidekick_navigates-optimized.webp",
+      "original_bytes": 3745460,
+      "optimized_bytes": 709850,
+      "width": 1686,
+      "height": 1323,
+      "sha256": "7096359dd611d890cef64eb821ee889ab52fcb3e8218f38d8c9feeae4e12a49f"
+    },
+    {
+      "original": "demos/U163_Spend_controls_secondary_cardholders_for_Balance.png",
+      "optimized": "demos/U163_Spend_controls_secondary_cardholders_for_Balance-optimized.webp",
+      "original_bytes": 459511,
+      "optimized_bytes": 245390,
+      "width": 828,
+      "height": 1272,
+      "sha256": "18ab8519731365fd5eb26c565f4544cdbec1191e9f4f9418ac1a490bece854f2"
+    },
+    {
+      "original": "demos/U16_Sidekick_edits_email_sections_fe9fa19b-6380-4a68-b0be-20f0043d14a1.png",
+      "optimized": "demos/U16_Sidekick_edits_email_sections_fe9fa19b-6380-4a68-b0be-20f0043d14a1-optimized.webp",
+      "original_bytes": 926898,
+      "optimized_bytes": 118132,
+      "width": 825,
+      "height": 1425,
+      "sha256": "118ebccdc75832ad71bbe520c01eeae5648c4e97d5848856fc070a53dd589f5b"
+    },
+    {
+      "original": "demos/U16_Sidekick_edits_email_sections_mobile-fallback.png",
+      "optimized": "demos/U16_Sidekick_edits_email_sections_mobile-fallback-optimized.webp",
+      "original_bytes": 506955,
+      "optimized_bytes": 72788,
+      "width": 825,
+      "height": 825,
+      "sha256": "b1309037c0c22d966cc5b94840cf476e409acbdba24df4e497c057e0f1041a3f"
+    },
+    {
+      "original": "demos/U172_Capital_flex_account_0dc379db-95c4-4986-a8d3-13dfb10563f1.png",
+      "optimized": "demos/U172_Capital_flex_account_0dc379db-95c4-4986-a8d3-13dfb10563f1-optimized.webp",
+      "original_bytes": 2292474,
+      "optimized_bytes": 433212,
+      "width": 1566,
+      "height": 1230,
+      "sha256": "bcb5684300b4053b3e41da67cd21505f0ee8f2739bced27571ae6930a6872c2a"
+    },
+    {
+      "original": "demos/U183_Checkout_for_web_f222b0b3-24d2-4ee2-aff2-ebf8ffb4a766.png",
+      "optimized": "demos/U183_Checkout_for_web_f222b0b3-24d2-4ee2-aff2-ebf8ffb4a766-optimized.webp",
+      "original_bytes": 2343274,
+      "optimized_bytes": 376508,
+      "width": 1686,
+      "height": 1443,
+      "sha256": "0ce4b1cad3125953bc5c1f9862dd4a37f81454ed9cc34575aa9b627f56ea202d"
+    },
+    {
+      "original": "demos/U190_pos_extension_storage_dark.png",
+      "optimized": "demos/U190_pos_extension_storage_dark-optimized.webp",
+      "original_bytes": 2181512,
+      "optimized_bytes": 501026,
+      "width": 1686,
+      "height": 1701,
+      "sha256": "3ad5b33e8461e7f019bf247cb5dbafaf3e98cda733713b37e3c9c2f9074786c1"
+    },
+    {
+      "original": "demos/U191_Faster_bulk_data_imports.png",
+      "optimized": "demos/U191_Faster_bulk_data_imports-optimized.webp",
+      "original_bytes": 2369822,
+      "optimized_bytes": 473014,
+      "width": 1686,
+      "height": 1563,
+      "sha256": "b0039e93a40ed3996fb4633765b2b3635b240ec98521153facb6d627ea3f08cd"
+    },
+    {
+      "original": "demos/U1_sidekick_flow_desktop-fallback.png",
+      "optimized": "demos/U1_sidekick_flow_desktop-fallback-optimized.webp",
+      "original_bytes": 2238575,
+      "optimized_bytes": 729680,
+      "width": 2256,
+      "height": 2220,
+      "sha256": "746793752f72ec21e560dfaa7690aa64e64454643354078b36a626ed60df1c41"
+    },
+    {
+      "original": "demos/U1_sidekick_flow_mobile-fallback.png",
+      "optimized": "demos/U1_sidekick_flow_mobile-fallback-optimized.webp",
+      "original_bytes": 884212,
+      "optimized_bytes": 209284,
+      "width": 1113,
+      "height": 1881,
+      "sha256": "cbb13145b27fae0e921d0509c51f0e476b195bbdb60ca4e6bd3878d5d5e954b6"
+    },
+    {
+      "original": "demos/U200_Shop_SDK_Minis.png",
+      "optimized": "demos/U200_Shop_SDK_Minis-optimized.webp",
+      "original_bytes": 3707786,
+      "optimized_bytes": 653458,
+      "width": 1686,
+      "height": 1353,
+      "sha256": "ed53fcefe998e41a594d40185337fd5314982cf15312244358a863cbdee7133f"
+    },
+    {
+      "original": "demos/U20_Pulse_desktop-fallback.png",
+      "optimized": "demos/U20_Pulse_desktop-fallback-optimized.webp",
+      "original_bytes": 4979743,
+      "optimized_bytes": 1620286,
+      "width": 3492,
+      "height": 1977,
+      "sha256": "457c5d1ecc658bdce8945a04dfd46afb7f635c27ffb1afbeb071927e4421cfbc"
+    },
+    {
+      "original": "demos/U20_Pulse_mobile-fallback.png",
+      "optimized": "demos/U20_Pulse_mobile-fallback-optimized.webp",
+      "original_bytes": 2244160,
+      "optimized_bytes": 679260,
+      "width": 1110,
+      "height": 1704,
+      "sha256": "11112af6787cbeb9c3a9351858f9ae3fc703d0a5f297214cae3a75a1f9635fea"
+    },
+    {
+      "original": "demos/U223_upgrades_for_metafields.png",
+      "optimized": "demos/U223_upgrades_for_metafields-optimized.webp",
+      "original_bytes": 1697547,
+      "optimized_bytes": 341356,
+      "width": 1686,
+      "height": 1191,
+      "sha256": "0041dbd5801c527a4fbb06507f12e28ecea9e9de8c244a50e0506ab27fa75a24"
+    },
+    {
+      "original": "demos/U226__Sidekick_app_discovery_6b57593c-579c-4a91-84af-7173ff60da83.png",
+      "optimized": "demos/U226__Sidekick_app_discovery_6b57593c-579c-4a91-84af-7173ff60da83-optimized.webp",
+      "original_bytes": 2280226,
+      "optimized_bytes": 409992,
+      "width": 1686,
+      "height": 1284,
+      "sha256": "7c4b4e860f57da039014090d006d2bb8d6db90f58d56056db247a490555d4576"
+    },
+    {
+      "original": "demos/U229_Admin_Intents_API.png",
+      "optimized": "demos/U229_Admin_Intents_API-optimized.webp",
+      "original_bytes": 1649264,
+      "optimized_bytes": 290578,
+      "width": 1686,
+      "height": 1269,
+      "sha256": "ddf66ef88ed635cb933dcc4a31e0530e4de0b67cc142488b31849c2c7f0ec5c8"
+    },
+    {
+      "original": "demos/U230_Wordpress.png",
+      "optimized": "demos/U230_Wordpress-optimized.webp",
+      "original_bytes": 345668,
+      "optimized_bytes": 110196,
+      "width": 825,
+      "height": 957,
+      "sha256": "2411e94bf6ef7761246ffe478f07afea458141bd02149fb40c2b84f779468bc8"
+    },
+    {
+      "original": "demos/U253_-_App_intents_for_Sidekick.png",
+      "optimized": "demos/U253_-_App_intents_for_Sidekick-optimized.webp",
+      "original_bytes": 2116121,
+      "optimized_bytes": 407724,
+      "width": 1686,
+      "height": 1284,
+      "sha256": "141696a80472b545808d63b57ccc63fe278980469f8215ee8846248e785358ca"
+    },
+    {
+      "original": "demos/U254_Scanner_support.png",
+      "optimized": "demos/U254_Scanner_support-optimized.webp",
+      "original_bytes": 273324,
+      "optimized_bytes": 82984,
+      "width": 1686,
+      "height": 1317,
+      "sha256": "cd8662a59c5e25a820f34c383fb4db7511bb1964998cfffebc77b50e487b779c"
+    },
+    {
+      "original": "demos/U258_SimGym_desktop-fallback.png",
+      "optimized": "demos/U258_SimGym_desktop-fallback-optimized.webp",
+      "original_bytes": 1286874,
+      "optimized_bytes": 452860,
+      "width": 2256,
+      "height": 1800,
+      "sha256": "b5c56e0d4b4ddd1c4b22a99292f9691d7b48ff8a65dfef7cdedbb016a31ab40f"
+    },
+    {
+      "original": "demos/U258_SimGym_mobile-fallback.png",
+      "optimized": "demos/U258_SimGym_mobile-fallback-optimized.webp",
+      "original_bytes": 700288,
+      "optimized_bytes": 263844,
+      "width": 1098,
+      "height": 1470,
+      "sha256": "227cfd272faf7198d548478a15ff41d8ba0f4e212225e3fffc3362b617639194"
+    },
+    {
+      "original": "demos/U267_Tangle.png",
+      "optimized": "demos/U267_Tangle-optimized.webp",
+      "original_bytes": 2094147,
+      "optimized_bytes": 418664,
+      "width": 1686,
+      "height": 1437,
+      "sha256": "b6f7eafd9e6210ebc02ab3236443dc6265beddd576f0a42e9deab5fdc80acadc"
+    },
+    {
+      "original": "demos/U270_DevDash_desktop-mobile-fallback.png",
+      "optimized": "demos/U270_DevDash_desktop-mobile-fallback-optimized.webp",
+      "original_bytes": 1186001,
+      "optimized_bytes": 500954,
+      "width": 2256,
+      "height": 1800,
+      "sha256": "470efbd4a1b88e080f2ec0ff88b2d2af693f5b6642085f9db6ee55a54b5b2052"
+    },
+    {
+      "original": "demos/U271_Checkout_MCP.png",
+      "optimized": "demos/U271_Checkout_MCP-optimized.webp",
+      "original_bytes": 1495897,
+      "optimized_bytes": 265256,
+      "width": 1124,
+      "height": 962,
+      "sha256": "92a20a6d316d0d42635b1ce3a2b979fd1747335c92afb09d15d96dc370653058"
+    },
+    {
+      "original": "demos/U2_Sidekick_help_on_segmentation_filters_4b05de5d-4b12-419d-8d71-9e9b1d6907a3.png",
+      "optimized": "demos/U2_Sidekick_help_on_segmentation_filters_4b05de5d-4b12-419d-8d71-9e9b1d6907a3-optimized.webp",
+      "original_bytes": 2343806,
+      "optimized_bytes": 312644,
+      "width": 1686,
+      "height": 1392,
+      "sha256": "44aaf4b1b8858022d879fb5726839bae9b33176e889e2921b008d2f1727b77ec"
+    },
+    {
+      "original": "demos/U37_Integrated_theme_editor.png",
+      "optimized": "demos/U37_Integrated_theme_editor-optimized.webp",
+      "original_bytes": 1089337,
+      "optimized_bytes": 604450,
+      "width": 1686,
+      "height": 1254,
+      "sha256": "646d456323fd8883400d404cb7c6fa9ea73740cf833f5fdd83aca97ee9b4fe22"
+    },
+    {
+      "original": "demos/U3_Sidekick_Theme_edit_desktop-fallback.png",
+      "optimized": "demos/U3_Sidekick_Theme_edit_desktop-fallback-optimized.webp",
+      "original_bytes": 5910279,
+      "optimized_bytes": 1573144,
+      "width": 2799,
+      "height": 2414,
+      "sha256": "39ca0480e157879c1cc170312a4e2d91800c8a252e427574623d0c8976c1c32d"
+    },
+    {
+      "original": "demos/U3_Sidekick_Theme_edit_mobile-fallback.png",
+      "optimized": "demos/U3_Sidekick_Theme_edit_mobile-fallback-optimized.webp",
+      "original_bytes": 1430550,
+      "optimized_bytes": 282728,
+      "width": 1113,
+      "height": 1272,
+      "sha256": "c50575c94639ff9b292a16c3a286dbd666001de878341fbdf66de43deb02bb86"
+    },
+    {
+      "original": "demos/U47_Theme_index_on_mobile.png",
+      "optimized": "demos/U47_Theme_index_on_mobile-optimized.webp",
+      "original_bytes": 684500,
+      "optimized_bytes": 331004,
+      "width": 825,
+      "height": 1428,
+      "sha256": "08cccb1507c15119eec7d5dc439564506a0295c48b168939fd9f2d3151882f66"
+    },
+    {
+      "original": "demos/U49_Sell_subscriptions_POS.png",
+      "optimized": "demos/U49_Sell_subscriptions_POS-optimized.webp",
+      "original_bytes": 1237632,
+      "optimized_bytes": 538954,
+      "width": 1686,
+      "height": 1299,
+      "sha256": "96e637603cb1b31afd4d4a19a6c5317665bcb1dcf442c5babbe848994f3d0d91"
+    },
+    {
+      "original": "demos/U50_Unified_Editor.png",
+      "optimized": "demos/U50_Unified_Editor-optimized.webp",
+      "original_bytes": 1272816,
+      "optimized_bytes": 212522,
+      "width": 1686,
+      "height": 1200,
+      "sha256": "be977b50f6826d25ddf6f779daa9c674be4c1169eb5d3ae8a7dc76c653363d0c"
+    },
+    {
+      "original": "demos/U53_Quick_count_POS_extension.png",
+      "optimized": "demos/U53_Quick_count_POS_extension-optimized.webp",
+      "original_bytes": 626039,
+      "optimized_bytes": 384730,
+      "width": 825,
+      "height": 1305,
+      "sha256": "e6cca9ffe8716612edb247e2df36d476ed77a4cc80c1f1fe9454a9f5fdd2ccc0"
+    },
+    {
+      "original": "demos/U5_SIdekick_voice_on_mobile.png",
+      "optimized": "demos/U5_SIdekick_voice_on_mobile-optimized.webp",
+      "original_bytes": 269176,
+      "optimized_bytes": 48502,
+      "width": 562,
+      "height": 360,
+      "sha256": "c8206204cdab1594d19d9aa2e8670dfd97a6d303a1dfee7dc06de4bc1277ba7c"
+    },
+    {
+      "original": "demos/U62_Uber_Direct_POS_local.png",
+      "optimized": "demos/U62_Uber_Direct_POS_local-optimized.webp",
+      "original_bytes": 1464559,
+      "optimized_bytes": 214818,
+      "width": 825,
+      "height": 1305,
+      "sha256": "48741534888cb18f818c83d85f9fe7d76cd3ed0309d6c82f48e1fb7f8eaf4084"
+    },
+    {
+      "original": "demos/U6_Sidekick_file_editor_mobile-fallback.png",
+      "optimized": "demos/U6_Sidekick_file_editor_mobile-fallback-optimized.webp",
+      "original_bytes": 1365843,
+      "optimized_bytes": 199366,
+      "width": 1113,
+      "height": 1113,
+      "sha256": "ae7343ba9a8b32e7e506be1d19b8e57d7a0d303006c964978f1ac2fc60228e16"
+    },
+    {
+      "original": "demos/U6_Sidekick_file_editor_on_mobile_2e3a4bb2-d153-4fb3-a767-1d81e9d165f7.png",
+      "optimized": "demos/U6_Sidekick_file_editor_on_mobile_2e3a4bb2-d153-4fb3-a767-1d81e9d165f7-optimized.webp",
+      "original_bytes": 1297850,
+      "optimized_bytes": 207770,
+      "width": 825,
+      "height": 1428,
+      "sha256": "b9f9a1b644d6e2c1e3244cc673ebc5eff878e1acd31b7a94c85878f994ae958f"
+    },
+    {
+      "original": "demos/U71_Shopify_Collective_globally_available.png",
+      "optimized": "demos/U71_Shopify_Collective_globally_available-optimized.webp",
+      "original_bytes": 2576452,
+      "optimized_bytes": 387660,
+      "width": 1686,
+      "height": 1281,
+      "sha256": "c7d4b47ffc7b7d332bada101d9d0011484a8f8b6ee369d1f36efa19923d70f5a"
+    },
+    {
+      "original": "demos/U75_b2b_ACH_payments.png",
+      "optimized": "demos/U75_b2b_ACH_payments-optimized.webp",
+      "original_bytes": 763349,
+      "optimized_bytes": 385372,
+      "width": 1686,
+      "height": 1281,
+      "sha256": "ab9d12251ebff5e8c77c47cef878053c77d0fefeba37f7b82edeb43b2ecb8b4a"
+    },
+    {
+      "original": "demos/U79_Send_payment_requests_per_fulfillment.png",
+      "optimized": "demos/U79_Send_payment_requests_per_fulfillment-optimized.webp",
+      "original_bytes": 2159454,
+      "optimized_bytes": 806376,
+      "width": 1686,
+      "height": 1152,
+      "sha256": "52f6a2408ead8281fa6ed28ed2034a2354ae15f17c0ac44d4f788b66ca538a12"
+    },
+    {
+      "original": "demos/U7_Sidekick_in_Analytics_query_editor_242da8b7-e095-4998-9cc4-6d48fe00fa63.png",
+      "optimized": "demos/U7_Sidekick_in_Analytics_query_editor_242da8b7-e095-4998-9cc4-6d48fe00fa63-optimized.webp",
+      "original_bytes": 3008153,
+      "optimized_bytes": 489306,
+      "width": 1686,
+      "height": 1392,
+      "sha256": "5530f56c22677a202113992618d5a7bb89025048d328cea877f2ada118e0d6d3"
+    },
+    {
+      "original": "demos/U82_Collective_Retailer_directory..png",
+      "optimized": "demos/U82_Collective_Retailer_directory.-optimized.webp",
+      "original_bytes": 2020319,
+      "optimized_bytes": 374186,
+      "width": 1686,
+      "height": 975,
+      "sha256": "e1c7f18ed4116fc2ad945cc70c75bd98e8fccbf61a0fb1fd0306ad9ba8152226"
+    },
+    {
+      "original": "demos/U94_Markets_in_the_Checkout.png",
+      "optimized": "demos/U94_Markets_in_the_Checkout-optimized.webp",
+      "original_bytes": 936422,
+      "optimized_bytes": 487538,
+      "width": 1686,
+      "height": 990,
+      "sha256": "c6824a35c1dee1d1fb1c277afdb7848ab9b54020feb65f51d0840acbb903479a"
+    },
+    {
+      "original": "demos/U95_Shop_Pay_button.png",
+      "optimized": "demos/U95_Shop_Pay_button-optimized.webp",
+      "original_bytes": 2512123,
+      "optimized_bytes": 346792,
+      "width": 1686,
+      "height": 990,
+      "sha256": "736bbc8727d383e0281a18b6b81b27feec9caf3aac8965ed110ee78c1d59e697"
+    },
+    {
+      "original": "demos/U97_Rollouts_desktop-fallback_de.png",
+      "optimized": "demos/U97_Rollouts_desktop-fallback_de-optimized.webp",
+      "original_bytes": 6256331,
+      "optimized_bytes": 1834360,
+      "width": 3402,
+      "height": 1935,
+      "sha256": "2ef4b3569b6496153db3191056e04d9691e00ebdefca00eee72f22ff835e1770"
+    },
+    {
+      "original": "demos/U97_Rollouts_mobile-fallback_de.png",
+      "optimized": "demos/U97_Rollouts_mobile-fallback_de-optimized.webp",
+      "original_bytes": 2848855,
+      "optimized_bytes": 790764,
+      "width": 2196,
+      "height": 1656,
+      "sha256": "3eed45d2152dc910ef513045c44f681e90eb652abfa205534ba914a74f4e2943"
+    },
+    {
+      "original": "demos/U98_Search_and_filter_segmentation_templates.png",
+      "optimized": "demos/U98_Search_and_filter_segmentation_templates-optimized.webp",
+      "original_bytes": 627084,
+      "optimized_bytes": 506246,
+      "width": 1686,
+      "height": 987,
+      "sha256": "12ec6b1d77c4075768692fe8f2fc6e1f5dfb4e0b1778795e651ac584a2c20afe"
+    },
+    {
+      "original": "demos/a230ba237d7a6d736a1ce46b084a41c6.png",
+      "optimized": "demos/a230ba237d7a6d736a1ce46b084a41c6-optimized.webp",
+      "original_bytes": 1458301,
+      "optimized_bytes": 261006,
+      "width": 1300,
+      "height": 1044,
+      "sha256": "a97bd454680afece34851db28e058763f311cbed0c91fe06432ab8a59e5acfd7"
+    },
+    {
+      "original": "demos/c9c913c72ba45ce34cb2521bcaaefd07.png",
+      "optimized": "demos/c9c913c72ba45ce34cb2521bcaaefd07-optimized.webp",
+      "original_bytes": 1459791,
+      "optimized_bytes": 260828,
+      "width": 1300,
+      "height": 1044,
+      "sha256": "4e574811fdbe49d8567a3841a3597d6d5611c9c82953f5b964ffedf14d58e525"
+    },
+    {
+      "original": "demos/default_abdd996f-1b4e-44a5-bfcc-8addca857894.png",
+      "optimized": "demos/default_abdd996f-1b4e-44a5-bfcc-8addca857894-optimized.webp",
+      "original_bytes": 106272,
+      "optimized_bytes": 70638,
+      "width": 1504,
+      "height": 1480,
+      "sha256": "2834dc95ba218ee38fe971fa7d9e9ecd166d0031945de447b2bf154e44833c89"
+    },
+    {
+      "original": "demos/default_be7aaa86-31c5-433d-aae2-5b361372ccc6.png",
+      "optimized": "demos/default_be7aaa86-31c5-433d-aae2-5b361372ccc6-optimized.webp",
+      "original_bytes": 838336,
+      "optimized_bytes": 130648,
+      "width": 1124,
+      "height": 720,
+      "sha256": "ea8fd12b5827a8d4f7a2504f856d10ca109c59f67565a86b3f8da13720e4f83b"
+    },
+    {
+      "original": "demos/default_ee658e76-0d9b-46c9-b479-5baab424fb97.png",
+      "optimized": "demos/default_ee658e76-0d9b-46c9-b479-5baab424fb97-optimized.webp",
+      "original_bytes": 923924,
+      "optimized_bytes": 188572,
+      "width": 1866,
+      "height": 1640,
+      "sha256": "15cc43cabe4a3360e5761f10925a9e95fa96c7c05203d1cabc60b511e06f0e27"
+    },
+    {
+      "original": "demos/ea4f03d63cda2a71afb54dfb50894df8.png",
+      "optimized": "demos/ea4f03d63cda2a71afb54dfb50894df8-optimized.webp",
+      "original_bytes": 816064,
+      "optimized_bytes": 175620,
+      "width": 1300,
+      "height": 1074,
+      "sha256": "1cffce46588279f004bafe1f990c23bd1a09125d267ec9bd8ce1e7bb85e78adf"
+    },
+    {
+      "original": "demos/en_3a493a1f-2575-43b6-9e6e-22033556b139.png",
+      "optimized": "demos/en_3a493a1f-2575-43b6-9e6e-22033556b139-optimized.webp",
+      "original_bytes": 436681,
+      "optimized_bytes": 99856,
+      "width": 550,
+      "height": 952,
+      "sha256": "056527dd6e1d266f190fc4adf67e977b9b4eb2c85b18cd83622e23d748ac136f"
+    },
+    {
+      "original": "demos/en_4608c98d-d4f7-4d35-8b94-e83258e20e54.png",
+      "optimized": "demos/en_4608c98d-d4f7-4d35-8b94-e83258e20e54-optimized.webp",
+      "original_bytes": 1123640,
+      "optimized_bytes": 217164,
+      "width": 1124,
+      "height": 928,
+      "sha256": "2128150052e1b1bde8d3671619fee070c83142cea48677f463ef1c10b06e64c6"
+    },
+    {
+      "original": "demos/en_a158fbbf-7e97-4014-9008-9eb7a719f84a.png",
+      "optimized": "demos/en_a158fbbf-7e97-4014-9008-9eb7a719f84a-optimized.webp",
+      "original_bytes": 1248966,
+      "optimized_bytes": 252736,
+      "width": 1124,
+      "height": 882,
+      "sha256": "bef0446b71d5a55cd4b596f65794d2c3878b8dcd52b3d4099aac179bd5893503"
+    },
+    {
+      "original": "demos/f7d363fc85e5562586d25e7b50669ae5.png",
+      "optimized": "demos/f7d363fc85e5562586d25e7b50669ae5-optimized.webp",
+      "original_bytes": 1045816,
+      "optimized_bytes": 159716,
+      "width": 1300,
+      "height": 832,
+      "sha256": "6f602c3658a0dd02cf063ccfe5ab473fefdb6ab037ff52876462e0f01087756e"
+    },
+    {
+      "original": "demos/u6poster_mobile.png",
+      "optimized": "demos/u6poster_mobile-optimized.webp",
+      "original_bytes": 274140,
+      "optimized_bytes": 45478,
+      "width": 550,
+      "height": 550,
+      "sha256": "d6604a1e3d3ae4e90b5e06307d4785fddf04dca7f98b1b368865b72b83a3a6b2"
+    },
+    {
+      "original": "edition-logos/spring2026.png",
+      "optimized": "edition-logos/spring2026-optimized.webp",
+      "original_bytes": 12365,
+      "optimized_bytes": 11318,
+      "width": 180,
+      "height": 180,
+      "sha256": "49bb3ceb40414a9d60ba6e3cd4335e6bda4c5f55cd9d009cc15ae8256332b347"
+    },
+    {
+      "original": "edition-logos/winter2026.png",
+      "optimized": "edition-logos/winter2026-optimized.webp",
+      "original_bytes": 61464,
+      "optimized_bytes": 9980,
+      "width": 256,
+      "height": 256,
+      "sha256": "8256e49907160315013742d9e06a6ef1cb6831ff880ef2eda385b2c6494e67fd"
+    },
+    {
+      "original": "rive-dependencies/rive_rollouts_5-desktop.png",
+      "optimized": "rive-dependencies/rive_rollouts_5-desktop-optimized.webp",
+      "original_bytes": 27504,
+      "optimized_bytes": 7162,
+      "width": 198,
+      "height": 295,
+      "sha256": "010d4b699b696dbc65524c680bfbc09a57dafa7e820a1f2c0109396305a946fe"
+    },
+    {
+      "original": "rive-dependencies/rive_rollouts_5-mobile.png",
+      "optimized": "rive-dependencies/rive_rollouts_5-mobile-optimized.webp",
+      "original_bytes": 11368,
+      "optimized_bytes": 2974,
+      "width": 99,
+      "height": 148,
+      "sha256": "03d3ea36b2f4bc911e9e5d791979ea66b81e469c8a08af9b135a15895b3d0e70"
+    },
+    {
+      "original": "rive-dependencies/rive_u151_22-desktop.png",
+      "optimized": "rive-dependencies/rive_u151_22-desktop-optimized.webp",
+      "original_bytes": 45677,
+      "optimized_bytes": 7696,
+      "width": 160,
+      "height": 160,
+      "sha256": "5e07f7315304ba8e695e3c452879dd096bc3d30db06a3fb28a260a19912c5195"
+    },
+    {
+      "original": "rive-dependencies/rive_u151_22-mobile.png",
+      "optimized": "rive-dependencies/rive_u151_22-mobile-optimized.webp",
+      "original_bytes": 45677,
+      "optimized_bytes": 7696,
+      "width": 160,
+      "height": 160,
+      "sha256": "5e07f7315304ba8e695e3c452879dd096bc3d30db06a3fb28a260a19912c5195"
+    },
+    {
+      "original": "rive-dependencies/rive_u151_23-desktop.png",
+      "optimized": "rive-dependencies/rive_u151_23-desktop-optimized.webp",
+      "original_bytes": 39239,
+      "optimized_bytes": 6240,
+      "width": 160,
+      "height": 160,
+      "sha256": "50a951252b7e1528f636c909a5429322e26de6d5f2adf39dd4ff8de24b99aa4c"
+    },
+    {
+      "original": "rive-dependencies/rive_u151_23-mobile.png",
+      "optimized": "rive-dependencies/rive_u151_23-mobile-optimized.webp",
+      "original_bytes": 39239,
+      "optimized_bytes": 6240,
+      "width": 160,
+      "height": 160,
+      "sha256": "50a951252b7e1528f636c909a5429322e26de6d5f2adf39dd4ff8de24b99aa4c"
+    },
+    {
+      "original": "rive-dependencies/rive_u151_24-desktop.png",
+      "optimized": "rive-dependencies/rive_u151_24-desktop-optimized.webp",
+      "original_bytes": 49157,
+      "optimized_bytes": 9216,
+      "width": 160,
+      "height": 160,
+      "sha256": "bcab0d31b9ec7653fdf3be908cb65ce840f5ff49038acee20b8ebbed8b32be97"
+    },
+    {
+      "original": "rive-dependencies/rive_u151_24-mobile.png",
+      "optimized": "rive-dependencies/rive_u151_24-mobile-optimized.webp",
+      "original_bytes": 49157,
+      "optimized_bytes": 9216,
+      "width": 160,
+      "height": 160,
+      "sha256": "bcab0d31b9ec7653fdf3be908cb65ce840f5ff49038acee20b8ebbed8b32be97"
+    },
+    {
+      "original": "rive-dependencies/rive_u151_25-desktop.png",
+      "optimized": "rive-dependencies/rive_u151_25-desktop-optimized.webp",
+      "original_bytes": 47593,
+      "optimized_bytes": 8620,
+      "width": 160,
+      "height": 160,
+      "sha256": "f08d2ee7e27d1f4f43a7f62fe31cba08850bbe1d401b0d362f5f2c50fea51a45"
+    },
+    {
+      "original": "rive-dependencies/rive_u151_25-mobile.png",
+      "optimized": "rive-dependencies/rive_u151_25-mobile-optimized.webp",
+      "original_bytes": 47593,
+      "optimized_bytes": 8620,
+      "width": 160,
+      "height": 160,
+      "sha256": "f08d2ee7e27d1f4f43a7f62fe31cba08850bbe1d401b0d362f5f2c50fea51a45"
+    }
+  ],
+  "removed_unused_assets": [
+    {
+      "path": "hero-motion/EW26_Hero_251205_compressed-optimized.glb",
+      "bytes": 1015816
+    },
+    {
+      "path": "demos/U20_Pulse_desktop-fallback-optimized.webp",
+      "bytes": 1620286
+    },
+    {
+      "path": "demos/U1_sidekick_flow_desktop-fallback-optimized.webp",
+      "bytes": 729680
+    },
+    {
+      "path": "demos/5aa1f17e22044052af94fde4bb1d052c.thumbnail.0000000000.jpg",
+      "bytes": 68962
+    },
+    {
+      "path": "demos/6f0d7e6128d962253121b3aec1527854-optimized.webp",
+      "bytes": 104728
+    },
+    {
+      "path": "demos/1a10e8fb22411e7ae54bedde20ff1ec5-optimized.webp",
+      "bytes": 103970
+    },
+    {
+      "path": "demos/228361bfc05b3d2c5260a542aa8c61c6-optimized.webp",
+      "bytes": 120686
+    },
+    {
+      "path": "demos/2ace8284aebc4d22901886b2323bb20d.thumbnail.0000000000.jpg",
+      "bytes": 102166
+    },
+    {
+      "path": "demos/03cf615f7c023dd5afc16904b8e4b619-optimized.webp",
+      "bytes": 177120
+    },
+    {
+      "path": "demos/26605fc719dba38d9d2a5da83312810f-optimized.webp",
+      "bytes": 178226
+    },
+    {
+      "path": "demos/92261b18c8eb7e532e60f23ee5682d04-optimized.webp",
+      "bytes": 143484
+    },
+    {
+      "path": "demos/786dd1f1b8096bb6116dcbf0fe12893a-optimized.webp",
+      "bytes": 177302
+    },
+    {
+      "path": "demos/3fb74ac5ef61aeaa88b78374d3b1ab19-optimized.webp",
+      "bytes": 171988
+    },
+    {
+      "path": "demos/U172_Capital_flex_account_0dc379db-95c4-4986-a8d3-13dfb10563f1-optimized.webp",
+      "bytes": 433212
+    },
+    {
+      "path": "demos/1bf084da109bb3fe83016948c3c88b1f-optimized.webp",
+      "bytes": 185028
+    },
+    {
+      "path": "video/620a0d8735da4d97b040b1cd98693898.SD-480p-0.9Mbps-64843815.mp4",
+      "bytes": 845194
+    },
+    {
+      "path": "textures/mud_normal.webp",
+      "bytes": 100285
+    },
+    {
+      "path": "video/agentic-storefronts-video.mp4",
+      "bytes": 1783925
+    },
+    {
+      "path": "video/shopify-product-network.mp4",
+      "bytes": 2535184
+    },
+    {
+      "path": "demos/620a0d8735da4d97b040b1cd98693898.thumbnail.0000000000.jpg",
+      "bytes": 117430
+    },
+    {
+      "path": "demos/U7_Sidekick_in_Analytics_query_editor_242da8b7-e095-4998-9cc4-6d48fe00fa63-optimized.webp",
+      "bytes": 489306
+    },
+    {
+      "path": "demos/3c99cfd21a3a19f095a10ee6ca179ee6-optimized.webp",
+      "bytes": 267474
+    },
+    {
+      "path": "demos/U2_Sidekick_help_on_segmentation_filters_4b05de5d-4b12-419d-8d71-9e9b1d6907a3-optimized.webp",
+      "bytes": 312644
+    },
+    {
+      "path": "demos/ea4f03d63cda2a71afb54dfb50894df8-optimized.webp",
+      "bytes": 175620
+    },
+    {
+      "path": "demos/U3_Sidekick_Theme_edit_desktop-fallback-optimized.webp",
+      "bytes": 1573144
+    },
+    {
+      "path": "demos/U6_Sidekick_file_editor_on_mobile_2e3a4bb2-d153-4fb3-a767-1d81e9d165f7-optimized.webp",
+      "bytes": 207770
+    },
+    {
+      "path": "demos/U6_Sidekick_file_editor_mobile-fallback-optimized.webp",
+      "bytes": 199366
+    },
+    {
+      "path": "demos/5b3c2862e3c5dcf950d0b912867ebdeb-optimized.webp",
+      "bytes": 145918
+    },
+    {
+      "path": "demos/U16_Sidekick_edits_email_sections_fe9fa19b-6380-4a68-b0be-20f0043d14a1-optimized.webp",
+      "bytes": 118132
+    },
+    {
+      "path": "demos/U15_Sidekick_navigates-optimized.webp",
+      "bytes": 709850
+    },
+    {
+      "path": "demos/2ec3c3abe46eb728b0f37a9e09348011-optimized.webp",
+      "bytes": 274094
+    },
+    {
+      "path": "demos/U5_SIdekick_voice_on_mobile-optimized.webp",
+      "bytes": 48502
+    },
+    {
+      "path": "demos/f7d363fc85e5562586d25e7b50669ae5-optimized.webp",
+      "bytes": 159716
+    },
+    {
+      "path": "demos/0dfe781a187d48cfa581ed2b1ad6a5ed.thumbnail.0000000000.jpg",
+      "bytes": 59804
+    },
+    {
+      "path": "demos/f880db5d8462441482ecbc2437cacf5d.thumbnail.0000000000.jpg",
+      "bytes": 145883
+    },
+    {
+      "path": "demos/c9c913c72ba45ce34cb2521bcaaefd07-optimized.webp",
+      "bytes": 260828
+    },
+    {
+      "path": "demos/a230ba237d7a6d736a1ce46b084a41c6-optimized.webp",
+      "bytes": 261006
+    }
+  ],
+  "hosting_webp_pass": {
+    "quality": 85,
+    "resize": false,
+    "images": [
+      {
+        "path": "backgrounds/Agentic_fg_251207-optimized.webp",
+        "before": 1307982,
+        "after": 470092,
+        "width": 4800,
+        "height": 2700,
+        "sha256": "92b42508177e81b9359347feb5704a87525b3b19443d5d05edbe93b87c1742d6"
+      },
+      {
+        "path": "backgrounds/compressed-Fallback-Retail-Frame1-Desktop.webp",
+        "before": 476381,
+        "after": 288964,
+        "width": 2880,
+        "height": 1780,
+        "sha256": "e87e2ed4ad16ff1c448965e2e4d13a0ba0b504e7d138af8f95946e1358005454"
+      },
+      {
+        "path": "demos/251201-W26-ProductNetwork-Preroroll_92123bfc-8331-4763-958d-c5ddf6562248-optimized.webp",
+        "before": 122238,
+        "after": 61576,
+        "width": 1920,
+        "height": 1080,
+        "sha256": "1764fcaa5c5c85ae5848f503156b0719f03114dfc0549f5cc9323ac216997ebc"
+      },
+      {
+        "path": "demos/AGENTIC_First_Frame-optimized.webp",
+        "before": 183674,
+        "after": 104734,
+        "width": 3840,
+        "height": 2160,
+        "sha256": "fe74a69222801b535c00219e0a48d3439d63beef1d264e23361d466d1c409f44"
+      },
+      {
+        "path": "demos/Sidekick_Preroll.00_00_00_00.Still002-optimized.webp",
+        "before": 157850,
+        "after": 67220,
+        "width": 1920,
+        "height": 1080,
+        "sha256": "4022425220cd44df140d13ffb2512503aaab96fbd3346e982c794548ab07c59c"
+      },
+      {
+        "path": "demos/TINKER_PREROLL_FRAME_1.1.1-optimized.webp",
+        "before": 93906,
+        "after": 34054,
+        "width": 1920,
+        "height": 1080,
+        "sha256": "5f7533ce1047d436b2d2aaa04b16f84445e0c19f4f9fdded48abdcf07fe12930"
+      },
+      {
+        "path": "demos/U105_Shopify_Email_SMS_marketing-optimized.webp",
+        "before": 927194,
+        "after": 662552,
+        "width": 1686,
+        "height": 1617,
+        "sha256": "de1dac75908a2d5c4a47d4a12632c65a7512866490094a3a251ca5bcb9d190c2"
+      },
+      {
+        "path": "demos/U109_Forms_translations-optimized.webp",
+        "before": 374008,
+        "after": 253586,
+        "width": 1671,
+        "height": 1215,
+        "sha256": "6957353002513f9108923f7d476ac8b702886f584b6e8c0f444543fe8f12a5c2"
+      },
+      {
+        "path": "demos/U113_Shop_campaigns_b91abd7b-cce5-4609-8d43-051fce88982d-optimized.webp",
+        "before": 358480,
+        "after": 169708,
+        "width": 1686,
+        "height": 1413,
+        "sha256": "1ace550d53b90c0bf77debe9bad0262e2eb164bce02912b4b33343a201734cea"
+      },
+      {
+        "path": "demos/U117_FedEx_One_Rate_Return_Labels_6-col-optimized.webp",
+        "before": 450478,
+        "after": 344262,
+        "width": 1686,
+        "height": 1242,
+        "sha256": "8b5a1ddb1aa8d9791d89d322541c2bd71906371b36edb58cb0a979e9e40520ac"
+      },
+      {
+        "path": "demos/U122_Variant_default_packaging-optimized.webp",
+        "before": 733056,
+        "after": 580088,
+        "width": 1686,
+        "height": 1242,
+        "sha256": "9c89654306125c519a46e501410376b0f0f54f7d0e5c5ad18f7c940bc4fa62e4"
+      },
+      {
+        "path": "demos/U132_Quick_sale_in_Shopify_Mobile_fd663056-4f60-4747-920f-e1b1d890383e-optimized.webp",
+        "before": 289978,
+        "after": 131946,
+        "width": 1113,
+        "height": 1990,
+        "sha256": "d52584c74c38763ce74d21a7e754a0a5107c6c396b574c879f15d2242319df98"
+      },
+      {
+        "path": "demos/U132_Quick_sale_in_Shopify_Mobile_mobile-fallback_06e42a0e-a477-4848-b7fa-760ac275943a-optimized.webp",
+        "before": 185844,
+        "after": 88312,
+        "width": 1113,
+        "height": 1113,
+        "sha256": "4aaaca0154afb83981d5acd51c0905a413dbed4ad5747b9da65430efc2a79eae"
+      },
+      {
+        "path": "demos/U133_Apple_watch_app_redesign-optimized.webp",
+        "before": 475338,
+        "after": 360814,
+        "width": 1113,
+        "height": 1245,
+        "sha256": "029369d82bc33a9b79722d9006187209160db61f32f7f12c76ce6acfc957a440"
+      },
+      {
+        "path": "demos/U143_Flexible_inventory_transfers-optimized.webp",
+        "before": 396598,
+        "after": 305946,
+        "width": 1113,
+        "height": 1023,
+        "sha256": "74930fcb38c7630e42cbdf8ccb49b8514b51a89d5d21816e3fffd82d541ecd48"
+      },
+      {
+        "path": "demos/U151_Personalized_Shop_storefronts-optimized.webp",
+        "before": 388546,
+        "after": 169436,
+        "width": 1113,
+        "height": 2025,
+        "sha256": "f5bec57b203ac9ca66d6e221a4d79ae9f0dc5728ea80c083a67d325688a778b4"
+      },
+      {
+        "path": "demos/U151_Personalized_Shop_storefronts_mobile-fallback_36563654-7887-4241-8439-deef7a4fbac5-optimized.webp",
+        "before": 276762,
+        "after": 126824,
+        "width": 1113,
+        "height": 1113,
+        "sha256": "e7aa0e01dbd8c1a1e0fc2a65202c941e5b8d9a8a4ea485371257479b8d4d9d18"
+      },
+      {
+        "path": "demos/U153_Offers_in_Shop-optimized.webp",
+        "before": 443182,
+        "after": 334898,
+        "width": 1113,
+        "height": 1662,
+        "sha256": "017bc04c36b355bf475b114141cee4023b847c694dca2bfd4dc6e912dc04f5aa"
+      },
+      {
+        "path": "demos/U158_Automated_transfers_for_Shopify_Balance_payouts-optimized.webp",
+        "before": 316552,
+        "after": 252266,
+        "width": 828,
+        "height": 981,
+        "sha256": "f8f49dcb26376f9d7e3054068a326c500e314bac19c8205a7a6f995cae98b437"
+      },
+      {
+        "path": "demos/U163_Spend_controls_secondary_cardholders_for_Balance-optimized.webp",
+        "before": 245390,
+        "after": 185250,
+        "width": 828,
+        "height": 1272,
+        "sha256": "86a3d7f60ed2eb00b0035ecf31fc4bac8ec4acc9dc549bdb83eb6172423f5579"
+      },
+      {
+        "path": "demos/U16_Sidekick_edits_email_sections_mobile-fallback-optimized.webp",
+        "before": 72788,
+        "after": 39044,
+        "width": 825,
+        "height": 825,
+        "sha256": "0864c9a9f8be1d8015b1b32b8689830dbf263d7b676fceec00d5ddaac6146f9e"
+      },
+      {
+        "path": "demos/U183_Checkout_for_web_f222b0b3-24d2-4ee2-aff2-ebf8ffb4a766-optimized.webp",
+        "before": 376508,
+        "after": 166970,
+        "width": 1686,
+        "height": 1443,
+        "sha256": "dca66580447802a62c33590aa5a2a0ff3f4a6d60d995f5a866d2a61a98c6b50b"
+      },
+      {
+        "path": "demos/U190_pos_extension_storage_dark-optimized.webp",
+        "before": 501026,
+        "after": 193512,
+        "width": 1686,
+        "height": 1701,
+        "sha256": "b1c02eb062053558f1822e78517c98d18d6bdd3fef1cd52e44cb464f99480e14"
+      },
+      {
+        "path": "demos/U191_Faster_bulk_data_imports-optimized.webp",
+        "before": 473014,
+        "after": 200546,
+        "width": 1686,
+        "height": 1563,
+        "sha256": "98ddb356b9674f39e0d061fac601350071adbb81fcb48b2f880ec551fba16fda"
+      },
+      {
+        "path": "demos/U1_sidekick_flow_mobile-fallback-optimized.webp",
+        "before": 209284,
+        "after": 130842,
+        "width": 1113,
+        "height": 1881,
+        "sha256": "81875bb26bede0ace3d80e235b014f2c50cbcb6846ff7a2a8d618186fd089a14"
+      },
+      {
+        "path": "demos/U200_Shop_SDK_Minis-optimized.webp",
+        "before": 653458,
+        "after": 313732,
+        "width": 1686,
+        "height": 1353,
+        "sha256": "950904fe04c728b5a7ff82fd941ba3a4b2b1e9515ffaf698f81f5a0fa9b5735f"
+      },
+      {
+        "path": "demos/U20_Pulse_mobile-fallback-optimized.webp",
+        "before": 679260,
+        "after": 442568,
+        "width": 1110,
+        "height": 1704,
+        "sha256": "5259cd96bdc79d5e94e97e02bc84219dc065d9c79ea2353166b00efb5e0e8d9f"
+      },
+      {
+        "path": "demos/U223_upgrades_for_metafields-optimized.webp",
+        "before": 341356,
+        "after": 149806,
+        "width": 1686,
+        "height": 1191,
+        "sha256": "2e01691db00afe321718cb777ee6565c4b9c4e6dc6ae0f9f0da7ebdc0b8b42a0"
+      },
+      {
+        "path": "demos/U226__Sidekick_app_discovery_6b57593c-579c-4a91-84af-7173ff60da83-optimized.webp",
+        "before": 409992,
+        "after": 200022,
+        "width": 1686,
+        "height": 1284,
+        "sha256": "9a7435672c31d19c9d725cfe1dd488e80a8a630507c397517a4a537bf43fbbaa"
+      },
+      {
+        "path": "demos/U229_Admin_Intents_API-optimized.webp",
+        "before": 290578,
+        "after": 133322,
+        "width": 1686,
+        "height": 1269,
+        "sha256": "e13897ddd1a8b0171d41ab93f481ffeab4254d3f5e3e95c02f24392ec2387b7d"
+      },
+      {
+        "path": "demos/U230_Wordpress-optimized.webp",
+        "before": 110196,
+        "after": 81938,
+        "width": 825,
+        "height": 957,
+        "sha256": "cf952aff4892aae455b4133906575545f91231092af5d621f21960cbabc6d304"
+      },
+      {
+        "path": "demos/U253_-_App_intents_for_Sidekick-optimized.webp",
+        "before": 407724,
+        "after": 194232,
+        "width": 1686,
+        "height": 1284,
+        "sha256": "a9d172cc2af5f975c70904678b451dfb7e4b49e69fa156615a2c9d7079d59fd8"
+      },
+      {
+        "path": "demos/U254_Scanner_support-optimized.webp",
+        "before": 82984,
+        "after": 48738,
+        "width": 1686,
+        "height": 1317,
+        "sha256": "db307e14512d65976fe27a40067d47c3a211f3ccb762d48ca929d6cbc22f5a8e"
+      },
+      {
+        "path": "demos/U258_SimGym_desktop-fallback-optimized.webp",
+        "before": 452860,
+        "after": 321180,
+        "width": 2256,
+        "height": 1800,
+        "sha256": "0af122a3dcfd3dabe767285fdd58300425996835e04b802f793ad48ef78849bd"
+      },
+      {
+        "path": "demos/U258_SimGym_mobile-fallback-optimized.webp",
+        "before": 263844,
+        "after": 187534,
+        "width": 1098,
+        "height": 1470,
+        "sha256": "f907bf2578f772f77273f0c975ecab55309149ab59429379835e668eb7750d85"
+      },
+      {
+        "path": "demos/U267_Tangle-optimized.webp",
+        "before": 418664,
+        "after": 201198,
+        "width": 1686,
+        "height": 1437,
+        "sha256": "230e5e0ce8d9fa9b4816745a313c3b7f316a2fca964cf3ff3d0969ee3cb4492b"
+      },
+      {
+        "path": "demos/U270_DevDash_desktop-mobile-fallback-optimized.webp",
+        "before": 500954,
+        "after": 328688,
+        "width": 2256,
+        "height": 1800,
+        "sha256": "090772a7e96b2990be4c8b101e3e86328c5ddab840e44e1e052b641468e83392"
+      },
+      {
+        "path": "demos/U271_Checkout_MCP-optimized.webp",
+        "before": 265256,
+        "after": 133542,
+        "width": 1124,
+        "height": 962,
+        "sha256": "7752166cd012d820d7d91ebd5d3069410ea0d68053bf36d388ef14036589f8eb"
+      },
+      {
+        "path": "demos/U37_Integrated_theme_editor-optimized.webp",
+        "before": 604450,
+        "after": 461896,
+        "width": 1686,
+        "height": 1254,
+        "sha256": "8e8b866bce676161149000fddd24984ea646a8f1cf8f7d87437d058288232814"
+      },
+      {
+        "path": "demos/U3_Sidekick_Theme_edit_mobile-fallback-optimized.webp",
+        "before": 282728,
+        "after": 167282,
+        "width": 1113,
+        "height": 1272,
+        "sha256": "1cab5d0508800472bdb2e8324aebba71e70aca0ad11f93ec0e4fd764fb4dd2da"
+      },
+      {
+        "path": "demos/U47_Theme_index_on_mobile-optimized.webp",
+        "before": 331004,
+        "after": 255252,
+        "width": 825,
+        "height": 1428,
+        "sha256": "1330dcf850d207c77b6170240ef64803c692a0375ee9fd8b677eebd613a38668"
+      },
+      {
+        "path": "demos/U49_Sell_subscriptions_POS-optimized.webp",
+        "before": 538954,
+        "after": 409380,
+        "width": 1686,
+        "height": 1299,
+        "sha256": "6c4e653fa8bd924612c6d26719d1df4cbc74cafe9809ad4283ab9fac5776c680"
+      },
+      {
+        "path": "demos/U50_Unified_Editor-optimized.webp",
+        "before": 212522,
+        "after": 119394,
+        "width": 1686,
+        "height": 1200,
+        "sha256": "d36c57316b10d2a1d765bb5d81747505cc09898cd42c48ecfb8ea1f7e567304f"
+      },
+      {
+        "path": "demos/U53_Quick_count_POS_extension-optimized.webp",
+        "before": 384730,
+        "after": 311600,
+        "width": 825,
+        "height": 1305,
+        "sha256": "0d8ab4f09d7b839c0696f203d92661e8c28f9c7d7c9b7d739529d45088d652d1"
+      },
+      {
+        "path": "demos/U62_Uber_Direct_POS_local-optimized.webp",
+        "before": 214818,
+        "after": 98090,
+        "width": 825,
+        "height": 1305,
+        "sha256": "212d1861d9ad13af3f439d751f7f28f2b85924f73763b1510a27c74a96a0bd1c"
+      },
+      {
+        "path": "demos/U71_Shopify_Collective_globally_available-optimized.webp",
+        "before": 387660,
+        "after": 155936,
+        "width": 1686,
+        "height": 1281,
+        "sha256": "e15be6656686fc97c4e09f54068d75589316ff7c290c7bd0ad17a46dfd2754fd"
+      },
+      {
+        "path": "demos/U75_b2b_ACH_payments-optimized.webp",
+        "before": 385372,
+        "after": 291962,
+        "width": 1686,
+        "height": 1281,
+        "sha256": "d92c7e8104f7e48e0aecea75b6ea7e35278e8bbe2bdd00be8fb9389e0f080310"
+      },
+      {
+        "path": "demos/U79_Send_payment_requests_per_fulfillment-optimized.webp",
+        "before": 806376,
+        "after": 590020,
+        "width": 1686,
+        "height": 1152,
+        "sha256": "6d322940479ea097cde3b37560cd7697515ee2b6169b11e495bf115905f138c0"
+      },
+      {
+        "path": "demos/U82_Collective_Retailer_directory.-optimized.webp",
+        "before": 374186,
+        "after": 170470,
+        "width": 1686,
+        "height": 975,
+        "sha256": "db5f6c0fece647cc9ad143d03e161cff3d7669179b0d72c57dbda6e9cb8669fe"
+      },
+      {
+        "path": "demos/U94_Markets_in_the_Checkout-optimized.webp",
+        "before": 487538,
+        "after": 374666,
+        "width": 1686,
+        "height": 990,
+        "sha256": "4bcedb27250a398ebad75edab00fe1a23e3d0d0d0e3d3a5a8c5964d5adefa0c6"
+      },
+      {
+        "path": "demos/U95_Shop_Pay_button-optimized.webp",
+        "before": 346792,
+        "after": 145906,
+        "width": 1686,
+        "height": 990,
+        "sha256": "f3333df92d452d0090b8bc616adab80ec681ece80fbda21607ac598016bbd282"
+      },
+      {
+        "path": "demos/U97_Rollouts_desktop-fallback_de-optimized.webp",
+        "before": 1834360,
+        "after": 1140224,
+        "width": 3402,
+        "height": 1935,
+        "sha256": "57220dce62a6810baf597ef8d0a76c8728fea9218dd37d83791382131939d797"
+      },
+      {
+        "path": "demos/U97_Rollouts_mobile-fallback_de-optimized.webp",
+        "before": 790764,
+        "after": 512272,
+        "width": 2196,
+        "height": 1656,
+        "sha256": "f2c2451ca1a234371ea22168ef1645e754b8fdcf748a2c3c46aafa3ed9366f63"
+      },
+      {
+        "path": "demos/U98_Search_and_filter_segmentation_templates-optimized.webp",
+        "before": 506246,
+        "after": 383654,
+        "width": 1686,
+        "height": 987,
+        "sha256": "85b1e02b5435beb524d97c9bfdaa94284acda8435446876de5fe2d278c5383ae"
+      },
+      {
+        "path": "demos/chatgptdesktopposter_12_10.webp",
+        "before": 1532715,
+        "after": 169306,
+        "width": 1700,
+        "height": 1642,
+        "sha256": "dd35174af2ef06fd0f95596eec1d0343ab222dcf8f98ddbaec0267573666acb6"
+      },
+      {
+        "path": "demos/chatgptmobileposter_12_10.webp",
+        "before": 95869,
+        "after": 19038,
+        "width": 810,
+        "height": 1100,
+        "sha256": "75c368d20b7ccb9c779dec983a0ee8cf11c2705401849308a0fb35dac8c0aaab"
+      },
+      {
+        "path": "demos/compressed-DEV_AI_PREROLL_120925Still001.webp",
+        "before": 159805,
+        "after": 81514,
+        "width": 1920,
+        "height": 1080,
+        "sha256": "7b894454abe4149386383844aeedca1fc499fb8734de664bae801fa67ce25db6"
+      },
+      {
+        "path": "demos/compressed-Fallback-Retail-Frame2-Desktop.webp",
+        "before": 355837,
+        "after": 197490,
+        "width": 2880,
+        "height": 1780,
+        "sha256": "c23f889e148dc749b48af7772f428922676b465f79791a0ac8487f72ede6ad39"
+      },
+      {
+        "path": "demos/compressed-pulseDesktopPoster-desktop.webp",
+        "before": 994495,
+        "after": 131998,
+        "width": 2032,
+        "height": 1058,
+        "sha256": "dc78b85e107bb2fd2159d426bcbaf5c2125c55970930b6a5031534add8a3fae3"
+      },
+      {
+        "path": "demos/compressed-u2poster_12_9.webp",
+        "before": 113015,
+        "after": 73584,
+        "width": 1124,
+        "height": 928,
+        "sha256": "62f336d2c0064e071095c423245526a6d90a5192a419c69749c408ef1b0e1eda"
+      },
+      {
+        "path": "demos/compressed-u8poster_12_9.webp",
+        "before": 827692,
+        "after": 59740,
+        "width": 1124,
+        "height": 862,
+        "sha256": "7558c66cca782d7d60fe4139ffe0ff785bb0a905e8146279abeda6bb0aea763c"
+      },
+      {
+        "path": "demos/default_abdd996f-1b4e-44a5-bfcc-8addca857894-optimized.webp",
+        "before": 70638,
+        "after": 46312,
+        "width": 1504,
+        "height": 1480,
+        "sha256": "33449cded88274cbc325a914dcb07e44c4def8711e7dbb0bc8ec1e31215ff35e"
+      },
+      {
+        "path": "demos/default_be7aaa86-31c5-433d-aae2-5b361372ccc6-optimized.webp",
+        "before": 130648,
+        "after": 67874,
+        "width": 1124,
+        "height": 720,
+        "sha256": "0d4114bb8f05dbb9fe9635cba09f3c590293c0c845d9e32e67f04185faaea7eb"
+      },
+      {
+        "path": "demos/default_ee658e76-0d9b-46c9-b479-5baab424fb97-optimized.webp",
+        "before": 188572,
+        "after": 115272,
+        "width": 1866,
+        "height": 1640,
+        "sha256": "b4d835ee4bf3ea32a322a8d5aa598f35a633f65b8f628fec9b993e37daceb1d8"
+      },
+      {
+        "path": "demos/en_3a493a1f-2575-43b6-9e6e-22033556b139-optimized.webp",
+        "before": 99856,
+        "after": 54582,
+        "width": 550,
+        "height": 952,
+        "sha256": "3ca1bc4d789be52cf5d60939cba78ef808f53349c32a9528e7fc9493d5dd8b33"
+      },
+      {
+        "path": "demos/en_4608c98d-d4f7-4d35-8b94-e83258e20e54-optimized.webp",
+        "before": 217164,
+        "after": 119284,
+        "width": 1124,
+        "height": 928,
+        "sha256": "e6d09f9c14fc3fc13582ce94781717114d155c738be1f32df22afecab066214a"
+      },
+      {
+        "path": "demos/en_a158fbbf-7e97-4014-9008-9eb7a719f84a-optimized.webp",
+        "before": 252736,
+        "after": 129206,
+        "width": 1124,
+        "height": 882,
+        "sha256": "20f7f249cf7ba750677abd652551589091c35daa36b92dd3c2c8055d45381df4"
+      },
+      {
+        "path": "demos/pos_2_compressed.webp",
+        "before": 3649792,
+        "after": 227800,
+        "width": 2880,
+        "height": 1780,
+        "sha256": "afb19a26e770f87289fa223c87de961053b2175503d4d4edb8a70493694cbafc"
+      },
+      {
+        "path": "demos/pos_3_compressed.webp",
+        "before": 446822,
+        "after": 62978,
+        "width": 1386,
+        "height": 1384,
+        "sha256": "5082ef467a962b5777f9caf1edf2bec80ffedcd43b9568f3773d234f78902e4a"
+      },
+      {
+        "path": "demos/u15poster.webp",
+        "before": 153953,
+        "after": 117204,
+        "width": 1124,
+        "height": 882,
+        "sha256": "7bc75e0351bf0705b508b509cd3e0462dfc55e9c279aea40adf9cbb9639d89df"
+      },
+      {
+        "path": "demos/u16poster_desktop.webp",
+        "before": 264953,
+        "after": 30380,
+        "width": 550,
+        "height": 950,
+        "sha256": "4d55468a784168eb558ea157d496f01fbd258496124b2017a03d999baa7a02c0"
+      },
+      {
+        "path": "demos/u2poster.webp",
+        "before": 112373,
+        "after": 72012,
+        "width": 1124,
+        "height": 928,
+        "sha256": "1e59a00390a2bf3aa92dae5b41eeb3fb840cb937d944d9f0baaab713c2ff9043"
+      },
+      {
+        "path": "demos/u6poster_mobile-optimized.webp",
+        "before": 45478,
+        "after": 28660,
+        "width": 550,
+        "height": 550,
+        "sha256": "5e67ed9d4bea75a65c2790cc82e6795e93e9a11c2d155477b2fe9616273b9f41"
+      },
+      {
+        "path": "demos/u7poster_237e1e00-6928-4b92-8c1a-759ee28b2eaf.webp",
+        "before": 171721,
+        "after": 117006,
+        "width": 1124,
+        "height": 928,
+        "sha256": "b7233f6eccd05ba8b445082a766e023f154ead2e56bb66f205c36445ac7f52d5"
+      },
+      {
+        "path": "edition-logos/spring2026-optimized.webp",
+        "before": 11318,
+        "after": 6596,
+        "width": 180,
+        "height": 180,
+        "sha256": "f3998e339b6d66006387c5ca32e391009e458633abc8517b6fcd6d95310595a4"
+      },
+      {
+        "path": "edition-logos/winter2026-optimized.webp",
+        "before": 9980,
+        "after": 7014,
+        "width": 256,
+        "height": 256,
+        "sha256": "d9be51633ef8bcf5cf4e85d5a8f0072875f038b26ed654167eb98f16f6085659"
+      },
+      {
+        "path": "rive-dependencies/iphonebezelnoisland-mobile.webp",
+        "before": 53905,
+        "after": 11464,
+        "width": 556,
+        "height": 1136,
+        "sha256": "9d35d4aba7a9ca145cc106336ccd5828a521b60cc1196ddedea78a29faf00fca"
+      },
+      {
+        "path": "rive-dependencies/rive_U113_1.webp",
+        "before": 7885,
+        "after": 2570,
+        "width": 563,
+        "height": 563,
+        "sha256": "eacf7b2004da33d22ebd3f5998fba35499f1cb718bb9b4a7241206de812240cf"
+      },
+      {
+        "path": "rive-dependencies/rive_U113_2.webp",
+        "before": 5999,
+        "after": 2262,
+        "width": 395,
+        "height": 394,
+        "sha256": "27ac91f7081f81d69c9d568d4b4cc50cd4ff67bc662b567d04d7cba852866145"
+      },
+      {
+        "path": "rive-dependencies/rive_U113_3.webp",
+        "before": 5585,
+        "after": 1762,
+        "width": 395,
+        "height": 394,
+        "sha256": "89deedb5e3ca868da52fc39fbdcd2e8bff0e4c57dd00506973347f9a52222df4"
+      },
+      {
+        "path": "rive-dependencies/rive_U113_4.webp",
+        "before": 103833,
+        "after": 14370,
+        "width": 490,
+        "height": 488,
+        "sha256": "9b524f89a5f443749a4916eaf2216720a5b12f5fa99f29ff161ad1202ec38711"
+      },
+      {
+        "path": "rive-dependencies/rive_U113_5.webp",
+        "before": 27608,
+        "after": 2956,
+        "width": 490,
+        "height": 488,
+        "sha256": "7ae7f82eaf7f64a21f00f610f4c7ec9003a65ffd0b7a545b74f044ef844923e4"
+      },
+      {
+        "path": "rive-dependencies/rive_U113_6.webp",
+        "before": 10602,
+        "after": 4840,
+        "width": 490,
+        "height": 488,
+        "sha256": "f3cb1b9d459ef59b2ef077cdfa7690db73c4af77ebfa4eea5989842feeeefeb9"
+      },
+      {
+        "path": "rive-dependencies/rive_U113_7.webp",
+        "before": 9619,
+        "after": 3448,
+        "width": 563,
+        "height": 563,
+        "sha256": "88995e2f89a12100e27b2a9e912c1f25122990108e3de111d7a8d4eadf65449a"
+      },
+      {
+        "path": "rive-dependencies/rive_U113_8.webp",
+        "before": 872298,
+        "after": 83086,
+        "width": 1155,
+        "height": 1347,
+        "sha256": "488522e583e396d08180f7f24784122346721646a9bc5618b3586fd19d994b24"
+      },
+      {
+        "path": "rive-dependencies/rive_U15_10.webp",
+        "before": 14258,
+        "after": 1910,
+        "width": 128,
+        "height": 128,
+        "sha256": "584cfe6bf54201a139ddd14f2e4f865ea529a5903614f0386202a3b845660241"
+      },
+      {
+        "path": "rive-dependencies/rive_U15_3-desktop.webp",
+        "before": 95148,
+        "after": 37622,
+        "width": 1024,
+        "height": 1056,
+        "sha256": "adfd33607a138dd32f23e68014ad001e5a20f7e5255067ea925f3baccd6dbb1d"
+      },
+      {
+        "path": "rive-dependencies/rive_U15_3-mobile.webp",
+        "before": 35066,
+        "after": 14804,
+        "width": 512,
+        "height": 528,
+        "sha256": "540798b0b48e8626659e9346fb3ec32cb7d8092b8e97cf4fe2fe00a0c2046c55"
+      },
+      {
+        "path": "rive-dependencies/rive_U15_4-desktop.webp",
+        "before": 738008,
+        "after": 72154,
+        "width": 1047,
+        "height": 882,
+        "sha256": "659dd455375504b672ebda2cf548434e0a6cf3f51f6a7932bd032ce423dc562e"
+      },
+      {
+        "path": "rive-dependencies/rive_U15_4-mobile.webp",
+        "before": 156198,
+        "after": 20008,
+        "width": 524,
+        "height": 441,
+        "sha256": "31c9cfab5870a476924c094ef0b61e97b292aa11bfa558b37799606fc0ba69de"
+      },
+      {
+        "path": "rive-dependencies/rive_U15_6-desktop.webp",
+        "before": 56195,
+        "after": 29794,
+        "width": 1024,
+        "height": 1024,
+        "sha256": "94bcfa54bfa46ad08fd131f1c0c8254258250218851d41cba72f01852b03ca91"
+      },
+      {
+        "path": "rive-dependencies/rive_U15_6-mobile.webp",
+        "before": 17138,
+        "after": 8226,
+        "width": 512,
+        "height": 512,
+        "sha256": "8f6a0a45f881a1817abd0717f4c43a04dfb5c2aeba8361fd086dac52d059a85d"
+      },
+      {
+        "path": "rive-dependencies/rive_U15_7-desktop.webp",
+        "before": 431196,
+        "after": 50212,
+        "width": 860,
+        "height": 780,
+        "sha256": "770b1d51398a1bee04bfbc1ee1d5350dae4957bd065c24df87926221da913208"
+      },
+      {
+        "path": "rive-dependencies/rive_U15_7-mobile.webp",
+        "before": 170472,
+        "after": 20400,
+        "width": 573,
+        "height": 520,
+        "sha256": "f0effcaa3b2d153ff58c8ef25931a67efcf5afc7eea16581a6056ddae66869c1"
+      },
+      {
+        "path": "rive-dependencies/rive_U15_8-desktop.webp",
+        "before": 195173,
+        "after": 23130,
+        "width": 456,
+        "height": 441,
+        "sha256": "2c12b583a080ca74b7201d226a7c8103ebea7761d443cdba901902b0ebbcac94"
+      },
+      {
+        "path": "rive-dependencies/rive_U15_8-mobile.webp",
+        "before": 99715,
+        "after": 13076,
+        "width": 304,
+        "height": 294,
+        "sha256": "6285fe8e9ff5b42727d2f5cba2be4624978315e5cb7d9b469db2497b5d8b9706"
+      },
+      {
+        "path": "rive-dependencies/rive_U15_9.webp",
+        "before": 11563,
+        "after": 1764,
+        "width": 128,
+        "height": 128,
+        "sha256": "abe56c9cf20ff8f45483c4ee37266962374989c9232172b3d6f6040d4093f636"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_1-desktop.webp",
+        "before": 173603,
+        "after": 25662,
+        "width": 412,
+        "height": 895,
+        "sha256": "9ee241e6f1e0ce827815f4c125ba76928cdec86a8fdba7a9dc317c03682041ba"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_1-mobile.webp",
+        "before": 65303,
+        "after": 10044,
+        "width": 206,
+        "height": 448,
+        "sha256": "8450c62934a4a0a48a4721a1dfe32e999fb400bc91c407923dc61ab06120d7dd"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_10.webp",
+        "before": 1765,
+        "after": 906,
+        "width": 44,
+        "height": 44,
+        "sha256": "a3cb0edd0ca6eb99a823a6a4a02be243c37e4e18a9b13c09db4233a5151de219"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_11.webp",
+        "before": 1715,
+        "after": 916,
+        "width": 44,
+        "height": 44,
+        "sha256": "922ef3dcdfdf69132fc6788950e27a432842de8aa3403b1a5533c64e380294ae"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_12.webp",
+        "before": 1722,
+        "after": 876,
+        "width": 44,
+        "height": 44,
+        "sha256": "92ed029962c2bc3eef42e1a9532b4a569f8d378e22bd7ce826564d6d6e0d0bc9"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_13-desktop.webp",
+        "before": 206264,
+        "after": 29622,
+        "width": 376,
+        "height": 652,
+        "sha256": "b41ad9d41d24d2912272431e781697ce2b9b907788866f9541a33e7fc978602b"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_13-mobile.webp",
+        "before": 69994,
+        "after": 12840,
+        "width": 188,
+        "height": 326,
+        "sha256": "35ec8b20932e0b0d40ec9378a44efd8e7cb7449b681f2721cfbc87d31ca3b7cc"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_14-desktop.webp",
+        "before": 196398,
+        "after": 23244,
+        "width": 372,
+        "height": 744,
+        "sha256": "8988856c07b4c004c2f3ae0cf3ab5b03c5ceb3ed14bbe8c4629a2ec573ab2e39"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_14-mobile.webp",
+        "before": 70779,
+        "after": 11986,
+        "width": 186,
+        "height": 372,
+        "sha256": "c4066f58886c5e16818434c18a1979e009381d3b81d949d414d30923cd524efa"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_15-desktop.webp",
+        "before": 6533,
+        "after": 4664,
+        "width": 224,
+        "height": 216,
+        "sha256": "c7b7ecd662896f603939e909a247550e3c7243d614a4b58daf8dcb4510ffabec"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_15-mobile.webp",
+        "before": 2982,
+        "after": 2188,
+        "width": 112,
+        "height": 108,
+        "sha256": "2d41bb5a4573ffaabc04e996c7232fd3c928b88c75ab76d8c35c461d723498ec"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_16-desktop.webp",
+        "before": 43314,
+        "after": 9114,
+        "width": 460,
+        "height": 940,
+        "sha256": "9cb33ec5f60f9587b391c37005d1aa6c90d0be391d0dc265a7ebe659d71c22a0"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_16-mobile.webp",
+        "before": 17114,
+        "after": 4238,
+        "width": 230,
+        "height": 470,
+        "sha256": "a08ffe47a23c83c4e40c8d71a9eb545ba6e835e99132b37520aa0b9cdc095a6e"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_2-desktop.webp",
+        "before": 145650,
+        "after": 22286,
+        "width": 412,
+        "height": 895,
+        "sha256": "64fb8bd9947d3ac813122264bf5ae8f010dbbbca46acf49a2913feaeaeef624a"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_2-mobile.webp",
+        "before": 58902,
+        "after": 8794,
+        "width": 206,
+        "height": 448,
+        "sha256": "70d377e226aa21a7cc52640a1d03bde13766702c56dc3dad58b5385a87b169b8"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_3-desktop.webp",
+        "before": 133322,
+        "after": 20578,
+        "width": 412,
+        "height": 895,
+        "sha256": "a58ede6e2497548250d149f8cad7c16bbd38798fecbceee6a6004ce354751491"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_3-mobile.webp",
+        "before": 54226,
+        "after": 8394,
+        "width": 206,
+        "height": 448,
+        "sha256": "5cc8a38019444b3922a7f4b08cf24837ad6b2406dbda48033504c5b8c2d31803"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_4-desktop.webp",
+        "before": 134650,
+        "after": 20876,
+        "width": 412,
+        "height": 895,
+        "sha256": "97eeca54027a2fdfb02c5b10bebf75ab32d517cff09b66cb4edf7a8127f325ae"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_4-mobile.webp",
+        "before": 52702,
+        "after": 8286,
+        "width": 206,
+        "height": 448,
+        "sha256": "b7d67dd3b7fb607e24afb9ef1b89ee5d21d0426576324dcd87bb761a562e546b"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_5-desktop.webp",
+        "before": 115945,
+        "after": 16898,
+        "width": 380,
+        "height": 496,
+        "sha256": "de0ea2dbc1946b719f3497740e104eb930bb33eccf47c7e9e6726e5f01effc0e"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_5-mobile.webp",
+        "before": 42610,
+        "after": 7806,
+        "width": 190,
+        "height": 248,
+        "sha256": "a2608f1c216b5b791937e47926406db29395414dad477ede4950a9041e860ce0"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_6-desktop.webp",
+        "before": 189642,
+        "after": 24954,
+        "width": 372,
+        "height": 744,
+        "sha256": "9ab61f7af20e341c192e235ccf3ebe0b2f0fb1d005ff87ee196f24dab7239e9c"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_6-mobile.webp",
+        "before": 64142,
+        "after": 10542,
+        "width": 186,
+        "height": 372,
+        "sha256": "a5c26e9453eccab9c96ec2dd2c8fd34462ebf7fe44c83abbb1572bb47a38b325"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_7-desktop.webp",
+        "before": 7363,
+        "after": 4316,
+        "width": 224,
+        "height": 216,
+        "sha256": "cc520086270d74092e169ad29f8b7219c5dd5ab4a6bda8e3c40c18f4588e17de"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_7-mobile.webp",
+        "before": 3566,
+        "after": 2254,
+        "width": 112,
+        "height": 108,
+        "sha256": "0d0a9bf082b09cd4371c2354ec6b530413f633c0bf597b5231acf91426039066"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_8-desktop.webp",
+        "before": 6044,
+        "after": 3254,
+        "width": 224,
+        "height": 216,
+        "sha256": "96186ab95694c7b0baeb8cec0fbddfc43fa2d6f95ceec7d191c474d4b23705fc"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_8-mobile.webp",
+        "before": 2991,
+        "after": 1634,
+        "width": 112,
+        "height": 108,
+        "sha256": "51b89ee0fd4c11de877cdb5ac407b63acb4223618a6ac9b0790b145b0e9d2e72"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_9-desktop.webp",
+        "before": 9076,
+        "after": 7168,
+        "width": 224,
+        "height": 216,
+        "sha256": "2024ab6f194c61ff6f4740323d44a71ed9975a65375c55a20e614207c2968778"
+      },
+      {
+        "path": "rive-dependencies/rive_devDash_9-mobile.webp",
+        "before": 3325,
+        "after": 2442,
+        "width": 112,
+        "height": 108,
+        "sha256": "40a98dff54515c75b36a6614d9e75840ff2d6fc3695c8b3316a2a9a105c0c100"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_1-desktop.webp",
+        "before": 116892,
+        "after": 35554,
+        "width": 534,
+        "height": 372,
+        "sha256": "d85cb8b52765e41f71a87a1a73cfe749ac497374268a8f3b945899ffbb722015"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_1-mobile.webp",
+        "before": 41756,
+        "after": 12678,
+        "width": 267,
+        "height": 186,
+        "sha256": "865ecf2903ed9acd6acbc4579262609641b163432bc927bde97b2c82f53a9285"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_10-desktop.webp",
+        "before": 177668,
+        "after": 166268,
+        "width": 1400,
+        "height": 464,
+        "sha256": "8673792decf695aaccb5fb3b49aa22317ca8ca5f88477879c520310a72539176"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_10-mobile.webp",
+        "before": 30758,
+        "after": 28540,
+        "width": 700,
+        "height": 232,
+        "sha256": "09c9345e46eca9fc5a39afc7ac6734bf50bf4ba3d4a6e4f681f6af3ce3e530b1"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_11-desktop.webp",
+        "before": 110052,
+        "after": 83226,
+        "width": 1400,
+        "height": 464,
+        "sha256": "7619d80595b47ce2b60a3dac1830890b2a870bb7ed4091c8e7d37b71b3171e01"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_11-mobile.webp",
+        "before": 26000,
+        "after": 18462,
+        "width": 700,
+        "height": 232,
+        "sha256": "5e685821a76f9ef47c4367253070cf608d1b26b51e80753ebf3f212a38207f1f"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_2-desktop.webp",
+        "before": 98252,
+        "after": 32668,
+        "width": 514,
+        "height": 284,
+        "sha256": "4eabb0ed009c6dd31531cbdb7609d88a3fc9abc48b6276cd771f30780765a75a"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_2-mobile.webp",
+        "before": 35923,
+        "after": 10996,
+        "width": 257,
+        "height": 142,
+        "sha256": "d955f8542650d55a1f19308a1f4d8ff8998bfe412c69d9a70f9c3a719b08271d"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_3-desktop.webp",
+        "before": 241856,
+        "after": 31324,
+        "width": 690,
+        "height": 837,
+        "sha256": "8e3c5d83a64577d2cee5189e1b42d630c54c23724eff95c9ae7fddbb8662e0f4"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_3-mobile.webp",
+        "before": 80499,
+        "after": 12628,
+        "width": 345,
+        "height": 419,
+        "sha256": "ac797cc3872b0ae1f9d56e22108f3ff4cfa44eb928fb03dcec08c03bb41a8806"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_4-desktop.webp",
+        "before": 190611,
+        "after": 23160,
+        "width": 373,
+        "height": 343,
+        "sha256": "1623669d5a8d7f01cb4ff74d818f0bbcef855e0435d697ffe0afbc1ddf4233fc"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_4-mobile.webp",
+        "before": 57786,
+        "after": 8878,
+        "width": 187,
+        "height": 172,
+        "sha256": "60e886eb16fbc205d8b010db7963642e088d6701558c2aca30f012a99f8f27ca"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_5-desktop.webp",
+        "before": 12883,
+        "after": 7456,
+        "width": 440,
+        "height": 248,
+        "sha256": "0f5b9cf7968a2fa2e10739290c1ea3e2d9d3bd1cd7de2466abbb09a2554faa8b"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_5-mobile.webp",
+        "before": 4675,
+        "after": 1904,
+        "width": 220,
+        "height": 124,
+        "sha256": "1b370de459eea1f601690519bd9bac309f650f96a890b83d74b331b01f903835"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_6-desktop.webp",
+        "before": 16589,
+        "after": 8814,
+        "width": 440,
+        "height": 248,
+        "sha256": "9c4df83e9c000db43c6803b62fa20da3cbb80298b4dbf35ecd449f8c5543d321"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_6-mobile.webp",
+        "before": 5741,
+        "after": 2380,
+        "width": 220,
+        "height": 124,
+        "sha256": "4d0fec09284bdd253db810a39c71e4532cef4a10f183745553a8aa96eb85e3ce"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_7-desktop.webp",
+        "before": 26136,
+        "after": 20052,
+        "width": 440,
+        "height": 248,
+        "sha256": "758dbfaa37ec3ea5ec26a7e26d4c80a13b51cbadbad4294db201565075b78fc0"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_7-mobile.webp",
+        "before": 7282,
+        "after": 3640,
+        "width": 220,
+        "height": 124,
+        "sha256": "9fb896d24cf801632dd8e84610d7bcd6b4b99025f2ddef1fbc39d37110258eaf"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_8-desktop.webp",
+        "before": 36690,
+        "after": 31828,
+        "width": 440,
+        "height": 248,
+        "sha256": "88d5d265bd1f3c64a31d25faab81c11d7f819138ac56a25ca23284734de19448"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_8-mobile.webp",
+        "before": 8989,
+        "after": 5296,
+        "width": 220,
+        "height": 124,
+        "sha256": "b96d3b3d411fc686d0b454dd65c7a757edfcb800c5f812915e458be246be1729"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_9-desktop.webp",
+        "before": 29753,
+        "after": 26514,
+        "width": 440,
+        "height": 248,
+        "sha256": "0d62db6c0ce8a6995e3d1183ec6bcf9bf6600cdfd2395ad40f6a848c998d7b87"
+      },
+      {
+        "path": "rive-dependencies/rive_digest_9-mobile.webp",
+        "before": 7820,
+        "after": 5192,
+        "width": 220,
+        "height": 124,
+        "sha256": "c405f3f576badfad93a7e09f84a0671ae0572e6e4ca47d80b56bd05a069b9399"
+      },
+      {
+        "path": "rive-dependencies/rive_flow_1-desktop.webp",
+        "before": 96191,
+        "after": 24918,
+        "width": 1675,
+        "height": 1364,
+        "sha256": "191ffc16880bc3a8ad290f6bbd414ae56c07da93394afc6eeaae685c18ec2c8c"
+      },
+      {
+        "path": "rive-dependencies/rive_flow_1-mobile.webp",
+        "before": 43750,
+        "after": 12222,
+        "width": 838,
+        "height": 682,
+        "sha256": "64b512cef2d80643e670564dbc1fbc191c14aae8ef55b4c43390d7b36879e599"
+      },
+      {
+        "path": "rive-dependencies/rive_flow_2-desktop.webp",
+        "before": 92700,
+        "after": 11514,
+        "width": 490,
+        "height": 490,
+        "sha256": "9fd4248d686ef81fa41fe6c0f563e6f7962f78ce8027a2ae9e746451c62c8692"
+      },
+      {
+        "path": "rive-dependencies/rive_flow_2-mobile.webp",
+        "before": 34277,
+        "after": 5660,
+        "width": 245,
+        "height": 245,
+        "sha256": "84ebc31417cd9753603e48ac94cfc984fb633c8f8a408ac20dcf9c0d6b62c6f0"
+      },
+      {
+        "path": "rive-dependencies/rive_flow_3-desktop.webp",
+        "before": 343779,
+        "after": 46500,
+        "width": 1047,
+        "height": 1047,
+        "sha256": "98157cda3641040e620262cabfe2ef5e2405e6c2cf6ecac87c700c384485a6c4"
+      },
+      {
+        "path": "rive-dependencies/rive_flow_3-mobile.webp",
+        "before": 102502,
+        "after": 17088,
+        "width": 524,
+        "height": 524,
+        "sha256": "a16fa1813165c738d0af6c9d61ba8e6fb1ccf9bb6d35f6d9bc0c9e6f00e7c313"
+      },
+      {
+        "path": "rive-dependencies/rive_flow_4-desktop.webp",
+        "before": 301984,
+        "after": 44298,
+        "width": 564,
+        "height": 564,
+        "sha256": "859e32c88b469155b875a76f0020db018ed5a631640b9ae1de2f45631716d589"
+      },
+      {
+        "path": "rive-dependencies/rive_flow_4-mobile.webp",
+        "before": 77066,
+        "after": 11510,
+        "width": 282,
+        "height": 282,
+        "sha256": "664fa6233311557df26b73a2482c6461e68f7a2c184f48037039caa785839ce0"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_1-desktop.webp",
+        "before": 158673,
+        "after": 73484,
+        "width": 1728,
+        "height": 1024,
+        "sha256": "5ca39f7d70b682673a1e74a0f9301df97fb3f10ce35e980c8aa5083f924633fe"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_1-mobile.webp",
+        "before": 51946,
+        "after": 27494,
+        "width": 864,
+        "height": 512,
+        "sha256": "99f8e143ea8ca43334f59bb9935b08b12bc383d700b0212ca47f4208c6037eb2"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_10-desktop.webp",
+        "before": 533326,
+        "after": 38812,
+        "width": 1760,
+        "height": 848,
+        "sha256": "794d27dc25e0dc369ee528ed94e9e320dfdc8888f908928459b1192ef4309a9e"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_10-mobile.webp",
+        "before": 186909,
+        "after": 15418,
+        "width": 880,
+        "height": 424,
+        "sha256": "5badd044703ba618eac812861d50bd9ebda5bd5f53d778373a0113a1f5c75048"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_11-desktop.webp",
+        "before": 218468,
+        "after": 146782,
+        "width": 1760,
+        "height": 848,
+        "sha256": "ac2facf67b700918ad1d1fd0ce098b94f285abd74570ff831cc633c23df328f9"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_11-mobile.webp",
+        "before": 70809,
+        "after": 52514,
+        "width": 880,
+        "height": 424,
+        "sha256": "74852010a4478e564648cb329425c5bfca770a4113b7c15330b514c32589ddd3"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_12-desktop.webp",
+        "before": 6327,
+        "after": 5370,
+        "width": 56,
+        "height": 192,
+        "sha256": "a249278c4efb2738d63d8f0b69b11f6b35c76d4663651bfe74183633e74d73d9"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_12-mobile.webp",
+        "before": 2740,
+        "after": 2010,
+        "width": 28,
+        "height": 96,
+        "sha256": "f803ff84499b445aa29f4faa1ac7eb02193bcbe30db9df1f0d19dea87121b404"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_13-desktop.webp",
+        "before": 6588,
+        "after": 5332,
+        "width": 56,
+        "height": 192,
+        "sha256": "219afb042606ca67ea1db0d4ab6eadb160a5bc74f67817b4ea5de9b545794c3c"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_13-mobile.webp",
+        "before": 2925,
+        "after": 2232,
+        "width": 28,
+        "height": 96,
+        "sha256": "a92dc33a0062e3f185636f51967ccd3662da90d43357a4615f8c640e95e9bf1e"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_14-desktop.webp",
+        "before": 6177,
+        "after": 5132,
+        "width": 56,
+        "height": 192,
+        "sha256": "957f5d8d1314a82d09c738c82fd0763ecaf82da9618c4a0ae58f859f93f7171d"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_14-mobile.webp",
+        "before": 2861,
+        "after": 2286,
+        "width": 28,
+        "height": 96,
+        "sha256": "a789bed034a6d1fc57a8806464c3b519b7aee34c59f794da391527ad9a0e46fb"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_2-desktop.webp",
+        "before": 28899,
+        "after": 5568,
+        "width": 180,
+        "height": 180,
+        "sha256": "0def9077ed9fe34ffcca66c73abb5cbc8391b9341088f0729b535a4f90ab644b"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_2-mobile.webp",
+        "before": 10380,
+        "after": 2630,
+        "width": 90,
+        "height": 90,
+        "sha256": "066f4fd5738e4fb1174860c7d2d42d7c335624323cf996a90e3c07cf74d8e52a"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_3-desktop.webp",
+        "before": 29967,
+        "after": 4796,
+        "width": 180,
+        "height": 180,
+        "sha256": "d69f38a37b597fe815190326aaaaf363023ce47e12c5696eac4ea41da89ed645"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_3-mobile.webp",
+        "before": 9859,
+        "after": 2072,
+        "width": 90,
+        "height": 90,
+        "sha256": "9a06e65f5e5d26b6aa9a6e5735170f75df16f8a03429932bf5e1be45f59092fc"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_4-desktop.webp",
+        "before": 38226,
+        "after": 7322,
+        "width": 192,
+        "height": 268,
+        "sha256": "1f34ecd2ec79633f3d659d192184b3d65da937ccfc21d41b3f5196ee51212ca7"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_4-mobile.webp",
+        "before": 38226,
+        "after": 7322,
+        "width": 192,
+        "height": 268,
+        "sha256": "1f34ecd2ec79633f3d659d192184b3d65da937ccfc21d41b3f5196ee51212ca7"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_5-desktop-optimized.webp",
+        "before": 7162,
+        "after": 4506,
+        "width": 198,
+        "height": 295,
+        "sha256": "67ae6f0b07e217300a730887427a771284eaae613e1296c87ed6ef61d1437d7f"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_5-mobile-optimized.webp",
+        "before": 2974,
+        "after": 1876,
+        "width": 99,
+        "height": 148,
+        "sha256": "b31afd91969607b138500eabbe5cf8d0bade0dedcd1b9b4bd8a1236f44c30496"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_6-desktop.webp",
+        "before": 24713,
+        "after": 4112,
+        "width": 244,
+        "height": 160,
+        "sha256": "7977c3318faa29ba17dac112bd74838cd0f5edbd9c8898d0b6056177529843f5"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_6-mobile.webp",
+        "before": 8382,
+        "after": 1930,
+        "width": 122,
+        "height": 80,
+        "sha256": "90cbb24529e51615de63f68fd0b2607c73e6944bbf7599c9462391f2917326dc"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_7-desktop.webp",
+        "before": 12331,
+        "after": 3076,
+        "width": 208,
+        "height": 208,
+        "sha256": "a4a0ae9a93c6ebe5ea7b31b8e39bcf7d979bca050870a3e760ffdb1871f06c67"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_7-mobile.webp",
+        "before": 4782,
+        "after": 1602,
+        "width": 104,
+        "height": 104,
+        "sha256": "e4ee0d2f0a3a24f6062070b6b8f92d075512d09c82123539dae75d006d16e8de"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_8-desktop.webp",
+        "before": 34017,
+        "after": 5888,
+        "width": 268,
+        "height": 268,
+        "sha256": "a1c744807e1c44094349879ee2254b989bc8854ec3dc44919529777bade194c8"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_8-mobile.webp",
+        "before": 15539,
+        "after": 3596,
+        "width": 134,
+        "height": 134,
+        "sha256": "f21bbaf90a03c1c84761ef189d683764e0b95a6a18d764ac30a5b66a2621c7e9"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_9-desktop.webp",
+        "before": 37167,
+        "after": 5380,
+        "width": 192,
+        "height": 268,
+        "sha256": "e1055b4f93862508ac1e9d66211c5594820aea19c4ac9f128181d9f3cdce04cb"
+      },
+      {
+        "path": "rive-dependencies/rive_rollouts_9-mobile.webp",
+        "before": 11952,
+        "after": 2152,
+        "width": 96,
+        "height": 134,
+        "sha256": "47daabc699be7ed56e050038627e59a1dde8f0ec23fd0f24370dfcdc94274bcf"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_1-desktop.webp",
+        "before": 397280,
+        "after": 43476,
+        "width": 720,
+        "height": 412,
+        "sha256": "2be69a1264987b889430e31c15a1aec6ea898b583be4bf4b6ff5e744ab6876f8"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_1-mobile.webp",
+        "before": 118809,
+        "after": 14726,
+        "width": 360,
+        "height": 206,
+        "sha256": "f5668a124d3d1d5e7186a0b6142f1f48aa149c1770cc666cd967b8e5c7d56f48"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_10-desktop.webp",
+        "before": 6888,
+        "after": 4990,
+        "width": 136,
+        "height": 136,
+        "sha256": "38fe5f2be927d06d9577ed840a4532d1db27a29c7283364b71c9103dfbe6d6aa"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_10-mobile.webp",
+        "before": 3269,
+        "after": 2290,
+        "width": 68,
+        "height": 68,
+        "sha256": "62f8044f75a2e0183bf453c557f4cbadb91cbfed9278cf5ab9ca66ab68879d13"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_11-desktop.webp",
+        "before": 6606,
+        "after": 4842,
+        "width": 136,
+        "height": 136,
+        "sha256": "7c74b47b437843491d0edbb7eae3ac9ecb540c9fe8b833e9243d8964255852d4"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_11-mobile.webp",
+        "before": 3149,
+        "after": 2218,
+        "width": 68,
+        "height": 68,
+        "sha256": "2fc5261fd3ba28d32055c222cefa0e5482a4d4fecf518b68e2119b2dcbd4061a"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_12-desktop.webp",
+        "before": 6753,
+        "after": 4564,
+        "width": 136,
+        "height": 136,
+        "sha256": "a9b9bb9ca7f60c4b5f8f3ed3fb515b9d32da15d8d16aded11c3a65a89be6801f"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_12-mobile.webp",
+        "before": 3231,
+        "after": 2218,
+        "width": 68,
+        "height": 68,
+        "sha256": "064d085c21086eafb461a8ffe91fdb184e0388f9ee4b0c2895ba8ccacf1c5c0a"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_13-desktop.webp",
+        "before": 28132,
+        "after": 7956,
+        "width": 267,
+        "height": 93,
+        "sha256": "ec73e4bc70d47a3b1b9b3de9b4cd2e120374a7ae32bde5af1483964d69e8ce19"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_13-mobile.webp",
+        "before": 9356,
+        "after": 3042,
+        "width": 134,
+        "height": 47,
+        "sha256": "135ed44e932069365897c2b8e76379543262db235080ae0667cdcf87ee506512"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_14-desktop.webp",
+        "before": 10629,
+        "after": 3422,
+        "width": 149,
+        "height": 53,
+        "sha256": "4216686d5f9cdb3da967e70f499ed5024d3205595ff2ff8bd2168157fd37bcc2"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_14-mobile.webp",
+        "before": 4416,
+        "after": 1666,
+        "width": 75,
+        "height": 27,
+        "sha256": "40f0d5188007d8fa2fffcfc90432ba85566a72f60a6055244dd2a0dbeed0c69f"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_15-desktop.webp",
+        "before": 13398,
+        "after": 3816,
+        "width": 126,
+        "height": 73,
+        "sha256": "d3a02384157ea68f60dd2727ea087bb3fa4e8e79efc704386912c0019dfb3907"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_15-mobile.webp",
+        "before": 5012,
+        "after": 1644,
+        "width": 63,
+        "height": 37,
+        "sha256": "162aff8c1eb63e3a76eea6787a33f4461c3994f16bf7bee193540827756b719f"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_16-desktop.webp",
+        "before": 13398,
+        "after": 3816,
+        "width": 126,
+        "height": 73,
+        "sha256": "d3a02384157ea68f60dd2727ea087bb3fa4e8e79efc704386912c0019dfb3907"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_16-mobile.webp",
+        "before": 5004,
+        "after": 1654,
+        "width": 63,
+        "height": 37,
+        "sha256": "c4d1040c2eaf21f55811116fb83ff538dac52f4021ea9acde216c12f3b0ba777"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_17-desktop.webp",
+        "before": 13398,
+        "after": 3816,
+        "width": 126,
+        "height": 73,
+        "sha256": "d3a02384157ea68f60dd2727ea087bb3fa4e8e79efc704386912c0019dfb3907"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_17-mobile.webp",
+        "before": 5012,
+        "after": 1644,
+        "width": 63,
+        "height": 37,
+        "sha256": "162aff8c1eb63e3a76eea6787a33f4461c3994f16bf7bee193540827756b719f"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_18-desktop.webp",
+        "before": 15434,
+        "after": 4606,
+        "width": 186,
+        "height": 69,
+        "sha256": "c81c8e76bb467c5459ff00c731668818695cdaee4e903347ce513bb838b09e74"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_18-mobile.webp",
+        "before": 5066,
+        "after": 1956,
+        "width": 93,
+        "height": 35,
+        "sha256": "130a0ee826d07ec32e2ceb4636307d93d7779ab632b81ffd32014c233151ea25"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_19-desktop.webp",
+        "before": 13398,
+        "after": 3816,
+        "width": 126,
+        "height": 73,
+        "sha256": "d3a02384157ea68f60dd2727ea087bb3fa4e8e79efc704386912c0019dfb3907"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_19-mobile.webp",
+        "before": 5012,
+        "after": 1644,
+        "width": 63,
+        "height": 37,
+        "sha256": "162aff8c1eb63e3a76eea6787a33f4461c3994f16bf7bee193540827756b719f"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_2-desktop.webp",
+        "before": 37738,
+        "after": 20298,
+        "width": 720,
+        "height": 412,
+        "sha256": "8a168e108e12f2bc59d80ff5d635e43c51ae1ed19f7a4b0d018570ec909fdd96"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_2-mobile.webp",
+        "before": 14284,
+        "after": 8562,
+        "width": 360,
+        "height": 206,
+        "sha256": "931c10706ede02db85c67d47262226665e23da01bc12a246056c1f8f825825eb"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_20-desktop.webp",
+        "before": 35028,
+        "after": 10680,
+        "width": 296,
+        "height": 113,
+        "sha256": "90ffe008732e54ea10e0467a7e6c7b9581263c47f16ea38a264beac0efe92946"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_20-mobile.webp",
+        "before": 12003,
+        "after": 3702,
+        "width": 148,
+        "height": 57,
+        "sha256": "8418b4f621aeaf03db2e4e3fa4d6f1bce4cd567cd15e323c858fcdbac4eb8a35"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_21-desktop.webp",
+        "before": 9053,
+        "after": 2530,
+        "width": 65,
+        "height": 65,
+        "sha256": "2e6a0ceb4be69a0dda9d2f0aeda9082bb50cad7fc4aafa6614dd4d5280c8e0cf"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_21-mobile.webp",
+        "before": 3220,
+        "after": 1260,
+        "width": 33,
+        "height": 33,
+        "sha256": "311a21b3932a04a9e245030184f872831fcee3e132218b1bcf670449a5445735"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_22-desktop.webp",
+        "before": 9053,
+        "after": 2530,
+        "width": 65,
+        "height": 65,
+        "sha256": "2e6a0ceb4be69a0dda9d2f0aeda9082bb50cad7fc4aafa6614dd4d5280c8e0cf"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_22-mobile.webp",
+        "before": 3246,
+        "after": 1264,
+        "width": 33,
+        "height": 33,
+        "sha256": "22e9507b1250ea867321371f87aad1fd4478ca8db8f93f2587b4b8a0e36fb748"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_25-desktop.webp",
+        "before": 8042,
+        "after": 2322,
+        "width": 58,
+        "height": 58,
+        "sha256": "01a1b4c9b884cc5f9c1ab30b4fb8a6109b2b1c2c7e870d352e81872ae8c7dd2f"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_25-mobile.webp",
+        "before": 2856,
+        "after": 1148,
+        "width": 29,
+        "height": 29,
+        "sha256": "4147e3d32c3cfc7592915eae3dc579232d72b4005f87efb00049645285b91b0d"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_26-desktop.webp",
+        "before": 60401,
+        "after": 15308,
+        "width": 296,
+        "height": 168,
+        "sha256": "9dbf724d15f05e0b6dc57b96eab829a7cc88711d8ed952d27b5c46f7b4a859de"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_26-mobile.webp",
+        "before": 17780,
+        "after": 4836,
+        "width": 148,
+        "height": 84,
+        "sha256": "f58ea66a4a84d607585eb43611dc0b8a4e452d559a075092d46716ad4a161e0b"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_27-desktop.webp",
+        "before": 35474,
+        "after": 10624,
+        "width": 296,
+        "height": 112,
+        "sha256": "423e9417c61b596d4db88853a95ca6864cade9374b0b28afbac3327b50db6903"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_27-mobile.webp",
+        "before": 12156,
+        "after": 3674,
+        "width": 148,
+        "height": 56,
+        "sha256": "67e89c994b38c27eed2179d80502527823264e8b7e1cb6544c2630925fd5b668"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_3-desktop.webp",
+        "before": 40127,
+        "after": 5720,
+        "width": 136,
+        "height": 136,
+        "sha256": "3a460d35717e306aea626abaa62dac86ef8d80ebc53ccad72d93fd3ee167bec6"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_3-mobile.webp",
+        "before": 12157,
+        "after": 2330,
+        "width": 68,
+        "height": 68,
+        "sha256": "6ecf45b367119a9cdf3c53d91323c493a13408b66bf5294fa114481ffd79e2fd"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_4-desktop.webp",
+        "before": 6488,
+        "after": 4056,
+        "width": 136,
+        "height": 136,
+        "sha256": "0fb3dffce44535bbd2136ae1c5679f08df3f4d3484b573b0e2c9723317aeff76"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_4-mobile.webp",
+        "before": 3161,
+        "after": 2030,
+        "width": 68,
+        "height": 68,
+        "sha256": "4d4614c977a3e2bea369f06f3f601a11fa07414a39ab59929d37c6c7270d0f10"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_5-desktop.webp",
+        "before": 6726,
+        "after": 4546,
+        "width": 136,
+        "height": 136,
+        "sha256": "8092c5e9156d5e90124036d458e4950feb78c93443c8b60644a26a3765c59968"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_5-mobile.webp",
+        "before": 3227,
+        "after": 2196,
+        "width": 68,
+        "height": 68,
+        "sha256": "2baa68832f3aff3782b1d440bc6416b41a83f34e0518b8de163a91618672f340"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_6-desktop.webp",
+        "before": 6044,
+        "after": 3820,
+        "width": 136,
+        "height": 136,
+        "sha256": "fa2fa27fd620db7a87b76830203de30cb1e7ebf385965bf2216415a93318b325"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_6-mobile.webp",
+        "before": 2968,
+        "after": 1982,
+        "width": 68,
+        "height": 68,
+        "sha256": "1a2bbbfc56ad38b69316791bb925030ae240256545ad1c10bc8eed92d531b188"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_7-desktop.webp",
+        "before": 7311,
+        "after": 5844,
+        "width": 136,
+        "height": 136,
+        "sha256": "9cbab94eec677d7c74a8fc0c8d5cd82ed988842685d227039ad0879d15ae0fef"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_7-mobile.webp",
+        "before": 3311,
+        "after": 2430,
+        "width": 68,
+        "height": 68,
+        "sha256": "e37a16161880114115f6215ad1b06a6b62c16f506778ca1c066a728d96a3586a"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_8-desktop.webp",
+        "before": 6192,
+        "after": 4122,
+        "width": 136,
+        "height": 136,
+        "sha256": "06837112942469da27051f295d3b9e025469d6b96d66bbaca242b11a82423618"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_8-mobile.webp",
+        "before": 3001,
+        "after": 1978,
+        "width": 68,
+        "height": 68,
+        "sha256": "359c5af284e395a06e993842146fede963f85ff391cb01b72571e6ef7477eb11"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_9-desktop.webp",
+        "before": 7028,
+        "after": 5152,
+        "width": 136,
+        "height": 136,
+        "sha256": "a627043031c9b91c0276a157c60297d5f424bdd2323ef04fcb78032f34e20a2c"
+      },
+      {
+        "path": "rive-dependencies/rive_simGym_9-mobile.webp",
+        "before": 3359,
+        "after": 2306,
+        "width": 68,
+        "height": 68,
+        "sha256": "67acb17f82d9e88c667fa7d5e73002b5e44219020129f9c40bc302bae3c289c3"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_1-desktop.webp",
+        "before": 533326,
+        "after": 38812,
+        "width": 1760,
+        "height": 848,
+        "sha256": "794d27dc25e0dc369ee528ed94e9e320dfdc8888f908928459b1192ef4309a9e"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_1-mobile.webp",
+        "before": 186909,
+        "after": 15418,
+        "width": 880,
+        "height": 424,
+        "sha256": "5badd044703ba618eac812861d50bd9ebda5bd5f53d778373a0113a1f5c75048"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_10-desktop.webp",
+        "before": 23553,
+        "after": 3526,
+        "width": 192,
+        "height": 268,
+        "sha256": "57d5c99bf1de91e497000b290a1441d491152df2013e3d93dc02e7dd5bf7e78e"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_10-mobile.webp",
+        "before": 8766,
+        "after": 1670,
+        "width": 96,
+        "height": 134,
+        "sha256": "44f0a9a777564e7f0a35781011377757c1c4b2aac5315e2b8c9dd3dc3e3a3771"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_11-desktop.webp",
+        "before": 85516,
+        "after": 12144,
+        "width": 570,
+        "height": 382,
+        "sha256": "894adb8a3a00550e82d12879d9a6332e9b2784d9327a26f59bda870fbed63d43"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_11-mobile.webp",
+        "before": 32612,
+        "after": 5844,
+        "width": 285,
+        "height": 191,
+        "sha256": "a42a8da7d5e4566591725f0f95fda621d81914664be70cf484c9bda01c223d48"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_12-desktop.webp",
+        "before": 139795,
+        "after": 21960,
+        "width": 356,
+        "height": 531,
+        "sha256": "e20fee7055c57c6597427c6f03518a84acfc626d62e6a1bf7e93dadcafc47fca"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_12-mobile.webp",
+        "before": 41806,
+        "after": 8180,
+        "width": 178,
+        "height": 266,
+        "sha256": "6838a51e8b1ffff74c0f2a4b9cc68bf421afe9e7184d7ae59d5077ae9c363155"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_13-desktop.webp",
+        "before": 47146,
+        "after": 8278,
+        "width": 245,
+        "height": 314,
+        "sha256": "93040ff117d11dd39f0bbaec6395e373e3471cd7bd98ccb84d78c99e5ed0ab27"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_13-mobile.webp",
+        "before": 16351,
+        "after": 3974,
+        "width": 123,
+        "height": 157,
+        "sha256": "c5aff75e6b355b033d808139c02790410a3c6596762102191eb9d902a60eadca"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_2-desktop.webp",
+        "before": 218468,
+        "after": 146782,
+        "width": 1760,
+        "height": 848,
+        "sha256": "ac2facf67b700918ad1d1fd0ce098b94f285abd74570ff831cc633c23df328f9"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_2-mobile.webp",
+        "before": 70809,
+        "after": 52514,
+        "width": 880,
+        "height": 424,
+        "sha256": "74852010a4478e564648cb329425c5bfca770a4113b7c15330b514c32589ddd3"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_3-desktop.webp",
+        "before": 49288,
+        "after": 6146,
+        "width": 268,
+        "height": 266,
+        "sha256": "9d761bd12ab52c85e87bdd55b1b996fd2b50e7d4fddbda4c5eeb4a35d0422ffd"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_3-mobile.webp",
+        "before": 17103,
+        "after": 2908,
+        "width": 134,
+        "height": 133,
+        "sha256": "8d549ddcdd4f5ba2adbb5d1228bc62580a66c8cbef708c409fd9c36c42b894ff"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_4-desktop.webp",
+        "before": 5190,
+        "after": 3272,
+        "width": 268,
+        "height": 268,
+        "sha256": "020a99b9b007df36ff85bbd9f6523df2a88613d07bd5afd74c756b1d124036e1"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_4-mobile.webp",
+        "before": 2558,
+        "after": 1420,
+        "width": 134,
+        "height": 134,
+        "sha256": "c016706391d1133db90833f122f099a65b07c09e08df86b022a1b9fdcb79ad5d"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_5-desktop.webp",
+        "before": 43880,
+        "after": 6890,
+        "width": 268,
+        "height": 268,
+        "sha256": "e0469b6e615f08a296547381d39953a74d7a10e24d15048c0b513669339ba85a"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_5-mobile.webp",
+        "before": 16471,
+        "after": 3286,
+        "width": 134,
+        "height": 134,
+        "sha256": "c26d184c3336d0c652e1f0fdee958194469fce7c07f87290b5333da367389164"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_6-desktop.webp",
+        "before": 10182,
+        "after": 6952,
+        "width": 212,
+        "height": 212,
+        "sha256": "b4f1780a5bf39f040b1f78b48e90a043310efd1f96a0c85182268fdfe80959a1"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_6-mobile.webp",
+        "before": 4101,
+        "after": 2790,
+        "width": 106,
+        "height": 106,
+        "sha256": "3327cd51ebac00ca1b2915afc4c07a79de50f88e3ea5fab19458f5c626cd99a5"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_7-desktop.webp",
+        "before": 34017,
+        "after": 5888,
+        "width": 268,
+        "height": 268,
+        "sha256": "a1c744807e1c44094349879ee2254b989bc8854ec3dc44919529777bade194c8"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_7-mobile.webp",
+        "before": 15539,
+        "after": 3596,
+        "width": 134,
+        "height": 134,
+        "sha256": "f21bbaf90a03c1c84761ef189d683764e0b95a6a18d764ac30a5b66a2621c7e9"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_8-desktop.webp",
+        "before": 40806,
+        "after": 6298,
+        "width": 192,
+        "height": 268,
+        "sha256": "e45521928100cdb78c84ca211d23ed11b3e20c9f642505740a4402d3e12ff1a4"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_8-mobile.webp",
+        "before": 12391,
+        "after": 2280,
+        "width": 96,
+        "height": 134,
+        "sha256": "ff2aeccaffaa28ffc3b5c59841cd33a73dafe0847fd2c263e7492142dc51efef"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_9-desktop.webp",
+        "before": 37167,
+        "after": 5380,
+        "width": 192,
+        "height": 268,
+        "sha256": "e1055b4f93862508ac1e9d66211c5594820aea19c4ac9f128181d9f3cdce04cb"
+      },
+      {
+        "path": "rive-dependencies/rive_theme_9-mobile.webp",
+        "before": 11952,
+        "after": 2152,
+        "width": 96,
+        "height": 134,
+        "sha256": "47daabc699be7ed56e050038627e59a1dde8f0ec23fd0f24370dfcdc94274bcf"
+      },
+      {
+        "path": "rive-dependencies/rive_u132_1-desktop.webp",
+        "before": 132084,
+        "after": 14340,
+        "width": 237,
+        "height": 906,
+        "sha256": "4b0a461a847a7405124a6b80bc4ad1fc784042da7714ac026df14f73b580616d"
+      },
+      {
+        "path": "rive-dependencies/rive_u132_1-mobile.webp",
+        "before": 42745,
+        "after": 6084,
+        "width": 119,
+        "height": 453,
+        "sha256": "4ace2d1630822aea312881948e4bb8ff8262cd9becfd845acc94116c3ef0eb8d"
+      },
+      {
+        "path": "rive-dependencies/rive_u132_2-desktop.webp",
+        "before": 92025,
+        "after": 11396,
+        "width": 300,
+        "height": 295,
+        "sha256": "8d704f53b726d154331e75f9518ed706985e7d8890e2991b83556c1280f04a33"
+      },
+      {
+        "path": "rive-dependencies/rive_u132_2-mobile.webp",
+        "before": 32744,
+        "after": 5436,
+        "width": 150,
+        "height": 148,
+        "sha256": "00cb6192ddb28390b59ba9ab683786776598e62b092058a1e922b388cfe4a778"
+      },
+      {
+        "path": "rive-dependencies/rive_u132_3-desktop.webp",
+        "before": 179488,
+        "after": 24990,
+        "width": 351,
+        "height": 323,
+        "sha256": "04b5bfecfd503288e75e70ee16fdd59bdf6156265f5a6ca39f9e7655ec813596"
+      },
+      {
+        "path": "rive-dependencies/rive_u132_3-mobile.webp",
+        "before": 41757,
+        "after": 5732,
+        "width": 176,
+        "height": 162,
+        "sha256": "5976845a575ba122051f361c8c6e07f027085a2bd9c1fdcb8dd795de6c88a82d"
+      },
+      {
+        "path": "rive-dependencies/rive_u132_4-desktop.webp",
+        "before": 80056,
+        "after": 12124,
+        "width": 632,
+        "height": 1292,
+        "sha256": "68465816bc8c8307317c4f9a276f65d703ef6e7097a1945cf43bb0d88b7b3e58"
+      },
+      {
+        "path": "rive-dependencies/rive_u132_4-mobile.webp",
+        "before": 27932,
+        "after": 5644,
+        "width": 316,
+        "height": 646,
+        "sha256": "bc73a9732b15bef2bb30cc35c0fdf8889b0dbdc107be2fa8d86a6de7a69b4850"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_1-desktop.webp",
+        "before": 29241,
+        "after": 19884,
+        "width": 380,
+        "height": 368,
+        "sha256": "d07b563a6cb663fcb5c35e727f3bb26c1dd782938cfd20dd6a56e611594f8c65"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_1-mobile.webp",
+        "before": 29241,
+        "after": 19884,
+        "width": 380,
+        "height": 368,
+        "sha256": "d07b563a6cb663fcb5c35e727f3bb26c1dd782938cfd20dd6a56e611594f8c65"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_10-desktop.webp",
+        "before": 5244,
+        "after": 2904,
+        "width": 180,
+        "height": 180,
+        "sha256": "9a9a9a7ec0f5e0b02774078f0f8fc39ce6a75576782f8eee1650bbaa8c74a96f"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_10-mobile.webp",
+        "before": 4771,
+        "after": 2704,
+        "width": 180,
+        "height": 180,
+        "sha256": "e42ee8590ee032a4dee7f7fb7f9c6e21c7450a2fe9b64880ba85876e714aafbc"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_11-desktop.webp",
+        "before": 49418,
+        "after": 8856,
+        "width": 500,
+        "height": 992,
+        "sha256": "c6c1c5a7315df2116fc6b2fae6b747718b0c55da7a02f8532a5cc3cb811b330f"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_11-mobile.webp",
+        "before": 38187,
+        "after": 8470,
+        "width": 500,
+        "height": 992,
+        "sha256": "98dac35e124a5ac03ab50de91c22d63042855518edba76bff3025f04aa475570"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_12-desktop.webp",
+        "before": 6753,
+        "after": 4054,
+        "width": 180,
+        "height": 180,
+        "sha256": "878633ebae42cbb0d92ef32ddd2aea5cdda0c16bd1a045bdb5076051da23bae6"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_12-mobile.webp",
+        "before": 3029,
+        "after": 1780,
+        "width": 90,
+        "height": 90,
+        "sha256": "3e8601b2bf6ecb11e3d032c1721835eed9abcf709b6433513fa6e35816ab2bf0"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_13-desktop.webp",
+        "before": 6318,
+        "after": 4008,
+        "width": 180,
+        "height": 180,
+        "sha256": "956364c0049d03e3f316bfac750222a49d65d4fc3b0fa22c7042ce4d7eecdb44"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_13-mobile.webp",
+        "before": 2889,
+        "after": 1716,
+        "width": 90,
+        "height": 90,
+        "sha256": "8b5eebcec0ba179ad7eda21a76fbe5bf0f9daa2e9a6473c3f46e4c5e219ded75"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_14-desktop.webp",
+        "before": 37244,
+        "after": 9808,
+        "width": 198,
+        "height": 198,
+        "sha256": "389ff41e9ae00a3a4a5677cd97e3b5a0e1e3eb0265cf3cb14c9318a4d18a55c7"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_14-mobile.webp",
+        "before": 37244,
+        "after": 9808,
+        "width": 198,
+        "height": 198,
+        "sha256": "389ff41e9ae00a3a4a5677cd97e3b5a0e1e3eb0265cf3cb14c9318a4d18a55c7"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_15-desktop.webp",
+        "before": 27064,
+        "after": 8292,
+        "width": 198,
+        "height": 198,
+        "sha256": "f614da14e7fe955b4503638c546ba8c82c3aee6b97350d67761d5fcb5a731de8"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_15-mobile.webp",
+        "before": 9321,
+        "after": 3388,
+        "width": 100,
+        "height": 99,
+        "sha256": "2630ad67bd57478caebf22f38531d33e04fd9fcb87c067d7835012bd784f5efc"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_16-desktop.webp",
+        "before": 33764,
+        "after": 8850,
+        "width": 198,
+        "height": 199,
+        "sha256": "90b37d690d31d1d7220237e21fa0d1f3b89fa66d9506f9de616617fc07758670"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_16-mobile.webp",
+        "before": 37479,
+        "after": 8482,
+        "width": 198,
+        "height": 199,
+        "sha256": "d9c5dd6b4c3f23a226da89101505ab4c3bd2bfed5b6193561e9afb1acf073849"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_17-desktop.webp",
+        "before": 8472,
+        "after": 5814,
+        "width": 180,
+        "height": 180,
+        "sha256": "63e305b158169a3df6ccd8c175814bbf1d72c349cedb0d6e8feacdaed321fbf1"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_17-mobile.webp",
+        "before": 7512,
+        "after": 5388,
+        "width": 180,
+        "height": 180,
+        "sha256": "75d21310153f2b969696bac5f24d5b24e26908ff4af2433c45b346a92152c51f"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_18-desktop.webp",
+        "before": 9931,
+        "after": 7636,
+        "width": 160,
+        "height": 160,
+        "sha256": "85a5b7b7e1e1af919fc232b46a1af8a9034f39e074f21be9c15350408958cdeb"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_18-mobile.webp",
+        "before": 3756,
+        "after": 2774,
+        "width": 80,
+        "height": 80,
+        "sha256": "0082553d27afec902b0bec65bf43092ec078b6875a7953480043a2689f84946b"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_19-desktop.webp",
+        "before": 9479,
+        "after": 6042,
+        "width": 160,
+        "height": 160,
+        "sha256": "399c306b26dd8412e11fc8126f4c0cd2cf06dd24ebad097696e0a9cc424a5e8f"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_19-mobile.webp",
+        "before": 4104,
+        "after": 2840,
+        "width": 80,
+        "height": 80,
+        "sha256": "e293c4da75d05a470199231741ec0b45c7603a1895a329707894fb3799aa2a38"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_2-desktop.webp",
+        "before": 46248,
+        "after": 27208,
+        "width": 380,
+        "height": 580,
+        "sha256": "4d2c9a1a6e2f030e5cb86c1740016caab3a28d15ffd65eb62935bc03fe79e24d"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_2-mobile.webp",
+        "before": 39587,
+        "after": 21964,
+        "width": 380,
+        "height": 580,
+        "sha256": "ca3cc03dc473f4484003b52f0b0269b67380921171197864c2a20ca99359e0db"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_20-desktop.webp",
+        "before": 8496,
+        "after": 5876,
+        "width": 160,
+        "height": 160,
+        "sha256": "c2f07237eefb57235673a9a1ef6be915cbd540da6771d19a12613fd66f2b3142"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_20-mobile.webp",
+        "before": 3521,
+        "after": 2388,
+        "width": 80,
+        "height": 80,
+        "sha256": "bf6057b809ccea5716beab2070e47f69890b6a904d6a54fffc83be38fd146d5d"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_21-desktop.webp",
+        "before": 8098,
+        "after": 5112,
+        "width": 160,
+        "height": 160,
+        "sha256": "2bda1c015f5d59127380d8724e7f7ffd4c37a1b3a9cc70a3392268d72f4478c0"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_21-mobile.webp",
+        "before": 3598,
+        "after": 2324,
+        "width": 80,
+        "height": 80,
+        "sha256": "58eb982b3984aaabe9e7781a4d42f3888df82ce5373881019b0cbdfa42019fa4"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_22-desktop-optimized.webp",
+        "before": 7696,
+        "after": 4700,
+        "width": 160,
+        "height": 160,
+        "sha256": "76e03a9778abdd4662f35154a3a61b8c76fbab8605347c4da27edf7225402a8a"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_22-mobile-optimized.webp",
+        "before": 7696,
+        "after": 4700,
+        "width": 160,
+        "height": 160,
+        "sha256": "76e03a9778abdd4662f35154a3a61b8c76fbab8605347c4da27edf7225402a8a"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_23-desktop-optimized.webp",
+        "before": 6240,
+        "after": 3532,
+        "width": 160,
+        "height": 160,
+        "sha256": "2696ecab68dd6a273d5ccc3f5f9b84816f54190ea8522e0d7c897b678b6b8f18"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_23-mobile-optimized.webp",
+        "before": 6240,
+        "after": 3532,
+        "width": 160,
+        "height": 160,
+        "sha256": "2696ecab68dd6a273d5ccc3f5f9b84816f54190ea8522e0d7c897b678b6b8f18"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_24-desktop-optimized.webp",
+        "before": 9216,
+        "after": 5626,
+        "width": 160,
+        "height": 160,
+        "sha256": "632cca79c6aeb55c916f00aa32a75328f62dbca92ed6bba19895c235b022ef2b"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_24-mobile-optimized.webp",
+        "before": 9216,
+        "after": 5626,
+        "width": 160,
+        "height": 160,
+        "sha256": "632cca79c6aeb55c916f00aa32a75328f62dbca92ed6bba19895c235b022ef2b"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_25-desktop-optimized.webp",
+        "before": 8620,
+        "after": 4926,
+        "width": 160,
+        "height": 160,
+        "sha256": "547bd1f6becfeebddc55d2fafd87ef04c0696d614a05cfd1de39d99518fd604f"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_25-mobile-optimized.webp",
+        "before": 8620,
+        "after": 4926,
+        "width": 160,
+        "height": 160,
+        "sha256": "547bd1f6becfeebddc55d2fafd87ef04c0696d614a05cfd1de39d99518fd604f"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_3-desktop.webp",
+        "before": 1929,
+        "after": 1266,
+        "width": 40,
+        "height": 40,
+        "sha256": "56d1bc3da1a8aaee8e2534ed63a50922f03fdb8c178c9e0563a9be10242971b6"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_3-mobile.webp",
+        "before": 1832,
+        "after": 1194,
+        "width": 40,
+        "height": 40,
+        "sha256": "5ae947fe366f82bd591839638765ae0cee8e57596584c4dea7f05d9f32dc09ce"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_4-desktop.webp",
+        "before": 2104,
+        "after": 1488,
+        "width": 40,
+        "height": 40,
+        "sha256": "2104d87a639b23c1a4994eaa24396d41dff20aea7692c434a84d1783e5443406"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_4-mobile.webp",
+        "before": 1995,
+        "after": 1400,
+        "width": 40,
+        "height": 40,
+        "sha256": "dfac9ce9f79f98c4b2d96432755897882866e85f81defb81c4d82e9b8bf475a3"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_5-desktop.webp",
+        "before": 2007,
+        "after": 1328,
+        "width": 40,
+        "height": 40,
+        "sha256": "eb45b38dc520ba4c5af07bad320de7c4536f983b51d8e2e36b86b253bc181187"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_5-mobile.webp",
+        "before": 1477,
+        "after": 802,
+        "width": 20,
+        "height": 20,
+        "sha256": "9bb91e57cab2e8de1db1e03503f822d3120533a0e17045c17f9684c321b398a3"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_6-desktop.webp",
+        "before": 1999,
+        "after": 1290,
+        "width": 40,
+        "height": 40,
+        "sha256": "993a02dae093e692a21f61628de7c97bac07a002c6e90829287029eb49c402f1"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_6-mobile.webp",
+        "before": 1999,
+        "after": 1290,
+        "width": 40,
+        "height": 40,
+        "sha256": "993a02dae093e692a21f61628de7c97bac07a002c6e90829287029eb49c402f1"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_7-desktop.webp",
+        "before": 165962,
+        "after": 16488,
+        "width": 508,
+        "height": 592,
+        "sha256": "bf51c4bda03d1aaebca188e1ee685b73a0134636269222eca3ca30839101de3d"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_7-mobile.webp",
+        "before": 173612,
+        "after": 15842,
+        "width": 508,
+        "height": 592,
+        "sha256": "0c13c39ff356508c9504827fb6f68fa0abf33f62795f73332d23b38560694ea9"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_8-desktop.webp",
+        "before": 6040,
+        "after": 3716,
+        "width": 180,
+        "height": 180,
+        "sha256": "83c7239a88d601866f2766c584b9d3fe412a3727a708a0c9ff6fbd92cc1a0496"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_8-mobile.webp",
+        "before": 5251,
+        "after": 3492,
+        "width": 180,
+        "height": 180,
+        "sha256": "3b421552a31b5c5bcbb7732477a7b381bc52200f39456a31f28ec5626aa09428"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_9-desktop.webp",
+        "before": 5947,
+        "after": 3586,
+        "width": 180,
+        "height": 180,
+        "sha256": "0bcb5877ecf4c8fabf5df2b8872b4dec15b4c2444459e554132688323fad5b57"
+      },
+      {
+        "path": "rive-dependencies/rive_u151_9-mobile.webp",
+        "before": 5359,
+        "after": 3366,
+        "width": 180,
+        "height": 180,
+        "sha256": "616792274dd29ad2f344b7859959890d71e74211001acba3b8aaeb22b4774bad"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_1-desktop.webp",
+        "before": 4160,
+        "after": 1950,
+        "width": 290,
+        "height": 134,
+        "sha256": "1c63d90886fd0765d2c484e2d2ade61449368db41fbce63cfddbfffc8f3dcdd2"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_1-mobile.webp",
+        "before": 4160,
+        "after": 1950,
+        "width": 290,
+        "height": 134,
+        "sha256": "1c63d90886fd0765d2c484e2d2ade61449368db41fbce63cfddbfffc8f3dcdd2"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_2-desktop.webp",
+        "before": 6937,
+        "after": 4164,
+        "width": 202,
+        "height": 134,
+        "sha256": "ea7b9269d106557162c8b1baf0c24d37c8ebf594935128882088425a5c444cbf"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_2-mobile.webp",
+        "before": 6937,
+        "after": 4164,
+        "width": 202,
+        "height": 134,
+        "sha256": "ea7b9269d106557162c8b1baf0c24d37c8ebf594935128882088425a5c444cbf"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_3-desktop.webp",
+        "before": 12204,
+        "after": 2066,
+        "width": 268,
+        "height": 110,
+        "sha256": "0319955185891b5b19164e16d912a9526c832fabfcbd1391416bdb5dbc31440b"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_3-mobile.webp",
+        "before": 5290,
+        "after": 1310,
+        "width": 150,
+        "height": 62,
+        "sha256": "4520ea6f9829d135874768117bdbae8c233130a239fa54a90de47e2d46eaf4fa"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_4-desktop.webp",
+        "before": 29293,
+        "after": 3732,
+        "width": 268,
+        "height": 110,
+        "sha256": "a7ec3769cbfadb37aec89715c586e3da8a10e8f2dcf83503c9b730ec210e425a"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_4-mobile.webp",
+        "before": 11430,
+        "after": 2030,
+        "width": 150,
+        "height": 62,
+        "sha256": "2debb22b0cf997c2e6a21509d269326eaa01f857591db7a2e401f74486e2f85f"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_5-desktop.webp",
+        "before": 451143,
+        "after": 27724,
+        "width": 836,
+        "height": 776,
+        "sha256": "22be77103e6026a8a6173bb644700a880509f407d2de0d3c193e2adaacccb8a8"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_5-mobile.webp",
+        "before": 167343,
+        "after": 14178,
+        "width": 468,
+        "height": 434,
+        "sha256": "91e785b0b2605b4bc2911b059f5f57d7badd6cd2b9d7215a84152b004ff02eaa"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_6-desktop.webp",
+        "before": 3619,
+        "after": 1122,
+        "width": 58,
+        "height": 58,
+        "sha256": "6c5b66cdd9d4a650631532560050a9cd817cf9a45a787c55c5eb9d81c84fe71a"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_6-mobile.webp",
+        "before": 3619,
+        "after": 1122,
+        "width": 58,
+        "height": 58,
+        "sha256": "6c5b66cdd9d4a650631532560050a9cd817cf9a45a787c55c5eb9d81c84fe71a"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_7-desktop.webp",
+        "before": 6626,
+        "after": 1450,
+        "width": 58,
+        "height": 58,
+        "sha256": "8e4047f6e70ff7fc2aba1ca222c32b3c72a8ef16677e03855336b4ec3f448496"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_7-mobile.webp",
+        "before": 6626,
+        "after": 1450,
+        "width": 58,
+        "height": 58,
+        "sha256": "8e4047f6e70ff7fc2aba1ca222c32b3c72a8ef16677e03855336b4ec3f448496"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_8-desktop.webp",
+        "before": 1977,
+        "after": 776,
+        "width": 58,
+        "height": 58,
+        "sha256": "0406225aa5c4698cc509c1bcf64fa2ed26ee1819c7df2ae6a71f6adec56324c0"
+      },
+      {
+        "path": "rive-dependencies/rive_u50_8-mobile.webp",
+        "before": 1977,
+        "after": 776,
+        "width": 58,
+        "height": 58,
+        "sha256": "0406225aa5c4698cc509c1bcf64fa2ed26ee1819c7df2ae6a71f6adec56324c0"
+      },
+      {
+        "path": "rive-dependencies/rive_u5_1-desktop.webp",
+        "before": 1027268,
+        "after": 308314,
+        "width": 690,
+        "height": 626,
+        "sha256": "c64b175549ad482302fde513f719507bfda73e34f2e5fa9a26a0ff93b34a00e0"
+      },
+      {
+        "path": "rive-dependencies/rive_u5_1-mobile.webp",
+        "before": 264625,
+        "after": 80786,
+        "width": 345,
+        "height": 313,
+        "sha256": "96748cc5e7e1ee07745875a9eac87eac18e8a86b4b4d68ebefb6152826ba67ad"
+      },
+      {
+        "path": "rive-dependencies/rive_u6_3.webp",
+        "before": 402074,
+        "after": 48692,
+        "width": 1350,
+        "height": 2760,
+        "sha256": "bf89bbdc28b7a9533d9fd531547770fb2df2f800811e9d6dd3d53699e1195b98"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_1-desktop.webp",
+        "before": 31021,
+        "after": 4648,
+        "width": 152,
+        "height": 152,
+        "sha256": "450dd50357ebdedba3419ddf9aa979eab5ab1438089e2de05fac64b3863f600e"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_1-mobile.webp",
+        "before": 10373,
+        "after": 2122,
+        "width": 76,
+        "height": 76,
+        "sha256": "772cb62f80c0997266b9f28f467da3e2569dfb97bfef6ccee7f07c09b153114b"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_10-desktop.webp",
+        "before": 29520,
+        "after": 4374,
+        "width": 152,
+        "height": 152,
+        "sha256": "c4a73bcf8938fded601d8e28ae0816cdd52fe76245e620750364a02f9d0b9381"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_10-mobile.webp",
+        "before": 9928,
+        "after": 1948,
+        "width": 76,
+        "height": 76,
+        "sha256": "35a944ad44559f9560f45da28d595c2f1879ef51145337238de64eab049d3a3e"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_11-desktop.webp",
+        "before": 17137,
+        "after": 2024,
+        "width": 152,
+        "height": 152,
+        "sha256": "295486d9f330270ff18a5b4ad82fca4e991df7e37467df7795f8852816f202de"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_11-mobile.webp",
+        "before": 6457,
+        "after": 1126,
+        "width": 76,
+        "height": 76,
+        "sha256": "7cb26e84d9b2f02c36d689a4b99b66873e719b3f623c3cdd3469fb0330c70825"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_12-desktop.webp",
+        "before": 18220,
+        "after": 2790,
+        "width": 152,
+        "height": 152,
+        "sha256": "a81985b14aa47ee28bf18b1a326c5eef7875819be31eed8dd3b340f5987f4411"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_12-mobile.webp",
+        "before": 6755,
+        "after": 1514,
+        "width": 76,
+        "height": 76,
+        "sha256": "e5055daa7f3eedac187ffed240d8c08d8ac35b1f20421a7943c123746b1c5ab0"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_13-desktop.webp",
+        "before": 15079,
+        "after": 2592,
+        "width": 152,
+        "height": 152,
+        "sha256": "d9acf0b1d89b7a0d5d925e2ab01e52e30ab29c77d2c43056d120f5dd17850179"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_13-mobile.webp",
+        "before": 5180,
+        "after": 1352,
+        "width": 76,
+        "height": 76,
+        "sha256": "46abffb9bc9a68b2a32f15e14b1a9be24ec45c1bcec92aeff9b8e2bba2ed3878"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_14-desktop.webp",
+        "before": 26857,
+        "after": 3112,
+        "width": 152,
+        "height": 152,
+        "sha256": "026d7be107be46285e216c6bd7dac1388b8c994bc49ec98a5fc63433b8858338"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_14-mobile.webp",
+        "before": 8430,
+        "after": 1500,
+        "width": 76,
+        "height": 76,
+        "sha256": "b9f6d53308e23fbc50b885d62949045eba596ffe519dd732cc9945114659fbc9"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_15-desktop.webp",
+        "before": 14785,
+        "after": 2128,
+        "width": 152,
+        "height": 152,
+        "sha256": "ebb4cff7b78497088b99c62cdc3725df23bb8dde8054a3ca51ecac3a986e2ab6"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_15-mobile.webp",
+        "before": 5075,
+        "after": 1180,
+        "width": 76,
+        "height": 76,
+        "sha256": "9a4ad4793567c5ebb43a65ccadc43b71a15f81ee507b4aa423629ad3d98bee3c"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_16-desktop.webp",
+        "before": 28104,
+        "after": 3794,
+        "width": 152,
+        "height": 152,
+        "sha256": "640b3f6a9df6346d3ab7b313c0d9d1e5285d4991bb201802755198970a50d562"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_16-mobile.webp",
+        "before": 9943,
+        "after": 1824,
+        "width": 76,
+        "height": 76,
+        "sha256": "162213e4de0a6e44c8c4f2e1ec7e79f22de351b86c779805d46918ec7d022e93"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_17-desktop.webp",
+        "before": 25274,
+        "after": 3624,
+        "width": 152,
+        "height": 152,
+        "sha256": "200f8ce802a2260ffbbede16ad2e5f2818334e34067def6940e41bf672d4e229"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_17-mobile.webp",
+        "before": 9008,
+        "after": 1758,
+        "width": 76,
+        "height": 76,
+        "sha256": "ff1cb1bac502860095b1b7877a23886e5f2ef845cd41786fba6c01c4ef524595"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_18-desktop.webp",
+        "before": 4738,
+        "after": 1164,
+        "width": 70,
+        "height": 70,
+        "sha256": "4906001fbe11a9b921847fc3a965f219363e7e64a4dbce6b447d7d0b3963a67a"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_18-mobile.webp",
+        "before": 2143,
+        "after": 776,
+        "width": 34,
+        "height": 34,
+        "sha256": "87022298a339efc9a0d060554ab559bc3cd579946314caf24035357856d1032f"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_19-desktop.webp",
+        "before": 32866,
+        "after": 4010,
+        "width": 152,
+        "height": 152,
+        "sha256": "d6e5cbafbaf58c32b5c95a150af597067dd9e2e12af7bf908eccf6264c2a0e91"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_19-mobile.webp",
+        "before": 10533,
+        "after": 1718,
+        "width": 76,
+        "height": 76,
+        "sha256": "ed5c033b591f73f7cb224f450fce089a1e25ec1cdc323898ddab506715976051"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_2-desktop.webp",
+        "before": 16527,
+        "after": 2060,
+        "width": 152,
+        "height": 152,
+        "sha256": "61c066cdb1aa23fcd2e36e5a1696e869d73876c47a5689b3996605b68cd7201c"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_2-mobile.webp",
+        "before": 6512,
+        "after": 1232,
+        "width": 76,
+        "height": 76,
+        "sha256": "10c22dc35c51986c0f99f8748b38568a498808a43bcd0ec0656d92ca58573bc2"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_3-desktop.webp",
+        "before": 47788,
+        "after": 6060,
+        "width": 152,
+        "height": 152,
+        "sha256": "a9cd7e55df49145af0fe58a89aaf4394653d6277b47da6745f2e84ed7592ae44"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_3-mobile.webp",
+        "before": 13080,
+        "after": 2298,
+        "width": 76,
+        "height": 76,
+        "sha256": "ea8a27d7e653cf0a629c79c1e45befcdaf998c876ecb7552b03902798d41aa56"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_4-desktop.webp",
+        "before": 31774,
+        "after": 3582,
+        "width": 152,
+        "height": 152,
+        "sha256": "c0d3f221c88a679ec6efc4c9b4252df69d13e9fd90cdba3316b5cbee6784a319"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_4-mobile.webp",
+        "before": 10501,
+        "after": 1716,
+        "width": 76,
+        "height": 76,
+        "sha256": "ef27f32fee6754cbd23d97b3b321cda38de818947330960a3c730af3bb91ec7a"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_5-desktop.webp",
+        "before": 41826,
+        "after": 3828,
+        "width": 152,
+        "height": 152,
+        "sha256": "bf382d0dbb4200fdf040f0a86e1bee991a151787f751c01cff4433737bf058b2"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_5-mobile.webp",
+        "before": 11205,
+        "after": 1740,
+        "width": 76,
+        "height": 76,
+        "sha256": "e6f87ad30eb6cd2b4c5848678551c1c53bd7e16443a16fb861bd69b57b0a89c8"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_6-desktop.webp",
+        "before": 18938,
+        "after": 2466,
+        "width": 152,
+        "height": 152,
+        "sha256": "2fdd8a92db573915bffc73639688f2bb0f7b04999e1d19238cbfc35689ded2eb"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_6-mobile.webp",
+        "before": 6920,
+        "after": 1442,
+        "width": 76,
+        "height": 76,
+        "sha256": "e724ab69fec8c1d43a64941fa911c5dfd5bc104222c61b5ddb8d153a423f522e"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_7-desktop.webp",
+        "before": 38850,
+        "after": 4788,
+        "width": 152,
+        "height": 152,
+        "sha256": "94c34e305f5a5c22d30ad9d6dafa9ea365cfd6b90842e21148d138b6ee729334"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_7-mobile.webp",
+        "before": 11419,
+        "after": 1990,
+        "width": 76,
+        "height": 76,
+        "sha256": "568b40e73a4211d76084fe7c98d75af553c4a7bbced48299fa70dcd2031e4a1b"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_8-desktop.webp",
+        "before": 48491,
+        "after": 5718,
+        "width": 152,
+        "height": 152,
+        "sha256": "01b061822c58b35d30c1f89fb4eedd1f466c37d9037d7dc421800a9eeaefdca1"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_8-mobile.webp",
+        "before": 14108,
+        "after": 2364,
+        "width": 76,
+        "height": 76,
+        "sha256": "225dbc81e936aa46f9652a0acaca2fc9f7407530ba3d94c3abb179cb8f612409"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_9-desktop.webp",
+        "before": 12477,
+        "after": 1576,
+        "width": 152,
+        "height": 152,
+        "sha256": "4fdfdb409a0345eea223b9fe132d9bcda1d80f304d1b293293b506eb5b8f0973"
+      },
+      {
+        "path": "rive-dependencies/rive_u82_9-mobile.webp",
+        "before": 5050,
+        "after": 1036,
+        "width": 76,
+        "height": 76,
+        "sha256": "29667d1f1c294fec0be479ac8da06a5c69205051061a55134507458ea6814cd0"
+      },
+      {
+        "path": "rive-dependencies/rive_u8_1-desktop.webp",
+        "before": 63747,
+        "after": 27008,
+        "width": 1264,
+        "height": 848,
+        "sha256": "e290aecf7b130653b3658b9546815be6cca7c6fc96a14f9ecedfe6a206fd8f4f"
+      },
+      {
+        "path": "rive-dependencies/rive_u8_1-mobile.webp",
+        "before": 22434,
+        "after": 9834,
+        "width": 632,
+        "height": 424,
+        "sha256": "30839ddc081e18618e2ce8c1e92b79b6331f1aa802edf1cb03324d76d27e61bf"
+      },
+      {
+        "path": "rive-dependencies/rive_u8_2-desktop.webp",
+        "before": 106265,
+        "after": 49758,
+        "width": 1248,
+        "height": 832,
+        "sha256": "5ec2554aa42a5603afcd5092afb025a986dfa7c79ab362f740a655d945072b12"
+      },
+      {
+        "path": "rive-dependencies/rive_u8_2-mobile.webp",
+        "before": 35443,
+        "after": 17842,
+        "width": 624,
+        "height": 416,
+        "sha256": "2eb62aba8515912c63a78c390705dcc37c15c9c77556fb58064b305fe7865d65"
+      },
+      {
+        "path": "rive-dependencies/sidekick_digest_1-desktop.webp",
+        "before": 410968,
+        "after": 324024,
+        "width": 1400,
+        "height": 748,
+        "sha256": "db1426bccb124504c1c0978ada13c23f8382f5ec24e99c55055038d36f930831"
+      },
+      {
+        "path": "rive-dependencies/sidekick_digest_1-mobile.webp",
+        "before": 122002,
+        "after": 111856,
+        "width": 700,
+        "height": 374,
+        "sha256": "1f6700c8ac1203d62da325dc14ced252dfc72529c96e0c429b273754ce4fd3cf"
+      },
+      {
+        "path": "rive-dependencies/u113bg.webp",
+        "before": 55050,
+        "after": 26038,
+        "width": 1124,
+        "height": 942,
+        "sha256": "6a856ca6b78a8be071856b6c6706be01fc737ac2a457bf09bbf2b775de39bf06"
+      },
+      {
+        "path": "rive-dependencies/u132bg.webp",
+        "before": 1189343,
+        "after": 84666,
+        "width": 742,
+        "height": 1326,
+        "sha256": "601b2e2ff4ea5398c427db95f2e0660a61e6d28d2f8cf1e0d29e67122168516b"
+      },
+      {
+        "path": "rive-dependencies/u15bg.webp",
+        "before": 142942,
+        "after": 118168,
+        "width": 1124,
+        "height": 882,
+        "sha256": "198091991580eca7946df831ca6b978d2bc67a2d413779458c17f843ea48198d"
+      },
+      {
+        "path": "rive-dependencies/u16_1-desktop.webp",
+        "before": 536061,
+        "after": 71314,
+        "width": 872,
+        "height": 581,
+        "sha256": "de6a8ec2696a9a79e75dcce50f83ab094269a179cb337b1a09eabd5e4c4c4a16"
+      },
+      {
+        "path": "rive-dependencies/u16_1-mobile.webp",
+        "before": 357447,
+        "after": 54700,
+        "width": 654,
+        "height": 436,
+        "sha256": "e8fd85ab3250b1001ac821fc64aa7f1a4ea19dad572d285e6c0b02c261104a7b"
+      },
+      {
+        "path": "rive-dependencies/u16bg.webp",
+        "before": 302901,
+        "after": 17000,
+        "width": 550,
+        "height": 950,
+        "sha256": "b726866d691deb282e9b4353835dd035b6346f209106f09401fc11deb1e6f44b"
+      },
+      {
+        "path": "rive-dependencies/u172bg.webp",
+        "before": 257710,
+        "after": 186922,
+        "width": 1124,
+        "height": 1080,
+        "sha256": "723bc73e89727d76e5be2527c9f340bd663f8dd96bc9846410824a82a591b0a6"
+      },
+      {
+        "path": "rive-dependencies/u200_1_desktop.webp",
+        "before": 1024720,
+        "after": 82454,
+        "width": 688,
+        "height": 1050,
+        "sha256": "c8e83ef8da71b08aa298d79dddbaeea2dba44dc5f91ecb22c1c2fff02945679d"
+      },
+      {
+        "path": "rive-dependencies/u200_1_mobile.webp",
+        "before": 521081,
+        "after": 49576,
+        "width": 457,
+        "height": 701,
+        "sha256": "64adf636a139943a942eac8ce9f1884433072783443311d5b2bc17a31934f765"
+      },
+      {
+        "path": "rive-dependencies/u200_2_desktop.webp",
+        "before": 391397,
+        "after": 42172,
+        "width": 688,
+        "height": 1050,
+        "sha256": "96ea433e773b237ae7d9c6bbe0383d8675bca9bf3333ae527f3a529e42e1f733"
+      },
+      {
+        "path": "rive-dependencies/u200_2_mobile.webp",
+        "before": 228485,
+        "after": 27914,
+        "width": 457,
+        "height": 701,
+        "sha256": "9209e0eb461d2b4ec03a00f581202f631d43f6c6e8aec9492e5c84e869b5f532"
+      },
+      {
+        "path": "rive-dependencies/u200_3_desktop.webp",
+        "before": 175266,
+        "after": 16584,
+        "width": 457,
+        "height": 701,
+        "sha256": "70a1eb589df02749856e74fd5321c406889617991682250889e098176553b188"
+      },
+      {
+        "path": "rive-dependencies/u200_3_mobile.webp",
+        "before": 314819,
+        "after": 26734,
+        "width": 688,
+        "height": 1050,
+        "sha256": "264575cc21716bbedb8f3d578e1eeee6c65a19108013ccc832c3745823879a6d"
+      },
+      {
+        "path": "rive-dependencies/u200bg.webp",
+        "before": 160949,
+        "after": 121954,
+        "width": 1124,
+        "height": 902,
+        "sha256": "61299f4f230491690073ffa3fbd3b088eb208af8252fbaec249db47b2f035cb8"
+      },
+      {
+        "path": "rive-dependencies/u2bg.webp",
+        "before": 137668,
+        "after": 102228,
+        "width": 1124,
+        "height": 928,
+        "sha256": "d2452d5d0959d2e62e575f007cf62e1eb99aaca4f9a2280887180d1fe013db42"
+      },
+      {
+        "path": "rive-dependencies/u50bg.webp",
+        "before": 135953,
+        "after": 124688,
+        "width": 1124,
+        "height": 800,
+        "sha256": "553f4552eeea56b9f9a2830ec6c29270cad0dfe00e1802cec1348aa8aaca22e0"
+      },
+      {
+        "path": "rive-dependencies/u5bg.webp",
+        "before": 170706,
+        "after": 113024,
+        "width": 1124,
+        "height": 720,
+        "sha256": "41ecd0cbbf9d57bc8e0e2e190398f8968d807ec650c987154ae4480bbd6ee8ec"
+      },
+      {
+        "path": "rive-dependencies/u6_1_desktop.webp",
+        "before": 78241,
+        "after": 50056,
+        "width": 676,
+        "height": 861,
+        "sha256": "17f9f0df28cc1908a98ffadb9bd923f84e3cf91842059db29ca2e3f872d7183b"
+      },
+      {
+        "path": "rive-dependencies/u6_1_mobile.webp",
+        "before": 365962,
+        "after": 34534,
+        "width": 507,
+        "height": 646,
+        "sha256": "8baab28cabd9e638a9659af1bd68a3c944e704da53feef33263cb63831e4ea92"
+      },
+      {
+        "path": "rive-dependencies/u6_2_desktop.webp",
+        "before": 86914,
+        "after": 61096,
+        "width": 676,
+        "height": 863,
+        "sha256": "88b4b9356a4c73a4d4668a2654fd8d10d25153410bd421acc19edee91d3fd4ea"
+      },
+      {
+        "path": "rive-dependencies/u6_2_mobile.webp",
+        "before": 335242,
+        "after": 35638,
+        "width": 507,
+        "height": 648,
+        "sha256": "664ac0ef4ff576d84ace4a86938b0803c618bf21f95c6700b4d94d80164da7ef"
+      },
+      {
+        "path": "rive-dependencies/u6bg.webp",
+        "before": 74623,
+        "after": 57792,
+        "width": 550,
+        "height": 952,
+        "sha256": "9020301ae5b369f2e129c4f30a35fb0be46eb24a5c935c024e5ea9804bc2b461"
+      },
+      {
+        "path": "rive-dependencies/u7bg.webp",
+        "before": 241464,
+        "after": 189612,
+        "width": 1124,
+        "height": 928,
+        "sha256": "a9edf0fca5c04558f68136dac69b686a8caedcf33349513d4885afeab4ead658"
+      },
+      {
+        "path": "rive-dependencies/u82bg.webp",
+        "before": 113863,
+        "after": 97818,
+        "width": 1124,
+        "height": 650,
+        "sha256": "7a23934315a61bb7935c761b1c283cf97f7dc9ed0b60744a6b7d58318b599be4"
+      },
+      {
+        "path": "rive-dependencies/u8bg.webp",
+        "before": 1494320,
+        "after": 97330,
+        "width": 1389,
+        "height": 926,
+        "sha256": "07dbd5479447486c833b15da4e5e9f682a6a01a834cf8f859a0abd1d68bd8da1"
+      },
+      {
+        "path": "rive-dependencies/u95bg.webp",
+        "before": 118793,
+        "after": 74106,
+        "width": 1124,
+        "height": 660,
+        "sha256": "e4e5dad389d2575c44556e1a159e26b2bdf9464faa3470c2f0ba3e3566c79d48"
+      },
+      {
+        "path": "rive-dependencies/xxl_chatgpt_handdevice-desktop.webp",
+        "before": 1513242,
+        "after": 156748,
+        "width": 1698,
+        "height": 1642,
+        "sha256": "6100cca8b017597cf0db120d189ca2e7f43fc233aa1863cf4ffb836b1b0a3bcf"
+      },
+      {
+        "path": "rive-dependencies/xxl_chatgpt_handdevice-mobile.webp",
+        "before": 128458,
+        "after": 14358,
+        "width": 422,
+        "height": 410,
+        "sha256": "f11be27ebe9165a4231b1c2300d50ea45eec3eb77b2cd3757e2fd8be5f938728"
+      },
+      {
+        "path": "rive-dependencies/xxl_chatgpt_thumb-desktop.webp",
+        "before": 532264,
+        "after": 55956,
+        "width": 768,
+        "height": 1106,
+        "sha256": "8082970c54d1a6a898a029b93800f851e20f71add0cbf5ad970ed25ba0d8efe3"
+      },
+      {
+        "path": "rive-dependencies/xxl_chatgpt_thumb-mobile.webp",
+        "before": 142635,
+        "after": 15506,
+        "width": 384,
+        "height": 553,
+        "sha256": "57b09a535d70705d724c2989582d01257d42e6cdf8377bd51a98fb56a44dac4b"
+      },
+      {
+        "path": "rive-dependencies/xxl_gpt_1-desktop.webp",
+        "before": 160584,
+        "after": 16382,
+        "width": 464,
+        "height": 692,
+        "sha256": "e7f2334deb475464918a1c515029d49fd34a807074017ab9b05c2cfb86c540c5"
+      },
+      {
+        "path": "rive-dependencies/xxl_gpt_1-mobile.webp",
+        "before": 53045,
+        "after": 6502,
+        "width": 232,
+        "height": 346,
+        "sha256": "7fa23b78b7d896601c31e6b495527f281d149bcde4c251f1f5e64dde969f5623"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+/* Fourth phone state uses the same native screen and articulated thumb. */
+.bump-ops-hand[data-ready=false] .bump-ops-screen{visibility:hidden}
+.bump-ops-loading{position:absolute;left:9.6%;top:28%;width:27.3%;text-align:center;font:12px/1.4 var(--bump-serif,Georgia,serif);color:#786b51}
+.bump-ops-ready{position:absolute;inset:0;animation:bump-ops-enter .45s ease both}
+.bump-ops-ready>small{position:absolute;top:40%;left:8%;right:8%}
+.bump-ops-ready>strong{position:absolute;top:44%;left:8%;right:8%;margin:0;font-size:7.4cqw}
+.bump-ops-ready>p{position:absolute;top:49.5%;left:8%;right:8%;margin:0;font-size:3.9cqw;line-height:1.4;color:#485444}
+.bump-ops-ready>.bump-ops-approval{position:absolute;top:55%;left:8%;right:8%;padding:3% 3%;font-size:3.2cqw;color:#394f3d;background:#e3eadb}
+.bump-ops-ready>.bump-ops-tap{position:absolute;left:8%;right:8%;top:64%;height:10%;margin:0;padding:0 7%;align-items:center;font-size:4.5cqw}
+.bump-ops-ready>.bump-ops-next{position:absolute;top:77%;left:8%;right:8%;display:flex;gap:9%;font-size:3.7cqw}
+.bump-ops-next>span{flex:1}
+.bump-ops-next small{margin-top:4%;font-size:3.1cqw}
+@media(prefers-reduced-motion:reduce){.bump-ops-ready{animation:none}}

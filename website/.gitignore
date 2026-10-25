@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.sites-runtime/
+.sites-checkout/
+*.log
+.env*
+!.env.example
+
+# Derived UV inspection images; compressed GLB inputs and prepared WebPs are kept.
+/src/bump/chapters/atlases/*.png
+/src/bump/chapters/textures/conditioned/*.png
+
+# Reproducible English edition; source catalog and builder are tracked.
+/public/en.html
+/public/runtime/en/

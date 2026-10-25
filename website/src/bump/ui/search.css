@@ -1,0 +1,33 @@
+.bump-hero-search-panel{top:0;left:0;width:min(520px,calc(100vw - 750px));background:#f8f5ed;border:1px solid #ddd5c6;border-radius:5px;box-shadow:0 9px 30px #18231d20;padding:0 13px;overflow:hidden;z-index:6;transform-origin:left center}
+.bump-search-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.bump-search-heading>span{font-size:11px;letter-spacing:.12em;color:#8c7e68}
+.bump-hero-header .bump-search-heading>button{padding:0;width:23px;height:23px;justify-content:center;font-size:25px;line-height:1;color:#867a67;border-radius:50%;transition:background .2s,color .2s}
+.bump-hero-header .bump-search-heading>button:hover{background:#e9e1d3;color:#312d26}
+.bump-hero-search-panel form{padding:0;align-items:center;height:calc(var(--bump-search-height,38px) - 2px);border-bottom:1px solid transparent;gap:10px;transition:border-color .2s}
+.bump-hero-search-panel form:focus-within{border-bottom-color:#71634b}
+.bump-hero-search-panel form>svg{width:17px;height:17px;flex:none;color:#9b8c74}
+.bump-hero-search-panel input{font-family:var(--bump-serif);font-size:19px;padding:0!important;box-shadow:none!important;outline:none!important;border:0!important;border-radius:0;background:none;height:100%;line-height:1.2;color:#322e27;min-width:0}
+.bump-hero-search-panel input::placeholder{color:#867c6d}
+.bump-hero-search-panel input::-webkit-search-cancel-button{-webkit-appearance:none}
+.bump-hero-header .bump-hero-search-panel form>button{display:grid;place-items:center;align-self:center;width:30px;height:calc(var(--bump-search-height,38px) - 2px);min-height:0;flex:none;margin:0;border:0;padding:0;line-height:0;color:#6e624e;transition:color .2s,background-color .2s}
+.bump-hero-search-panel form>button>svg{display:block;width:18px;height:18px;flex:none}
+.bump-hero-header .bump-hero-search-panel form>button:disabled{color:#c8beae}
+.bump-hero-header .bump-hero-search-panel form>.bump-search-close{position:relative;border:0;padding:0;margin-left:4px;color:#8a7d68}
+.bump-hero-search-panel .bump-search-close::before{content:"";position:absolute;left:-6px;top:50%;width:1px;height:18px;transform:translateY(-50%);background:#ded6c8}
+.bump-hero-search-trigger{transition:opacity .18s ease,background-color .26s ease,color .26s ease!important}
+.bump-hero-search-anchor:has(.bump-hero-search-panel)>.bump-hero-search-trigger{opacity:0;pointer-events:none}
+.bump-hero-header .bump-hero-search-panel form>button:not(:disabled):hover{color:#322e27;background:#e7dfd14d}
+.bump-search-hint{font-size:14px;color:#918573;margin:11px 0 0;line-height:1.35}
+.bump-hero-search-results{max-height:min(350px,calc(100svh - 220px));border:0;background:none;padding-inline:0}
+.bump-hero-search-results.has-results{display:block;grid-template-rows:none;border-top:0;padding-top:8px;padding-bottom:0}
+.bump-hero-search-results.has-results>div{animation:bump-results-in .22s ease both}
+.bump-hero-search-results>div>div{padding:11px 0;border-bottom-color:#ded6c8;gap:4px}
+.bump-hero-search-results>div>div>span{font-size:10px;color:#92836b;letter-spacing:.06em}
+.bump-hero-search-results a{font-size:19px;line-height:1.2;color:#322e27!important;transition:color .2s,text-decoration-color .2s}
+.bump-hero-search-results a:hover{color:#806344!important;text-underline-offset:4px}
+.bump-hero-search-results p{font-size:17px;color:#867c6d}
+@media(max-width:1500px) and (min-width:1101px){.bump-hero-search-panel{width:min(480px,calc(100vw - 760px))}}
+@media(max-width:1100px) and (min-width:601px){.bump-hero-search-panel{position:absolute;left:0;right:auto;top:0;width:300px}}
+@media(max-width:600px){.bump-hero-search-panel{position:fixed;left:15px;right:15px;top:11px;width:auto;padding:0 13px}.bump-hero-search-panel input{font-size:20px}}
+@keyframes bump-results-in{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.bump-search-heading>button,.bump-hero-search-panel form,.bump-hero-search-panel form>button,.bump-hero-search-results a{transition:none!important}}

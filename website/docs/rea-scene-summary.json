@@ -1,0 +1,38 @@
+{
+  "statistics": {
+    "relevant_files": 56,
+    "nested_asar_containers": 0,
+    "text_bytes_read": 98920,
+    "invalid_utf8_files": 0,
+    "parsed_javascript_files": 14,
+    "skipped_javascript_files": 0,
+    "visited_ast_nodes": 15419,
+    "findings": 571,
+    "modules": 0,
+    "parse_failures": 0
+  },
+  "selection": {
+    "requested_paths": [
+      "SidekickScene-BGrFo1zW.js",
+      "AgenticScene-6ANDe0E9.js",
+      "OnlineScene-DEwqOdwU.js",
+      "RetailScene-B0aB0Kby.js",
+      "MarketingScene-D6KzSPZU.js",
+      "CheckoutScene-DnPrsrDr.js",
+      "OperationsScene-C6j68HCe.js",
+      "ShopAppScene-BbBG651T.js",
+      "B2BScene-CLnkLJDW.js",
+      "FinanceScene-8ecY5nF5.js",
+      "ShippingScene-C1IO9vrI.js",
+      "DeveloperScene-lYU-7T_c.js",
+      "Effects-Co92NzQw.js",
+      "useObjectInteraction-BF-epfZF.js"
+    ],
+    "unselected_files": 42
+  },
+  "limits": [
+    "Cloud source browser has no WebGL; source GPU-to-GPU pixel comparison remains unverified.",
+    "Local Chromium ANGLE SwiftShader renders WebGL2; all 12 replica chapter openings and transitions tested.",
+    "Mobile replica 390x844 tested without overflow; matching live source mobile capture remains unverified."
+  ]
+}

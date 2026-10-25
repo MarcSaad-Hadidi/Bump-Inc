@@ -1,0 +1,88 @@
+{
+  "artboard": "main",
+  "aspectRatio": "850:821",
+  "description": "Une main bronzée vêtue de bleu nuit tient un téléphone. Le doigt anime une demande, sa validation humaine et la mise à jour des outils.",
+  "fullBleedOnMobile": true,
+  "interactive": false,
+  "mobileAspectRatio": "405:550",
+  "stateMachines": "State Machine 1",
+  "textRunMap": {
+    "chatGPT/riveGPTtextRun1": "Peux-tu préparer le suivi de cette demande client ?",
+    "chatGPT/riveGPTtextRun2": "Voici les informations utiles et les prochaines étapes à valider avec votre équipe.",
+    "chatGPT/riveGPTtextRun3": "Dossier client",
+    "chatGPT/riveGPTtextRun4": "À examiner",
+    "chatGPT/riveGPTtextRun5": "Votre CRM",
+    "chatGPT/riveGPTtextRun6": "Documents liés",
+    "chatGPT/riveGPTtextRun7": "3 sources",
+    "chatGPT/riveGPTtextRun8": "Votre espace",
+    "productPage/riveGPTtextRun9": "Suivi de la demande",
+    "productPage/riveGPTtextRun10": "Documents et contexte réunis",
+    "productPage/riveGPTtextRun11": "À valider",
+    "productPage/riveGPTtextRun12": "Relire",
+    "productPage/riveGPTtextRun13": "Les informations utiles",
+    "productPage/riveGPTtextRun14": "Le logiciel rassemble la demande, les documents et le contexte. Votre équipe garde la décision sur les actions à effectuer et les informations à partager.",
+    "checkout/riveGPTtextRun15": "Proposition préparée",
+    "checkout/riveGPTtextRun16": "Actions : 1",
+    "checkout/riveGPTtextRun17": "Votre équipe",
+    "checkout/riveGPTtextRun18": "Validation humaine avant toute action",
+    "checkout/riveGPTtextRun19": "CRM connecté",
+    "checkout/riveGPTtextRun20": "Après votre accord",
+    "checkout/riveGPTtextRun21": "Valider la proposition",
+    "checkout/riveGPTtextRun22": "Prochaine étape",
+    "checkout/riveGPTtextRun23": "Mettre à jour le dossier",
+    "checkout/riveGPTtextRun24": "Confirmer",
+    "buyWidget/riveGPTtextRun25": "Validation enregistrée",
+    "buyWidget/riveGPTtextRun26": "Demande client",
+    "buyWidget/riveGPTtextRun27": "Vérifiée",
+    "buyWidget/riveGPTtextRun28": "Action : 1",
+    "buyWidget/riveGPTtextRun29": "Prochaine étape",
+    "buyWidget/riveGPTtextRun30": "Synchroniser le CRM",
+    "buyWidget/riveGPTtextRun31": "Préparé par",
+    "buyWidget/riveGPTtextRun32": "Votre équipe",
+    "buyWidget/riveGPTtextRun33": "Dossier actualisé",
+    "buyWidget/riveGPTtextRun34": "Mise à jour",
+    "buyWidget/riveGPTtextRun35": "Voir le dossier",
+    "buyWidget/riveGPTtextRun36": "La proposition est validée. Le dossier client peut être mis à jour selon les accès et les règles définis avec votre entreprise.",
+    "chatGPT/riveGPTtextRun37": "Peux-tu préparer le suivi de cette demande client ?",
+    "chatGPT/riveGPTtextRun38": "Poser une question"
+  },
+  "viewModelName": "View Model 1",
+  "fallbackImageMobile": null,
+  "assetsMap": {
+    "xxl_chatgpt_handdevice-desktop": {
+      "url": "/bump/software/reference-hand/bump-handdevice-desktop-v15.webp",
+      "image": null
+    },
+    "xxl_chatgpt_handdevice-mobile": {
+      "url": "/bump/software/reference-hand/bump-handdevice-mobile-v15.webp",
+      "image": null
+    },
+    "xxl_chatgpt_thumb-desktop": {
+      "url": "/bump/software/reference-hand/bump-thumb-desktop-v15.webp",
+      "image": null
+    },
+    "xxl_chatgpt_thumb-mobile": {
+      "url": "/bump/software/reference-hand/bump-thumb-mobile-v15.webp",
+      "image": null
+    },
+    "xxl_gpt_1-desktop": {
+      "url": "/bump/software/reference-hand/xxl_gpt_1-desktop.webp?v=14",
+      "image": null
+    },
+    "xxl_gpt_1-mobile": {
+      "url": "/bump/software/reference-hand/xxl_gpt_1-mobile.webp?v=14",
+      "image": null
+    },
+    "iphonebezelnoisland-mobile": {
+      "url": "/bump/software/reference-hand/iphonebezelnoisland-mobile.webp?v=14",
+      "image": null
+    },
+    "inter": {
+      "url": "/bump/software/reference-hand/Inter.txt?v=14",
+      "font": null,
+      "isFont": true
+    }
+  },
+  "src": "/bump/software/reference-hand/chatgpt_12_10_v5.riv?v=14",
+  "globalRiveEnabled": "enabled"
+}

@@ -9,7 +9,8 @@
       "!**/node_modules",
       "!**/migrations/meta",
       "!**/next-env.d.ts",
-      "!pnpm-lock.yaml"
+      "!pnpm-lock.yaml",
+      "!website/**"
     ]
   },
   "formatter": { "enabled": true, "indentStyle": "space", "lineWidth": 100 },

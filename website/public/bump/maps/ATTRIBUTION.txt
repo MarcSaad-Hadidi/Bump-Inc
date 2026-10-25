@@ -1,0 +1,7 @@
+Montréal location-card map.
+Map data: © OpenStreetMap contributors, SRTM.
+Map rendering: © OpenTopoMap, CC-BY-SA.
+Source and map licence: https://opentopomap.org/about
+Original tiles: https://a.tile.opentopomap.org/11/{x}/{y}.png
+Coordinates: 45.5019, -73.5674; zoom 11.
+The map images retain the source map licence.

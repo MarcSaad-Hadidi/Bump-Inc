@@ -1,0 +1,41 @@
+.bump-location-anchor{position:relative;flex:none}
+.bump-header .bump-location{display:block;padding:8px 0;white-space:nowrap;text-align:left;transition:opacity .22s ease;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px}
+.bump-header .bump-location:hover,.bump-header .bump-location[aria-expanded=true]{opacity:1;text-decoration-color:currentColor}
+.bump-header .bump-location:focus-visible{outline:1px solid currentColor;outline-offset:5px;border-radius:2px}
+.bump-location-popover{position:absolute;top:calc(100% + 11px);left:0;z-index:5;width:340px;max-width:calc(100vw - 32px);background:#f7f3e9;color:var(--bump-ink,#2a2623);border:1px solid #d4cdbf;border-radius:8px;box-shadow:0 18px 55px #1d211d38;overflow:hidden;transform-origin:top left}
+.bump-location-popover::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.bump-location-copy{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 13px}
+.bump-location-copy>div{display:flex;flex-direction:column;gap:4px}
+.bump-location-copy strong{font-family:HWCigars,Georgia,serif;font-size:25px;font-weight:400;line-height:1}
+.bump-location-copy>div>span{font-size:11px;line-height:1.3;color:#7c7267}
+.bump-header .bump-location-close{display:grid;place-items:center;align-self:flex-start;width:26px;height:26px;padding:0;border-radius:50%;line-height:0;color:#7c7267;transition:background .2s ease,color .2s ease}
+.bump-location-close svg{display:block;width:16px;height:16px}
+.bump-header .bump-location-close:hover{background:#e7e1d6;color:#2a2623}
+.bump-location-globe{position:relative;isolation:isolate;height:300px;overflow:hidden;background:radial-gradient(ellipse at 35% 26%,#fffdf5 0,#f0eadb 65%,#e9e1cf 100%)}
+.bump-globe-viewport{position:absolute;inset:0;overflow:hidden}
+.bump-globe-viewport canvas{display:block;width:100%;height:100%;position:relative;z-index:1}
+.bump-globe-credit{position:absolute;z-index:2;bottom:8px;left:10px;font-size:8px;line-height:1;letter-spacing:.06em;color:#f7f3e9;text-shadow:0 1px 4px #0009;pointer-events:none}
+.bump-globe-shadow{position:absolute;bottom:26px;left:25%;width:50%;height:18px;background:#6a5c4040;border-radius:50%;filter:blur(12px);opacity:calc(1 - var(--globe-zoom,0));transform:scaleX(1.15)}
+.bump-globe-caption{position:absolute;z-index:2;left:var(--pin-x,50%);top:calc(var(--pin-y,50%) + 14px);transform:translate(-50%,8px);display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 9px 7px;border-radius:4px;background:#f7f3e9e8;white-space:nowrap;opacity:0;transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1);color:#302c26;text-shadow:0 1px 6px #fff,0 0 16px #fff}
+.bump-location-globe[data-phase=montreal] .bump-globe-caption{opacity:1;transform:translate(-50%,0)}
+.bump-globe-caption-rule{height:16px;width:1px;background:#8b6d42}
+.bump-globe-city{font-size:26px;font-weight:600;line-height:1}
+.bump-globe-coordinates{font-size:11px;letter-spacing:.04em;color:#635b4a}
+.bump-globe-unavailable{position:absolute;inset:0;display:grid;place-items:center;font-size:15px}
+.bump-location-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 17px;border-top:1px solid #d4cdbf66;font-size:13px;color:#7c7267}
+.bump-location-foot a,.bump-header .bump-globe-replay{display:inline-flex;align-items:center;gap:6px;color:#6e624e;text-decoration:none;font-size:13px;line-height:18px;white-space:nowrap;padding:0}
+.bump-location-foot svg{width:14px;height:14px;display:block;flex:none}
+.bump-location-foot a:hover,.bump-header .bump-globe-replay:hover{color:#2a2623;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:1100px){.bump-location-anchor{margin-right:auto}.bump-header .bump-location{font-size:11px}}
+@media(max-width:600px){.bump-location-popover{position:fixed;left:16px;top:65px;width:340px;max-width:calc(100vw - 32px)}.bump-header .bump-location{font-size:10px}.bump-location-region{display:none}}
+@media(prefers-reduced-motion:reduce){.bump-header .bump-location,.bump-header .bump-location-close{transition:none}}
+/* Keep the place label out of the city itself at the close approach. */
+.bump-globe-caption{left:50%;top:auto;bottom:22px;gap:2px;padding:6px 10px 8px;transform:translate(-50%,8px)}
+.bump-globe-caption-rule{display:none}
+.bump-globe-city{font-size:24px}
+.bump-globe-coordinates{font-size:10px}
+.bump-globe-attribution{padding:0 17px 10px;color:#7c7267;font-size:9px;line-height:1.4}
+.bump-globe-attribution summary{cursor:pointer;width:max-content;text-underline-offset:2px}
+.bump-globe-attribution[open] summary{margin-bottom:5px}
+.bump-globe-attribution p{font-size:10px;line-height:1.4}
+.bump-globe-attribution a{color:inherit;text-decoration:underline}

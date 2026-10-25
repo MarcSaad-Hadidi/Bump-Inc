@@ -1,0 +1,26 @@
+{
+  "source": "bump-vision-06.zip",
+  "sha256": {
+    "kit/LICENSE-anatomy": "87c078ab9d90a3044f359e6b563d4e6afea7aa060897cf4f21618687b3856796",
+    "kit/iso-kit.ts": "e9fc988c61a11bfac1f097e62419915ea86b2130ab091f1b50c0e019c907e253",
+    "kit/iso.css": "ef19bac5a42ba9be42b56b2c1cf7fc7e21d332a8060765e9ca1d987b8ab23924",
+    "shared/AnatomyFigure.tsx": "45e49948f7b79706000625778d8c5e302fc118940da4f52bddb3c9531fd872d6",
+    "shared/bump-theme.css": "bf30a94b820fab62d14a275d307059e1f7b6ac4ac0c54dd8a23e515c7c31892e",
+    "shared/controller.ts": "62b8621c173e14f474e0dd0458ebc6a3dcc45486a3863ab6dfbe6a7ae6572168",
+    "shared/runtime.ts": "6594ac2445214885bfebe6d5d309c9c11f5ae2fc970608cf1de51a181693a0be",
+    "vision/VisionBench.tsx": "4adaf0263e769849382878362f0e330a9b9ddc9bacb9c13155db7405aec6fa8d",
+    "vision/art.generated.ts": "82fa88d81d44befcf033244e63c890bcbd50ba0b9a8b86aa894634a7ff745263",
+    "vision/live.ts": "a6f337d398b7a59b7d934a1c3604176923c54b1ad9e96bb796680b6a3c37d972",
+    "vision/model.ts": "7da0b379f3dd35de24a381aff5a94926fc1606b1868f3f91d4bb1d0bef178df9"
+  },
+  "integrationNotes": {
+    "shared/runtime.ts": "Retained shared runtime used by models 01\u201305; identical code with the existing trailing-newline convention.",
+    "shared/bump-theme.css": "Only the model 06 rules were appended from the supplied archive."
+  },
+  "upstreamUpdates": {
+    "shared/bump-theme.css": {
+      "source": "bump-port-07.zip",
+      "change": "Original palette preserved verbatim; supplied model 03\u201307 rules appended."
+    }
+  }
+}

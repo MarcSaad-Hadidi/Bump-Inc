@@ -1,0 +1,50 @@
+{
+  "orientation": [
+    {
+      "flipY": true,
+      "meanError": 4.2715199788411455
+    },
+    {
+      "flipY": false,
+      "meanError": 46.25103251139323
+    }
+  ],
+  "chosenFlipY": true,
+  "textures": [
+    {
+      "name": "workflow-0",
+      "width": 2048,
+      "height": 2048,
+      "sourceAlphaPreserved": true,
+      "flipY": true
+    },
+    {
+      "name": "software-0",
+      "width": 1024,
+      "height": 1024,
+      "sourceAlphaPreserved": true,
+      "flipY": true
+    },
+    {
+      "name": "security-0",
+      "width": 2048,
+      "height": 2048,
+      "sourceAlphaPreserved": true,
+      "flipY": true
+    },
+    {
+      "name": "contact-faces-1",
+      "width": 1024,
+      "height": 512,
+      "sourceAlphaPreserved": true,
+      "flipY": true
+    },
+    {
+      "name": "method-wall-0",
+      "width": 2048,
+      "height": 2048,
+      "sourceAlphaPreserved": true,
+      "flipY": true
+    }
+  ]
+}

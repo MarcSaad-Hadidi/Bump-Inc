@@ -1,0 +1,62 @@
+[
+  {
+    "name": "sidekick",
+    "mobile": false,
+    "file": "workflow-fallback-v3.jpg"
+  },
+  {
+    "name": "online",
+    "mobile": false,
+    "file": "software-fallback-v3.jpg"
+  },
+  {
+    "name": "operations",
+    "mobile": false,
+    "file": "security-fallback-v2.jpg"
+  },
+  {
+    "name": "retail",
+    "mobile": false,
+    "file": "method-fallback-v3.jpg"
+  },
+  {
+    "name": "developer",
+    "mobile": false,
+    "file": "vision-fallback-v2.jpg"
+  },
+  {
+    "name": "b2b",
+    "mobile": false,
+    "file": "company-atelier-fallback-v22.jpg"
+  },
+  {
+    "name": "sidekick",
+    "mobile": true,
+    "file": "workflow-fallback-mobile-v3.jpg"
+  },
+  {
+    "name": "online",
+    "mobile": true,
+    "file": "software-fallback-mobile-v3.jpg"
+  },
+  {
+    "name": "operations",
+    "mobile": true,
+    "file": "security-fallback-mobile-v2.jpg"
+  },
+  {
+    "name": "retail",
+    "mobile": true,
+    "file": "method-fallback-mobile-v3.jpg"
+  },
+  {
+    "name": "developer",
+    "mobile": true,
+    "file": "vision-fallback-mobile-v2.jpg"
+  },
+  {
+    "name": "b2b",
+    "mobile": true,
+    "file": "company-atelier-fallback-mobile-v22.jpg"
+  }
+]

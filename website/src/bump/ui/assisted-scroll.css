@@ -1,0 +1,338 @@
+/* The existing continuous paper is the stage. These are viewport-sized
+   compositions, not panels laid over the painting. */
+html[data-bump-assisted-scroll=true]{overscroll-behavior-y:none;scroll-behavior:auto}
+#b2b .bump-group-last{padding-bottom:var(--bump-contact-tail,75px)}
+.bump-chapter-curtain{position:fixed;inset:0;z-index:1000;background:#1c241f;opacity:0;contain:strict;pointer-events:auto}
+/* The retained mobile rule is !important inside Tailwind's base layer. Match
+   that layer so light-labelled paintings remain visible before their paper. */
+@layer base{
+ html[data-bump-webgl=false][data-bump-opening=scene] .static-fallback-wrapper{visibility:visible!important;opacity:1!important}
+}
+.bump-fallback-paper{position:absolute;inset:0;pointer-events:none;background:var(--bump-paper);clip-path:var(--bump-fallback-paper-clip,inset(100% 0 0 0));visibility:hidden}
+html[data-bump-webgl=false][data-bump-opening=scene] .bump-fallback-paper{visibility:visible}
+html[data-bump-webgl=false] .static-fallback-wrapper>[data-bump-fallback-index]{visibility:visible!important;transition:none!important}
+html[data-bump-webgl=false][data-bump-assisted-scroll=true] main section>div:first-child>.bg-light{background:transparent!important}
+
+#sidekick .bump-workflow-execution{margin-bottom:0}
+#sidekick .bump-group-first{padding-bottom:60px}
+#sidekick .bump-group-last{padding-top:65px;padding-bottom:130svh}
+.bump-flow-intro{margin-bottom:18px;gap:30px}
+.bump-flow-intro .bump-lab-label{margin-bottom:13px}
+.bump-flow-intro h3{font-size:clamp(40px,3.7vw,56px);line-height:1.04}
+.bump-flow-intro>p{font-size:19px;max-width:300px}
+.bump-flow-scenarios button{padding-block:10px 12px;min-height:42px}
+.bump-flow-toolbar{padding:15px 0 8px}
+.bump-flow-node{padding-top:11px}
+.bump-flow-node-description{margin-top:8px;min-height:16px}
+.bump-flow-node-status{min-height:27px;font-size:10px}
+.bump-flow-player[data-layout=vertical] .bump-flow-node-description{display:none}
+.bump-flow-player[data-layout=vertical] .bump-flow-node{padding-top:8px}
+.bump-flow-parallel{top:185px}
+.bump-flow-narration{min-height:78px;padding:13px 0;gap:18px;margin-top:14px}
+.bump-flow-narration strong{font-size:24px}
+.bump-flow-narration p{font-size:16px}
+.bump-workflow-execution .bump-lab-footnote{font-size:12px!important;padding:12px 0 0!important}
+.bump-flow-footnote-short{display:none}
+.bsd-steps>span{display:flex;align-items:center;gap:5px;font-size:9px;line-height:1.3;color:#858a7b;white-space:nowrap}
+.bsd-steps>span>b{font-size:8px;font-weight:400;color:#a0a38e}
+.bsd-steps>span[aria-current=step],.bsd-steps>span[aria-current=step]>b{color:#355e3d}
+.bsd-handwritten>span{display:block}
+
+.bump-task-cloud{margin-block:0}
+.bump-task-cloud-intro{margin-bottom:15px}
+.bump-task-cloud-intro .bump-lab-label{margin-bottom:12px}
+.bump-task-cloud-intro h3{font-size:clamp(36px,3.2vw,51px);margin-bottom:13px}
+.bump-task-cloud-intro>p:last-child{font-size:21px;line-height:1.3;max-width:650px}
+.bump-task-field{height:clamp(320px,calc(100svh - 390px),540px);margin-inline:0}
+.bump-task-cloud-note{padding-top:16px;font-size:16px}
+.bump-task-cloud-note>span{font-size:13px}
+@media(min-width:701px){
+ .bump-task-cloud{box-sizing:border-box;display:grid;grid-template-rows:auto minmax(0,1fr) auto;row-gap:clamp(16px,2.2svh,24px);height:calc(100svh - max(84px,10.5svh) - 36px);padding-bottom:8px}
+ .bump-task-cloud-intro{margin-bottom:0}
+ .bump-task-cloud .bump-task-field{height:100%;min-height:0}
+ .bump-task-cloud-note{padding-top:0;align-items:baseline}
+}
+
+/* Match the high title and lower introduction of the other chapter paintings. */
+#online>div:first-child>div:first-child{display:grid!important;grid-template-rows:minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr);height:140svh;min-height:140svh;padding-bottom:14svh}
+#online>div:first-child>div:first-child>h2{padding:48svh 0 0;margin:0!important;justify-content:flex-start;font-size:clamp(72px,8vw,150px);flex-grow:0}
+#online>div:first-child>div:first-child>[data-nav-style=solid]{margin:0!important;padding:0;width:100%;max-width:900px;align-self:end}
+#online>div:first-child>div:first-child .narrative-1{font-size:clamp(29px,2.2vw,39px);line-height:1.16;letter-spacing:-.025em}
+.bump-software-story{height:calc(230svh + var(--software-entry-space))}
+.bump-software-stage{top:84px;min-height:calc(100svh - 84px);height:calc(100svh - 84px);padding-bottom:45px}
+
+/* Two compact application demonstrations share the screenshot's one stop. */
+@media(min-width:701px){
+ #online .bump-software-capabilities.bump-group-first{padding-top:100px}
+ #online .bump-software-capabilities.bump-group-last{padding-top:0;padding-bottom:130svh}
+ #online .bsd-section{--bsd-frame-height:clamp(220px,calc((100svh - 280px)/2),330px);box-sizing:border-box;height:calc((100svh - 160px)/2);min-height:0;padding-block:16px;align-content:center}
+ #online .bsd-section :is(.bsd-app,.bsd-dashboard-canvas){min-height:var(--bsd-frame-height)}
+ #online .bsd-section .bsd-secondary{box-sizing:border-box;min-height:calc(var(--bsd-frame-height) - 30px)}
+ #online .bsd-section .bsd-controls{min-height:28px;padding-top:7px}
+ #online .bsd-section .bsd-editorial h3{font-size:clamp(30px,3.5cqw,47px);margin-bottom:13px}
+ #online .bsd-section .bsd-editorial p{font-size:clamp(18px,1.8cqw,22px)}
+ #online .bsd-section .bsd-editorial-link{margin-top:14px}
+ #online .bsd-section .bsd-section-number{margin-bottom:10px}
+}
+
+/* One security composition per screen. Static app frames avoid the whole
+   interface moving vertically when its local navigation changes. */
+#operations .bump-security-content{padding-top:0;padding-bottom:0}
+#operations .bump-security-content.bump-group-first{padding-top:24svh}
+#operations .bump-security-content.bump-group-last{padding-bottom:130svh}
+#operations .bsc-followup-heading{display:none}
+#operations #security-system{height:100svh}
+#operations .bsc-orbit-system{height:100%;display:flex;flex-direction:column;justify-content:center;padding-block:100px 48px}
+#operations .bsc-orbit-grid{flex:0 0 auto}
+#operations .bsc-orbit-status{margin-top:22px}
+#operations .bsc-row{box-sizing:border-box;height:100svh;min-height:100svh;margin:0;border:0;padding-block:100px 48px;justify-content:center;align-content:center;gap:25px;scroll-margin-top:0}
+#operations .bsc-row--findings{grid-template-rows:minmax(0,1fr) minmax(0,1fr);align-content:center}
+#operations .bsc-row--findings>.bsc-row-demo{align-self:center}
+#operations .bsc-row--findings>.bsc-editorial{align-self:end}
+#operations .bsc-row--findings>.bsc-row-annotation{align-self:start}
+#operations .bsc-row .bsc-app{height:430px;min-height:430px}
+#operations .bsc-row .bsc-app-body{min-height:0;overflow:visible}
+#operations .bsc-row .bsc-local-page{min-height:230px;height:calc(100% - 44px)}
+
+@media(min-width:701px) and (max-height:800px){
+ .bump-flow-intro h3{font-size:42px}.bump-flow-intro{margin-bottom:10px}
+ .bump-flow-intro .bump-lab-label{font-size:9px!important;margin-bottom:8px}
+ .bump-flow-intro>p{font-size:17px}.bump-flow-narration{padding-block:9px;min-height:65px}
+ .bump-flow-narration strong{font-size:21px}.bump-flow-narration p{font-size:14px}
+ .bump-task-cloud-intro h3{font-size:39px}.bump-task-cloud-intro>p:last-child{font-size:19px}
+ .bump-task-field{height:calc(100svh - 345px);min-height:290px}
+ #online .bsd-section .bsd-editorial h3{font-size:32px}#online .bsd-section .bsd-editorial p{font-size:18px}
+ #online .bsd-section{height:calc((100svh - 144px)/2);padding-block:8px}
+ #online .bsd-section .bsd-app-toolbar{height:26px}
+ #online .bsd-section .bsd-brand{padding-bottom:14px}
+ #online .bsd-section .bsd-app-rail{padding-top:10px;padding-bottom:8px}
+ #online .bsd-section .bsd-rail-foot{padding-top:8px}
+ #online .bsd-section .bsd-app-rail nav button{min-height:26px;padding-block:4px}
+ #online .bsd-section .bsd-kanban{min-height:168px}
+ #online .bsd-section .bsd-column{min-height:168px;padding-bottom:5px}
+ #online .bsd-section .bsd-column-header{height:23px}
+ #online .bsd-section .bsd-column-cards{min-height:138px;gap:4px}
+ #online .bsd-section .bsd-request:not(.is-featured){min-height:40px;padding-block:5px}
+ #online .bsd-section .bsd-request:not(.is-featured) .bsd-request-id{display:none}
+ #online .bsd-section .bsd-request-meta{margin-top:4px}
+ #online .bsd-section .bsd-dashboard-screen{padding-block:8px}
+ #online .bsd-section .bsd-dashboard-screen .bsd-screen-heading{padding-bottom:6px}
+ #online .bsd-section .bsd-kpi{min-height:58px;padding-block:5px}
+ #online .bsd-section .bsd-kpi>strong{font-size:18px;margin-top:2px}
+ #online .bsd-section .bsd-kpi>small{font-size:8px;margin-top:3px}
+ #online .bsd-section .bsd-visualization{height:103px}
+ #online .bsd-section .bsd-volume-panel>.bsd-volume-content>.bsd-chart{height:73px}
+ #online .bsd-section .bsd-trend{min-height:103px;padding-top:5px}
+ #online .bsd-section .bsd-trend .bsd-chart{height:41px}
+ #online .bsd-section .bsd-volume-content .bsd-sources{gap:2px}
+ #online .bsd-section .bsd-volume-content .bsd-sources>div{padding-block:1px}
+ #online .bsd-section .bsd-volume-content .bsd-source-icon{width:14px;height:14px}
+ #online .bsd-section .bsd-secondary{padding-block:10px}
+ #online .bsd-section .bsd-secondary-list>div{padding-block:10px}
+ #online .bsd-section .bsd-inline-link{padding-top:10px}
+ #online .bsd-section .bsd-assistant{top:12px;padding:9px}
+ #online .bsd-section .bsd-assistant-heading{margin-bottom:6px}
+ #online .bsd-section .bsd-assistant-summary{margin-bottom:8px;padding:7px}
+ #online .bsd-section .bsd-recommendations [data-slot=animated-list]{gap:6px}
+ #online .bsd-section .bsd-submit{margin-top:8px;min-height:26px;padding-block:5px}
+ #operations .bsc-row{padding-block:90px 30px;gap:19px}
+ #operations .bsc-row .bsc-app{height:360px;min-height:360px}
+ #operations .bsc-row .bsc-editorial h3{font-size:32px}
+ #operations .bsc-row .bsc-editorial p{font-size:18px}
+ #operations .bsc-row .bsc-row-number{margin-bottom:10px}
+ #operations .bsc-row .bsc-text-link{margin-top:12px}
+ #operations .bsc-row .bsc-app-body{padding-block:13px}
+ #operations .bsc-row .bsc-audit-results>div{padding-block:8px}
+ #operations .bsc-row .bsc-plan-layout li{min-height:43px}
+ #operations .bsc-row .bsc-monitor-chart{height:160px}
+ #operations .bsc-row .bsc-findings-charts{margin-bottom:8px}
+ #operations .bsc-row .bsc-trend-chart{height:92px}
+ #operations .bsc-row .bsc-trend-chart>.bsc-chart{height:66px}
+ #operations .bsc-row .bsc-donut{height:82px;width:82px}
+ #operations .bsc-row .bsc-findings-list>button{padding-block:6px}
+}
+
+@media(max-width:700px){
+ #sidekick .bump-group-first{padding-top:25svh;padding-bottom:45px}
+ #sidekick .bump-group-last{padding-top:50px}
+ .bump-flow-intro{margin-bottom:12px}.bump-flow-intro h3{font-size:34px}
+ .bump-flow-intro .bump-lab-label{margin-bottom:9px;font-size:8px!important}
+ .bump-flow-intro>p{font-size:16px;line-height:1.25;margin-top:12px;max-width:350px}
+ .bump-flow-toolbar{padding:10px 0 7px}.bump-flow-document{font-size:14px;gap:8px}.bump-flow-document small{font-size:10px}
+ .bump-flow-player[data-layout=vertical] .bump-flow-node{padding:8px 10px 0;border-radius:7px}
+ .bump-flow-player[data-layout=vertical] .bump-flow-node-head{gap:7px}
+ .bump-flow-player[data-layout=vertical] .bump-flow-node-head strong{font-size:16px;margin-top:2px}
+ .bump-flow-player[data-layout=vertical] .bump-flow-node-head small{font-size:6.5px}
+ .bump-flow-player[data-layout=vertical] .bump-flow-node-description{display:none}
+ .bump-flow-player[data-layout=vertical] .bump-flow-node-icon{height:24px;width:24px;border-radius:5px}
+ .bump-flow-player[data-layout=vertical] .bump-flow-node-icon svg{height:16px;width:16px}
+ .bump-flow-player[data-layout=vertical] .bump-flow-node-status{min-height:25px;font-size:9px}
+ .bump-flow-player[data-layout=vertical] .bump-flow-node[data-state=waiting] .bump-flow-node-status{margin-inline:-10px;padding-inline:10px;width:calc(100% + 20px)}
+ .bump-flow-narration{margin-top:10px;min-height:83px;padding:10px 0;gap:10px;flex-wrap:nowrap}
+ .bump-flow-step{font-size:24px;width:30px}.bump-flow-step small{font-size:8px}
+ .bump-flow-narration strong{font-size:21px}.bump-flow-narration p{font-size:14px}
+ .bump-flow-complete{display:none}
+ .bump-workflow-execution .bump-lab-footnote{font-size:10px!important;padding-top:8px!important}
+ .bump-flow-footnote-full{display:none}.bump-flow-footnote-short{display:inline}
+ .bump-task-cloud-intro h3{font-size:32px}.bump-task-cloud-intro .bump-lab-label{font-size:8px!important}
+ .bump-task-cloud-intro>p:last-child{font-size:18px;line-height:1.28}
+ .bump-task-field,.bump-task-field[data-layout=vertical]{height:clamp(300px,calc(100svh - 340px),480px)}
+ .bump-task-command{font-size:clamp(16px,calc(var(--task-size)*.5),25px);letter-spacing:-.035em;padding:9px 2px}
+ .bump-task[data-active=true]>button{width:300px}.bump-task[data-active=true] .bump-task-command{font-size:29px;padding:14px}
+ .bump-task-detail strong{font-size:17px;padding-top:12px}.bump-task-description{font-size:15px}.bump-task-route{font-size:12px;margin-block:12px}
+ .bump-task-cloud-note{font-size:13px;padding-top:12px}.bump-task-cloud-note>span{font-size:11px;margin-top:6px}
+ #online>div:first-child>div:first-child{padding-bottom:14svh}
+ #online>div:first-child>div:first-child>h2{padding-top:51svh;font-size:clamp(42px,13.5vw,76px)}
+ #online>div:first-child>div:first-child .narrative-1{font-size:25px;line-height:1.14}
+ .bump-software-stage{top:72px;height:calc(100svh - 72px);min-height:calc(100svh - 72px);padding-top:14px}
+ #online .bump-software-capabilities.bump-group-first{padding-top:84px}
+ #online .bump-software-capabilities.bump-group-last{padding-top:84px;padding-bottom:130svh}
+ #online .bsd-section{min-height:calc(100svh - 84px);padding-block:0 32px}
+ #online .bsd-section{gap:18px}
+ #online .bsd-section .bsd-section-number{margin-bottom:9px;font-size:10px}
+ #online .bsd-section .bsd-editorial h3{font-size:32px;line-height:1.04;margin-bottom:10px}
+ #online .bsd-section .bsd-editorial p{font-size:18px;line-height:1.26;max-width:none}
+ #online .bsd-section .bsd-editorial-link{font-size:14px;margin-top:8px;padding-block:8px 6px}
+ #online .bsd-section .bsd-controls{min-height:23px;padding-top:4px}
+ #online .bsd-operations-demo .bsd-app-rail{padding-block:6px}
+ #online .bsd-operations-demo .bsd-app-toolbar{height:26px}
+ #online .bsd-operations-demo .bsd-requests-screen{padding:9px 8px 8px}
+ #online .bsd-operations-demo .bsd-screen-heading{padding-bottom:9px;gap:7px}
+ #online .bsd-operations-demo .bsd-search{height:28px}
+ #online .bsd-operations-demo .bsd-kanban{gap:6px}
+ #online .bsd-operations-demo .bsd-column{min-height:120px}
+ #online .bsd-operations-demo .bsd-column-header{height:26px}
+ #online .bsd-operations-demo .bsd-column-cards{min-height:88px;gap:4px}
+ #online .bsd-operations-demo .bsd-request:not(.is-featured){min-height:34px;padding:5px 6px}
+ #online .bsd-operations-demo .bsd-request:not(.is-featured) :is(.bsd-request-id,.bsd-request-subtitle,.bsd-request-meta){display:none}
+ #online .bsd-operations-demo .bsd-request.is-featured{min-height:62px;padding:6px}
+ #online .bsd-section--data .bsd-dashboard-canvas{min-height:430px}
+ #online .bsd-section--data .bsd-dashboard-canvas{gap:8px}
+ #online .bsd-section--data .bsd-handwritten{font-size:11px;line-height:1.2;margin-block:0}
+ #online .bsd-section--data .bsd-handwritten>span{display:inline}
+ #online .bsd-section--data .bsd-assistant{position:absolute;inset:104px 8px 14px;width:auto;margin:0;padding:12px;overflow-y:auto}
+ #online .bsd-section--data .bsd-assistant-summary{font-size:11px;padding:10px;margin-bottom:10px}
+ #online .bsd-section--data .bsd-assistant-heading{margin-bottom:9px}
+ #online .bsd-section--data .bsd-recommendations [data-slot=animated-list]{gap:8px}
+ #online .bsd-section--data .bsd-submit{margin-top:10px;min-height:35px;font-size:11px}
+ #online .bsd-section--data .bsd-human-status{margin-top:6px;font-size:9px}
+ #operations .bump-security-content{padding-inline:20px}
+ #operations .bsc-orbit-system{padding-block:80px 25px;justify-content:center}
+ #operations .bsc-root .bsc-orbit-intro h3{font-size:32px;margin-bottom:10px}
+ #operations .bsc-root .bsc-orbit-intro p{font-size:18px;line-height:1.25}
+ #operations .bsc-eyebrow{font-size:8px;margin-bottom:10px}
+ #operations .bsc-orbit-intro .bsc-text-link{margin-top:12px;font-size:14px}
+ #operations .bsc-orbit-board{height:clamp(245px,31svh,290px);margin-top:10px}
+ #operations .bsc-orbit-aside{height:auto;min-height:165px;margin-top:12px}
+ #operations .bsc-orbit-aside:has(.bsc-orbit-panel){height:165px}
+ #operations .bsc-orbit-aside>div:has(.bsc-orbit-panel){position:absolute;inset:auto 0 0;width:100%}
+ #operations .bsc-orbit-aside .bsc-orbit-panel{position:relative;max-height:min(350px,calc(100svh - 260px));overflow-y:auto}
+ #operations .bsc-protection{padding-top:12px}
+ #operations .bsc-root .bsc-protection h3{font-size:28px;margin-bottom:8px}
+ #operations .bsc-root .bsc-protection p{font-size:16px;line-height:1.25}
+ #operations .bsc-protection .bsc-green{margin-top:10px;font-size:13px;padding:8px 13px;min-height:33px}
+ #operations .bsc-orbit-panel{padding:15px;min-height:165px}
+ #operations .bsc-orbit-panel h4{font-size:14px;margin-bottom:10px}
+ #operations .bsc-orbit-panel dl{margin-block:8px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+ #operations .bsc-orbit-panel dt{font-size:8px}#operations .bsc-orbit-panel dd{font-size:9px}
+ #operations .bsc-orbit-actions{gap:8px;grid-template-columns:1fr 1fr}
+ #operations .bsc-orbit-actions li{font-size:10px}#operations .bsc-orbit-actions small{font-size:8px}
+ #operations .bsc-orbit-status{margin-top:12px;font-size:12px!important}
+ #operations .bsc-illustrative{font-size:10px!important;margin-top:6px}
+ #operations .bsc-row,#operations .bsc-row--findings{display:flex;flex-direction:column;align-items:stretch;justify-content:center;padding-block:82px 25px;gap:18px}
+ #operations .bsc-row .bsc-editorial{text-align:left;align-self:stretch}
+ #operations .bsc-row .bsc-editorial h3{font-size:28px;margin:0 0 10px;max-width:none}
+ #operations .bsc-row .bsc-editorial p{font-size:18px;line-height:1.28}
+ #operations .bsc-row .bsc-row-number{margin-bottom:10px;font-size:11px}
+ #operations .bsc-row .bsc-text-link{margin-top:12px;font-size:14px}
+ #operations .bsc-row .bsc-row-demo{width:100%;margin:0;align-self:stretch}
+ #operations .bsc-row .bsc-app{height:390px;min-height:390px}
+ #operations .bsc-row .bsc-row-annotation{display:flex;gap:8px;align-items:center;border:0;padding:0;max-width:none;text-align:left}
+ #operations .bsc-row .bsc-row-annotation>svg{width:27px;height:27px;margin:0;flex:none}
+ #operations .bsc-row .bsc-row-annotation h4{font-size:15px;margin:0 0 3px;white-space:normal}
+ #operations .bsc-row .bsc-row-annotation p{font-size:14px;line-height:1.2;padding:0}
+ #operations .bsc-row .bsc-findings-list{min-height:160px}
+ #operations .bsc-row .bsc-findings-list>button{min-height:36px;padding-block:7px}
+ #operations .bsc-row .bsc-monitor-chart{height:150px}
+ #operations .bsc-row .bsc-monitor-status{margin-top:10px;padding-block:8px}
+}
+@media(max-width:700px) and (max-height:760px){
+ .bump-flow-intro h3{font-size:30px}.bump-flow-intro>p{font-size:14px;margin-top:8px}
+ .bump-flow-intro .bump-lab-label{font-size:7px!important;margin-bottom:7px}
+ .bump-flow-scenarios button{font-size:13px;padding-block:7px;min-height:34px}
+ .bump-flow-toolbar{padding-block:7px}
+ .bump-flow-player[data-layout=vertical] .bump-flow-node{padding-top:6px}
+ .bump-flow-player[data-layout=vertical] .bump-flow-node-head strong{font-size:15px}
+ .bump-flow-player[data-layout=vertical] .bump-flow-node-status{min-height:22px;font-size:8px}
+ .bump-flow-narration strong{font-size:18px}.bump-flow-narration p{font-size:12px}
+ .bump-flow-narration{min-height:70px;padding-block:8px}
+ .bump-task-cloud-intro h3{font-size:29px}.bump-task-cloud-intro>p:last-child{font-size:16px}
+ .bump-task-field,.bump-task-field[data-layout=vertical]{height:calc(100svh - 340px);min-height:265px}
+ #online .bsd-section .bsd-editorial h3{font-size:29px}
+ #online .bsd-section .bsd-editorial p{font-size:16px}
+ #online .bsd-section{gap:14px}
+ #online .bsd-section .bsd-section-number{margin-bottom:7px}
+ #online .bsd-section .bsd-editorial-link{margin-top:5px}
+ #online .bsd-operations-demo .bsd-column{min-height:108px}
+ #online .bsd-operations-demo .bsd-column-cards{min-height:78px}
+ #online .bsd-operations-demo .bsd-request:not(.is-featured){min-height:28px;padding-block:4px}
+ #online .bsd-operations-demo .bsd-request.is-featured{min-height:54px;padding-block:5px}
+ #online .bsd-operations-demo .bsd-request.is-featured .bsd-request-id{display:none}
+ #online .bsd-operations-demo .bsd-request-meta{margin-top:5px}
+ #online .bsd-section--data .bsd-dashboard-canvas{min-height:350px}
+ #online .bsd-section--data .bsd-app--data{min-height:350px}
+ #online .bsd-section--data .bsd-visualization{height:150px}
+ #online .bsd-section--data .bsd-chart{height:120px}
+ #online .bsd-section--data .bsd-sparkline .bsd-chart{height:20px}
+ #online .bsd-section--data .bsd-assistant{inset:78px 6px 12px}
+ #online .bsd-section .bsd-controls{min-height:23px;padding-top:4px}
+ #online .bsd-section .bsd-steps{gap:8px;justify-content:space-between;width:100%}
+ #online .bsd-section .bsd-steps>span{font-size:8px;gap:3px}
+ #online .bsd-section .bsd-steps>span>b{font-size:7px}
+ #online .bsd-section--data .bsd-secondary{padding:14px 11px}
+ #online .bsd-section--data .bsd-secondary[data-screen=sources] .bsd-sources>div{padding:6px;gap:7px}
+ #online .bsd-section--data .bsd-secondary[data-screen=sources] .bsd-source-icon{height:20px;width:20px}
+ #online .bsd-section--data .bsd-sync{min-height:31px;padding:6px 9px;margin-top:9px}
+ #online .bsd-section--data .bsd-source-summary{font-size:10px;line-height:1.3;margin-top:6px}
+ #online .bsd-section--data .bsd-secondary[data-screen=sources] .bsd-sources small,#online .bsd-section--data .bsd-source-summary{display:none}
+ #online .bsd-section--data .bsd-handwritten{font-size:10px;line-height:1.2;margin-block:1px}
+ #online .bsd-section--data .bsd-handwritten>span{display:inline}
+ #online .bsd-section--data .bsd-assistant-summary{font-size:10px;line-height:1.3}
+ #online .bsd-section--data .bsd-recommendation{font-size:10px;line-height:1.3}
+ #operations .bsc-orbit-system{padding-top:75px;padding-bottom:15px}
+ #operations .bsc-root .bsc-orbit-intro h3{font-size:28px}#operations .bsc-root .bsc-orbit-intro p{font-size:16px}
+ #operations .bsc-orbit-board{height:218px}
+ #operations .bsc-orbit-aside{height:auto;min-height:120px}
+ #operations .bsc-orbit-aside:has(.bsc-orbit-panel){height:120px}
+ #operations .bsc-root .bsc-protection h3{font-size:25px}
+ #operations .bsc-root .bsc-protection p{font-size:14px}
+ #operations .bsc-protection>.bsc-eyebrow,#operations .bsc-protection>p:not(.bsc-eyebrow){display:none}
+ #operations .bsc-row{padding-top:78px;gap:14px}
+ #operations .bsc-row .bsc-editorial h3{font-size:25px}
+ #operations .bsc-row .bsc-editorial p{font-size:16px}
+ #operations .bsc-row .bsc-app{height:350px;min-height:350px}
+ #operations .bsc-row .bsc-row-annotation p{font-size:12px}
+ #operations .bsc-row .bsc-audit-results>div{padding-block:7px}
+ #operations .bsc-row .bsc-findings-list>button{min-height:32px;padding-block:5px}
+ #operations .bsc-row .bsc-findings-charts{margin-bottom:8px}
+ #operations .bsc-row .bsc-donut{width:80px;height:80px}
+ #operations .bsc-row .bsc-plan-layout li{min-height:42px}
+ #operations .bsc-row .bsc-remediation-float{padding:10px}
+ #operations .bsc-row .bsc-monitor-chart{height:120px}
+}
+@media(max-width:360px){.bump-task-command{font-size:clamp(14px,calc(var(--task-size)*.4),20px);padding-inline:1px}}
+/* A following mobile card lands below the header without leaving the previous
+   card's action underneath the floating navigation. */
+@media(max-width:700px){#developer .bump-services,#b2b .bump-services{row-gap:84px}}
+@media(max-width:700px) and (max-height:800px){
+ #b2b .bump-company-manifesto{padding-bottom:24px}
+ #b2b .bump-company-manifesto>h3{font-size:35px;line-height:1.01;margin:18px 0 20px}
+ #b2b .bump-company-columns{gap:14px;margin-bottom:20px}
+ #b2b .bump-company-columns p{font-size:18px;line-height:1.3}
+}
+
+/* Compact chapter exits. The planner adds only the room the native scene blend
+   actually needs, instead of repeating a fixed 130svh white tail everywhere. */
+html[data-bump-assisted-scroll=true] :is(#sidekick,#online,#operations,#retail,#developer) .bump-group-last{padding-bottom:var(--bump-chapter-tail,32svh)}
+html[data-bump-assisted-scroll=true] :is(#sidekick,#retail,#developer,#b2b) .bump-group-first{padding-top:clamp(140px,28svh,320px)}
+@media(max-width:700px){html[data-bump-assisted-scroll=true] :is(#sidekick,#retail,#developer,#b2b) .bump-group-first{padding-top:clamp(100px,24svh,220px)}}

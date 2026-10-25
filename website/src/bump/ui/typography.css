@@ -1,0 +1,46 @@
+/* The accepted navigation serif and an antique book face for chapter content. */
+@font-face{font-family:"EB Garamond";src:url("/bump/fonts/eb-garamond-latin-variable.woff2") format("woff2");font-style:normal;font-weight:400 800;font-display:swap}
+@font-face{font-family:"EB Garamond";src:url("/bump/fonts/eb-garamond-latin-italic-variable.woff2") format("woff2");font-style:italic;font-weight:400 800;font-display:swap}
+@font-face{font-family:"IM FELL English";src:url("/bump/fonts/im-fell-english-regular.ttf") format("truetype");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"IM FELL English";src:url("/bump/fonts/im-fell-english-italic.ttf") format("truetype");font-style:italic;font-weight:400;font-display:swap}
+:root{--bump-serif:"EB Garamond",Garamond,"Times New Roman",serif;--font-sans:var(--bump-serif);--default-font-family:var(--bump-serif)}
+html,body,button,input,textarea,select{font-family:var(--bump-serif)}
+body{font-size:18px;font-synthesis:none}
+.main-wrapper :is(h1,h2,h3,h4,p,a,label),.bump-header,.bump-dialog,.bump-group,[class*="headline-"],[class*="narrative-"],[class*="bodycopy-"],.font-cigars,.font-neuemontreal{font-family:var(--bump-serif)}
+.bump-header .bump-nav-logo{font-family:var(--bump-serif);font-size:32px;font-weight:600;letter-spacing:-.045em}
+.bump-header,.bump-hero-header .bump-top-links,.bump-header .bump-nav-trigger,.bump-header .bump-location,.bump-header .bump-project-button{font-family:var(--bump-serif);font-size:16px;font-weight:500;letter-spacing:0}
+.bump-header .bump-location{font-style:italic}
+.bump-hero-header .bump-nav-logo,.bump-hero-header .bump-nav-trigger,.bump-hero-header .bump-location{font-weight:650;text-shadow:0 1px 5px #101a1699}
+.bump-hero-header .bump-location{opacity:1}
+.bump-hero-header .bump-nav-trigger[aria-expanded=true]{text-shadow:none}
+.bump-hero-header .bump-project-button{font-weight:650}
+.bump-hero-dropdown-row>span,.bump-hero-dropdown-row a,.bump-hero-search-panel input,.bump-hero-search-results a{font-family:var(--bump-serif);font-size:17px;letter-spacing:0}
+.bump-location-popover,.bump-location-copy strong{font-family:var(--bump-serif)}
+.bump-hero-search-results>div>span{font-family:var(--bump-serif);font-size:12px;letter-spacing:.025em}
+.main-wrapper .bump-wordmark,.main-wrapper [data-scrolled] .bump-wordmark small{font-family:var(--bump-serif)}
+.bump-editorial-title{font-family:var(--bump-serif);font-size:34px;font-weight:500;line-height:.97;letter-spacing:-.025em}
+.bump-editorial-swap{font-family:var(--bump-serif);font-size:1.1em;line-height:1.03;letter-spacing:-.035em;font-weight:400}
+.main-wrapper .sidebar-link{font-family:var(--bump-serif);font-size:18px;letter-spacing:-.015em;font-weight:650}
+.main-wrapper [data-scrolled=false] .sidebar-link{font-size:24px;line-height:1.08;color:#fff;text-shadow:0 1px 5px #101a1680}
+.main-wrapper aside .sidebar-link::after{font-family:var(--bump-serif);font-size:15px;font-weight:650;letter-spacing:.025em}
+.main-wrapper [data-scrolled=false] aside .sidebar-link::after{color:#fff!important;opacity:1;text-shadow:0 1px 5px #101a1680}
+.main-wrapper [data-scrolled=false] .subtitle{font-family:var(--bump-serif);font-size:22px;font-weight:550;line-height:1.05;letter-spacing:-.02em;color:#fff;text-shadow:0 1px 5px #101a1680}
+.main-wrapper [data-scrolled=false] [data-section-name=side-nav]>nav{background:linear-gradient(135deg,#18231d26,#18231d12)}
+.bump-editorial-title{font-weight:600;color:#fff;text-shadow:0 1px 5px #101a1660}
+.main-wrapper .terms-of-service :is(p,a){font-family:var(--bump-serif);font-size:12px;letter-spacing:0}
+.bump-group-title,.bump-card h4,.bump-demo h3,.bump-dialog h2,.bump-method-panel h3{font-family:var(--bump-serif);font-weight:500;letter-spacing:-.025em}
+.bump-card p,.bump-brief-intro,.bump-method-panel p,.bump-method-panel li{font-size:18px;line-height:1.4}
+.bump-dialog,.bump-dialog button,.bump-dialog input,.bump-dialog textarea,.bump-dialog select,.bump-dialog label{font-family:var(--bump-serif)}
+.bump-dialog label,.bump-action,.bump-text-button{font-size:16px}
+.bump-brief input,.bump-brief textarea,.bump-brief select{font-size:17px;line-height:1.35}
+.bump-eyebrow,.bump-future,.bump-form-status{font-size:12px;letter-spacing:.075em}
+.bump-method-number,.bump-method-tabs button span,.bump-detail-list li span,.bump-orbit-core{font-family:var(--bump-serif)}
+/* Text on the paper uses genuine irregular letterforms and drawn italics,
+   without synthetic bold or artificial ageing filters. */
+.bump-group,.bump-dialog{--bump-serif:"IM FELL English",Garamond,serif;font-family:var(--bump-serif);font-weight:400;font-synthesis:none}
+.bump-group :is(h3,h4),.bump-dialog h2{font-weight:400;letter-spacing:-.015em}
+.bump-group .bump-lab h3{line-height:1.08;letter-spacing:-.025em}
+.bump-group .bump-lab h3 em{line-height:1.12}
+@media(max-width:600px){.bump-header .bump-nav-logo{font-size:29px}.bump-hero-header .bump-top-links,.bump-header .bump-nav-trigger{font-size:15px}.bump-header .bump-location{font-size:14px}.bump-editorial-title{font-size:33px}.bump-hero-search-panel input{font-size:17px}}
+@media(max-width:600px){.bump-hero-header{gap:10px}.bump-hero-header .bump-top-links{margin-left:auto;gap:5px}.bump-hero-header .bump-location-anchor{margin-right:0}}
+@media(max-width:420px){.bump-hero-search-trigger .bump-search-label-text{display:none}.bump-hero-header .bump-hero-search-trigger{min-width:31px;justify-content:center}}

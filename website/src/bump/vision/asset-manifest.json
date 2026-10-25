@@ -1,0 +1,34 @@
+{
+  "version": 23,
+  "chapter": "developer",
+  "nativeRuntime": "src/bump/chapters/runtime/DeveloperScene-lYU-7T_c.js",
+  "model": {
+    "old": "/bump/models/vision-1-v2.glb",
+    "url": "/bump/models/vision-consultant-hub-v23.glb",
+    "bytes": 2970308,
+    "id": "bump-vision-consultant-hub-v23",
+    "animation": "Scene",
+    "duration": 7.5,
+    "loop": false
+  },
+  "fallbacks": [
+    {
+      "old": "/bump/art/vision-fallback-v2.jpg",
+      "url": "/bump/art/vision-fallback-v23.jpg",
+      "width": 1900,
+      "height": 916,
+      "bytes": 261350,
+      "id": "bump-vision-fallback-v23",
+      "altText": "Consultante Bump et infrastructure future \u2014 sc\u00e8ne 3D"
+    },
+    {
+      "old": "/bump/art/vision-fallback-mobile-v2.jpg",
+      "url": "/bump/art/vision-fallback-mobile-v23.jpg",
+      "width": 390,
+      "height": 844,
+      "bytes": 49707,
+      "id": "bump-vision-fallback-mobile-v23",
+      "altText": "Consultante Bump et infrastructure future \u2014 sc\u00e8ne 3D"
+    }
+  ]
+}

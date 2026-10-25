@@ -1,0 +1,33 @@
+{
+  "input": "src/bump/chapters/source/developer-1.glb",
+  "output": "public/bump/models/vision-consultant-hub-v23.glb",
+  "bytes": 2970308,
+  "nativeDuration": 7.5,
+  "skinnedMeshes": 3,
+  "bones": 34,
+  "sourceWomanVertices": 12671,
+  "refinedProfileVertices": 3095,
+  "newGeometryMeshes": 24,
+  "newGeometryTriangles": 5564,
+  "removedSketchMeshes": 27,
+  "assemblyNodes": 56,
+  "animationChannels": 130,
+  "paint": {
+    "width": 2048,
+    "height": 2048,
+    "source": "exact native KTX2 UVs",
+    "format": "JPEG quality 94 / 4:4:4",
+    "palette": [
+      "bronze skin",
+      "chestnut hair",
+      "forest robe",
+      "copper/enamel headphones"
+    ]
+  },
+  "poses": [
+    0,
+    0.5,
+    1
+  ],
+  "futureConcept": true
+}

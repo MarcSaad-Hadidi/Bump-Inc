@@ -1,0 +1,13 @@
+/* Only editorial/floating text adopts the surface ink. App controls and their
+   own ivory/green surfaces keep their semantic colors and contrast. */
+[data-bump-contrast=true]{color:var(--bump-adaptive-ink)!important;text-shadow:none!important;transition:color .15s ease}
+[data-bump-contrast=true] :is(span,a,strong,small,em):not([data-bump-contrast=true]){color:inherit!important}
+[data-bump-contrast=true][data-bump-surface=scene]{text-shadow:0 1px 3px #201a164d!important}
+[data-bump-contrast=true][data-bump-surface=paper] em{color:#c6323c!important}
+.bump-nav-logo[data-bump-contrast=true] .bump-brand-mark{background:var(--bump-adaptive-ink)!important}
+.sidebar-link[data-bump-contrast=true]::after{color:var(--bump-adaptive-ink)!important}
+.sidebar-link[data-bump-contrast=true]>span::after{background-image:radial-gradient(circle,var(--bump-adaptive-ink) 1.25px,transparent 1.55px)!important;filter:none!important}
+@media(prefers-reduced-motion:reduce){[data-bump-contrast=true]{transition:none}}
+
+.bump-nav-trigger[data-bump-surface=scene]>img{filter:invert(1)}
+.bump-nav-trigger[data-bump-surface=paper]>img{filter:none}

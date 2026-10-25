@@ -1,0 +1,80 @@
+/* Keep one anchored navigation throughout the six chapters. */
+.bump-header{padding-top:env(safe-area-inset-top,0px);height:calc(64px + env(safe-area-inset-top,0px));isolation:isolate}
+.bump-header.bump-hero-header{padding-inline:12px}
+@media(min-width:1001px){.bump-header.bump-hero-header .bump-top-links{margin-left:30px;gap:24px}}
+@media(min-width:940px){[data-scrolled=true] aside[data-section-name=side-nav]{left:0}[data-scrolled=true] aside[data-section-name=side-nav] .title-link{top:12px}}
+.bump-header .bump-project-button{display:flex;align-items:center;justify-content:center;gap:10px;white-space:nowrap;min-height:38px}
+.bump-header .bump-project-button .bump-project-full{display:inline}
+.bump-header .bump-project-button .bump-project-short{display:none}
+.bump-project-button>svg{width:16px;height:16px;flex:none;display:block}
+.bump-location-symbol{display:none}
+.bump-header .bump-top-links{min-width:0}
+.bump-header[data-hero=false]{background:transparent}
+html[data-nav-theme=light] .bump-header,html[data-nav-style=solid] .bump-header{background:transparent;box-shadow:none;text-shadow:none}
+html[data-nav-theme=light] .bump-header :is(.bump-location,.bump-nav-trigger),html[data-nav-style=solid] .bump-header :is(.bump-location,.bump-nav-trigger){text-shadow:none}
+html[data-nav-theme=light] .bump-nav-trigger img,html[data-nav-style=solid] .bump-nav-trigger img{filter:brightness(0)}
+@media(max-width:600px){
+  .bump-header.bump-hero-header{height:calc(60px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 12px 0;gap:8px;justify-content:space-between;background:transparent}
+  .bump-header .bump-nav-logo{font-size:27px;flex:none;gap:5px}
+  .bump-nav-logo .bump-brand-mark{width:23px;height:23px}
+  .bump-header .bump-top-links{gap:1px;margin-left:auto;font-size:15px}
+  .bump-header .bump-nav-trigger{min-height:40px;padding:8px 5px;font-size:15px;gap:5px}
+  .bump-header .bump-header-actions{display:flex;margin-left:0;gap:0;flex:none}
+  .bump-header .bump-project-button{min-height:34px;padding:6px 10px;font-size:14px;gap:0;border-radius:25px}
+  .bump-header .bump-project-button .bump-project-full{display:none}
+  .bump-header .bump-project-button .bump-project-short{display:inline}
+  .bump-header .bump-project-button>svg{display:none}
+  .bump-header .bump-location{min-height:40px;font-size:13px}
+  .bump-header .bump-location-anchor{margin:0}
+  .bump-header .bump-hero-search-trigger{min-width:32px;justify-content:center}
+  .bump-header .bump-search-label-text{display:none}
+  .bump-header .bump-hero-dropdown{position:fixed;top:calc(62px + env(safe-area-inset-top,0px));left:12px;right:12px;width:auto;max-width:none;max-height:calc(100dvh - 82px);overflow-y:auto}
+  .bump-header .bump-hero-dropdown-row,.bump-header .bump-hero-dropdown-row a{min-height:46px}
+  .bump-header .bump-hero-search-panel{top:calc(10px + env(safe-area-inset-top,0px));left:12px;right:12px;max-height:calc(100dvh - 24px);padding-inline:12px}
+  .bump-header .bump-hero-search-panel input{font-size:18px}
+  .bump-header .bump-hero-search-results{max-height:calc(100dvh - 100px)}
+  .bump-location-popover{top:calc(64px + env(safe-area-inset-top,0px));max-height:calc(100dvh - 80px);overflow-y:auto}
+  .bump-dialog{max-height:calc(100dvh - 24px);overscroll-behavior:contain}
+  html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+}
+@media(max-width:370px){
+  .bump-header.bump-hero-header{gap:5px}
+  .bump-header .bump-location-word{display:none}
+  .bump-header .bump-location-symbol{display:block;width:17px;height:17px}
+  .bump-header .bump-location{width:24px;display:grid;place-items:center}
+}
+@media(max-width:335px){
+  .bump-header .bump-nav-logo{font-size:25px}
+  .bump-header .bump-project-button{padding-inline:8px}
+  .bump-header .bump-nav-trigger{font-size:14px;padding-inline:3px}
+}
+@media(max-height:500px) and (orientation:landscape){
+  .bump-header.bump-hero-header{height:48px}
+  .bump-header .bump-hero-dropdown{top:48px;max-height:calc(100dvh - 60px)}
+  .bump-location-popover{top:50px;max-height:calc(100dvh - 60px);overflow-y:auto}
+  .bump-location-globe{height:190px}
+}
+@media(max-width:600px){.bump-header.bump-hero-header .bump-project-button{display:flex!important}}
+html[data-nav-theme=light] .bump-header.bump-hero-header{color:#2a2623;background:transparent;text-shadow:none;box-shadow:none}
+html[data-nav-theme=light] .bump-header .bump-project-button{background:#304240;color:#faf6ec;border-color:#304240}
+html[data-nav-theme=light] .bump-hero-header :is(.bump-nav-logo,.bump-location,.bump-nav-trigger){text-shadow:none}
+@media(min-width:601px) and (max-width:1000px){
+ .bump-header .bump-project-button .bump-project-full{display:none}
+ .bump-header .bump-project-button .bump-project-short{display:inline}
+ .bump-header .bump-project-button{padding-inline:14px}
+ .bump-header .bump-top-links{gap:15px}
+}
+/* Header contrast follows the surface at its own position, independently of
+   the canvas's camera/transition theme and the sidebar's sampling point. */
+.bump-header.bump-hero-header[data-tone=light]{color:#2a2623;background:transparent;box-shadow:none;text-shadow:none}
+.bump-header.bump-hero-header[data-tone=light] :is(.bump-nav-logo,.bump-location,.bump-nav-trigger){color:#2a2623;text-shadow:none}
+.bump-header.bump-hero-header[data-tone=light] .bump-nav-trigger img{filter:brightness(0)}
+.bump-header.bump-hero-header[data-tone=light] .bump-project-button{background:#304240;color:#faf6ec;border-color:#304240}
+.bump-header.bump-hero-header[data-tone=dark]{color:#fff;background:transparent;box-shadow:none}
+.bump-header.bump-hero-header[data-tone=dark] :is(.bump-nav-logo,.bump-location,.bump-nav-trigger){color:#fff;text-shadow:0 1px 5px #101a1699}
+.bump-header.bump-hero-header[data-tone=dark] .bump-nav-trigger img{filter:brightness(0) invert(1)}
+.bump-header.bump-hero-header[data-tone=dark] .bump-project-button{background:#f7f7ee;color:#222;border-color:transparent}
+.bump-header.bump-hero-header[data-tone] .bump-nav-trigger[aria-expanded=true]{background:#fff;color:#222;text-shadow:none}
+.bump-header.bump-hero-header[data-tone] .bump-nav-trigger[aria-expanded=true] img{filter:brightness(0)}
+
+.bump-header.bump-hero-header[data-tone=light] .bump-project-button{background:#f5f1e5;border-color:#504b3c;color:#2a2623}

@@ -1,0 +1,17 @@
+/* A visible dot trail that draws toward the chapter's Roman numeral. */
+.bump-header-actions{display:flex;align-items:center;gap:24px}
+.bump-language-switch{display:inline-flex;align-items:center;justify-content:center;min-width:28px;min-height:38px;color:inherit;font:500 14px/1 "EB Garamond",Georgia,serif;letter-spacing:.04em;text-decoration:none;opacity:.8;transition:opacity .2s}
+.bump-language-switch:hover{opacity:1}
+.bump-language-switch:focus-visible{outline:1px solid currentColor;outline-offset:3px}
+@media(max-width:700px){.bump-header-actions{gap:10px}.bump-language-switch{min-width:24px;font-size:12px}}
+.main-wrapper aside .sidebar-link{column-gap:10px;align-items:center}
+.main-wrapper aside .sidebar-link>span{flex:1;min-width:0;gap:9px}
+.main-wrapper aside .sidebar-link>span::after{flex:1;min-width:0;width:auto;height:7px;transform:translateY(2px);background-image:radial-gradient(circle,#fff 1.25px,transparent 1.55px);background-size:8px 7px;background-position:0 50%;background-repeat:repeat-x;filter:drop-shadow(0 1px 2px #142019b3);opacity:0;clip-path:inset(0 100% 0 0);transition:clip-path .65s cubic-bezier(.22,1,.36,1),opacity .18s ease}
+.main-wrapper aside .sidebar-link::after{flex:none;min-width:18px;text-align:right}
+.main-wrapper aside .sidebar-link:is(:hover,:focus-visible)>span::after,.main-wrapper aside li.sidebar-link-active .sidebar-link>span::after{opacity:1;clip-path:inset(0)}
+.main-wrapper aside .sidebar-link:is(:hover,:focus-visible)>span::after{animation:bump-chapter-dots 1.2s linear infinite}
+html[data-sidebar-theme=light] .main-wrapper aside .sidebar-link>span::after{background-image:radial-gradient(circle,#302c26 1.25px,transparent 1.55px);filter:none}
+@keyframes bump-chapter-dots{to{background-position:16px 50%}}
+@media(prefers-reduced-motion:reduce){.main-wrapper aside .sidebar-link>span::after{transition:none!important;animation:none!important}}
+
+html[data-bump-tone=light] .bump-editorial-title{color:#302e28;text-shadow:none}

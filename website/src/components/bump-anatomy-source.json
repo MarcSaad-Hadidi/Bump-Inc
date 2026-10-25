@@ -1,0 +1,23 @@
+{
+  "source": "bump-workflow-01.zip",
+  "sha256": {
+    "shared/AnatomyFigure.tsx": "45e49948f7b79706000625778d8c5e302fc118940da4f52bddb3c9531fd872d6",
+    "shared/bump-theme.css": "bf30a94b820fab62d14a275d307059e1f7b6ac4ac0c54dd8a23e515c7c31892e",
+    "shared/controller.ts": "62b8621c173e14f474e0dd0458ebc6a3dcc45486a3863ab6dfbe6a7ae6572168",
+    "shared/runtime.ts": "6594ac2445214885bfebe6d5d309c9c11f5ae2fc970608cf1de51a181693a0be",
+    "kit/iso-kit.ts": "e9fc988c61a11bfac1f097e62419915ea86b2130ab091f1b50c0e019c907e253",
+    "kit/iso.css": "ef19bac5a42ba9be42b56b2c1cf7fc7e21d332a8060765e9ca1d987b8ab23924",
+    "kit/LICENSE-anatomy": "87c078ab9d90a3044f359e6b563d4e6afea7aa060897cf4f21618687b3856796",
+    "workflow/art.generated.ts": "da471c7609dab94709cecf1dfae7672095adbc87b3e24251a4b8a97105ce7e71",
+    "workflow/live.ts": "8c1173bf5a392fdcaf5b10e3ceaa02141fee95853605bfe6e41fc3257e36b68e",
+    "workflow/model.ts": "0a64e76254e3fd01d6565b08d641bf2aef0b22fc586b8c77b6d8304a4e8a15dd",
+    "workflow/Workflow.tsx": "5abdd89d6d204a170614ea126bb52edd910c89b8657542d59c8330b5aeb1863f"
+  },
+  "upstreamUpdates": {
+    "shared/bump-theme.css": {
+      "source": "bump-port-07.zip",
+      "previousSha256": "2385bcb37c994f6bb507692f72349eff9e7e9dba86602e1c7b0adfa23ee5a525",
+      "change": "Original palette preserved verbatim; supplied model 03\u201307 rules appended."
+    }
+  }
+}

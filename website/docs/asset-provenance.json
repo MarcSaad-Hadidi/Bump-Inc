@@ -1,0 +1,3053 @@
+{
+  "sourcePage": "https://www.shopify.com/editions/winter2026",
+  "assets": {
+    "backgrounds.hero-desktop": {
+      "path": "backgrounds/herofallback.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/herofallback.jpg?v=1764633806",
+      "bytes": 780457,
+      "sha256": "f70be36d951fb3642ab8f90721f9ea8af0d4fe1c81a9282e75abd1620826f4a4"
+    },
+    "backgrounds.hero-mobile": {
+      "path": "backgrounds/portrait-hero-test-fallback.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/portrait-hero-test-fallback.jpg?v=1765215576",
+      "bytes": 371270,
+      "sha256": "cca5a97344e7def559df8e870506643dbac7d696896adcd3fb6463ff1853964e"
+    },
+    "hero-motion.asset-0": {
+      "path": "hero-motion/EW26_Hero_251207v3_compressed-optimized.glb",
+      "sourceUrl": "https://editions-winter-2026.myshopify.com/cdn/shop/3d/models/o/843b7bb45340b0c3/EW26_Hero_251207v3_compressed-optimized.glb",
+      "bytes": 1080492,
+      "sha256": "8327666e89e89ad28e33ec35f382e4d3a1c01b5a0942225215ade1e0ca73fb8e"
+    },
+    "hero-motion.asset-1": {
+      "path": "hero-motion/Hero-bg-hires-optimized.ktx2",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Hero-bg-hires-optimized.ktx2?v=1787919794",
+      "bytes": 265821,
+      "sha256": "76e69d61c30fd18da7be829e1b404ef1a08bb9d474a2f1b4cd794ff114036c58"
+    },
+    "hero-motion.theatre": {
+      "path": "hero-motion/HeroScene.theatre-project-state_15.json",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/HeroScene.theatre-project-state_15.json?v=1787919811",
+      "bytes": 50279,
+      "sha256": "2f500579b87384b69ec22e967afe47eca88af84fb24d302ca8e8d70e7725fa76"
+    },
+    "hero-motion.medium-model": {
+      "path": "hero-motion/EW26_Hero_251205_compressed-optimized.glb",
+      "sourceUrl": "https://editions-winter-2026.myshopify.com/cdn/shop/3d/models/o/51718f8b2d221d54/EW26_Hero_251205_compressed-optimized.glb",
+      "bytes": 1015816,
+      "sha256": "6ce046024a44186640d29618f99a8cfd667bfdae6ed6f66ba15595351fa4c00e"
+    },
+    "fonts.neuemontreal": {
+      "path": "fonts/3ee238256136fcfdfca35decbd44d0d4.woff2",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/3ee238256136fcfdfca35decbd44d0d4.woff2",
+      "bytes": 24792,
+      "sha256": "5904b1b055387fa028fb281ddb784bf5e3280b4f183b722518bc5b979ddbbd6c"
+    },
+    "fonts.hwcigars": {
+      "path": "fonts/49a57a6e59f6a50f0627418abeb58fec.woff2",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/49a57a6e59f6a50f0627418abeb58fec.woff2",
+      "bytes": 30440,
+      "sha256": "2d422f232ac308d9145692e1bcb2c2ce4001c94a0bcfc4f266429a75529971ba"
+    },
+    "fonts.imperialscript": {
+      "path": "fonts/389d4f8566b3b9cbe083b682c7fabf06.woff2",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/389d4f8566b3b9cbe083b682c7fabf06.woff2",
+      "bytes": 15572,
+      "sha256": "a134619d95955fb4e38d30bb2736374640bce55340a0d3c7b576c27ae212e6bc"
+    },
+    "fonts.inter-variable": {
+      "path": "fonts/5949cd393a8375a896fd0a9b74307666.woff2",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0711/3431/4719/files/5949cd393a8375a896fd0a9b74307666.woff2?v=1738959228",
+      "bytes": 67188,
+      "sha256": "e258e19ddb65c1c159d7034230cdd91a474aa60f750c58682105e722a1231b89"
+    },
+    "backgrounds.sidekick-desktop": {
+      "path": "backgrounds/Sidekick_Fallback.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Sidekick_Fallback.jpg?v=1764645877",
+      "bytes": 601134,
+      "sha256": "ae604ac443ef29bfd3cac5d48e1b0db058c45a9194807a7c4e900cf897893852"
+    },
+    "backgrounds.sidekick-mobile": {
+      "path": "backgrounds/Fallback_Mobile_Sidekick_2x_ae10922b-27e9-4a86-ac5d-24de7957ea02.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Fallback_Mobile_Sidekick_2x_ae10922b-27e9-4a86-ac5d-24de7957ea02.jpg?v=1765257456",
+      "bytes": 202883,
+      "sha256": "29e6d92ecf126c615d1eec7a296da26d5cb3a75cb2944d60c8fcba0a8e6cbec9"
+    },
+    "rive.sidekick-pulse": {
+      "path": "rive/pulse_12_10.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/pulse_12_10.riv?v=1787919821",
+      "bytes": 141831,
+      "sha256": "be902d638f5cfe0b4a2b1942657100dddabea1ccb63919cf4630a142a27c7428"
+    },
+    "demos.sidekick-pulse-posterImage": {
+      "path": "demos/compressed-pulseDesktopPoster-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/compressed-pulseDesktopPoster-desktop.webp?v=1765345989",
+      "bytes": 994495,
+      "sha256": "f39e0baf541f12312b950ee96b00423289804d7947a4f066e1db12f3e5c753e5"
+    },
+    "demos.sidekick-pulse-fallbackImage": {
+      "path": "demos/U20_Pulse_desktop-fallback.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U20_Pulse_desktop-fallback.png?v=1765315779",
+      "bytes": 4979743,
+      "sha256": "3273ad76c7ad6fb1923d60684ff11c53a8556f955a9c60d03d5a89efed5afd54"
+    },
+    "demos.sidekick-pulse-fallbackImageMobile": {
+      "path": "demos/U20_Pulse_mobile-fallback.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U20_Pulse_mobile-fallback.png?v=1765315816",
+      "bytes": 2244160,
+      "sha256": "df7091b33b21db11099364e16c8c77182b96264ed737c75b3572c2dccee45e61"
+    },
+    "rive-dependencies.rive_digest_1-desktop": {
+      "path": "rive-dependencies/rive_digest_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_1-desktop.webp?v=1763060510",
+      "bytes": 116892,
+      "sha256": "2dbed7b3864d1d021cdd6d273769d163cdfcba91e0adde5662536c768e1e7642"
+    },
+    "rive-dependencies.rive_digest_1-mobile": {
+      "path": "rive-dependencies/rive_digest_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_1-mobile.webp?v=1763060509",
+      "bytes": 41756,
+      "sha256": "79d6303e53000f0caf68a50a4529656ca253ae1a77d1d00ab9cc185101b8e4d8"
+    },
+    "rive-dependencies.rive_digest_2-desktop": {
+      "path": "rive-dependencies/rive_digest_2-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_2-desktop.webp?v=1763060510",
+      "bytes": 98252,
+      "sha256": "9d003b98f1cc22bc5c2f6efac79ebaa8494c536a0f70e47a8154920a0debd380"
+    },
+    "rive-dependencies.rive_digest_2-mobile": {
+      "path": "rive-dependencies/rive_digest_2-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_2-mobile.webp?v=1763060509",
+      "bytes": 35923,
+      "sha256": "36f073371de13f18b3369d857a543bdfc7e6e55146699b077444e150ce247cb1"
+    },
+    "rive-dependencies.rive_digest_3-desktop": {
+      "path": "rive-dependencies/rive_digest_3-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_3-desktop.webp?v=1763060510",
+      "bytes": 241856,
+      "sha256": "5865cb7844f5e056bb0ef37f6f386fdd84f0e6d537e8871f3c29e3b374841a7b"
+    },
+    "rive-dependencies.rive_digest_3-mobile": {
+      "path": "rive-dependencies/rive_digest_3-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_3-mobile.webp?v=1763060509",
+      "bytes": 80499,
+      "sha256": "3c0cc28994e4fa4823b8fc90e06ea32cc5be80b944783de43c81ec9ebf50e606"
+    },
+    "rive-dependencies.rive_digest_4-desktop": {
+      "path": "rive-dependencies/rive_digest_4-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_4-desktop.webp?v=1763060510",
+      "bytes": 190611,
+      "sha256": "9934c1eba0e50f850e5b448eb1979e4239e4a54700cc23a4c608af2708c7ae4b"
+    },
+    "rive-dependencies.rive_digest_4-mobile": {
+      "path": "rive-dependencies/rive_digest_4-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_4-mobile.webp?v=1763060510",
+      "bytes": 57786,
+      "sha256": "cacbf545c2c8c85d1298de3e94eaf2d39a9524ace49fc42bdad3b23ade568c10"
+    },
+    "rive-dependencies.rive_digest_5-desktop": {
+      "path": "rive-dependencies/rive_digest_5-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_5-desktop.webp?v=1764264158",
+      "bytes": 12883,
+      "sha256": "7cb2c7251647d96bb50d487c1a33e1520d3a213f209986100454ee9a9afb2e96"
+    },
+    "rive-dependencies.rive_digest_5-mobile": {
+      "path": "rive-dependencies/rive_digest_5-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_5-mobile.webp?v=1764264163",
+      "bytes": 4675,
+      "sha256": "1c020324c62fc2fb117e5f16b804351a42228077c728d0d80c4ec80c20ef44d6"
+    },
+    "rive-dependencies.rive_digest_6-desktop": {
+      "path": "rive-dependencies/rive_digest_6-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_6-desktop.webp?v=1764264176",
+      "bytes": 16589,
+      "sha256": "ce3b82c27bc9991a3e481ab5c09947f15b9f0b787d9dfb92bbc305648170402e"
+    },
+    "rive-dependencies.rive_digest_6-mobile": {
+      "path": "rive-dependencies/rive_digest_6-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_6-mobile.webp?v=1764264181",
+      "bytes": 5741,
+      "sha256": "4413f4c438cc54a94c633e8379dcaae01b62b09f295300dc6d91c47d4d887dc5"
+    },
+    "rive-dependencies.rive_digest_7-desktop": {
+      "path": "rive-dependencies/rive_digest_7-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_7-desktop.webp?v=1764264198",
+      "bytes": 26136,
+      "sha256": "83f418e05a8d9c6aeb2ab85b3cd5ab08d654321787944483b252022639a63e09"
+    },
+    "rive-dependencies.rive_digest_7-mobile": {
+      "path": "rive-dependencies/rive_digest_7-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_7-mobile.webp?v=1764264204",
+      "bytes": 7282,
+      "sha256": "8922eb576f23977edd45ec50c9ab9cc33bd3650f2c49b0d7c869e4389b2867ba"
+    },
+    "rive-dependencies.rive_digest_8-desktop": {
+      "path": "rive-dependencies/rive_digest_8-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_8-desktop.webp?v=1764264238",
+      "bytes": 36690,
+      "sha256": "b71e3e67608d7b6b65640499bc89bf50c26d5eb38006e10e171158aeca00f691"
+    },
+    "rive-dependencies.rive_digest_8-mobile": {
+      "path": "rive-dependencies/rive_digest_8-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_8-mobile.webp?v=1764264231",
+      "bytes": 8989,
+      "sha256": "332319381d4f76abf81f465c2588cd506952508cc872c261eef46fc925d4aead"
+    },
+    "rive-dependencies.rive_digest_9-desktop": {
+      "path": "rive-dependencies/rive_digest_9-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_9-desktop.webp?v=1764264264",
+      "bytes": 29753,
+      "sha256": "bb32c6d01a5de06b5e3828f095e24b492e8fe1e31b7a57251d5964fedbbb8e02"
+    },
+    "rive-dependencies.rive_digest_9-mobile": {
+      "path": "rive-dependencies/rive_digest_9-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_9-mobile.webp?v=1764264268",
+      "bytes": 7820,
+      "sha256": "5e797ee063837fc31e17b489a189d3567fee27887bb1f418cbf8c6fcdb6e0259"
+    },
+    "rive-dependencies.sidekick_digest_1-desktop": {
+      "path": "rive-dependencies/sidekick_digest_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/sidekick_digest_1-desktop.webp?v=1764264300",
+      "bytes": 410968,
+      "sha256": "3cc9b9fd2d64e65d3838b2ef755abf252c49508d25b25c89a8e641b083a6dc30"
+    },
+    "rive-dependencies.sidekick_digest_1-mobile": {
+      "path": "rive-dependencies/sidekick_digest_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/sidekick_digest_1-mobile.webp?v=1764264306",
+      "bytes": 122002,
+      "sha256": "8fa66e6a924779a832ac238e300cc559403a50016b147e510507dfdc326177ad"
+    },
+    "rive-dependencies.rive_digest_10-desktop": {
+      "path": "rive-dependencies/rive_digest_10-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_10-desktop.webp?v=1764264425",
+      "bytes": 177668,
+      "sha256": "2d87f0fc3aa99ba6b21c91641c32d7fa6c69b6a509b6de16f383f6a6c8f6fba0"
+    },
+    "rive-dependencies.rive_digest_10-mobile": {
+      "path": "rive-dependencies/rive_digest_10-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_10-mobile.webp?v=1764264425",
+      "bytes": 30758,
+      "sha256": "9e948ebdcc1acabcdf202cca858823768cc3dac03f89251acf8951697dca319c"
+    },
+    "rive-dependencies.rive_digest_11-desktop": {
+      "path": "rive-dependencies/rive_digest_11-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_11-desktop.webp?v=1764264425",
+      "bytes": 110052,
+      "sha256": "7b164f053b7529634037f8261362a37de9a47c0919309f66ac24f8d3044c422f"
+    },
+    "rive-dependencies.rive_digest_11-mobile": {
+      "path": "rive-dependencies/rive_digest_11-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_digest_11-mobile.webp?v=1764264425",
+      "bytes": 26000,
+      "sha256": "d2a0509d6bf9e6e0dbc993a3dc98a3f659fe9b3e4c2ca1e359acda75e7b73bb7"
+    },
+    "rive-dependencies.inter": {
+      "path": "rive-dependencies/Inter.txt",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Inter.txt?v=1787916463",
+      "bytes": 805528,
+      "sha256": "bfff5663c84b220f3c6dbb0e5225c66eab3d79e0d67351bbac151b5109c78a2d"
+    },
+    "rive.sidekick-builds-workflows-in-shopify-flow": {
+      "path": "rive/flow_12_9.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/flow_12_9.riv?v=1787919786",
+      "bytes": 54988,
+      "sha256": "cf747564e9da9a5f878597d6b1942c73243657592bdfa793d4a957254c9f6dff"
+    },
+    "demos.sidekick-builds-workflows-in-shopify-flow-posterImage": {
+      "path": "demos/default_abdd996f-1b4e-44a5-bfcc-8addca857894.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/default_abdd996f-1b4e-44a5-bfcc-8addca857894.png?v=1765164459",
+      "bytes": 106272,
+      "sha256": "d8d877d56308a2058d8a44abb3df1ae38dcdcc8a2c67270068da3d8ef7aa9b29"
+    },
+    "demos.sidekick-builds-workflows-in-shopify-flow-fallbackImage": {
+      "path": "demos/U1_sidekick_flow_desktop-fallback.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U1_sidekick_flow_desktop-fallback.png?v=1765316138",
+      "bytes": 2238575,
+      "sha256": "b09221dc153bb2223e2f824d13ada0d272d13da97aa1fe4d85b891f679b277c2"
+    },
+    "demos.sidekick-builds-workflows-in-shopify-flow-fallbackImageMobile": {
+      "path": "demos/U1_sidekick_flow_mobile-fallback.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U1_sidekick_flow_mobile-fallback.png?v=1765316150",
+      "bytes": 884212,
+      "sha256": "485b0239394d24f20951b0152f8c6a700213ad5bac85597d28582430d90809a5"
+    },
+    "rive-dependencies.rive_flow_1-desktop": {
+      "path": "rive-dependencies/rive_flow_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_flow_1-desktop.webp?v=1763746806",
+      "bytes": 96191,
+      "sha256": "356d8bdeff82f362a315d4a3af1a43c80c937ceeff5fbb1d3ee60bce8380e236"
+    },
+    "rive-dependencies.rive_flow_1-mobile": {
+      "path": "rive-dependencies/rive_flow_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_flow_1-mobile.webp?v=1763746806",
+      "bytes": 43750,
+      "sha256": "747d25a1a2fe54db89bc37be0a99451dc7535cb4352974c2f0edfad6c1275be7"
+    },
+    "rive-dependencies.rive_flow_2-desktop": {
+      "path": "rive-dependencies/rive_flow_2-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_flow_2-desktop.webp?v=1763746806",
+      "bytes": 92700,
+      "sha256": "fd2f8418e7bc2af74a2ef806a04f0b6e46b8e1495264cd6987e07249dfadb7dc"
+    },
+    "rive-dependencies.rive_flow_2-mobile": {
+      "path": "rive-dependencies/rive_flow_2-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_flow_2-mobile.webp?v=1763746806",
+      "bytes": 34277,
+      "sha256": "15ba6b4b78f4e263475d0d434a7b10ac26e1fadb206d3bc68e4ea728ffd3a756"
+    },
+    "rive-dependencies.rive_flow_3-desktop": {
+      "path": "rive-dependencies/rive_flow_3-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_flow_3-desktop.webp?v=1763746806",
+      "bytes": 343779,
+      "sha256": "fe0b83351b529a2b146449fd5c06e0efd8bb56ec06a48a68387a35056b60e2c8"
+    },
+    "rive-dependencies.rive_flow_3-mobile": {
+      "path": "rive-dependencies/rive_flow_3-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_flow_3-mobile.webp?v=1763746806",
+      "bytes": 102502,
+      "sha256": "b4021ba851c66244f80fe253074c267814479d625d5453aac79390e348fdc240"
+    },
+    "rive-dependencies.rive_flow_4-desktop": {
+      "path": "rive-dependencies/rive_flow_4-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_flow_4-desktop.webp?v=1763746806",
+      "bytes": 301984,
+      "sha256": "c03398303760d868201bfc69b35c6c63a801cb1d7276dc424bac3e9ceadd4256"
+    },
+    "rive-dependencies.rive_flow_4-mobile": {
+      "path": "rive-dependencies/rive_flow_4-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_flow_4-mobile.webp?v=1763746806",
+      "bytes": 77066,
+      "sha256": "8a12ad7c9ec735289cb92052cf83cc49c93a9281e63ccf02c9f75a06c31119cb"
+    },
+    "backgrounds.agentic-desktop": {
+      "path": "backgrounds/Agentic_fg_251207.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Agentic_fg_251207.png?v=1765150803",
+      "bytes": 15177675,
+      "sha256": "9c9587ddd283347e978b68b07a05305863d86f8afd32cdc6a45db8f6e48ea7d6"
+    },
+    "backgrounds.agentic-mobile": {
+      "path": "backgrounds/Fallback_Mobile_Agentic_2x_ed265a10-0482-41f0-88a1-2be1a5b94ffc.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Fallback_Mobile_Agentic_2x_ed265a10-0482-41f0-88a1-2be1a5b94ffc.jpg?v=1765257491",
+      "bytes": 158526,
+      "sha256": "e1057a4e9384d89ae1dc8e27be68628f4262d099917c41deac5df8d2ce2c8852"
+    },
+    "rive.shopify-agentic-storefronts": {
+      "path": "rive/chatgpt_12_10_v5.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/chatgpt_12_10_v5.riv?v=1787919829",
+      "bytes": 59426,
+      "sha256": "783ff098c90506ecd5630334c1605baa100b3c2f9816dd63fcb172f48ee5b1e0"
+    },
+    "demos.shopify-agentic-storefronts-posterImage": {
+      "path": "demos/chatgptdesktopposter_12_10.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/chatgptdesktopposter_12_10.webp?v=1765374017",
+      "bytes": 1532715,
+      "sha256": "7b99308d095fc116a05bc87e9e1b51cfae9cfbdbd6c579ef3861d0329a95f415"
+    },
+    "demos.shopify-agentic-storefronts-posterImageMobile": {
+      "path": "demos/chatgptmobileposter_12_10.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/chatgptmobileposter_12_10.webp?v=1765374050",
+      "bytes": 95869,
+      "sha256": "5b0e67ac537ef4937d8a7c676b444abafcb02cce671fe3cf144ee31275f0fc33"
+    },
+    "rive-dependencies.xxl_chatgpt_handdevice-desktop": {
+      "path": "rive-dependencies/xxl_chatgpt_handdevice-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/xxl_chatgpt_handdevice-desktop.webp?v=1765220150",
+      "bytes": 1513242,
+      "sha256": "ef9677b9650eca9a20dcee7bc6aaa955bf3dd5842b11b68b67996f1a0c11c521"
+    },
+    "rive-dependencies.xxl_chatgpt_handdevice-mobile": {
+      "path": "rive-dependencies/xxl_chatgpt_handdevice-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/xxl_chatgpt_handdevice-mobile.webp?v=1765220157",
+      "bytes": 128458,
+      "sha256": "a822a7aa92c16a0e5c118551f161d6db584f82e70bff92755487039d95a1d5a0"
+    },
+    "rive-dependencies.xxl_chatgpt_thumb-desktop": {
+      "path": "rive-dependencies/xxl_chatgpt_thumb-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/xxl_chatgpt_thumb-desktop.webp?v=1764978607",
+      "bytes": 532264,
+      "sha256": "30d1393d258201877651b26bc90e02e31f63233723d715d4c424f06ff2a3b874"
+    },
+    "rive-dependencies.xxl_chatgpt_thumb-mobile": {
+      "path": "rive-dependencies/xxl_chatgpt_thumb-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/xxl_chatgpt_thumb-mobile.webp?v=1764978620",
+      "bytes": 142635,
+      "sha256": "abb3547d85a7a90376f6bfc1e7fcf2eaa03c9cc26f29a13388a16e3a318702cc"
+    },
+    "rive-dependencies.xxl_gpt_1-desktop": {
+      "path": "rive-dependencies/xxl_gpt_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/xxl_gpt_1-desktop.webp?v=1763052306",
+      "bytes": 160584,
+      "sha256": "f8993079cabbd3169268b0eaec3d62fb6644f2a08e1d03d407d4a1415a6613df"
+    },
+    "rive-dependencies.xxl_gpt_1-mobile": {
+      "path": "rive-dependencies/xxl_gpt_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/xxl_gpt_1-mobile.webp?v=1763052306",
+      "bytes": 53045,
+      "sha256": "ae3d6f4325f3d3d5ea6265077c9668b0908511e1a8b9d65cb21ee3fee76466bd"
+    },
+    "rive-dependencies.iphonebezelnoisland-mobile": {
+      "path": "rive-dependencies/iphonebezelnoisland-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/iphonebezelnoisland-mobile.webp?v=1765345813",
+      "bytes": 53905,
+      "sha256": "592ea245bdf36f6ce9941091312ba8f5ae88f3e8816cb7358a65b837ed230733"
+    },
+    "demos.agentic-storefronts-video-image": {
+      "path": "demos/AGENTIC_First_Frame.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/AGENTIC_First_Frame.png?v=1765337288",
+      "bytes": 1450288,
+      "sha256": "f114c7fd4a160e2657d6a32851ada785e21b08b8f95a438ad9da16cac6d97701"
+    },
+    "demos.agentic-storefronts-video-video-poster": {
+      "path": "demos/5aa1f17e22044052af94fde4bb1d052c.thumbnail.0000000000.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/preview_images/5aa1f17e22044052af94fde4bb1d052c.thumbnail.0000000000.jpg?v=1765338996",
+      "bytes": 68962,
+      "sha256": "a5115764328e9568dc68a665b26488527d28deb118cba8d41f400fdbc6340372"
+    },
+    "backgrounds.online-desktop": {
+      "path": "backgrounds/Online_Fallback.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Online_Fallback.jpg?v=1764646034",
+      "bytes": 440852,
+      "sha256": "aa91eba86136ed529d21b61e3a22e4d7eba1e5cb98858223e8e10ddfef292c28"
+    },
+    "backgrounds.online-mobile": {
+      "path": "backgrounds/Fallback_Mobile_Online_2x_19548bd3-08de-48b3-a780-e47cbf3fbf64.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Fallback_Mobile_Online_2x_19548bd3-08de-48b3-a780-e47cbf3fbf64.jpg?v=1765257546",
+      "bytes": 229044,
+      "sha256": "b880cbf5fe4200369dde86366a2f7b38c989be8cb0370e5d85d19566352743a4"
+    },
+    "rive.rollouts": {
+      "path": "rive/rollouts_12_9_v2.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rollouts_12_9_v2.riv?v=1787919794",
+      "bytes": 78122,
+      "sha256": "5b3c874d36366efd661f4abd17b7571332e1985e234cdcdb0705230861787507"
+    },
+    "demos.rollouts-fallbackImage": {
+      "path": "demos/U97_Rollouts_desktop-fallback_de.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U97_Rollouts_desktop-fallback_de.png?v=1765317792",
+      "bytes": 6256331,
+      "sha256": "ad93b6e71393c1becbadbbf5424a3dd884f133ac5b6a380571f8390f51dac70b"
+    },
+    "demos.rollouts-fallbackImageMobile": {
+      "path": "demos/U97_Rollouts_mobile-fallback_de.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U97_Rollouts_mobile-fallback_de.png?v=1765317827",
+      "bytes": 2848855,
+      "sha256": "e17ce71e4fd583401d4446e7fe6c1acfcfa50df810fbcc71378c7325ae17eeb7"
+    },
+    "rive-dependencies.rive_rollouts_1-desktop": {
+      "path": "rive-dependencies/rive_rollouts_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_1-desktop.webp?v=1763712953",
+      "bytes": 158673,
+      "sha256": "be0727ca5510ff703f17bae135f89f1614098e1026b236450f8865b5c0344061"
+    },
+    "rive-dependencies.rive_rollouts_1-mobile": {
+      "path": "rive-dependencies/rive_rollouts_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_1-mobile.webp?v=1763712953",
+      "bytes": 51946,
+      "sha256": "b61bb7e3945e0ff81fb834724ad162fd6c953396ca719776f22403f5d528095e"
+    },
+    "rive-dependencies.rive_rollouts_10-desktop": {
+      "path": "rive-dependencies/rive_rollouts_10-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_10-desktop.webp?v=1763712954",
+      "bytes": 533326,
+      "sha256": "3a6009b0a65150cc9d1ed27c00fcb63348f5829667b4361185fb33d8e36c378a"
+    },
+    "rive-dependencies.rive_rollouts_10-mobile": {
+      "path": "rive-dependencies/rive_rollouts_10-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_10-mobile.webp?v=1763712953",
+      "bytes": 186909,
+      "sha256": "ecaf7563c07315d06d5485bcd56a588078158878abbf7e2e839264d2acf23a99"
+    },
+    "rive-dependencies.rive_rollouts_11-desktop": {
+      "path": "rive-dependencies/rive_rollouts_11-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_11-desktop.webp?v=1763712954",
+      "bytes": 218468,
+      "sha256": "4d8874bd28ccabf05f938c622fff80eec8d911663ffeac7392625d2844cf0bcc"
+    },
+    "rive-dependencies.rive_rollouts_11-mobile": {
+      "path": "rive-dependencies/rive_rollouts_11-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_11-mobile.webp?v=1763712953",
+      "bytes": 70809,
+      "sha256": "9770f41e50d3957ab599eb1639f43b8b9f0cd118984c320dd31b3477e61c3cc3"
+    },
+    "rive-dependencies.rive_rollouts_12-desktop": {
+      "path": "rive-dependencies/rive_rollouts_12-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_12-desktop.webp?v=1763712954",
+      "bytes": 6327,
+      "sha256": "a7fb68bc645ce56647a0e00099b6a125ffbed4eb02e4ec93307ef20df1aafd60"
+    },
+    "rive-dependencies.rive_rollouts_12-mobile": {
+      "path": "rive-dependencies/rive_rollouts_12-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_12-mobile.webp?v=1763712953",
+      "bytes": 2740,
+      "sha256": "221b4cd480c35687f11be8fc05ea32cfb298d9a4d8c8a9df86b64f928a9b2dff"
+    },
+    "rive-dependencies.rive_rollouts_13-desktop": {
+      "path": "rive-dependencies/rive_rollouts_13-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_13-desktop.webp?v=1763712953",
+      "bytes": 6588,
+      "sha256": "00d3a639e686e610825378ccbffa72d54eb4afeff4f72493bf8f40a24f70a67a"
+    },
+    "rive-dependencies.rive_rollouts_13-mobile": {
+      "path": "rive-dependencies/rive_rollouts_13-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_13-mobile.webp?v=1763712953",
+      "bytes": 2925,
+      "sha256": "fecbed0a853369735dd677166e0dac8347e5766de95894d435fd15b75b7fa978"
+    },
+    "rive-dependencies.rive_rollouts_14-desktop": {
+      "path": "rive-dependencies/rive_rollouts_14-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_14-desktop.webp?v=1763712953",
+      "bytes": 6177,
+      "sha256": "463b996751d359b94e7de50e80edc5fd51d9d6ee88b612a4124bf297f6f43a58"
+    },
+    "rive-dependencies.rive_rollouts_14-mobile": {
+      "path": "rive-dependencies/rive_rollouts_14-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_14-mobile.webp?v=1763712953",
+      "bytes": 2861,
+      "sha256": "d16bd2742bffad60ff96b5d4bb46b0801da2df000318398338b666ede4fa34e0"
+    },
+    "rive-dependencies.rive_rollouts_2-desktop": {
+      "path": "rive-dependencies/rive_rollouts_2-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_2-desktop.webp?v=1763712953",
+      "bytes": 28899,
+      "sha256": "332e7db6372a5e4d51a1e66da3aab501a75969a5721cc99d9cc657339b998c1f"
+    },
+    "rive-dependencies.rive_rollouts_2-mobile": {
+      "path": "rive-dependencies/rive_rollouts_2-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_2-mobile.webp?v=1763712953",
+      "bytes": 10380,
+      "sha256": "c853a2acdf12965aa5411d05b258917c20ae3487328488079932548b39219f7b"
+    },
+    "rive-dependencies.rive_rollouts_3-desktop": {
+      "path": "rive-dependencies/rive_rollouts_3-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_3-desktop.webp?v=1763712953",
+      "bytes": 29967,
+      "sha256": "b1e91cd8cb9d4bca236fe1b1ee569cda208cd6758ca8d83b09481310d36ed4f9"
+    },
+    "rive-dependencies.rive_rollouts_3-mobile": {
+      "path": "rive-dependencies/rive_rollouts_3-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_3-mobile.webp?v=1763712953",
+      "bytes": 9859,
+      "sha256": "d93115d1ec33a4ab4293e15712e577ea38e5e438004c441ffb7e7a823a00e87d"
+    },
+    "rive-dependencies.rive_rollouts_4-desktop": {
+      "path": "rive-dependencies/rive_rollouts_4-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_4-desktop.webp?v=1765304311",
+      "bytes": 38226,
+      "sha256": "ad1f55782029c2f36151279049b3720832f75fca2b7066a4b84244aeb313935d"
+    },
+    "rive-dependencies.rive_rollouts_4-mobile": {
+      "path": "rive-dependencies/rive_rollouts_4-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_4-mobile.webp?v=1765304303",
+      "bytes": 38226,
+      "sha256": "ad1f55782029c2f36151279049b3720832f75fca2b7066a4b84244aeb313935d"
+    },
+    "rive-dependencies.rive_rollouts_5-desktop": {
+      "path": "rive-dependencies/rive_rollouts_5-desktop.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_5-desktop.png?v=1763712954",
+      "bytes": 27504,
+      "sha256": "a889cae0199cfcf0cc086cd04223abf3ab5997bb590697ef3e726eb55aedd214"
+    },
+    "rive-dependencies.rive_rollouts_5-mobile": {
+      "path": "rive-dependencies/rive_rollouts_5-mobile.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_5-mobile.png?v=1763712954",
+      "bytes": 11368,
+      "sha256": "b80994c46cc7c03332d30eb775f3a87ba64f964eb480505fc965c286743d8924"
+    },
+    "rive-dependencies.rive_rollouts_6-desktop": {
+      "path": "rive-dependencies/rive_rollouts_6-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_6-desktop.webp?v=1763712953",
+      "bytes": 24713,
+      "sha256": "4a7056252cd5e1d747b91fbe9b86cee3ecea0786eff6d7abca7e8590d1f31edc"
+    },
+    "rive-dependencies.rive_rollouts_6-mobile": {
+      "path": "rive-dependencies/rive_rollouts_6-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_6-mobile.webp?v=1763712953",
+      "bytes": 8382,
+      "sha256": "5d17f12e5ea53605ba8aaba848873c8cde18b2bb0e6e3cfd36b4899f3ad7f817"
+    },
+    "rive-dependencies.rive_rollouts_7-desktop": {
+      "path": "rive-dependencies/rive_rollouts_7-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_7-desktop.webp?v=1763712953",
+      "bytes": 12331,
+      "sha256": "9de6cb3d3a4083bb150addcb9779d2710114963b1392b57c6aa83841870cab6b"
+    },
+    "rive-dependencies.rive_rollouts_7-mobile": {
+      "path": "rive-dependencies/rive_rollouts_7-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_7-mobile.webp?v=1763712953",
+      "bytes": 4782,
+      "sha256": "55cc28c90ff4f7984177e304b0447fccb57d481f4a19cc5a5fc296f7f9d9ccae"
+    },
+    "rive-dependencies.rive_rollouts_8-desktop": {
+      "path": "rive-dependencies/rive_rollouts_8-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_8-desktop.webp?v=1763712953",
+      "bytes": 34017,
+      "sha256": "d0ab3cde65f73293d68c40c4218efc64f8fb0a55b3a76e70b52e3994ef22a716"
+    },
+    "rive-dependencies.rive_rollouts_8-mobile": {
+      "path": "rive-dependencies/rive_rollouts_8-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_8-mobile.webp?v=1763712953",
+      "bytes": 15539,
+      "sha256": "837750c82d49a29975f5b7bbf8e6d059b4aa03abe55303eb5e765ee2d0272b8a"
+    },
+    "rive-dependencies.rive_rollouts_9-desktop": {
+      "path": "rive-dependencies/rive_rollouts_9-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_9-desktop.webp?v=1763712953",
+      "bytes": 37167,
+      "sha256": "be534b6e9f0d868563876c93d68f8b679f9cb06d77816a7447bd1def8eb8cfd0"
+    },
+    "rive-dependencies.rive_rollouts_9-mobile": {
+      "path": "rive-dependencies/rive_rollouts_9-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_rollouts_9-mobile.webp?v=1763712953",
+      "bytes": 11952,
+      "sha256": "e2a45a8a8a811b44b3188d555431e673a0e2dace6b330e576d0b67a207f53bb5"
+    },
+    "rive-dependencies.anton": {
+      "path": "rive-dependencies/Anton.txt",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Anton.txt?v=1787918974",
+      "bytes": 170812,
+      "sha256": "a4ba3a92350ebb031da0cb47630ac49eb265082ca1bc0450442f4a83ab947cab"
+    },
+    "rive.shopify-simgym-app": {
+      "path": "rive/sim_gym_12_9.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/sim_gym_12_9.riv?v=1787919798",
+      "bytes": 201995,
+      "sha256": "4f7d8d1d8344b43b71b34f991e5754e5ab5755c4db04740e7111974f63a4128c"
+    },
+    "demos.shopify-simgym-app-fallbackImage": {
+      "path": "demos/U258_SimGym_desktop-fallback.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U258_SimGym_desktop-fallback.png?v=1765318024",
+      "bytes": 1286874,
+      "sha256": "511e37d2f0590e10aad170dcd99b691221f21893b4f35355b251046f458a1c2b"
+    },
+    "demos.shopify-simgym-app-fallbackImageMobile": {
+      "path": "demos/U258_SimGym_mobile-fallback.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U258_SimGym_mobile-fallback.png?v=1765318038",
+      "bytes": 700288,
+      "sha256": "f08db95221990a6afba35b9b02d0912ba4112118a24568ffe6639c39b626e0ae"
+    },
+    "rive-dependencies.rive_simgym_1-desktop": {
+      "path": "rive-dependencies/rive_simGym_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_1-desktop.webp?v=1764178734",
+      "bytes": 397280,
+      "sha256": "58a768f2c95a27778aa9e9f2e760364af9eb79696393ea1f26c126da1017c074"
+    },
+    "rive-dependencies.rive_simgym_1-mobile": {
+      "path": "rive-dependencies/rive_simGym_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_1-mobile.webp?v=1764178733",
+      "bytes": 118809,
+      "sha256": "5deeb77290a04cd70dc6e9f0bc0125e1700a6b011853355fda43d12df2066e15"
+    },
+    "rive-dependencies.rive_simgym_10-desktop": {
+      "path": "rive-dependencies/rive_simGym_10-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_10-desktop.webp?v=1764178734",
+      "bytes": 6888,
+      "sha256": "0b223e91fc7c4a410d9405c8bd30ac45e4e8ff2795c90e990181a00a94c710c4"
+    },
+    "rive-dependencies.rive_simgym_10-mobile": {
+      "path": "rive-dependencies/rive_simGym_10-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_10-mobile.webp?v=1764178734",
+      "bytes": 3269,
+      "sha256": "4d0d2f9777e53cb49618b0b53fb8cf24b8a769babf5d7211a8d6ccf86f4f9b6f"
+    },
+    "rive-dependencies.rive_simgym_11-desktop": {
+      "path": "rive-dependencies/rive_simGym_11-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_11-desktop.webp?v=1764178734",
+      "bytes": 6606,
+      "sha256": "a083ef57b6a92016563bf325036ffd86fc63605cef5122874493922c9f50835c"
+    },
+    "rive-dependencies.rive_simgym_11-mobile": {
+      "path": "rive-dependencies/rive_simGym_11-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_11-mobile.webp?v=1764178734",
+      "bytes": 3149,
+      "sha256": "31293bee2f0c63721bd753948ee81c28436573c6c4efc1e5998c0fc2f4912e82"
+    },
+    "rive-dependencies.rive_simgym_12-desktop": {
+      "path": "rive-dependencies/rive_simGym_12-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_12-desktop.webp?v=1764178734",
+      "bytes": 6753,
+      "sha256": "b40b0def1129d2aa53cc381e29cd82a637a4317b76eaeda2f106edd14588aa70"
+    },
+    "rive-dependencies.rive_simgym_12-mobile": {
+      "path": "rive-dependencies/rive_simGym_12-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_12-mobile.webp?v=1764178734",
+      "bytes": 3231,
+      "sha256": "4d56ac2306eed9d13388249089cf382e3a59fc33d1e54ec2ea4f9669d1f1f85e"
+    },
+    "rive-dependencies.rive_simgym_13-desktop": {
+      "path": "rive-dependencies/rive_simGym_13-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_13-desktop.webp?v=1764178734",
+      "bytes": 28132,
+      "sha256": "decd0079338383afcebd697539b81f6ee9430491a86f903e27dd5d9c94d5fb51"
+    },
+    "rive-dependencies.rive_simgym_13-mobile": {
+      "path": "rive-dependencies/rive_simGym_13-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_13-mobile.webp?v=1764178734",
+      "bytes": 9356,
+      "sha256": "827d2e17f174f51c3e35305bc9ccad4ea67c78f934d0ee010cd7055a2f879ff8"
+    },
+    "rive-dependencies.rive_simgym_14-desktop": {
+      "path": "rive-dependencies/rive_simGym_14-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_14-desktop.webp?v=1764178734",
+      "bytes": 10629,
+      "sha256": "39c4655f94a25760100df38799a2740d4c0674b907c61c5b7373a4f7bd1ab3bd"
+    },
+    "rive-dependencies.rive_simgym_14-mobile": {
+      "path": "rive-dependencies/rive_simGym_14-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_14-mobile.webp?v=1764178734",
+      "bytes": 4416,
+      "sha256": "f6ef57efc80ec74f90cf2a2a24ae960af3f8dfa4d57a8bb32e2d6709aa99b088"
+    },
+    "rive-dependencies.rive_simgym_15-desktop": {
+      "path": "rive-dependencies/rive_simGym_15-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_15-desktop.webp?v=1764178734",
+      "bytes": 13398,
+      "sha256": "87ffaadf5160751e1595c73d0efed6fba75e45f73d7541727b8dd957ea76a6ba"
+    },
+    "rive-dependencies.rive_simgym_15-mobile": {
+      "path": "rive-dependencies/rive_simGym_15-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_15-mobile.webp?v=1764178734",
+      "bytes": 5012,
+      "sha256": "911c2733890c07ef42565cb5366bf448aaa4177ff56d0752fbfc5eec37d9e749"
+    },
+    "rive-dependencies.rive_simgym_16-desktop": {
+      "path": "rive-dependencies/rive_simGym_16-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_16-desktop.webp?v=1764178734",
+      "bytes": 13398,
+      "sha256": "87ffaadf5160751e1595c73d0efed6fba75e45f73d7541727b8dd957ea76a6ba"
+    },
+    "rive-dependencies.rive_simgym_16-mobile": {
+      "path": "rive-dependencies/rive_simGym_16-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_16-mobile.webp?v=1764178734",
+      "bytes": 5004,
+      "sha256": "0a6e6a333e63e8e4ccae0985932162487cf4468c213764c8fcd1028817344c78"
+    },
+    "rive-dependencies.rive_simgym_17-desktop": {
+      "path": "rive-dependencies/rive_simGym_17-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_17-desktop.webp?v=1764178734",
+      "bytes": 13398,
+      "sha256": "87ffaadf5160751e1595c73d0efed6fba75e45f73d7541727b8dd957ea76a6ba"
+    },
+    "rive-dependencies.rive_simgym_17-mobile": {
+      "path": "rive-dependencies/rive_simGym_17-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_17-mobile.webp?v=1764178734",
+      "bytes": 5012,
+      "sha256": "911c2733890c07ef42565cb5366bf448aaa4177ff56d0752fbfc5eec37d9e749"
+    },
+    "rive-dependencies.rive_simgym_18-desktop": {
+      "path": "rive-dependencies/rive_simGym_18-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_18-desktop.webp?v=1764178734",
+      "bytes": 15434,
+      "sha256": "297473d3a57bc6af4d87e211b15f17d646b78b05f37bf560ba088972269adb27"
+    },
+    "rive-dependencies.rive_simgym_18-mobile": {
+      "path": "rive-dependencies/rive_simGym_18-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_18-mobile.webp?v=1764178734",
+      "bytes": 5066,
+      "sha256": "d249d81f644760c73d855ee3d567fb8f033643de87d0780fba9b8fe846e6cace"
+    },
+    "rive-dependencies.rive_simgym_19-desktop": {
+      "path": "rive-dependencies/rive_simGym_19-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_19-desktop.webp?v=1764178734",
+      "bytes": 13398,
+      "sha256": "87ffaadf5160751e1595c73d0efed6fba75e45f73d7541727b8dd957ea76a6ba"
+    },
+    "rive-dependencies.rive_simgym_19-mobile": {
+      "path": "rive-dependencies/rive_simGym_19-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_19-mobile.webp?v=1764178734",
+      "bytes": 5012,
+      "sha256": "911c2733890c07ef42565cb5366bf448aaa4177ff56d0752fbfc5eec37d9e749"
+    },
+    "rive-dependencies.rive_simgym_2-desktop": {
+      "path": "rive-dependencies/rive_simGym_2-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_2-desktop.webp?v=1764178734",
+      "bytes": 37738,
+      "sha256": "cd07b0b439c4431b05dc7a35f6ecefe677ff37efd7c924a6c879eb9cad33f676"
+    },
+    "rive-dependencies.rive_simgym_2-mobile": {
+      "path": "rive-dependencies/rive_simGym_2-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_2-mobile.webp?v=1764178734",
+      "bytes": 14284,
+      "sha256": "43e5ee0d3516c4e00d335bd43307ebfb023ba6cd3579f2065229937f4bdc7b06"
+    },
+    "rive-dependencies.rive_simgym_20-desktop": {
+      "path": "rive-dependencies/rive_simGym_20-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_20-desktop.webp?v=1764178734",
+      "bytes": 35028,
+      "sha256": "e4f2e87a1469679adc5d6350b73f2d5bd8010a159fea897d00e9a3c4517fb426"
+    },
+    "rive-dependencies.rive_simgym_20-mobile": {
+      "path": "rive-dependencies/rive_simGym_20-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_20-mobile.webp?v=1764178734",
+      "bytes": 12003,
+      "sha256": "24750fa34921b60e75590ddf1a4ba6081b1261c10ef0f7d6907bf7c91ef02a22"
+    },
+    "rive-dependencies.rive_simgym_21-desktop": {
+      "path": "rive-dependencies/rive_simGym_21-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_21-desktop.webp?v=1764178734",
+      "bytes": 9053,
+      "sha256": "d0fba9a70cb20a5caf42834fc21a2103957ff5c3377ad165927d42c066af2895"
+    },
+    "rive-dependencies.rive_simgym_21-mobile": {
+      "path": "rive-dependencies/rive_simGym_21-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_21-mobile.webp?v=1764178734",
+      "bytes": 3220,
+      "sha256": "c6856267d133393da48d3d5feab8f86fe9b4dbf7fb154de7d220f7a116f7eb02"
+    },
+    "rive-dependencies.rive_simgym_22-desktop": {
+      "path": "rive-dependencies/rive_simGym_22-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_22-desktop.webp?v=1764178734",
+      "bytes": 9053,
+      "sha256": "d0fba9a70cb20a5caf42834fc21a2103957ff5c3377ad165927d42c066af2895"
+    },
+    "rive-dependencies.rive_simgym_22-mobile": {
+      "path": "rive-dependencies/rive_simGym_22-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_22-mobile.webp?v=1764178734",
+      "bytes": 3246,
+      "sha256": "1d73f449f3d814639a66e91bb4faaec857a33d10b983e34ac13ff8ea74d7f296"
+    },
+    "rive-dependencies.rive_simgym_25-desktop": {
+      "path": "rive-dependencies/rive_simGym_25-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_25-desktop.webp?v=1764178734",
+      "bytes": 8042,
+      "sha256": "4f93ca02f4b6265b92d94b3c55f2c158143a5d95e46ffecbbdaf7a27cae12199"
+    },
+    "rive-dependencies.rive_simgym_25-mobile": {
+      "path": "rive-dependencies/rive_simGym_25-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_25-mobile.webp?v=1764178734",
+      "bytes": 2856,
+      "sha256": "57fb87e5719c4fd90fc1aeef187a9b476f3cfca55057e1597cfa0d8bb41a7210"
+    },
+    "rive-dependencies.rive_simgym_26-desktop": {
+      "path": "rive-dependencies/rive_simGym_26-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_26-desktop.webp?v=1764178734",
+      "bytes": 60401,
+      "sha256": "07ad5242e9a1a933ac242374c094992e1126edb7f8270a1007f21589d88408e0"
+    },
+    "rive-dependencies.rive_simgym_26-mobile": {
+      "path": "rive-dependencies/rive_simGym_26-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_26-mobile.webp?v=1764178734",
+      "bytes": 17780,
+      "sha256": "7604b475bc1ffd6263e3d9b0e528d157d50dea02e4acb1946f97a5adbaf6bb44"
+    },
+    "rive-dependencies.rive_simgym_27-desktop": {
+      "path": "rive-dependencies/rive_simGym_27-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_27-desktop.webp?v=1764178734",
+      "bytes": 35474,
+      "sha256": "07983159059303a08f10e80275f1874a21b4f51c49192f634e8f219fdfa77657"
+    },
+    "rive-dependencies.rive_simgym_27-mobile": {
+      "path": "rive-dependencies/rive_simGym_27-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_27-mobile.webp?v=1764178734",
+      "bytes": 12156,
+      "sha256": "326695e83734a8749b8c0f8bd49bfcfafd55f73900e8cb239ed2a6bb1dd00779"
+    },
+    "rive-dependencies.rive_simgym_3-desktop": {
+      "path": "rive-dependencies/rive_simGym_3-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_3-desktop.webp?v=1764178733",
+      "bytes": 40127,
+      "sha256": "79f25f266c1ea67c89d82e0e8ce5e7c9ac79e3867dc6869983d62a3f690ea2ea"
+    },
+    "rive-dependencies.rive_simgym_3-mobile": {
+      "path": "rive-dependencies/rive_simGym_3-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_3-mobile.webp?v=1764178734",
+      "bytes": 12157,
+      "sha256": "4cd75dc13bfd977fca77d223d10b333262c923e65d2dee4562341cb10a76c705"
+    },
+    "rive-dependencies.rive_simgym_4-desktop": {
+      "path": "rive-dependencies/rive_simGym_4-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_4-desktop.webp?v=1764178734",
+      "bytes": 6488,
+      "sha256": "894a5c1acd207c92565def4bdb93e2edc06332a1eb7681b96c4f4cf187de7b83"
+    },
+    "rive-dependencies.rive_simgym_4-mobile": {
+      "path": "rive-dependencies/rive_simGym_4-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_4-mobile.webp?v=1764178734",
+      "bytes": 3161,
+      "sha256": "fc220f9ec137530fc614c0d8306d37d5552ae4448cc657f11f77caadc5e47dc6"
+    },
+    "rive-dependencies.rive_simgym_5-desktop": {
+      "path": "rive-dependencies/rive_simGym_5-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_5-desktop.webp?v=1764178734",
+      "bytes": 6726,
+      "sha256": "f6889f21d7aab4c72ed20ea828161ef4650b48cd462536272ef56ada8a26f681"
+    },
+    "rive-dependencies.rive_simgym_5-mobile": {
+      "path": "rive-dependencies/rive_simGym_5-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_5-mobile.webp?v=1764178734",
+      "bytes": 3227,
+      "sha256": "68dfcd3c538b46ebb9964710326443f6c3457d876059a08478ec2210ada0d520"
+    },
+    "rive-dependencies.rive_simgym_6-desktop": {
+      "path": "rive-dependencies/rive_simGym_6-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_6-desktop.webp?v=1764178734",
+      "bytes": 6044,
+      "sha256": "eff4b348c67c9b1a083edeadade9672a5b58323ad713a4158c5c0d267609cf33"
+    },
+    "rive-dependencies.rive_simgym_6-mobile": {
+      "path": "rive-dependencies/rive_simGym_6-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_6-mobile.webp?v=1764178734",
+      "bytes": 2968,
+      "sha256": "f3000c04c7d073295284d8171c1dd7ba1f0bdfa1e6e1f843afc00df65b61bfda"
+    },
+    "rive-dependencies.rive_simgym_7-desktop": {
+      "path": "rive-dependencies/rive_simGym_7-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_7-desktop.webp?v=1764178734",
+      "bytes": 7311,
+      "sha256": "d47b660bb503fff2ce427b1dbc0a94e1138f0da9c162a777a5369b5540d4cc0b"
+    },
+    "rive-dependencies.rive_simgym_7-mobile": {
+      "path": "rive-dependencies/rive_simGym_7-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_7-mobile.webp?v=1764178734",
+      "bytes": 3311,
+      "sha256": "b99053afb66a73e63010e13c454e5a47fb2051d5255d384ddafd4ce8c5ae6cfe"
+    },
+    "rive-dependencies.rive_simgym_8-desktop": {
+      "path": "rive-dependencies/rive_simGym_8-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_8-desktop.webp?v=1764178734",
+      "bytes": 6192,
+      "sha256": "abf3dd57973c3a8b236e3093000780ee424195337cf1b6d5487815d12cff7621"
+    },
+    "rive-dependencies.rive_simgym_8-mobile": {
+      "path": "rive-dependencies/rive_simGym_8-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_8-mobile.webp?v=1764178734",
+      "bytes": 3001,
+      "sha256": "075a438c1affebf215ac8c7ff06046d2a1ee67dc66060f0c13de2b669a209d6b"
+    },
+    "rive-dependencies.rive_simgym_9-desktop": {
+      "path": "rive-dependencies/rive_simGym_9-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_9-desktop.webp?v=1764178734",
+      "bytes": 7028,
+      "sha256": "34e196f7cb71c6e3d7fdbfe7307b714a58d12f9052c3540bc03f37ea2674ab21"
+    },
+    "rive-dependencies.rive_simgym_9-mobile": {
+      "path": "rive-dependencies/rive_simGym_9-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_simGym_9-mobile.webp?v=1764178734",
+      "bytes": 3359,
+      "sha256": "da96abf4b59e3c3c0cabff50367661832df3134eaab66609709bb816ab896183"
+    },
+    "backgrounds.retail-desktop": {
+      "path": "backgrounds/compressed-Fallback-Retail-Frame1-Desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/compressed-Fallback-Retail-Frame1-Desktop.webp?v=1765212700",
+      "bytes": 476381,
+      "sha256": "03e583ffcd3d533dcfcf359dc67fb9c3c9a56bf479070a68f9f086954c30bc98"
+    },
+    "backgrounds.retail-mobile": {
+      "path": "backgrounds/Fallback_Mobile_Retail_2x_0adf909c-56a2-4df2-89c7-a8c53dfc4d85.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Fallback_Mobile_Retail_2x_0adf909c-56a2-4df2-89c7-a8c53dfc4d85.jpg?v=1765257584",
+      "bytes": 153729,
+      "sha256": "4e2d9b7e533ecd00b12cfc7ccf47c96bea095b58090d66d40b54e415f0434535"
+    },
+    "rive.pos-customization-in-one-editor": {
+      "path": "rive/u50_12_8.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u50_12_8.riv?v=1787919755",
+      "bytes": 214656,
+      "sha256": "0095c33e4e18e5df27c1100a4e20a14f2859aa11712c96c5b46db477bc5bba34"
+    },
+    "demos.pos-customization-in-one-editor-fallbackImage": {
+      "path": "demos/U50_Unified_Editor.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U50_Unified_Editor.png?v=1765318151",
+      "bytes": 1272816,
+      "sha256": "f8a639871556accb26dc3c989c56efc4b3f5f677599f222d98c2bf2bc0e7a5f5"
+    },
+    "rive-dependencies.rive_u50_1-desktop": {
+      "path": "rive-dependencies/rive_u50_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_1-desktop.webp?v=1763747275",
+      "bytes": 4160,
+      "sha256": "7b61b01f59250a97c472d82a0e1df993ae75838a341f1b6556880951d0b59e77"
+    },
+    "rive-dependencies.rive_u50_2-desktop": {
+      "path": "rive-dependencies/rive_u50_2-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_2-desktop.webp?v=1763747275",
+      "bytes": 6937,
+      "sha256": "dc6957dd81f21999096145b4b93d67e6b5976ea6b7b2b8ae5dae5552a7a5c518"
+    },
+    "rive-dependencies.rive_u50_3-desktop": {
+      "path": "rive-dependencies/rive_u50_3-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_3-desktop.webp?v=1763747275",
+      "bytes": 12204,
+      "sha256": "d297ed4f0fa1e62f7e2287f785a208b8bafdd2d32fd3dbe32dc2aac63e67eb60"
+    },
+    "rive-dependencies.rive_u50_4-desktop": {
+      "path": "rive-dependencies/rive_u50_4-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_4-desktop.webp?v=1763747275",
+      "bytes": 29293,
+      "sha256": "245c45fcf49015da0ff4a8162cd8e74f28b55222c7077305fcdb8f52c85591bc"
+    },
+    "rive-dependencies.rive_u50_5-desktop": {
+      "path": "rive-dependencies/rive_u50_5-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_5-desktop.webp?v=1763747275",
+      "bytes": 451143,
+      "sha256": "d086995511a8673d98bfc824ba40c7b28c73cdd2703158ed24815bb1d4806189"
+    },
+    "rive-dependencies.rive_u50_6-desktop": {
+      "path": "rive-dependencies/rive_u50_6-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_6-desktop.webp?v=1763747275",
+      "bytes": 3619,
+      "sha256": "5d1696039eb7da03907412a48e912ef417c2d5f4b7d3f7f11aa6165c44d36446"
+    },
+    "rive-dependencies.rive_u50_7-desktop": {
+      "path": "rive-dependencies/rive_u50_7-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_7-desktop.webp?v=1763747275",
+      "bytes": 6626,
+      "sha256": "d76c20c4b10c9d3b777e74fb51a23935bec8da68cb79d5e5eb4cfc76112566d8"
+    },
+    "rive-dependencies.rive_u50_8-desktop": {
+      "path": "rive-dependencies/rive_u50_8-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_8-desktop.webp?v=1763747275",
+      "bytes": 1977,
+      "sha256": "80634d319a1cf559d2d2436ab391c346244a718d6e1926f7343454ac62e34048"
+    },
+    "rive-dependencies.rive_u50_1-mobile": {
+      "path": "rive-dependencies/rive_u50_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_1-mobile.webp?v=1763747279",
+      "bytes": 4160,
+      "sha256": "7b61b01f59250a97c472d82a0e1df993ae75838a341f1b6556880951d0b59e77"
+    },
+    "rive-dependencies.rive_u50_2-mobile": {
+      "path": "rive-dependencies/rive_u50_2-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_2-mobile.webp?v=1763747279",
+      "bytes": 6937,
+      "sha256": "dc6957dd81f21999096145b4b93d67e6b5976ea6b7b2b8ae5dae5552a7a5c518"
+    },
+    "rive-dependencies.rive_u50_3-mobile": {
+      "path": "rive-dependencies/rive_u50_3-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_3-mobile.webp?v=1763747279",
+      "bytes": 5290,
+      "sha256": "f81e4f926c31bfdf338ef24d8c70a647f8dce0bad221c4b6f0d68c693f2d66b6"
+    },
+    "rive-dependencies.rive_u50_4-mobile": {
+      "path": "rive-dependencies/rive_u50_4-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_4-mobile.webp?v=1763747279",
+      "bytes": 11430,
+      "sha256": "5cef28f05847f9edb69b06495f42ab2b284280541f0213b9304a9a97d8622291"
+    },
+    "rive-dependencies.rive_u50_5-mobile": {
+      "path": "rive-dependencies/rive_u50_5-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_5-mobile.webp?v=1763747279",
+      "bytes": 167343,
+      "sha256": "ac84df5ad1ca5f6f608578cfdef9b6f5057a0f467aa5aedde6a36ab159129e59"
+    },
+    "rive-dependencies.rive_u50_6-mobile": {
+      "path": "rive-dependencies/rive_u50_6-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_6-mobile.webp?v=1763747279",
+      "bytes": 3619,
+      "sha256": "5d1696039eb7da03907412a48e912ef417c2d5f4b7d3f7f11aa6165c44d36446"
+    },
+    "rive-dependencies.rive_u50_7-mobile": {
+      "path": "rive-dependencies/rive_u50_7-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_7-mobile.webp?v=1763747279",
+      "bytes": 6626,
+      "sha256": "d76c20c4b10c9d3b777e74fb51a23935bec8da68cb79d5e5eb4cfc76112566d8"
+    },
+    "rive-dependencies.rive_u50_8-mobile": {
+      "path": "rive-dependencies/rive_u50_8-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u50_8-mobile.webp?v=1763747279",
+      "bytes": 1977,
+      "sha256": "80634d319a1cf559d2d2436ab391c346244a718d6e1926f7343454ac62e34048"
+    },
+    "rive-dependencies.u50bg": {
+      "path": "rive-dependencies/u50bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u50bg.webp?v=1764649965",
+      "bytes": 135953,
+      "sha256": "30443155d7e3e39b24f266cff8364bf15b7392b312b342c32a9715e95161cb47"
+    },
+    "demos.pos-customization-in-one-editor-posterImage": {
+      "path": "demos/6f0d7e6128d962253121b3aec1527854.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/6f0d7e6128d962253121b3aec1527854.png",
+      "bytes": 423452,
+      "sha256": "fb57a8d475965eafb5ad3a6791a6291afc12542848a6050117cfb17ad69f9ab0"
+    },
+    "demos.pos-customization-in-one-editor-posterImageMobile": {
+      "path": "demos/1a10e8fb22411e7ae54bedde20ff1ec5.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/1a10e8fb22411e7ae54bedde20ff1ec5.png",
+      "bytes": 420966,
+      "sha256": "bd1a4e2db467c4ee5c4ab4365dafd637a707684af7b4b5fef52ebe4ad8f2e5e7"
+    },
+    "demos.pos-hub-image": {
+      "path": "demos/compressed-Fallback-Retail-Frame2-Desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/compressed-Fallback-Retail-Frame2-Desktop.webp?v=1765212284",
+      "bytes": 355837,
+      "sha256": "519e6908c8b199b6fb6691e4cf4c5b2e1d6cc341419513dfaaf0448ff2f88012"
+    },
+    "backgrounds.marketing-desktop": {
+      "path": "backgrounds/Marketing_Fallback.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Marketing_Fallback.jpg?v=1764646139",
+      "bytes": 631192,
+      "sha256": "9b083a5f8c8058235e13a2b6238d28b794ec454480b682d6a5cbecbdcda092ae"
+    },
+    "backgrounds.marketing-mobile": {
+      "path": "backgrounds/Fallback_Mobile_Marketing_2x_9bdae360-044d-4e84-a72c-19df76beae85.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Fallback_Mobile_Marketing_2x_9bdae360-044d-4e84-a72c-19df76beae85.jpg?v=1765257622",
+      "bytes": 235372,
+      "sha256": "e0c2db53a3ec3cd434eebcc2b320b763c727ec5e138fc202f1b118dba6376eaa"
+    },
+    "rive.shop-campaigns-expands-to-the-online-store": {
+      "path": "rive/u113_12_9.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u113_12_9.riv?v=1787919794",
+      "bytes": 29739,
+      "sha256": "c75f5d25a3614bacf7fe75bdcb482c6df3a9a0710408cc8238275db7fe2efea4"
+    },
+    "demos.shop-campaigns-expands-to-the-online-store-fallbackImage": {
+      "path": "demos/U113_Shop_campaigns_b91abd7b-cce5-4609-8d43-051fce88982d.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U113_Shop_campaigns_b91abd7b-cce5-4609-8d43-051fce88982d.png?v=1765318220",
+      "bytes": 2721917,
+      "sha256": "7647dfbcb1dd29cdffbe71043a14bfeeb3d5043cb8e486bc9b16275b1a0ac598"
+    },
+    "rive-dependencies.rive_u113_1": {
+      "path": "rive-dependencies/rive_U113_1.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U113_1.webp?v=1765239091",
+      "bytes": 7885,
+      "sha256": "3e5dea91380363ac3adc8e1568042808ea9ba20a64acb669759537d92bb27d5a"
+    },
+    "rive-dependencies.rive_u113_2": {
+      "path": "rive-dependencies/rive_U113_2.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U113_2.webp?v=1765239091",
+      "bytes": 5999,
+      "sha256": "f80d80aab4bdc3d29a311cc6ee40a122e2713ee5edca2d6a394aeabb9d5f6ca1"
+    },
+    "rive-dependencies.rive_u113_3": {
+      "path": "rive-dependencies/rive_U113_3.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U113_3.webp?v=1765239091",
+      "bytes": 5585,
+      "sha256": "47a6e68fcab746c0bc4845af4183c7cf326bd95fca75bbe4afe97ac23a27c601"
+    },
+    "rive-dependencies.rive_u113_4": {
+      "path": "rive-dependencies/rive_U113_4.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U113_4.webp?v=1765239091",
+      "bytes": 103833,
+      "sha256": "a4a9875fb8d6135183df33c61f1bedc366b3cbcaee77a417d0a4bb2815cef6d7"
+    },
+    "rive-dependencies.rive_u113_5": {
+      "path": "rive-dependencies/rive_U113_5.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U113_5.webp?v=1765239091",
+      "bytes": 27608,
+      "sha256": "a0f9d80815ea06befd57af8dd3e9466e13c7c9657e48983287c776dc3b80d7ea"
+    },
+    "rive-dependencies.rive_u113_6": {
+      "path": "rive-dependencies/rive_U113_6.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U113_6.webp?v=1765239091",
+      "bytes": 10602,
+      "sha256": "22ba97ea4458bc728a5c7d7fe1b452c67ef0d5645564b477b9d575c799e13e97"
+    },
+    "rive-dependencies.rive_u113_7": {
+      "path": "rive-dependencies/rive_U113_7.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U113_7.webp?v=1765239091",
+      "bytes": 9619,
+      "sha256": "e9f762087b42d5a17078a3b0a642dea5190daff29a31ebdf07f7053d8deb32e4"
+    },
+    "rive-dependencies.rive_u113_8": {
+      "path": "rive-dependencies/rive_U113_8.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U113_8.webp?v=1765239092",
+      "bytes": 872298,
+      "sha256": "fb31caf65d950577060d633e94aa3854268954cbf410fbcf75d44379ff4cc8e4"
+    },
+    "rive-dependencies.u113bg": {
+      "path": "rive-dependencies/u113bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u113bg.webp?v=1765239091",
+      "bytes": 55050,
+      "sha256": "4717a1244ccc706bff28bca62428d7c1800a0932aa891e211a5fcc6a1a056a04"
+    },
+    "demos.shop-campaigns-expands-to-the-online-store-posterImage": {
+      "path": "demos/228361bfc05b3d2c5260a542aa8c61c6.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/228361bfc05b3d2c5260a542aa8c61c6.png",
+      "bytes": 843803,
+      "sha256": "a81c4b76cd5f69f498d44f8e09cc901e4a6e997378ec269de3f25984c06a0d7a"
+    },
+    "demos.shopify-product-network-image": {
+      "path": "demos/251201-W26-ProductNetwork-Preroroll_92123bfc-8331-4763-958d-c5ddf6562248.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/251201-W26-ProductNetwork-Preroroll_92123bfc-8331-4763-958d-c5ddf6562248.png?v=1765339170",
+      "bytes": 3263933,
+      "sha256": "75f884a87855b2a86bf649ae9d9c89d3cedc7924c98bb8f8a06f3667a937b928"
+    },
+    "demos.shopify-product-network-video-poster": {
+      "path": "demos/2ace8284aebc4d22901886b2323bb20d.thumbnail.0000000000.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/preview_images/2ace8284aebc4d22901886b2323bb20d.thumbnail.0000000000.jpg?v=1765339222",
+      "bytes": 102166,
+      "sha256": "3e59a52f8e65c20d71c4c3b118bd0fd2920d299922d590ab9b7a444d8bf29477"
+    },
+    "backgrounds.checkout-desktop": {
+      "path": "backgrounds/Checkout_Fallback_251209.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Checkout_Fallback_251209.jpg?v=1765294983",
+      "bytes": 569155,
+      "sha256": "1729776484357bbb4296fcc5f6862185b40583b060e7c097af4f33ba79ba246b"
+    },
+    "backgrounds.checkout-mobile": {
+      "path": "backgrounds/Fallback_Mobile_Checkout_2x_3d90b8e1-3861-4d8e-975c-53c1adfbff04.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Fallback_Mobile_Checkout_2x_3d90b8e1-3861-4d8e-975c-53c1adfbff04.jpg?v=1765257412",
+      "bytes": 206158,
+      "sha256": "2738c58f6a8e5e12397645fa527d8fbe12f42dae7be871730d1a0f36d518a6e5"
+    },
+    "rive.personalized-shop-pay-button": {
+      "path": "rive/u95_12_1_v5.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u95_12_1_v5.riv?v=1787919396",
+      "bytes": 9369,
+      "sha256": "e8250a5ee5a2ccc10e1a097dd8102e6c721e1508c2919a1ce48f71cb7043f2c1"
+    },
+    "demos.personalized-shop-pay-button-fallbackImage": {
+      "path": "demos/U95_Shop_Pay_button.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U95_Shop_Pay_button.png?v=1765318302",
+      "bytes": 2512123,
+      "sha256": "7ff97c8be6c76702aebfde65557875132985f1a2fe867acdb2efb418b57fc759"
+    },
+    "rive-dependencies.u95bg": {
+      "path": "rive-dependencies/u95bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u95bg.webp?v=1764628033",
+      "bytes": 118793,
+      "sha256": "df210cd5dd538b6c7847c8006aa25bfb5d982cf903ea04fa3eeb3136dfed8ccc"
+    },
+    "rive-dependencies.gt-standard-m-standard-semibold": {
+      "path": "rive-dependencies/GT-Standard-M-Standard-Semibold.txt",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/GT-Standard-M-Standard-Semibold.txt?v=1787918371",
+      "bytes": 188768,
+      "sha256": "cfc8e1674efe2a4e9bd55c48e3c577177253808e7d58b3f3bb085f550c1775d6"
+    },
+    "demos.personalized-shop-pay-button-posterImage": {
+      "path": "demos/03cf615f7c023dd5afc16904b8e4b619.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/03cf615f7c023dd5afc16904b8e4b619.png",
+      "bytes": 1179155,
+      "sha256": "4f2137b8744420598981cdc9ebefe46f0551029ab0b9f87b82cf701bc9050c54"
+    },
+    "demos.checkout-and-accounts-customization-per-market-image": {
+      "path": "demos/U94_Markets_in_the_Checkout.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U94_Markets_in_the_Checkout.png?v=1764964356",
+      "bytes": 936422,
+      "sha256": "443693c92595ad162a314b3f843b9757a98fbd4c6fd20100bdefd0b0ba9936d8"
+    },
+    "backgrounds.operations-desktop": {
+      "path": "backgrounds/Operations_Fallback.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Operations_Fallback.jpg?v=1764645954",
+      "bytes": 545296,
+      "sha256": "8b11c176a65acda019be95cf7d666a16767f78b11618dacf5d7322721481683e"
+    },
+    "backgrounds.operations-mobile": {
+      "path": "backgrounds/Fallback_Mobile_Operation_2x_db6348e7-2481-4c47-9a8b-076bb53775c3.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Fallback_Mobile_Operation_2x_db6348e7-2481-4c47-9a8b-076bb53775c3.jpg?v=1765257681",
+      "bytes": 200249,
+      "sha256": "8814154ffe408c495ea45c36ded4f3ec1257da1f7c7aad4830e7b94dcafe4e04"
+    },
+    "rive.quick-sale-in-the-shopify-mobile-app": {
+      "path": "rive/u132_12_9_v10.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u132_12_9_v10.riv?v=1787919811",
+      "bytes": 55220,
+      "sha256": "651e9da6fdc7fcdd2dd8bd8f92ef16b6262040ef7b9f3476c568d072987596f6"
+    },
+    "demos.quick-sale-in-the-shopify-mobile-app-fallbackImage": {
+      "path": "demos/U132_Quick_sale_in_Shopify_Mobile_fd663056-4f60-4747-920f-e1b1d890383e.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U132_Quick_sale_in_Shopify_Mobile_fd663056-4f60-4747-920f-e1b1d890383e.png?v=1765318360",
+      "bytes": 1527987,
+      "sha256": "392b6c6bc746d2ceab001cf802f7b5daa0acb4368c977e12bd4517176b6b1509"
+    },
+    "demos.quick-sale-in-the-shopify-mobile-app-fallbackImageMobile": {
+      "path": "demos/U132_Quick_sale_in_Shopify_Mobile_mobile-fallback_06e42a0e-a477-4848-b7fa-760ac275943a.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U132_Quick_sale_in_Shopify_Mobile_mobile-fallback_06e42a0e-a477-4848-b7fa-760ac275943a.png?v=1765318485",
+      "bytes": 1043048,
+      "sha256": "ddc744291fef9417be8573044de3c0243e836183d709ef7e9173d0df1ed6090a"
+    },
+    "rive-dependencies.rive_u132_1-desktop": {
+      "path": "rive-dependencies/rive_u132_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u132_1-desktop.webp?v=1763747924",
+      "bytes": 132084,
+      "sha256": "e4bb2fc18dd3bef233ea680861277309cdb08218444efb607e8d7eb3d5e31f0f"
+    },
+    "rive-dependencies.rive_u132_2-desktop": {
+      "path": "rive-dependencies/rive_u132_2-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u132_2-desktop.webp?v=1763747923",
+      "bytes": 92025,
+      "sha256": "7fea66e023a299959cb40e20330f1b4b7caf802b4b0ddbea30d76e9688a4cd5d"
+    },
+    "rive-dependencies.rive_u132_3-desktop": {
+      "path": "rive-dependencies/rive_u132_3-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u132_3-desktop.webp?v=1763747923",
+      "bytes": 179488,
+      "sha256": "1b97263e8482abcd8afc441972ad6fea24c2452380b6544d693fc6bca8f14ae8"
+    },
+    "rive-dependencies.rive_u132_4-desktop": {
+      "path": "rive-dependencies/rive_u132_4-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u132_4-desktop.webp?v=1763747924",
+      "bytes": 80056,
+      "sha256": "35746bd22370662672bf65a5716416477ab956d76d91804bb80313e6d9616272"
+    },
+    "rive-dependencies.rive_u132_1-mobile": {
+      "path": "rive-dependencies/rive_u132_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u132_1-mobile.webp?v=1763747932",
+      "bytes": 42745,
+      "sha256": "10653feed89c74f728958826f11e0e248b27f1b22b97cd335d95563c7eab72e0"
+    },
+    "rive-dependencies.rive_u132_2-mobile": {
+      "path": "rive-dependencies/rive_u132_2-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u132_2-mobile.webp?v=1763747932",
+      "bytes": 32744,
+      "sha256": "d133d7c0d40f1fcef7a88c355d0b527f8bd2d760e16771fec5654f4a46a3b672"
+    },
+    "rive-dependencies.rive_u132_3-mobile": {
+      "path": "rive-dependencies/rive_u132_3-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u132_3-mobile.webp?v=1763747932",
+      "bytes": 41757,
+      "sha256": "f08989b6754c6b6d1772e47ac670375bfa9d0b6acc8675b36540cda3ccc49e6a"
+    },
+    "rive-dependencies.rive_u132_4-mobile": {
+      "path": "rive-dependencies/rive_u132_4-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u132_4-mobile.webp?v=1763747932",
+      "bytes": 27932,
+      "sha256": "0fd88757090cbd6a018d2969d33bc3e233fc5aff5b3cf634a78fc7e2eb2fb309"
+    },
+    "rive-dependencies.u132bg": {
+      "path": "rive-dependencies/u132bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u132bg.webp?v=1764907441",
+      "bytes": 1189343,
+      "sha256": "68f2bd6f7da11c2ddd536c149cad8b75a473e6732624ab52c0dd0a2e720353c4"
+    },
+    "demos.quick-sale-in-the-shopify-mobile-app-posterImage": {
+      "path": "demos/26605fc719dba38d9d2a5da83312810f.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/26605fc719dba38d9d2a5da83312810f.png",
+      "bytes": 1213142,
+      "sha256": "b234605d330f132381a4442e5430aeeb28aa0ab5d7b68c01421830e0b9f2e091"
+    },
+    "demos.quick-sale-in-the-shopify-mobile-app-posterImageMobile": {
+      "path": "demos/92261b18c8eb7e532e60f23ee5682d04.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/92261b18c8eb7e532e60f23ee5682d04.png",
+      "bytes": 1270988,
+      "sha256": "16272be89a9fcd19f649c5aae75f453875b3063b8ad33b15fa00aa1cf5cc2d8f"
+    },
+    "demos.flexible-inventory-transfers-image": {
+      "path": "demos/U143_Flexible_inventory_transfers.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U143_Flexible_inventory_transfers.png?v=1764805200",
+      "bytes": 570579,
+      "sha256": "0a3649f375981b1b8f0160f8660a705b60d6650ce350757f6041ba951c1d4767"
+    },
+    "backgrounds.shop-app-desktop": {
+      "path": "backgrounds/Shop_app_Fallback.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Shop_app_Fallback.jpg?v=1764645909",
+      "bytes": 478792,
+      "sha256": "3eef44fd9640643d22e62ff479caa528bb24440929c309b8b3bd2874ad6e1fe9"
+    },
+    "backgrounds.shop-app-mobile": {
+      "path": "backgrounds/Fallback_Mobile_Shopapp_2x_9bda6267-e34e-470a-b8ff-7749b27e65bc.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Fallback_Mobile_Shopapp_2x_9bda6267-e34e-470a-b8ff-7749b27e65bc.jpg?v=1765257718",
+      "bytes": 242624,
+      "sha256": "0b4ed784f87a50de8cc2d79d066800b9fb120aed270ad2ce3e6b1a43f143a53b"
+    },
+    "rive.dynamic-shop-storefronts": {
+      "path": "rive/u151_12_9_v5.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u151_12_9_v5.riv?v=1787919794",
+      "bytes": 154227,
+      "sha256": "fb4884b04eebbdc238214ad8ed7acbeaa0d5261c5ebe1cfc1c7bba055e8365d1"
+    },
+    "demos.dynamic-shop-storefronts-fallbackImage": {
+      "path": "demos/U151_Personalized_Shop_storefronts.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U151_Personalized_Shop_storefronts.png?v=1765318821",
+      "bytes": 2994759,
+      "sha256": "61d3b47aef8629d9424561fd7eeb3a462639076f0758d65f22f06db3ca2da65c"
+    },
+    "demos.dynamic-shop-storefronts-fallbackImageMobile": {
+      "path": "demos/U151_Personalized_Shop_storefronts_mobile-fallback_36563654-7887-4241-8439-deef7a4fbac5.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U151_Personalized_Shop_storefronts_mobile-fallback_36563654-7887-4241-8439-deef7a4fbac5.png?v=1765318755",
+      "bytes": 1767583,
+      "sha256": "1cb0f3d4b9be3a1f07dad2e6e4c42250f2be219681db43d5b588b8b3c7fdf9cd"
+    },
+    "rive-dependencies.rive_u151_1-desktop": {
+      "path": "rive-dependencies/rive_u151_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_1-desktop.webp?v=1763762799",
+      "bytes": 29241,
+      "sha256": "682d1b11f5cd173e3197f012ac6e06260d624adeaf3ba4a264a2036d2623f084"
+    },
+    "rive-dependencies.rive_u151_10-desktop": {
+      "path": "rive-dependencies/rive_u151_10-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_10-desktop.webp?v=1763762800",
+      "bytes": 5244,
+      "sha256": "628cada1b9a3355a1401f6cb1a5c67ca46ce18569a558f4fb4eee6ca9615c537"
+    },
+    "rive-dependencies.rive_u151_11-desktop": {
+      "path": "rive-dependencies/rive_u151_11-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_11-desktop.webp?v=1763762799",
+      "bytes": 49418,
+      "sha256": "1fc78de1d0dc081a124785698695f9fd228443ba0ea5c7e63ce1c803caf78ae2"
+    },
+    "rive-dependencies.rive_u151_12-desktop": {
+      "path": "rive-dependencies/rive_u151_12-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_12-desktop.webp?v=1763762799",
+      "bytes": 6753,
+      "sha256": "4eb613ae45ef673e6d5dd7e24320cd14da55ac828d70207e838029fc010f2b89"
+    },
+    "rive-dependencies.rive_u151_13-desktop": {
+      "path": "rive-dependencies/rive_u151_13-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_13-desktop.webp?v=1763762799",
+      "bytes": 6318,
+      "sha256": "70c5b87b2d8b7abead2c24b365584a667bffb436a2632764173f26632a43cecf"
+    },
+    "rive-dependencies.rive_u151_14-desktop": {
+      "path": "rive-dependencies/rive_u151_14-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_14-desktop.webp?v=1763762799",
+      "bytes": 37244,
+      "sha256": "827c9f2972f0af0311fc2f03b9bd99ccda6aebdd821a3de8791789d1ee94400b"
+    },
+    "rive-dependencies.rive_u151_15-desktop": {
+      "path": "rive-dependencies/rive_u151_15-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_15-desktop.webp?v=1763762799",
+      "bytes": 27064,
+      "sha256": "0f2b11cc2436fa745245a854d14788703989d1f3fee7d4baf85281aa3ffea5b4"
+    },
+    "rive-dependencies.rive_u151_16-desktop": {
+      "path": "rive-dependencies/rive_u151_16-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_16-desktop.webp?v=1763762799",
+      "bytes": 33764,
+      "sha256": "769191ec9496a6c3ca69aca11cb989ef5824f7e9b0a7d073a7949a49cef5bd00"
+    },
+    "rive-dependencies.rive_u151_17-desktop": {
+      "path": "rive-dependencies/rive_u151_17-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_17-desktop.webp?v=1763762799",
+      "bytes": 8472,
+      "sha256": "9212b252be8b755a636dbcb36f8208ed933c9fb9f5d06303ef5be52c46e82828"
+    },
+    "rive-dependencies.rive_u151_18-desktop": {
+      "path": "rive-dependencies/rive_u151_18-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_18-desktop.webp?v=1763762799",
+      "bytes": 9931,
+      "sha256": "2fb5ab6c7a7d2c4e6f3113800f9001e3c4e96ff028daaf6788b535ea85ed311a"
+    },
+    "rive-dependencies.rive_u151_19-desktop": {
+      "path": "rive-dependencies/rive_u151_19-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_19-desktop.webp?v=1763762799",
+      "bytes": 9479,
+      "sha256": "1826b45c897dea00a0e094f2734d5f33d59ff37d06d418cc4900ee814891c3da"
+    },
+    "rive-dependencies.rive_u151_2-desktop": {
+      "path": "rive-dependencies/rive_u151_2-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_2-desktop.webp?v=1763762799",
+      "bytes": 46248,
+      "sha256": "7172e1663b2f5da9973f37b650e7bbabd55f3c0123f1da5f8f3264ee2bf0105b"
+    },
+    "rive-dependencies.rive_u151_20-desktop": {
+      "path": "rive-dependencies/rive_u151_20-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_20-desktop.webp?v=1763762799",
+      "bytes": 8496,
+      "sha256": "77b79cbccd53345f721a75b77e0dd7334600b2fce20dc7564db3e7549a5e9850"
+    },
+    "rive-dependencies.rive_u151_21-desktop": {
+      "path": "rive-dependencies/rive_u151_21-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_21-desktop.webp?v=1763762799",
+      "bytes": 8098,
+      "sha256": "f16b45b4b06ec5aa600472d673666b1647a200df0c641821b3e269fcdb333003"
+    },
+    "rive-dependencies.rive_u151_3-desktop": {
+      "path": "rive-dependencies/rive_u151_3-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_3-desktop.webp?v=1763762800",
+      "bytes": 1929,
+      "sha256": "5f8fa901eaf9e67b963b853a4f12063e6226aa8adc715d018e36eb13cb2a6e46"
+    },
+    "rive-dependencies.rive_u151_4-desktop": {
+      "path": "rive-dependencies/rive_u151_4-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_4-desktop.webp?v=1763762799",
+      "bytes": 2104,
+      "sha256": "c581d5496feb8766b908578e3540277a8bc08889ff2e8e2b7cd66e96a16dd035"
+    },
+    "rive-dependencies.rive_u151_5-desktop": {
+      "path": "rive-dependencies/rive_u151_5-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_5-desktop.webp?v=1763762799",
+      "bytes": 2007,
+      "sha256": "5a45e5f101c7a6cb961d78025a5661b8945f23dd616c7621e0bbf07f6723e9bd"
+    },
+    "rive-dependencies.rive_u151_6-desktop": {
+      "path": "rive-dependencies/rive_u151_6-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_6-desktop.webp?v=1763762799",
+      "bytes": 1999,
+      "sha256": "491e932d1a4f119662b7d753336273a547e8e3c0faea461eaa3116e11c267c99"
+    },
+    "rive-dependencies.rive_u151_7-desktop": {
+      "path": "rive-dependencies/rive_u151_7-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_7-desktop.webp?v=1765230370",
+      "bytes": 165962,
+      "sha256": "12b8dd6aaf8f8bdc57ca2275c4c7f30a7c4a2b810675cd5f969a492f4419661b"
+    },
+    "rive-dependencies.rive_u151_8-desktop": {
+      "path": "rive-dependencies/rive_u151_8-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_8-desktop.webp?v=1763762799",
+      "bytes": 6040,
+      "sha256": "e97ca06d06b7473b9377997517c4cfdc1f1f1fe5aa014299c5d641143bbc27b1"
+    },
+    "rive-dependencies.rive_u151_9-desktop": {
+      "path": "rive-dependencies/rive_u151_9-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_9-desktop.webp?v=1763762799",
+      "bytes": 5947,
+      "sha256": "01157b00b92bbc7d245c9c41a86d341e48dec6f7640b78ebd2f9427681be8e89"
+    },
+    "rive-dependencies.rive_u151_1-mobile": {
+      "path": "rive-dependencies/rive_u151_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_1-mobile.webp?v=1765373243",
+      "bytes": 29241,
+      "sha256": "682d1b11f5cd173e3197f012ac6e06260d624adeaf3ba4a264a2036d2623f084"
+    },
+    "rive-dependencies.rive_u151_10-mobile": {
+      "path": "rive-dependencies/rive_u151_10-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_10-mobile.webp?v=1765340334",
+      "bytes": 4771,
+      "sha256": "0f209646e59f46009cf6d4331dab6c39665dfcb1e656a94280bee4ca3dd5c6c3"
+    },
+    "rive-dependencies.rive_u151_11-mobile": {
+      "path": "rive-dependencies/rive_u151_11-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_11-mobile.webp?v=1765340296",
+      "bytes": 38187,
+      "sha256": "a041ee0c04c4d934d21a1ce3508c4b16cf79d089a84a2e26c1c50d2e1c09b1aa"
+    },
+    "rive-dependencies.rive_u151_12-mobile": {
+      "path": "rive-dependencies/rive_u151_12-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_12-mobile.webp?v=1763762805",
+      "bytes": 3029,
+      "sha256": "b817fd85c75509caad1d81483235f871a08e0c322b5fab106af858e8456db348"
+    },
+    "rive-dependencies.rive_u151_13-mobile": {
+      "path": "rive-dependencies/rive_u151_13-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_13-mobile.webp?v=1763762805",
+      "bytes": 2889,
+      "sha256": "7d8fcc2f5326f1996a1d13625fca7d83217d420ed6206d2bb468f2bbeb4c7f8b"
+    },
+    "rive-dependencies.rive_u151_14-mobile": {
+      "path": "rive-dependencies/rive_u151_14-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_14-mobile.webp?v=1765340020",
+      "bytes": 37244,
+      "sha256": "827c9f2972f0af0311fc2f03b9bd99ccda6aebdd821a3de8791789d1ee94400b"
+    },
+    "rive-dependencies.rive_u151_15-mobile": {
+      "path": "rive-dependencies/rive_u151_15-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_15-mobile.webp?v=1763762805",
+      "bytes": 9321,
+      "sha256": "d5c8430b0776f7db926f03b4d37afa54c0745dc153021a1375ffee6c9daf646c"
+    },
+    "rive-dependencies.rive_u151_16-mobile": {
+      "path": "rive-dependencies/rive_u151_16-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_16-mobile.webp?v=1765340079",
+      "bytes": 37479,
+      "sha256": "379f56ee44d027822917b36231c30089044dda2af649c79e14037813ed310b5d"
+    },
+    "rive-dependencies.rive_u151_17-mobile": {
+      "path": "rive-dependencies/rive_u151_17-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_17-mobile.webp?v=1765340214",
+      "bytes": 7512,
+      "sha256": "f10c84c13b3d8b71342cba9f8bd36748c25b9edc2bd3109f1fb7c08448f47f17"
+    },
+    "rive-dependencies.rive_u151_18-mobile": {
+      "path": "rive-dependencies/rive_u151_18-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_18-mobile.webp?v=1763762805",
+      "bytes": 3756,
+      "sha256": "aa415aa461fdb81ebfec129742a92bd981f6f06a39099dd48ba639e2b86acac9"
+    },
+    "rive-dependencies.rive_u151_19-mobile": {
+      "path": "rive-dependencies/rive_u151_19-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_19-mobile.webp?v=1763762805",
+      "bytes": 4104,
+      "sha256": "55deebd01afd754bf82a890ef89f9e7b91094091c4e80f61aaadc8f47f1b410d"
+    },
+    "rive-dependencies.rive_u151_2-mobile": {
+      "path": "rive-dependencies/rive_u151_2-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_2-mobile.webp?v=1765340313",
+      "bytes": 39587,
+      "sha256": "eca86a3e7845e50b8221c1faea5e7ba1eaecd57414ce79d6f46249d1e9aaaf11"
+    },
+    "rive-dependencies.rive_u151_20-mobile": {
+      "path": "rive-dependencies/rive_u151_20-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_20-mobile.webp?v=1763762805",
+      "bytes": 3521,
+      "sha256": "015be086b5e9d410adc4d2ac7f602e8121d8c5622c3e126cb1ebac7604ef20b0"
+    },
+    "rive-dependencies.rive_u151_21-mobile": {
+      "path": "rive-dependencies/rive_u151_21-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_21-mobile.webp?v=1763762805",
+      "bytes": 3598,
+      "sha256": "18537a88d4bb44a5267aeebb558f0084c636eff9de2a486546b7c3079fa1b2bf"
+    },
+    "rive-dependencies.rive_u151_3-mobile": {
+      "path": "rive-dependencies/rive_u151_3-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_3-mobile.webp?v=1765340478",
+      "bytes": 1832,
+      "sha256": "2faae779d1ffbf8e7bebe045938fc51304f2635659822987ed021945216e82c8"
+    },
+    "rive-dependencies.rive_u151_4-mobile": {
+      "path": "rive-dependencies/rive_u151_4-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_4-mobile.webp?v=1765340485",
+      "bytes": 1995,
+      "sha256": "c18fe4a72fd4830164e3f96300f0b99be6febc6bbef094dacfdc0a4ff30339db"
+    },
+    "rive-dependencies.rive_u151_5-mobile": {
+      "path": "rive-dependencies/rive_u151_5-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_5-mobile.webp?v=1763762805",
+      "bytes": 1477,
+      "sha256": "9a642463ef3d983a6a5e405eb9692c9cbce4fa31065e0b2f38f65e1313a13eb1"
+    },
+    "rive-dependencies.rive_u151_6-mobile": {
+      "path": "rive-dependencies/rive_u151_6-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_6-mobile.webp?v=1765340001",
+      "bytes": 1999,
+      "sha256": "491e932d1a4f119662b7d753336273a547e8e3c0faea461eaa3116e11c267c99"
+    },
+    "rive-dependencies.rive_u151_7-mobile": {
+      "path": "rive-dependencies/rive_u151_7-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_7-mobile.webp?v=1765340063",
+      "bytes": 173612,
+      "sha256": "bfe113114de3989f15182b1430f04840b6ff1575f976e205f1de0ba1bced5b03"
+    },
+    "rive-dependencies.rive_u151_8-mobile": {
+      "path": "rive-dependencies/rive_u151_8-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_8-mobile.webp?v=1765340361",
+      "bytes": 5251,
+      "sha256": "66c22e53db11fb760da397759e6c1250f114f913ac18bf8deb33860c5e763c1c"
+    },
+    "rive-dependencies.rive_u151_9-mobile": {
+      "path": "rive-dependencies/rive_u151_9-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_9-mobile.webp?v=1765340285",
+      "bytes": 5359,
+      "sha256": "50ad61e50d1a17ccb604036c0b0bf9e9a376d986392b9cf4abf8f1216361247f"
+    },
+    "rive-dependencies.rive_u151_22-desktop": {
+      "path": "rive-dependencies/rive_u151_22-desktop.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_22-desktop.png?v=1764892938",
+      "bytes": 45677,
+      "sha256": "4b30222e5ba7cb614649da734ae904ea57c50b69b1e5db24102ccff3559b1ba5"
+    },
+    "rive-dependencies.rive_u151_22-mobile": {
+      "path": "rive-dependencies/rive_u151_22-mobile.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_22-mobile.png?v=1765340123",
+      "bytes": 45677,
+      "sha256": "4b30222e5ba7cb614649da734ae904ea57c50b69b1e5db24102ccff3559b1ba5"
+    },
+    "rive-dependencies.rive_u151_23-desktop": {
+      "path": "rive-dependencies/rive_u151_23-desktop.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_23-desktop.png?v=1764892938",
+      "bytes": 39239,
+      "sha256": "56b3088f8ec7a09ce7aec314f974c9b038caf79eddc0d4ddd488434db5171991"
+    },
+    "rive-dependencies.rive_u151_23-mobile": {
+      "path": "rive-dependencies/rive_u151_23-mobile.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_23-mobile.png?v=1765340202",
+      "bytes": 39239,
+      "sha256": "56b3088f8ec7a09ce7aec314f974c9b038caf79eddc0d4ddd488434db5171991"
+    },
+    "rive-dependencies.rive_u151_24-desktop": {
+      "path": "rive-dependencies/rive_u151_24-desktop.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_24-desktop.png?v=1764892939",
+      "bytes": 49157,
+      "sha256": "43fcd6f2b35600951ad4ef9bc7c9322b62b9904715c4a0c5b08e3622e5cac52d"
+    },
+    "rive-dependencies.rive_u151_24-mobile": {
+      "path": "rive-dependencies/rive_u151_24-mobile.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_24-mobile.png?v=1765340091",
+      "bytes": 49157,
+      "sha256": "43fcd6f2b35600951ad4ef9bc7c9322b62b9904715c4a0c5b08e3622e5cac52d"
+    },
+    "rive-dependencies.rive_u151_25-desktop": {
+      "path": "rive-dependencies/rive_u151_25-desktop.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_25-desktop.png?v=1764892938",
+      "bytes": 47593,
+      "sha256": "f875a5d65583c15f1fed56192c795727701fc5e98e80b031398848d05c8fc2d3"
+    },
+    "rive-dependencies.rive_u151_25-mobile": {
+      "path": "rive-dependencies/rive_u151_25-mobile.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u151_25-mobile.png?v=1765340106",
+      "bytes": 47593,
+      "sha256": "f875a5d65583c15f1fed56192c795727701fc5e98e80b031398848d05c8fc2d3"
+    },
+    "demos.deals-feed-on-shop-image": {
+      "path": "demos/U153_Offers_in_Shop.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U153_Offers_in_Shop.png?v=1764703001",
+      "bytes": 1146588,
+      "sha256": "222c1579af2ab5bf02db937373be8417328590f986639f008ff824eac4520968"
+    },
+    "backgrounds.b2b-desktop": {
+      "path": "backgrounds/newProperty_1_B2B.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/newProperty_1_B2B.jpg?v=1765258072",
+      "bytes": 538671,
+      "sha256": "2be633ce616bd17623a2e33dd7cd109b63ddfe67b1d71e42d8a450df30155543"
+    },
+    "backgrounds.b2b-mobile": {
+      "path": "backgrounds/Fallback_Mobile_B2B_2x_1353d91d-00eb-455e-bafb-18762b0240cb.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Fallback_Mobile_B2B_2x_1353d91d-00eb-455e-bafb-18762b0240cb.jpg?v=1765258097",
+      "bytes": 189030,
+      "sha256": "df17fed09be7c6d73c069197d455e9c513cb41384b8b12f69f7824996591ff4d"
+    },
+    "rive.suppliers-can-discover-retailers": {
+      "path": "rive/u82_12_2.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u82_12_2.riv?v=1787919418",
+      "bytes": 27245,
+      "sha256": "945c2e19645a200641fe767a554862eb082879f9b1cdd4498f25cf247fc4de4b"
+    },
+    "demos.suppliers-can-discover-retailers-fallbackImage": {
+      "path": "demos/U82_Collective_Retailer_directory..png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U82_Collective_Retailer_directory..png?v=1765319218",
+      "bytes": 2020319,
+      "sha256": "384f655a238ba7755d949e029f6a94ef9645bca949444755285c1ae05f7d4f47"
+    },
+    "rive-dependencies.rive_u82_1-desktop": {
+      "path": "rive-dependencies/rive_u82_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_1-desktop.webp?v=1763747675",
+      "bytes": 31021,
+      "sha256": "40156b926280cf096df7e0745eff94ef8b526b886b9a2e2c9fbbdfb7567f67bc"
+    },
+    "rive-dependencies.rive_u82_10-desktop": {
+      "path": "rive-dependencies/rive_u82_10-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_10-desktop.webp?v=1763747675",
+      "bytes": 29520,
+      "sha256": "298959c0eeade3e85396b9af20274e858805e4d26ed0200439e88d7ebcb9a214"
+    },
+    "rive-dependencies.rive_u82_11-desktop": {
+      "path": "rive-dependencies/rive_u82_11-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_11-desktop.webp?v=1763747675",
+      "bytes": 17137,
+      "sha256": "3e167a00ba2d2a012b57bde571e37ce2d43727ba385a8d94589367f38376e833"
+    },
+    "rive-dependencies.rive_u82_12-desktop": {
+      "path": "rive-dependencies/rive_u82_12-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_12-desktop.webp?v=1763747675",
+      "bytes": 18220,
+      "sha256": "7df5cc344cdccaea3bd3758ac760579eadb930ce01cd65935073c3df3ae08427"
+    },
+    "rive-dependencies.rive_u82_13-desktop": {
+      "path": "rive-dependencies/rive_u82_13-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_13-desktop.webp?v=1763747675",
+      "bytes": 15079,
+      "sha256": "19c726f84b0fd52a06992c70a310a476cbf95001b921e78bc35ba5ef250be262"
+    },
+    "rive-dependencies.rive_u82_14-desktop": {
+      "path": "rive-dependencies/rive_u82_14-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_14-desktop.webp?v=1763747675",
+      "bytes": 26857,
+      "sha256": "8d8f7e8504420843ae689df82f75803d288f9ca3ce2c0e80a7e9b67c25bfa654"
+    },
+    "rive-dependencies.rive_u82_15-desktop": {
+      "path": "rive-dependencies/rive_u82_15-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_15-desktop.webp?v=1763747675",
+      "bytes": 14785,
+      "sha256": "987f07e1dc0a78411a1af84c8ef7ac35e50264d48e37f66c5539c63c5e8386ad"
+    },
+    "rive-dependencies.rive_u82_16-desktop": {
+      "path": "rive-dependencies/rive_u82_16-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_16-desktop.webp?v=1763747675",
+      "bytes": 28104,
+      "sha256": "1cda999559f58bcfce0f09f02489328def3a054a0ac16832e5ff8e9bbe4e2f7f"
+    },
+    "rive-dependencies.rive_u82_17-desktop": {
+      "path": "rive-dependencies/rive_u82_17-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_17-desktop.webp?v=1763747675",
+      "bytes": 25274,
+      "sha256": "2d0f78525dd86e27cba613df349e8e07b33442f60834293ac0a4ec1709e05592"
+    },
+    "rive-dependencies.rive_u82_18-desktop": {
+      "path": "rive-dependencies/rive_u82_18-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_18-desktop.webp?v=1763747675",
+      "bytes": 4738,
+      "sha256": "6d4e62a2a27e95dd4d126c6c8176cad6e0ec5aece0e304404901d771189beeca"
+    },
+    "rive-dependencies.rive_u82_19-desktop": {
+      "path": "rive-dependencies/rive_u82_19-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_19-desktop.webp?v=1763747675",
+      "bytes": 32866,
+      "sha256": "e73bf2831bf83b54860e3b1073dddeeb8d4fd89d7bccab6f0ca8e3d2631be5de"
+    },
+    "rive-dependencies.rive_u82_2-desktop": {
+      "path": "rive-dependencies/rive_u82_2-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_2-desktop.webp?v=1763747675",
+      "bytes": 16527,
+      "sha256": "8a2c95a6e55a919d31f95427924aaa6a9aaf8e3518ae6e8e07eac85ba2055775"
+    },
+    "rive-dependencies.rive_u82_3-desktop": {
+      "path": "rive-dependencies/rive_u82_3-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_3-desktop.webp?v=1763747675",
+      "bytes": 47788,
+      "sha256": "2b4004f39a4197d1b582fb53540d1ab606053bb332e2ad5f7e2a744873a20af0"
+    },
+    "rive-dependencies.rive_u82_4-desktop": {
+      "path": "rive-dependencies/rive_u82_4-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_4-desktop.webp?v=1763747675",
+      "bytes": 31774,
+      "sha256": "dd83ee40839e479fd4cc0f730e5d57ef60e6b460e539b0cdf15b076e34fb2669"
+    },
+    "rive-dependencies.rive_u82_5-desktop": {
+      "path": "rive-dependencies/rive_u82_5-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_5-desktop.webp?v=1763747675",
+      "bytes": 41826,
+      "sha256": "070897f1bb01519661b3528d2fe19403e39cfd079b18d0ede206e8418ee16326"
+    },
+    "rive-dependencies.rive_u82_6-desktop": {
+      "path": "rive-dependencies/rive_u82_6-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_6-desktop.webp?v=1763747675",
+      "bytes": 18938,
+      "sha256": "cf574eaf40207f7687a95624531a7264eb75b29ef98f10aaca5b60e34cd03263"
+    },
+    "rive-dependencies.rive_u82_7-desktop": {
+      "path": "rive-dependencies/rive_u82_7-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_7-desktop.webp?v=1763747675",
+      "bytes": 38850,
+      "sha256": "fb339719722779deadf687f6c77372c5ca69519a71432f94da94be7c43e869ff"
+    },
+    "rive-dependencies.rive_u82_8-desktop": {
+      "path": "rive-dependencies/rive_u82_8-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_8-desktop.webp?v=1763747675",
+      "bytes": 48491,
+      "sha256": "fdec23eff3653b68debb7ab700e1eaae212c8bf6f4700a20f5fd7baa341a1b89"
+    },
+    "rive-dependencies.rive_u82_9-desktop": {
+      "path": "rive-dependencies/rive_u82_9-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_9-desktop.webp?v=1763747675",
+      "bytes": 12477,
+      "sha256": "186842ce4abf780a72f3810eceaaab8c97354e9f60e96de93189d717d791b25b"
+    },
+    "rive-dependencies.rive_u82_1-mobile": {
+      "path": "rive-dependencies/rive_u82_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_1-mobile.webp?v=1763747682",
+      "bytes": 10373,
+      "sha256": "55774dfa5e651d8931eb5131cde190ddcb7372ea3af8c8d9979a8613fa453c2f"
+    },
+    "rive-dependencies.rive_u82_10-mobile": {
+      "path": "rive-dependencies/rive_u82_10-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_10-mobile.webp?v=1763747682",
+      "bytes": 9928,
+      "sha256": "059f1b818f6d1f0c96e13fee0da355ba8ae625366e6d598d6ddc77142eaa9300"
+    },
+    "rive-dependencies.rive_u82_11-mobile": {
+      "path": "rive-dependencies/rive_u82_11-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_11-mobile.webp?v=1763747682",
+      "bytes": 6457,
+      "sha256": "54e1d2e825899b5fbfc0a86a3dcfe001630e1f51d68c1db8e7f3d36e8ff0d0d9"
+    },
+    "rive-dependencies.rive_u82_12-mobile": {
+      "path": "rive-dependencies/rive_u82_12-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_12-mobile.webp?v=1763747682",
+      "bytes": 6755,
+      "sha256": "baa4c520fa388d4478ac109fe2bea93b430a4c934598cda24e779b959fe24b55"
+    },
+    "rive-dependencies.rive_u82_13-mobile": {
+      "path": "rive-dependencies/rive_u82_13-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_13-mobile.webp?v=1763747682",
+      "bytes": 5180,
+      "sha256": "f6a3abb83b1703499de0040bcdde4ec84421ec3224a8bfab64d123080e5c3724"
+    },
+    "rive-dependencies.rive_u82_14-mobile": {
+      "path": "rive-dependencies/rive_u82_14-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_14-mobile.webp?v=1763747682",
+      "bytes": 8430,
+      "sha256": "f4d0e67590260124421642681389a3265b3bbe7c4f2fb006d5d5d252945e31a9"
+    },
+    "rive-dependencies.rive_u82_15-mobile": {
+      "path": "rive-dependencies/rive_u82_15-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_15-mobile.webp?v=1763747682",
+      "bytes": 5075,
+      "sha256": "9f875ee9d6e65f1dad189d539d3a0b2f48302e1d80f01e9ce5f1648d344b5e75"
+    },
+    "rive-dependencies.rive_u82_16-mobile": {
+      "path": "rive-dependencies/rive_u82_16-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_16-mobile.webp?v=1763747682",
+      "bytes": 9943,
+      "sha256": "7afa8793decb681bb98ddb4c65737066b32c82da336c42f60082e098f6c06d78"
+    },
+    "rive-dependencies.rive_u82_17-mobile": {
+      "path": "rive-dependencies/rive_u82_17-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_17-mobile.webp?v=1763747682",
+      "bytes": 9008,
+      "sha256": "d0ef7bcc64737230f448af90ebfe50d9cd084f1f7d1865f9cf5d7c54c337ebfe"
+    },
+    "rive-dependencies.rive_u82_18-mobile": {
+      "path": "rive-dependencies/rive_u82_18-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_18-mobile.webp?v=1763747682",
+      "bytes": 2143,
+      "sha256": "18a3eee0ed3a2c7e3c0bcefdcc51e2e288c88971e50b74cfe5470968d750a6d8"
+    },
+    "rive-dependencies.rive_u82_19-mobile": {
+      "path": "rive-dependencies/rive_u82_19-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_19-mobile.webp?v=1763747682",
+      "bytes": 10533,
+      "sha256": "f2c7baa42fabc3a3d0376c1091e3504bf09964afef3874f11cccc7eec22d2fc1"
+    },
+    "rive-dependencies.rive_u82_2-mobile": {
+      "path": "rive-dependencies/rive_u82_2-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_2-mobile.webp?v=1763747682",
+      "bytes": 6512,
+      "sha256": "21cb3d29102ba26c2d799b75d1e993262a24b5178a7ef520d1882a9d6664a986"
+    },
+    "rive-dependencies.rive_u82_3-mobile": {
+      "path": "rive-dependencies/rive_u82_3-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_3-mobile.webp?v=1763747682",
+      "bytes": 13080,
+      "sha256": "b309a0911901c98361a4087722686de848dcdce0c7691229e3178c28e69dcf57"
+    },
+    "rive-dependencies.rive_u82_4-mobile": {
+      "path": "rive-dependencies/rive_u82_4-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_4-mobile.webp?v=1763747682",
+      "bytes": 10501,
+      "sha256": "ebb64684d6237b2b158c924ce996c65072591ad5c70acf6eee6a290bc6490e94"
+    },
+    "rive-dependencies.rive_u82_5-mobile": {
+      "path": "rive-dependencies/rive_u82_5-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_5-mobile.webp?v=1763747682",
+      "bytes": 11205,
+      "sha256": "afa3cf65c010ab3dc001b9b3ed96a997fd06ba9f5d7d11ca464b0f91ee91f45c"
+    },
+    "rive-dependencies.rive_u82_6-mobile": {
+      "path": "rive-dependencies/rive_u82_6-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_6-mobile.webp?v=1763747682",
+      "bytes": 6920,
+      "sha256": "cccbdfbef17f7ce7ff903183fc7fa017dac87102a61af38cac96a4b9c0372181"
+    },
+    "rive-dependencies.rive_u82_7-mobile": {
+      "path": "rive-dependencies/rive_u82_7-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_7-mobile.webp?v=1763747682",
+      "bytes": 11419,
+      "sha256": "e791137e0622a552695e49d0f20a0e3a044e8fdf02408f1839b18e48a3235510"
+    },
+    "rive-dependencies.rive_u82_8-mobile": {
+      "path": "rive-dependencies/rive_u82_8-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_8-mobile.webp?v=1763747682",
+      "bytes": 14108,
+      "sha256": "0d979fe4ac062735990fb53a26a4190b1d0937e45ee1dbf0cb73f16f60f7d5f0"
+    },
+    "rive-dependencies.rive_u82_9-mobile": {
+      "path": "rive-dependencies/rive_u82_9-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u82_9-mobile.webp?v=1763747682",
+      "bytes": 5050,
+      "sha256": "5ea157eebd756b9e7b35b1669ff6a6e899b5cab375922091d2dbfef55b376a59"
+    },
+    "rive-dependencies.u82bg": {
+      "path": "rive-dependencies/u82bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u82bg.webp?v=1764629178",
+      "bytes": 113863,
+      "sha256": "a08b28e90ea2f522f653ec5d59784b77188e06736bdd533666c7a99c6ce536d2"
+    },
+    "demos.suppliers-can-discover-retailers-posterImage": {
+      "path": "demos/786dd1f1b8096bb6116dcbf0fe12893a.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/786dd1f1b8096bb6116dcbf0fe12893a.png",
+      "bytes": 910120,
+      "sha256": "80f85532df53f651b6a4ad1fe3249f5632c6edbbb447a1cc9f20ccb9ea6fed28"
+    },
+    "demos.suppliers-can-discover-retailers-posterImageMobile": {
+      "path": "demos/3fb74ac5ef61aeaa88b78374d3b1ab19.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/3fb74ac5ef61aeaa88b78374d3b1ab19.png",
+      "bytes": 880616,
+      "sha256": "94e984ba11d0046c9ebf890b7d37e7b9fdd8d47a046d86d501ddc51c0a0248d8"
+    },
+    "demos.shopify-collective-available-globally-image": {
+      "path": "demos/U71_Shopify_Collective_globally_available.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U71_Shopify_Collective_globally_available.png?v=1765381201",
+      "bytes": 2576452,
+      "sha256": "362f55486f7f5594bd7d4f66153afe1637dd42fc1f2e7ec0f0fc640cf0735549"
+    },
+    "backgrounds.finance-desktop": {
+      "path": "backgrounds/Finance_Fallback.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Finance_Fallback.jpg?v=1764645992",
+      "bytes": 568547,
+      "sha256": "51b011a460fa48bd23248a7f2ff71765c8db8283ef87512540d93419a5e0f737"
+    },
+    "backgrounds.finance-mobile": {
+      "path": "backgrounds/Fallback_Mobile_Finance_2x_7fce0bd0-4a7b-4811-8eb9-a51d52fd357b.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Fallback_Mobile_Finance_2x_7fce0bd0-4a7b-4811-8eb9-a51d52fd357b.jpg?v=1765257786",
+      "bytes": 265262,
+      "sha256": "ec30cdb17bc9321c498b4ac5205bf8eb3cf55be948393cd12d5f30d8e7b89506"
+    },
+    "rive.continuous-funding-with-the-shopify-capital-flex-account": {
+      "path": "rive/u172_12_9.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u172_12_9.riv?v=1787919794",
+      "bytes": 18077,
+      "sha256": "e11551dc6a7266d70a7624aa2955ce11debd08a200f6a972fa1f6c3519cc53c4"
+    },
+    "demos.continuous-funding-with-the-shopify-capital-flex-account-posterImage": {
+      "path": "demos/compressed-u2poster_12_9.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/compressed-u2poster_12_9.webp?v=1765315033",
+      "bytes": 113015,
+      "sha256": "1733eb8ff138183a90eb3b5f2bb8c3615f13d73a598f531dfa7d688acce9ab95"
+    },
+    "demos.continuous-funding-with-the-shopify-capital-flex-account-fallbackImage": {
+      "path": "demos/U172_Capital_flex_account_0dc379db-95c4-4986-a8d3-13dfb10563f1.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U172_Capital_flex_account_0dc379db-95c4-4986-a8d3-13dfb10563f1.png?v=1765319295",
+      "bytes": 2292474,
+      "sha256": "e479989546a1367addabcd6496bbc4e530683983a283533c57d0a66fb5d909ac"
+    },
+    "rive-dependencies.u172bg": {
+      "path": "rive-dependencies/u172bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u172bg.webp?v=1764907720",
+      "bytes": 257710,
+      "sha256": "5334946d6d4d49d8db8f7f627adb36f4b7f21f5e14fd96b97bd27266436f1775"
+    },
+    "demos.continuous-funding-with-the-shopify-capital-flex-account-posterImage-42650d": {
+      "path": "demos/1bf084da109bb3fe83016948c3c88b1f.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/1bf084da109bb3fe83016948c3c88b1f.png",
+      "bytes": 1198817,
+      "sha256": "ed6d5657c1bcd36396cad29503ae4cde251b227dac5b6fceb31895fb6e788b45"
+    },
+    "demos.automatic-transfers-in-shopify-balance-image": {
+      "path": "demos/U158_Automated_transfers_for_Shopify_Balance_payouts.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U158_Automated_transfers_for_Shopify_Balance_payouts.png?v=1764976228",
+      "bytes": 520768,
+      "sha256": "e7c04fcafda3407d62b616be940ffeb5f93942a630a91bebc6d8483a8460f085"
+    },
+    "backgrounds.shipping-desktop": {
+      "path": "backgrounds/Shipping_Fallback.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Shipping_Fallback.jpg?v=1764646105",
+      "bytes": 513331,
+      "sha256": "3f7de409effab3f2d4efb250d01c42927123a16b0ba0fc1ccb32c57689dc5422"
+    },
+    "backgrounds.shipping-mobile": {
+      "path": "backgrounds/Fallback_Mobile_Shipping_2x_20393750-bbde-4f1f-ba88-24517c3ade74.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Fallback_Mobile_Shipping_2x_20393750-bbde-4f1f-ba88-24517c3ade74.jpg?v=1765257822",
+      "bytes": 185606,
+      "sha256": "e703f5a3ff9904a24df76f151dc9f82a3211a14bdfbc649b569adb99533a6481"
+    },
+    "demos.fedex-return-labels-image": {
+      "path": "demos/U117_FedEx_One_Rate_Return_Labels_6-col.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U117_FedEx_One_Rate_Return_Labels_6-col.png?v=1765246018",
+      "bytes": 882524,
+      "sha256": "746a0101ca254f65ac4d667cafd2dda1adb4b7a1711e6b5172e31af92149dd42"
+    },
+    "demos.default-package-per-variant-image": {
+      "path": "demos/U122_Variant_default_packaging.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U122_Variant_default_packaging.png?v=1765168583",
+      "bytes": 1397307,
+      "sha256": "83c53bd174cf38dd912c742eeda1cd3054f00aa6b5e3946815f6112b852b98ea"
+    },
+    "backgrounds.developer-desktop": {
+      "path": "backgrounds/Property_1_Developer.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Property_1_Developer.jpg?v=1765159578",
+      "bytes": 644478,
+      "sha256": "34ed4ed8036004442177c68308dc6a075a1858e81369117b07f676cf4eefd927"
+    },
+    "backgrounds.developer-mobile": {
+      "path": "backgrounds/Fallback_Mobile_Developer_2x_a0cdd077-d691-4a02-888a-2641d7cc1c6f.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Fallback_Mobile_Developer_2x_a0cdd077-d691-4a02-888a-2641d7cc1c6f.jpg?v=1765257864",
+      "bytes": 214307,
+      "sha256": "aaf0ee975e2cd2758a10c5042d3676e430088cc154eb264ac13b484a751a9d56"
+    },
+    "rive.build-commerce-agents-from-the-dev-dash": {
+      "path": "rive/dev_dash_12_8.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/dev_dash_12_8.riv?v=1787919740",
+      "bytes": 87533,
+      "sha256": "4490fa62d4747a54e077bce6491a751bd9251c029360c002b724c6418d4d69c8"
+    },
+    "demos.build-commerce-agents-from-the-dev-dash-fallbackImage": {
+      "path": "demos/U270_DevDash_desktop-mobile-fallback.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U270_DevDash_desktop-mobile-fallback.png?v=1765319469",
+      "bytes": 1186001,
+      "sha256": "1dd05e33243b5ba482619639299508a8627a30f40e6796a6149682bf74627767"
+    },
+    "rive-dependencies.rive_devdash_1-desktop": {
+      "path": "rive-dependencies/rive_devDash_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_1-desktop.webp?v=1765169342",
+      "bytes": 173603,
+      "sha256": "ffe562af8460a7c30157ff0821047b5507d67df0436966234185d8bf6214106a"
+    },
+    "rive-dependencies.rive_devdash_1-mobile": {
+      "path": "rive-dependencies/rive_devDash_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_1-mobile.webp?v=1765169342",
+      "bytes": 65303,
+      "sha256": "a021bf8e079fc2211fc902054c98394cbc408c8530efe54d630e484bfe5e438d"
+    },
+    "rive-dependencies.rive_devdash_10": {
+      "path": "rive-dependencies/rive_devDash_10.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_10.webp?v=1765169342",
+      "bytes": 1765,
+      "sha256": "cae64f6b23681c9dec27bd2fe6ebfae1d032150a0b782d423b1d66b47a793e5a"
+    },
+    "rive-dependencies.rive_devdash_11": {
+      "path": "rive-dependencies/rive_devDash_11.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_11.webp?v=1765169342",
+      "bytes": 1715,
+      "sha256": "be9cf763312df186f4bbfd1a4f7997c167841d287e92f214c1aff6effc311a60"
+    },
+    "rive-dependencies.rive_devdash_12": {
+      "path": "rive-dependencies/rive_devDash_12.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_12.webp?v=1765169342",
+      "bytes": 1722,
+      "sha256": "9bafaf332602016811f7226caf43bf1b8321b0f49af5c0d3e8a2f0a851fbcadf"
+    },
+    "rive-dependencies.rive_devdash_13-desktop": {
+      "path": "rive-dependencies/rive_devDash_13-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_13-desktop.webp?v=1765169343",
+      "bytes": 206264,
+      "sha256": "a22edeae71e94c8138e8335901fda2438086bc324f37917714bce6749cf9c957"
+    },
+    "rive-dependencies.rive_devdash_13-mobile": {
+      "path": "rive-dependencies/rive_devDash_13-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_13-mobile.webp?v=1765169342",
+      "bytes": 69994,
+      "sha256": "635a417f6eca935e05b00233be1d44b9d8a0e2230e4be3ccdf4b0aefe25815d4"
+    },
+    "rive-dependencies.rive_devdash_14-desktop": {
+      "path": "rive-dependencies/rive_devDash_14-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_14-desktop.webp?v=1765169343",
+      "bytes": 196398,
+      "sha256": "8155569f9cd2e7db08d0b0eaf3b10419a10f705d5b9bc0b253654e6899f145d2"
+    },
+    "rive-dependencies.rive_devdash_14-mobile": {
+      "path": "rive-dependencies/rive_devDash_14-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_14-mobile.webp?v=1765169342",
+      "bytes": 70779,
+      "sha256": "40233e83b21c2218e612e246a697ba70ee6e62dd7a45f5f3e5b28bdfdabb55a6"
+    },
+    "rive-dependencies.rive_devdash_15-desktop": {
+      "path": "rive-dependencies/rive_devDash_15-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_15-desktop.webp?v=1765169342",
+      "bytes": 6533,
+      "sha256": "8fb0c91713171866f7966cfe5070848194f656999fc73dfe1102863c23802ed0"
+    },
+    "rive-dependencies.rive_devdash_15-mobile": {
+      "path": "rive-dependencies/rive_devDash_15-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_15-mobile.webp?v=1765169343",
+      "bytes": 2982,
+      "sha256": "d03e214cdb19cb5e47baaa62f29564b8e617acf439282226bc81f7c803681c9c"
+    },
+    "rive-dependencies.rive_devdash_16-desktop": {
+      "path": "rive-dependencies/rive_devDash_16-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_16-desktop.webp?v=1765169343",
+      "bytes": 43314,
+      "sha256": "907c475baa03517018d9a3ad418850d24d99dd1abc5a4c8f16bb280d3749e91e"
+    },
+    "rive-dependencies.rive_devdash_16-mobile": {
+      "path": "rive-dependencies/rive_devDash_16-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_16-mobile.webp?v=1765169343",
+      "bytes": 17114,
+      "sha256": "cc12c3c8fb2191c99b8f19397c4eb732262a873bdc7e00601d6793dea3dc3cfe"
+    },
+    "rive-dependencies.rive_devdash_2-desktop": {
+      "path": "rive-dependencies/rive_devDash_2-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_2-desktop.webp?v=1765169342",
+      "bytes": 145650,
+      "sha256": "c1d176a219e611d51ca28536c850473b1c23824e14f3e15fff67957e4937c96c"
+    },
+    "rive-dependencies.rive_devdash_2-mobile": {
+      "path": "rive-dependencies/rive_devDash_2-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_2-mobile.webp?v=1765169342",
+      "bytes": 58902,
+      "sha256": "1cdd30a5e2d9a77d2fff938294e93f7b7541efff58ade133505b277bd6077def"
+    },
+    "rive-dependencies.rive_devdash_3-desktop": {
+      "path": "rive-dependencies/rive_devDash_3-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_3-desktop.webp?v=1765169342",
+      "bytes": 133322,
+      "sha256": "dc774b2ecd3469df56aa19a35e71f58085ed8848e413cfff40ed3407770fcc3d"
+    },
+    "rive-dependencies.rive_devdash_3-mobile": {
+      "path": "rive-dependencies/rive_devDash_3-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_3-mobile.webp?v=1765169342",
+      "bytes": 54226,
+      "sha256": "23db71a3388cf01c622fa46dfaa93a59e16bbba2ad6458696655002b9dcc6104"
+    },
+    "rive-dependencies.rive_devdash_4-desktop": {
+      "path": "rive-dependencies/rive_devDash_4-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_4-desktop.webp?v=1765169342",
+      "bytes": 134650,
+      "sha256": "0f66f301fac82d40d346eb8ce2c73496d1c0d7f36472ad1478018d8d4e14ab58"
+    },
+    "rive-dependencies.rive_devdash_4-mobile": {
+      "path": "rive-dependencies/rive_devDash_4-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_4-mobile.webp?v=1765169342",
+      "bytes": 52702,
+      "sha256": "edf311be80d27d24516ff2a8473a5ec3a6968c84ae58e2b02158a449b4b98b4e"
+    },
+    "rive-dependencies.rive_devdash_5-desktop": {
+      "path": "rive-dependencies/rive_devDash_5-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_5-desktop.webp?v=1765169342",
+      "bytes": 115945,
+      "sha256": "31afc5fd3f676f439e37aefc66f3a5ce0ff189656a5c457e75361291cb3a2a52"
+    },
+    "rive-dependencies.rive_devdash_5-mobile": {
+      "path": "rive-dependencies/rive_devDash_5-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_5-mobile.webp?v=1765169342",
+      "bytes": 42610,
+      "sha256": "4f5da7e4640381336c1940a1caa9c3d5db1bb2947f30d02a2d58a01ce710d646"
+    },
+    "rive-dependencies.rive_devdash_6-desktop": {
+      "path": "rive-dependencies/rive_devDash_6-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_6-desktop.webp?v=1765169343",
+      "bytes": 189642,
+      "sha256": "a1f0b2bc7ce7687b2e199f5472260867dbec82a77e4a7158b3b2e1c3aa6e4ce3"
+    },
+    "rive-dependencies.rive_devdash_6-mobile": {
+      "path": "rive-dependencies/rive_devDash_6-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_6-mobile.webp?v=1765169342",
+      "bytes": 64142,
+      "sha256": "da921096e02f6d71c172b5b000e96c24889434167705eaa900bfc44c920f218b"
+    },
+    "rive-dependencies.rive_devdash_7-desktop": {
+      "path": "rive-dependencies/rive_devDash_7-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_7-desktop.webp?v=1765169343",
+      "bytes": 7363,
+      "sha256": "a2049a5f0af67e9ce0ac8d586413b7f1f70ac1f3907f2611355cce0ac743ad6f"
+    },
+    "rive-dependencies.rive_devdash_7-mobile": {
+      "path": "rive-dependencies/rive_devDash_7-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_7-mobile.webp?v=1765169343",
+      "bytes": 3566,
+      "sha256": "60a4a5d93626c4c1d8760ad2014d72e43441edfaba67eb73d94b9f87dd1cb712"
+    },
+    "rive-dependencies.rive_devdash_8-desktop": {
+      "path": "rive-dependencies/rive_devDash_8-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_8-desktop.webp?v=1765169343",
+      "bytes": 6044,
+      "sha256": "a11767d678680a0372659cd22d61379fc27a8dc24817162f330a660ad4f45714"
+    },
+    "rive-dependencies.rive_devdash_8-mobile": {
+      "path": "rive-dependencies/rive_devDash_8-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_8-mobile.webp?v=1765169343",
+      "bytes": 2991,
+      "sha256": "59a4c354466de1dabaf55844f26951c11f0a7eb5f14f70561bae81a1f4918529"
+    },
+    "rive-dependencies.rive_devdash_9-desktop": {
+      "path": "rive-dependencies/rive_devDash_9-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_9-desktop.webp?v=1765169343",
+      "bytes": 9076,
+      "sha256": "e311e559d4f05f56deeb24d1ae1552f4757b546ddd46828b987beeefddafb70c"
+    },
+    "rive-dependencies.rive_devdash_9-mobile": {
+      "path": "rive-dependencies/rive_devDash_9-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_devDash_9-mobile.webp?v=1765169342",
+      "bytes": 3325,
+      "sha256": "88aa47d61768b178458cfd63685cb60e81e10fe09592c9bb491e620e217a3af3"
+    },
+    "demos.shopify-catalog-for-all-image": {
+      "path": "demos/U271_Checkout_MCP.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U271_Checkout_MCP.png?v=1764963709",
+      "bytes": 1495897,
+      "sha256": "9d49bceb1a4a7ed9a5a8e51829b4b48a18676bb3073d1369862d9511924f9b35"
+    },
+    "demos.sidekick-video-poster": {
+      "path": "demos/Sidekick_Preroll.00_00_00_00.Still002.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/Sidekick_Preroll.00_00_00_00.Still002.png?v=1765318313",
+      "bytes": 2315252,
+      "sha256": "7c37213e9466858bd14b77b2edc3ef684550fdf86ce45c3a3303560f9b0e7560"
+    },
+    "video.sidekick-intro": {
+      "path": "video/620a0d8735da4d97b040b1cd98693898.SD-480p-0.9Mbps-64843815.mp4",
+      "sourceUrl": "https://editions-winter-2026.myshopify.com/cdn/shop/videos/c/vp/620a0d8735da4d97b040b1cd98693898/620a0d8735da4d97b040b1cd98693898.SD-480p-0.9Mbps-64843815.mp4",
+      "bytes": 845194,
+      "sha256": "41b295d1860bf0ec784ab3c8e663c7502527bf313a9548ebb598f1358e9708bf"
+    },
+    "textures.global-0": {
+      "path": "textures/mud_normal.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/mud_normal.webp?v=1762463320",
+      "bytes": 100285,
+      "sha256": "8780cb023bc028bde774e77b8e0f552cfb3e6ddbcf827de8c7a84c7b47912fea"
+    },
+    "hero-motion.environment": {
+      "path": "hero-motion/studio_small_09_1k.pmrem.ktx2",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/studio_small_09_1k.pmrem.ktx2?v=1765211412",
+      "bytes": 465458,
+      "sha256": "9bef1112f38222b67f77d6956e3369b6746e3a33ef5345d3fbba9250a8037d08"
+    },
+    "demos.sidekick-video-video-poster": {
+      "path": "demos/620a0d8735da4d97b040b1cd98693898.thumbnail.0000000000.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/preview_images/620a0d8735da4d97b040b1cd98693898.thumbnail.0000000000.jpg?v=1765339098",
+      "bytes": 117430,
+      "sha256": "eac1a3a779dbf7588930814840a59852f49b78c9132e9479289d3b3713e2c8b5"
+    },
+    "rive.sidekick-generates-custom-analytics-reports": {
+      "path": "rive/u7_12_16.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u7_12_16.riv?v=1787919996",
+      "bytes": 80492,
+      "sha256": "86c3cb63457e462f9803c7b79637a851f23ec1f09152cd7100412c043b05d7bc"
+    },
+    "demos.sidekick-generates-custom-analytics-reports-posterImage": {
+      "path": "demos/en_4608c98d-d4f7-4d35-8b94-e83258e20e54.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/en_4608c98d-d4f7-4d35-8b94-e83258e20e54.png?v=1765309078",
+      "bytes": 1123640,
+      "sha256": "32eb62faebf0cd39a70c29e4afb4cdc8de96a417c34bd31e57a89dfeca3a3c50"
+    },
+    "demos.sidekick-generates-custom-analytics-reports-posterImageMobile": {
+      "path": "demos/u7poster_237e1e00-6928-4b92-8c1a-759ee28b2eaf.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u7poster_237e1e00-6928-4b92-8c1a-759ee28b2eaf.webp?v=1765258186",
+      "bytes": 171721,
+      "sha256": "a32aa27f9287ae3d978aadb97c74285d2bf95c3b6d1cb5f2e55507d2e9b1a6b3"
+    },
+    "demos.sidekick-generates-custom-analytics-reports-fallbackImage": {
+      "path": "demos/U7_Sidekick_in_Analytics_query_editor_242da8b7-e095-4998-9cc4-6d48fe00fa63.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U7_Sidekick_in_Analytics_query_editor_242da8b7-e095-4998-9cc4-6d48fe00fa63.png?v=1765317461",
+      "bytes": 3008153,
+      "sha256": "6be3b53d4bd7448eba8fcb7138cddb75e2f31f1958853820932f390fbc526192"
+    },
+    "rive-dependencies.u7bg": {
+      "path": "rive-dependencies/u7bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u7bg.webp?v=1765258162",
+      "bytes": 241464,
+      "sha256": "7d9819b66f1b5f83bcf41e04577cefdb0d74b3ea636332dd9886410785898cca"
+    },
+    "demos.sidekick-generates-custom-analytics-reports-posterImageMobile-567ffd": {
+      "path": "demos/3c99cfd21a3a19f095a10ee6ca179ee6.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/3c99cfd21a3a19f095a10ee6ca179ee6.png",
+      "bytes": 1499929,
+      "sha256": "2dcd365577b9ede6eb3a32d81c0c64b71fb5a8a14ec7845971d19d5b3560bfae"
+    },
+    "rive.sidekick-builds-segments": {
+      "path": "rive/u2_12_10.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u2_12_10.riv?v=1787919821",
+      "bytes": 81034,
+      "sha256": "d252ed51a88693d4263268224882c7f0e5b59decc96327e74e6d6d3dd923f75b"
+    },
+    "demos.sidekick-builds-segments-posterImageMobile": {
+      "path": "demos/u2poster.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u2poster.webp?v=1765256285",
+      "bytes": 112373,
+      "sha256": "d93efc0bd1c05dd1e08696f32cdaf230679e6f4a7bd3716bd4ef55d8b6d90b87"
+    },
+    "demos.sidekick-builds-segments-fallbackImage": {
+      "path": "demos/U2_Sidekick_help_on_segmentation_filters_4b05de5d-4b12-419d-8d71-9e9b1d6907a3.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U2_Sidekick_help_on_segmentation_filters_4b05de5d-4b12-419d-8d71-9e9b1d6907a3.png?v=1765317513",
+      "bytes": 2343806,
+      "sha256": "c76a0ffc31998388a64b63b8c7ffb3643e9a36ef17d339d88c360956017fdde4"
+    },
+    "rive-dependencies.u2bg": {
+      "path": "rive-dependencies/u2bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u2bg.webp?v=1765255975",
+      "bytes": 137668,
+      "sha256": "6808fdf83085e77cf67724cefa9d1398650f84885c400faf158e2f6eccf80be5"
+    },
+    "demos.sidekick-builds-segments-posterImageMobile-c8cfe1": {
+      "path": "demos/ea4f03d63cda2a71afb54dfb50894df8.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/ea4f03d63cda2a71afb54dfb50894df8.png",
+      "bytes": 816064,
+      "sha256": "2e89991841da78e2381f8c44057d5d6d98596e00ab571c8dc4a0661e9dd5b7bc"
+    },
+    "rive.sidekick-generates-theme-edits": {
+      "path": "rive/themes_12_9_v9.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/themes_12_9_v9.riv?v=1787919802",
+      "bytes": 87249,
+      "sha256": "01c6497772fd167346008642c7b374c03eac3803ecab1d276aac7de62b2e021a"
+    },
+    "demos.sidekick-generates-theme-edits-posterImage": {
+      "path": "demos/default_ee658e76-0d9b-46c9-b479-5baab424fb97.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/default_ee658e76-0d9b-46c9-b479-5baab424fb97.png?v=1765164617",
+      "bytes": 923924,
+      "sha256": "927aa2ac6fd434aa90361015fbbdceb5428bd51e9cf31df6243dad24da9c0ee9"
+    },
+    "demos.sidekick-generates-theme-edits-fallbackImage": {
+      "path": "demos/U3_Sidekick_Theme_edit_desktop-fallback.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U3_Sidekick_Theme_edit_desktop-fallback.png?v=1765316266",
+      "bytes": 5910279,
+      "sha256": "aa2c4c7fa894f8e2a06bb27ef9aaa9caae8a080eea7ed5b339ffc048da7f6334"
+    },
+    "demos.sidekick-generates-theme-edits-fallbackImageMobile": {
+      "path": "demos/U3_Sidekick_Theme_edit_mobile-fallback.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U3_Sidekick_Theme_edit_mobile-fallback.png?v=1765316282",
+      "bytes": 1430550,
+      "sha256": "c334820d7c925057caea5c594d4672f27381c7b292d2faeed9eca5fc8621aedb"
+    },
+    "rive-dependencies.rive_theme_1-desktop": {
+      "path": "rive-dependencies/rive_theme_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_1-desktop.webp?v=1763746311",
+      "bytes": 533326,
+      "sha256": "3a6009b0a65150cc9d1ed27c00fcb63348f5829667b4361185fb33d8e36c378a"
+    },
+    "rive-dependencies.rive_theme_1-mobile": {
+      "path": "rive-dependencies/rive_theme_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_1-mobile.webp?v=1763746312",
+      "bytes": 186909,
+      "sha256": "ecaf7563c07315d06d5485bcd56a588078158878abbf7e2e839264d2acf23a99"
+    },
+    "rive-dependencies.rive_theme_10-desktop": {
+      "path": "rive-dependencies/rive_theme_10-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_10-desktop.webp?v=1763746311",
+      "bytes": 23553,
+      "sha256": "00a66d196d3a01a750349a46600ab88e1cab183bde2307e0e64be4fc0dbb3309"
+    },
+    "rive-dependencies.rive_theme_10-mobile": {
+      "path": "rive-dependencies/rive_theme_10-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_10-mobile.webp?v=1763746311",
+      "bytes": 8766,
+      "sha256": "abb475735748f69ae5c6e074a000eda3c4d0a7dfe4a43053f3a7595b597272dc"
+    },
+    "rive-dependencies.rive_theme_11-desktop": {
+      "path": "rive-dependencies/rive_theme_11-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_11-desktop.webp?v=1763746311",
+      "bytes": 85516,
+      "sha256": "f7db3148c1fb23d7b5412af12e9391dc8afae99a0348250c07575c39fe7811b5"
+    },
+    "rive-dependencies.rive_theme_11-mobile": {
+      "path": "rive-dependencies/rive_theme_11-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_11-mobile.webp?v=1763746311",
+      "bytes": 32612,
+      "sha256": "760bbfbf1646319a249ff7532904c18fe021dbf57096cf24b53020bfeae6df35"
+    },
+    "rive-dependencies.rive_theme_12-desktop": {
+      "path": "rive-dependencies/rive_theme_12-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_12-desktop.webp?v=1763746312",
+      "bytes": 139795,
+      "sha256": "1c95fdd8e54310914267f59c69dccf023c63c9b354b9b3fcde73dde242a9e815"
+    },
+    "rive-dependencies.rive_theme_12-mobile": {
+      "path": "rive-dependencies/rive_theme_12-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_12-mobile.webp?v=1763746311",
+      "bytes": 41806,
+      "sha256": "aa7b7edc0bdc428a6cdf7aa0a03a87af2b4f35012663e825fc36bbfb9ac36154"
+    },
+    "rive-dependencies.rive_theme_13-desktop": {
+      "path": "rive-dependencies/rive_theme_13-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_13-desktop.webp?v=1763746312",
+      "bytes": 47146,
+      "sha256": "00881de59adfa64f75dd04f6f6b05309d334237710505c4b32b5ac7a49d8a324"
+    },
+    "rive-dependencies.rive_theme_13-mobile": {
+      "path": "rive-dependencies/rive_theme_13-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_13-mobile.webp?v=1763746311",
+      "bytes": 16351,
+      "sha256": "dd5251ff4d0d84fe753ca151a8ce05202855d2393c09d02d9147c3ad9e3958fc"
+    },
+    "rive-dependencies.rive_theme_2-desktop": {
+      "path": "rive-dependencies/rive_theme_2-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_2-desktop.webp?v=1763746312",
+      "bytes": 218468,
+      "sha256": "4d8874bd28ccabf05f938c622fff80eec8d911663ffeac7392625d2844cf0bcc"
+    },
+    "rive-dependencies.rive_theme_2-mobile": {
+      "path": "rive-dependencies/rive_theme_2-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_2-mobile.webp?v=1763746312",
+      "bytes": 70809,
+      "sha256": "9770f41e50d3957ab599eb1639f43b8b9f0cd118984c320dd31b3477e61c3cc3"
+    },
+    "rive-dependencies.rive_theme_3-desktop": {
+      "path": "rive-dependencies/rive_theme_3-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_3-desktop.webp?v=1763746311",
+      "bytes": 49288,
+      "sha256": "9d4f0867d239c5ab79008e81ba0bcebae54317b58dc16cc9ac57fe0375526b9e"
+    },
+    "rive-dependencies.rive_theme_3-mobile": {
+      "path": "rive-dependencies/rive_theme_3-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_3-mobile.webp?v=1763746311",
+      "bytes": 17103,
+      "sha256": "4e2f7e632c22a67acc3477d18fb2a0f19ad24a18784d05979d98df43b2f0c4bd"
+    },
+    "rive-dependencies.rive_theme_4-desktop": {
+      "path": "rive-dependencies/rive_theme_4-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_4-desktop.webp?v=1763746311",
+      "bytes": 5190,
+      "sha256": "2d9afd2e23124bd1089225a375d2e836f74f7653735ced35e4932c540a43c692"
+    },
+    "rive-dependencies.rive_theme_4-mobile": {
+      "path": "rive-dependencies/rive_theme_4-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_4-mobile.webp?v=1763746311",
+      "bytes": 2558,
+      "sha256": "74d57ec2f669725e45f575b615f72ba062ab2c774b513c57b11f6721a2ab515e"
+    },
+    "rive-dependencies.rive_theme_5-desktop": {
+      "path": "rive-dependencies/rive_theme_5-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_5-desktop.webp?v=1763746311",
+      "bytes": 43880,
+      "sha256": "eb5d3e018b6c12195548986a4aefce4a03bd51b82b14898cdbef653c7b19d6df"
+    },
+    "rive-dependencies.rive_theme_5-mobile": {
+      "path": "rive-dependencies/rive_theme_5-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_5-mobile.webp?v=1763746311",
+      "bytes": 16471,
+      "sha256": "cbb71e6dbccb1b343585b4a946ace2af312ca5eb4a9dbd47d335e0f1020743fd"
+    },
+    "rive-dependencies.rive_theme_6-desktop": {
+      "path": "rive-dependencies/rive_theme_6-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_6-desktop.webp?v=1763746311",
+      "bytes": 10182,
+      "sha256": "55c607582e57cf255c577c577032e15b22efbf0d112d298aa0d934598aa0175a"
+    },
+    "rive-dependencies.rive_theme_6-mobile": {
+      "path": "rive-dependencies/rive_theme_6-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_6-mobile.webp?v=1763746311",
+      "bytes": 4101,
+      "sha256": "31d840626fabf6e33910725f26f73505f8bc826b1cb0256a3cadd6ab6e9d8e6a"
+    },
+    "rive-dependencies.rive_theme_7-desktop": {
+      "path": "rive-dependencies/rive_theme_7-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_7-desktop.webp?v=1763746311",
+      "bytes": 34017,
+      "sha256": "d0ab3cde65f73293d68c40c4218efc64f8fb0a55b3a76e70b52e3994ef22a716"
+    },
+    "rive-dependencies.rive_theme_7-mobile": {
+      "path": "rive-dependencies/rive_theme_7-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_7-mobile.webp?v=1763746311",
+      "bytes": 15539,
+      "sha256": "837750c82d49a29975f5b7bbf8e6d059b4aa03abe55303eb5e765ee2d0272b8a"
+    },
+    "rive-dependencies.rive_theme_8-desktop": {
+      "path": "rive-dependencies/rive_theme_8-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_8-desktop.webp?v=1763746311",
+      "bytes": 40806,
+      "sha256": "8c50b8ab1346e89fea22bc581d59783cc469cefa31def8f179357ca0b3fdb872"
+    },
+    "rive-dependencies.rive_theme_8-mobile": {
+      "path": "rive-dependencies/rive_theme_8-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_8-mobile.webp?v=1763746311",
+      "bytes": 12391,
+      "sha256": "0d590675d33f9f9c0a5979ecb2c220e525c6acca89bab1bb6c57b65f831e02c2"
+    },
+    "rive-dependencies.rive_theme_9-desktop": {
+      "path": "rive-dependencies/rive_theme_9-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_9-desktop.webp?v=1763746311",
+      "bytes": 37167,
+      "sha256": "be534b6e9f0d868563876c93d68f8b679f9cb06d77816a7447bd1def8eb8cfd0"
+    },
+    "rive-dependencies.rive_theme_9-mobile": {
+      "path": "rive-dependencies/rive_theme_9-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_theme_9-mobile.webp?v=1763746312",
+      "bytes": 11952,
+      "sha256": "e2a45a8a8a811b44b3188d555431e673a0e2dace6b330e576d0b67a207f53bb5"
+    },
+    "rive.sidekick-creates-studio-quality-photos": {
+      "path": "rive/u8_12_10.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u8_12_10.riv?v=1787919821",
+      "bytes": 97554,
+      "sha256": "92bdeb310a1698d59b815f59633d48db24b4768dde4b3628dde86165b99ed4a0"
+    },
+    "demos.sidekick-creates-studio-quality-photos-posterImage": {
+      "path": "demos/compressed-u8poster_12_9.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/compressed-u8poster_12_9.webp?v=1765315279",
+      "bytes": 827692,
+      "sha256": "6de0453581fd123aab868d3dac049293658f4a3d06eefad984f76c1e0befb0cc"
+    },
+    "rive-dependencies.rive_u8_1-desktop": {
+      "path": "rive-dependencies/rive_u8_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u8_1-desktop.webp?v=1764657295",
+      "bytes": 63747,
+      "sha256": "b746d5f800c1c2b2aeed0491092f287ac7a5a8a29f29642ddd0e664c42fd1892"
+    },
+    "rive-dependencies.rive_u8_1-mobile": {
+      "path": "rive-dependencies/rive_u8_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u8_1-mobile.webp?v=1764657295",
+      "bytes": 22434,
+      "sha256": "8d3108ba1e81e2a1dba7cedc65f80edb1e233cb905f04c87f675fc2478e5da06"
+    },
+    "rive-dependencies.rive_u8_2-desktop": {
+      "path": "rive-dependencies/rive_u8_2-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u8_2-desktop.webp?v=1764657295",
+      "bytes": 106265,
+      "sha256": "d08996a376101cb2701032175861a6d04a7d48f8c36218e85dcd69691bbf5ea1"
+    },
+    "rive-dependencies.rive_u8_2-mobile": {
+      "path": "rive-dependencies/rive_u8_2-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u8_2-mobile.webp?v=1764657295",
+      "bytes": 35443,
+      "sha256": "ffc316c109842d2011f0ff49c71968e2bb81b731958a104f3351832717959c22"
+    },
+    "rive-dependencies.u8bg": {
+      "path": "rive-dependencies/u8bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u8bg.webp?v=1765261967",
+      "bytes": 1494320,
+      "sha256": "c0dee6583d893ddadb6f091b09c7a6123564f296c709b30c77041f4fd6d53a98"
+    },
+    "rive.sidekick-edits-images-on-mobile": {
+      "path": "rive/u6_12_9_v2.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u6_12_9_v2.riv?v=1787919794",
+      "bytes": 81001,
+      "sha256": "fbdf8f3d322707021b35c7d114e40cd642f7f4d671e54e50a1572cbc8ac4633a"
+    },
+    "demos.sidekick-edits-images-on-mobile-posterImage": {
+      "path": "demos/en_3a493a1f-2575-43b6-9e6e-22033556b139.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/en_3a493a1f-2575-43b6-9e6e-22033556b139.png?v=1765309833",
+      "bytes": 436681,
+      "sha256": "697c4afb078f7c9db858783741df107ae3a261cdb070d6812e8c44f894b82873"
+    },
+    "demos.sidekick-edits-images-on-mobile-posterImageMobile": {
+      "path": "demos/u6poster_mobile.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u6poster_mobile.png?v=1765261761",
+      "bytes": 274140,
+      "sha256": "c73bee267da6f7dd7d4fad244466172025e04f79342785bae35bc64a93a37d43"
+    },
+    "demos.sidekick-edits-images-on-mobile-fallbackImage": {
+      "path": "demos/U6_Sidekick_file_editor_on_mobile_2e3a4bb2-d153-4fb3-a767-1d81e9d165f7.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U6_Sidekick_file_editor_on_mobile_2e3a4bb2-d153-4fb3-a767-1d81e9d165f7.png?v=1765316987",
+      "bytes": 1297850,
+      "sha256": "1780a40f478b0eb1506772bba4a7bce9f13a3b9525561a0d86cf4b8c7a966e7f"
+    },
+    "demos.sidekick-edits-images-on-mobile-fallbackImageMobile": {
+      "path": "demos/U6_Sidekick_file_editor_mobile-fallback.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U6_Sidekick_file_editor_mobile-fallback.png?v=1765317178",
+      "bytes": 1365843,
+      "sha256": "632a90a1c20b49d1550b9edc7a41c319d15f69767de4c65fb5da8f704f280970"
+    },
+    "rive-dependencies.rive_u6_3": {
+      "path": "rive-dependencies/rive_u6_3.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u6_3.webp?v=1765261547",
+      "bytes": 402074,
+      "sha256": "684acc609bebe0fb62490cfcd30e85b8c4201dd336599cd9c6e7a47e7d2390d2"
+    },
+    "rive-dependencies.u6_1_desktop": {
+      "path": "rive-dependencies/u6_1_desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u6_1_desktop.webp?v=1765261547",
+      "bytes": 78241,
+      "sha256": "cba55069021e56e000183fc8c9623a49bc00cd7e8bde301cbf22c845a3b273d8"
+    },
+    "rive-dependencies.u6_1_mobile": {
+      "path": "rive-dependencies/u6_1_mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u6_1_mobile.webp?v=1765261547",
+      "bytes": 365962,
+      "sha256": "c1a2c6f1182b375b250d15881c8e8912567bb2f460b5c7fdb4e4351a55cfd49d"
+    },
+    "rive-dependencies.u6_2_desktop": {
+      "path": "rive-dependencies/u6_2_desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u6_2_desktop.webp?v=1765261547",
+      "bytes": 86914,
+      "sha256": "5f137f043f8692a934cfd3f89eda2367f7b15c047a7a88380f1b5e02780658c4"
+    },
+    "rive-dependencies.u6_2_mobile": {
+      "path": "rive-dependencies/u6_2_mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u6_2_mobile.webp?v=1765261547",
+      "bytes": 335242,
+      "sha256": "ee8197fb48ee9bc32770e7de2aebbcbb62608e52521d32629278f7cf6d8c7365"
+    },
+    "rive-dependencies.u6bg": {
+      "path": "rive-dependencies/u6bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u6bg.webp?v=1765261546",
+      "bytes": 74623,
+      "sha256": "ea55fc2bf191441e585cc5b2f7e7f5ba9a3fb4a5a68d965a95b7b4b14e079f5b"
+    },
+    "demos.sidekick-edits-images-on-mobile-posterImageMobile-e228f4": {
+      "path": "demos/5b3c2862e3c5dcf950d0b912867ebdeb.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/5b3c2862e3c5dcf950d0b912867ebdeb.png",
+      "bytes": 1050567,
+      "sha256": "47283e181af1493fcaac2091bb5f53755f2ef4c9fb9d5ec7d74f5a17b47dc1e1"
+    },
+    "rive.sidekick-edits-emails": {
+      "path": "rive/u16_12_9_v3.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u16_12_9_v3.riv?v=1787919794",
+      "bytes": 22237,
+      "sha256": "09fd9cd5d693f56f7f0df8472994de5b31d759f0e169bbe73886d3e7aecf6314"
+    },
+    "demos.sidekick-edits-emails-posterImage": {
+      "path": "demos/u16poster_desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u16poster_desktop.webp?v=1765308291",
+      "bytes": 264953,
+      "sha256": "0dc56ac683373a4fc4cebf66aa4871972173fba499fb1234e4b84689e3f25110"
+    },
+    "demos.sidekick-edits-emails-fallbackImage": {
+      "path": "demos/U16_Sidekick_edits_email_sections_fe9fa19b-6380-4a68-b0be-20f0043d14a1.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U16_Sidekick_edits_email_sections_fe9fa19b-6380-4a68-b0be-20f0043d14a1.png?v=1765317282",
+      "bytes": 926898,
+      "sha256": "58f412b98297f193c2492fb0a0de48f538efda3fb643d73c98ba1638a90eafe5"
+    },
+    "demos.sidekick-edits-emails-fallbackImageMobile": {
+      "path": "demos/U16_Sidekick_edits_email_sections_mobile-fallback.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U16_Sidekick_edits_email_sections_mobile-fallback.png?v=1765317362",
+      "bytes": 506955,
+      "sha256": "b0bc0d6c44ea1d1eeca34f288e1772846d1e069f9ed03007af835f6466d963ef"
+    },
+    "rive-dependencies.u16bg": {
+      "path": "rive-dependencies/u16bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u16bg.webp?v=1765255342",
+      "bytes": 302901,
+      "sha256": "8e480eb1745171625ad1e45e3e9cde1308cc0faf22a6bfae5cfb0f2fb37b8c0c"
+    },
+    "rive-dependencies.u16_1-desktop": {
+      "path": "rive-dependencies/u16_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u16_1-desktop.webp?v=1765308060",
+      "bytes": 536061,
+      "sha256": "e092d70fd104ff8bf562c09ed57f3ff823bbc5c0689545abad11a23dcee34590"
+    },
+    "rive-dependencies.u16_1-mobile": {
+      "path": "rive-dependencies/u16_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u16_1-mobile.webp?v=1765308060",
+      "bytes": 357447,
+      "sha256": "a4bf23050c23bb1b4f21b1f5ab2bbd72009f0b261248a5791c4112ffcbb9d8b2"
+    },
+    "rive.sidekick-multi-step-task-completion": {
+      "path": "rive/u15_12_9_v2.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u15_12_9_v2.riv?v=1787919794",
+      "bytes": 124185,
+      "sha256": "aaedb1723bc8aaa611b7497765dca0b7e32068eecbff8761b45395b5e0bad49a"
+    },
+    "demos.sidekick-multi-step-task-completion-posterImage": {
+      "path": "demos/en_a158fbbf-7e97-4014-9008-9eb7a719f84a.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/en_a158fbbf-7e97-4014-9008-9eb7a719f84a.png?v=1765311013",
+      "bytes": 1248966,
+      "sha256": "e27bea11f3cc3cd8da330303b7499e29c450b0f5082b28492b56e7042bb91416"
+    },
+    "demos.sidekick-multi-step-task-completion-posterImageMobile": {
+      "path": "demos/u15poster.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u15poster.webp?v=1765250332",
+      "bytes": 153953,
+      "sha256": "868a3b56b0c28eeab0702cb9fd8cec80fe2afdbfa1b85724f2d537fadcacd0a6"
+    },
+    "demos.sidekick-multi-step-task-completion-fallbackImage": {
+      "path": "demos/U15_Sidekick_navigates.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U15_Sidekick_navigates.png?v=1765316745",
+      "bytes": 3745460,
+      "sha256": "f47f57bec6c4e9d65e768fc627acd23e0bfe3be798cfc662d093e1ec7780fcfa"
+    },
+    "rive-dependencies.rive_u15_10": {
+      "path": "rive-dependencies/rive_U15_10.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U15_10.webp?v=1765250436",
+      "bytes": 14258,
+      "sha256": "e4635535f10376751b4d737a69377df7bcdd81446338b227a7990016758a0f2d"
+    },
+    "rive-dependencies.rive_u15_3-desktop": {
+      "path": "rive-dependencies/rive_U15_3-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U15_3-desktop.webp?v=1765250435",
+      "bytes": 95148,
+      "sha256": "a6fde9e0ae097463ab59705d39893b61dabc4a48acfd04e8e6e8ec6d9a685306"
+    },
+    "rive-dependencies.rive_u15_3-mobile": {
+      "path": "rive-dependencies/rive_U15_3-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U15_3-mobile.webp?v=1765250435",
+      "bytes": 35066,
+      "sha256": "8d0599aaa91979cb72000568e231984cd2f8b4f104fe1137ed957c5053607897"
+    },
+    "rive-dependencies.rive_u15_4-desktop": {
+      "path": "rive-dependencies/rive_U15_4-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U15_4-desktop.webp?v=1765250436",
+      "bytes": 738008,
+      "sha256": "8700a67366006dfbee9e2a801d117f4fc74c5b08a1db87fe5eaf37b301ef2cbd"
+    },
+    "rive-dependencies.rive_u15_4-mobile": {
+      "path": "rive-dependencies/rive_U15_4-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U15_4-mobile.webp?v=1765250435",
+      "bytes": 156198,
+      "sha256": "3851194b91e87de94461a4fa8fcec5669744f01beede7f50b9fe734f39036bde"
+    },
+    "rive-dependencies.rive_u15_6-desktop": {
+      "path": "rive-dependencies/rive_U15_6-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U15_6-desktop.webp?v=1765250436",
+      "bytes": 56195,
+      "sha256": "abf62d13df3dae465458ebcf666695990435984e094de2a3785d8a5309586edf"
+    },
+    "rive-dependencies.rive_u15_6-mobile": {
+      "path": "rive-dependencies/rive_U15_6-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U15_6-mobile.webp?v=1765250436",
+      "bytes": 17138,
+      "sha256": "7c83445cc909b3e4dc5ddd24957832deb3bbe7e6a59c5de25fc2a426bdd18e04"
+    },
+    "rive-dependencies.rive_u15_7-desktop": {
+      "path": "rive-dependencies/rive_U15_7-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U15_7-desktop.webp?v=1765250436",
+      "bytes": 431196,
+      "sha256": "2b6819f1390c00ee0b7eedfa594cb77013b6369bb0743d9404688e77d8fb797d"
+    },
+    "rive-dependencies.rive_u15_7-mobile": {
+      "path": "rive-dependencies/rive_U15_7-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U15_7-mobile.webp?v=1765250436",
+      "bytes": 170472,
+      "sha256": "50524931a1acc55ab5bfdc7d39643d4ecf4052a23dd192bbb070ce4e32a67ed7"
+    },
+    "rive-dependencies.rive_u15_8-desktop": {
+      "path": "rive-dependencies/rive_U15_8-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U15_8-desktop.webp?v=1765250436",
+      "bytes": 195173,
+      "sha256": "3989ca1723eb7c84a0a968b5a2ab0b2b8d7438691f834541e1fb438a694254f2"
+    },
+    "rive-dependencies.rive_u15_8-mobile": {
+      "path": "rive-dependencies/rive_U15_8-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U15_8-mobile.webp?v=1765250436",
+      "bytes": 99715,
+      "sha256": "3af60c113492ac1980c8337bedd3b5e5fdf6ed6d07f160581981bef59e40d94a"
+    },
+    "rive-dependencies.rive_u15_9": {
+      "path": "rive-dependencies/rive_U15_9.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_U15_9.webp?v=1765250435",
+      "bytes": 11563,
+      "sha256": "6448e381ed9ef8a4d636f0a1782f31a8edceb78d83076ba9165a1d75752e5d8e"
+    },
+    "rive-dependencies.u15bg": {
+      "path": "rive-dependencies/u15bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u15bg.webp?v=1765250436",
+      "bytes": 142942,
+      "sha256": "db334278d718b35bc2488dd03a73a59fb993bd26d4deb4ba11913863103b6e71"
+    },
+    "demos.sidekick-multi-step-task-completion-posterImageMobile-fbc649": {
+      "path": "demos/2ec3c3abe46eb728b0f37a9e09348011.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/2ec3c3abe46eb728b0f37a9e09348011.png",
+      "bytes": 1534412,
+      "sha256": "ef031a14b383dc0b14c5ab011e52e0879c0b65b78300c2d3380494cb5fc7e1a5"
+    },
+    "rive.sidekick-voice-chat-on-mobile": {
+      "path": "rive/u5_12_9.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u5_12_9.riv?v=1787919769",
+      "bytes": 23958,
+      "sha256": "aa4bc82597591493ba664208e7b7aba4e29bf08ff37e0a5e0c4c46b8a76bbb8f"
+    },
+    "demos.sidekick-voice-chat-on-mobile-posterImage": {
+      "path": "demos/default_be7aaa86-31c5-433d-aae2-5b361372ccc6.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/default_be7aaa86-31c5-433d-aae2-5b361372ccc6.png?v=1765310847",
+      "bytes": 838336,
+      "sha256": "3d6d8f465bb7416c7f0cd2b382d25b4ff990d94a96e7edef9b100dd6e26ccc9f"
+    },
+    "demos.sidekick-voice-chat-on-mobile-fallbackImage": {
+      "path": "demos/U5_SIdekick_voice_on_mobile.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U5_SIdekick_voice_on_mobile.png?v=1765316836",
+      "bytes": 269176,
+      "sha256": "b0d5316ad571e9a842baccb9739f631fc6132cd9ea6830529efa6656a486ea65"
+    },
+    "rive-dependencies.rive_u5_1-desktop": {
+      "path": "rive-dependencies/rive_u5_1-desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u5_1-desktop.webp?v=1764658733",
+      "bytes": 1027268,
+      "sha256": "9dd92ba2a4fc59976e897de673e0185ad882852d014c3aab901c0c2b7df1ee58"
+    },
+    "rive-dependencies.rive_u5_1-mobile": {
+      "path": "rive-dependencies/rive_u5_1-mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/rive_u5_1-mobile.webp?v=1764658733",
+      "bytes": 264625,
+      "sha256": "14db249c8c431b50c9b58e10245147a652fe2c8b8ae51c9efa1fcf257b0fa333"
+    },
+    "rive-dependencies.u5bg": {
+      "path": "rive-dependencies/u5bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u5bg.webp?v=1765262801",
+      "bytes": 170706,
+      "sha256": "a44626cd7c2606a6dad17ec8f374fe70993fbc172b4effefc015d365b2343c47"
+    },
+    "demos.sidekick-voice-chat-on-mobile-posterImageMobile": {
+      "path": "demos/f7d363fc85e5562586d25e7b50669ae5.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/f7d363fc85e5562586d25e7b50669ae5.png",
+      "bytes": 1045816,
+      "sha256": "1805c110d8b5e50bc3d32e182bf47e381c83a39fdf89b2a61d27f962d750887d"
+    },
+    "demos.manage-store-details-in-the-theme-editor-image": {
+      "path": "demos/U37_Integrated_theme_editor.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U37_Integrated_theme_editor.png?v=1765297197",
+      "bytes": 1089337,
+      "sha256": "4ad3b73a3edb1abad3c7f71eb9661866b78cc612147b93765442bc25ad3a34f2"
+    },
+    "demos.theme-generation-on-mobile-image": {
+      "path": "demos/U47_Theme_index_on_mobile.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U47_Theme_index_on_mobile.png?v=1762380331",
+      "bytes": 684500,
+      "sha256": "bd4f9e8a66532485c27029fd2365e97fd93a4a41a07e34bbee5ed9353de2a78d"
+    },
+    "demos.sell-on-wordpress-image": {
+      "path": "demos/U230_Wordpress.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U230_Wordpress.png?v=1765139225",
+      "bytes": 345668,
+      "sha256": "4bac08d84d6a9aa42139c3c39940380f62de083725c201603e329d914edf1950"
+    },
+    "demos.tinker-app-image": {
+      "path": "demos/TINKER_PREROLL_FRAME_1.1.1.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/TINKER_PREROLL_FRAME_1.1.1.png?v=1765147190",
+      "bytes": 1785359,
+      "sha256": "33fbf7fa4890f6ad72e7e30c72433109b078b0670c9d9dc9de64af5c78284fd0"
+    },
+    "demos.tinker-app-video-poster": {
+      "path": "demos/0dfe781a187d48cfa581ed2b1ad6a5ed.thumbnail.0000000000.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/preview_images/0dfe781a187d48cfa581ed2b1ad6a5ed.thumbnail.0000000000.jpg?v=1765339266",
+      "bytes": 59804,
+      "sha256": "36a34e828dc26077890ced11f10de7ad1b672ff2a1ce90282ab775fd913d3dc8"
+    },
+    "demos.pos-hub-compatible-scanners-image": {
+      "path": "demos/U254_Scanner_support.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U254_Scanner_support.png?v=1765339280",
+      "bytes": 273324,
+      "sha256": "8fbe27509f0a5e9efc879f21e20343f14d2c9b9fc9efe9334d263a1adc69e3d8"
+    },
+    "demos.subscriptions-on-pos-image": {
+      "path": "demos/U49_Sell_subscriptions_POS.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U49_Sell_subscriptions_POS.png?v=1765380241",
+      "bytes": 1237632,
+      "sha256": "6e295d51f298b7be83931efe6e91e5d3a309a7ab6c717a26e3eba77a87a85c85"
+    },
+    "demos.quick-count-with-pos-image": {
+      "path": "demos/U53_Quick_count_POS_extension.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U53_Quick_count_POS_extension.png?v=1764032681",
+      "bytes": 626039,
+      "sha256": "d1902cd0c14e28fe7ec61bcfe0d30efcef2fd101818d2b6768ed81bb75362f5b"
+    },
+    "demos.same-day-delivery-with-uber-direct-image": {
+      "path": "demos/U62_Uber_Direct_POS_local.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U62_Uber_Direct_POS_local.png?v=1764806213",
+      "bytes": 1464559,
+      "sha256": "336224e6019ea255dc382f524f27ccb608a65def450df0c3618264a34fd1ab95"
+    },
+    "demos.connections-that-never-drop-image": {
+      "path": "demos/pos_2_compressed.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/pos_2_compressed.webp?v=1764800277",
+      "bytes": 3649792,
+      "sha256": "f1cf10bbce4507f7aadb722f05e9c6dd5d8d7dac29931f18129320caecbd4dce"
+    },
+    "demos.the-only-hub-with-processing-power-image": {
+      "path": "demos/pos_3_compressed.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/pos_3_compressed.webp?v=1764800318",
+      "bytes": 446822,
+      "sha256": "297b8fd9ed3405a393d632444eee94586fd318ca654dab2d104a8810f572686d"
+    },
+    "demos.shopify-messaging-supports-sms-marketing-image": {
+      "path": "demos/U105_Shopify_Email_SMS_marketing.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U105_Shopify_Email_SMS_marketing.png?v=1764621466",
+      "bytes": 2529495,
+      "sha256": "60ce50e6c2edb70f3925be144cf29c6d6f253a09665c37ddfed465ce66a46462"
+    },
+    "demos.auto-translation-for-shopify-forms-image": {
+      "path": "demos/U109_Forms_translations.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U109_Forms_translations.png?v=1764622031",
+      "bytes": 994519,
+      "sha256": "28a29b02728ebff0695b7000b6636bfee57e190f5068c1e9eb9b385ce98c73a3"
+    },
+    "demos.improved-segmentation-template-search-image": {
+      "path": "demos/U98_Search_and_filter_segmentation_templates.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U98_Search_and_filter_segmentation_templates.png?v=1764787420",
+      "bytes": 627084,
+      "sha256": "cc5a686d62a505c45ae7dca89f471a757c5fcda4b52b55786551ec988c1d51e7"
+    },
+    "demos.updated-metrics-and-widgets-for-apple-watch-image": {
+      "path": "demos/U133_Apple_watch_app_redesign.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U133_Apple_watch_app_redesign.png?v=1764791708",
+      "bytes": 1039983,
+      "sha256": "c07c0a49ffb969911b9f9e199f61584b2e9c74cac813ad723cf590921ff48c0f"
+    },
+    "demos.shoppable-videos-on-shop-video-poster": {
+      "path": "demos/def37b82d2b5486a87cbf297a896f7d4.thumbnail.0000000000.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/preview_images/def37b82d2b5486a87cbf297a896f7d4.thumbnail.0000000000.jpg?v=1765208029",
+      "bytes": 133148,
+      "sha256": "5214d8713b8a4e3dffb92d547accbba61256e8a358f16da01a9a3f42d0e4186e"
+    },
+    "demos.ach-payments-for-b2b-image": {
+      "path": "demos/U75_b2b_ACH_payments.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U75_b2b_ACH_payments.png?v=1764042485",
+      "bytes": 763349,
+      "sha256": "d3055921ccbe8cd3a134aa52f47511014c58265aac6dd5579accce3b89b795a9"
+    },
+    "demos.payment-requests-per-fulfillment-image": {
+      "path": "demos/U79_Send_payment_requests_per_fulfillment.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U79_Send_payment_requests_per_fulfillment.png?v=1765380307",
+      "bytes": 2159454,
+      "sha256": "ca4b071899cda3d349284035bdeff72145d1a906f53c28f64fdf13b5bf42f248"
+    },
+    "demos.staff-cards-spend-controls-with-shopify-balance-image": {
+      "path": "demos/U163_Spend_controls_secondary_cardholders_for_Balance.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U163_Spend_controls_secondary_cardholders_for_Balance.png?v=1762888832",
+      "bytes": 459511,
+      "sha256": "35c32422699c11d93f51212c05da47217b942badda5f0ed566b3190cb6afdf58"
+    },
+    "demos.checkout-kit-for-web-image": {
+      "path": "demos/U183_Checkout_for_web_f222b0b3-24d2-4ee2-aff2-ebf8ffb4a766.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U183_Checkout_for_web_f222b0b3-24d2-4ee2-aff2-ebf8ffb4a766.png?v=1765120160",
+      "bytes": 2343274,
+      "sha256": "ae9383d041f35e952773abb42b6b11220b758210bbcf599346de2f4a199e1d26"
+    },
+    "demos.sidekick-recommends-apps-image": {
+      "path": "demos/U226__Sidekick_app_discovery_6b57593c-579c-4a91-84af-7173ff60da83.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U226__Sidekick_app_discovery_6b57593c-579c-4a91-84af-7173ff60da83.png?v=1764892648",
+      "bytes": 2280226,
+      "sha256": "823549aba5d48e7a00083235e29d85e08cc99e5be2c494dd4fc3129e2a1d5f60"
+    },
+    "demos.sidekick-app-extensions-image": {
+      "path": "demos/U253_-_App_intents_for_Sidekick.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U253_-_App_intents_for_Sidekick.png?v=1765246170",
+      "bytes": 2116121,
+      "sha256": "103d5ffc241f1a373cccc87b8acf6b5555d84c61a7f75209ee16e12acb947e58"
+    },
+    "demos.build-with-full-mcp-support-image": {
+      "path": "demos/compressed-DEV_AI_PREROLL_120925Still001.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/compressed-DEV_AI_PREROLL_120925Still001.webp?v=1765379356",
+      "bytes": 159805,
+      "sha256": "d9ccdda34b4411dcee7491574cf6464a43b479c4064da1bd8889f3a9a4bcbc41"
+    },
+    "demos.build-with-full-mcp-support-video-poster": {
+      "path": "demos/f880db5d8462441482ecbc2437cacf5d.thumbnail.0000000000.jpg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/preview_images/f880db5d8462441482ecbc2437cacf5d.thumbnail.0000000000.jpg?v=1765379387",
+      "bytes": 145883,
+      "sha256": "63393f9c67f5a978ee46bb8b7c9bd74f585944a1326027b2991c6d6ab5b6d5a1"
+    },
+    "demos.admin-intents-api-image": {
+      "path": "demos/U229_Admin_Intents_API.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U229_Admin_Intents_API.png?v=1764976432",
+      "bytes": 1649264,
+      "sha256": "bd61e0227a97107fd53693a58ed6ca0e71d59dfdfbfcc5fb037b4734355525bd"
+    },
+    "demos.faster-bulk-operations-image": {
+      "path": "demos/U191_Faster_bulk_data_imports.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U191_Faster_bulk_data_imports.png?v=1764969366",
+      "bytes": 2369822,
+      "sha256": "1ec9e9fdd0a55e77d28d982a965c4273c31e39c4228396a681598862c6afbea3"
+    },
+    "demos.improved-metafields-and-metaobjects-image": {
+      "path": "demos/U223_upgrades_for_metafields.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U223_upgrades_for_metafields.png?v=1765245773",
+      "bytes": 1697547,
+      "sha256": "8d827861d56fd75475eadcdd67d63d70900bec97dfb12131d8325ca63d4bec76"
+    },
+    "demos.tangle-image": {
+      "path": "demos/U267_Tangle.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U267_Tangle.png?v=1764976717",
+      "bytes": 2094147,
+      "sha256": "5de21fe34ae0d7eaa6c5d49c13c1a29017e5c2d6e96360d71cf117032e299b8e"
+    },
+    "rive.shop-minis-sdk": {
+      "path": "rive/u200_12_9.riv",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u200_12_9.riv?v=1787919768",
+      "bytes": 57106,
+      "sha256": "307eaaccc78befabe76aa13ee1799797f15c62fc6d91d88310b4ea3750a80b4d"
+    },
+    "demos.shop-minis-sdk-fallbackImage": {
+      "path": "demos/U200_Shop_SDK_Minis.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U200_Shop_SDK_Minis.png?v=1765319622",
+      "bytes": 3707786,
+      "sha256": "c7a1cc651c737046ab17b6f1afa6ae937be7d50d61ed5628358825403f9b2694"
+    },
+    "rive-dependencies.u200_1_desktop": {
+      "path": "rive-dependencies/u200_1_desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u200_1_desktop.webp?v=1765260369",
+      "bytes": 1024720,
+      "sha256": "6514902daaf3e13a690ff505e0a24fee53d7e1c3b16b378b6a115fdf51cc8191"
+    },
+    "rive-dependencies.u200_1_mobile": {
+      "path": "rive-dependencies/u200_1_mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u200_1_mobile.webp?v=1765260369",
+      "bytes": 521081,
+      "sha256": "5b4dfcf17319056a62986dd09d4c414110df031181dea4bf7b38753da3a190d0"
+    },
+    "rive-dependencies.u200_2_desktop": {
+      "path": "rive-dependencies/u200_2_desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u200_2_desktop.webp?v=1765260369",
+      "bytes": 391397,
+      "sha256": "e06081feefc94b41bce6c420437182fd74c729c80e90e2a1397986ee815b8ce2"
+    },
+    "rive-dependencies.u200_2_mobile": {
+      "path": "rive-dependencies/u200_2_mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u200_2_mobile.webp?v=1765260369",
+      "bytes": 228485,
+      "sha256": "59295591463a7d34572a25dcb72ed5f0d458beb5878c0b2f42ba7acd3c4f45ef"
+    },
+    "rive-dependencies.u200_3_desktop": {
+      "path": "rive-dependencies/u200_3_desktop.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u200_3_desktop.webp?v=1765260369",
+      "bytes": 175266,
+      "sha256": "766ddfbad8ce1a5c5d450839ca4f79a6dd0ceff016746a74026579aefd055740"
+    },
+    "rive-dependencies.u200_3_mobile": {
+      "path": "rive-dependencies/u200_3_mobile.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u200_3_mobile.webp?v=1765260369",
+      "bytes": 314819,
+      "sha256": "2926ccc081e6ffbbf7906bd07864361c2c12eeb520ec8e3f35741726ad068019"
+    },
+    "rive-dependencies.u200bg": {
+      "path": "rive-dependencies/u200bg.webp",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/u200bg.webp?v=1765260369",
+      "bytes": 160949,
+      "sha256": "69d570fba2f150ec852657402df592dc40feac4b4161b446f2239005e1d93c82"
+    },
+    "demos.shop-minis-sdk-posterImage": {
+      "path": "demos/c9c913c72ba45ce34cb2521bcaaefd07.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/c9c913c72ba45ce34cb2521bcaaefd07.png",
+      "bytes": 1459791,
+      "sha256": "6b8d7af46d15cb1ff1e70a4817c39928c26516e7695fd539c87c53653f861f18"
+    },
+    "demos.shop-minis-sdk-posterImageMobile": {
+      "path": "demos/a230ba237d7a6d736a1ce46b084a41c6.png",
+      "sourceUrl": "https://cdn.shopify.com/b/shopify-brochure2-assets/a230ba237d7a6d736a1ce46b084a41c6.png",
+      "bytes": 1458301,
+      "sha256": "bb8f78989426494b96b1b7af452bc04e284215b9a13ee07a4838060cd76963a1"
+    },
+    "demos.pos-extensions-storage-api-image": {
+      "path": "demos/U190_pos_extension_storage_dark.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/U190_pos_extension_storage_dark.png?v=1763597323",
+      "bytes": 2181512,
+      "sha256": "7a46086041ad812adab15cc86420b35fb5e8ca28f38b022950854dd5a47b6aeb"
+    },
+    "edition-logos.spring2026": {
+      "path": "edition-logos/spring2026.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0647/5176/3550/files/fav-180.png?v=1780498479",
+      "bytes": 12365,
+      "sha256": "a64b26e34bf41d41490847392fa1a8c9c8fcf28451cde51b6db91c17ffd3357f"
+    },
+    "edition-logos.winter2026": {
+      "path": "edition-logos/winter2026.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0951/3130/4218/files/favicon_256.png?v=1760634627",
+      "bytes": 61464,
+      "sha256": "6f7047cc42e742fdb6209719a00ded1d413959c8508a19f2338678584d1cea7d"
+    },
+    "edition-logos.summer2025": {
+      "path": "edition-logos/summer2025.svg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0921/8919/6588/files/Summer2025.svg?v=1760667315",
+      "bytes": 2959,
+      "sha256": "1e3b0f1b6ab1316cc0f6dfa9a39751cd111fdeab7bd435a1292a8a07f2d55817"
+    },
+    "edition-logos.winter2025": {
+      "path": "edition-logos/winter2025.svg",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0702/3204/7829/files/Editions-Winter-25-compressed.svg?v=1733331674",
+      "bytes": 2538,
+      "sha256": "1e4ad11a2d9f2b5cf9049ccb32d860035269a15a431768535940b4630fe5fcb1"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+/* The supplied marble brush points towards its clickable upper-left tip. */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: url("/cursor/pinceau-marbre.png") 6 6, auto !important;
+  }
+}

@@ -1,0 +1,443 @@
+{
+  "renderer": "Actual native WebGL scene, headless Chromium with SwiftShader; no hardware frame-rate claim",
+  "pureClipPoses": {
+    "result": [
+      {
+        "t": 1.5,
+        "hub": {
+          "world": [
+            -1.3472682237625122,
+            0.3627082109451294,
+            -0.37724483013153076
+          ],
+          "scale": [
+            0.5289235711097717,
+            0.5289235711097717,
+            0.5289235711097717
+          ],
+          "box": [
+            [
+              -2.0011507092247975,
+              -0.1544372110586087,
+              -1.2488801943954368
+            ],
+            [
+              -0.386220434479802,
+              1.0818884616151465,
+              0.3735679039025852
+            ]
+          ]
+        },
+        "module": {
+          "position": [
+            1.3216021060943604,
+            0.4909519553184509,
+            0.7630273699760437
+          ],
+          "quaternion": [
+            0.2259269329965,
+            0.1080466347054877,
+            0.1774273642741739,
+            0.9517365581306275
+          ]
+        },
+        "meshes": {
+          "meshes": 50,
+          "skinned": 3
+        }
+      },
+      {
+        "t": 3.75,
+        "hub": {
+          "world": [
+            -1.1381973028182983,
+            0.4042312800884247,
+            -0.4336926341056824
+          ],
+          "scale": [
+            0.5995400547981262,
+            0.5995400547981262,
+            0.5995400547981262
+          ],
+          "box": [
+            [
+              -1.8047524340483996,
+              0.026159897537946758,
+              -1.1738920752096045
+            ],
+            [
+              -0.35999013547390996,
+              1.220668208952827,
+              0.2511463862763781
+            ]
+          ]
+        },
+        "module": {
+          "position": [
+            0.9138370752334595,
+            0.21634124219417572,
+            0.5276040434837341
+          ],
+          "quaternion": [
+            0.07252047900960812,
+            -0.1121855518649837,
+            0.04864529483360833,
+            0.9898428245774767
+          ]
+        },
+        "meshes": {
+          "meshes": 50,
+          "skinned": 3
+        }
+      },
+      {
+        "t": 7.5,
+        "hub": {
+          "world": [
+            -1.13653564453125,
+            0.405051589012146,
+            -0.43349993228912354
+          ],
+          "scale": [
+            0.6000000238418579,
+            0.6000000238418579,
+            0.6000000238418579
+          ],
+          "box": [
+            [
+              -1.8945485861440345,
+              0.10825062096374471,
+              -1.2455976371771513
+            ],
+            [
+              -0.3733884439551668,
+              1.058148048576984,
+              0.3901644786997547
+            ]
+          ]
+        },
+        "module": {
+          "position": [
+            0.6668395400047302,
+            0.05000000074505806,
+            0.38499999046325684
+          ],
+          "quaternion": [
+            0,
+            -0.258819043636322,
+            0,
+            0.9659258127212524
+          ]
+        },
+        "meshes": {
+          "meshes": 50,
+          "skinned": 3
+        }
+      },
+      {
+        "t": 3.75,
+        "hub": {
+          "world": [
+            -1.1381973028182983,
+            0.4042312800884247,
+            -0.4336926341056824
+          ],
+          "scale": [
+            0.5995400547981262,
+            0.5995400547981262,
+            0.5995400547981262
+          ],
+          "box": [
+            [
+              -1.8047524340483996,
+              0.026159897537946758,
+              -1.1738920752096045
+            ],
+            [
+              -0.35999013547390996,
+              1.220668208952827,
+              0.2511463862763781
+            ]
+          ]
+        },
+        "module": {
+          "position": [
+            0.9138370752334595,
+            0.21634124219417572,
+            0.5276040434837341
+          ],
+          "quaternion": [
+            0.07252047900960812,
+            -0.1121855518649837,
+            0.04864529483360833,
+            0.9898428245774767
+          ]
+        },
+        "meshes": {
+          "meshes": 50,
+          "skinned": 3
+        }
+      }
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "nativeDesktop": {
+    "viewport": {
+      "width": 1900,
+      "height": 916
+    },
+    "samples": [
+      {
+        "fraction": 0,
+        "scroll": 23473,
+        "sequence": 1.1618065231819463,
+        "clip": [
+          {
+            "name": "Scene",
+            "time": 2.859426457539584,
+            "timeScale": 0,
+            "loop": 2201,
+            "running": false
+          }
+        ],
+        "hub": {
+          "position": [
+            -1.1931850751155637,
+            0.6298456701516033,
+            -0.4291344164167744
+          ],
+          "scale": [
+            0.5994306456223077,
+            0.5994306456223077,
+            0.5994306456223077
+          ],
+          "quaternion": [
+            0.0830623245474927,
+            0.2328205910389771,
+            -0.016905448443582154,
+            0.968818573543029
+          ]
+        },
+        "module": {
+          "position": [
+            1.1020322592340057,
+            0.34308193845447604,
+            0.6362586417796867
+          ],
+          "quaternion": [
+            0.1396261777186865,
+            -0.005763783183333816,
+            0.10180023095630175,
+            0.9849406186549161
+          ]
+        },
+        "overflow": 0
+      },
+      {
+        "fraction": 0.36,
+        "scroll": 23803,
+        "sequence": 1.510741031458341,
+        "clip": [
+          {
+            "name": "Scene",
+            "time": 4.786983619294527,
+            "timeScale": 0,
+            "loop": 2201,
+            "running": false
+          }
+        ],
+        "hub": {
+          "position": [
+            -1.1377380396677308,
+            0.6244581556040205,
+            -0.4336389496549341
+          ],
+          "scale": [
+            0.5996670392927859,
+            0.5996670392927859,
+            0.5996670392927859
+          ],
+          "quaternion": [
+            0.08000669606657954,
+            0.2797477635422151,
+            -0.011935635821089762,
+            0.956659635385117
+          ]
+        },
+        "module": {
+          "position": [
+            0.73177742653271,
+            0.09373262142492993,
+            0.42249189300284545
+          ],
+          "quaternion": [
+            0.01703825297239671,
+            -0.21989250508890917,
+            0.010232682668147756,
+            0.9753216271296282
+          ]
+        },
+        "overflow": 0
+      },
+      {
+        "fraction": 0.7,
+        "scroll": 24115,
+        "sequence": 1.840642748374205,
+        "clip": [
+          {
+            "name": "Scene",
+            "time": 5.987752211671339,
+            "timeScale": 0,
+            "loop": 2201,
+            "running": false
+          }
+        ],
+        "hub": {
+          "position": [
+            -1.1372061445234751,
+            0.6247207625666689,
+            -0.43357688385592597
+          ],
+          "scale": [
+            0.5998145058570776,
+            0.5998145058570776,
+            0.5998145058570776
+          ],
+          "quaternion": [
+            0.0780062948357713,
+            0.30865089752596864,
+            -0.008824559002940572,
+            0.9479302551247176
+          ]
+        },
+        "module": {
+          "position": [
+            0.6668395400047302,
+            0.05000000074505806,
+            0.38499999046325684
+          ],
+          "quaternion": [
+            0,
+            -0.258819043636322,
+            0,
+            0.9659258127212524
+          ]
+        },
+        "overflow": 0
+      },
+      {
+        "fraction": 0.36,
+        "scroll": 23803,
+        "sequence": 1.510741031458341,
+        "clip": [
+          {
+            "name": "Scene",
+            "time": 4.786983619294527,
+            "timeScale": 0,
+            "loop": 2201,
+            "running": false
+          }
+        ],
+        "hub": {
+          "position": [
+            -1.1377380396677308,
+            0.6244581556040205,
+            -0.4336389496549341
+          ],
+          "scale": [
+            0.5996670392927859,
+            0.5996670392927859,
+            0.5996670392927859
+          ],
+          "quaternion": [
+            0.08000669606657954,
+            0.2797477635422151,
+            -0.011935635821089762,
+            0.956659635385117
+          ]
+        },
+        "module": {
+          "position": [
+            0.73177742653271,
+            0.09373262142492993,
+            0.42249189300284545
+          ],
+          "quaternion": [
+            0.01703825297239671,
+            -0.21989250508890917,
+            0.010232682668147756,
+            0.9753216271296282
+          ]
+        },
+        "overflow": 0
+      }
+    ],
+    "reversePoseExactlyEqual": true,
+    "stationaryTimes": [
+      4.786983619294527
+    ],
+    "stationaryTimesAfter700ms": [
+      4.786983619294527
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "nativeMobile": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "portraitModelScale": 0.28649289099526065,
+    "stationaryTimes": [
+      2.8642612943616084
+    ],
+    "stationaryTimesAfter700ms": [
+      2.8642612943616084
+    ],
+    "errors": [],
+    "warnings": [],
+    "overflow": 0,
+    "visual": "woman, articulated hand, octagonal headphone and staged hub visible together"
+  },
+  "oldSketchVisibleMeshes": [],
+  "reachableNodes": 95,
+  "loopPolicy": "Existing vision-v2 state explicitly sets asset-1.animations.Scene.loop=false; every captured native action.timeScale is 0.",
+  "newRuntimeAnimationLoops": 0,
+  "sharedFilesEdited": false,
+  "fallbacks": {
+    "capture": "Actual native scene rendered directly to the WebGL canvas; excludes HTML and paper compositor",
+    "files": [
+      {
+        "old": "/bump/art/vision-fallback-v2.jpg",
+        "url": "/bump/art/vision-fallback-v23.jpg",
+        "width": 1900,
+        "height": 916,
+        "bytes": 261350,
+        "id": "bump-vision-fallback-v23",
+        "altText": "Consultante Bump et infrastructure future \u2014 sc\u00e8ne 3D"
+      },
+      {
+        "old": "/bump/art/vision-fallback-mobile-v2.jpg",
+        "url": "/bump/art/vision-fallback-mobile-v23.jpg",
+        "width": 390,
+        "height": 844,
+        "bytes": 49707,
+        "id": "bump-vision-fallback-mobile-v23",
+        "altText": "Consultante Bump et infrastructure future \u2014 sc\u00e8ne 3D"
+      }
+    ],
+    "visuallyInspected": true
+  },
+  "finalPolish": {
+    "skin": "Fine collar boundary, lower than the former green gradient; jaw and neck remain bronze.",
+    "hubStaticTranslationDelta": [
+      0,
+      -0.22,
+      0
+    ],
+    "geometryAndAssemblyCurvesUnchanged": true,
+    "nativeScrollSamples": "Captured before this static translation and texture polish; repeatable seek and clip channel data are unchanged.",
+    "finalPureClipReverseExactlyEqual": true
+  }
+}

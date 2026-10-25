@@ -1,0 +1,38 @@
+[
+  {
+    "input": "sidekick-1.glb",
+    "output": "workflow-1-v3.glb"
+  },
+  {
+    "input": "online-1.glb",
+    "output": "software-1-v3.glb"
+  },
+  {
+    "input": "operations-1.glb",
+    "output": "security-1-v2.glb"
+  },
+  {
+    "input": "operations-3.glb",
+    "output": "security-3-v2.glb"
+  },
+  {
+    "input": "retail-1.glb",
+    "output": "method-1-v2.glb"
+  },
+  {
+    "input": "retail-2.glb",
+    "output": "method-2-v3.glb"
+  },
+  {
+    "input": "retail-3.glb",
+    "output": "method-3-v3.glb"
+  },
+  {
+    "input": "developer-1.glb",
+    "output": "vision-1-v2.glb"
+  },
+  {
+    "input": "b2b-1.glb",
+    "output": "contact-1-v3.glb"
+  }
+]

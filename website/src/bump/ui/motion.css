@@ -1,0 +1,37 @@
+.bump-motion-panel{transform-origin:top left}
+.bump-motion-panel[data-motion-state=closing]{pointer-events:none}
+.bump-hero-header .bump-nav-trigger{transition:background-color .26s ease,color .26s ease,box-shadow .26s ease}
+.bump-hero-header .bump-nav-trigger img{transition:transform .32s cubic-bezier(.22,1,.36,1),filter .26s ease}
+.bump-hero-dropdown-row a{transition:background-color .2s ease,padding-left .25s cubic-bezier(.22,1,.36,1)}
+.bump-hero-dropdown-row a:hover{padding-left:41px}
+.bump-hero-search-results{display:grid;grid-template-rows:0fr;padding-block:0;border-top-color:transparent;transition:grid-template-rows .32s cubic-bezier(.22,1,.36,1),padding .32s ease,border-color .25s ease}
+.bump-hero-search-results.has-results{grid-template-rows:1fr;padding-block:6px 8px;border-top-color:#ecece8}
+.bump-hero-search-results>div{overflow:hidden;min-height:0;padding:0;border:0;display:block}
+.bump-hero-search-results>div>div{display:flex;flex-direction:column;gap:3px;padding:10px 0;border-bottom:1px solid #ecece8}
+.bump-hero-search-results>div>div:last-child{border-bottom:0}
+.bump-hero-search-results>div>div>span{font-size:10px;line-height:13px;color:#8b8b86}
+.bump-project-button{transition:background-color .25s ease,box-shadow .3s ease,transform .3s cubic-bezier(.22,1,.36,1)}
+.bump-project-button:hover{box-shadow:0 3px 16px #00000015;transform:translateY(-1px)}
+.bump-project-button:active{transform:translateY(0)}
+.bump-dialog[data-motion-state=opening]::backdrop{animation:bump-backdrop-in .38s cubic-bezier(.22,1,.36,1) both}
+.bump-dialog[data-motion-state=closing]::backdrop{animation:bump-backdrop-out .24s ease both}
+html:has(.bump-dialog[open]){overflow:hidden}
+@keyframes bump-backdrop-in{from{opacity:0}to{opacity:1}}
+@keyframes bump-backdrop-out{from{opacity:1}to{opacity:0}}
+@media(prefers-reduced-motion:reduce){.bump-hero-header .bump-nav-trigger,.bump-hero-header .bump-nav-trigger img,.bump-hero-dropdown-row a,.bump-hero-search-results,.bump-project-button{transition:none}.bump-dialog::backdrop{animation:none!important}}
+.bump-opening-progress{display:none}
+html[data-bump-opening=type] .bump-opening-progress{position:fixed;z-index:305;bottom:max(35px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;color:#eee9da;font-family:var(--bump-serif);font-size:16px;letter-spacing:.015em;pointer-events:none}
+.bump-opening-track{position:relative;display:block;width:145px;height:1px;overflow:hidden;background:#eee9da38}
+.bump-opening-track i{position:absolute;inset:0;background:#eee9da;transform:translateX(-100%);animation:bump-scene-loading 1.5s ease-in-out infinite}
+@keyframes bump-scene-loading{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@media(prefers-reduced-motion:reduce){.bump-opening-track i{animation:none;transform:none;opacity:.65}}
+/* Shared pointer for the real interactive demonstrations. */
+.bsc-demo,.bsc-orbit-system,.bsd-demo,.bump-flow-canvas{position:relative}
+.bump-demo-cursor{position:absolute;width:25px;height:30px;z-index:25;pointer-events:none;transition:left .34s cubic-bezier(.22,1,.36,1),top .34s cubic-bezier(.22,1,.36,1);filter:drop-shadow(0 2px 3px #14271d36)}
+.bump-demo-cursor>svg{display:block;width:100%;height:100%;fill:#fffcf3;stroke:#234f3b;stroke-width:1.7;stroke-linejoin:round}
+.bump-demo-click{position:absolute;left:-11px;top:-10px;width:25px;height:25px;border:2px solid #238458;border-radius:50%;animation:bump-demo-click .52s ease-out both}
+[data-bump-fixed-timing] .bump-demo-cursor{transition-duration:calc(.34s / var(--bump-motion-rate,2))}
+[data-bump-fixed-timing] .bump-demo-click{animation-duration:calc(.52s / var(--bump-motion-rate,2))}
+@keyframes bump-demo-click{from{transform:scale(.35);opacity:1}to{transform:scale(1.7);opacity:0}}
+.bsd-steps>span{display:inline-flex;align-items:center;gap:6px;font-size:10px;color:#858a7c}.bsd-steps>span[aria-current=step]{color:#246044}.bsd-steps>span>b{font-weight:400}
+@media(prefers-reduced-motion:reduce){.bump-demo-cursor{display:none}}

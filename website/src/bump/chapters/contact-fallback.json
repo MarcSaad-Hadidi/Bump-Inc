@@ -1,0 +1,12 @@
+[
+  {
+    "name": "b2b",
+    "mobile": false,
+    "file": "company-atelier-fallback-v22.jpg"
+  },
+  {
+    "name": "b2b",
+    "mobile": true,
+    "file": "company-atelier-fallback-mobile-v22.jpg"
+  }
+]

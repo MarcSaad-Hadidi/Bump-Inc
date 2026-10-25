@@ -1,0 +1,28 @@
+{
+  "bytes": 5468020,
+  "bones": 170,
+  "skinnedMeshes": 8,
+  "vertices": 27247,
+  "removedProps": [
+    "shiny-skatedeck",
+    "Skateboard",
+    "Coffee_Cup",
+    "PinkBag",
+    "PinkBag001"
+  ],
+  "animations": [
+    {
+      "name": "Scene",
+      "tracks": 543,
+      "duration": 5
+    },
+    {
+      "name": "BumpAmbient",
+      "tracks": 4,
+      "duration": 12
+    }
+  ],
+  "attachments": {},
+  "addedProps": [],
+  "backgroundPeople": false
+}

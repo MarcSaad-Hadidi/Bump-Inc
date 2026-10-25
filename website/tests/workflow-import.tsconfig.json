@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true
+  },
+  "include": [
+    "../src/components/bump-anatomy/**/*.ts",
+    "../src/components/bump-anatomy/**/*.tsx",
+    "../src/bump/machines/methodRuntime.ts",
+    "../src/bump/machines/visionRuntime.ts",
+    "../src/bump/vision/IntegrationBeam.tsx",
+    "../src/bump/machines/portCraneRuntime.ts",
+    "../src/bump/machines/workflowRuntime.ts",
+    "../src/bump/machines/securityRuntime.ts"
+  ]
+}

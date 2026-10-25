@@ -1,5 +1,7 @@
 # Bump OS
 
+Le site public Bump (version 46, français et anglais) est disponible dans **[`website/`](website/README.md)**. Ce dossier contient ses propres sources, modèles 3D, musique, polices, dépendances et instructions pour un hébergement indépendant.
+
 Technology consulting platform foundation. PR 01 supplies a strict TypeScript workspace, Fastify API, PostgreSQL migrations, Redis/BullMQ worker, minimal Next.js diagnostics, local containers and automated checks. Business features remain planned in [the PR roadmap](docs/PR_ROADMAP.md).
 
 The `loi-25` branch adds a local passive audit prototype at `/loi-25`; see [setup, scope and restrictions](docs/LOI25.md).

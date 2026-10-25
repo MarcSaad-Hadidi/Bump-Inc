@@ -1,0 +1,1179 @@
+[
+  {
+    "name": "sidekick-1",
+    "handle": "sidekick",
+    "assetIndex": 0,
+    "textures": [
+      {
+        "filename": "sidekick-1-texture-0.png",
+        "textureIndex": 0,
+        "material": "Sidekick-v3",
+        "field": "map",
+        "width": 2048,
+        "height": 2048,
+        "flipY": false
+      }
+    ],
+    "meshes": [
+      {
+        "name": "Sidekick_laptop",
+        "skinned": false,
+        "vertices": 9442,
+        "materials": [
+          "Sidekick-v3"
+        ]
+      },
+      {
+        "name": "sidekick-eyelids",
+        "skinned": false,
+        "vertices": 163,
+        "materials": [
+          "Sidekick-v3"
+        ]
+      },
+      {
+        "name": "shiny-ring1",
+        "skinned": false,
+        "vertices": 2570,
+        "materials": [
+          "Sidekick-v3-metallic"
+        ]
+      },
+      {
+        "name": "shiny-ring2",
+        "skinned": false,
+        "vertices": 721,
+        "materials": [
+          "Sidekick-v3-metallic"
+        ]
+      },
+      {
+        "name": "shiny-ring4",
+        "skinned": false,
+        "vertices": 703,
+        "materials": [
+          "Sidekick-v3-metallic"
+        ]
+      },
+      {
+        "name": "shiny-ring5",
+        "skinned": false,
+        "vertices": 588,
+        "materials": [
+          "Sidekick-v3-metallic"
+        ]
+      },
+      {
+        "name": "shiny-ring6",
+        "skinned": false,
+        "vertices": 2940,
+        "materials": [
+          "Sidekick-v3-metallic"
+        ]
+      }
+    ],
+    "animations": [
+      {
+        "name": "sidekick-eyelidsAction",
+        "duration": 3.0833332538604736,
+        "tracks": 3
+      },
+      {
+        "name": "Armillary_02_RingAction",
+        "duration": 3.75,
+        "tracks": 3
+      },
+      {
+        "name": "Armillary_04_RingAction",
+        "duration": 3.75,
+        "tracks": 3
+      },
+      {
+        "name": "Armillary_05_RingAction",
+        "duration": 3.75,
+        "tracks": 3
+      },
+      {
+        "name": "Armillary_06_RingAction",
+        "duration": 3.75,
+        "tracks": 3
+      }
+    ],
+    "bounds": {
+      "min": [
+        -2.386795007822534,
+        -1.745336282920637,
+        -1.9308302118833103
+      ],
+      "max": [
+        2.158454993273363,
+        1.11724463872749,
+        2.61471702613096
+      ]
+    }
+  },
+  {
+    "name": "online-1",
+    "handle": "online",
+    "assetIndex": 0,
+    "textures": [
+      {
+        "filename": "online-1-texture-0.png",
+        "textureIndex": 0,
+        "material": "OnlineScene",
+        "field": "map",
+        "width": 1024,
+        "height": 1024,
+        "flipY": false
+      },
+      {
+        "filename": "online-1-texture-1.png",
+        "textureIndex": 1,
+        "material": "online_fg_man",
+        "field": "map",
+        "width": 2048,
+        "height": 2048,
+        "flipY": false
+      }
+    ],
+    "meshes": [
+      {
+        "name": "online_computer",
+        "skinned": false,
+        "vertices": 8585,
+        "materials": [
+          "OnlineScene"
+        ]
+      },
+      {
+        "name": "online_canvas",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "OnlineScene"
+        ]
+      },
+      {
+        "name": "online-man",
+        "skinned": true,
+        "vertices": 16531,
+        "materials": [
+          "online_fg_man"
+        ]
+      },
+      {
+        "name": "online_hand001",
+        "skinned": true,
+        "vertices": 1243,
+        "materials": [
+          "OnlineScene"
+        ]
+      },
+      {
+        "name": "brush",
+        "skinned": false,
+        "vertices": 151,
+        "materials": [
+          "OnlineScene"
+        ]
+      },
+      {
+        "name": "shiny-brush",
+        "skinned": false,
+        "vertices": 118,
+        "materials": [
+          "OnlineScene-metallic"
+        ]
+      }
+    ],
+    "animations": [
+      {
+        "name": "online_canvasAction",
+        "duration": 2.5,
+        "tracks": 3
+      },
+      {
+        "name": "Armature.002Action.001",
+        "duration": 2.5416667461395264,
+        "tracks": 24
+      },
+      {
+        "name": "online_handarmatureAction.001",
+        "duration": 2.5416667461395264,
+        "tracks": 81
+      },
+      {
+        "name": "online_brushAction.001",
+        "duration": 2.5416667461395264,
+        "tracks": 6
+      }
+    ],
+    "bounds": {
+      "min": [
+        -2.3352118853032864,
+        -1.4639586387931673,
+        -1.9522846768495579
+      ],
+      "max": [
+        2.2770640363838996,
+        0.7244159027270822,
+        2.6562527761019554
+      ]
+    }
+  },
+  {
+    "name": "operations-1",
+    "handle": "operations",
+    "assetIndex": 0,
+    "textures": [
+      {
+        "filename": "operations-1-texture-0.png",
+        "textureIndex": 0,
+        "material": "Operations",
+        "field": "map",
+        "width": 2048,
+        "height": 2048,
+        "flipY": false
+      }
+    ],
+    "meshes": [
+      {
+        "name": "Operations",
+        "skinned": true,
+        "vertices": 16460,
+        "materials": [
+          "Operations"
+        ]
+      },
+      {
+        "name": "eyes-m-01",
+        "skinned": false,
+        "vertices": 80,
+        "materials": [
+          "Operations"
+        ]
+      },
+      {
+        "name": "eyes-m-02",
+        "skinned": false,
+        "vertices": 63,
+        "materials": [
+          "Operations"
+        ]
+      },
+      {
+        "name": "eyes-m-03",
+        "skinned": false,
+        "vertices": 75,
+        "materials": [
+          "Operations"
+        ]
+      },
+      {
+        "name": "eyes-w-01",
+        "skinned": false,
+        "vertices": 52,
+        "materials": [
+          "Operations"
+        ]
+      },
+      {
+        "name": "eyes-w-02",
+        "skinned": false,
+        "vertices": 77,
+        "materials": [
+          "Operations"
+        ]
+      }
+    ],
+    "animations": [
+      {
+        "name": "Operations People",
+        "duration": 0.0833333358168602,
+        "tracks": 60
+      },
+      {
+        "name": "eyes-m-01Action",
+        "duration": 7.5,
+        "tracks": 3
+      },
+      {
+        "name": "eyes-m-02Action",
+        "duration": 7.5,
+        "tracks": 3
+      },
+      {
+        "name": "eyes-m-03Action",
+        "duration": 7.5,
+        "tracks": 3
+      },
+      {
+        "name": "eyes-w-01Action",
+        "duration": 7.5,
+        "tracks": 3
+      },
+      {
+        "name": "eyes-w-02Action",
+        "duration": 7.5,
+        "tracks": 3
+      }
+    ],
+    "bounds": {
+      "min": [
+        -2.070656972842977,
+        -1.929157211723528,
+        -0.6307986066308015
+      ],
+      "max": [
+        2.0807605691986812,
+        0.877485545603864,
+        0.9380381259613152
+      ]
+    }
+  },
+  {
+    "name": "operations-3",
+    "handle": "operations",
+    "assetIndex": 2,
+    "textures": [
+      {
+        "filename": "operations-3-texture-0.png",
+        "textureIndex": 0,
+        "material": "earth_MAT",
+        "field": "map",
+        "width": 1024,
+        "height": 512,
+        "flipY": false
+      }
+    ],
+    "meshes": [
+      {
+        "name": "earth",
+        "skinned": false,
+        "vertices": 3829,
+        "materials": [
+          "earth_MAT"
+        ]
+      }
+    ],
+    "animations": [],
+    "bounds": {
+      "min": [
+        -51.36420440673828,
+        2.163654327392578,
+        -51.36420440673828
+      ],
+      "max": [
+        51.36420440673828,
+        104.89206314086914,
+        51.36420440673828
+      ]
+    }
+  },
+  {
+    "name": "retail-1",
+    "handle": "retail",
+    "assetIndex": 0,
+    "textures": [
+      {
+        "filename": "retail-1-texture-0.png",
+        "textureIndex": 0,
+        "material": "pos-environment",
+        "field": "map",
+        "width": 2048,
+        "height": 2048,
+        "flipY": false
+      },
+      {
+        "filename": "retail-1-texture-1.png",
+        "textureIndex": 1,
+        "material": "pos-dome",
+        "field": "map",
+        "width": 2048,
+        "height": 2048,
+        "flipY": false
+      }
+    ],
+    "meshes": [
+      {
+        "name": "env-exterior",
+        "skinned": false,
+        "vertices": 48,
+        "materials": [
+          "pos-environment"
+        ]
+      },
+      {
+        "name": "env-interior",
+        "skinned": false,
+        "vertices": 1952,
+        "materials": [
+          "pos-environment"
+        ]
+      },
+      {
+        "name": "corinthian_column001",
+        "skinned": false,
+        "vertices": 228,
+        "materials": [
+          "pos-environment"
+        ]
+      },
+      {
+        "name": "en-dome",
+        "skinned": false,
+        "vertices": 896,
+        "materials": [
+          "pos-dome"
+        ]
+      }
+    ],
+    "animations": [
+      {
+        "name": "Scene",
+        "duration": 11.666666984558105,
+        "tracks": 7
+      }
+    ],
+    "bounds": {
+      "min": [
+        -16.485523832374696,
+        -2.3434488157577675,
+        -16.485523832374696
+      ],
+      "max": [
+        16.485523832374696,
+        6.5544023270608704,
+        16.485523832374696
+      ]
+    }
+  },
+  {
+    "name": "retail-2",
+    "handle": "retail",
+    "assetIndex": 1,
+    "textures": [
+      {
+        "filename": "retail-2-texture-1.png",
+        "textureIndex": 1,
+        "material": "pos-pcb",
+        "field": "map",
+        "width": 512,
+        "height": 512,
+        "flipY": false
+      }
+    ],
+    "meshes": [
+      {
+        "name": "pos-top",
+        "skinned": false,
+        "vertices": 8499,
+        "materials": [
+          "pos-hub-shell"
+        ]
+      },
+      {
+        "name": "pos-bottom",
+        "skinned": false,
+        "vertices": 6057,
+        "materials": [
+          "pos-hub-bottom"
+        ]
+      },
+      {
+        "name": "pos-markings",
+        "skinned": false,
+        "vertices": 6273,
+        "materials": [
+          "pos-hub-markings"
+        ]
+      },
+      {
+        "name": "pos-logo",
+        "skinned": false,
+        "vertices": 186,
+        "materials": [
+          "pos-hub-logo"
+        ]
+      },
+      {
+        "name": "pos-pcb",
+        "skinned": false,
+        "vertices": 7376,
+        "materials": [
+          "pos-pcb"
+        ]
+      },
+      {
+        "name": "pos-ports_1",
+        "skinned": false,
+        "vertices": 10068,
+        "materials": [
+          "pos-hub-ports"
+        ]
+      },
+      {
+        "name": "pos-ports_2",
+        "skinned": false,
+        "vertices": 2588,
+        "materials": [
+          "pos-ports-white"
+        ]
+      },
+      {
+        "name": "pos-screws",
+        "skinned": false,
+        "vertices": 990,
+        "materials": [
+          "pos-hub-bottom"
+        ]
+      }
+    ],
+    "animations": [
+      {
+        "name": "Scene",
+        "duration": 2.5,
+        "tracks": 4
+      }
+    ],
+    "bounds": {
+      "min": [
+        -0.040204307434114454,
+        -0.017253592129937607,
+        -0.059356091867781936
+      ],
+      "max": [
+        0.039869947659619404,
+        0.015521213412284851,
+        0.05964393762141777
+      ]
+    }
+  },
+  {
+    "name": "retail-3",
+    "handle": "retail",
+    "assetIndex": 2,
+    "textures": [
+      {
+        "filename": "retail-3-texture-0.png",
+        "textureIndex": 0,
+        "material": "pos-desk",
+        "field": "map",
+        "width": 2048,
+        "height": 2048,
+        "flipY": false
+      },
+      {
+        "filename": "retail-3-texture-1.png",
+        "textureIndex": 1,
+        "material": "tablet-screen",
+        "field": "map",
+        "width": 1024,
+        "height": 768,
+        "flipY": false
+      }
+    ],
+    "meshes": [
+      {
+        "name": "env-backwall",
+        "skinned": false,
+        "vertices": 3148,
+        "materials": [
+          "pos-desk"
+        ]
+      },
+      {
+        "name": "pos-device-ipad_1",
+        "skinned": false,
+        "vertices": 253,
+        "materials": [
+          "tablet-screen"
+        ]
+      },
+      {
+        "name": "pos-device-ipad_2",
+        "skinned": false,
+        "vertices": 1377,
+        "materials": [
+          "tablet-metal"
+        ]
+      },
+      {
+        "name": "pos-device-ipad_3",
+        "skinned": false,
+        "vertices": 3411,
+        "materials": [
+          "tablet-swivel"
+        ]
+      },
+      {
+        "name": "pos-device-screen",
+        "skinned": false,
+        "vertices": 156,
+        "materials": [
+          "tablet-screen"
+        ]
+      },
+      {
+        "name": "pos-device-scanner",
+        "skinned": false,
+        "vertices": 14997,
+        "materials": [
+          "scanner&reader"
+        ]
+      },
+      {
+        "name": "pos-reader",
+        "skinned": false,
+        "vertices": 242,
+        "materials": [
+          "Screen"
+        ]
+      },
+      {
+        "name": "shine-poscordscanner",
+        "skinned": false,
+        "vertices": 480,
+        "materials": [
+          "Cable"
+        ]
+      },
+      {
+        "name": "shiny-bar1",
+        "skinned": false,
+        "vertices": 4846,
+        "materials": [
+          "pos-desk-metal"
+        ]
+      },
+      {
+        "name": "shiny-pos-psu-end_1",
+        "skinned": true,
+        "vertices": 719,
+        "materials": [
+          "Cable"
+        ]
+      },
+      {
+        "name": "shiny-pos-psu-end_2",
+        "skinned": true,
+        "vertices": 96,
+        "materials": [
+          "Metal"
+        ]
+      },
+      {
+        "name": "shiny-pos-usb-end-1_1",
+        "skinned": true,
+        "vertices": 934,
+        "materials": [
+          "Cable"
+        ]
+      },
+      {
+        "name": "shiny-pos-usb-end-1_2",
+        "skinned": true,
+        "vertices": 12,
+        "materials": [
+          "pos-ports-white"
+        ]
+      },
+      {
+        "name": "shiny-pos-usb-end-1_3",
+        "skinned": true,
+        "vertices": 246,
+        "materials": [
+          "Metal"
+        ]
+      },
+      {
+        "name": "shiny-pos-usb-end-2_1",
+        "skinned": true,
+        "vertices": 932,
+        "materials": [
+          "Cable"
+        ]
+      },
+      {
+        "name": "shiny-pos-usb-end-2_2",
+        "skinned": true,
+        "vertices": 12,
+        "materials": [
+          "pos-ports-white"
+        ]
+      },
+      {
+        "name": "shiny-pos-usb-end-2_3",
+        "skinned": true,
+        "vertices": 246,
+        "materials": [
+          "Metal"
+        ]
+      },
+      {
+        "name": "shiny-posethernetend",
+        "skinned": true,
+        "vertices": 1643,
+        "materials": [
+          "Cable"
+        ]
+      },
+      {
+        "name": "shiny-cord",
+        "skinned": true,
+        "vertices": 876,
+        "materials": [
+          "Cable"
+        ]
+      },
+      {
+        "name": "shiny-cord001",
+        "skinned": false,
+        "vertices": 104,
+        "materials": [
+          "Metal"
+        ]
+      },
+      {
+        "name": "shiny-cord001_1",
+        "skinned": false,
+        "vertices": 649,
+        "materials": [
+          "pos-desk-metal"
+        ]
+      }
+    ],
+    "animations": [
+      {
+        "name": "Scene",
+        "duration": 11.666666984558105,
+        "tracks": 185
+      }
+    ],
+    "bounds": {
+      "min": [
+        -1.659828543663025,
+        -0.4394171060273645,
+        -2.3434919455793857
+      ],
+      "max": [
+        1.6665455102920532,
+        3.1582853818808045,
+        0.280702427953508
+      ]
+    }
+  },
+  {
+    "name": "developer-1",
+    "handle": "developer",
+    "assetIndex": 0,
+    "textures": [
+      {
+        "filename": "developer-1-texture-0.png",
+        "textureIndex": 0,
+        "material": "Developer_FG.001",
+        "field": "map",
+        "width": 2048,
+        "height": 2048,
+        "flipY": false
+      },
+      {
+        "filename": "developer-1-texture-1.png",
+        "textureIndex": 1,
+        "material": "Developer_fg_layering",
+        "field": "map",
+        "width": 1024,
+        "height": 1024,
+        "flipY": false
+      }
+    ],
+    "meshes": [
+      {
+        "name": "Developer_fg",
+        "skinned": true,
+        "vertices": 12671,
+        "materials": [
+          "Developer_FG.001"
+        ]
+      },
+      {
+        "name": "Dev_hand",
+        "skinned": true,
+        "vertices": 1161,
+        "materials": [
+          "Developer_FG.001"
+        ]
+      },
+      {
+        "name": "Cube",
+        "skinned": false,
+        "vertices": 22,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube003",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube004",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube005",
+        "skinned": false,
+        "vertices": 22,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube006",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube007",
+        "skinned": false,
+        "vertices": 22,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube008",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube009",
+        "skinned": false,
+        "vertices": 22,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube010",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube011",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube012",
+        "skinned": false,
+        "vertices": 22,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube013",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube014",
+        "skinned": false,
+        "vertices": 22,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube015",
+        "skinned": false,
+        "vertices": 22,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube016",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube017",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube018",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube019",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube020",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube021",
+        "skinned": false,
+        "vertices": 22,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube022",
+        "skinned": false,
+        "vertices": 22,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube023",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube024",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube025",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube026",
+        "skinned": false,
+        "vertices": 22,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube027",
+        "skinned": false,
+        "vertices": 22,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      },
+      {
+        "name": "Cube028",
+        "skinned": false,
+        "vertices": 24,
+        "materials": [
+          "Developer_fg_layering"
+        ]
+      }
+    ],
+    "animations": [
+      {
+        "name": "Scene",
+        "duration": 7.5,
+        "tracks": 192
+      }
+    ],
+    "bounds": {
+      "min": [
+        -1.5437922763312066,
+        -2.575882195740099,
+        -2.1040972308042885
+      ],
+      "max": [
+        2.4301775427679497,
+        1.2652716172194176,
+        1.21828870595413
+      ]
+    }
+  },
+  {
+    "name": "b2b-1",
+    "handle": "b2b",
+    "assetIndex": 0,
+    "textures": [
+      {
+        "filename": "b2b-1-texture-0.png",
+        "textureIndex": 0,
+        "material": "B2B",
+        "field": "map",
+        "width": 2048,
+        "height": 2048,
+        "flipY": false
+      },
+      {
+        "filename": "b2b-1-texture-1.png",
+        "textureIndex": 1,
+        "material": "B2BFaces",
+        "field": "map",
+        "width": 1024,
+        "height": 512,
+        "flipY": false
+      },
+      {
+        "filename": "b2b-1-texture-2.png",
+        "textureIndex": 2,
+        "material": "Bench",
+        "field": "map",
+        "width": 256,
+        "height": 256,
+        "flipY": false
+      }
+    ],
+    "meshes": [
+      {
+        "name": "Laptop",
+        "skinned": false,
+        "vertices": 113,
+        "materials": [
+          "B2B"
+        ]
+      },
+      {
+        "name": "Laptop001",
+        "skinned": false,
+        "vertices": 102,
+        "materials": [
+          "B2B"
+        ]
+      },
+      {
+        "name": "man-lhand001",
+        "skinned": true,
+        "vertices": 1196,
+        "materials": [
+          "B2B"
+        ]
+      },
+      {
+        "name": "face-man",
+        "skinned": true,
+        "vertices": 5486,
+        "materials": [
+          "B2BFaces"
+        ]
+      },
+      {
+        "name": "MP_Body",
+        "skinned": true,
+        "vertices": 9374,
+        "materials": [
+          "B2B"
+        ]
+      },
+      {
+        "name": "manrhand001",
+        "skinned": true,
+        "vertices": 1236,
+        "materials": [
+          "B2B"
+        ]
+      },
+      {
+        "name": "hand002",
+        "skinned": true,
+        "vertices": 1229,
+        "materials": [
+          "B2B"
+        ]
+      },
+      {
+        "name": "face-woman",
+        "skinned": false,
+        "vertices": 1104,
+        "materials": [
+          "B2BFaces"
+        ]
+      },
+      {
+        "name": "Bench002",
+        "skinned": false,
+        "vertices": 284,
+        "materials": [
+          "Bench"
+        ]
+      },
+      {
+        "name": "Bench001",
+        "skinned": false,
+        "vertices": 284,
+        "materials": [
+          "Bench"
+        ]
+      }
+    ],
+    "animations": [
+      {
+        "name": "Scene",
+        "duration": 2.5,
+        "tracks": 357
+      }
+    ],
+    "bounds": {
+      "min": [
+        -1.5215150282306156,
+        -1.899190500972196,
+        -0.5253861529809136
+      ],
+      "max": [
+        1.2429458498954773,
+        0.9700583101620937,
+        1.226075973636545
+      ]
+    }
+  }
+]

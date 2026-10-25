@@ -48,6 +48,11 @@ test('Workflow waits for arrival, leaves copy readable and approves through its 
   document.hidden=false;document.dispatchEvent(new Event('visibilitychange'));
   assert.equal(root.dataset.workflowCycle,resumedCycle);assert.equal(flow.steps.get().index,0);
   advance(1175);assert.equal(flow.steps.get().index,0);advance(1);assert.equal(flow.steps.get().index,1,'Resume only the original remaining reading delay');advance(300);
+  for(const event of [Object.assign(new Event('keyup'),{code:'ShiftLeft'}),Object.assign(new Event('pointerup'),{pointerId:99}),Object.assign(new Event('pointercancel'),{pointerId:100})])window.dispatchEvent(event);
+  advance(16);assert.equal(root.dataset.workflowCycle,resumedCycle);assert.equal(flow.steps.get().index,1,'Unrelated global releases never reset the route');
+  root.handlers.get('pointerdown')[0]({isTrusted:true,type:'pointerdown',target:{closest:()=>null},pointerId:101});
+  window.dispatchEvent(Object.assign(new Event('pointerup'),{pointerId:101}));advance(16);
+  assert.equal(root.dataset.workflowCycle,resumedCycle,'Inspection of an ordinary annotated part is not an editable Workflow hold');
   root.handlers.get('keydown')[0]({isTrusted:true,type:'keydown',target:root,key:'ArrowRight',code:'ArrowRight'});
   window.dispatchEvent(Object.assign(new Event('keyup'),{code:'ArrowRight'}));advance(1000);
   document.hidden=true;document.dispatchEvent(new Event('visibilitychange'));advance(10000);document.hidden=false;document.dispatchEvent(new Event('visibilitychange'));

@@ -82,7 +82,7 @@ export function mountWorkflowPlayback(root){
   if(event.type==='keydown')held.add('key-'+event.code);
   scheduleIdle();
  };
- const release=event=>{held.delete(event.type==='keyup'?'key-'+event.code:'pointer-'+event.pointerId);scheduleIdle();};
+ const release=event=>{if(!held.delete(event.type==='keyup'?'key-'+event.code:'pointer-'+event.pointerId))return;scheduleIdle();};
  const onKind=event=>{if(!event.target.matches('[data-kind]'))return;manualUntil=0;held.clear();restart();};
  const onMotion=()=>{if(calm.matches){clear();root.dataset.workflowPlaying='false';}else if(visible&&!document.hidden)restart();};
  let stopReady=()=>{};

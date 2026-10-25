@@ -354,10 +354,11 @@ export function IntegrationBeam({
 
   const toggle = (i: number) => {
     const pausing = !off.has(i);
-    const next = new Set(off);
-    if (pausing) next.add(i);
-    else next.delete(i);
-    setOff(next);
+    setOff(current => {
+      const next = new Set(current);
+      if (next.has(i)) next.delete(i); else next.add(i);
+      return next;
+    });
     setAnnounce(`${tools[i].name} : flux illustré ${pausing ? "en pause" : "réactivé"}.`);
     onInspect?.(i);
     // On touch there's no hover: show the tooltip for a moment so the tap says what it did

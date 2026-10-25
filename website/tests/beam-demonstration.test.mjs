@@ -28,7 +28,7 @@ function fixture(){
   set('IntersectionObserver',class{constructor(fn){observers.push(fn);}observe(){}disconnect(){}});set('MutationObserver',class{constructor(fn){observers.push(fn);}observe(){}disconnect(){}});
   stop=mountBeamDemonstration(root);
  }catch(error){for(const[k,v]of saved){if(v)Object.defineProperty(globalThis,k,v);else delete globalThis[k];}throw error;}
- return{root,tiles,media,document,advance(ms){const end=now+ms;for(let safety=0;safety<1000;safety++){const pending=[...timers].filter(([,t])=>t.at<=end).sort((a,b)=>a[1].at-b[1].at)[0];if(!pending)break;now=pending[1].at;timers.delete(pending[0]);pending[1].fn();}now=end;},view(value){inView=value;observers[0]();},user(type,target=tiles[0]){for(const fn of root.handlers.get(type)||[])fn({isTrusted:true,target,relatedTarget:root});},dispose(){stop();},restore(){stop();for(const[k,v]of saved){if(v)Object.defineProperty(globalThis,k,v);else delete globalThis[k];}}};
+ return{root,tiles,media,document,advance(ms){const end=now+ms;for(let safety=0;safety<1000;safety++){const pending=[...timers].filter(([,t])=>t.at<=end).sort((a,b)=>a[1].at-b[1].at)[0];if(!pending)break;now=pending[1].at;timers.delete(pending[0]);pending[1].fn();}now=end;},view(value){inView=value;observers[0]();},user(type,target=tiles[0],extra={}){for(const fn of root.handlers.get(type)||[])fn({isTrusted:true,type,target,relatedTarget:root,...extra});},dispose(){stop();},restore(){stop();for(const[k,v]of saved){if(v)Object.defineProperty(globalThis,k,v);else delete globalThis[k];}}};
 }
 
 test('one continuous cursor journey visits, disconnects and restores tools before disappearing',()=>{
@@ -47,5 +47,31 @@ test('one continuous cursor journey visits, disconnects and restores tools befor
   f.view(true);f.user('pointerover');f.advance(5000);assert.equal(f.root.dataset.beamCursor,'none');f.user('pointerout');f.advance(1500);assert.equal(f.root.dataset.beamCursor,'move');
   f.user('pointerdown');f.advance(29999);assert.equal(f.root.dataset.beamCursor,'none');f.advance(1);assert.equal(f.root.dataset.beamCursor,'move');
   f.media.matches=true;f.media.dispatchEvent(new Event('change'));f.advance(15000);assert.equal(f.root.dataset.beamCursor,'none');
+ }finally{f.restore();}
+});
+
+for(const [name,type,extra]of [['touch','pointerdown',{button:0,pointerType:'touch'}],['Enter','keydown',{key:'Enter'}],['Space','keydown',{key:' '}]]){
+ test(`${name} activation resumes the demonstrated paused tile with exactly one real click`,()=>{
+  const f=fixture();try{
+   for(let i=0;i<500&&!(f.tiles[3].getAttribute('aria-pressed')==='false'&&f.tiles[0].getAttribute('aria-pressed')==='false');i++)f.advance(100);
+   assert.equal(f.tiles[3].getAttribute('aria-pressed'),'false');assert.equal(f.tiles[0].getAttribute('aria-pressed'),'false');
+   const before=f.tiles[3].clicks;f.user(type,f.tiles[3],extra);
+   assert.equal(f.tiles[3].clicks,before,'Capture cleanup must not toggle the pending activation target');
+   assert.equal(f.tiles[0].getAttribute('aria-pressed'),'true','Other demonstration changes are restored');
+   f.tiles[3].click();assert.equal(f.tiles[3].getAttribute('aria-pressed'),'true');
+   assert.equal(f.tiles[3].clicks,before+1);f.dispose();assert.equal(f.tiles[3].clicks,before+1,'Cleanup must not undo the visitor action');
+  }finally{f.restore();}
+ });
+}
+
+test('hovering a paused tile preserves its visible state until activation, and abandoning hover restores it',()=>{
+ const f=fixture();try{
+  for(let i=0;i<500&&f.tiles[3].getAttribute('aria-pressed')!=='false';i++)f.advance(100);
+  f.user('pointerover',f.tiles[3]);assert.equal(f.tiles[3].getAttribute('aria-pressed'),'false');
+  f.user('pointerout',f.tiles[3]);assert.equal(f.tiles[3].getAttribute('aria-pressed'),'true');
+  f.advance(30000);for(let i=0;i<500&&f.tiles[3].getAttribute('aria-pressed')!=='false';i++)f.advance(100);
+  f.user('pointerover',f.tiles[3]);const before=f.tiles[3].clicks;
+  f.user('pointerdown',f.tiles[3],{button:0});f.tiles[3].click();f.user('pointerout',f.tiles[3]);
+  assert.equal(f.tiles[3].getAttribute('aria-pressed'),'true');assert.equal(f.tiles[3].clicks,before+1);
  }finally{f.restore();}
 });

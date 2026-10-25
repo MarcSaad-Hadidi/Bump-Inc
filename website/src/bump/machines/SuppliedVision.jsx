@@ -6,8 +6,7 @@ import {mountVisionPresentation,VISION_COPY} from './suppliedVisionPresentation'
 export default function SuppliedVision(){
  const root=React.useRef(null),[active,setActive]=React.useState(false),[revision,remount]=React.useReducer(n=>n+1,0);
  React.useEffect(()=>{
-  let entered=false;
-  const stop=observeDemoReady(root.current,next=>{setActive(next);if(next){if(entered)remount();entered=true;}}),motion=matchMedia('(prefers-reduced-motion: reduce)'),change=()=>remount();
+  const stop=observeDemoReady(root.current,setActive,{onReenter:remount}),motion=matchMedia('(prefers-reduced-motion: reduce)'),change=()=>remount();
   motion.addEventListener('change',change);
   return()=>{stop();motion.removeEventListener('change',change);};
  },[]);

@@ -6,8 +6,7 @@ import {mountPortPresentation,PORT_COPY} from './suppliedPortPresentation';
 export default function SuppliedPort(){
  const root=React.useRef(null),[active,setActive]=React.useState(false),[revision,remount]=React.useReducer(n=>n+1,0);
  React.useEffect(()=>{
-  let entered=false;
-  const stop=observeDemoReady(root.current,next=>{setActive(next);if(next){if(entered)remount();entered=true;}}),media=matchMedia('(prefers-reduced-motion: reduce)'),changed=()=>remount();
+  const stop=observeDemoReady(root.current,setActive,{onReenter:remount}),media=matchMedia('(prefers-reduced-motion: reduce)'),changed=()=>remount();
   media.addEventListener('change',changed);
   return()=>{stop();media.removeEventListener('change',changed);};
  },[]);

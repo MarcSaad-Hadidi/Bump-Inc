@@ -11,16 +11,18 @@ export function demoIsReady(bounds,{height,opening,assisted,moving,hidden}){
  return demoInViewport(bounds,{height,assisted});
 }
 
-export function observeDemoReady(node,onChange,{onViewportChange}={}){
+export function observeDemoReady(node,onChange,{onViewportChange,onReenter}={}){
  if(!node)return()=>{};
- let ready=null,intersecting=null,disposed=false;
+ let ready=null,intersecting=null,disposed=false,entered=false,departed=false;
  const root=document.documentElement;
  const update=()=>{
   if(disposed)return;
   const bounds=node.getBoundingClientRect(),options={height:getBumpViewportHeight(),opening:root.dataset.bumpOpening,assisted:root.dataset.bumpAssistedScroll==='true',moving:root.dataset.bumpScrollMoving,hidden:document.hidden};
   const inViewport=demoInViewport(bounds,options);
+  if(!inViewport&&entered)departed=true;
   if(inViewport!==intersecting){intersecting=inViewport;onViewportChange?.(inViewport);}
   const next=demoIsReady(bounds,options);
+  if(next){const returned=entered&&departed;entered=true;departed=false;if(returned)onReenter?.();}
   node.dataset.bumpDemoReady=String(next);
   if(next!==ready){ready=next;onChange(next);}
  };

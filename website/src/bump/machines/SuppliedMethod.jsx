@@ -9,9 +9,8 @@ import {observeDemoReady} from '../ui/demoReady.js';
 export default function SuppliedMethod(){
  const root=React.useRef(null),[active,setActive]=React.useState(false),[revision,remount]=React.useReducer(n=>n+1,0);
  React.useEffect(()=>{
-  let entered=false;
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
-  const stop=observeDemoReady(root.current,next=>{setActive(next);if(next){if(entered)remount();entered=true;}});
+  const stop=observeDemoReady(root.current,setActive,{onReenter:remount});
   const changed=()=>remount();
   motion.addEventListener('change',changed);
   return()=>{stop();motion.removeEventListener('change',changed);};

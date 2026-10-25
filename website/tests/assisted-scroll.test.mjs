@@ -96,6 +96,25 @@ test('horizontal movement, pinch zoom and an open dialog retain their native tou
  }finally{f.restore();}
 });
 
+test('native dialog headings and scroll boundaries never move the underlying chapter',()=>{
+ const f=fixture({native:true,width:390});try{
+  const dialog=f.nodes.sidekick,heading=f.nodes.online;
+  // Model a native <dialog open> with no explicit ARIA role or aria-modal.
+  dialog.matches=selector=>selector.split(',').includes('dialog[open]');
+  heading.parentElement=dialog;
+  for(const target of [dialog,heading])for(const delta of [-100,100]){
+   dialog.scrollTop=delta>0?dialog.scrollHeight-dialog.clientHeight:0;
+   f.fire('touchstart',{target,touches:[{clientX:100,clientY:400}]});
+   assert.equal(f.fire('touchmove',{target,touches:[{clientX:100,clientY:400-delta}]}),false);
+   f.fire('touchend');
+   assert.equal(f.fire('wheel',{target,deltaX:0,deltaY:delta,deltaMode:0}),false);
+   assert.equal(f.fire('keydown',{target,key:delta>0?'PageDown':'PageUp'}),false);
+  }
+  assert.equal(f.calls.length,0);assert.equal(scrollY,0);
+  assert.equal(f.wheel(),true,'normal chapter gestures still work after the dialog closes');
+ }finally{f.restore();}
+});
+
 test('browser toolbar height changes leave all assisted destinations and the current landing unchanged',()=>{
  const f=fixture({width:390,height:780});try{
   document.documentElement.dataset.bumpViewportHeight='780';

@@ -150,7 +150,7 @@ export function getBumpScrollStops(paddingPass=0){
 function isEditing(target){return target instanceof Element&&!!target.closest('input,textarea,select,[contenteditable="true"],[role="slider"],[role="combobox"]');}
 function consumesScroll(target,delta){
  for(let el=target instanceof Element?target:null;el&&el!==document.body&&el!==document.documentElement;el=el.parentElement){
-  if(el.matches('[role="dialog"],[aria-modal="true"],.bump-hero-search-results'))return true;
+  if(el.matches('dialog[open],[role="dialog"],[aria-modal="true"],.bump-hero-search-results'))return true;
   if(el.scrollHeight>el.clientHeight+2&&/(auto|scroll)/.test(getComputedStyle(el).overflowY)){
    if(delta>0&&el.scrollTop+el.clientHeight<el.scrollHeight-2||delta<0&&el.scrollTop>2)return true;
   }

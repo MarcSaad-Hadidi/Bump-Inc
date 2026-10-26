@@ -120,6 +120,7 @@ function harness({hostname = 'bumpconsultation.ca', lang = 'fr', stored = null} 
     window, document, values, sessionValues, render, lifecycleReset, controls,
     blockLocalWrites() { rejectLocalWrites = true; },
     blockSessionWrites() { rejectSessionWrites = true; },
+    restoreWrites() { rejectLocalWrites = false; rejectSessionWrites = false; },
     get reloads() { return reloads; },
     replaceHead() { document.head = makeHead(); },
   };
@@ -255,4 +256,47 @@ test('failed writes never reload into a stale grant and stop collection immediat
   assert.equal(ui.window.clarity.q.at(-1)[0], 'stop');
   assert.equal(ui.controls(ui.render()).settings.props.hidden, false);
   assert.equal(readAnalyticsChoice(ui.window.localStorage, ui.window.sessionStorage), null, 'read-only grants are not trusted after refresh');
+});
+
+test('explicit renewed opt-in safely restarts a stopped tracker after persistence recovers', () => {
+  const ui = harness({stored: 'granted'});
+  ui.render();
+  ui.blockLocalWrites();
+  ui.blockSessionWrites();
+  ui.controls(ui.render()).settings.props.onClick();
+  ui.controls(ui.render()).deny.props.onClick();
+  assert.equal(ui.reloads, 0);
+  assert.equal(ui.window.__bumpClarityStopped, true);
+  assert.equal(loadClarity(ui.window, ui.document), false, 'stopped script is not reloaded in place');
+
+  // The next consent can be persisted, so a clean page load may restart it.
+  ui.restoreWrites();
+  ui.controls(ui.render()).settings.props.onClick();
+  ui.controls(ui.render()).allow.props.onClick();
+  assert.equal(ui.values.get(CONSENT_KEY), 'granted');
+  assert.equal(ui.reloads, 1, 'a fresh document starts Clarity after the new grant');
+  assert.equal(ui.document.head.children.filter(node => node.tagName === 'SCRIPT').length, 1);
+  const revisited = harness({stored: ui.values.get(CONSENT_KEY)});
+  revisited.render();
+  assert.equal(revisited.document.head.children.filter(node => node.tagName === 'SCRIPT').length, 1);
+});
+
+test('reaccepting without working storage fails closed and clearly explains the problem', () => {
+  const ui = harness({stored: 'granted'});
+  ui.render();
+  ui.blockLocalWrites();
+  ui.blockSessionWrites();
+  ui.controls(ui.render()).settings.props.onClick();
+  ui.controls(ui.render()).deny.props.onClick();
+  assert.equal(ui.reloads, 0);
+  ui.controls(ui.render()).settings.props.onClick();
+  ui.controls(ui.render()).allow.props.onClick();
+  const {notice, settings} = ui.controls(ui.render());
+  assert.equal(notice.props.hidden, false);
+  assert.equal(settings.props.hidden, true);
+  assert.equal(notice.props.children.at(-1).props.hidden, false);
+  assert.equal(notice.props.children.at(-1).props.role, 'alert');
+  assert.equal(ui.reloads, 0);
+  assert.equal(ui.document.head.children.filter(node => node.tagName === 'SCRIPT').length, 1);
+  assert.equal(ui.window.clarity.q.at(-1)[0], 'stop');
 });

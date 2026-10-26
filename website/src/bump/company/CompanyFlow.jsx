@@ -1,3 +1,4 @@
+import {ArrowUpRight} from '../ui/Icons.js';
 import React,{useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {observeDemoPaused} from '../ui/demoTransport.js';
 import {observeDemoReady} from '../ui/demoReady.js';
@@ -40,6 +41,6 @@ export default function CompanyFlow(){
   </div>
   {inspected!==null&&<div ref={tooltip} className="bump-workflow-tooltip company-flow-tooltip" role="tooltip"><strong>{inspected===-1?'Bump, à vos côtés.':items[inspected][0]}</strong><p>{inspected===-1?'Nous partons de votre besoin et de vos outils pour proposer un accompagnement adapté. De l’audit à l’implantation et à la maintenance, vous avancez avec un plan clair et des décisions prises ensemble.':details[inspected]}</p></div>}
   <div className="bump-company-flow-caption"><h4>{items[index][0]}</h4><p>{items[index][4]}</p></div>
-  <button className="bump-company-flow-contact" onClick={()=>window.dispatchEvent(new Event('bump:brief'))}>Parlons de votre projet <span aria-hidden="true">↗</span></button>
+  <button className="bump-company-flow-contact" onClick={()=>window.dispatchEvent(new Event('bump:brief'))}>Parlons de votre projet <ArrowUpRight /></button>
  </section>;
 }

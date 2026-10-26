@@ -28,6 +28,10 @@ test('the real production HTTP server serves FR/EN, 3D files and seekable audio'
   const english = await fetch(origin + '/en'); assert.match(await english.text(), /lang="en"/);
   const canonical = await fetch(origin + '/en/?demo=1', {redirect: 'manual'});
   assert.equal(canonical.status, 308); assert.equal(canonical.headers.get('location'), '/en?demo=1');
+  for (const [legacy, current] of [['/editions/winter2026', '/'], ['/en/editions/winter2026', '/en']]) {
+    const retry = await fetch(origin + legacy + '?projet=1', {redirect: 'manual'});
+    assert.equal(retry.status, 308); assert.equal(retry.headers.get('location'), current + '?projet=1');
+  }
   const model = await fetch(origin + '/model.glb'); assert.equal(model.headers.get('content-type'), 'model/gltf-binary');
   const decoder = await fetch(origin + '/decoder.wasm', {method: 'HEAD'});
   assert.equal(decoder.headers.get('content-type'), 'application/wasm'); assert.equal(await decoder.text(), '');
@@ -42,5 +46,6 @@ test('the real production HTTP server serves FR/EN, 3D files and seekable audio'
   assert.equal((await fetch(origin + '/model.glb', {method: 'POST'})).status, 405);
   assert.equal((await fetch(origin + '/..%2f..%2fpackage.json')).status, 404);
   const refresh = await fetch(origin + '/chapter', {headers: {Accept: 'text/html'}});
+  assert.equal(refresh.status, 404);
   assert.match(await refresh.text(), /lang="fr"/);
 });

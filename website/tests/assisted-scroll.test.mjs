@@ -4,7 +4,7 @@ import {getBumpScrollStops,installBumpAssistedScroll,navigateBumpChapter} from '
 
 // Test the actual input policy with a synchronous Lenis adapter. Rendering and
 // the real continuous journey are checked separately in the browser.
-function fixture({reduced=false,native=false,width=1440,height=900,continuation=false,staleEngine=false}={}){
+function fixture({reduced=false,native=false,width=1440,height=900,continuation=false,staleEngine=false,folders=false}={}){
  const saved=new Map(),events=new Map(),calls=[],frames=new Map();let now=1000,frameId=0;
  const set=(key,value)=>{saved.set(key,Object.getOwnPropertyDescriptor(globalThis,key));Object.defineProperty(globalThis,key,{value,writable:true,configurable:true});};
  class ElementStub{
@@ -15,6 +15,7 @@ function fixture({reduced=false,native=false,width=1440,height=900,continuation=
  }
  const nodes=Object.fromEntries(Object.entries({sidekick:1500,online:4000,operations:7000,'security-system':8000,'security-audits':8900,'security-vulnerabilites':9800,'security-remediation':10700,'security-suivi':11600,retail:13600,developer:17000,b2b:21000}).map(([id,y])=>[id,new ElementStub(y)]));
  const selectors={'.bump-workflow-execution':new ElementStub(2600),'.bump-task-cloud':new ElementStub(3300),'.bump-method-demo':new ElementStub(15000)};
+ if(folders){const stage=new ElementStub(4600,600);stage.offsetHeight=600;const story=new ElementStub(4600,2400);story.querySelector=()=>stage;selectors['.bump-software-story']=story;}
  if(continuation){
   const grid=(ids,y,withHeading=false)=>{
    const element=new ElementStub(y,300),cards=ids.map((id,i)=>{const card=new ElementStub(y+(width>700?Math.floor(i/2)*320:i*420),width>700?280:380);card.id=id;return card;});
@@ -22,7 +23,7 @@ function fixture({reduced=false,native=false,width=1440,height=900,continuation=
    if(withHeading){const heading=new ElementStub(y-70,40);heading.matches=s=>s==='.bump-group-title';element.previousElementSibling=heading;}
    return element;
   };
-  nodes['vision-sculpture']=new ElementStub(17900,900);
+  nodes['vision-sculpture']=new ElementStub(17900,Math.min(900,height-130));
   nodes.developer.selectors['.bump-services']=[grid(['vision-workflow-ai','vision-developer-ai','vision-cyber-ai'],19000),grid(['vision-infrastructure'],20400)];
   nodes.b2b.y=22000;
   const manifesto=new ElementStub(23300,500),heading=new ElementStub(23200,40);heading.matches=s=>s==='.bump-group-title';manifesto.previousElementSibling=heading;
@@ -232,5 +233,28 @@ test('the Company flow replaces text cards with one final full-screen stop',()=>
   const last=f.stops.at(-1),tail=parseFloat(f.selectors['#b2b .bump-group-last'].style.getPropertyValue('--bump-contact-tail'));
   assert.equal(24600+innerHeight-110+tail-innerHeight,last.y);
   f.wheel(-100);assert.equal(document.documentElement.dataset.bumpScrollStop,'company-manifesto');
+ }finally{f.restore();}
+});
+
+
+test('short desktop content receives reading stops before the next chapter',()=>{
+ const f=fixture({height:650,continuation:true});try{
+  f.nodes['vision-sculpture'].clientHeight=1000;
+  const stops=f.stops,first=stops.findIndex(s=>s.id==='vision-sculpture');
+  assert.equal(stops[first+1].id,'vision-sculpture-detail-1');
+  assert(stops[first+1].y>stops[first].y);
+  assert(stops[first+1].y<stops.find(s=>s.id==='vision-vision-workflow-ai').y);
+ }finally{f.restore();}
+});
+
+test('a new wheel gesture advances each stacked folder without repeated attempts, while momentum stays blocked',()=>{
+ const f=fixture({folders:true});try{
+  navigateBumpChapter('online',{immediate:true});f.wheel();
+  assert.equal(document.documentElement.dataset.bumpScrollStop,'software-story-1');
+  for(const id of ['software-story-2','software-story-3','software-story-4']){
+   const before=f.calls.length;f.wheel(15,16);f.wheel(8,16);assert.equal(f.calls.length,before,'A continuous tail cannot skip a folder');
+   f.wheel(1200,110);assert.equal(document.documentElement.dataset.bumpScrollStop,id,'One new gesture advances exactly one folder');
+  }
+  f.wheel(-100,110);assert.equal(document.documentElement.dataset.bumpScrollStop,'software-story-3');
  }finally{f.restore();}
 });

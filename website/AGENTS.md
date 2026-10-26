@@ -1,3 +1,49 @@
+# Current task — editorial SEO pages and AI-readable content
+
+Search must look like clear Apple-style glass, not an opaque beige rectangle:
+very low-opacity tint, background blur, and contrasting ink on scene/paper.
+Painting titles and introductions must fit below the floating header at each
+existing assisted arrival. Fit imported model display widths around the actual
+control/caption heights, preserving all supplied geometry and native animations.
+The folder story re-arms a new wheel gesture after 80ms of quiet; keep continuous
+momentum and all in-flight input blocked, with one folder per new gesture.
+Short desktop windows get separate software-demo stops and, where necessary,
+reading continuations using the existing scroll engine. Audit all six chapters.
+
+The search panel uses translucent warm glass with backdrop blur so the painting
+remains visible. An expanded white navigation trigger always uses dark ink and
+no text shadow; the global scene-contrast rules must not override that local state.
+
+Use drawn currentColor SVG icons for navigation/action arrows throughout both
+languages. Never use diagonal Unicode arrow glyphs that iOS renders as emoji.
+Keep meaningful textual process separators and supplied Anatomy sources intact.
+
+The published landing failed on WebGL-capable devices because the retained
+texture lookup called new URL(asset.url) on portable root-relative URLs.
+Keep its explicit current-page base, applied by portable-scene-assets.mjs
+before generating English. Test the actual native resolver with portable FR/EN
+assets; poster-only browser screenshots do not exercise this startup path.
+Preserve the legacy /editions/winter2026 retry redirect to the Bump homepage.
+
+The user has approved the SEO/GEO/AEO implementation plan. Add useful bilingual
+service, expertise, approach, about and FAQ pages to the current Bump Site.
+The user now explicitly authorizes a GitHub PR with all fixes and these pages.
+Target fresh main in MarcSaad-Hadidi/Bump-Inc; preserve concurrent changes and
+limit the patch to website/. Do not merge automatically.
+Publish on the existing public GPT Site for visual validation. This authorization
+supersedes the export-only restriction on editing/deploying the original Site.
+Start from the merged Bump-Inc website source (a2e23687e37d66a60ab284814f7c20e8a2686502).
+For GPT Site packaging only, run scripts/prepare-gpt-routing.mjs AFTER the
+normal build, npm test and the HTTP smoke checks. The verified Worker embeds
+the generated public text; remove matching text paths from the client artifact
+so native Sites static-file precedence cannot bypass its headers and routing.
+Node/Cloudflare builds keep the normal client tree.
+Preserve the accepted landing scenes, supplied model sources, scroll and other
+interactions. The page catalog is the source for HTML, markdown and discovery.
+Never invent client outcomes, prices, reviews, certifications, contact details
+or current availability of future proprietary agents. Preserve training crawler
+choices; discoverability files are not a guarantee of indexing or AI citations.
+
 # Public website export
 
 This directory is the standalone public Bump website exported from Sites version

@@ -1,4 +1,4 @@
-.bump-hero-search-panel{top:0;left:0;width:min(520px,calc(100vw - 750px));background:#f8f5ed;border:1px solid #ddd5c6;border-radius:5px;box-shadow:0 9px 30px #18231d20;padding:0 13px;overflow:hidden;z-index:6;transform-origin:left center}
+.bump-hero-search-panel{top:0;left:0;width:min(520px,calc(100vw - 750px));background:rgba(255,255,255,.09);-webkit-backdrop-filter:blur(12px) saturate(150%);backdrop-filter:blur(12px) saturate(150%);border:1px solid rgba(255,255,255,.38);border-radius:10px;box-shadow:inset 0 1px 0 #ffffff42,0 6px 24px #111a1820;padding:0 13px;overflow:hidden;z-index:6;transform-origin:left center}
 .bump-search-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
 .bump-search-heading>span{font-size:11px;letter-spacing:.12em;color:#8c7e68}
 .bump-hero-header .bump-search-heading>button{padding:0;width:23px;height:23px;justify-content:center;font-size:25px;line-height:1;color:#867a67;border-radius:50%;transition:background .2s,color .2s}
@@ -31,3 +31,9 @@
 @media(max-width:600px){.bump-hero-search-panel{position:fixed;left:15px;right:15px;top:11px;width:auto;padding:0 13px}.bump-hero-search-panel input{font-size:20px}}
 @keyframes bump-results-in{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.bump-search-heading>button,.bump-hero-search-panel form,.bump-hero-search-panel form>button,.bump-hero-search-results a{transition:none!important}}
+/* Clear glass: the painting supplies the colour, the panel only softens it. */
+.bump-header[data-tone=dark] .bump-hero-search-panel{color:#fff9ed;text-shadow:0 1px 3px #10181580}
+.bump-header[data-tone=dark] .bump-hero-search-panel :is(input,input::placeholder,form>svg,form>button,.bump-search-hint,.bump-hero-search-results p){color:#fff9ed}
+.bump-header[data-tone=dark] .bump-hero-search-panel input::placeholder{color:#fff9ed;opacity:.9}
+.bump-header[data-tone=dark] .bump-hero-search-results a{color:#fff9ed!important}
+.bump-header[data-tone=light] .bump-hero-search-panel{background:#ffffff18;color:#302e28;text-shadow:none;border-color:#4a49344d}

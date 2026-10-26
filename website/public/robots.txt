@@ -1,0 +1,63 @@
+# Keep in sync with llms.txt and ai.txt. Generated from the public catalog.
+# Training crawler choices remain unchanged; no new training-specific restrictions.
+# robots.txt is discovery guidance, not authentication.
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /api/
+Allow: /api/md/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /api/
+Allow: /api/md/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /api/
+Allow: /api/md/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /api/
+Allow: /api/md/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /api/
+Allow: /api/md/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /api/
+Allow: /api/md/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /api/
+Allow: /api/md/
+
+Sitemap: __BUMP_ORIGIN__/sitemap.xml
+# Public text map: __BUMP_ORIGIN__/llms.txt
+# AI usage information: __BUMP_ORIGIN__/ai.txt

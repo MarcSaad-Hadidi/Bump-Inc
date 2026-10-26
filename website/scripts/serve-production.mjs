@@ -1,8 +1,9 @@
 import http from 'node:http';
-import {createReadStream} from 'node:fs';
-import {stat} from 'node:fs/promises';
+import {createReadStream, readFileSync} from 'node:fs';
+import {stat, readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {handleContentRequest} from '../src/bump/seo/http.js';
 
 const defaultRoot = fileURLToPath(new URL('../dist/client/', import.meta.url));
 const types = {
@@ -13,18 +14,20 @@ const types = {
   '.woff2': 'font/woff2', '.woff': 'font/woff', '.ttf': 'font/ttf',
   '.wasm': 'application/wasm', '.glb': 'model/gltf-binary', '.ktx2': 'image/ktx2',
   '.mp3': 'audio/mpeg', '.mp4': 'video/mp4', '.webm': 'video/webm',
-  '.txt': 'text/plain; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8', '.md': 'text/markdown; charset=utf-8', '.xml': 'application/xml; charset=utf-8',
 };
 
-export function createSiteServer(directory = defaultRoot) {
+export function createSiteServer(directory = defaultRoot, {homeFile, development = false} = {}) {
   const root = path.resolve(directory);
+  let deploymentOrigin = '';
+  try { deploymentOrigin = JSON.parse(readFileSync(path.join(root, 'bump/seo/deployment.json'), 'utf8')).origin || ''; } catch { /* Unbuilt fixtures have no deployment config. */ }
   return http.createServer(async (request, response) => {
     const reply = (status, text, extra = {}) => {
       response.writeHead(status, {'Content-Type': 'text/plain; charset=utf-8', ...extra});
       response.end(request.method === 'HEAD' ? undefined : text);
     };
     try {
-      if (!['GET', 'HEAD'].includes(request.method)) {
+      if (!['GET', 'HEAD', 'OPTIONS'].includes(request.method)) {
         reply(405, 'Method not allowed', {Allow: 'GET, HEAD'}); return;
       }
       const url = new URL(request.url, 'http://site.local');
@@ -32,19 +35,32 @@ export function createSiteServer(directory = defaultRoot) {
       try { pathname = decodeURIComponent(url.pathname); }
       catch { reply(400, 'Invalid path'); return; }
       if (pathname.includes('\0')) { reply(400, 'Invalid path'); return; }
-      if (pathname === '/en/' || pathname === '/en.html') {
-        response.writeHead(308, {Location: '/en' + url.search}); response.end(); return;
+      if (development && pathname === '/__seo-review') {
+        const body = await readFile(new URL('../tests/fixtures/seo-review.html', import.meta.url));
+        response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store'});
+        response.end(request.method === 'HEAD' ? undefined : body); return;
       }
+      const requestOrigin = 'http://' + request.headers.host;
+      const webRequest = new Request(requestOrigin + request.url, {method: request.method, headers: request.headers});
+      const content = await handleContentRequest(webRequest, async file => {
+        const target = file === '/index.html' && homeFile ? path.resolve(homeFile) : path.resolve(root, '.' + file);
+        if (file !== '/index.html' && !target.startsWith(root + path.sep)) return new Response('Not found', {status: 404});
+        const data = await readFile(target).catch(() => null);
+        if (data === null) return new Response('Not found', {status: 404});
+        const body = development ? data.toString().replaceAll('__RENAISSANCE_ORIGIN__', requestOrigin) : data;
+        return new Response(body, {headers: {'Content-Type': types[path.extname(target)] || 'application/octet-stream'}});
+      }, {origin: deploymentOrigin});
+      if (content) {
+        response.writeHead(content.status, Object.fromEntries(content.headers));
+        response.end(request.method === 'HEAD' ? undefined : Buffer.from(await content.arrayBuffer())); return;
+      }
+      if (request.method === 'OPTIONS') { reply(405, 'Method not allowed', {Allow: 'GET, HEAD'}); return; }
       const candidate = path.resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname === '/en' ? '/en.html' : pathname));
       if (!candidate.startsWith(root + path.sep)) { reply(404, 'Not found'); return; }
       let file = candidate;
       let info = await stat(file).catch(() => null);
       if (!info?.isFile()) {
-        if (path.extname(pathname) || !request.headers.accept?.includes('text/html')) {
-          reply(404, 'Not found'); return;
-        }
-        file = path.join(root, 'index.html');
-        info = await stat(file).catch(() => null);
+        reply(404, 'Not found'); return;
       }
       if (!info?.isFile()) { reply(404, 'Build not found. Run npm run build first.'); return; }
       const headers = {
@@ -53,6 +69,15 @@ export function createSiteServer(directory = defaultRoot) {
         'X-Content-Type-Options': 'nosniff',
         'Accept-Ranges': 'bytes',
       };
+      if (pathname.startsWith('/runtime/') && path.extname(file) === '.html') headers['X-Robots-Tag'] = 'noindex, follow';
+      if (development && /\.(?:js|mjs|css|json|html|svg|txt)$/.test(file)) {
+        const source = await readFile(file, 'utf8');
+        if (source.includes('__RENAISSANCE_ORIGIN__')) {
+          const body = source.replaceAll('__RENAISSANCE_ORIGIN__', requestOrigin);
+          response.writeHead(200, {...headers, 'Content-Length': Buffer.byteLength(body)});
+          response.end(request.method === 'HEAD' ? undefined : body); return;
+        }
+      }
       let start = 0, end = info.size - 1, status = 200;
       if (request.headers.range) {
         const match = /^bytes=(\d*)-(\d*)$/.exec(request.headers.range);

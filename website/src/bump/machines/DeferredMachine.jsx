@@ -3,6 +3,7 @@ import {r as React} from '/runtime/assets/components-BdJai906.js';
 import {mountCaptionTransitions} from '../ui/captionTransitions.js';
 import {mountDemoTransport} from '../ui/demoTransport.js';
 import {mountHoverDemonstration} from '../ui/hoverDemonstration.js';
+import {mountModelViewportFit} from '../ui/modelViewportFit.js';
 
 const transportLabels={workflow:'le workflow',method:'Notre méthode',security:'la cybersécurité',vision:'Notre vision',port:'le port Bump',integration:'Vos outils'};
 const scenes={
@@ -21,6 +22,7 @@ const scenes={
 export function DeferredMachine({kind,id,className='',...props}){
  const root=React.useRef(null),[loaded,setLoaded]=React.useState(false),Scene=scenes[kind];
  React.useEffect(()=>mountCaptionTransitions(root.current),[]);
+ React.useEffect(()=>mountModelViewportFit(root.current,kind),[kind]);
  React.useEffect(()=>{if(transportLabels[kind])return mountDemoTransport(root.current,transportLabels[kind]);},[kind]);
  React.useEffect(()=>{if(loaded)return mountHoverDemonstration(root.current,kind);},[loaded,kind]);
  React.useEffect(()=>{const observer=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){setLoaded(true);observer.disconnect();}},{rootMargin:'1600px'});if(root.current)observer.observe(root.current);return()=>observer.disconnect();},[]);

@@ -6,6 +6,7 @@ import postcss from 'postcss';
 import {resolve} from 'node:path';
 import {stabilizeMobileViewport} from './stabilize-mobile-viewport.mjs';
 import {secureThreeIdentifiers,hardenRetainedIdentifiers} from './secure-render-identifiers.mjs';
+import {preparePortableSceneAssets} from './portable-scene-assets.mjs';
 await build({entryPoints:['src/bump/ui/secureUuid.js'],bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,outfile:'public/runtime/secure-uuid.js'});
 await build({entryPoints:{BumpViewport:'src/bump/ui/viewport.js',BumpDeviceMotion:'src/bump/ui/deviceMotion.js',BumpSceneCamera:'src/bump/ui/sceneCamera.js'},bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,outdir:'public/runtime/assets'});
 await build({entryPoints:{BumpUI:'src/bump/ui/index.js',BumpAssistedScroll:'src/bump/ui/assistedScroll.js',BumpPlayback:'src/bump/ui/playback.js',BumpContrast:'src/bump/ui/contrast.js',BumpGaze:'src/bump/security/gaze.js',BumpMethodSurfaces:'src/bump/method/MethodSurfaces.js',BumpMethodAppearance:'src/bump/method/appearance.js',BumpNav:'src/bump/ui/BumpNav.js',BumpContent:'src/bump/chapters/Content.js',BumpGlobe:'src/bump/ui/globe/renderer.js'},bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,external:['/runtime/*'],plugins:[secureThreeIdentifiers()],outdir:'public/runtime/assets',legalComments:'linked'});
@@ -39,4 +40,6 @@ stabilizeMobileViewport();
 hardenRetainedIdentifiers();
 // Ship source-controlled analytics consent styles with the public site assets.
 copyFileSync('src/bump/ui/clarity-consent.css', 'public/runtime/clarity-consent.css');
+
+preparePortableSceneAssets();
 console.log('Built Bump motion components with the existing React runtime.');

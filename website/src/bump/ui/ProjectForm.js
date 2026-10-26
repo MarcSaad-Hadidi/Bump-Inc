@@ -1,3 +1,4 @@
+import {ArrowUpRight} from '/runtime/assets/BumpUI.js';
 import {r as React,j as R} from '/runtime/assets/components-BdJai906.js';
 import {useAnimatedDialog} from '/runtime/assets/BumpUI.js';
 const h=(tag,props,...children)=>R.jsxs(tag,{...props,...(children.length?{children:children.flat()}:{})});
@@ -31,7 +32,7 @@ export function Brief({open,onClose}){
           onChange:event=>{setValues({...values,[f.name]:event.target.value});setReady(false);},rows:f.type==='textarea'?4:undefined
         },...(f.options?[h('option',{value:''},'Choisir une expertise'),...f.options.map(option=>h('option',{value:option,key:option},option))]:[]))
       )),
-      h('div',{className:'bump-contact-bottom'},h('p',{},'* Champs obligatoires'),h('button',{type:'submit',className:'bump-action'},'Envoyer ma demande',h('span',{'aria-hidden':true},'↗')))
+      h('div',{className:'bump-contact-bottom'},h('p',{},'* Champs obligatoires'),h('button',{type:'submit',className:'bump-action'},'Envoyer ma demande',h(ArrowUpRight,{})))
     ),ready?h('p',{className:'bump-form-status',role:'status'},'Votre demande est prête.'):null
   );
 }

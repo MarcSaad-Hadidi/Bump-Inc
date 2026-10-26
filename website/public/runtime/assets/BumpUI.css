@@ -126,7 +126,7 @@ body{font-size:18px;font-synthesis:none}
 @media(max-width:600px){.bump-hero-header{gap:10px}.bump-hero-header .bump-top-links{margin-left:auto;gap:5px}.bump-hero-header .bump-location-anchor{margin-right:0}}
 @media(max-width:420px){.bump-hero-search-trigger .bump-search-label-text{display:none}.bump-hero-header .bump-hero-search-trigger{min-width:31px;justify-content:center}}
 
-.bump-hero-search-panel{top:0;left:0;width:min(520px,calc(100vw - 750px));background:#f8f5ed;border:1px solid #ddd5c6;border-radius:5px;box-shadow:0 9px 30px #18231d20;padding:0 13px;overflow:hidden;z-index:6;transform-origin:left center}
+.bump-hero-search-panel{top:0;left:0;width:min(520px,calc(100vw - 750px));background:rgba(255,255,255,.09);-webkit-backdrop-filter:blur(12px) saturate(150%);backdrop-filter:blur(12px) saturate(150%);border:1px solid rgba(255,255,255,.38);border-radius:10px;box-shadow:inset 0 1px 0 #ffffff42,0 6px 24px #111a1820;padding:0 13px;overflow:hidden;z-index:6;transform-origin:left center}
 .bump-search-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
 .bump-search-heading>span{font-size:11px;letter-spacing:.12em;color:#8c7e68}
 .bump-hero-header .bump-search-heading>button{padding:0;width:23px;height:23px;justify-content:center;font-size:25px;line-height:1;color:#867a67;border-radius:50%;transition:background .2s,color .2s}
@@ -159,6 +159,12 @@ body{font-size:18px;font-synthesis:none}
 @media(max-width:600px){.bump-hero-search-panel{position:fixed;left:15px;right:15px;top:11px;width:auto;padding:0 13px}.bump-hero-search-panel input{font-size:20px}}
 @keyframes bump-results-in{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.bump-search-heading>button,.bump-hero-search-panel form,.bump-hero-search-panel form>button,.bump-hero-search-results a{transition:none!important}}
+/* Clear glass: the painting supplies the colour, the panel only softens it. */
+.bump-header[data-tone=dark] .bump-hero-search-panel{color:#fff9ed;text-shadow:0 1px 3px #10181580}
+.bump-header[data-tone=dark] .bump-hero-search-panel :is(input,input::placeholder,form>svg,form>button,.bump-search-hint,.bump-hero-search-results p){color:#fff9ed}
+.bump-header[data-tone=dark] .bump-hero-search-panel input::placeholder{color:#fff9ed;opacity:.9}
+.bump-header[data-tone=dark] .bump-hero-search-results a{color:#fff9ed!important}
+.bump-header[data-tone=light] .bump-hero-search-panel{background:#ffffff18;color:#302e28;text-shadow:none;border-color:#4a49344d}
 
 .bump-contact .bump-dialog-inner{padding:44px 46px 36px;background:#f5f1e6;border:1px solid #dbd2bf;border-radius:7px}
 .bump-contact h2{font-size:48px;line-height:1.02;margin-bottom:15px;max-width:570px}
@@ -182,6 +188,7 @@ body{font-size:18px;font-synthesis:none}
 @media(prefers-reduced-motion:reduce){.bump-contact :is(input,select,textarea),.bump-contact .bump-action{transition:none}}
 
 /* A visible dot trail that draws toward the chapter's Roman numeral. */
+.bump-editorial-links{border-top:1px solid #b7bbab;margin-top:9px;padding-top:12px;display:grid;gap:7px}.bump-hero-dropdown .bump-editorial-links a{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:15px;color:#34462e;line-height:1.35;text-decoration:none}.bump-hero-dropdown .bump-editorial-links a:hover{text-decoration:underline}
 .bump-header-actions{display:flex;align-items:center;gap:24px}
 .bump-language-switch{display:inline-flex;align-items:center;justify-content:center;min-width:28px;min-height:38px;color:inherit;font:500 14px/1 "EB Garamond",Georgia,serif;letter-spacing:.04em;text-decoration:none;opacity:.8;transition:opacity .2s}
 .bump-language-switch:hover{opacity:1}
@@ -198,6 +205,8 @@ html[data-sidebar-theme=light] .main-wrapper aside .sidebar-link>span::after{bac
 @media(prefers-reduced-motion:reduce){.main-wrapper aside .sidebar-link>span::after{transition:none!important;animation:none!important}}
 
 html[data-bump-tone=light] .bump-editorial-title{color:#302e28;text-shadow:none}
+
+.bump-editorial-links svg,.bump-action>svg,.bump-service-open>svg,.bump-company-flow-contact>svg,.bump-software-explore>svg,.bwm-approve>svg,.bump-ops-tap>svg{display:inline-block;width:1em;height:1em;flex-shrink:0;vertical-align:-.12em}
 
 /* Bump's working examples sit on the reference's cream paper surface. */
 .bump-group{padding-inline:clamp(20px,4.2vw,72px)}
@@ -430,6 +439,18 @@ html[data-bump-webgl=true] main section>div:first-child>.bg-light{background:tra
 #b2b>div:first-child>div:first-child[data-nav-theme=dark]>[data-nav-style=solid]{margin:0!important;padding:0;width:100%;max-width:570px;align-self:end}
 #b2b>div:first-child>div:first-child[data-nav-theme=dark] .narrative-1{font-size:clamp(28px,2vw,38px);line-height:1.12;letter-spacing:-.035em}
 @media(max-width:700px){#b2b>div:first-child>div:first-child[data-nav-theme=dark]{height:calc(var(--bump-viewport-unit,1svh) * 100);min-height:calc(var(--bump-viewport-unit,1svh) * 100);padding-bottom:calc(var(--bump-viewport-unit,1svh) * 11)}#b2b>div:first-child>div:first-child[data-nav-theme=dark]>h2{padding-top:calc(var(--bump-viewport-unit,1svh) * 11);font-size:clamp(64px,18vw,92px)!important}#b2b>div:first-child>div:first-child[data-nav-theme=dark] .narrative-1{font-size:26px;line-height:1.12}}
+/* Preserve native chapter lengths, while placing editorial ink inside each
+   painting's actual arrival window, below the floating navigation. */
+@media(min-width:940px){
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme]{box-sizing:border-box;display:flex!important;flex-direction:column;justify-content:space-between;height:calc(var(--bump-viewport-unit,1svh) * 140);min-height:calc(var(--bump-viewport-unit,1svh) * 140);padding-top:calc(var(--bump-painting-lead,0px) + var(--bump-header-space,90px) + 18px);padding-bottom:max(28px,calc(calc(var(--bump-viewport-unit,1svh) * 40) - var(--bump-painting-lead,0px) + 28px))}
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme]>h2{flex:0 0 auto;justify-content:flex-start;font-size:clamp(52px,min(8vw,calc(var(--bump-viewport-unit,1svh) * 13)),132px)!important;line-height:1.08!important;margin:0!important;padding:0!important;max-width:100%;overflow-wrap:normal}
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme]>[data-nav-style=solid]{width:100%;max-width:620px;margin:0!important;padding:0!important;align-self:start}
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1{font-size:clamp(24px,min(2.5vw,calc(var(--bump-viewport-unit,1svh) * 4.7)),38px);line-height:1.18;letter-spacing:-.02em}
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1::first-letter{font:inherit!important;line-height:inherit!important;letter-spacing:inherit!important}
+}
+@media(min-width:940px){
+ .bump-machine-slot[data-bump-model-fit=true] .iso-stage{width:var(--bump-model-stage-width)!important;max-width:100%!important;margin-inline:auto}
+}
 
 /* Adapted workflow components live directly on the chapter's paper. */
 .bump-workflow-execution{--flow-ink:#302e28;--flow-muted:#766c58;--flow-line:#a7997c;--flow-green:#087c48;--flow-brass:#987746;--flow-red:#d23f35;--flow-paper:#f7f3e8;margin-bottom:50px}
@@ -979,6 +1000,21 @@ html[data-nav-theme=light] .bump-hero-header :is(.bump-nav-logo,.bump-location,.
 }
 @media(max-width:360px){.bsd-steps{gap:7px}.bsd-steps button{font-size:8px;gap:3px}.bsd-steps button>span{font-size:7px}.bsd-playback{gap:0}.bsd-app-rail{gap:5px;padding-inline:6px}.bsd-app-rail nav button,.bsd-app--data .bsd-app-rail nav button{width:28px;height:29px;padding:7px}.bsd-brand{font-size:18px}.bsd-brand img{width:15px;height:15px}.bsd-request-title strong{font-size:9px}.bsd-column-header{font-size:9px}.bsd-kpi>div:first-child{font-size:7px}.bsd-kpi>strong{font-size:18px}}
 @media(prefers-reduced-motion:reduce){.bsd-section *,.bsd-section *::before,.bsd-section *::after{animation:none!important;transition:none!important}.bsd-cursor{display:none!important}}
+/* A laptop viewport gets one complete, readable app per assisted stop. */
+@media(min-width:1101px) and (max-height:999px){
+ :where(html:not([data-bump-stable-viewport])) #online .bump-software-capabilities .bsd-section{height:auto;min-height:calc(calc(var(--bump-viewport-unit,1svh) * 100) - var(--bump-header-space,90px) - 28px);padding-block:24px;box-sizing:border-box;align-content:center}
+ :where(html:not([data-bump-stable-viewport])) #online .bump-software-capabilities .bsd-section .bsd-editorial h3{font-size:clamp(32px,3.6vw,48px);line-height:1.08}
+ :where(html:not([data-bump-stable-viewport])) #online .bump-software-capabilities .bsd-section .bsd-editorial p{font-size:clamp(18px,1.65vw,22px);line-height:1.32}
+ :where(html:not([data-bump-stable-viewport])) #online .bump-software-capabilities .bsd-section--operations{border-top:0}
+ :where(html:not([data-bump-stable-viewport])) #online .bump-software-capabilities .bsd-section--data{margin-top:0}
+}
+@media(min-width:1101px){
+ :where(html[data-bump-height-max-999]) #online .bump-software-capabilities .bsd-section{height:auto;min-height:calc(calc(var(--bump-viewport-unit,1svh) * 100) - var(--bump-header-space,90px) - 28px);padding-block:24px;box-sizing:border-box;align-content:center}
+ :where(html[data-bump-height-max-999]) #online .bump-software-capabilities .bsd-section .bsd-editorial h3{font-size:clamp(32px,3.6vw,48px);line-height:1.08}
+ :where(html[data-bump-height-max-999]) #online .bump-software-capabilities .bsd-section .bsd-editorial p{font-size:clamp(18px,1.65vw,22px);line-height:1.32}
+ :where(html[data-bump-height-max-999]) #online .bump-software-capabilities .bsd-section--operations{border-top:0}
+ :where(html[data-bump-height-max-999]) #online .bump-software-capabilities .bsd-section--data{margin-top:0}
+}
 
 /* Scoped cybersecurity paper content. The scene, navigation and scroll remain native. */
 #operations .bump-security-content{margin-left:-3.2vw;width:calc(100% + 3.2vw);padding-inline:0 2.5vw}
@@ -1259,6 +1295,28 @@ html[data-nav-theme=light] .bump-hero-header :is(.bump-nav-logo,.bump-location,.
 .bsc-orbit-panel .bsc-validation-wait{margin:0 0 9px;padding:7px 9px;border:1px solid #ecd4ac;border-radius:4px;background:#fff1d9;color:#a96a22;font-size:9px;line-height:1.3;text-align:center}
 .bsc-orbit-panel .bsc-launch-correction{width:100%}
 @media(max-width:700px){.bsc-orbit-panel .bsc-validation-wait{font-size:11px;padding:9px}}
+@media(min-width:940px) and (max-height:820px){
+ :where(html:not([data-bump-stable-viewport])) #operations .bsc-row.bsc-row--correction{height:auto;min-height:calc(var(--bump-viewport-unit,1svh) * 100);box-sizing:border-box;padding-block:var(--bump-header-space,84px) 28px;row-gap:14px}
+ :where(html:not([data-bump-stable-viewport])) #operations .bsc-row.bsc-row--correction .bsc-app{height:clamp(230px,calc(calc(var(--bump-viewport-unit,1svh) * 100) - 360px),360px);min-height:0}
+ :where(html:not([data-bump-stable-viewport])) #operations .bsc-row.bsc-row--correction .bsc-app-body{min-height:0;overflow-y:auto;overscroll-behavior:contain}
+}
+@media(min-width:940px){
+ :where(html[data-bump-height-max-820]) #operations .bsc-row.bsc-row--correction{height:auto;min-height:calc(var(--bump-viewport-unit,1svh) * 100);box-sizing:border-box;padding-block:var(--bump-header-space,84px) 28px;row-gap:14px}
+ :where(html[data-bump-height-max-820]) #operations .bsc-row.bsc-row--correction .bsc-app{height:clamp(230px,calc(calc(var(--bump-viewport-unit,1svh) * 100) - 360px),360px);min-height:0}
+ :where(html[data-bump-height-max-820]) #operations .bsc-row.bsc-row--correction .bsc-app-body{min-height:0;overflow-y:auto;overscroll-behavior:contain}
+}
+@media(min-width:940px) and (max-height:820px){
+ :where(html:not([data-bump-stable-viewport])) #operations .bsc-row.bsc-row--correction{row-gap:10px}
+ :where(html:not([data-bump-stable-viewport])) #operations .bsc-row.bsc-row--correction .bsc-editorial h3{font-size:28px;line-height:1.1;margin-bottom:10px}
+ :where(html:not([data-bump-stable-viewport])) #operations .bsc-row.bsc-row--correction .bsc-editorial p{font-size:18px;line-height:1.3}
+ :where(html:not([data-bump-stable-viewport])) #operations .bsc-row.bsc-row--correction .bsc-text-link{margin-top:8px}
+}
+@media(min-width:940px){
+ :where(html[data-bump-height-max-820]) #operations .bsc-row.bsc-row--correction{row-gap:10px}
+ :where(html[data-bump-height-max-820]) #operations .bsc-row.bsc-row--correction .bsc-editorial h3{font-size:28px;line-height:1.1;margin-bottom:10px}
+ :where(html[data-bump-height-max-820]) #operations .bsc-row.bsc-row--correction .bsc-editorial p{font-size:18px;line-height:1.3}
+ :where(html[data-bump-height-max-820]) #operations .bsc-row.bsc-row--correction .bsc-text-link{margin-top:8px}
+}
 
 /* Only editorial/floating text adopts the surface ink. App controls and their
    own ivory/green surfaces keep their semantic colors and contrast. */
@@ -1273,6 +1331,10 @@ html[data-nav-theme=light] .bump-hero-header :is(.bump-nav-logo,.bump-location,.
 
 .bump-nav-trigger[data-bump-surface=scene]>img{filter:invert(1)}
 .bump-nav-trigger[data-bump-surface=paper]>img{filter:none}
+
+/* An open trigger has its own white surface, even above a dark painting. */
+.bump-header .bump-nav-trigger[aria-expanded=true]{--bump-adaptive-ink:#222!important;color:#222!important;text-shadow:none!important}
+.bump-header .bump-nav-trigger[aria-expanded=true]>img{filter:brightness(0)!important}
 
 /* The existing continuous paper is the stage. These are viewport-sized
    compositions, not panels laid over the painting. */
@@ -2593,6 +2655,24 @@ html[data-bump-assisted-scroll=true] :is(#sidekick,#retail,#developer,#b2b) .bum
 @media(min-width:701px){:where(html[data-bump-height-max-800]) .bump-research{padding-top:0;padding-bottom:16px}:where(html[data-bump-height-max-800]) .bump-research-heading h3{font-size:45px}:where(html[data-bump-height-max-800]) .bump-research-heading>p:last-child{margin-top:12px}:where(html[data-bump-height-max-800]) .bump-research-eyebrow{margin-bottom:12px}:where(html[data-bump-height-max-800]) .bump-research-diagram{margin:20px auto 26px;max-width:720px}:where(html[data-bump-height-max-800]) .bump-research .ui-ib__group{gap:34px}:where(html[data-bump-height-max-800]) .bump-research-explanation{min-height:88px}}
 @media(max-width:700px){.bump-research{padding:16px 0 28px;min-height:calc(calc(var(--bump-viewport-unit,1svh) * 100) - 100px)}.bump-research-heading h3{font-size:clamp(31px,7.6vw,46px)}.bump-research-heading>p:last-child{font-size:16px}.bump-research-diagram{max-width:590px;margin:26px auto}.bump-research-axis{margin-inline:0;font-size:8px;letter-spacing:.07em}.bump-research .ui-ib__tool-label{font-size:12px}.bump-research-explanation{min-height:116px}.bump-research-explanation h4{font-size:23px}.bump-research-explanation p{font-size:16px}.bump-research footer{gap:9px;font-size:11px}}
 @container (max-width:459px){.bump-research .ui-ib__scene{row-gap:70px;padding-bottom:26px}.bump-research .ui-ib__group{gap:clamp(26px,10cqw,48px)}.bump-research .ui-ib__tool{width:56px;height:56px}.bump-research .ui-ib__center{width:74px;height:74px;border-radius:20px}}
+@media(min-width:940px) and (max-height:820px){
+ :where(html:not([data-bump-stable-viewport])) .bump-research{padding-block:0 16px}
+ :where(html:not([data-bump-stable-viewport])) .bump-research-heading h3{font-size:38px;line-height:1.08}
+ :where(html:not([data-bump-stable-viewport])) .bump-research-diagram{margin:14px auto 18px}
+ :where(html:not([data-bump-stable-viewport])) .bump-research-axis{margin-bottom:18px}
+ :where(html:not([data-bump-stable-viewport])) .bump-research .ui-ib__group{gap:18px}
+ :where(html:not([data-bump-stable-viewport])) .bump-research .ui-ib__tool{width:52px;height:52px;border-radius:13px}
+ :where(html:not([data-bump-stable-viewport])) .bump-research .ui-ib__scene{padding-block:4px 20px}
+}
+@media(min-width:940px){
+ :where(html[data-bump-height-max-820]) .bump-research{padding-block:0 16px}
+ :where(html[data-bump-height-max-820]) .bump-research-heading h3{font-size:38px;line-height:1.08}
+ :where(html[data-bump-height-max-820]) .bump-research-diagram{margin:14px auto 18px}
+ :where(html[data-bump-height-max-820]) .bump-research-axis{margin-bottom:18px}
+ :where(html[data-bump-height-max-820]) .bump-research .ui-ib__group{gap:18px}
+ :where(html[data-bump-height-max-820]) .bump-research .ui-ib__tool{width:52px;height:52px;border-radius:13px}
+ :where(html[data-bump-height-max-820]) .bump-research .ui-ib__scene{padding-block:4px 20px}
+}
 
 .bump-machine-slot--company-flow{min-height:calc(calc(var(--bump-viewport-unit,1svh) * 100) - 110px)}
 .bump-company-flow{box-sizing:border-box;position:relative;min-height:calc(calc(var(--bump-viewport-unit,1svh) * 100) - 110px);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:12px 0 28px;color:#302e28;text-align:center;transform:translateX(var(--company-flow-offset,0px))}

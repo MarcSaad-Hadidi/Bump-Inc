@@ -11,3 +11,7 @@
 
 .bump-nav-trigger[data-bump-surface=scene]>img{filter:invert(1)}
 .bump-nav-trigger[data-bump-surface=paper]>img{filter:none}
+
+/* An open trigger has its own white surface, even above a dark painting. */
+.bump-header .bump-nav-trigger[aria-expanded=true]{--bump-adaptive-ink:#222!important;color:#222!important;text-shadow:none!important}
+.bump-header .bump-nav-trigger[aria-expanded=true]>img{filter:brightness(0)!important}

@@ -1,4 +1,5 @@
 import {installTouchInspection} from './touchInspection.js';
+import {installLandingMetadata} from '../seo/landing.js';
 import{updateFallbackContrast}from'/runtime/assets/BumpContrast.js';
 import {r as React,j as R} from '/runtime/assets/components-BdJai906.js';
 import {r as useChapterNav,a as useSceneStore} from '/runtime/assets/(_locale).editions.winter2026-CdSmWtXg.js';
@@ -17,6 +18,7 @@ function ChapterLink({item,index,onNavigate,className}){
 }
 export default function BumpNav({navItems}){
   React.useEffect(()=>installTouchInspection(),[]);
+  React.useEffect(()=>installLandingMetadata(),[]);
   const english=document.documentElement.lang==='en';
   const [menu,setMenu]=React.useState(false),[search,setSearch]=React.useState(false),[brief,setBrief]=React.useState(false),[query,setQuery]=React.useState('');
   const [tone,setTone]=React.useState('dark');
@@ -59,7 +61,7 @@ export default function BumpNav({navItems}){
   const menuAnchor=React.useRef(null),searchAnchor=React.useRef(null),menuButton=React.useRef(null),searchButton=React.useRef(null),searchInput=React.useRef(null);
   const home=useChapterNav({index:0,handle:'hero'});
   const atHero=useSceneStore(state=>state.activeSection===0);
-  React.useEffect(()=>{const open=()=>setBrief(true);window.addEventListener('bump:brief',open);return()=>window.removeEventListener('bump:brief',open);},[]);
+  React.useEffect(()=>{const open=()=>setBrief(true);window.addEventListener('bump:brief',open);if(new URLSearchParams(location.search).get('projet')==='1'){setBrief(true);const url=new URL(location.href);url.searchParams.delete('projet');history.replaceState(history.state,'',url.pathname+url.search+url.hash);}return()=>window.removeEventListener('bump:brief',open);},[]);
   React.useEffect(()=>{setMenu(false);setSearch(false);},[atHero]);
   React.useEffect(()=>{
     if(!menu&&!search)return;
@@ -75,6 +77,7 @@ export default function BumpNav({navItems}){
     h('button',{type:'button',ref:menuButton,className:'bump-nav-trigger','aria-expanded':menu,'aria-controls':'bump-menu',onClick:()=>{setSearch(false);setMenu(!menu);},onKeyDown:event=>{if(event.key==='ArrowDown'){event.preventDefault();setSearch(false);setMenu(true);requestAnimationFrame(()=>menuAnchor.current?.querySelector('a')?.focus());}}},'Expertises',h('img',{src:'/runtime/media/25177a62ed-global-16-shrevon-down.svg',width:12,height:12,alt:''})),
     h(MotionPanel,{open:menu,id:'bump-menu',className:'bump-hero-dropdown',role:'navigation','aria-label':'Tous les chapitres'},
       ...navItems.map((item,i)=>h('div',{className:'bump-hero-dropdown-row',key:item.handle},h('span',{'aria-hidden':true},String(i+1).padStart(2,'0')),h(ChapterLink,{item,index:i+1,onNavigate:()=>setMenu(false)}))),
+      h('div',{className:'bump-editorial-links'},h('a',{href:english?'/en/expertise':'/expertises'},english?'Explore our expertise':'Nos expertises en détail',h(ArrowUpRight,{})),h('a',{href:english?'/en/faq':'/faq'},english?'Frequently asked questions':'Questions fréquentes',h(ArrowUpRight,{}))),
       isBumpProductionHost(window.location.hostname)&&h('button',{
         type:'button',
         className:'bump-analytics-menu-button',

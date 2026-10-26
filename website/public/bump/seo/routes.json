@@ -1,0 +1,128 @@
+[
+  {
+    "id": "home",
+    "path": "/",
+    "locale": "fr",
+    "html": "/index.html",
+    "markdown": "/index.md"
+  },
+  {
+    "id": "home",
+    "path": "/en",
+    "locale": "en",
+    "html": "/en.html",
+    "markdown": "/en.md"
+  },
+  {
+    "id": "expertise",
+    "path": "/expertises",
+    "locale": "fr",
+    "html": "/expertises/index.html",
+    "markdown": "/expertises.md"
+  },
+  {
+    "id": "expertise",
+    "path": "/en/expertise",
+    "locale": "en",
+    "html": "/en/expertise/index.html",
+    "markdown": "/en/expertise.md"
+  },
+  {
+    "id": "workflow",
+    "path": "/services/automatisation-processus",
+    "locale": "fr",
+    "html": "/services/automatisation-processus/index.html",
+    "markdown": "/services/automatisation-processus.md"
+  },
+  {
+    "id": "workflow",
+    "path": "/en/services/workflow-automation",
+    "locale": "en",
+    "html": "/en/services/workflow-automation/index.html",
+    "markdown": "/en/services/workflow-automation.md"
+  },
+  {
+    "id": "ai",
+    "path": "/services/integration-ia",
+    "locale": "fr",
+    "html": "/services/integration-ia/index.html",
+    "markdown": "/services/integration-ia.md"
+  },
+  {
+    "id": "ai",
+    "path": "/en/services/ai-integration",
+    "locale": "en",
+    "html": "/en/services/ai-integration/index.html",
+    "markdown": "/en/services/ai-integration.md"
+  },
+  {
+    "id": "software",
+    "path": "/services/developpement-logiciel",
+    "locale": "fr",
+    "html": "/services/developpement-logiciel/index.html",
+    "markdown": "/services/developpement-logiciel.md"
+  },
+  {
+    "id": "software",
+    "path": "/en/services/custom-software-development",
+    "locale": "en",
+    "html": "/en/services/custom-software-development/index.html",
+    "markdown": "/en/services/custom-software-development.md"
+  },
+  {
+    "id": "security",
+    "path": "/services/cybersecurite",
+    "locale": "fr",
+    "html": "/services/cybersecurite/index.html",
+    "markdown": "/services/cybersecurite.md"
+  },
+  {
+    "id": "security",
+    "path": "/en/services/cybersecurity",
+    "locale": "en",
+    "html": "/en/services/cybersecurity/index.html",
+    "markdown": "/en/services/cybersecurity.md"
+  },
+  {
+    "id": "approach",
+    "path": "/approche",
+    "locale": "fr",
+    "html": "/approche/index.html",
+    "markdown": "/approche.md"
+  },
+  {
+    "id": "approach",
+    "path": "/en/approach",
+    "locale": "en",
+    "html": "/en/approach/index.html",
+    "markdown": "/en/approach.md"
+  },
+  {
+    "id": "about",
+    "path": "/a-propos",
+    "locale": "fr",
+    "html": "/a-propos/index.html",
+    "markdown": "/a-propos.md"
+  },
+  {
+    "id": "about",
+    "path": "/en/about",
+    "locale": "en",
+    "html": "/en/about/index.html",
+    "markdown": "/en/about.md"
+  },
+  {
+    "id": "faq",
+    "path": "/faq",
+    "locale": "fr",
+    "html": "/faq/index.html",
+    "markdown": "/faq.md"
+  },
+  {
+    "id": "faq",
+    "path": "/en/faq",
+    "locale": "en",
+    "html": "/en/faq/index.html",
+    "markdown": "/en/faq.md"
+  }
+]

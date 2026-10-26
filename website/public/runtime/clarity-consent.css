@@ -1,6 +1,5 @@
 /* Non-modal Bump analytics choice; independent of the 3D scene and assisted scroll. */
-.bump-clarity-notice,
-.bump-clarity-settings {
+.bump-clarity-notice {
   box-sizing: border-box;
   position: fixed;
   left: max(14px, env(safe-area-inset-left, 0px));
@@ -10,8 +9,7 @@
   line-height: 1.5;
   letter-spacing: normal;
 }
-.bump-clarity-notice[hidden],
-.bump-clarity-settings[hidden] {
+.bump-clarity-notice[hidden] {
   display: none !important;
 }
 .bump-clarity-notice {
@@ -43,6 +41,13 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.bump-clarity-error {
+  margin: 10px 0 0;
+  color: #f4c5af;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.bump-clarity-error[hidden] { display: none !important; }
 .bump-clarity-actions {
   display: flex;
   flex-wrap: wrap;
@@ -70,19 +75,33 @@
 .bump-clarity-button:hover {
   filter: brightness(1.08);
 }
-.bump-clarity-settings {
-  padding: 8px 12px;
-  border: 1px solid #a4ada0;
-  border-radius: 999px;
-  background: #182b22f0;
-  color: #f7f3e9;
-  box-shadow: 0 2px 12px #07150b4d;
-  font: 500 11px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+/* Once selected, preferences live inside the existing navigation dropdown:
+   no badge or floating overlay obscures the landing page. */
+.bump-hero-header .bump-hero-dropdown button.bump-analytics-menu-button {
+  display: flex;
+  width: 100%;
+  min-height: 38px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  padding: 10px 8px;
+  justify-content: flex-start;
+  align-items: center;
+  border: 0;
+  border-top: 1px solid #e4e5df;
+  border-radius: 2px;
+  background: transparent;
+  color: #46594c;
+  text-align: left;
+  white-space: normal;
+  font: 500 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
   cursor: pointer;
-  touch-action: manipulation;
+}
+.bump-hero-header .bump-hero-dropdown button.bump-analytics-menu-button:hover,
+.bump-hero-header .bump-hero-dropdown button.bump-analytics-menu-button:focus-visible {
+  background: #f1f1ed;
 }
 .bump-clarity-button:focus-visible,
-.bump-clarity-settings:focus-visible,
+.bump-analytics-menu-button:focus-visible,
 .bump-clarity-link:focus-visible {
   outline: 3px solid #e5d2ac;
   outline-offset: 3px;
@@ -93,5 +112,5 @@
   .bump-clarity-button { flex-basis: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .bump-clarity-button, .bump-clarity-settings { transition: none; }
+  .bump-clarity-button, .bump-analytics-menu-button { transition: none; }
 }

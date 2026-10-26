@@ -1,3 +1,4 @@
+import {ArrowUpRight} from '../../ui/Icons.js';
 import React from 'react';
 import { WorkflowMachineScene, type PartRefs } from './WorkflowMachineScene';
 import { useWorkflowMachineController } from './WorkflowMachineController';
@@ -51,7 +52,7 @@ export function WorkflowMachine({ playbackRate = 1.5, className = '' }: Workflow
     </div>
     <div className="bwm-approval-line" data-waiting={controller.waiting ? 'true' : 'false'}>
       <p><span className="bwm-approval-symbol" aria-hidden="true">✦</span><strong>Une validation avant la suite.</strong> {controller.waiting ? 'Proposition : mettre à jour le CRM et informer le responsable. La souris illustre l’accord de l’équipe.' : controller.stage === 5 ? 'Validation reçue. Le dossier a suivi le parcours autorisé.' : 'Le parcours montre où l’équipe autorise la transmission.'}</p>
-      <button type="button" className="bwm-approve" onClick={controller.approve} disabled={!controller.waiting}>Valider la proposition <span aria-hidden="true">↗</span></button>
+      <button type="button" className="bwm-approve" onClick={controller.approve} disabled={!controller.waiting}>Valider la proposition <ArrowUpRight /></button>
     </div>
     <div className="bwm-inspection" aria-live="off"><span>{detail.number} / {detail.name}</span><p>{detail.inspect}</p></div>
     <p className="bwm-footnote">Démonstration fictive : la souris simule l’accord de l’équipe. Aucun traitement réel.</p>

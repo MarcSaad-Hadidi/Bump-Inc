@@ -2,24 +2,51 @@
 // The tracker is NOT imported at module initialization.
 export const CLARITY_ID = 'z3i6jyq003';
 export const CONSENT_KEY = 'bump.clarity.analytics-consent.v1';
+export const DENIAL_KEY = 'bump.clarity.analytics-denied.v1';
 
 export function isBumpProductionHost(hostname) {
   return hostname === 'bumpconsultation.ca' || hostname === 'www.bumpconsultation.ca';
 }
 
-export function readAnalyticsChoice(storage) {
+export function readAnalyticsChoice(storage, sessionStorage) {
+  try {
+    // A session-level explicit refusal takes priority over an older grant.
+    if (sessionStorage?.getItem(DENIAL_KEY) === 'denied') return 'denied';
+  } catch { /* Continue with the primary store. */ }
+
   try {
     const value = storage?.getItem(CONSENT_KEY);
-    return value === 'granted' || value === 'denied' ? value : null;
+    if (value === 'granted') {
+      // Never auto-start tracking from a stale grant in read-only storage.
+      // Without a working write path, later revocations could not be saved.
+      storage.setItem(CONSENT_KEY, value);
+      return storage.getItem(CONSENT_KEY) === 'granted' ? 'granted' : null;
+    }
+    return value === 'denied' ? 'denied' : null;
   } catch {
-    // Blocked storage must not imply consent.
-    return null;
+    return null; // Blocked or read-only storage must not imply consent.
   }
 }
 
-export function saveAnalyticsChoice(storage, choice) {
-  try { storage?.setItem(CONSENT_KEY, choice); }
-  catch { /* Consent still applies to the current page. */ }
+export function saveAnalyticsChoice(storage, choice, sessionStorage) {
+  let persisted = false;
+  try {
+    storage?.setItem(CONSENT_KEY, choice);
+    persisted = storage?.getItem(CONSENT_KEY) === choice;
+  } catch { /* Try a session-level denial if persistent storage failed. */ }
+
+  if (choice === 'denied') {
+    try {
+      sessionStorage?.setItem(DENIAL_KEY, 'denied');
+      persisted = sessionStorage?.getItem(DENIAL_KEY) === 'denied' || persisted;
+    } catch { /* Do not reload if no storage can retain the denial. */ }
+  } else {
+    try {
+      sessionStorage?.removeItem(DENIAL_KEY);
+      if (sessionStorage?.getItem(DENIAL_KEY) === 'denied') persisted = false;
+    } catch { persisted = false; }
+  }
+  return persisted;
 }
 
 export function loadClarity(win, doc) {
@@ -28,7 +55,6 @@ export function loadClarity(win, doc) {
   win.clarity = win.clarity || function () {
     (win.clarity.q = win.clarity.q || []).push(arguments);
   };
-  // Explicit analytics-only Clarity Consent V2, before loading the script.
   win.clarity('consentv2', {ad_Storage: 'denied', analytics_Storage: 'granted'});
   const script = doc.createElement('script');
   script.async = true;
@@ -37,12 +63,12 @@ export function loadClarity(win, doc) {
   return true;
 }
 
-export function revokeClarity(win) {
-  if (win.__bumpClarityLoaded) {
-    win.clarity?.('consentv2', {ad_Storage: 'denied', analytics_Storage: 'denied'});
-    // A loaded third-party script cannot be unloaded reliably.
-    win.location.reload();
-    return true;
-  }
-  return false;
+export function revokeClarity(win, {reload = true} = {}) {
+  if (!win.__bumpClarityLoaded) return false;
+  // Consent V2 alone may continue cookieless capture; stop collection too.
+  win.clarity?.('consentv2', {ad_Storage: 'denied', analytics_Storage: 'denied'});
+  win.clarity?.('stop');
+  // Do not reload into a stale granted choice if consent storage failed.
+  if (reload) win.location.reload();
+  return true;
 }

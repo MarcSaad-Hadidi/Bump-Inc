@@ -60,7 +60,27 @@
   settings.setAttribute('aria-haspopup', 'dialog');
   settings.setAttribute('aria-controls', notice.id);
   settings.hidden = true;
-  document.body.append(notice, settings);
+
+  // The retained React client mounts into document itself. Its first commit can
+  // replace the entire document/body and detach pre-existing script-owned UI.
+  // Keep this small, isolated consent interface attached across those commits.
+  function mountControls() {
+    if (!document.body) return;
+    if (!notice.isConnected) document.body.append(notice);
+    if (!settings.isConnected) document.body.append(settings);
+  }
+
+  let remountQueued = false;
+  const mountObserver = new MutationObserver(() => {
+    if ((notice.isConnected && settings.isConnected) || remountQueued) return;
+    remountQueued = true;
+    queueMicrotask(() => {
+      remountQueued = false;
+      mountControls();
+    });
+  });
+  mountObserver.observe(document, {childList: true, subtree: true});
+  mountControls();
 
   let started = false;
 

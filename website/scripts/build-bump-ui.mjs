@@ -37,4 +37,6 @@ for(const name of readdirSync('src/bump/chapters/runtime'))copyFileSync('src/bum
 writeFileSync('public/runtime/assets/BumpUI.css',readFileSync('public/runtime/assets/BumpUI.css','utf8')+'\n'+readFileSync('src/bump/ui/mobile.css','utf8'));
 stabilizeMobileViewport();
 hardenRetainedIdentifiers();
+// Ship source-controlled analytics consent styles with the public site assets.
+copyFileSync('src/bump/ui/clarity-consent.css', 'public/runtime/clarity-consent.css');
 console.log('Built Bump motion components with the existing React runtime.');

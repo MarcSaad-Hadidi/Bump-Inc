@@ -6,7 +6,7 @@ import {renderBumpPng} from '../scripts/build-share-assets.mjs';
 
 const previewPath = 'dist/client/bump/brand/bump-social-v1.png';
 const iconPath = 'dist/client/bump/apple-touch-icon.png';
-const oldArtwork = '/bump/art/hero-fallback-v2.webp';
+const illustratedPreview = '/bump/art/hero-fallback-v2.webp';
 
 function inspectPng(file) {
   const png = readFileSync(file);
@@ -51,10 +51,39 @@ test('Bump Open Graph image is 1200×630, crisp, compact and uses the brand symb
   assert.ok(foregroundPixels > 9000, 'the actual Bump logo must be visible and large');
 });
 
-test('Apple touch icon is a real branded 180×180 PNG', () => {
-  const {width, height} = inspectPng(iconPath);
-  assert.equal(width, 180);
-  assert.equal(height, 180);
+test('Apple and Android icons are real square PNGs derived from the Bump symbol', () => {
+  for (const [file, side] of [
+    [iconPath, 180],
+    ['dist/client/bump/apple-touch-icon-v2.png', 180],
+    ['dist/client/bump/icon-32-v2.png', 32],
+    ['dist/client/bump/icon-192-v2.png', 192],
+    ['dist/client/bump/icon-512-v2.png', 512],
+  ]) {
+    const {width, height, pixels} = inspectPng(file);
+    assert.equal(width, side);
+    assert.equal(height, side);
+    const middle = Math.floor(side / 2);
+    const row = middle * (1 + side * 3) + 1;
+    assert.notDeepEqual([...pixels.subarray(row + 3 * middle, row + 3 * middle + 3)], [35, 48, 40], file + ' must have a visible logo');
+  }
+});
+
+test('traditional root favicon.ico contains the generated Bump PNG', () => {
+  const ico = readFileSync('dist/client/favicon.ico');
+  assert.equal(ico.readUInt16LE(0), 0);
+  assert.equal(ico.readUInt16LE(2), 1);
+  assert.equal(ico.readUInt16LE(4), 1);
+  assert.equal(ico[6], 32);
+  assert.equal(ico[7], 32);
+  assert.equal(ico.readUInt32LE(18), 22);
+  assert.equal(ico.subarray(22, 30).toString('hex'), '89504e470d0a1a0a');
+});
+
+test('manifest declares the Bump brand icons instead of any generic icon', () => {
+  const manifest = JSON.parse(readFileSync('dist/client/site.webmanifest', 'utf8'));
+  assert.equal(manifest.short_name, 'Bump');
+  assert.equal(manifest.theme_color, '#233028');
+  assert.deepEqual(manifest.icons.map(icon => icon.src), ['/bump/icon-192-v2.png', '/bump/icon-512-v2.png']);
 });
 
 test('renderer validates outline and produces deterministic PNG output', () => {
@@ -65,18 +94,26 @@ test('renderer validates outline and produces deterministic PNG output', () => {
   assert.throws(() => renderBumpPng(points, {...options, width: 9999}), /dimensions/);
 });
 
-test('French/English static HTML uses the logo instead of the old artwork', () => {
+test('French/English link previews show the original characters, not the oversized logo', () => {
   const fr = readFileSync('dist/client/index.html', 'utf8');
   const en = readFileSync('dist/client/en.html', 'utf8');
+  const characters = readFileSync('dist/client' + illustratedPreview);
+  assert.equal(characters.toString('ascii', 0, 4), 'RIFF');
+  assert.equal(characters.toString('ascii', 8, 12), 'WEBP');
   for (const html of [fr, en]) {
-    assert.match(html, /property="og:image" content="[^"]*\/bump\/brand\/bump-social-v1\.png"/);
-    assert.match(html, /name="twitter:image" content="[^"]*\/bump\/brand\/bump-social-v1\.png"/);
-    assert.match(html, /property="og:image:type" content="image\/png"/);
-    assert.match(html, /property="og:image:width" content="1200"/);
-    assert.match(html, /property="og:image:height" content="630"/);
+    assert.match(html, /property="og:image" content="[^"]*\/bump\/art\/hero-fallback-v2\.webp"/);
+    assert.match(html, /property="og:image:secure_url" content="[^"]*\/bump\/art\/hero-fallback-v2\.webp"/);
+    assert.match(html, /name="twitter:image" content="[^"]*\/bump\/art\/hero-fallback-v2\.webp"/);
+    assert.match(html, /property="og:image:type" content="image\/webp"/);
+    assert.match(html, /property="og:image:width" content="1900"/);
+    assert.match(html, /property="og:image:height" content="900"/);
+    assert.doesNotMatch(html, /property="og:image" content="[^"]*bump-social-v1\.png"/);
+    assert.match(html, /rel="apple-touch-icon" sizes="180x180" href="\/bump\/apple-touch-icon-v2\.png"/);
+    assert.match(html, /rel="icon" href="\/bump\/icon-32-v2\.png" type="image\/png" sizes="32x32"/);
+    assert.match(html, /rel="shortcut icon" href="\/favicon\.ico"/);
+    assert.match(html, /rel="manifest" href="\/site\.webmanifest"/);
     assert.match(html, /name="twitter:card" content="summary_large_image"/);
-    assert.match(html, /rel="apple-touch-icon" sizes="180x180" href="\/bump\/apple-touch-icon\.png"/);
-    assert.ok(!html.includes('property="og:image" content="' + oldArtwork));
+    assert.doesNotMatch(html, /__RENAISSANCE_ORIGIN__/);
   }
   assert.match(fr, /property="og:locale" content="fr_CA"/);
   assert.match(en, /property="og:locale" content="en_CA"/);

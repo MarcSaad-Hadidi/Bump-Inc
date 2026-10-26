@@ -8,7 +8,7 @@ import {MotionPanel,LocationPopover,ArrowUpRight,CloseIcon} from '/runtime/asset
 import BackgroundMusic from './BackgroundMusic.js';
 import DeviceMotionControl from './DeviceMotionControl.js';
 import BumpClarityConsent from './BumpClarityConsent.js';
-import {isBumpProductionHost} from './clarityConsentCore.js';
+import {isBumpProductionHost,ANALYTICS_PREFERENCES_EVENT} from './clarityConsentCore.js';
 const h=(tag,props,...children)=>R.jsxs(tag,{...props,...(children.length?{children:children.flat()}: {})});
 const searchIcon=()=>h('svg',{width:15,height:15,viewBox:'0 0 24 24',fill:'none','aria-hidden':true},h('circle',{cx:10,cy:10,r:6,stroke:'currentColor',strokeWidth:1.7}),h('path',{d:'m15 15 5 5',stroke:'currentColor',strokeWidth:1.7}));
 function ChapterLink({item,index,onNavigate,className}){
@@ -82,7 +82,7 @@ export default function BumpNav({navItems}){
         'aria-controls':'bump-clarity-notice',
         onClick:()=>{
           setMenu(false);
-          window.dispatchEvent(new Event('bump:open-analytics-preferences'));
+          window.dispatchEvent(new Event(ANALYTICS_PREFERENCES_EVENT));
         },
       },english?'Analytics preferences':'Préférences statistiques')));
   const heroSearch=h('div',{className:'bump-hero-search-anchor',ref:searchAnchor},

@@ -210,7 +210,7 @@ test('opt-in starts Clarity once; revocation removes third-party tracking via re
 test('returning users can revoke after React StrictMode effect remount', () => {
   const ui = harness({stored:'granted'});
   const first = ui.controls(ui.render());
-  assert.equal(first.settings.props.hidden, false);
+  assert.equal(first.notice.props.hidden, true, 'no controls float for returning visitors');
   assert.equal(ui.document.head.children.filter(n => n.tagName === 'SCRIPT').length, 1);
   ui.lifecycleReset();
   ui.render();

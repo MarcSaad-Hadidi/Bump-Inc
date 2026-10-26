@@ -35,7 +35,7 @@ export default function BumpClarityConsent() {
   const enabled = isBumpProductionHost(window.location.hostname);
   const [choice, setChoice] = React.useState(() => {
     if (!enabled) return 'denied';
-    try { return readAnalyticsChoice(window.localStorage); }
+    try { return readAnalyticsChoice(window.localStorage, window.sessionStorage); }
     catch { return null; }
   });
   const [noticeOpen, setNoticeOpen] = React.useState(() => enabled && choice === null);
@@ -63,11 +63,13 @@ export default function BumpClarityConsent() {
   const labels = document.documentElement.lang?.toLowerCase().startsWith('en') ? COPY.en : COPY.fr;
 
   function choose(next) {
-    try { saveAnalyticsChoice(window.localStorage, next); }
-    catch { /* Storage may be unavailable; retain choice in React state. */ }
+    let persisted = false;
+    try {
+      persisted = saveAnalyticsChoice(window.localStorage, next, window.sessionStorage);
+    } catch { /* Blocked storage: the React state still denies collection. */ }
     setChoice(next);
     setNoticeOpen(false);
-    if (next === 'denied') revokeClarity(window);
+    if (next === 'denied') revokeClarity(window, {reload: persisted});
   }
 
   return h(React.Fragment, {},

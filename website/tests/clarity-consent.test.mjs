@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 import {
-  CLARITY_ID, CONSENT_KEY,
+  CLARITY_ID, CONSENT_KEY, DENIAL_KEY,
   isBumpProductionHost, readAnalyticsChoice, saveAnalyticsChoice,
   loadClarity, revokeClarity,
 } from '../src/bump/ui/clarityConsentCore.js';
@@ -14,9 +14,25 @@ const nav = readFileSync(new URL('../src/bump/ui/BumpNav.js', import.meta.url), 
 
 function harness({hostname = 'bumpconsultation.ca', lang = 'fr', stored = null} = {}) {
   const values = new Map(stored == null ? [] : [[CONSENT_KEY, stored]]);
+  const sessionValues = new Map();
+  let rejectLocalWrites = false, rejectSessionWrites = false;
   const storage = {
     getItem(key) { return values.get(key) ?? null; },
-    setItem(key, value) { values.set(key, value); },
+    setItem(key, value) {
+      if (rejectLocalWrites) throw new Error('localStorage read-only');
+      values.set(key, value);
+    },
+  };
+  const sessionStorage = {
+    getItem(key) { return sessionValues.get(key) ?? null; },
+    setItem(key, value) {
+      if (rejectSessionWrites) throw new Error('sessionStorage blocked');
+      sessionValues.set(key, value);
+    },
+    removeItem(key) {
+      if (rejectSessionWrites) throw new Error('sessionStorage blocked');
+      sessionValues.delete(key);
+    },
   };
   let reloads = 0;
 
@@ -41,6 +57,7 @@ function harness({hostname = 'bumpconsultation.ca', lang = 'fr', stored = null} 
   const window = {
     location: {hostname, reload() { reloads++; }},
     localStorage: storage,
+    sessionStorage,
   };
   const React = {
     Fragment: 'React.Fragment',
@@ -100,7 +117,9 @@ function harness({hostname = 'bumpconsultation.ca', lang = 'fr', stored = null} 
   }
 
   return {
-    window, document, values, render, lifecycleReset, controls,
+    window, document, values, sessionValues, render, lifecycleReset, controls,
+    blockLocalWrites() { rejectLocalWrites = true; },
+    blockSessionWrites() { rejectSessionWrites = true; },
     get reloads() { return reloads; },
     replaceHead() { document.head = makeHead(); },
   };
@@ -167,9 +186,10 @@ test('opt-in starts Clarity once; revocation removes third-party tracking via re
   controls.deny.props.onClick();
   assert.equal(ui.values.get(CONSENT_KEY), 'denied');
   assert.equal(ui.reloads, 1);
-  assert.deepEqual(JSON.parse(JSON.stringify(Array.from(ui.window.clarity.q.at(-1)))), [
+  assert.deepEqual(JSON.parse(JSON.stringify(Array.from(ui.window.clarity.q.at(-2)))), [
     'consentv2', {ad_Storage:'denied', analytics_Storage:'denied'},
   ]);
+  assert.equal(ui.window.clarity.q.at(-1)[0], 'stop');
 });
 
 test('returning users can revoke after React StrictMode effect remount', () => {
@@ -190,8 +210,9 @@ test('returning users can revoke after React StrictMode effect remount', () => {
 test('analytics storage unavailability never implies permission', () => {
   assert.equal(readAnalyticsChoice({getItem() { throw new Error('denied'); }}), null);
   assert.equal(readAnalyticsChoice({getItem() { return 'invalid'; }}), null);
-  assert.equal(readAnalyticsChoice({getItem() { return 'granted'; }}), 'granted');
-  assert.doesNotThrow(() => saveAnalyticsChoice({setItem() { throw new Error('denied'); }}, 'denied'));
+  assert.equal(readAnalyticsChoice({getItem() { return 'granted'; }}), null);
+  assert.equal(readAnalyticsChoice({getItem() { return 'granted'; }, setItem() {}}), 'granted');
+  assert.equal(saveAnalyticsChoice({setItem() { throw new Error('denied'); }}, 'denied'), false);
 });
 
 test('consent source and stylesheet are owned by the navigation React lifecycle', () => {
@@ -206,4 +227,32 @@ test('consent source and stylesheet are owned by the navigation React lifecycle'
   assert.match(css, /\.bump-clarity-notice/);
   const build = readFileSync(new URL('../scripts/build-bump-ui.mjs', import.meta.url), 'utf8');
   assert.match(build, /copyFileSync\('src\/bump\/ui\/clarity-consent\.css'/);
+});
+
+test('revocation survives read-only persistent storage via a session denial marker', () => {
+  const ui = harness({stored:'granted'});
+  ui.render(); // Returning consent is loaded before browser storage becomes read-only.
+  assert.equal(ui.document.head.children.filter(n => n.tagName === 'SCRIPT').length, 1);
+  ui.blockLocalWrites();
+  ui.controls(ui.render()).settings.props.onClick();
+  ui.controls(ui.render()).deny.props.onClick();
+  assert.equal(ui.values.get(CONSENT_KEY), 'granted', 'old grant cannot be overwritten');
+  assert.equal(ui.sessionValues.get(DENIAL_KEY), 'denied');
+  assert.equal(readAnalyticsChoice(ui.window.localStorage, ui.window.sessionStorage), 'denied');
+  assert.equal(ui.reloads, 1, 'reload is safe because session denial was stored');
+  assert.equal(ui.window.clarity.q.at(-1)[0], 'stop');
+});
+
+test('failed writes never reload into a stale grant and stop collection immediately', () => {
+  const ui = harness({stored:'granted'});
+  ui.render();
+  ui.blockLocalWrites();
+  ui.blockSessionWrites();
+  ui.controls(ui.render()).settings.props.onClick();
+  ui.controls(ui.render()).deny.props.onClick();
+  assert.equal(ui.reloads, 0, 'no reload without a durable refusal marker');
+  assert.equal(ui.values.get(CONSENT_KEY), 'granted');
+  assert.equal(ui.window.clarity.q.at(-1)[0], 'stop');
+  assert.equal(ui.controls(ui.render()).settings.props.hidden, false);
+  assert.equal(readAnalyticsChoice(ui.window.localStorage, ui.window.sessionStorage), null, 'read-only grants are not trusted after refresh');
 });

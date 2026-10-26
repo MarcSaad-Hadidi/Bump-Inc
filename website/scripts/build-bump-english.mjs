@@ -49,6 +49,10 @@ export function buildEnglishEdition(){
  // stream uses the same deterministic encoder as the retained React shell.
  shell=translateOutsideScripts(shell,translateHtml);
  shell=shell.replace('<html lang="fr"','<html lang="en"').replace(/\/runtime\/assets\/([^\s"'<>]*\.js)/g,'/runtime/en/assets/$1');
+ // Social crawlers read the static HTML rather than the React route loader.
+ // The English edition keeps its own page identity and shares the brand image.
+ shell=shell.replace('property="og:locale" content="fr_CA"','property="og:locale" content="en_CA"');
+ shell=shell.replace('property="og:url" content="__RENAISSANCE_ORIGIN__/"','property="og:url" content="__RENAISSANCE_ORIGIN__/en"');
  shell=replaceLoaderStream(shell,encodeStream(data));
  // Heading fragments and description markup are already localized above.
  writeFileSync('public/en.html',shell);

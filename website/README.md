@@ -121,3 +121,22 @@ leur contexte d'origine. Le build ne publie pas les outils de contrôle mobile.
 - `src/bump/ui/BumpClarityConsent.js` est monté dans `BumpNav` après le rendu React de l’application. Il installe la feuille CSS depuis `src/bump/ui/clarity-consent.css` lors de son effet et la retire au démontage. Le build publie cette feuille dans `public/runtime/clarity-consent.css`. Aucun script Clarity n’est injecté par le HTML statique. La CSP autorise les connexions Microsoft nécessaires.
 - Vérification : après déploiement sur le domaine officiel, refuser les statistiques et confirmer l’absence de requêtes `clarity.ms`. Puis accepter et vérifier `https://www.clarity.ms/tag/z3i6jyq003` et les requêtes de collecte dans les DevTools. Tester également la révocation.
 - **Avant publication** : vérifier que les règles de masquage Clarity excluent toute information confidentielle et ajouter la description du suivi et les coordonnées de Bump à sa politique de confidentialité. Le consentement technique ne remplace pas ces obligations d’information.
+
+## Aperçus de lien et identité Bump
+
+Le build génère `public/bump/brand/bump-social-v1.png` (1200 × 630) et
+`public/bump/apple-touch-icon.png` (180 × 180) directement depuis le tracé
+vectoriel Bump `src/bump/chapters/branding/symbol-outline.json`, sans
+dépendance externe. Le favicon SVG reste indépendant et identique à la marque.
+
+Le HTML public FR/EN expose les balises Open Graph et Twitter pour utiliser
+l'image Bump plutôt que l'ancienne illustration du héros. `SITE_PUBLIC_ORIGIN`
+définit l'URL absolue de ces métadonnées en production (sur Cloudflare :
+`https://bumpconsultation.ca`). Ne pas le définir pour les previews Workers
+afin de ne pas forcer leurs ressources JS à charger depuis la production.
+
+Après merge et déploiement, vérifier le HTML source et l'image
+`https://bumpconsultation.ca/bump/brand/bump-social-v1.png`. Les applications
+de messagerie et réseaux sociaux peuvent conserver un ancien aperçu en cache ;
+réessayer de partager le lien ou utiliser leur outil de rafraîchissement des
+aperçus si nécessaire. La modification du favicon ne purge pas ce cache.

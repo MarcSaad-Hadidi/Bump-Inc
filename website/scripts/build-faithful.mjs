@@ -3,6 +3,8 @@ import path from 'node:path';
 import './sync-bump-content.mjs';
 import {buildEnglishEdition} from './build-bump-english.mjs';
 import {publicOrigin} from './hosting-config.mjs';
+import {buildShareAssets} from './build-share-assets.mjs';
+buildShareAssets();
 buildEnglishEdition();
 
 const root = process.cwd();

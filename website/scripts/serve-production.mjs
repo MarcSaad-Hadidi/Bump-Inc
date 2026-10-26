@@ -35,8 +35,9 @@ export function createSiteServer(directory = defaultRoot, {homeFile, development
       try { pathname = decodeURIComponent(url.pathname); }
       catch { reply(400, 'Invalid path'); return; }
       if (pathname.includes('\0')) { reply(400, 'Invalid path'); return; }
-      if (development && pathname === '/__seo-review') {
-        const body = await readFile(new URL('../tests/fixtures/seo-review.html', import.meta.url));
+      if (development && (pathname === '/__seo-review' || pathname === '/__mobile-review')) {
+        const fixture = pathname === '/__seo-review' ? '../tests/fixtures/seo-review.html' : '../tests/fixtures/mobile-review.html';
+        const body = await readFile(new URL(fixture, import.meta.url));
         response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store'});
         response.end(request.method === 'HEAD' ? undefined : body); return;
       }

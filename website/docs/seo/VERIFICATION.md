@@ -142,3 +142,12 @@ WebGL performance measurements.
 - GPT-only routing and compiled Worker smoke passed, including exact public FR/EN shared-module bytes without ASSETS, HEAD, 405 and unknown-module 404. This addresses the missing hashed chunks found in the earlier Site deployment.
 - Prior all-chapter viewport and folder gesture measurements above remain applicable; models and global scene geometry are unchanged. The merged landing and editorial links were rechecked in the browser.
 - Docker is unavailable in this executor. The existing GitHub public-site job builds and runs the container; CI, secret scanning and platform service-backed checks must finish before merge. No automatic merge.
+
+## PR review corrections — 2026-10-26
+
+- CodeQL alerts 8/9/10 shared one development-only boundary: mutable option text flowed to iframe.src during initial load, selection changes and JS-mode reloads. No remote input populating those options was established.
+- Navigation now selects only frozen authored route literals by a validated numeric index. Unknown selections use the homepage; option text is never interpreted as a URL.
+- The focused regression failed before the patch and passed after it for javascript/data/external/protocol-relative/backslash/control-character/markup values. All 11 pages, both sandbox toggles and assisted keys remain functional.
+- A read-only independent investigation and candidate review found no surviving concrete bypass or regression. No application scene or production security control was weakened.
+- Restored /__mobile-review alongside /__seo-review. Real HTTP tests cover GET/HEAD in development, no-store headers, production 404 and rejected writes for both tools. These fixtures are not published.
+- Full npm test: 184 passed, zero failures/skips. HTTP smoke passed. New GitHub checks and CodeQL run on the corrective commit before completion.

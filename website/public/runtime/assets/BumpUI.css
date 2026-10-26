@@ -166,26 +166,33 @@ body{font-size:18px;font-synthesis:none}
 .bump-header[data-tone=dark] .bump-hero-search-results a{color:#fff9ed!important}
 .bump-header[data-tone=light] .bump-hero-search-panel{background:#ffffff18;color:#302e28;text-shadow:none;border-color:#4a49344d}
 
-.bump-contact .bump-dialog-inner{padding:44px 46px 36px;background:#f5f1e6;border:1px solid #dbd2bf;border-radius:7px}
-.bump-contact h2{font-size:48px;line-height:1.02;margin-bottom:15px;max-width:570px}
-.bump-contact .bump-eyebrow{font-size:11px;letter-spacing:.13em;color:#8b775a;margin-bottom:15px}
-.bump-contact .bump-brief-intro{max-width:490px;font-size:18px;line-height:1.35;color:#7d705e;margin-bottom:27px}
-.bump-contact form{gap:20px 22px}
-.bump-contact label{display:block;font-size:16px;font-weight:600;margin-bottom:8px;color:#4b4235}
-.bump-contact label>span{color:#9e8a69;font-weight:400}
+.bump-contact .bump-dialog-inner{padding:54px 40px 36px}
+.bump-contact-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr);gap:42px;align-items:start}
+.bump-contact-copy{min-width:0;padding-right:4px}
+.bump-contact h2{font-size:clamp(35px,3.8vw,46px);line-height:1.07;letter-spacing:-.035em;margin:0 0 22px;max-width:300px}
+.bump-contact .bump-eyebrow{font:10px/1.3 system-ui,sans-serif;letter-spacing:.15em;margin:0 0 22px}
+.bump-contact .bump-brief-intro{font-size:19px;line-height:1.45;margin:0;max-width:270px}
+.bump-contact-location{margin:32px 0 0;padding-top:20px;border-top:1px solid;font-size:15px;line-height:1.35}
+.bump-contact-location span{display:block;max-width:220px;font-size:15px;margin-top:8px;opacity:.85}
+.bump-contact form{min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 18px;margin:0}
+.bump-contact .bump-field{min-width:0}
+.bump-contact label{display:block;font-size:15px;font-weight:400;line-height:1.25;margin-bottom:9px}
 .bump-contact .bump-field-wide{grid-column:1/-1}
-.bump-contact input,.bump-contact select,.bump-contact textarea{background:#fdfbf6;border-color:#d0c5b2;border-radius:3px;font-size:17px;line-height:1.35;padding:12px 13px;transition:border-color .2s,box-shadow .2s}
-.bump-contact :is(input,select,textarea):focus{outline:0;border-color:#8a7858;box-shadow:0 0 0 2px #8a785818}
-.bump-contact :is(input,textarea)::placeholder{color:#a09482;opacity:1}
-.bump-contact textarea{min-height:112px;resize:vertical}
-.bump-contact-bottom{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:6px}
-.bump-contact-bottom>p{font-size:13px;color:#9a8d76;margin:0}
-.bump-contact .bump-action{font-size:17px;padding:13px 20px;gap:32px;border-radius:4px;background:#34392e;border-color:#34392e;transition:background .2s,transform .2s}
-.bump-contact .bump-action:hover{background:#4a5141;transform:translateY(-1px)}
-.bump-contact .bump-close{color:#7e705b;right:20px;top:17px}
-.bump-contact .bump-form-status{margin-top:14px;font-size:15px;color:#58634a;letter-spacing:0}
-@media(max-width:600px){.bump-contact .bump-dialog-inner{padding:36px 23px 26px}.bump-contact h2{font-size:38px}.bump-contact form{grid-template-columns:1fr;gap:16px}.bump-contact .bump-brief-intro{font-size:17px}.bump-contact-bottom{align-items:flex-start;flex-direction:column;gap:12px}.bump-contact .bump-action{width:100%;justify-content:space-between}}
-@media(prefers-reduced-motion:reduce){.bump-contact :is(input,select,textarea),.bump-contact .bump-action{transition:none}}
+.bump-contact :is(input,select,textarea){display:block;width:100%;min-height:47px;border:1px solid;border-radius:7px;font:400 17px/1.35 var(--bump-serif);padding:12px 13px;transition:border-color .2s,box-shadow .2s,background-color .2s}
+.bump-contact :is(input,select,textarea):focus{outline:0}
+.bump-contact textarea{min-height:122px;max-height:240px;resize:vertical}
+.bump-contact select{padding-right:8px}
+.bump-contact-bottom{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:15px;padding-top:2px}
+.bump-contact-bottom>p{font-size:12px;line-height:1.3;margin:0}
+.bump-contact .bump-action{display:inline-flex;align-items:center;justify-content:space-between;font-size:16px;line-height:1.2;padding:13px 17px;gap:26px;min-height:46px;border:1px solid #314432;border-radius:7px;background:#314432;color:#fff9ed;transition:background .2s,transform .2s;white-space:nowrap}
+.bump-contact .bump-action:hover{background:#435641;transform:translateY(-1px)}
+.bump-contact .bump-close{display:grid;place-items:center;right:16px;top:14px;width:32px;height:32px;padding:7px;border:1px solid;border-radius:50%;line-height:0;transition:background-color .2s}
+.bump-contact .bump-close svg{width:17px;height:17px}
+.bump-contact .bump-form-status{grid-column:1/-1;margin:0;padding:12px 0 0;font-size:15px;line-height:1.4;animation:bump-contact-status .25s ease-out both}
+@keyframes bump-contact-status{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:800px){.bump-contact .bump-dialog-inner{padding:52px 28px 30px}.bump-contact-layout{gap:28px;grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr)}.bump-contact h2{font-size:37px}.bump-contact form{grid-template-columns:1fr;gap:17px}.bump-contact-bottom{align-items:flex-start;flex-direction:column;gap:12px}.bump-contact .bump-action{width:100%}}
+@media(max-width:600px){.bump-contact .bump-dialog-inner{padding:46px 22px 25px}.bump-contact-layout{grid-template-columns:minmax(0,1fr);gap:27px}.bump-contact h2{font-size:37px;max-width:300px;margin-bottom:14px}.bump-contact .bump-eyebrow{margin-bottom:15px}.bump-contact .bump-brief-intro{font-size:18px;max-width:330px}.bump-contact-location{display:none}.bump-contact form{gap:17px}.bump-contact textarea{min-height:105px}.bump-contact-bottom{gap:14px;padding-top:3px}.bump-contact .bump-action{min-height:47px;font-size:17px}}
+@media(prefers-reduced-motion:reduce){.bump-contact :is(input,select,textarea,.bump-action,.bump-close){transition:none}.bump-contact .bump-form-status{animation:none}}
 
 /* A visible dot trail that draws toward the chapter's Roman numeral. */
 .bump-editorial-links{border-top:1px solid #b7bbab;margin-top:9px;padding-top:12px;display:grid;gap:7px}.bump-hero-dropdown .bump-editorial-links a{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:15px;color:#34462e;line-height:1.35;text-decoration:none}.bump-hero-dropdown .bump-editorial-links a:hover{text-decoration:underline}
@@ -3306,3 +3313,41 @@ html[data-bump-stable-viewport] .static-fallback-wrapper{transform:translate3d(c
 }
 
 :is(#sidekick,#online,#operations,#retail,#developer,#b2b) .narrative-1[data-bump-surface=scene]{text-shadow:0 1px 4px #17201999!important}
+
+/* One clear glass recipe for search, expertise navigation and project forms. */
+:root{--bump-glass-fill:rgba(255,255,255,.09);--bump-glass-edge:rgba(255,255,255,.38);--bump-glass-filter:blur(12px) saturate(150%);--bump-glass-shadow:inset 0 1px 0 #ffffff42,0 6px 24px #111a1820}
+.bump-header,.bump-contact,.seo-expertise-menu{--bump-glass-ink:#302e28;--bump-glass-muted:#55594d;--bump-glass-line:#4a493433;--bump-glass-hover:#ffffff40;--bump-glass-text-shadow:none;--bump-glass-control:#ffffff12}
+.bump-header[data-tone=dark],html[data-bump-tone=dark] .bump-contact{--bump-glass-ink:#fff9ed;--bump-glass-muted:#fff9edd9;--bump-glass-line:#fff9ed40;--bump-glass-hover:#ffffff1c;--bump-glass-text-shadow:0 1px 3px #10181590;--bump-glass-control:#ffffff0a}
+.bump-header .bump-hero-dropdown,.bump-header .bump-hero-search-panel,.bump-contact .bump-dialog-inner,.seo-expertise-panel{background:var(--bump-glass-fill);-webkit-backdrop-filter:var(--bump-glass-filter);backdrop-filter:var(--bump-glass-filter);border:1px solid var(--bump-glass-edge);border-radius:10px;box-shadow:var(--bump-glass-shadow);color:var(--bump-glass-ink);text-shadow:var(--bump-glass-text-shadow)}
+.bump-header[data-tone=light] .bump-hero-dropdown,.bump-header[data-tone=light] .bump-hero-search-panel,html:not([data-bump-tone=dark]) .bump-contact .bump-dialog-inner,.seo-expertise-panel{border-color:#4a49344d}
+.bump-header .bump-hero-dropdown{padding:15px 12px 10px}
+.bump-header .bump-hero-dropdown :is(.bump-menu-label,.bump-service-links a>span){color:var(--bump-glass-muted)}
+.bump-header .bump-hero-dropdown :is(.bump-service-links a,.bump-editorial-links a,.bump-menu-chapters .bump-hero-dropdown-row a){color:var(--bump-glass-ink)!important;text-shadow:var(--bump-glass-text-shadow)}
+.bump-header .bump-hero-dropdown :is(.bump-service-links a,.bump-editorial-links a,.bump-menu-chapters .bump-hero-dropdown-row a):is(:hover,:focus-visible){background:var(--bump-glass-hover);text-decoration:none}
+.bump-header .bump-hero-dropdown .bump-editorial-links{border-color:var(--bump-glass-line)}
+.bump-header.bump-hero-header .bump-hero-dropdown .bump-analytics-menu-button{color:var(--bump-glass-muted);border-color:var(--bump-glass-line)}
+.bump-header.bump-hero-header .bump-hero-dropdown .bump-analytics-menu-button:is(:hover,:focus-visible){background:var(--bump-glass-hover)}
+.bump-header.bump-hero-header[data-tone] .bump-nav-trigger[aria-expanded=true]{--bump-adaptive-ink:var(--bump-glass-ink)!important;color:var(--bump-glass-ink)!important;background:var(--bump-glass-fill);-webkit-backdrop-filter:var(--bump-glass-filter);backdrop-filter:var(--bump-glass-filter);box-shadow:inset 0 0 0 1px var(--bump-glass-edge);border-radius:6px;text-shadow:var(--bump-glass-text-shadow)!important}
+.bump-header.bump-hero-header[data-tone=dark] .bump-nav-trigger[aria-expanded=true]>img{filter:brightness(0) invert(1)!important}
+.bump-header.bump-hero-header[data-tone=light] .bump-nav-trigger[aria-expanded=true]>img{filter:brightness(0)!important}
+.seo-expertise-panel>p,.seo-expertise-panel>a>span:first-child{color:var(--bump-glass-muted)}
+.seo-header nav .seo-expertise-panel>a{color:var(--bump-glass-ink)}
+.seo-header nav .seo-expertise-panel>a:is(:hover,:focus-visible),.seo-header nav .seo-expertise-panel>a[aria-current=page]{background:var(--bump-glass-hover);color:var(--bump-glass-ink)}
+.seo-header nav .seo-expertise-panel>.seo-expertise-all{border-color:var(--bump-glass-line);color:var(--bump-glass-ink)}
+/* The page remains visible; blur belongs to the actual form surface only. */
+.bump-contact.bump-dialog{padding:12px;width:min(960px,100vw);max-width:100vw;max-height:calc(100dvh - 24px);overflow:visible;background:transparent;color:var(--bump-glass-ink)}
+.bump-contact.bump-dialog::backdrop{background:#101b151f;-webkit-backdrop-filter:none;backdrop-filter:none}
+.bump-contact .bump-dialog-inner{max-height:calc(100dvh - 48px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.bump-contact :is(h2,label,input,select,textarea,.bump-close){color:var(--bump-glass-ink)}
+.bump-contact :is(.bump-eyebrow,.bump-brief-intro,.bump-contact-location,.bump-contact-bottom>p,.bump-form-status){color:var(--bump-glass-muted)}
+.bump-contact label>span{color:inherit;opacity:.65}
+.bump-contact :is(input,select,textarea){background:var(--bump-glass-control);border-color:var(--bump-glass-line);color:var(--bump-glass-ink);text-shadow:var(--bump-glass-text-shadow);caret-color:currentColor}
+.bump-contact :is(input,textarea)::placeholder{color:var(--bump-glass-muted);opacity:.72}
+.bump-contact :is(input,select,textarea):focus{border-color:var(--bump-glass-ink);box-shadow:0 0 0 3px var(--bump-glass-hover);background:var(--bump-glass-hover)}
+.bump-contact select option{background:#f6f3e9;color:#302e28;text-shadow:none}
+.bump-contact .bump-close{border-color:var(--bump-glass-line);background:var(--bump-glass-control)}
+.bump-contact .bump-close:hover{background:var(--bump-glass-hover)}
+.bump-contact .bump-contact-location{border-color:var(--bump-glass-line)}
+html[data-bump-tone=dark] .bump-contact .bump-action{background:#fff9ed;color:#2a3529;border-color:#fff9ed;text-shadow:none}
+html[data-bump-tone=dark] .bump-contact .bump-action:hover{background:#fffef9}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.bump-header .bump-hero-dropdown,.bump-contact .bump-dialog-inner,.seo-expertise-panel{background:#f4f1e8f5}.bump-header[data-tone=dark] .bump-hero-dropdown,html[data-bump-tone=dark] .bump-contact .bump-dialog-inner{background:#233126f5}}

@@ -1,0 +1,37 @@
+/* One clear glass recipe for search, expertise navigation and project forms. */
+:root{--bump-glass-fill:rgba(255,255,255,.09);--bump-glass-edge:rgba(255,255,255,.38);--bump-glass-filter:blur(12px) saturate(150%);--bump-glass-shadow:inset 0 1px 0 #ffffff42,0 6px 24px #111a1820}
+.bump-header,.bump-contact,.seo-expertise-menu{--bump-glass-ink:#302e28;--bump-glass-muted:#55594d;--bump-glass-line:#4a493433;--bump-glass-hover:#ffffff40;--bump-glass-text-shadow:none;--bump-glass-control:#ffffff12}
+.bump-header[data-tone=dark],html[data-bump-tone=dark] .bump-contact{--bump-glass-ink:#fff9ed;--bump-glass-muted:#fff9edd9;--bump-glass-line:#fff9ed40;--bump-glass-hover:#ffffff1c;--bump-glass-text-shadow:0 1px 3px #10181590;--bump-glass-control:#ffffff0a}
+.bump-header .bump-hero-dropdown,.bump-header .bump-hero-search-panel,.bump-contact .bump-dialog-inner,.seo-expertise-panel{background:var(--bump-glass-fill);-webkit-backdrop-filter:var(--bump-glass-filter);backdrop-filter:var(--bump-glass-filter);border:1px solid var(--bump-glass-edge);border-radius:10px;box-shadow:var(--bump-glass-shadow);color:var(--bump-glass-ink);text-shadow:var(--bump-glass-text-shadow)}
+.bump-header[data-tone=light] .bump-hero-dropdown,.bump-header[data-tone=light] .bump-hero-search-panel,html:not([data-bump-tone=dark]) .bump-contact .bump-dialog-inner,.seo-expertise-panel{border-color:#4a49344d}
+.bump-header .bump-hero-dropdown{padding:15px 12px 10px}
+.bump-header .bump-hero-dropdown :is(.bump-menu-label,.bump-service-links a>span){color:var(--bump-glass-muted)}
+.bump-header .bump-hero-dropdown :is(.bump-service-links a,.bump-editorial-links a,.bump-menu-chapters .bump-hero-dropdown-row a){color:var(--bump-glass-ink)!important;text-shadow:var(--bump-glass-text-shadow)}
+.bump-header .bump-hero-dropdown :is(.bump-service-links a,.bump-editorial-links a,.bump-menu-chapters .bump-hero-dropdown-row a):is(:hover,:focus-visible){background:var(--bump-glass-hover);text-decoration:none}
+.bump-header .bump-hero-dropdown .bump-editorial-links{border-color:var(--bump-glass-line)}
+.bump-header.bump-hero-header .bump-hero-dropdown .bump-analytics-menu-button{color:var(--bump-glass-muted);border-color:var(--bump-glass-line)}
+.bump-header.bump-hero-header .bump-hero-dropdown .bump-analytics-menu-button:is(:hover,:focus-visible){background:var(--bump-glass-hover)}
+.bump-header.bump-hero-header[data-tone] .bump-nav-trigger[aria-expanded=true]{--bump-adaptive-ink:var(--bump-glass-ink)!important;color:var(--bump-glass-ink)!important;background:var(--bump-glass-fill);-webkit-backdrop-filter:var(--bump-glass-filter);backdrop-filter:var(--bump-glass-filter);box-shadow:inset 0 0 0 1px var(--bump-glass-edge);border-radius:6px;text-shadow:var(--bump-glass-text-shadow)!important}
+.bump-header.bump-hero-header[data-tone=dark] .bump-nav-trigger[aria-expanded=true]>img{filter:brightness(0) invert(1)!important}
+.bump-header.bump-hero-header[data-tone=light] .bump-nav-trigger[aria-expanded=true]>img{filter:brightness(0)!important}
+.seo-expertise-panel>p,.seo-expertise-panel>a>span:first-child{color:var(--bump-glass-muted)}
+.seo-header nav .seo-expertise-panel>a{color:var(--bump-glass-ink)}
+.seo-header nav .seo-expertise-panel>a:is(:hover,:focus-visible),.seo-header nav .seo-expertise-panel>a[aria-current=page]{background:var(--bump-glass-hover);color:var(--bump-glass-ink)}
+.seo-header nav .seo-expertise-panel>.seo-expertise-all{border-color:var(--bump-glass-line);color:var(--bump-glass-ink)}
+/* The page remains visible; blur belongs to the actual form surface only. */
+.bump-contact.bump-dialog{padding:12px;width:min(960px,100vw);max-width:100vw;max-height:calc(100dvh - 24px);overflow:visible;background:transparent;color:var(--bump-glass-ink)}
+.bump-contact.bump-dialog::backdrop{background:#101b151f;-webkit-backdrop-filter:none;backdrop-filter:none}
+.bump-contact .bump-dialog-inner{max-height:calc(100dvh - 48px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.bump-contact :is(h2,label,input,select,textarea,.bump-close){color:var(--bump-glass-ink)}
+.bump-contact :is(.bump-eyebrow,.bump-brief-intro,.bump-contact-location,.bump-contact-bottom>p,.bump-form-status){color:var(--bump-glass-muted)}
+.bump-contact label>span{color:inherit;opacity:.65}
+.bump-contact :is(input,select,textarea){background:var(--bump-glass-control);border-color:var(--bump-glass-line);color:var(--bump-glass-ink);text-shadow:var(--bump-glass-text-shadow);caret-color:currentColor}
+.bump-contact :is(input,textarea)::placeholder{color:var(--bump-glass-muted);opacity:.72}
+.bump-contact :is(input,select,textarea):focus{border-color:var(--bump-glass-ink);box-shadow:0 0 0 3px var(--bump-glass-hover);background:var(--bump-glass-hover)}
+.bump-contact select option{background:#f6f3e9;color:#302e28;text-shadow:none}
+.bump-contact .bump-close{border-color:var(--bump-glass-line);background:var(--bump-glass-control)}
+.bump-contact .bump-close:hover{background:var(--bump-glass-hover)}
+.bump-contact .bump-contact-location{border-color:var(--bump-glass-line)}
+html[data-bump-tone=dark] .bump-contact .bump-action{background:#fff9ed;color:#2a3529;border-color:#fff9ed;text-shadow:none}
+html[data-bump-tone=dark] .bump-contact .bump-action:hover{background:#fffef9}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.bump-header .bump-hero-dropdown,.bump-contact .bump-dialog-inner,.seo-expertise-panel{background:#f4f1e8f5}.bump-header[data-tone=dark] .bump-hero-dropdown,html[data-bump-tone=dark] .bump-contact .bump-dialog-inner{background:#233126f5}}

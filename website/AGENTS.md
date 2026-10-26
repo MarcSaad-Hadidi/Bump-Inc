@@ -1,3 +1,11 @@
+# Glass menus and project form — 2026-10-26
+
+The expertise dropdown must have the same clear, blurred glass surface as the
+search bar, including its open trigger. Preserve direct page and chapter links.
+Refine the project form with an editorial introduction and comfortable fields,
+transparent panels/controls, scene-white and paper-dark ink, and stacked mobile
+layout. Keep native dialog focus/validation and the UI-only submission behavior.
+
 # Direct expertise access and diagram motion — 2026-10-26
 
 Expertises in the top bar must be a dropdown linking directly to all four

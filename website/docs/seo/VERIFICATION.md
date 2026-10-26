@@ -180,3 +180,23 @@ WebGL performance measurements.
   direct landing-to-service navigation. No images/video simulate the diagram.
 - Three additional regression tests cover ordered replay, suspension/resume,
   reduced motion and all localized header targets. Full suite: 190 passed.
+
+## Shared glass navigation and redesigned project form — 2026-10-26
+
+- The search, landing expertise dropdown, its open trigger, editorial expertise
+  dropdown and project form use the same source-controlled glass recipe:
+  rgba(255,255,255,.09), blur(12px), saturation 150%, a fine translucent border
+  and a soft inner highlight. A solid fallback covers browsers without blur.
+- The form now has an editorial introduction beside the fields on desktop,
+  with aligned name/email and company/expertise rows and a full-width message.
+  Mobile stacks the existing fields. No endpoint, email or CRM was added.
+- Native required/email validation, select options, draft values, successful
+  preparation feedback, modal focus, Escape and animated close are preserved.
+  The close icon is drawn SVG. Scene ink is ivory; paper ink is dark.
+- Browser checked: scene/menu alpha and blur, dark ink on paper, empty-form
+  validation, valid demonstration submission and focus returning to its opener.
+  English copy is translated. At 1366×650 the 960×549 form stays inside the
+  viewport. At 320px its inner panel is x12–308 with zero horizontal overflow;
+  390px was also checked. Tall mobile forms scroll internally and the submit
+  action remains reachable within the viewport. These are responsive Chrome
+  checks; no physical Safari test is claimed.

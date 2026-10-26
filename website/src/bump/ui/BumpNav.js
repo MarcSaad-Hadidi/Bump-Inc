@@ -7,6 +7,7 @@ import {content} from '/runtime/assets/BumpData.js';
 import {MotionPanel,LocationPopover,ArrowUpRight,CloseIcon} from '/runtime/assets/BumpUI.js';
 import BackgroundMusic from './BackgroundMusic.js';
 import DeviceMotionControl from './DeviceMotionControl.js';
+import BumpClarityConsent from './BumpClarityConsent.js';
 const h=(tag,props,...children)=>R.jsxs(tag,{...props,...(children.length?{children:children.flat()}: {})});
 const searchIcon=()=>h('svg',{width:15,height:15,viewBox:'0 0 24 24',fill:'none','aria-hidden':true},h('circle',{cx:10,cy:10,r:6,stroke:'currentColor',strokeWidth:1.7}),h('path',{d:'m15 15 5 5',stroke:'currentColor',strokeWidth:1.7}));
 function ChapterLink({item,index,onNavigate,className}){
@@ -84,5 +85,5 @@ export default function BumpNav({navItems}){
     h('a',{className:'bump-nav-logo',href:english?'/en':'/',onClick:e=>home.handleClick(e,0),'aria-label':'Bump — accueil'},h('span',{className:'bump-brand-mark','aria-hidden':true}),h('span',{},'Bump')),h(LocationPopover,{onOpen:()=>{setMenu(false);setSearch(false);}}),
     h('nav',{'aria-label':'Navigation principale',className:'bump-top-links'},heroMenu,heroSearch),
     h('div',{className:'bump-header-actions'},h('a',{className:'bump-language-switch',href:(english?'/':'/en')+location.hash,onClick:event=>{event.currentTarget.href=(english?'/':'/en')+location.hash;},lang:english?'fr':'en',hrefLang:english?'fr':'en','aria-label':english?'Passer en français':'Switch to English',title:english?'Français':'English','data-bump-locale-switch':'true'},english?'FR':'EN'),h('button',{type:'button',className:'bump-project-button','aria-label':'Parlons de votre projet',onClick:()=>setBrief(true)},h('span',{className:'bump-project-full'},'Parlons de votre projet'),h('span',{className:'bump-project-short'},'Projet'),h(ArrowUpRight,{})))),
-    h(Brief,{open:brief,onClose:()=>setBrief(false)}),h(BackgroundMusic,{}),h(DeviceMotionControl,{}));
+    h(Brief,{open:brief,onClose:()=>setBrief(false)}),h(BackgroundMusic,{}),h(DeviceMotionControl,{}),h(BumpClarityConsent,{}));
 }

@@ -20,6 +20,7 @@ const COPY = {
     allow: 'Autoriser les statistiques',
     refuse: 'Refuser',
     settings: 'Préférences statistiques',
+    error: 'Les préférences ne peuvent pas être enregistrées dans ce navigateur. Le suivi reste désactivé.',
   },
   en: {
     heading: 'Help us improve Bump',
@@ -28,6 +29,7 @@ const COPY = {
     allow: 'Allow analytics',
     refuse: 'Decline',
     settings: 'Analytics preferences',
+    error: 'This browser cannot save your preferences. Tracking remains disabled.',
   },
 };
 
@@ -39,6 +41,7 @@ export default function BumpClarityConsent() {
     catch { return null; }
   });
   const [noticeOpen, setNoticeOpen] = React.useState(() => enabled && choice === null);
+  const [saveError, setSaveError] = React.useState(false);
 
   // The retained Remix application renders its own <html> and <head> with
   // createRoot(document). Mount the stylesheet AFTER that React commit, and
@@ -67,6 +70,20 @@ export default function BumpClarityConsent() {
     try {
       persisted = saveAnalyticsChoice(window.localStorage, next, window.sessionStorage);
     } catch { /* Blocked storage: the React state still denies collection. */ }
+    if (next === 'granted' && window.__bumpClarityStopped) {
+      // Once Clarity has stopped in place, a clean reload is needed to start
+      // a fresh instance. This is safe only after consent is persisted.
+      if (persisted) {
+        window.location.reload();
+        return;
+      }
+      // Fail closed: don't claim we resumed collection or load a second tag.
+      setChoice('denied');
+      setNoticeOpen(true);
+      setSaveError(true);
+      return;
+    }
+    setSaveError(false);
     setChoice(next);
     setNoticeOpen(false);
     if (next === 'denied') revokeClarity(window, {reload: persisted});
@@ -100,6 +117,7 @@ export default function BumpClarityConsent() {
           onClick: () => choose('granted'),
         }, labels.allow),
       ),
+      h('p', {className: 'bump-clarity-error', role: 'alert', hidden: !saveError}, labels.error),
     ),
     h('button', {
       type: 'button',

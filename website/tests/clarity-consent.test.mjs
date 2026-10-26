@@ -2,185 +2,208 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
+import {
+  CLARITY_ID, CONSENT_KEY,
+  isBumpProductionHost, readAnalyticsChoice, saveAnalyticsChoice,
+  loadClarity, revokeClarity,
+} from '../src/bump/ui/clarityConsentCore.js';
 
-const script = readFileSync(new URL('../public/runtime/clarity-consent.js', import.meta.url), 'utf8');
+const source = readFileSync(new URL('../src/bump/ui/BumpClarityConsent.js', import.meta.url), 'utf8');
+const shell = readFileSync(new URL('../src/reference-shell.html', import.meta.url), 'utf8');
+const nav = readFileSync(new URL('../src/bump/ui/BumpNav.js', import.meta.url), 'utf8');
 
-function start({hostname = 'bumpconsultation.ca', lang = 'fr', stored = null} = {}) {
-  const values = new Map(stored == null ? [] : [['bump.clarity.analytics-consent.v1', stored]]);
-  const injected = [];
+function harness({hostname = 'bumpconsultation.ca', lang = 'fr', stored = null} = {}) {
+  const values = new Map(stored == null ? [] : [[CONSENT_KEY, stored]]);
+  const storage = {
+    getItem(key) { return values.get(key) ?? null; },
+    setItem(key, value) { values.set(key, value); },
+  };
   let reloads = 0;
 
-  function node(tag) {
+  function makeHead() {
     return {
-      tagName: tag.toUpperCase(), className: '', textContent: '', hidden: false,
-      children: [], listeners: {}, attributes: {}, parentNode: null, isConnected: false,
-      setAttribute(name, value) { this.attributes[name] = value; },
-      addEventListener(name, handler) { this.listeners[name] = handler; },
-      append(...children) {
-        for (const child of children) {
-          if (child.parentNode) {
-            const siblings = child.parentNode.children;
-            const index = siblings.indexOf(child);
-            if (index !== -1) siblings.splice(index, 1);
-          }
-          child.parentNode = this;
-          child.isConnected = true;
-          this.children.push(child);
-        }
+      children: [],
+      appendChild(node) {
+        this.children.push(node);
+        node.isConnected = true;
+        node.remove = () => {
+          const index = this.children.indexOf(node);
+          if (index >= 0) this.children.splice(index, 1);
+          node.isConnected = false;
+        };
       },
     };
   }
-
-  const body = node('body');
-  const head = node('head');
-  head.insertBefore = function (element, before) {
-    assert.equal(before, firstScript);
-    element.parentNode = this;
-    injected.push(element);
-  };
-  const firstScript = node('script');
-  head.append(firstScript);
   const document = {
-    body, head, documentElement: {lang},
-    createElement: node,
-    getElementsByTagName(name) { return name === 'script' ? [firstScript] : []; },
+    head: makeHead(), documentElement: {lang},
+    createElement(name) { return {tagName: name.toUpperCase(), dataset: {}, isConnected: false}; },
   };
   const window = {
     location: {hostname, reload() { reloads++; }},
-    localStorage: {
-      getItem(key) { return values.get(key) ?? null; },
-      setItem(key, value) { values.set(key, value); },
+    localStorage: storage,
+  };
+  const React = {
+    Fragment: 'React.Fragment',
+    useState(initial) {
+      const index = stateCursor++;
+      if (!(index in state)) state[index] = typeof initial === 'function' ? initial() : initial;
+      return [state[index], value => {
+        state[index] = typeof value === 'function' ? value(state[index]) : value;
+      }];
+    },
+    useEffect(callback, deps) {
+      const index = effectCursor++;
+      const previous = effectDeps[index];
+      if (previous && deps.every((value, i) => Object.is(value, previous[i]))) return;
+      pendingEffects.push({index, callback, deps});
     },
   };
-  const observers = [];
-  class MutationObserverMock {
-    constructor(callback) { this.callback = callback; observers.push(callback); }
-    observe(target, options) {
-      assert.equal(target, document);
-      assert.equal(options.childList, true);
-      assert.equal(options.subtree, true);
-    }
-  }
-  runInNewContext(script, {
-    window, document, MutationObserver: MutationObserverMock,
-    queueMicrotask(callback) { callback(); },
-  });
+  const JSX = {
+    jsxs(tag, props) { return {tag, props}; },
+  };
+  const state = [], effectDeps = [], cleanup = [];
+  let stateCursor = 0, effectCursor = 0, pendingEffects = [];
 
-  function remountReact() {
-    const oldBody = document.body;
-    for (const child of oldBody.children) {
-      child.parentNode = null;
-      child.isConnected = false;
+  // Only remove the module imports/exports, retaining the actual production
+  // component function, effects and React-owned render tree for lifecycle tests.
+  const transformed = source
+    .replace(/^import \{r as React, j as JSX\} from '\/runtime\/assets\/components-BdJai906\.js';\s*/, '')
+    .replace(/import \{[\s\S]*?\} from '\.\/clarityConsentCore\.js';\s*/, '')
+    .replace('export default function BumpClarityConsent()', 'function BumpClarityConsent()')
+    + '\nglobalThis.BumpClarityConsent = BumpClarityConsent;';
+  assert.doesNotMatch(transformed, /^import /m, 'all source imports removed in test harness');
+  const context = {window, document, React, JSX, isBumpProductionHost,
+    readAnalyticsChoice, saveAnalyticsChoice, loadClarity, revokeClarity};
+  runInNewContext(transformed, context);
+
+  function render() {
+    stateCursor = 0; effectCursor = 0; pendingEffects = [];
+    const tree = context.BumpClarityConsent();
+    for (const {index, callback, deps} of pendingEffects) {
+      cleanup[index]?.();
+      cleanup[index] = callback();
+      effectDeps[index] = deps;
     }
-    document.body = node('body');
-    for (const callback of observers) callback([]);
-    return oldBody;
+    return tree;
+  }
+
+  function lifecycleReset() {
+    for (const dispose of cleanup) dispose?.();
+    cleanup.length = 0;
+    effectDeps.length = 0;
+  }
+
+  function controls(tree) {
+    const [notice, settings] = tree.props.children;
+    const buttons = notice.props.children[3].props.children;
+    return {notice, settings, deny: buttons[0], allow: buttons[1]};
   }
 
   return {
-    window, injected, values, remountReact,
-    get body() { return document.body; },
+    window, document, values, render, lifecycleReset, controls,
     get reloads() { return reloads; },
-    get notice() { return document.body.children[0]; },
-    get settings() { return document.body.children[1]; },
-    get refuse() { return document.body.children[0].children[3].children[0]; },
-    get allow() { return document.body.children[0].children[3].children[1]; },
+    replaceHead() { document.head = makeHead(); },
   };
 }
 
-test('Clarity is opt-in and refusing sends no tracker requests', () => {
-  const site = start();
-  assert.equal(site.notice.attributes.role, 'dialog');
-  assert.equal(site.notice.hidden, false);
-  assert.equal(site.settings.hidden, true);
-  assert.equal(site.injected.length, 0);
-  assert.equal(site.window.clarity, undefined);
-  site.refuse.listeners.click();
-  assert.equal(site.values.get('bump.clarity.analytics-consent.v1'), 'denied');
-  assert.equal(site.injected.length, 0);
-  assert.equal(site.settings.hidden, false);
-  const revisit = start({stored: 'denied'});
-  assert.equal(revisit.notice.hidden, true);
-  assert.equal(revisit.injected.length, 0);
-  revisit.settings.listeners.click();
-  assert.equal(revisit.notice.hidden, false);
-});
-
-test('explicit opt-in loads only the provided Clarity project with analytics consent', () => {
-  const site = start();
-  site.allow.listeners.click();
-  assert.equal(site.values.get('bump.clarity.analytics-consent.v1'), 'granted');
-  assert.equal(site.injected.length, 1);
-  assert.equal(site.injected[0].src, 'https://www.clarity.ms/tag/z3i6jyq003');
-  assert.equal(site.injected[0].async, true);
-  assert.equal(site.window.clarity.q[0][0], 'consentv2');
-  assert.deepEqual(JSON.parse(JSON.stringify(site.window.clarity.q[0][1])), {
-    ad_Storage: 'denied', analytics_Storage: 'granted',
-  });
-  site.settings.listeners.click();
-  site.allow.listeners.click();
-  assert.equal(site.injected.length, 1, 're-accepting must not install a duplicate tracker');
-});
-
-test('revoking analytics changes consent and reloads to stop the existing tracker', () => {
-  const site = start({stored: 'granted', lang: 'en'});
-  assert.equal(site.injected.length, 1);
-  assert.equal(site.notice.hidden, true);
-  assert.equal(site.notice.children[0].textContent, 'Help us improve Bump');
-  site.settings.listeners.click();
-  site.refuse.listeners.click();
-  assert.equal(site.values.get('bump.clarity.analytics-consent.v1'), 'denied');
-  assert.equal(site.reloads, 1);
-  assert.deepEqual(JSON.parse(JSON.stringify(Array.from(site.window.clarity.q.at(-1)))), [
-    'consentv2', {ad_Storage: 'denied', analytics_Storage: 'denied'},
-  ]);
-});
-
-test('Clarity is not installed on preview, local, or unrelated domains', () => {
-  for (const hostname of ['bump-consultation.shippingdrop76.workers.dev', 'localhost', 'external.example']) {
-    const site = start({hostname, stored: 'granted'});
-    assert.equal(site.injected.length, 0);
-    assert.equal(site.body.children.length, 0);
+test('Clarity is not loaded for preview and localhost hostnames', () => {
+  for (const hostname of ['localhost', 'bump-consultation.shippingdrop76.workers.dev', 'demo.example']) {
+    const ui = harness({hostname, stored: 'granted'});
+    assert.equal(isBumpProductionHost(hostname), false);
+    assert.equal(ui.render(), null);
+    assert.equal(ui.document.head.children.length, 0);
+    assert.equal(ui.window.clarity, undefined);
   }
 });
 
-test('the shared French/English HTML shell loads the consent UI and allows Clarity connections', () => {
-  const html = readFileSync(new URL('../src/reference-shell.html', import.meta.url), 'utf8');
-  assert.match(html, /src="\/runtime\/clarity-consent\.js"/);
-  assert.match(html, /href="\/runtime\/clarity-consent\.css"/);
-  assert.match(html, /connect-src[^"]*https:\/\/\*\.clarity\.ms[^"]*https:\/\/c\.bing\.com/);
-  assert.equal((html.match(/\/runtime\/clarity-consent\.js/g) ?? []).length, 1);
+test('the React component runs only after the document head is replaced', () => {
+  const ui = harness();
+  ui.replaceHead(); // Mimic createRoot(document).render(...), then BumpNav mounts.
+  const tree = ui.render();
+  const {notice, settings, allow, deny} = ui.controls(tree);
+  assert.equal(notice.props.hidden, false);
+  assert.equal(settings.props.hidden, true);
+  assert.equal(ui.document.head.children.length, 1);
+  assert.equal(ui.document.head.children[0].href, '/runtime/clarity-consent.css');
+  assert.equal(ui.window.clarity, undefined);
+  deny.props.onClick();
+  const refused = ui.controls(ui.render());
+  assert.equal(refused.notice.props.hidden, true);
+  assert.equal(refused.settings.props.hidden, false);
+  assert.equal(ui.values.get(CONSENT_KEY), 'denied');
+  assert.equal(ui.document.head.children.length, 1);
+  assert.equal(ui.window.clarity, undefined);
+  assert.equal(allow.props.children[0], 'Autoriser les statistiques');
 });
 
-test('Clarity consent controls survive React replacing the document body', () => {
-  const site = start();
-  const notice = site.notice;
-  const settings = site.settings;
-  const originalBody = site.body;
-  site.remountReact();
-  assert.notEqual(site.body, originalBody);
-  assert.equal(site.notice, notice, 'reuse notice and its registered handlers');
-  assert.equal(site.settings, settings, 'restore persistent preferences control');
-  assert.equal(site.notice.hidden, false, 'first-time visitors still see their choice');
-  site.allow.listeners.click();
-  assert.equal(site.injected.length, 1);
-  site.remountReact();
-  assert.equal(site.settings, settings);
-  site.settings.listeners.click();
-  site.refuse.listeners.click();
-  assert.equal(site.values.get('bump.clarity.analytics-consent.v1'), 'denied');
-  assert.equal(site.reloads, 1);
-  assert.equal(site.injected.length, 1, 'React remounts must not load another tracker');
+test('opt-in starts Clarity once; revocation removes third-party tracking via reload', () => {
+  const ui = harness({lang:'en'});
+  let controls = ui.controls(ui.render());
+  assert.equal(controls.notice.props.children[0].props.children[0], 'Help us improve Bump');
+  controls.allow.props.onClick();
+  controls = ui.controls(ui.render());
+  assert.equal(ui.values.get(CONSENT_KEY), 'granted');
+  assert.equal(controls.notice.props.hidden, true);
+  assert.equal(controls.settings.props.hidden, false);
+  const scripts = ui.document.head.children.filter(n => n.tagName === 'SCRIPT');
+  assert.equal(scripts.length, 1);
+  assert.equal(scripts[0].src, 'https://www.clarity.ms/tag/' + CLARITY_ID);
+  assert.equal(scripts[0].async, true);
+  assert.equal(ui.window.clarity.q[0][0], 'consentv2');
+  assert.deepEqual(JSON.parse(JSON.stringify(ui.window.clarity.q[0][1])), {
+    ad_Storage:'denied', analytics_Storage:'granted',
+  });
+
+  controls.settings.props.onClick();
+  controls = ui.controls(ui.render());
+  assert.equal(controls.notice.props.hidden, false);
+  controls.allow.props.onClick();
+  ui.render();
+  assert.equal(ui.document.head.children.filter(n => n.tagName === 'SCRIPT').length, 1);
+
+  controls = ui.controls(ui.render());
+  controls.settings.props.onClick();
+  controls = ui.controls(ui.render());
+  controls.deny.props.onClick();
+  assert.equal(ui.values.get(CONSENT_KEY), 'denied');
+  assert.equal(ui.reloads, 1);
+  assert.deepEqual(JSON.parse(JSON.stringify(Array.from(ui.window.clarity.q.at(-1)))), [
+    'consentv2', {ad_Storage:'denied', analytics_Storage:'denied'},
+  ]);
 });
 
-test('returning visitors can revoke after React hydration without duplicate controls', () => {
-  const site = start({stored: 'granted'});
-  assert.equal(site.injected.length, 1);
-  const settings = site.settings;
-  site.remountReact();
-  assert.equal(site.settings, settings);
-  assert.equal(site.body.children.length, 2);
-  site.settings.listeners.click();
-  site.refuse.listeners.click();
-  assert.equal(site.reloads, 1);
+test('returning users can revoke after React StrictMode effect remount', () => {
+  const ui = harness({stored:'granted'});
+  const first = ui.controls(ui.render());
+  assert.equal(first.settings.props.hidden, false);
+  assert.equal(ui.document.head.children.filter(n => n.tagName === 'SCRIPT').length, 1);
+  ui.lifecycleReset();
+  ui.render();
+  assert.equal(ui.document.head.children.filter(n => n.tagName === 'LINK').length, 1);
+  assert.equal(ui.document.head.children.filter(n => n.tagName === 'SCRIPT').length, 1);
+  const {settings} = ui.controls(ui.render());
+  settings.props.onClick();
+  ui.controls(ui.render()).deny.props.onClick();
+  assert.equal(ui.reloads, 1);
+});
+
+test('analytics storage unavailability never implies permission', () => {
+  assert.equal(readAnalyticsChoice({getItem() { throw new Error('denied'); }}), null);
+  assert.equal(readAnalyticsChoice({getItem() { return 'invalid'; }}), null);
+  assert.equal(readAnalyticsChoice({getItem() { return 'granted'; }}), 'granted');
+  assert.doesNotThrow(() => saveAnalyticsChoice({setItem() { throw new Error('denied'); }}, 'denied'));
+});
+
+test('consent source and stylesheet are owned by the navigation React lifecycle', () => {
+  assert.match(nav, /import BumpClarityConsent from '\.\/BumpClarityConsent\.js'/);
+  assert.match(nav, /h\(BumpClarityConsent,\{\}\)/);
+  assert.match(source, /React\.useEffect/);
+  assert.match(source, /document\.head\.appendChild\(link\)/);
+  assert.doesNotMatch(shell, /\/runtime\/clarity-consent\.js/);
+  assert.doesNotMatch(shell, /\/runtime\/clarity-consent\.css/);
+  assert.match(shell, /connect-src[^"]*https:\/\/\*\.clarity\.ms[^"]*https:\/\/c\.bing\.com/);
+  const css = readFileSync(new URL('../src/bump/ui/clarity-consent.css', import.meta.url), 'utf8');
+  assert.match(css, /\.bump-clarity-notice/);
+  const build = readFileSync(new URL('../scripts/build-bump-ui.mjs', import.meta.url), 'utf8');
+  assert.match(build, /copyFileSync\('src\/bump\/ui\/clarity-consent\.css'/);
 });

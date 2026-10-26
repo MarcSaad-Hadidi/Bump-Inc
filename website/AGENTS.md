@@ -1,3 +1,16 @@
+# Latest corrections — 2026-10-26
+
+The six painting introductions must have concise business copy, natural wrapping
+without authored br tags, a consistent editorial measure and comfortable line
+height. Keep titles high and introductions inside the lower viewport, in FR/EN.
+The SEO hero must explain the service with a polished actual diagram/UI: the
+user explicitly rejected random generated atelier photos. Preserve readable
+stage labels, meaningful sources/connections and human approval where relevant.
+Investigate the Bump character transition specifically: avoid repeated backdrop
+bounds work and defer one-time material/texture preparation before its first draw.
+Do not claim native WebGL FPS from the cloud browser's fallback renderer.
+Keep all corrections in PR33, and re-run Codex review on the final head until clean.
+
 # Current task — editorial SEO pages and AI-readable content
 
 Search must look like clear Apple-style glass, not an opaque beige rectangle:

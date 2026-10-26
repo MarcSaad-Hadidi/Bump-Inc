@@ -151,3 +151,12 @@ WebGL performance measurements.
 - A read-only independent investigation and candidate review found no surviving concrete bypass or regression. No application scene or production security control was weakened.
 - Restored /__mobile-review alongside /__seo-review. Real HTTP tests cover GET/HEAD in development, no-store headers, production 404 and rejected writes for both tools. These fixtures are not published.
 - Full npm test: 184 passed, zero failures/skips. HTTP smoke passed. New GitHub checks and CodeQL run on the corrective commit before completion.
+
+## Introductory copy, explanatory UI and company preparation — 2026-10-26
+
+- The user clarified that SEO figures must be beautiful explanatory UI/diagrams, not unrelated generated photos. All 16 editorial pages now use semantic HTML stage cards, drawn connectors, sources and localized explanations. Workflow/AI explicitly show human approval. No generated photo is referenced by the build.
+- Rewrote all six painting subtitles in FR/EN; removed authored line breaks, neutralized inherited drop-cap/spacing styles, and aligned their actual arrival windows without changing native chapter heights.
+- Browser layout measurements for all six introductions: at 1366x650, lower edges 620–622px; at 1877x861, 831–833px; at 390x844, all lower edges 766px. Six English mobile introductions measured the same 766px lower edge. No br elements remain.
+- Diagram checks at 390px and 320px showed no overflowing diagram descendants, including AI approval and the security sources. The SEO page uses normal document scrolling and does not clip taller diagrams.
+- Company rendering preserves rigs and animation curves, gates hidden backdrop work, caches stable fitting, and defers texture/program preparation. Seven focused company tests passed, including all four actual skins. See docs/performance/company-transition.md for the measured CPU comparison and explicit native WebGL limitation.
+- Latest complete npm test: 187 passed, zero failures/skips; HTTP smoke and npm audit passed (zero vulnerabilities). Final-head GitHub and Codex validation follows before completion.

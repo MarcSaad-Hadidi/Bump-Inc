@@ -82,13 +82,53 @@ export function renderMarkdown(page, origin) {
 
 function figure(page) {
   const locale = page.locale;
-  const motifs = {
-    olive: '<path d="M65 107h61m21 0h62m23 0h62"/><rect x="33" y="78" width="58" height="58" rx="12"/><circle cx="158" cy="107" r="31"/><path d="m258 76 32 31-32 31-32-31Z"/><path d="m52 108 9 8 14-18m70 10 10 10 17-22m78 12h15"/>',
-    blue: '<path d="M69 59 160 107 72 157m179-98-91 48 91 50"/><circle cx="160" cy="107" r="34"/><circle cx="63" cy="55" r="17"/><circle cx="63" cy="161" r="17"/><circle cx="259" cy="55" r="17"/><circle cx="259" cy="161" r="17"/><path d="m160 88 5 14 15 5-15 5-5 14-5-14-14-5 14-5Z"/>',
-    clay: '<rect x="58" y="38" width="206" height="139" rx="7"/><path d="M58 66h206M89 91h48m-48 22h82m-82 22h62m39-41 15 15-15 15m-11-33-12 36M128 177v15m65-15v15m-82 0h98"/><circle cx="73" cy="52" r="2"/><circle cx="83" cy="52" r="2"/><circle cx="93" cy="52" r="2"/>',
-    wine: '<path d="m160 37 69 23v52c0 44-69 72-69 72s-69-28-69-72V60Z"/><rect x="137" y="99" width="46" height="34" rx="5"/><path d="M147 99V87a13 13 0 0 1 26 0v12m-13 13v10M62 84v38m-10-19h20m177-19v38m-10-19h20"/><circle cx="160" cy="111" r="2"/>',
+  const labels = {
+    expertise: [['Processus', 'Logiciels', 'Sécurité'], ['Processes', 'Software', 'Security']],
+    workflow: [['Formulaire', 'Courriel', 'Document'], ['Form', 'Email', 'Document']],
+    ai: [['CRM', 'Documents', 'ERP'], ['CRM', 'Documents', 'ERP']],
+    software: [['Équipe', 'Processus', 'Outils'], ['Team', 'Processes', 'Tools']],
+    security: [['Applications', 'Accès', 'Systèmes'], ['Applications', 'Access', 'Systems']],
+    approach: [['Besoins', 'Contexte', 'Priorités'], ['Needs', 'Context', 'Priorities']],
+    about: [['Montréal', 'PME', 'Équipe'], ['Montréal', 'SMBs', 'Team']],
+    faq: [['Objectifs', 'Outils', 'Contraintes'], ['Goals', 'Tools', 'Constraints']],
   };
-  return '<aside class="seo-figure" aria-label="' + html(text(locale, 'Parcours illustratif', 'Illustrative journey')) + '"><div class="seo-figure-heading"><span>' + html(text(locale, 'Le principe', 'The principle')) + '</span><span aria-hidden="true">' + (page.division || 'B') + ' / Bump</span></div><svg class="seo-engraving" viewBox="0 0 322 214" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="seo-orbit" d="M21 107a140 86 0 1 0 280 0 140 86 0 1 0-280 0" stroke-dasharray="2 7"/>' + motifs[page.accent] + '</svg><ol class="seo-figure-steps">' + page.figure.map((step, index) => '<li><span>' + String(index + 1).padStart(2, '0') + '</span>' + html(step) + (index === 1 ? '<i aria-hidden="true"></i>' : '') + '</li>').join('') + '</ol><p class="seo-figure-note">' + html(text(locale, 'Conçu autour de votre fonctionnement.', 'Designed around the way you work.')) + '</p></aside>';
+  const notes = {
+    expertise: [
+      ['Nous partons de ce qui ralentit votre entreprise.', 'Nous choisissons les bons outils avec votre équipe.', 'Une solution adaptée, puis un suivi dans le temps.'],
+      ['We start with what slows your business down.', 'We choose the right tools with your team.', 'A fitting solution, followed by ongoing support.']],
+    workflow: [
+      ['Les informations utiles se réunissent dans un même parcours.', 'Les actions sensibles attendent l’accord de votre équipe.', 'Les données suivent dans les outils concernés.'],
+      ['Useful information comes together in one journey.', 'Sensitive actions wait for your team’s approval.', 'Information flows to the tools that need it.']],
+    ai: [
+      ['L’information est organisée dans son contexte.', 'Une proposition expliquée, avec ses sources.', 'Votre équipe décide avant l’exécution.'],
+      ['Information is organized in context.', 'An explained recommendation, with its sources.', 'Your team decides before execution.']],
+    software: [
+      ['Vos façons de travailler guident la conception.', 'Un outil testé et ajusté avec ses utilisateurs.', 'Des connexions utiles et un logiciel qui peut évoluer.'],
+      ['The way you work guides the design.', 'A tool tested and refined with its users.', 'Useful connections and software that can evolve.']],
+    security: [
+      ['L’audit se limite aux systèmes et aux accès autorisés.', 'Les constats sont expliqués et classés par priorité.', 'Les correctifs convenus sont mis en place et vérifiés.'],
+      ['The audit is limited to authorized systems and access.', 'Findings are explained and prioritized.', 'Agreed fixes are implemented and verified.']],
+    approach: [
+      ['Nous observons votre fonctionnement et vos contraintes.', 'Le périmètre, les priorités et les moyens sont convenus ensemble.', 'Nous implantons la solution et préparons son suivi.'],
+      ['We examine how you work and your constraints.', 'Scope, priorities and resources are agreed together.', 'We implement the solution and prepare ongoing support.']],
+    about: [
+      ['Deux entrepreneurs, un point de départ à Montréal.', 'Une collaboration directe avec les PME.', 'Des solutions pensées pour le travail de votre équipe.'],
+      ['Two entrepreneurs, starting in Montréal.', 'Direct collaboration with small and medium-sized businesses.', 'Solutions designed for the work your team does.']],
+    faq: [
+      ['Une situation concrète plutôt qu’une technologie imposée.', 'Des choix expliqués, avec leurs contraintes.', 'Vous gardez la décision sur la suite du projet.'],
+      ['A concrete situation, rather than a prescribed technology.', 'Explained choices, including their constraints.', 'You decide how the project moves forward.']],
+  };
+  const key = Object.hasOwn(notes, page.id) ? page.id : 'expertise';
+  const sources = labels[key][locale === 'fr' ? 0 : 1];
+  const explanations = notes[key][locale === 'fr' ? 0 : 1];
+  const icons = [
+    '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+    '<path d="m5 12 4 4L19 6"/><circle cx="12" cy="12" r="10"/>',
+    '<path d="M4 7h13l-3-3M20 17H7l3 3M17 7l-3 3M7 17l3-3"/>',
+  ];
+  const icon = index => '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + icons[index] + '</svg>';
+  const approval = ['workflow', 'ai'].includes(key);
+  return '<figure class="seo-explainer" aria-label="' + html(text(locale, 'Parcours illustratif', 'Illustrative journey')) + '"><div class="seo-explainer-bar"><span class="seo-explainer-brand"><span class="seo-mark" aria-hidden="true"></span>Bump</span><span>' + text(locale, 'Scénario illustratif', 'Illustrative scenario') + '</span></div><div class="seo-flow-sources">' + sources.map(source => '<span>' + html(source) + '</span>').join('') + '</div><div class="seo-flow-join" aria-hidden="true"><svg viewBox="0 0 300 30" preserveAspectRatio="none"><path d="M50 0v12h200V0M150 12v18"/></svg></div><ol class="seo-flow-steps">' + page.figure.map((step, index) => '<li><span class="seo-flow-number">' + String(index + 1).padStart(2, '0') + '</span><div class="seo-flow-node' + (approval && index === 1 ? ' seo-flow-node--approval' : '') + '"><span class="seo-flow-icon">' + icon(index) + '</span><div><strong>' + html(step) + '</strong><p>' + html(explanations[index]) + '</p>' + (approval && index === 1 ? '<span class="seo-flow-status"><i aria-hidden="true"></i>' + text(locale, 'Validation humaine', 'Human approval') + '</span>' : '') + '</div></div></li>').join('') + '</ol><figcaption><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg>' + text(locale, 'Votre fonctionnement guide la solution.', 'The way you work guides the solution.') + '</figcaption></figure>';
 }
 
 function sectionMarkup(section, index, locale) {

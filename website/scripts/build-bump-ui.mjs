@@ -36,6 +36,7 @@ const suppliedStyles=['src/components/bump-anatomy/kit/iso.css','src/components/
 writeFileSync('public/runtime/assets/BumpUI.css',':root{--bump-paper:'+BUMP_PAPER_CSS+';--bump-motion-rate:'+BUMP_PLAYBACK_RATE+'}\n'+styles+'\n'+readFileSync('src/bump/software/phone-v21.css','utf8')+'\n'+readFileSync('src/bump/software/cascade.css','utf8')+'\n'+machineStyles+'\n'+suppliedStyles+'\n'+readFileSync('src/bump/ui/cursor.css','utf8'));
 for(const name of readdirSync('src/bump/chapters/runtime'))copyFileSync('src/bump/chapters/runtime/'+name,'public/runtime/assets/'+name);
 writeFileSync('public/runtime/assets/BumpUI.css',readFileSync('public/runtime/assets/BumpUI.css','utf8')+'\n'+readFileSync('src/bump/ui/mobile.css','utf8'));
+writeFileSync('public/runtime/assets/BumpUI.css',readFileSync('public/runtime/assets/BumpUI.css','utf8')+'\n'+readFileSync('src/bump/ui/chapter-intros.css','utf8'));
 stabilizeMobileViewport();
 hardenRetainedIdentifiers();
 // Ship source-controlled analytics consent styles with the public site assets.

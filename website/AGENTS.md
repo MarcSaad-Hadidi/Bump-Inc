@@ -1,3 +1,12 @@
+# Direct expertise access and diagram motion — 2026-10-26
+
+Expertises in the top bar must be a dropdown linking directly to all four
+editorial service pages, on the landing and every SEO page, in FR/EN. Keep the
+landing's chapter navigation too. Animate the accepted explanatory diagrams
+themselves: sources, connections and successive stages, with readable static
+copy, automatic replay, hover hold, offscreen/hidden suspension and reduced motion.
+Do not replace these diagrams with decorative photographs.
+
 # Latest corrections — 2026-10-26
 
 The six painting introductions must have concise business copy, natural wrapping

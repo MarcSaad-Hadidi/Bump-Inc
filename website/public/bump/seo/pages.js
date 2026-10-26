@@ -1,4 +1,22 @@
 // Progressive enhancement only: all page content and links work without JS.
+import {installDiagramMotion} from './diagram-motion.js';
+let stopDiagrams = installDiagramMotion();
+window.addEventListener('pagehide', () => {stopDiagrams();});
+// Restore the clock when a page is brought back from the browser's page cache.
+window.addEventListener('pageshow', event => {if (event.persisted) stopDiagrams = installDiagramMotion();});
+
+for (const menu of document.querySelectorAll('.seo-expertise-menu')) {
+  const summary = menu.querySelector('summary');
+  menu.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {menu.open = false; summary.focus();}
+    if (event.key === 'ArrowDown' && event.target === summary) {
+      event.preventDefault(); menu.open = true; menu.querySelector('a')?.focus();
+    }
+  });
+  document.addEventListener('pointerdown', event => {if (!menu.contains(event.target)) menu.open = false;});
+  menu.addEventListener('focusout', event => {if (!menu.contains(event.relatedTarget)) menu.open = false;});
+}
+
 const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 const search = document.querySelector('[data-faq-search]');
 if (search) {

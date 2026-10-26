@@ -1,5 +1,6 @@
 import {installTouchInspection} from './touchInspection.js';
 import {installLandingMetadata} from '../seo/landing.js';
+import {expertiseLinks} from '../seo/navigation.js';
 import{updateFallbackContrast}from'/runtime/assets/BumpContrast.js';
 import {r as React,j as R} from '/runtime/assets/components-BdJai906.js';
 import {r as useChapterNav,a as useSceneStore} from '/runtime/assets/(_locale).editions.winter2026-CdSmWtXg.js';
@@ -75,9 +76,13 @@ export default function BumpNav({navItems}){
   const results=content.chapters.flatMap((c,i)=>c.groups.flatMap(g=>g.cards.map(x=>({...x,index:i+1,chapter:c})))).filter(c=>normalize((c.title+' '+c.descriptionHtml+' '+c.chapter.title).replace(/<[^>]*>/g,' ')).includes(normalize(query.trim())));
   const heroMenu=h('div',{className:'bump-hero-nav-anchor',ref:menuAnchor},
     h('button',{type:'button',ref:menuButton,className:'bump-nav-trigger','aria-expanded':menu,'aria-controls':'bump-menu',onClick:()=>{setSearch(false);setMenu(!menu);},onKeyDown:event=>{if(event.key==='ArrowDown'){event.preventDefault();setSearch(false);setMenu(true);requestAnimationFrame(()=>menuAnchor.current?.querySelector('a')?.focus());}}},'Expertises',h('img',{src:'/runtime/media/25177a62ed-global-16-shrevon-down.svg',width:12,height:12,alt:''})),
-    h(MotionPanel,{open:menu,id:'bump-menu',className:'bump-hero-dropdown',role:'navigation','aria-label':'Tous les chapitres'},
-      ...navItems.map((item,i)=>h('div',{className:'bump-hero-dropdown-row',key:item.handle},h('span',{'aria-hidden':true},String(i+1).padStart(2,'0')),h(ChapterLink,{item,index:i+1,onNavigate:()=>setMenu(false)}))),
-      h('div',{className:'bump-editorial-links'},h('a',{href:english?'/en/expertise':'/expertises'},english?'Explore our expertise':'Nos expertises en détail',h(ArrowUpRight,{})),h('a',{href:english?'/en/faq':'/faq'},english?'Frequently asked questions':'Questions fréquentes',h(ArrowUpRight,{}))),
+    h(MotionPanel,{open:menu,id:'bump-menu',className:'bump-hero-dropdown',role:'navigation','aria-label':english?'Expertise and chapters':'Expertises et chapitres'},
+      h('p',{className:'bump-menu-label'},english?'Our expertise':'Nos expertises'),
+      h('div',{className:'bump-service-links'},...expertiseLinks(english?'en':'fr').map((item,i)=>h('a',{href:item.path,key:item.id},h('span',{'aria-hidden':true},String(i+1).padStart(2,'0')),item.label,h(ArrowUpRight,{})))),
+      h('div',{className:'bump-editorial-links'},h('a',{href:english?'/en/expertise':'/expertises'},english?'All expertise':'Toutes les expertises',h(ArrowUpRight,{}))),
+      h('p',{className:'bump-menu-label bump-menu-label--chapters'},english?'Explore the experience':'Explorer l’expérience'),
+      h('div',{className:'bump-menu-chapters'},...navItems.map((item,i)=>h('div',{className:'bump-hero-dropdown-row',key:item.handle},h('span',{'aria-hidden':true},String(i+1).padStart(2,'0')),h(ChapterLink,{item,index:i+1,onNavigate:()=>setMenu(false)})))),
+      h('div',{className:'bump-editorial-links'},h('a',{href:english?'/en/faq':'/faq'},english?'Frequently asked questions':'Questions fréquentes',h(ArrowUpRight,{}))),
       isBumpProductionHost(window.location.hostname)&&h('button',{
         type:'button',
         className:'bump-analytics-menu-button',

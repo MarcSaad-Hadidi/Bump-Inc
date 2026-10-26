@@ -160,3 +160,23 @@ WebGL performance measurements.
 - Diagram checks at 390px and 320px showed no overflowing diagram descendants, including AI approval and the security sources. The SEO page uses normal document scrolling and does not clip taller diagrams.
 - Company rendering preserves rigs and animation curves, gates hidden backdrop work, caches stable fitting, and defers texture/program preparation. Seven focused company tests passed, including all four actual skins. See docs/performance/company-transition.md for the measured CPU comparison and explicit native WebGL limitation.
 - Latest complete npm test: 187 passed, zero failures/skips; HTTP smoke and npm audit passed (zero vulnerabilities). Final-head GitHub and Codex validation follows before completion.
+
+## Direct expertise menus and animated diagrams — 2026-10-26
+
+- The SEO header uses a native details/summary dropdown with all four canonical
+  service links and the expertise overview. It works without JavaScript. The
+  landing's existing motion panel exposes those same direct links first and
+  retains all six chapter jumps, FAQ and existing analytics preferences.
+- Shared FR/EN navigation entries are checked against the canonical catalog for
+  every editorial page. At 320px the panel is inside x12–293, with all five links
+  visible and no internal horizontal overflow; English was also checked.
+- Existing semantic diagram copy remains visible. Sources/connectors and three
+  stages animate in a 12s loop with soft color transitions. Hover or focus holds
+  the same stage; leaving resumes its remaining time. Hidden documents and
+  offscreen diagrams stop the timer. Re-entry replays from the sources. Reduced
+  motion presents the completed, legible diagram without a running timer.
+- Browser: confirmed real phase changes (recommendation → human validation →
+  three completed nodes), focus/hover pause and resume, dropdown Escape and a
+  direct landing-to-service navigation. No images/video simulate the diagram.
+- Three additional regression tests cover ordered replay, suspension/resume,
+  reduced motion and all localized header targets. Full suite: 190 passed.

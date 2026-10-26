@@ -208,6 +208,22 @@ html[data-bump-tone=light] .bump-editorial-title{color:#302e28;text-shadow:none}
 
 .bump-editorial-links svg,.bump-action>svg,.bump-service-open>svg,.bump-company-flow-contact>svg,.bump-software-explore>svg,.bwm-approve>svg,.bump-ops-tap>svg{display:inline-block;width:1em;height:1em;flex-shrink:0;vertical-align:-.12em}
 
+/* Direct service pages are the first choices; chapter jumps remain available. */
+.bump-header .bump-hero-dropdown{width:360px;max-height:calc(100svh - 96px);overflow-y:auto;overscroll-behavior:contain}
+.bump-menu-label{font:11px/1.2 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#65705b;margin:4px 0 9px;padding-inline:8px}
+.bump-service-links{display:grid}
+.bump-hero-dropdown .bump-service-links a{display:grid;grid-template-columns:22px minmax(0,1fr) 16px;gap:9px;align-items:center;padding:12px 8px;border-radius:4px;font:500 19px/1.2 var(--bump-serif);color:#283c2a;transition:background-color .2s}
+.bump-hero-dropdown .bump-service-links a>span{font-size:12px;color:#78816f;font-style:italic}
+.bump-service-links svg{width:16px;height:16px;transition:transform .2s}
+.bump-hero-dropdown .bump-service-links a:is(:hover,:focus-visible){background:#edf0e5}
+.bump-service-links a:is(:hover,:focus-visible) svg{transform:translate(2px,-2px)}
+.bump-menu-label--chapters{margin-top:24px}
+.bump-menu-chapters{display:grid;grid-template-columns:1fr 1fr;column-gap:12px}
+.bump-hero-dropdown .bump-menu-chapters .bump-hero-dropdown-row{min-height:36px}
+.bump-hero-dropdown .bump-menu-chapters .bump-hero-dropdown-row>span{display:none}
+.bump-hero-dropdown .bump-menu-chapters .bump-hero-dropdown-row a{position:static;min-height:36px;padding:7px 8px;font-size:16px;line-height:1.2}
+@media(max-width:700px){.bump-hero-dropdown .bump-service-links a{min-height:45px;font-size:18px}.bump-header .bump-menu-chapters .bump-hero-dropdown-row,.bump-header .bump-menu-chapters .bump-hero-dropdown-row a{min-height:38px}.bump-menu-label--chapters{margin-top:18px}}
+
 /* Bump's working examples sit on the reference's cream paper surface. */
 .bump-group{padding-inline:clamp(20px,4.2vw,72px)}
 .bump-group-title{font-size:clamp(29px,3.4vw,46px);line-height:1.08;margin-bottom:32px;max-width:850px}

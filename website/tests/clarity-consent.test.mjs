@@ -101,7 +101,7 @@ test('revoking analytics changes consent and reloads to stop the existing tracke
   site.refuse.listeners.click();
   assert.equal(site.values.get('bump.clarity.analytics-consent.v1'), 'denied');
   assert.equal(site.reloads, 1);
-  assert.deepEqual(JSON.parse(JSON.stringify(site.window.clarity.q.at(-1))), [
+  assert.deepEqual(JSON.parse(JSON.stringify(Array.from(site.window.clarity.q.at(-1)))), [
     'consentv2', {ad_Storage: 'denied', analytics_Storage: 'denied'},
   ]);
 });

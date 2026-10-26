@@ -5,6 +5,7 @@ import {
   saveAnalyticsChoice,
   loadClarity,
   revokeClarity,
+  ANALYTICS_PREFERENCES_EVENT,
 } from './clarityConsentCore.js';
 
 const h = (tag, props, ...children) => JSX.jsxs(tag, {
@@ -19,7 +20,6 @@ const COPY = {
     link: 'Confidentialité chez Microsoft',
     allow: 'Autoriser les statistiques',
     refuse: 'Refuser',
-    settings: 'Préférences statistiques',
     error: 'Les préférences ne peuvent pas être enregistrées dans ce navigateur. Le suivi reste désactivé.',
   },
   en: {
@@ -28,7 +28,6 @@ const COPY = {
     link: 'Microsoft privacy statement',
     allow: 'Allow analytics',
     refuse: 'Decline',
-    settings: 'Analytics preferences',
     error: 'This browser cannot save your preferences. Tracking remains disabled.',
   },
 };
@@ -64,8 +63,8 @@ export default function BumpClarityConsent() {
       setSaveError(false);
       setNoticeOpen(true);
     };
-    window.addEventListener('bump:open-analytics-preferences', open);
-    return () => window.removeEventListener('bump:open-analytics-preferences', open);
+    window.addEventListener(ANALYTICS_PREFERENCES_EVENT, open);
+    return () => window.removeEventListener(ANALYTICS_PREFERENCES_EVENT, open);
   }, [enabled]);
 
   // The consent controls themselves belong to React, not the static HTML

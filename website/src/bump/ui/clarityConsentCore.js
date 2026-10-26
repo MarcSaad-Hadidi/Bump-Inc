@@ -50,7 +50,13 @@ export function saveAnalyticsChoice(storage, choice, sessionStorage) {
 }
 
 export function loadClarity(win, doc) {
-  if (win.__bumpClarityLoaded) return false;
+  // A stopped instance cannot reliably be restarted by injecting another tag.
+  // The React owner refreshes the document with a newly persisted grant first.
+  if (win.__bumpClarityStopped) return false;
+  if (win.__bumpClarityLoaded) {
+    win.clarity?.('consentv2', {ad_Storage: 'denied', analytics_Storage: 'granted'});
+    return false;
+  }
   win.__bumpClarityLoaded = true;
   win.clarity = win.clarity || function () {
     (win.clarity.q = win.clarity.q || []).push(arguments);
@@ -68,6 +74,7 @@ export function revokeClarity(win, {reload = true} = {}) {
   // Consent V2 alone may continue cookieless capture; stop collection too.
   win.clarity?.('consentv2', {ad_Storage: 'denied', analytics_Storage: 'denied'});
   win.clarity?.('stop');
+  win.__bumpClarityStopped = true;
   // Do not reload into a stale granted choice if consent storage failed.
   if (reload) win.location.reload();
   return true;

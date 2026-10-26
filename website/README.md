@@ -129,14 +129,30 @@ Le build génère `public/bump/brand/bump-social-v1.png` (1200 × 630) et
 vectoriel Bump `src/bump/chapters/branding/symbol-outline.json`, sans
 dépendance externe. Le favicon SVG reste indépendant et identique à la marque.
 
-Le HTML public FR/EN expose les balises Open Graph et Twitter pour utiliser
-l'image Bump plutôt que l'ancienne illustration du héros. `SITE_PUBLIC_ORIGIN`
-définit l'URL absolue de ces métadonnées en production (sur Cloudflare :
-`https://bumpconsultation.ca`). Ne pas le définir pour les previews Workers
-afin de ne pas forcer leurs ressources JS à charger depuis la production.
+Les rôles sont volontairement distincts :
+- **Grande vignette du lien** : les personnages de la scène originale,
+  `/bump/art/hero-fallback-v2.webp`, dans `og:image` et `twitter:image`
+  (1900 × 900 ; WEBP).
+- **Identité de l'onglet et de l'app mobile** : le véritable symbole Bump
+  via `/bump/favicon.svg?v=2`, `/bump/icon-32-v2.png`,
+  `/favicon.ico`, `/bump/apple-touch-icon-v2.png` et `/site.webmanifest`
+  avec PNG 192 et 512. Les variantes raster proviennent du tracé vectoriel
+  officiel. Le fichier `bump-social-v1.png` existe toujours en ressource de
+  marque, mais n'est plus utilisé pour l'aperçu principal.
 
-Après merge et déploiement, vérifier le HTML source et l'image
-`https://bumpconsultation.ca/bump/brand/bump-social-v1.png`. Les applications
-de messagerie et réseaux sociaux peuvent conserver un ancien aperçu en cache ;
-réessayer de partager le lien ou utiliser leur outil de rafraîchissement des
-aperçus si nécessaire. La modification du favicon ne purge pas ce cache.
+`SITE_PUBLIC_ORIGIN` définit l'URL absolue des métadonnées en production
+(`https://bumpconsultation.ca`). Ne pas le définir dans les previews Workers
+pour garder leurs JS et médias sur le domaine de prévisualisation.
+
+Après merge, vérifier le HTML source, les icônes et l'image
+`https://bumpconsultation.ca/bump/art/hero-fallback-v2.webp`.
+Les applications de messagerie conservent parfois les anciennes previews ;
+le cache des cartes sociales est externe au site. Un petit pictogramme
+superposé à une carte peut également provenir de l'interface de l'application
+et ne pas être contrôlable via les métadonnées.
+
+Le consentement Clarity disparaît totalement après autorisation **ou refus**.
+Pour le modifier, ouvrir le menu **Expertises → Préférences statistiques**
+(**Analytics preferences** sur l'édition anglaise). Aucun badge fixe ne
+masque la scène et le lien demeure accessible aux visiteurs des domaines
+officiels.

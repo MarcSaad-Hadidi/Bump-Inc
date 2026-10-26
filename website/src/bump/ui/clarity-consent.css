@@ -43,6 +43,13 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.bump-clarity-error {
+  margin: 10px 0 0;
+  color: #f4c5af;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.bump-clarity-error[hidden] { display: none !important; }
 .bump-clarity-actions {
   display: flex;
   flex-wrap: wrap;

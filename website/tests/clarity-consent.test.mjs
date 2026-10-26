@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 import {
-  CLARITY_ID, CONSENT_KEY, DENIAL_KEY,
+  CLARITY_ID, CONSENT_KEY, DENIAL_KEY, ANALYTICS_PREFERENCES_EVENT,
   isBumpProductionHost, readAnalyticsChoice, saveAnalyticsChoice,
   loadClarity, revokeClarity,
 } from '../src/bump/ui/clarityConsentCore.js';
@@ -54,10 +54,20 @@ function harness({hostname = 'bumpconsultation.ca', lang = 'fr', stored = null} 
     head: makeHead(), documentElement: {lang},
     createElement(name) { return {tagName: name.toUpperCase(), dataset: {}, isConnected: false}; },
   };
+  const listeners = new Map();
   const window = {
     location: {hostname, reload() { reloads++; }},
     localStorage: storage,
     sessionStorage,
+    addEventListener(name, listener) {
+      const handlers = listeners.get(name) || new Set();
+      handlers.add(listener);
+      listeners.set(name, handlers);
+    },
+    removeEventListener(name, listener) { listeners.get(name)?.delete(listener); },
+    dispatchEvent(event) {
+      for (const callback of [...(listeners.get(event.type) || [])]) callback(event);
+    },
   };
   const React = {
     Fragment: 'React.Fragment',
@@ -90,7 +100,8 @@ function harness({hostname = 'bumpconsultation.ca', lang = 'fr', stored = null} 
     + '\nglobalThis.BumpClarityConsent = BumpClarityConsent;';
   assert.doesNotMatch(transformed, /^import /m, 'all source imports removed in test harness');
   const context = {window, document, React, JSX, isBumpProductionHost,
-    readAnalyticsChoice, saveAnalyticsChoice, loadClarity, revokeClarity};
+    readAnalyticsChoice, saveAnalyticsChoice, loadClarity, revokeClarity,
+    ANALYTICS_PREFERENCES_EVENT};
   runInNewContext(transformed, context);
 
   function render() {
@@ -111,13 +122,15 @@ function harness({hostname = 'bumpconsultation.ca', lang = 'fr', stored = null} 
   }
 
   function controls(tree) {
-    const [notice, settings] = tree.props.children;
+    const [notice] = tree.props.children;
+    assert.equal(tree.props.children.length, 1, 'no floating settings button');
     const buttons = notice.props.children[3].props.children;
-    return {notice, settings, deny: buttons[0], allow: buttons[1]};
+    return {notice, deny: buttons[0], allow: buttons[1]};
   }
 
   return {
     window, document, values, sessionValues, render, lifecycleReset, controls,
+    openPreferences() { window.dispatchEvent({type: ANALYTICS_PREFERENCES_EVENT}); },
     blockLocalWrites() { rejectLocalWrites = true; },
     blockSessionWrites() { rejectSessionWrites = true; },
     restoreWrites() { rejectLocalWrites = false; rejectSessionWrites = false; },
@@ -140,16 +153,17 @@ test('the React component runs only after the document head is replaced', () => 
   const ui = harness();
   ui.replaceHead(); // Mimic createRoot(document).render(...), then BumpNav mounts.
   const tree = ui.render();
-  const {notice, settings, allow, deny} = ui.controls(tree);
+  const {notice, allow, deny} = ui.controls(tree);
   assert.equal(notice.props.hidden, false);
-  assert.equal(settings.props.hidden, true);
   assert.equal(ui.document.head.children.length, 1);
   assert.equal(ui.document.head.children[0].href, '/runtime/clarity-consent.css');
   assert.equal(ui.window.clarity, undefined);
   deny.props.onClick();
   const refused = ui.controls(ui.render());
   assert.equal(refused.notice.props.hidden, true);
-  assert.equal(refused.settings.props.hidden, false);
+  assert.equal(refused.notice.props.hidden, true, 'dismiss the entire panel on refusal');
+  ui.openPreferences();
+  assert.equal(ui.controls(ui.render()).notice.props.hidden, false, 'menu can reopen the panel');
   assert.equal(ui.values.get(CONSENT_KEY), 'denied');
   assert.equal(ui.document.head.children.length, 1);
   assert.equal(ui.window.clarity, undefined);
@@ -164,7 +178,7 @@ test('opt-in starts Clarity once; revocation removes third-party tracking via re
   controls = ui.controls(ui.render());
   assert.equal(ui.values.get(CONSENT_KEY), 'granted');
   assert.equal(controls.notice.props.hidden, true);
-  assert.equal(controls.settings.props.hidden, false);
+  assert.equal(controls.notice.props.hidden, true, 'no persistent overlay after acceptance');
   const scripts = ui.document.head.children.filter(n => n.tagName === 'SCRIPT');
   assert.equal(scripts.length, 1);
   assert.equal(scripts[0].src, 'https://www.clarity.ms/tag/' + CLARITY_ID);
@@ -174,7 +188,7 @@ test('opt-in starts Clarity once; revocation removes third-party tracking via re
     ad_Storage:'denied', analytics_Storage:'granted',
   });
 
-  controls.settings.props.onClick();
+  ui.openPreferences();
   controls = ui.controls(ui.render());
   assert.equal(controls.notice.props.hidden, false);
   controls.allow.props.onClick();
@@ -182,7 +196,7 @@ test('opt-in starts Clarity once; revocation removes third-party tracking via re
   assert.equal(ui.document.head.children.filter(n => n.tagName === 'SCRIPT').length, 1);
 
   controls = ui.controls(ui.render());
-  controls.settings.props.onClick();
+  ui.openPreferences();
   controls = ui.controls(ui.render());
   controls.deny.props.onClick();
   assert.equal(ui.values.get(CONSENT_KEY), 'denied');
@@ -196,14 +210,13 @@ test('opt-in starts Clarity once; revocation removes third-party tracking via re
 test('returning users can revoke after React StrictMode effect remount', () => {
   const ui = harness({stored:'granted'});
   const first = ui.controls(ui.render());
-  assert.equal(first.settings.props.hidden, false);
+  assert.equal(first.notice.props.hidden, true, 'no controls float for returning visitors');
   assert.equal(ui.document.head.children.filter(n => n.tagName === 'SCRIPT').length, 1);
   ui.lifecycleReset();
   ui.render();
   assert.equal(ui.document.head.children.filter(n => n.tagName === 'LINK').length, 1);
   assert.equal(ui.document.head.children.filter(n => n.tagName === 'SCRIPT').length, 1);
-  const {settings} = ui.controls(ui.render());
-  settings.props.onClick();
+  ui.openPreferences();
   ui.controls(ui.render()).deny.props.onClick();
   assert.equal(ui.reloads, 1);
 });
@@ -219,6 +232,9 @@ test('analytics storage unavailability never implies permission', () => {
 test('consent source and stylesheet are owned by the navigation React lifecycle', () => {
   assert.match(nav, /import BumpClarityConsent from '\.\/BumpClarityConsent\.js'/);
   assert.match(nav, /h\(BumpClarityConsent,\{\}\)/);
+  assert.match(nav, /bump-analytics-menu-button/);
+  assert.match(nav, /ANALYTICS_PREFERENCES_EVENT/);
+  assert.doesNotMatch(source, /className: 'bump-clarity-settings'/);
   assert.match(source, /React\.useEffect/);
   assert.match(source, /document\.head\.appendChild\(link\)/);
   assert.doesNotMatch(shell, /\/runtime\/clarity-consent\.js/);
@@ -235,7 +251,7 @@ test('revocation survives read-only persistent storage via a session denial mark
   ui.render(); // Returning consent is loaded before browser storage becomes read-only.
   assert.equal(ui.document.head.children.filter(n => n.tagName === 'SCRIPT').length, 1);
   ui.blockLocalWrites();
-  ui.controls(ui.render()).settings.props.onClick();
+  ui.openPreferences();
   ui.controls(ui.render()).deny.props.onClick();
   assert.equal(ui.values.get(CONSENT_KEY), 'granted', 'old grant cannot be overwritten');
   assert.equal(ui.sessionValues.get(DENIAL_KEY), 'denied');
@@ -249,12 +265,12 @@ test('failed writes never reload into a stale grant and stop collection immediat
   ui.render();
   ui.blockLocalWrites();
   ui.blockSessionWrites();
-  ui.controls(ui.render()).settings.props.onClick();
+  ui.openPreferences();
   ui.controls(ui.render()).deny.props.onClick();
   assert.equal(ui.reloads, 0, 'no reload without a durable refusal marker');
   assert.equal(ui.values.get(CONSENT_KEY), 'granted');
   assert.equal(ui.window.clarity.q.at(-1)[0], 'stop');
-  assert.equal(ui.controls(ui.render()).settings.props.hidden, false);
+  assert.equal(ui.controls(ui.render()).notice.props.hidden, true);
   assert.equal(readAnalyticsChoice(ui.window.localStorage, ui.window.sessionStorage), null, 'read-only grants are not trusted after refresh');
 });
 
@@ -263,7 +279,7 @@ test('explicit renewed opt-in safely restarts a stopped tracker after persistenc
   ui.render();
   ui.blockLocalWrites();
   ui.blockSessionWrites();
-  ui.controls(ui.render()).settings.props.onClick();
+  ui.openPreferences();
   ui.controls(ui.render()).deny.props.onClick();
   assert.equal(ui.reloads, 0);
   assert.equal(ui.window.__bumpClarityStopped, true);
@@ -271,7 +287,7 @@ test('explicit renewed opt-in safely restarts a stopped tracker after persistenc
 
   // The next consent can be persisted, so a clean page load may restart it.
   ui.restoreWrites();
-  ui.controls(ui.render()).settings.props.onClick();
+  ui.openPreferences();
   ui.controls(ui.render()).allow.props.onClick();
   assert.equal(ui.values.get(CONSENT_KEY), 'granted');
   assert.equal(ui.reloads, 1, 'a fresh document starts Clarity after the new grant');
@@ -286,17 +302,42 @@ test('reaccepting without working storage fails closed and clearly explains the 
   ui.render();
   ui.blockLocalWrites();
   ui.blockSessionWrites();
-  ui.controls(ui.render()).settings.props.onClick();
+  ui.openPreferences();
   ui.controls(ui.render()).deny.props.onClick();
   assert.equal(ui.reloads, 0);
-  ui.controls(ui.render()).settings.props.onClick();
+  ui.openPreferences();
   ui.controls(ui.render()).allow.props.onClick();
-  const {notice, settings} = ui.controls(ui.render());
+  const {notice} = ui.controls(ui.render());
   assert.equal(notice.props.hidden, false);
-  assert.equal(settings.props.hidden, true);
+  assert.equal(notice.props.hidden, false);
   assert.equal(notice.props.children.at(-1).props.hidden, false);
   assert.equal(notice.props.children.at(-1).props.role, 'alert');
   assert.equal(ui.reloads, 0);
   assert.equal(ui.document.head.children.filter(node => node.tagName === 'SCRIPT').length, 1);
   assert.equal(ui.window.clarity.q.at(-1)[0], 'stop');
+});
+
+test('allowing analytics removes every floating consent control while preserving menu access', () => {
+  const ui = harness();
+  const initial = ui.controls(ui.render());
+  assert.equal(initial.notice.props.hidden, false);
+  initial.allow.props.onClick();
+  const afterConsent = ui.controls(ui.render());
+  assert.equal(afterConsent.notice.props.hidden, true);
+  assert.equal(ui.values.get(CONSENT_KEY), 'granted');
+  assert.equal(ui.document.head.children.filter(n => n.tagName === 'SCRIPT').length, 1);
+  ui.openPreferences();
+  const reopened = ui.controls(ui.render());
+  assert.equal(reopened.notice.props.hidden, false);
+  reopened.deny.props.onClick();
+  assert.equal(ui.values.get(CONSENT_KEY), 'denied');
+});
+
+test('returning visitors do not see the floating settings pill', () => {
+  for (const stored of ['granted', 'denied']) {
+    const ui = harness({stored});
+    assert.equal(ui.controls(ui.render()).notice.props.hidden, true);
+    ui.openPreferences();
+    assert.equal(ui.controls(ui.render()).notice.props.hidden, false);
+  }
 });

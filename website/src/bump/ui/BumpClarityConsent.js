@@ -5,6 +5,7 @@ import {
   saveAnalyticsChoice,
   loadClarity,
   revokeClarity,
+  ANALYTICS_PREFERENCES_EVENT,
 } from './clarityConsentCore.js';
 
 const h = (tag, props, ...children) => JSX.jsxs(tag, {
@@ -19,7 +20,6 @@ const COPY = {
     link: 'Confidentialité chez Microsoft',
     allow: 'Autoriser les statistiques',
     refuse: 'Refuser',
-    settings: 'Préférences statistiques',
     error: 'Les préférences ne peuvent pas être enregistrées dans ce navigateur. Le suivi reste désactivé.',
   },
   en: {
@@ -28,7 +28,6 @@ const COPY = {
     link: 'Microsoft privacy statement',
     allow: 'Allow analytics',
     refuse: 'Decline',
-    settings: 'Analytics preferences',
     error: 'This browser cannot save your preferences. Tracking remains disabled.',
   },
 };
@@ -54,6 +53,18 @@ export default function BumpClarityConsent() {
     link.dataset.bumpClarityStyles = 'true';
     document.head.appendChild(link);
     return () => link.remove();
+  }, [enabled]);
+
+  // Let visitors reopen consent from the normal site menu. No persistent
+  // button should cover the illustrations after a visitor has made a choice.
+  React.useEffect(() => {
+    if (!enabled) return;
+    const open = () => {
+      setSaveError(false);
+      setNoticeOpen(true);
+    };
+    window.addEventListener(ANALYTICS_PREFERENCES_EVENT, open);
+    return () => window.removeEventListener(ANALYTICS_PREFERENCES_EVENT, open);
   }, [enabled]);
 
   // The consent controls themselves belong to React, not the static HTML
@@ -119,13 +130,5 @@ export default function BumpClarityConsent() {
       ),
       h('p', {className: 'bump-clarity-error', role: 'alert', hidden: !saveError}, labels.error),
     ),
-    h('button', {
-      type: 'button',
-      className: 'bump-clarity-settings',
-      'aria-haspopup': 'dialog',
-      'aria-controls': 'bump-clarity-notice',
-      hidden: noticeOpen,
-      onClick: () => setNoticeOpen(true),
-    }, labels.settings),
   );
 }

@@ -8,6 +8,7 @@ import {MotionPanel,LocationPopover,ArrowUpRight,CloseIcon} from '/runtime/asset
 import BackgroundMusic from './BackgroundMusic.js';
 import DeviceMotionControl from './DeviceMotionControl.js';
 import BumpClarityConsent from './BumpClarityConsent.js';
+import {isBumpProductionHost,ANALYTICS_PREFERENCES_EVENT} from './clarityConsentCore.js';
 const h=(tag,props,...children)=>R.jsxs(tag,{...props,...(children.length?{children:children.flat()}: {})});
 const searchIcon=()=>h('svg',{width:15,height:15,viewBox:'0 0 24 24',fill:'none','aria-hidden':true},h('circle',{cx:10,cy:10,r:6,stroke:'currentColor',strokeWidth:1.7}),h('path',{d:'m15 15 5 5',stroke:'currentColor',strokeWidth:1.7}));
 function ChapterLink({item,index,onNavigate,className}){
@@ -72,7 +73,18 @@ export default function BumpNav({navItems}){
   const results=content.chapters.flatMap((c,i)=>c.groups.flatMap(g=>g.cards.map(x=>({...x,index:i+1,chapter:c})))).filter(c=>normalize((c.title+' '+c.descriptionHtml+' '+c.chapter.title).replace(/<[^>]*>/g,' ')).includes(normalize(query.trim())));
   const heroMenu=h('div',{className:'bump-hero-nav-anchor',ref:menuAnchor},
     h('button',{type:'button',ref:menuButton,className:'bump-nav-trigger','aria-expanded':menu,'aria-controls':'bump-menu',onClick:()=>{setSearch(false);setMenu(!menu);},onKeyDown:event=>{if(event.key==='ArrowDown'){event.preventDefault();setSearch(false);setMenu(true);requestAnimationFrame(()=>menuAnchor.current?.querySelector('a')?.focus());}}},'Expertises',h('img',{src:'/runtime/media/25177a62ed-global-16-shrevon-down.svg',width:12,height:12,alt:''})),
-    h(MotionPanel,{open:menu,id:'bump-menu',className:'bump-hero-dropdown',role:'navigation','aria-label':'Tous les chapitres'},...navItems.map((item,i)=>h('div',{className:'bump-hero-dropdown-row',key:item.handle},h('span',{'aria-hidden':true},String(i+1).padStart(2,'0')),h(ChapterLink,{item,index:i+1,onNavigate:()=>setMenu(false)})))));
+    h(MotionPanel,{open:menu,id:'bump-menu',className:'bump-hero-dropdown',role:'navigation','aria-label':'Tous les chapitres'},
+      ...navItems.map((item,i)=>h('div',{className:'bump-hero-dropdown-row',key:item.handle},h('span',{'aria-hidden':true},String(i+1).padStart(2,'0')),h(ChapterLink,{item,index:i+1,onNavigate:()=>setMenu(false)}))),
+      isBumpProductionHost(window.location.hostname)&&h('button',{
+        type:'button',
+        className:'bump-analytics-menu-button',
+        'aria-haspopup':'dialog',
+        'aria-controls':'bump-clarity-notice',
+        onClick:()=>{
+          setMenu(false);
+          window.dispatchEvent(new Event(ANALYTICS_PREFERENCES_EVENT));
+        },
+      },english?'Analytics preferences':'Préférences statistiques')));
   const heroSearch=h('div',{className:'bump-hero-search-anchor',ref:searchAnchor},
     h('button',{type:'button',ref:searchButton,className:'bump-nav-trigger bump-hero-search-trigger','aria-label':'Rechercher','aria-expanded':search,'aria-controls':'bump-hero-search',onClick:()=>{setMenu(false);setSearch(!search);}},h('span',{className:'bump-search-label-text'},'Rechercher'),searchIcon()),
     h(MotionPanel,{open:search,expand:true,id:'bump-hero-search',className:'bump-hero-search-panel',onEntered:()=>searchInput.current?.focus({preventScroll:true})},

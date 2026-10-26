@@ -1,0 +1,25 @@
+{
+  "name": "Bump — L’élan technologique",
+  "short_name": "Bump",
+  "description": "Consultation technologique et solutions numériques",
+  "lang": "fr-CA",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#233028",
+  "theme_color": "#233028",
+  "icons": [
+    {
+      "src": "/bump/icon-192-v2.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/bump/icon-512-v2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

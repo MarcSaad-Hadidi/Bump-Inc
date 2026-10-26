@@ -98,11 +98,29 @@ export function buildShareAssets(siteRoot = root) {
   const previews = [
     {file: 'public/bump/brand/bump-social-v1.png', width: 1200, height: 630, symbolWidth: 475},
     {file: 'public/bump/apple-touch-icon.png', width: 180, height: 180, symbolWidth: 145},
+    {file: 'public/bump/apple-touch-icon-v2.png', width: 180, height: 180, symbolWidth: 145},
+    {file: 'public/bump/icon-32-v2.png', width: 32, height: 32, symbolWidth: 26},
+    {file: 'public/bump/icon-192-v2.png', width: 192, height: 192, symbolWidth: 133},
+    {file: 'public/bump/icon-512-v2.png', width: 512, height: 512, symbolWidth: 350},
   ];
   for (const {file, width, height, symbolWidth} of previews) {
     const destination = join(siteRoot, file);
     mkdirSync(dirname(destination), {recursive: true});
     writeFileSync(destination, renderBumpPng(outline, {width, height, symbolWidth}));
   }
-  console.log('Prepared branded social preview (1200x630) and Apple touch icon.');
+  // Safari, iOS and Android use different icon discovery conventions. Provide
+  // a traditional ICO fallback, plus PNG and Apple icons from the same logo.
+  const small = renderBumpPng(outline, {width: 32, height: 32, symbolWidth: 26});
+  const ico = Buffer.alloc(22);
+  ico.writeUInt16LE(0, 0);   // reserved
+  ico.writeUInt16LE(1, 2);   // icon
+  ico.writeUInt16LE(1, 4);   // one image
+  ico.writeUInt8(32, 6);
+  ico.writeUInt8(32, 7);
+  ico.writeUInt16LE(1, 10);  // planes
+  ico.writeUInt16LE(32, 12); // color depth
+  ico.writeUInt32LE(small.length, 14);
+  ico.writeUInt32LE(22, 18);
+  writeFileSync(join(siteRoot, 'public/favicon.ico'), Buffer.concat([ico, small]));
+  console.log('Prepared Bump social reserve image and favicon, Apple, Android icons.');
 }

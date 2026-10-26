@@ -3,6 +3,7 @@
 export const CLARITY_ID = 'z3i6jyq003';
 export const CONSENT_KEY = 'bump.clarity.analytics-consent.v1';
 export const DENIAL_KEY = 'bump.clarity.analytics-denied.v1';
+export const ANALYTICS_PREFERENCES_EVENT = 'bump:open-analytics-preferences';
 
 export function isBumpProductionHost(hostname) {
   return hostname === 'bumpconsultation.ca' || hostname === 'www.bumpconsultation.ca';

@@ -56,6 +56,18 @@ export default function BumpClarityConsent() {
     return () => link.remove();
   }, [enabled]);
 
+  // Let visitors reopen consent from the normal site menu. No persistent
+  // button should cover the illustrations after a visitor has made a choice.
+  React.useEffect(() => {
+    if (!enabled) return;
+    const open = () => {
+      setSaveError(false);
+      setNoticeOpen(true);
+    };
+    window.addEventListener('bump:open-analytics-preferences', open);
+    return () => window.removeEventListener('bump:open-analytics-preferences', open);
+  }, [enabled]);
+
   // The consent controls themselves belong to React, not the static HTML
   // document. This preserves their events and positioning through navigation.
   React.useEffect(() => {
@@ -119,13 +131,5 @@ export default function BumpClarityConsent() {
       ),
       h('p', {className: 'bump-clarity-error', role: 'alert', hidden: !saveError}, labels.error),
     ),
-    h('button', {
-      type: 'button',
-      className: 'bump-clarity-settings',
-      'aria-haspopup': 'dialog',
-      'aria-controls': 'bump-clarity-notice',
-      hidden: noticeOpen,
-      onClick: () => setNoticeOpen(true),
-    }, labels.settings),
   );
 }

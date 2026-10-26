@@ -111,3 +111,13 @@ L'export conserve les modèles et animations de la version 46. Les tests de rend
 et les captures en mode de secours ne constituent pas une nouvelle validation
 visuelle WebGL sur téléphone réel. Les fichiers de `docs/` conservent leur date et
 leur contexte d'origine. Le build ne publie pas les outils de contrôle mobile.
+
+## Mesure d’audience — Microsoft Clarity
+
+- Projet Clarity : `z3i6jyq003`, monté dans le composant React partagé FR/EN.
+- Le script Microsoft n’est **pas chargé avant accord explicite** du visiteur. Le choix est mémorisé dans le navigateur et révocable via « Préférences statistiques » / « Analytics preferences ».
+- L’API Clarity Consent V2 autorise uniquement le stockage analytique après accord ; le stockage publicitaire reste refusé.
+- Le tracker ne se charge que sur `bumpconsultation.ca` et `www.bumpconsultation.ca` : pas de sessions de test dans le tableau de bord depuis `workers.dev`, localhost ou les previews.
+- `src/bump/ui/BumpClarityConsent.js` est monté dans `BumpNav` après le rendu React de l’application. Il installe la feuille CSS depuis `src/bump/ui/clarity-consent.css` lors de son effet et la retire au démontage. Le build publie cette feuille dans `public/runtime/clarity-consent.css`. Aucun script Clarity n’est injecté par le HTML statique. La CSP autorise les connexions Microsoft nécessaires.
+- Vérification : après déploiement sur le domaine officiel, refuser les statistiques et confirmer l’absence de requêtes `clarity.ms`. Puis accepter et vérifier `https://www.clarity.ms/tag/z3i6jyq003` et les requêtes de collecte dans les DevTools. Tester également la révocation.
+- **Avant publication** : vérifier que les règles de masquage Clarity excluent toute information confidentielle et ajouter la description du suivi et les coordonnées de Bump à sa politique de confidentialité. Le consentement technique ne remplace pas ces obligations d’information.

@@ -1,0 +1,104 @@
+/* Non-modal Bump analytics choice; independent of the 3D scene and assisted scroll. */
+.bump-clarity-notice,
+.bump-clarity-settings {
+  box-sizing: border-box;
+  position: fixed;
+  left: max(14px, env(safe-area-inset-left, 0px));
+  bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  z-index: 1200;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.bump-clarity-notice[hidden],
+.bump-clarity-settings[hidden] {
+  display: none !important;
+}
+.bump-clarity-notice {
+  width: min(435px, calc(100vw - 28px));
+  max-height: calc(100dvh - 28px - env(safe-area-inset-bottom, 0px));
+  overflow-y: auto;
+  padding: 20px;
+  border: 1px solid #91a092;
+  border-radius: 10px;
+  background: #182b22;
+  color: #f7f3e9;
+  box-shadow: 0 12px 44px #07150bb3;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+.bump-clarity-title {
+  margin: 0 0 7px;
+  color: inherit;
+  font: 600 17px/1.35 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.bump-clarity-description {
+  margin: 0 0 9px;
+  color: #e3e7df;
+  font: 400 13px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.bump-clarity-link {
+  color: #e5d2ac;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.bump-clarity-error {
+  margin: 10px 0 0;
+  color: #f4c5af;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.bump-clarity-error[hidden] { display: none !important; }
+.bump-clarity-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 17px;
+}
+.bump-clarity-button {
+  flex: 1 1 155px;
+  min-height: 42px;
+  padding: 9px 12px;
+  border: 1px solid #b3b9ad;
+  border-radius: 5px;
+  font: 600 13px/1.3 system-ui, -apple-system, "Segoe UI", sans-serif;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.bump-clarity-refuse {
+  background: transparent;
+  color: #f7f3e9;
+}
+.bump-clarity-allow {
+  background: #f0e9dc;
+  color: #1a3226;
+}
+.bump-clarity-button:hover {
+  filter: brightness(1.08);
+}
+.bump-clarity-settings {
+  padding: 8px 12px;
+  border: 1px solid #a4ada0;
+  border-radius: 999px;
+  background: #182b22f0;
+  color: #f7f3e9;
+  box-shadow: 0 2px 12px #07150b4d;
+  font: 500 11px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.bump-clarity-button:focus-visible,
+.bump-clarity-settings:focus-visible,
+.bump-clarity-link:focus-visible {
+  outline: 3px solid #e5d2ac;
+  outline-offset: 3px;
+}
+@media (max-width: 420px) {
+  .bump-clarity-notice { padding: 16px; }
+  .bump-clarity-actions { gap: 8px; }
+  .bump-clarity-button { flex-basis: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bump-clarity-button, .bump-clarity-settings { transition: none; }
+}

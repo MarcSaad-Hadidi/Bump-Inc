@@ -5,7 +5,7 @@ import {handleContact,sanitizeContact} from '../src/worker/contact.js';
 
 const good={
  company:'Bump Client Inc',name:'Client Test',email:'client@example.com',
- expertise:'Cybersécurité',message:'Bonjour, je veux discuter de mon projet cybersécurité.'
+ expertise:'security',message:'Bonjour, je veux discuter de mon projet cybersécurité.'
 };
 const url='https://bumpconsultation.ca/api/contact';
 const request=(payload,origin='https://bumpconsultation.ca')=>new Request(url,{
@@ -67,4 +67,13 @@ test('frontend uses real API response instead of success-only demonstration',()=
  assert.equal(config.main,'./src/worker/contact.js');
  assert.deepEqual(config.assets.run_worker_first,['/api/*']);
  assert.equal(config.send_email[0].name,'EMAIL');
+});
+
+test('stable option IDs work for French and translated English labels', () => {
+  const source=readFileSync('src/bump/ui/ProjectForm.js','utf8');
+  assert.match(source,/id:'security',label:'Cybersécurité'/);
+  assert.match(source,/value:option\.id/);
+  assert.match(source,/option\.label/);
+  assert.match(source,/FormData\(event\.currentTarget\)\.get\('website'\)/);
+  assert.deepEqual(sanitizeContact({...good,expertise:'software'}).expertise,'software');
 });

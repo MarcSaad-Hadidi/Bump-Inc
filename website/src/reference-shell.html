@@ -5,6 +5,11 @@ html[data-bump-opening=type] body::before{content:"";position:fixed;inset:0;z-in
 html[data-bump-opening=type] .main-wrapper{position:relative;z-index:301}
 html[data-bump-opening=type] .bump-header{opacity:0;pointer-events:none}
 html[data-bump-opening=type] :is(canvas[data-engine],.static-fallback-wrapper){opacity:0}
+/* The opening wordmark overlays the final title's reserved box. Changing the
+   visible text must not reflow the centered navigation or the drawing lines. */
+[data-section-name=side-and-lines][data-scrolled=false] .bump-title{position:relative}
+html[data-bump-opening=type] [data-section-name=side-and-lines][data-scrolled=false] .bump-editorial-title{display:block;visibility:hidden}
+html[data-bump-opening=type] [data-section-name=side-and-lines][data-scrolled=false] .bump-opening-wordmark{position:absolute;inset:0 auto auto 0;width:100%;min-height:100%}
 </style><link data-bump-startup-font rel="preload" href="/bump/fonts/eb-garamond-latin-variable.woff2" as="font" type="font/woff2" crossorigin><link data-bump-startup-font rel="preload" href="/bump/fonts/im-fell-english-regular.ttf" as="font" type="font/ttf" crossorigin><style data-bump-initial-style>
 .bump-loading{z-index:2147482000}
 .seo-home-fallback{box-sizing:border-box;position:fixed;inset:0;overflow:auto;background:#f4f1e8;color:#302e28;font:20px/1.5 Georgia,serif;padding:50px max(24px,calc((100% - 1100px)/2));min-height:100vh}

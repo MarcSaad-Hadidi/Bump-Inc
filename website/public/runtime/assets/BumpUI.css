@@ -1,4 +1,17 @@
 :root{--bump-paper:#f4f1e8;--bump-motion-rate:1.15}
+/* Critical geometry is available before the retained CSS/React arrive. */
+html,body{margin:0;padding:0;min-height:100%;box-sizing:border-box}
+html[data-bump-opening=type],html[data-bump-opening=type] body{background:#000}
+html[data-bump-opening=type] body::before{content:"";position:fixed;inset:0;z-index:300;background:#000;pointer-events:none}
+html[data-bump-opening=type] .main-wrapper{position:relative;z-index:301}
+html[data-bump-opening=type] .bump-header{opacity:0;pointer-events:none}
+html[data-bump-opening=type] :is(canvas[data-engine],.static-fallback-wrapper){opacity:0}
+/* The opening wordmark overlays the final title's reserved box. Changing the
+   visible text must not reflow the centered navigation or the drawing lines. */
+[data-section-name=side-and-lines][data-scrolled=false] .bump-title{position:relative}
+html[data-bump-opening=type] [data-section-name=side-and-lines][data-scrolled=false] .bump-editorial-title{display:block;visibility:hidden}
+html[data-bump-opening=type] [data-section-name=side-and-lines][data-scrolled=false] .bump-opening-wordmark{position:absolute;inset:0 auto auto 0;width:100%;min-height:100%}
+
 .bump-motion-panel{transform-origin:top left}
 .bump-motion-panel[data-motion-state=closing]{pointer-events:none}
 .bump-hero-header .bump-nav-trigger{transition:background-color .26s ease,color .26s ease,box-shadow .26s ease}

@@ -46,6 +46,22 @@ export async function handleContact(request, env) {
   if (body?.website) return reply({ok:true}); // silent bot trap
   const details = sanitizeContact(body);
   if (!details) return reply({error:'invalid_fields'}, 400);
+  if (!env.TURNSTILE_SECRET) return reply({error:'verification_not_configured'}, 503);
+  if (typeof body.turnstileToken !== 'string' || body.turnstileToken.length < 20 || body.turnstileToken.length > 2048) return reply({error:'verification_required'}, 403);
+  let verification;
+  try {
+    const params = new URLSearchParams();
+    params.set('secret', env.TURNSTILE_SECRET);
+    params.set('response', body.turnstileToken);
+    const result = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method:'POST', body: params, signal:AbortSignal.timeout(8000),
+    });
+    if (!result.ok) throw new Error('verification_unavailable');
+    verification = await result.json();
+  } catch {
+    return reply({error:'verification_unavailable'}, 503);
+  }
+  if (!verification.success || !['bumpconsultation.ca','www.bumpconsultation.ca'].includes(verification.hostname)) return reply({error:'verification_failed'}, 403);
   if (!env.EMAIL?.send) return reply({error:'email_not_configured'}, 503);
   const text = [
     'Nouvelle demande Bump','',

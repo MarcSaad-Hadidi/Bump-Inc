@@ -69,6 +69,7 @@ export function Brief({open,onClose}){
         if(!response.ok)throw new Error('failed');
         setStatus('sent');
         setValues({});
+        if(widgetId.current!==null&&window.turnstile)window.turnstile.reset(widgetId.current);
         setTurnstileToken('');
       }catch{
         setStatus('error');

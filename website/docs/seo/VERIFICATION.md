@@ -247,3 +247,8 @@ The existing 190 tests and HTTP smoke pass; no geometry or scroll code changed.
   coverage, localized search targets and the five-stage clock. Reduced-motion
   completion is verified by deterministic clock tests plus CSS disabling motion.
   Chrome responsive/fallback checks do not demonstrate native iOS/WebGL FPS.
+- The first Docker smoke exposed the new server-side import of the shared music
+  module outside the previously copied SEO directory. The runtime now copies
+  that exact module too. An isolated regression test uses the Dockerfile's own
+  source-copy list and starts the production server without the checkout,
+  requesting FR/EN landing and an editorial route.

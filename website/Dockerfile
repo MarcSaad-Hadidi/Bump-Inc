@@ -12,6 +12,7 @@ WORKDIR /site
 COPY --from=build --chown=node:node /site/dist/client ./dist/client
 COPY --from=build --chown=node:node /site/scripts/serve-production.mjs ./scripts/serve-production.mjs
 COPY --from=build --chown=node:node /site/src/bump/seo ./src/bump/seo
+COPY --from=build --chown=node:node /site/src/bump/ui/musicController.js ./src/bump/ui/musicController.js
 COPY --from=build --chown=node:node /site/src/bump/content.json ./src/bump/content.json
 USER node
 EXPOSE 3000

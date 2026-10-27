@@ -15,7 +15,7 @@ export function Brief({open,onClose}){
     {name:'company',label:'Votre entreprise',type:'text',placeholder:'Nom de votre entreprise',autoComplete:'organization'},
     {name:'name',label:'Votre nom',type:'text',placeholder:'Prénom et nom',autoComplete:'name',required:true},
     {name:'email',label:'Votre courriel',type:'email',placeholder:'vous@entreprise.com',autoComplete:'email',required:true},
-    {name:'expertise',label:'Votre projet',type:'select',required:true,options:['Optimisation des processus','IA et développement logiciel','Cybersécurité','Je souhaite être conseillé']},
+    {name:'expertise',label:'Votre projet',type:'select',required:true,options:[{id:'process',label:'Optimisation des processus'},{id:'software',label:'IA et développement logiciel'},{id:'security',label:'Cybersécurité'},{id:'advisory',label:'Je souhaite être conseillé'}]},
     {name:'message',label:'Comment pouvons-nous vous aider ?',type:'textarea',placeholder:'Votre besoin, vos enjeux, vos idées…',required:true}
   ];
   return h(Dialog,{open,onClose,label:'Parlons de votre projet',className:'bump-brief bump-contact'},
@@ -25,9 +25,10 @@ export function Brief({open,onClose}){
     h('form',{onSubmit:async event=>{
       event.preventDefault();
       if(status==='sending')return;
+      const website=new FormData(event.currentTarget).get('website')||'';
       setStatus('sending');
       try{
-        const response=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...values,website:''})});
+        const response=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...values,website})});
         if(!response.ok)throw new Error('failed');
         setStatus('sent');
         setValues({});
@@ -41,7 +42,7 @@ export function Brief({open,onClose}){
           id:'bump-contact-'+f.name,name:f.name,type:['text','email'].includes(f.type)?f.type:undefined,
           required:f.required,placeholder:f.placeholder,autoComplete:f.autoComplete,value:values[f.name]||'',
           onChange:event=>{setValues({...values,[f.name]:event.target.value});setStatus('idle');},rows:f.type==='textarea'?4:undefined
-        },...(f.options?[h('option',{value:''},'Choisir une expertise'),...f.options.map(option=>h('option',{value:option,key:option},option))]:[]))
+        },...(f.options?[h('option',{value:''},'Choisir une expertise'),...f.options.map(option=>h('option',{value:option.id,key:option.id},option.label))]:[]))
       )),
       h('input',{name:'website',type:'text',tabIndex:-1,autoComplete:'off',style:{position:'absolute',left:'-9999px'},'aria-hidden':true}),
       h('div',{className:'bump-contact-bottom'},h('p',{},'* Champs obligatoires'),h('button',{type:'submit',className:'bump-action',disabled:status==='sending'},status==='sending'?'Envoi…':'Envoyer ma demande',h('span',{'aria-hidden':true},'↗')))

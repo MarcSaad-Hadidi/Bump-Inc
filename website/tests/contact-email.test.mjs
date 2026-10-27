@@ -101,3 +101,13 @@ test('failed Turnstile check prevents emails',async()=>{
   assert.equal(response.status,403);assert.equal(sent,0);
  }finally{globalThis.fetch=original;}
 });
+
+test('all new contact statuses have translated English copy',()=>{
+ const catalog=JSON.parse(readFileSync('src/bump/locales/en.json','utf8'));
+ for(const key of ['Envoi…','Votre demande a bien été envoyée. Merci !','L’envoi a échoué. Réessayez ou écrivez à contact@bumpconsultation.ca.','Veuillez terminer la vérification de sécurité.']){
+  assert.ok(catalog[key],key);
+ }
+ const src=readFileSync('src/bump/ui/ProjectForm.js','utf8');
+ assert.match(src,/status==='sent'/);
+ assert.match(src,/window.turnstile.reset\(widgetId.current\)/);
+});

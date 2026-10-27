@@ -3,12 +3,22 @@ explicitly authorized. Prepare it on fresh main, preserve Clarity, icons and
 link previews, and do not merge automatically. Earlier PR gating below is
 historical and superseded by this instruction.
 
-Latest verification (2026-10-27): the readable initial HTML, service decision
-guides, corporate authorship and glass volume/consent controls are documented in
-[the audit register](audits/2026-10-27/AUDIT-REGISTER.md) and
-[published verification](audits/2026-10-27/after/VERIFICATION.md).
-The current suite passes 200 tests. Public audits cover all 18 FR/EN pages;
-AEOTester reports 121/127 (95%). Older counts below describe earlier checkpoints.
+Latest verification (2026-10-27, publication 64): **203 tests passed**;
+normal build, HTTP smoke and GPT artifact smoke passed. All **18 public FR/EN
+pages** were audited: **AEOTester 125/127 (98%)**, **Grow My Website 100/100**
+on the homepage, **AIOScan 90/100 (B, 20/21)** and **Pishe SEO 90 / AI 83**.
+GeoDaddy's five-page audit reports **GEO 88 / global 73**; its external CLS
+warning remains open and its root-only JSON-LD check rejects valid graphs.
+Magnet's version-62 report is **68/100**, including structure/format 25/25,
+one measured social-profile gap and eleven unmeasured criteria.
+
+The [final published evidence](audits/2026-10-27/final/VERIFICATION.md),
+[AEOTester report](audits/2026-10-27/final/aeotester-report.md),
+[audit register](audits/2026-10-27/AUDIT-REGISTER.md) and
+[readiness changes](audits/2026-10-27/READINESS-PASS.md) distinguish measured
+results, earlier checkpoints and remaining owner-supplied evidence. Scores
+are preparation rubrics, not rankings or measured non-branded AI citations.
+Older counts below describe earlier checkpoints.
 
 # SEO release verification
 

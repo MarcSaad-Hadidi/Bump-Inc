@@ -6,10 +6,17 @@ données Search Console du domaine commercial. Les scores de fournisseurs ont
 des périmètres et rubriques différents ; ils ne mesurent pas un classement
 mondial, des conversions ou une part de citations.
 
-Résultats après correction : [vérification publiée](after/VERIFICATION.md),
-[rapport AEOTester des 18 pages](after/aeotester-report.md) et résultats bruts
-dans `after/`. Le code revu est identique à celui qui a été audité ; les
-derniers changements du dossier ajoutent uniquement ces preuves.
+Résultats finaux de la **publication 64** :
+[vérification publiée](final/VERIFICATION.md),
+[rapport AEOTester des 18 pages](final/aeotester-report.md) et preuves brutes
+dans `final/`. **203 tests**, AEO **125/127 (98 %)**, SEO accueil **100/100**.
+AIOSCAN **90/100**, Pishe **SEO 90 / IA 83**, GeoDaddy **GEO 88 / global 73**
+sur cinq pages, avec sa réserve CLS conservée. Les commandes AIOSCAN et Pishe
+sont devenues disponibles après le premier contrôle et ont été utilisées.
+Magnet **68/100** a mesuré v62 ; les onze critères non mesurés et son détail
+restent dans `readiness-after/`. `after/` conserve le checkpoint antérieur
+à 121/127 et ne décrit pas le dernier résultat. Le commit documentaire final
+ajoute uniquement les preuves ; le frontend publié ne change pas.
 
 ## Outils utilisés et décisions
 
@@ -79,3 +86,11 @@ accès aux métriques du domaine final. Ne pas les remplacer par de faux signaux
 Le formulaire reste la démonstration UI demandée ; aucun envoi de prospect
 n’est annoncé. La mesure de trafic, des mentions et des demandes qualifiées
 doit distinguer les données observées des prédictions d’outils.
+
+## Compléments demandés en fin de passe
+
+| Outil | Exécution et décision |
+| --- | --- |
+| AIOScan | Guide get-started appliqué ; scans publics v63 puis v64 : 90/B, 20/21. Réserve de titres interrogatifs sur l’accueil ; les titres cinématiques acceptés sont conservés et les FAQ dédiées restent liées. |
+| Pishe Website Check | Scans v63 puis v64 : 33 facteurs, SEO90/IA83. Coordonnées et profils non fournis ne sont pas inventés ; aucun contact envoyé à Raboti. |
+| GeoDaddy | Site utilisé dans le navigateur, un puis cinq chemins, Web Vitals actifs. Édition initiale stabilisée, description raccourcie et sujet relié à Bump ; le CLS externe reste non reproduit localement. Faux négatif du validateur de graphe et rubriques agents/paiement documentés, sans fausses fonctions. |

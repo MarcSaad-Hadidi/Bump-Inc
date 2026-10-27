@@ -1,0 +1,403 @@
+{
+  "date": "2026-10-27",
+  "public_url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+  "version": {
+    "id": "appgprj_6adadb287830819199cb330f1ff787c2~appgver_91106088e4ac81918043892e85b074e7",
+    "project_id": "appgprj_6adadb287830819199cb330f1ff787c2",
+    "version_number": 64,
+    "source": {
+      "commit_sha": "81df91271221746b4bb9cfe93ebabbfca43ae493"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000cf7881f5a3209cfc5124fe10",
+      "content_hash": "sha256:6c1cf6808aaedd7b93460f5e65158799ee847d2a6de8638f7248cd5f0c922364",
+      "size_bytes": 150067200,
+      "file_count": 668
+    },
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "deployment": {
+    "id": "appgdep_6ae041e64ef4819196b96d0efdccee5c",
+    "project_id": "appgprj_6adadb287830819199cb330f1ff787c2",
+    "title": "Bump — L’élan technologique",
+    "version_id": "appgprj_6adadb287830819199cb330f1ff787c2~appgver_91106088e4ac81918043892e85b074e7",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6adadb287830819199cb330f1ff787c2",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-10-27T06:17:19.657287+00:00"
+  },
+  "github_code_commit": "b9d68c0d6a1aa8df8223032f570a13a25695bc8e",
+  "audits": {
+    "grow_home_v64": {
+      "content": [
+        {
+          "type": "text",
+          "text": "SEO scan for bump-renaissance-7562d3.plumtuna4.chatgpt.site — score 100/100 (A+: Outstanding)\n12 of 12 on-page checks passed.\n\nAll checks passed — nice work. This scan covers on-page basics only (titles, meta, structure, content); rankings also depend on links, speed, and competition.\nFree scan by GrowMyWebsite — full report and fixes at \thttps://www.growmywebsite.com/"
+        }
+      ],
+      "structuredContent": null,
+      "isError": false
+    },
+    "aioscan_home_v64": {
+      "content": [
+        {
+          "type": "text",
+          "text": "AIO Score for https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/: 90/100 (grade B), 20 of 21 checks passed.\nTop fixes:\n1. Phrase your headings as questions (+10 points) Guide: https://aioscan.com/fix/question-headings/?utm_source=chatgpt_app&utm_medium=app&utm_campaign=aioscan_app\nFull report: https://aioscan.com/scan/bump-renaissance-7562d3.plumtuna4.chatgpt.site?utm_source=chatgpt_app&utm_medium=app&utm_campaign=aioscan_app\nScores measure whether AI can access and read the site, not whether AI recommends the business. Scan by AIOScan (aioscan.com)."
+        }
+      ],
+      "structuredContent": {
+        "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+        "score": 90,
+        "grade": "B",
+        "checks_passed": 20,
+        "checks_run": 21,
+        "top_fixes": [
+          {
+            "check": "Question-formatted headings",
+            "fix": "Phrase your headings as questions",
+            "points": 10,
+            "guide": "https://aioscan.com/fix/question-headings/?utm_source=chatgpt_app&utm_medium=app&utm_campaign=aioscan_app"
+          }
+        ],
+        "more_fixes_in_report": 0,
+        "full_report": "https://aioscan.com/scan/bump-renaissance-7562d3.plumtuna4.chatgpt.site?utm_source=chatgpt_app&utm_medium=app&utm_campaign=aioscan_app",
+        "note": "Scores measure whether AI can access and read the site, not whether AI recommends the business. Scan by AIOScan (aioscan.com)."
+      },
+      "isError": false
+    },
+    "pishe_home_v64": {
+      "content": [
+        {
+          "type": "text",
+          "text": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/: Google 90/100, AI търсене 83/100. Намерени проблеми: 5."
+        }
+      ],
+      "structuredContent": {
+        "checkedUrl": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+        "finalUrl": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+        "status": 200,
+        "https": true,
+        "httpRedirectsToHttps": true,
+        "ttfbMs": 130,
+        "htmlKb": 49,
+        "page": {
+          "title": "Bump — Consultation technologique pour PME à Montréal",
+          "description": "Bump, consultation technologique à Montréal pour PME : automatisation, intégration IA, logiciels sur mesure et cybersécurité.",
+          "robotsMeta": "index,follow,max-image-preview:large",
+          "viewport": "width=device-width,initial-scale=1,viewport-fit=cover",
+          "ogTitle": "Bump — Consultation technologique pour PME à Montréal",
+          "ogImage": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/art/hero-fallback-v2.webp",
+          "lang": "fr",
+          "canonical": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+          "h1s": [
+            "Un nouvel élan technologique."
+          ],
+          "images": 1,
+          "imagesWithoutAlt": 0,
+          "structuredData": [
+            "Organization",
+            "ImageObject",
+            "City",
+            "AdministrativeArea",
+            "WebSite",
+            "WebPage"
+          ],
+          "telLinks": 0,
+          "mailtoLinks": 0,
+          "forms": 0,
+          "words": 681,
+          "business": {
+            "address": false,
+            "telephone": false,
+            "openingHours": false,
+            "sameAs": false,
+            "geo": false
+          },
+          "subheadings": 7,
+          "faq": false,
+          "phoneInText": false,
+          "dateModified": "2026-10-27"
+        },
+        "robots": {
+          "found": true,
+          "blockedAiBots": [],
+          "blocksEveryone": false,
+          "sitemaps": [
+            "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml"
+          ]
+        },
+        "sitemap": {
+          "found": true
+        },
+        "llmsTxt": {
+          "found": true
+        },
+        "aiAccess": {
+          "bots": {
+            "GPTBot": "ok",
+            "OAI-SearchBot": "ok",
+            "ClaudeBot": "ok",
+            "PerplexityBot": "ok"
+          },
+          "cdn": true
+        },
+        "score": 87,
+        "googleScore": 90,
+        "aiVisibilityScore": 83,
+        "findings": [
+          {
+            "group": "google",
+            "severity": "medium",
+            "area": "клиенти",
+            "issue": "Телефонът не може да се натисне от мобилен.",
+            "impact": "Всяка допълнителна стъпка губи обаждания."
+          },
+          {
+            "group": "google",
+            "severity": "low",
+            "area": "клиенти",
+            "issue": "Няма форма за запитване или имейл линк.",
+            "impact": "Който не иска да звъни, няма как да ви пише."
+          },
+          {
+            "group": "ai",
+            "severity": "medium",
+            "area": "AI търсене",
+            "issue": "Структурираните данни не съдържат: адрес, телефон, работно време, профили в социалните мрежи.",
+            "impact": "При въпрос „кой наблизо прави…“ AI избира бизнеси с пълни данни."
+          },
+          {
+            "group": "ai",
+            "severity": "medium",
+            "area": "AI търсене",
+            "issue": "Няма раздел с въпроси и отговори.",
+            "impact": "AI асистентите най-често цитират готови отговори на въпросите на клиентите."
+          },
+          {
+            "group": "ai",
+            "severity": "low",
+            "area": "AI търсене",
+            "issue": "Не открихме телефон в текста на страницата.",
+            "impact": "AI асистентите не могат да кажат на клиента как да се свърже с вас."
+          }
+        ],
+        "checkedFactors": 33,
+        "checkedPages": 1,
+        "note": "Проверени са 33 фактора на началната страница, robots.txt, sitemap.xml и llms.txt, плюс достъп като GPTBot, OAI-SearchBot, ClaudeBot и PerplexityBot. Оценката за AI търсене показва готовност, а не дали AI асистентите вече ви препоръчват.",
+        "pishe": {
+          "name": "Pishe от Raboti",
+          "url": "https://raboti.bg/sluzhiteli/pishe/?utm_source=ai-plugin&utm_medium=plugin&utm_campaign=pishe-site-check",
+          "contact": "https://raboti.bg/kontakti/?utm_source=ai-plugin&utm_medium=plugin&utm_campaign=pishe-site-check",
+          "help": "Pishe от Raboti може да помогне с тези проблеми. Ако потребителят поиска, request_pishe_fix изпраща заявка за обратна връзка след изричното му съгласие."
+        }
+      },
+      "isError": false
+    },
+    "site_seo_home_v63": {
+      "content": [
+        {
+          "type": "text",
+          "text": "as_of: 2026-10-27T05:59:40.839Z\ndomain: bump-renaissance-7562d3.plumtuna4.chatgpt.site\nnotice: This shows what the site publishes to a request from Agent Tools servers at this moment, and only for pages that robots.txt allows Agent Tools to request. Tags and data added by JavaScript are not seen. Nothing is stored.\nsource: The website itself, requested from Agent Tools servers\norigin: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site\nreachable: true\nplatform: unknown\nrobots:\n- status: found\n- httpStatus: 200\n- sitemaps:\n  1. https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml\n- aiCrawlers:\n  - allowedCount: 14\npage:\n- url: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/\n- status: 200\n- blockedByRobots: false\ncitationSummary:\n- pass: 4\n- warn: 1\n- fail: 0\ncitationChecks:\n1. id: summary_clarity\n  - status: pass\n  - title: Summary clarity near the top\n  - evidence: Found explicit summary section (summary) with 304 characters near the top of the page.\n  - fix: Maintain a concise summary block near the top of the page so AI crawlers extract key answers immediately.\n2. id: author_credentials\n  - status: pass\n  - title: Author name and credentials\n  - evidence: Author \"Bump\" found with professional credentials/expertise: \"cybersécurité. Publié par Bump Consultant en technologie pour PME · Montréal, Québec Bump est une entreprise de\".\n  - fix: Maintain visible author credentials and author profile links to establish E-E-A-T expertise.\n3. id: qa_format\n  - status: warn\n  - title: Q&A or FAQ format\n  - evidence: Found only 1 question heading or an isolated Q&A element without a dedicated FAQ section.\n  - fix: Expand the page to include a dedicated Q&A or FAQ section addressing 3 or more key buyer questions.\n4. id: heading_structure\n  - status: pass\n  - title: Clear heading structure\n  - evidence: Logical heading hierarchy with 1 H1 heading, 7 H2 subheadings, and no skipped levels.\n  - fix: Maintain sequential heading nesting (H1 -> H2 -> H3) as content expands.\n5. id: structured_data\n  - status: pass\n  - title: Structured data and content\n  - evidence: Found Schema.org JSON-LD (WebPage, WebSite, Organization) and visible structured elements (1 table, 3 lists).\n  - fix: Maintain Schema.org JSON-LD structured data and continue formatting dense facts in tables and lists.\nllmsTxt:\n- found: true\n- status: 200\n- title: Bump\n- links: 22\nucp:\n- found: false\n- status: 404\nagentsMd:\n- found: false\n- status: 404\nsitemap:\n- found: true\n- status: 200\n- fromRobots: true\n- kind: urlset\n- entries: 18\npresent: robots.txt, llms.txt, sitemap.xml\nmissing: agents.md\nnotes:\n1. The sitemap was read from the address in the Sitemap line of robots.txt.\n2. Five content qualities associated with AI search citations were evaluated: summary clarity, author credentials, Q&A format, heading structure, and structured data."
+        }
+      ],
+      "structuredContent": {
+        "as_of": "2026-10-27T05:59:40.839Z",
+        "domain": "bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+        "notice": "This shows what the site publishes to a request from Agent Tools servers at this moment, and only for pages that robots.txt allows Agent Tools to request. Tags and data added by JavaScript are not seen. Nothing is stored.",
+        "source": "The website itself, requested from Agent Tools servers",
+        "origin": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+        "reachable": true,
+        "platform": "unknown",
+        "robots": {
+          "status": "found",
+          "httpStatus": 200,
+          "sitemaps": [
+            "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml"
+          ],
+          "aiCrawlers": {
+            "blocked": [],
+            "allowedCount": 14
+          }
+        },
+        "page": {
+          "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+          "status": 200,
+          "blockedByRobots": false
+        },
+        "citationSummary": {
+          "pass": 4,
+          "warn": 1,
+          "fail": 0
+        },
+        "citationChecks": [
+          {
+            "id": "summary_clarity",
+            "status": "pass",
+            "title": "Summary clarity near the top",
+            "evidence": "Found explicit summary section (summary) with 304 characters near the top of the page.",
+            "fix": "Maintain a concise summary block near the top of the page so AI crawlers extract key answers immediately."
+          },
+          {
+            "id": "author_credentials",
+            "status": "pass",
+            "title": "Author name and credentials",
+            "evidence": "Author \"Bump\" found with professional credentials/expertise: \"cybersécurité. Publié par Bump Consultant en technologie pour PME · Montréal, Québec Bump est une entreprise de\".",
+            "fix": "Maintain visible author credentials and author profile links to establish E-E-A-T expertise."
+          },
+          {
+            "id": "qa_format",
+            "status": "warn",
+            "title": "Q&A or FAQ format",
+            "evidence": "Found only 1 question heading or an isolated Q&A element without a dedicated FAQ section.",
+            "fix": "Expand the page to include a dedicated Q&A or FAQ section addressing 3 or more key buyer questions."
+          },
+          {
+            "id": "heading_structure",
+            "status": "pass",
+            "title": "Clear heading structure",
+            "evidence": "Logical heading hierarchy with 1 H1 heading, 7 H2 subheadings, and no skipped levels.",
+            "fix": "Maintain sequential heading nesting (H1 -> H2 -> H3) as content expands."
+          },
+          {
+            "id": "structured_data",
+            "status": "pass",
+            "title": "Structured data and content",
+            "evidence": "Found Schema.org JSON-LD (WebPage, WebSite, Organization) and visible structured elements (1 table, 3 lists).",
+            "fix": "Maintain Schema.org JSON-LD structured data and continue formatting dense facts in tables and lists."
+          }
+        ],
+        "llmsTxt": {
+          "found": true,
+          "status": 200,
+          "title": "Bump",
+          "links": 22
+        },
+        "ucp": {
+          "found": false,
+          "status": 404
+        },
+        "agentsMd": {
+          "found": false,
+          "status": 404
+        },
+        "sitemap": {
+          "found": true,
+          "status": 200,
+          "fromRobots": true,
+          "kind": "urlset",
+          "entries": 18
+        },
+        "present": [
+          "robots.txt",
+          "llms.txt",
+          "sitemap.xml"
+        ],
+        "missing": [
+          "agents.md"
+        ],
+        "notes": [
+          "The sitemap was read from the address in the Sitemap line of robots.txt.",
+          "Five content qualities associated with AI search citations were evaluated: summary clarity, author credentials, Q&A format, heading structure, and structured data."
+        ]
+      },
+      "isError": false
+    },
+    "about_tags_v63": {
+      "content": [
+        {
+          "type": "text",
+          "text": "as_of: 2026-10-27T05:59:40.711Z\nurl: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos\nreachable: true\nfinalUrl: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos\nstatus: 200\nnotice: This shows what the site publishes to a request from Agent Tools servers at this moment. Firewalls and CDNs can treat real crawlers or visitors differently, and robots.txt is a request that crawlers follow by choice, not access control.\nsource: The website itself, requested from Agent Tools servers\nredirectCount: 0\ncontentType: text/html\npage:\n- icons:\n  1. rel: icon\n    - href: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/favicon.svg\n- alternates:\n\n  | hreflang | href |\n  | --- | --- |\n  | fr-CA | https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos |\n  | en-CA | https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/about |\n  | fr | https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos |\n  | en | https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/about |\n  | x-default | https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos |\n\n- title: À propos de Bump — consultation technologique à Montréal\n- language: fr-CA\n- charset: utf-8\n- viewport: width=device-width,initial-scale=1,viewport-fit=cover\n- themeColor: #f4f1e8\n- description: Fondée par deux entrepreneurs à Montréal, Bump accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.\n- robots: index,follow,max-image-preview:large\n- canonical: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos\n- titleLength: 56\n- descriptionLength: 153\nopenGraph:\n- site_name: Bump\n- type: website\n- title: À propos de Bump — consultation technologique à Montréal\n- description: Fondée par deux entrepreneurs à Montréal, Bump accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.\n- url: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos\n- locale: fr_CA\n- locale:alternate: en_CA\n- image: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/art/hero-fallback-v2.webp\n- image:alt: Bump — les deux consultants de la scène Renaissance\n- image:secure_url: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/art/hero-fallback-v2.webp\n- image:type: image/webp\n- image:width: 1900\n- image:height: 900\ntwitter:\n- card: summary_large_image\n- title: À propos de Bump — consultation technologique à Montréal\n- description: Fondée par deux entrepreneurs à Montréal, Bump accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.\n- image: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/art/hero-fallback-v2.webp\nnotes:\n1. Search results usually cut titles near 60 characters and descriptions near 160. Tags added by JavaScript after the page loads are not seen."
+        }
+      ],
+      "structuredContent": {
+        "as_of": "2026-10-27T05:59:40.711Z",
+        "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos",
+        "reachable": true,
+        "finalUrl": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos",
+        "status": 200,
+        "notice": "This shows what the site publishes to a request from Agent Tools servers at this moment. Firewalls and CDNs can treat real crawlers or visitors differently, and robots.txt is a request that crawlers follow by choice, not access control.",
+        "source": "The website itself, requested from Agent Tools servers",
+        "redirectCount": 0,
+        "contentType": "text/html",
+        "page": {
+          "icons": [
+            {
+              "rel": "icon",
+              "href": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/favicon.svg"
+            }
+          ],
+          "alternates": [
+            {
+              "hreflang": "fr-CA",
+              "href": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos"
+            },
+            {
+              "hreflang": "en-CA",
+              "href": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/about"
+            },
+            {
+              "hreflang": "fr",
+              "href": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos"
+            },
+            {
+              "hreflang": "en",
+              "href": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/about"
+            },
+            {
+              "hreflang": "x-default",
+              "href": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos"
+            }
+          ],
+          "title": "À propos de Bump — consultation technologique à Montréal",
+          "language": "fr-CA",
+          "charset": "utf-8",
+          "viewport": "width=device-width,initial-scale=1,viewport-fit=cover",
+          "themeColor": "#f4f1e8",
+          "description": "Fondée par deux entrepreneurs à Montréal, Bump accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.",
+          "robots": "index,follow,max-image-preview:large",
+          "canonical": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos",
+          "titleLength": 56,
+          "descriptionLength": 153
+        },
+        "openGraph": {
+          "site_name": "Bump",
+          "type": "website",
+          "title": "À propos de Bump — consultation technologique à Montréal",
+          "description": "Fondée par deux entrepreneurs à Montréal, Bump accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.",
+          "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos",
+          "locale": "fr_CA",
+          "locale:alternate": "en_CA",
+          "image": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/art/hero-fallback-v2.webp",
+          "image:alt": "Bump — les deux consultants de la scène Renaissance",
+          "image:secure_url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/art/hero-fallback-v2.webp",
+          "image:type": "image/webp",
+          "image:width": "1900",
+          "image:height": "900"
+        },
+        "twitter": {
+          "card": "summary_large_image",
+          "title": "À propos de Bump — consultation technologique à Montréal",
+          "description": "Fondée par deux entrepreneurs à Montréal, Bump accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.",
+          "image": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/art/hero-fallback-v2.webp"
+        },
+        "missing": [],
+        "notes": [
+          "Search results usually cut titles near 60 characters and descriptions near 160. Tags added by JavaScript after the page loads are not seen."
+        ]
+      },
+      "isError": false
+    }
+  },
+  "limitations": [
+    "Site SEO and About tags were checked on v63; audit versions are not interchangeable.",
+    "AEOTester v64 report covers all 18 routes. GeoDaddy v64 UI snapshot covers five routes. Magnet 68/100 is the completed v62 job with 11 N/A checks.",
+    "The cloud browser uses the 3D fallback. A local startup layout-shift trace does not validate native GPU performance or prove GeoDaddy's reported CLS was eliminated."
+  ]
+}

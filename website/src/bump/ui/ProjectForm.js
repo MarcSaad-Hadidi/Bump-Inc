@@ -11,6 +11,42 @@ export function Dialog({open,onClose,label,children,className=''}){
 
 export function Brief({open,onClose}){
   const [values,setValues]=React.useState({}),[status,setStatus]=React.useState('idle');
+  const [turnstileToken,setTurnstileToken]=React.useState('');
+  const turnstileHost=React.useRef(null);
+  const widgetId=React.useRef(null);
+  React.useEffect(()=>{
+    if(!open || !turnstileHost.current)return;
+    let cancelled=false;
+    const sitekey='0x4AAAAAAFnvTBtc-P3OUjx3';
+    function install(){
+      if(cancelled || !turnstileHost.current || !window.turnstile || widgetId.current!==null)return;
+      widgetId.current=window.turnstile.render(turnstileHost.current,{
+        sitekey,
+        theme:'light',
+        callback:token=>setTurnstileToken(token),
+        'expired-callback':()=>setTurnstileToken(''),
+        'error-callback':()=>setTurnstileToken('')
+      });
+    }
+    if(window.turnstile){install();}
+    else{
+      let script=document.querySelector('script[data-bump-turnstile]');
+      if(!script){
+        script=document.createElement('script');
+        script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        script.async=true;
+        script.defer=true;
+        script.dataset.bumpTurnstile='true';
+        document.head.appendChild(script);
+      }
+      script.addEventListener('load',install);
+    }
+    return()=>{
+      cancelled=true;
+      if(widgetId.current!==null&&window.turnstile){window.turnstile.remove(widgetId.current);widgetId.current=null;}
+      setTurnstileToken('');
+    };
+  },[open]);
   const fields=[
     {name:'company',label:'Votre entreprise',type:'text',placeholder:'Nom de votre entreprise',autoComplete:'organization'},
     {name:'name',label:'Votre nom',type:'text',placeholder:'Prénom et nom',autoComplete:'name',required:true},
@@ -25,15 +61,19 @@ export function Brief({open,onClose}){
     h('form',{onSubmit:async event=>{
       event.preventDefault();
       if(status==='sending')return;
+      if(!turnstileToken){setStatus('verification');return;}
       const website=new FormData(event.currentTarget).get('website')||'';
       setStatus('sending');
       try{
-        const response=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...values,website})});
+        const response=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...values,website,turnstileToken})});
         if(!response.ok)throw new Error('failed');
         setStatus('sent');
         setValues({});
+        setTurnstileToken('');
       }catch{
         setStatus('error');
+        if(widgetId.current!==null&&window.turnstile)window.turnstile.reset(widgetId.current);
+        setTurnstileToken('');
       }
     }},
       ...fields.map(f=>h('div',{key:f.name,className:'bump-field'+(f.type==='textarea'?' bump-field-wide':'')},
@@ -45,7 +85,8 @@ export function Brief({open,onClose}){
         },...(f.options?[h('option',{value:''},'Choisir une expertise'),...f.options.map(option=>h('option',{value:option.id,key:option.id},option.label))]:[]))
       )),
       h('input',{name:'website',type:'text',tabIndex:-1,autoComplete:'off',style:{position:'absolute',left:'-9999px'},'aria-hidden':true}),
-      h('div',{className:'bump-contact-bottom'},h('p',{},'* Champs obligatoires'),h('button',{type:'submit',className:'bump-action',disabled:status==='sending'},status==='sending'?'Envoi…':'Envoyer ma demande',h('span',{'aria-hidden':true},'↗')))
-    ),status==='sent'?h('p',{className:'bump-form-status',role:'status'},'Votre demande a bien été envoyée. Merci !'):status==='error'?h('p',{className:'bump-form-status',role:'alert'},'L’envoi a échoué. Réessayez ou écrivez à contact@bumpconsultation.ca.'):null
+      h('div',{ref:turnstileHost,className:'bump-contact-turnstile','aria-label':'Vérification de sécurité'}),
+            h('div',{className:'bump-contact-bottom'},h('p',{},'* Champs obligatoires'),h('button',{type:'submit',className:'bump-action',disabled:status==='sending'},status==='sending'?'Envoi…':'Envoyer ma demande',h('span',{'aria-hidden':true},'↗')))
+    ),status==='sent'?h('p',{className:'bump-form-status',role:'status'},'Votre demande a bien été envoyée. Merci !'):status==='error'?h('p',{className:'bump-form-status',role:'alert'},'L’envoi a échoué. Réessayez ou écrivez à contact@bumpconsultation.ca.'):status==='verification'?h('p',{className:'bump-form-status',role:'alert'},'Veuillez terminer la vérification de sécurité.'):null
   );
 }

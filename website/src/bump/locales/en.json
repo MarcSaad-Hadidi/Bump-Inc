@@ -1424,5 +1424,9 @@
   "Activer la musique d’ambiance": "Enable background music",
   "Couper la musique d’ambiance": "Mute background music",
   "Réessayer la musique": "Retry background music",
-  "La musique n’a pas pu démarrer. Réessayez avec le bouton son.": "The music could not start. Try again with the sound button."
+  "La musique n’a pas pu démarrer. Réessayez avec le bouton son.": "The music could not start. Try again with the sound button.",
+  "Envoi…": "Sending…",
+  "Votre demande a bien été envoyée. Merci !": "Your request has been sent. Thank you!",
+  "L’envoi a échoué. Réessayez ou écrivez à contact@bumpconsultation.ca.": "We couldn't send your request. Please try again or email contact@bumpconsultation.ca.",
+  "Veuillez terminer la vérification de sécurité.": "Please complete the security verification."
 }

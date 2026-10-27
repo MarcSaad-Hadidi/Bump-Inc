@@ -3,6 +3,7 @@
 > Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.
 
 Canonical: __BUMP_ORIGIN__/en/services/workflow-automation
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 Less copying. Less manual follow-up. More time to move work forward.
@@ -61,6 +62,12 @@ Start with a bounded process whose rules your team can explain and whose result 
 | Approval | Someone can approve the result. | Nobody can confirm what is correct. |
 | Recovery | An error can be reported and corrected. | A failure goes unnoticed or blocks the whole operation. |
 
+## How much time does the repeated work represent?
+
+Before choosing what to automate, quantify the current work: tasks per week × average time per task. Bump uses this starting point to discuss scope, exceptions and controls to retain.
+
+Illustrative example: 25 requests per week at 12 minutes each represent 300 minutes, or 5 hours of manual work. Adjust the two assumptions below. Any future improvement will depend on the solution, its validation and adoption.
+
 ## Frequently asked questions
 
 ### What is the difference between process optimization and automation?
@@ -83,7 +90,14 @@ It depends on the number of steps, tools to connect, data quality, exceptions an
 
 No. Explicit rules and a connection between tools may be enough. Bump evaluates AI when a task needs less structured context, such as a document. The choice should match the need, cost and level of control expected.
 
-Published by Bump · Technology consulting in Montréal.
+## About the publisher
+
+[Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+
+## What changed
+
+- Added a checklist for choosing a first workflow.
+- Added a manual workload calculation with editable assumptions.
 
 ## Related
 

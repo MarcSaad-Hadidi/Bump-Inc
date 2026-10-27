@@ -1268,3 +1268,18 @@ fallback usable without WebGL and document any remaining differences.
 ## Fidelity corrections requested by user
 
 Reproduce every chapter and all visible interactions from a fresh, complete source capture. The chapter painting must transition to the light content background with the original torn/dissolving edge, not remain behind every feature. Include Sidekick’s interactive floating app cards and skills cards. Verify source and implementation at matching scroll positions, chapter by chapter; do not claim exact equivalence from a hero-only or build-only check.
+# SEO/GEO completion pass — 2026-10-27
+
+Improve measurable readiness toward 100 while preserving the accepted landing,
+all six scenes and existing scroll. Fix actual extraction/content gaps, not
+rubric artifacts. The fresh Magnet baseline is 63/100 (two pages, 11 unmeasured
+checks); 11 neutral N/A checks cap that quick rubric around 73 even if every
+measured check succeeds. Never replace unknowns with invented evidence.
+Use the requested AIOSCAN and Pishe capabilities when available; record missing
+tool access honestly. Preserve real profiles only; public searches have not
+verified Bump LinkedIn/YouTube or named founders. Editorial pages first shipped
+in Site v47, commit 44cdb624f1344aa9df14c287c670cb7c18b5bb31, deployment
+appgdep_6adeb1a52e1c81919c5b7b51ee0c2d0e on 2026-10-26. Use this verified date,
+visible corporate authorship, useful first-party examples and meaningful semantic
+HTML. Keep fictional calculator inputs distinct from client results. Publish on
+the existing public Site, update PR33 and rerun checks/Codex; do not merge.

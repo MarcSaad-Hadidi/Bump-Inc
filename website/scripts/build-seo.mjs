@@ -4,7 +4,7 @@ import {pathToFileURL} from 'node:url';
 import {parse} from 'parse5';
 import {site, originMarker} from '../src/bump/seo/site.js';
 import {listPages, pageFor} from '../src/bump/seo/pages.js';
-import {html, headMarkup, htmlAsset, markdownPath, renderHtml, renderMarkdown, renderLlms, renderLlmsFull, renderRobots, renderAi, renderSitemap} from '../src/bump/seo/render.js';
+import {html, headMarkup, htmlAsset, markdownPath, renderHtml, renderMarkdown, renderLlms, renderLlmsFull, renderRobots, renderAi, renderSitemap, publisherCredit} from '../src/bump/seo/render.js';
 import {publicOrigin} from './hosting-config.mjs';
 
 // Edit only source-located head tags; never run markup replacement over scripts.
@@ -38,10 +38,33 @@ export function homeFallback(source, page) {
   // The same useful initial HTML goes to every visitor. The retained React
   // document replaces it when it mounts; there is no bot sniffing or duplicate
   // hidden content. Without scripting it remains a readable, linked edition.
-  const styles = '<style data-bump-initial-style>.bump-loading{z-index:2147482000}.seo-home-fallback{box-sizing:border-box;background:#f4f1e8;color:#302e28;font:20px/1.5 Georgia,serif;padding:50px max(24px,calc((100% - 1100px)/2));min-height:100vh}.seo-home-fallback h1{font:400 clamp(38px,6vw,72px)/1.08 Georgia,serif;margin:0 0 24px}.seo-home-fallback h2{font:400 32px/1.2 Georgia,serif;margin:34px 0 14px}.seo-home-fallback p{max-width:800px;margin:0 0 16px}.seo-home-fallback a{color:#315e49;text-decoration:underline}.seo-home-fallback nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;border-block:1px solid #b4b6a6;padding:24px 0;margin:30px 0}.seo-home-fallback nav p{font-size:16px;margin:5px 0 0}.seo-home-fallback img{display:block;width:100%;height:auto;border-radius:6px;margin:36px 0}.seo-home-fallback footer{font-size:15px;border-top:1px solid #b4b6a6;padding-top:20px}</style>';
+  const styles = `<style data-bump-initial-style>
+.bump-loading{z-index:2147482000}
+.seo-home-fallback{box-sizing:border-box;background:#f4f1e8;color:#302e28;font:20px/1.5 Georgia,serif;padding:50px max(24px,calc((100% - 1100px)/2));min-height:100vh}
+.seo-home-fallback h1{font:400 clamp(38px,6vw,72px)/1.08 Georgia,serif;margin:0 0 24px}
+.seo-home-fallback h2{font:400 32px/1.2 Georgia,serif;margin:34px 0 14px}
+.seo-home-fallback p{max-width:800px;margin:0 0 16px}.seo-home-fallback a{color:#315e49;text-decoration:underline}
+.seo-home-language{display:inline-block;margin-bottom:22px;font-size:16px}
+.seo-home-fallback nav{border-block:1px solid #b4b6a6;padding:24px 0;margin:30px 0}
+.seo-home-fallback nav ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;list-style:none;margin:0;padding:0}
+.seo-home-fallback nav p{font-size:16px;margin:5px 0 0}.seo-home-fallback section>ol{padding-left:25px;max-width:800px}.seo-home-fallback section>ol li{margin-bottom:10px}
+.seo-home-table{max-width:100%;overflow:auto;margin-block:24px}.seo-home-table table{width:100%;border-collapse:collapse;text-align:left;font-size:17px;line-height:1.4}.seo-home-table caption{text-align:left;font-size:15px;padding-bottom:12px}.seo-home-table :is(th,td){padding:12px;border:1px solid #b4b6a6;vertical-align:top}.seo-home-table thead{background:#e4e9dd}
+.seo-home-fallback img{display:block;width:100%;height:auto;border-radius:6px;margin:36px 0}
+.seo-home-fallback .seo-editorial-credit{width:auto;margin:0;padding-top:24px;border-top:1px solid #b4b6a6;font-size:16px}.seo-home-fallback .seo-editorial-credit h2{font-size:25px;margin-top:0}.seo-home-fallback .seo-revision{margin-top:24px}.seo-home-fallback .seo-revision summary{cursor:pointer}
+</style>`;
   const noScript = '<noscript><style>html,body{overflow:auto!important;height:auto!important;background:#f4f1e8!important}html[data-bump-opening] body::before{display:none!important;content:none!important}.bump-loading{display:none!important}</style></noscript>';
-  const directory = page.related.map(id => {const target = pageFor(id,page.locale);return '<div><a href="' + target.path + '">' + html(target.title.replace(/\s+/g,' ')) + '</a><p>' + html(target.lead) + '</p></div>';}).join('');
-  const content = '<main class="seo-home-fallback" id="bump-initial-content"><header><p>Bump · Montréal, Québec</p><h1>' + html(page.title) + '</h1><p>' + html(page.answer) + '</p><p>' + html(page.lead) + '</p></header><nav aria-label="' + (en ? 'Explore Bump expertise' : 'Découvrir les expertises Bump') + '">' + directory + '</nav>' + page.sections.map(section => '<section id="' + section.id + '"><h2>' + html(section.title) + '</h2>' + section.paragraphs.map(paragraph => '<p>' + html(paragraph) + '</p>').join('') + '</section>').join('') + '<img src="/bump/art/hero-fallback-v2.webp" alt="' + (en ? 'Two Bump consultants in a Renaissance-inspired scene' : 'Deux consultants Bump dans une scène inspirée de la Renaissance') + '" width="1900" height="900" loading="lazy" decoding="async"><footer><p>' + (en ? 'Published by Bump · Technology consulting in Montréal' : 'Publié par Bump · Consultation technologique à Montréal') + '</p><p>' + (en ? 'Updated ' : 'Mis à jour le ') + '<time datetime="' + site.updated + '">' + site.updated + '</time></p></footer></main>';
+  const directory = '<ul>' + page.related.map(id => {
+    const target = pageFor(id,page.locale);
+    return '<li><a href="' + target.path + '">' + html(target.title.replace(/\s+/g,' ')) + '</a><p>' + html(target.lead) + '</p></li>';
+  }).join('') + '</ul>';
+  const chapters = page.sections.map(section => {
+    const listTag = section.ordered ? 'ol' : 'ul';
+    const items = section.items ? '<' + listTag + '>' + section.items.map(item=>'<li>'+html(item)+'</li>').join('') + '</'+listTag+'>' : '';
+    const table = section.table ? '<div class="seo-home-table" role="region" aria-label="' + html(section.title) + '" tabindex="0"><table>' + (section.table.caption ? '<caption>' + html(section.table.caption) + '</caption>' : '') + '<thead><tr>' + section.table.headers.map(cell=>'<th scope="col">'+html(cell)+'</th>').join('') + '</tr></thead><tbody>' + section.table.rows.map(row=>'<tr>'+row.map((cell,index)=>'<'+(index?'td':'th scope="row"')+'>'+html(cell)+'</'+(index?'td':'th')+'>').join('')+'</tr>').join('') + '</tbody></table></div>' : '';
+    return '<section id="' + section.id + '"><h2>' + html(section.title) + '</h2>' + section.paragraphs.map(paragraph=>'<p>'+html(paragraph)+'</p>').join('') + items + table + '</section>';
+  }).join('');
+  const language = '<a class="seo-home-language" href="' + (en ? '/' : '/en') + '" lang="' + (en ? 'fr' : 'en') + '" hreflang="' + (en ? 'fr-CA' : 'en-CA') + '">' + (en ? 'Lire en français' : 'Read in English') + '</a>';
+  const content = '<main class="seo-home-fallback" id="bump-initial-content"><header><p>Bump · Montréal, Québec</p>' + language + '<h1>' + html(page.title) + '</h1><p>' + html(page.answer) + '</p><p>' + html(page.lead) + '</p></header><nav aria-label="' + (en ? 'Explore Bump expertise' : 'Découvrir les expertises Bump') + '">' + directory + '</nav>' + chapters + '<img src="/bump/art/hero-fallback-v2.webp" alt="' + (en ? 'Two Bump consultants in a Renaissance-inspired scene' : 'Deux consultants Bump dans une scène inspirée de la Renaissance') + '" width="1900" height="900" loading="lazy" decoding="async"><footer>' + publisherCredit(page) + '</footer></main>';
   const fallback = '<!-- bump:fallback:start -->' + styles + content + noScript + '<!-- bump:fallback:end -->';
   const offset = body.sourceCodeLocation.endTag.startOffset;
   return source.slice(0, offset) + fallback + source.slice(offset);
@@ -70,6 +93,7 @@ export function buildSeo({directory = 'public', homeFile = 'src/reference-shell.
   writeFileSync(resolve(directory, 'bump/seo/pages.css'), readFileSync('src/bump/seo/pages.css', 'utf8') + '\n' + readFileSync('src/bump/seo/stories.css', 'utf8') + '\n' + readFileSync('src/bump/ui/glass.css', 'utf8'));
   copyFileSync('src/bump/seo/client.js', resolve(directory, 'bump/seo/pages.js'));
   copyFileSync('src/bump/seo/diagram-motion.js', resolve(directory, 'bump/seo/diagram-motion.js'));
+  copyFileSync('src/bump/seo/workload.js', resolve(directory, 'bump/seo/workload.js'));
   copyFileSync('src/bump/ui/musicController.js', resolve(directory, 'bump/background-music.js'));
   copyFileSync('src/bump/ui/music.css', resolve(directory, 'bump/music.css'));
   console.log('Built ' + listPages().length + ' bilingual content routes and their markdown/discovery files.');

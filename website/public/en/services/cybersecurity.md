@@ -3,6 +3,7 @@
 > Authorized audits, vulnerability identification, remediation and system hardening. Bump supports SMEs in Montréal and Québec.
 
 Canonical: __BUMP_ORIGIN__/en/services/cybersecurity
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 Understand risks. Address weaknesses. Strengthen what matters.
@@ -90,7 +91,14 @@ No. An audit examines a defined scope, at a particular time and using agreed met
 
 - [OWASP — Application Security Verification Standard](https://asvs.owasp.org/) — A requirements framework for examining web application security controls. It does not represent a Bump certification.
 
-Published by Bump · Technology consulting in Montréal.
+## About the publisher
+
+[Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+
+## What changed
+
+- Added an authorized-audit preparation checklist.
+- Clarified scope, limits and remediation follow-up.
 
 ## Related
 

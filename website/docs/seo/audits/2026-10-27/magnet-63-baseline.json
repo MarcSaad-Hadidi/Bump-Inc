@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-27T05:16:45.310Z",
+  "domain": "bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+  "job_id": "ce41b140",
+  "report_url": "https://aeo.projecta.ai/static/slides/bump-renaissance-7562d3-plumtuna4-chatgpt-site-4a09f833.html",
+  "pages": 2,
+  "scores": {
+    "structured_data": 53,
+    "content_depth": 49,
+    "entity_authority": 38,
+    "technical_aeo": 95,
+    "ai_visibility": 74,
+    "ai_visibility_source": "blended",
+    "ai_visibility_details": {
+      "composite_score": 79,
+      "mention_rate_score": 100,
+      "engine_coverage_score": 100,
+      "sentiment_score": 50,
+      "citation_score": 0,
+      "technical_readiness_score": 67,
+      "engines_mentioning": 1,
+      "total_engines": 1
+    },
+    "overall": 63
+  },
+  "worksheet": {
+    "yes": 7,
+    "no": 2,
+    "unmeasured": 11,
+    "formula": "Yes = 5; No = 0; N/A = 2.5; 20 checks",
+    "maximumWithElevenUnknown": 72.5
+  },
+  "aiProbe": {
+    "prompt": "What is Bump and what do they offer?",
+    "measuredResponses": 1,
+    "mentions": 1,
+    "citedUrls": 0,
+    "note": "Branded prompt; not a measure of non-branded discovery or answer share."
+  }
+}

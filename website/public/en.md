@@ -17,6 +17,14 @@ Get your processes and tools working in the same direction.
 
 Workflow automation lets systems carry out repetitive steps such as receiving requests, filing information, sending notifications, collecting approvals or synchronizing data. Bump first analyses that process with your team, then connects the appropriate tools while keeping people involved in decisions and exceptions.
 
+Illustrative processes and controls to define for each engagement.
+
+| Process | Control to retain |
+| --- | --- |
+| Quote request | Validate information and the proposal before sending. |
+| Invoice processing | Check the document and exceptions before proceeding. |
+| Support request | Hand over cases requiring a human decision. |
+
 ## AI & Software
 
 Software built around your reality. AI integrated where it is useful.
@@ -37,6 +45,12 @@ Audit, analysis, proposal, implementation and maintenance.
 
 A Bump engagement follows five stages: audit, analysis, proposal, implementation and maintenance. The audit establishes the current situation. Analysis prioritizes needs. The proposal defines scope and deliverables. Implementation puts the solution in place, followed by the agreed maintenance.
 
+1. Audit: understand current work and difficulties.
+2. Analysis: compare options and constraints.
+3. Proposal: agree on scope, budget and deliverables.
+4. Implementation: build, test and hand over the solution.
+5. Maintenance: organize fixes and ongoing support.
+
 ## Our vision
 
 Specialized systems and AI agents are our future vision, not currently available products.
@@ -47,7 +61,14 @@ A technology consulting company founded by two entrepreneurs in Montréal, Québ
 
 Bump is a technology consulting company founded by two entrepreneurs in Montréal, Québec. Our mission is to help SMEs become more efficient, intelligent and secure through solutions suited to their needs. Our three divisions cover workflows, AI and software, and cybersecurity.
 
-Published by Bump · Technology consulting in Montréal.
+## About the publisher
+
+[Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+
+## What changed
+
+- Added a readable overview of processes and controls to retain.
+- Presented the five engagement stages and links to the service guides.
 
 ## Related
 

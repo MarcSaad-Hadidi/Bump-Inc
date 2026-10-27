@@ -3,6 +3,7 @@
 > Integrate AI into business tools and processes with Bump: focused agents, document search, summaries and dashboards, with human approval.
 
 Canonical: __BUMP_ORIGIN__/en/services/ai-integration
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 A focused task. The right information. Decisions that stay in your hands.
@@ -90,7 +91,14 @@ Define representative cases, expected results and errors to detect. Check the so
 
 - [NIST — AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — A voluntary framework for examining risks in the design, use and evaluation of AI systems.
 
-Published by Bump · Technology consulting in Montréal.
+## About the publisher
+
+[Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+
+## What changed
+
+- Added five test cases covering missing data, sources, access, approval and recovery.
+- Clarified validation criteria before launch.
 
 ## Related
 

@@ -3,6 +3,7 @@
 > Founded by two entrepreneurs in Montréal, Bump helps SMEs become more efficient, intelligent and secure through technology suited to their needs.
 
 Canonical: __BUMP_ORIGIN__/en/about
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 Give your business fresh momentum.
@@ -37,6 +38,14 @@ In the long term, we aim to develop our own specialized systems and agents, incl
 
 These systems are not presented as available products. The site distinguishes that ambition from our current consulting, development and integration services. Animations explain those services using fictional scenarios.
 
+## Who prepares the information published here?
+
+Bump is responsible for the content on this website. The pages explain our consulting services and approach. They distinguish current services, illustrative examples and our future vision for specialized systems.
+
+Each guide identifies decisions to make, human controls to retain and the scenario’s limits. External references relate to the topic they explain; they do not represent a certification or partnership.
+
+The publication date records the first release of the editorial pages on October 26, 2026. Each page shows its revision date and changes. Calculated examples disclose their assumptions and are not presented as client results.
+
 ## Frequently asked questions
 
 ### Where is Bump based?
@@ -47,7 +56,18 @@ Bump was founded in Montréal, Québec. Its initial clients are Québec small an
 
 Our current offer is service-based. Cyber AI, Developer AI and Workflow AI describe systems we aim to develop in the long term; they are not offered as available products.
 
-Published by Bump · Technology consulting in Montréal.
+## Further reading
+
+- [Public source of the Bump website](https://github.com/MarcSaad-Hadidi/Bump-Inc/tree/main/website) — The public source of this website, so you can examine its interfaces and interactions. Proprietary agents remain a future vision.
+
+## About the publisher
+
+[Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+
+## What changed
+
+- Added the editorial approach and demonstration boundaries.
+- Linked the public website source as a verifiable reference.
 
 ## Related
 

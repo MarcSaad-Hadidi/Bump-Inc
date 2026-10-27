@@ -3,6 +3,7 @@
 > Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
 
 Canonical: __BUMP_ORIGIN__/services/automatisation-processus
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 Moins de recopies. Moins de suivis manuels. Plus de temps pour faire avancer le travail.
@@ -61,6 +62,12 @@ Commencez par un processus délimité dont votre équipe peut expliquer les règ
 | Validation | Une personne sait approuver le résultat. | Personne ne peut confirmer ce qui est correct. |
 | Reprise | Une erreur peut être signalée et corrigée. | Un échec passe inaperçu ou bloque toute l’activité. |
 
+## Combien de temps représente ce travail répétitif ?
+
+Avant de choisir quoi automatiser, chiffrez le travail actuel : nombre de tâches par semaine × durée moyenne d’une tâche. Bump utilise ce point de départ pour discuter du périmètre, des exceptions et des contrôles à conserver.
+
+Exemple illustratif : 25 demandes par semaine à 12 minutes chacune représentent 300 minutes, soit 5 heures de travail manuel. Ajustez les deux hypothèses ci-dessous. Le gain éventuel dépendra ensuite de la solution, de sa vérification et de son adoption.
+
 ## Questions fréquentes
 
 ### Quelle différence entre optimiser et automatiser un processus ?
@@ -83,12 +90,19 @@ Il dépend du nombre d’étapes, des outils à connecter, de la qualité des do
 
 Non. Des règles explicites et une connexion entre logiciels peuvent suffire. Bump évalue l’IA lorsque la tâche demande de traiter un contexte moins structuré, par exemple un document. Le choix doit rester proportionné au besoin, au coût et au niveau de contrôle attendu.
 
-Publié par Bump · Consultation technologique à Montréal.
+## À propos de l’auteur
+
+[Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+
+## Ce qui a été révisé
+
+- Ajout d’une grille pour choisir un premier workflow.
+- Ajout d’un calcul de charge manuelle avec des hypothèses modifiables.
 
 ## Related
 
 - [Des logiciels conçus pour vos opérations.](__BUMP_ORIGIN__/services/developpement-logiciel) — Applications web, portails et systèmes internes pour les PME du Québec. Bump conçoit des logiciels sur mesure reliés à vos CRM, ERP et API.
 - [Intégration IA pour votre entreprise.](__BUMP_ORIGIN__/services/integration-ia) — Intégrez l’IA à vos outils et à vos processus avec Bump : agents ciblés, recherche documentaire, synthèses et tableaux de bord, avec validation humaine.
 - [Comprendre avant de construire.](__BUMP_ORIGIN__/approche) — Découvrez les cinq étapes d’un mandat Bump : audit, analyse, proposition, implantation et maintenance. Une démarche technologique adaptée aux PME.
-- [Les bonnes questions, avant de commencer.](__BUMP_ORIGIN__/faq) — Comment choisir entre automatisation, IA et logiciel sur mesure ? Que comprend un audit ? Réponses aux questions des PME avant un mandat technologique avec Bump.
-- [La technologie, à votre mesure.](__BUMP_ORIGIN__/expertises) — Bump accompagne les PME du Québec : automatisation des processus, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre approche.
+- [Les bonnes questions, avant de commencer.](__BUMP_ORIGIN__/faq) — Des réponses sur l’automatisation, l’IA, les logiciels et la cybersécurité pour PME : choix, budget, validation humaine et déroulement d’un mandat.
+- [La technologie, à votre mesure.](__BUMP_ORIGIN__/expertises) — Bump accompagne les PME du Québec : automatisation, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre méthode.

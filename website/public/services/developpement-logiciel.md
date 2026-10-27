@@ -3,6 +3,7 @@
 > Applications web, portails et systèmes internes pour les PME du Québec. Bump conçoit des logiciels sur mesure reliés à vos CRM, ERP et API.
 
 Canonical: __BUMP_ORIGIN__/services/developpement-logiciel
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 Un système qui suit votre façon de travailler, plutôt que l’inverse.
@@ -83,7 +84,14 @@ La maintenance est une étape de notre modèle, mais son périmètre et ses moda
 
 La proposition doit préciser les responsabilités : hébergement, accès, sauvegardes, correctifs et évolutions. Bump convient avec votre équipe du périmètre de maintenance. Le lancement et le suivi sont deux étapes à cadrer ; aucun niveau de disponibilité ne doit être présumé sans accord.
 
-Publié par Bump · Consultation technologique à Montréal.
+## À propos de l’auteur
+
+[Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+
+## Ce qui a été révisé
+
+- Ajout des points à valider avant la mise en service.
+- Précision des responsabilités à convenir pour la maintenance.
 
 ## Related
 
@@ -91,4 +99,4 @@ Publié par Bump · Consultation technologique à Montréal.
 - [Intégration IA pour votre entreprise.](__BUMP_ORIGIN__/services/integration-ia) — Intégrez l’IA à vos outils et à vos processus avec Bump : agents ciblés, recherche documentaire, synthèses et tableaux de bord, avec validation humaine.
 - [La cybersécurité, avec un cadre clair.](__BUMP_ORIGIN__/services/cybersecurite) — Audits autorisés, identification des vulnérabilités, remédiation et sécurisation des systèmes. Bump accompagne les PME de Montréal et du Québec.
 - [Comprendre avant de construire.](__BUMP_ORIGIN__/approche) — Découvrez les cinq étapes d’un mandat Bump : audit, analyse, proposition, implantation et maintenance. Une démarche technologique adaptée aux PME.
-- [Les bonnes questions, avant de commencer.](__BUMP_ORIGIN__/faq) — Comment choisir entre automatisation, IA et logiciel sur mesure ? Que comprend un audit ? Réponses aux questions des PME avant un mandat technologique avec Bump.
+- [Les bonnes questions, avant de commencer.](__BUMP_ORIGIN__/faq) — Des réponses sur l’automatisation, l’IA, les logiciels et la cybersécurité pour PME : choix, budget, validation humaine et déroulement d’un mandat.

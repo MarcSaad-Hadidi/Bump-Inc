@@ -3,6 +3,7 @@
 > Découvrez les cinq étapes d’un mandat Bump : audit, analyse, proposition, implantation et maintenance. Une démarche technologique adaptée aux PME.
 
 Canonical: __BUMP_ORIGIN__/approche
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 Un besoin réel. Un périmètre clair. Une implantation qu’on peut suivre.
@@ -35,6 +36,14 @@ La proposition présente les travaux retenus, les livrables, les exclusions et l
 - Préciser les dépendances et les accès nécessaires.
 - Distinguer l’implantation, le suivi et les évolutions futures.
 
+| Étape | Élément à remettre ou à convenir | Décision attendue |
+| --- | --- | --- |
+| Audit | Constats sur le processus ou les systèmes examinés. | Quel problème faut-il résoudre ? |
+| Analyse | Options, contraintes et dépendances. | Quelle option mérite d’être retenue ? |
+| Proposition | Périmètre, livrables, budget et validation. | Quels travaux sont approuvés ? |
+| Implantation | Solution, essais et documentation convenus. | Les critères d’acceptation sont-ils satisfaits ? |
+| Maintenance | Responsabilités et suivi à prévoir. | Comment traiter les corrections et évolutions ? |
+
 ## 04. Implantation — construire, vérifier, transmettre.
 
 La solution est développée ou intégrée selon le cadre convenu. Les essais incluent les parcours courants et les exceptions importantes. La documentation et l’accompagnement aident l’équipe à comprendre ce qui change et à exploiter le système.
@@ -65,7 +74,14 @@ Oui. Un périmètre limité peut permettre de vérifier le fonctionnement et l�
 
 Non. Bump propose des services de consultation, de développement, d’intégration et de cybersécurité. Les systèmes propriétaires évoqués dans notre vision sont des ambitions futures, pas des produits disponibles à acheter.
 
-Publié par Bump · Consultation technologique à Montréal.
+## À propos de l’auteur
+
+[Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+
+## Ce qui a été révisé
+
+- Précision des éléments à convenir avant l’implantation.
+- Ajout des livrables et des décisions attendus aux cinq étapes.
 
 ## Related
 
@@ -73,4 +89,4 @@ Publié par Bump · Consultation technologique à Montréal.
 - [Intégration IA pour votre entreprise.](__BUMP_ORIGIN__/services/integration-ia) — Intégrez l’IA à vos outils et à vos processus avec Bump : agents ciblés, recherche documentaire, synthèses et tableaux de bord, avec validation humaine.
 - [Des logiciels conçus pour vos opérations.](__BUMP_ORIGIN__/services/developpement-logiciel) — Applications web, portails et systèmes internes pour les PME du Québec. Bump conçoit des logiciels sur mesure reliés à vos CRM, ERP et API.
 - [La cybersécurité, avec un cadre clair.](__BUMP_ORIGIN__/services/cybersecurite) — Audits autorisés, identification des vulnérabilités, remédiation et sécurisation des systèmes. Bump accompagne les PME de Montréal et du Québec.
-- [Les bonnes questions, avant de commencer.](__BUMP_ORIGIN__/faq) — Comment choisir entre automatisation, IA et logiciel sur mesure ? Que comprend un audit ? Réponses aux questions des PME avant un mandat technologique avec Bump.
+- [Les bonnes questions, avant de commencer.](__BUMP_ORIGIN__/faq) — Des réponses sur l’automatisation, l’IA, les logiciels et la cybersécurité pour PME : choix, budget, validation humaine et déroulement d’un mandat.

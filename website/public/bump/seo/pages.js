@@ -1,5 +1,7 @@
 // Progressive enhancement only: all page content and links work without JS.
 import {installDiagramMotion} from './diagram-motion.js';
+import {installWorkloadCalculators} from './workload.js';
+installWorkloadCalculators();
 import {installBackgroundMusic} from '../background-music.js';
 const musicTrack = document.querySelector('[data-bump-background-audio]');
 const musicButton = document.querySelector('.bump-background-music');

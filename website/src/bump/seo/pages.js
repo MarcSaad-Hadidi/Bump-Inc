@@ -1,5 +1,7 @@
 import content from '../content.json' with {type: 'json'};
 import {buyerGuides} from './buyer-guides.js';
+import {site} from './site.js';
+import {revisions} from './editorial.js';
 
 // HTML, markdown, structured data, discovery and navigation all use this catalog.
 // Examples describe possible engagements, not clients or measured results.
@@ -8,7 +10,7 @@ const entries = [
     id: 'expertise', type: 'hub', accent: 'olive', related: ['workflow', 'ai', 'software', 'security', 'approach'],
     fr: {
       path: '/expertises', title: 'La technologie,\nà votre mesure.', metaTitle: 'Consultation technologique pour PME à Montréal | Bump',
-      description: 'Bump accompagne les PME du Québec : automatisation des processus, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre approche.',
+      description: 'Bump accompagne les PME du Québec : automatisation, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre méthode.',
       eyebrow: 'Nos expertises', lead: 'Des processus plus fluides. Des systèmes plus intelligents. Une entreprise mieux protégée.',
       answer: 'Bump est une firme de consultation technologique basée à Montréal. Nous aidons les PME à analyser leurs besoins, à connecter leurs outils, à développer les logiciels utiles à leurs opérations et à renforcer leur sécurité. Un mandat commence par votre réalité, puis une proposition définit ce qui sera implanté et maintenu.',
       figure: ['Vos opérations', 'Vos outils', 'Votre prochain élan'],
@@ -23,7 +25,7 @@ const entries = [
       ],
     },
     en: {
-      path: '/en/expertise', title: 'Technology,\nshaped around you.', metaTitle: 'Technology Consulting for SMEs in Montréal | Bump',
+      path: '/en/expertise', title: 'Technology,\nshaped around you.', metaTitle: 'Technology Consulting for SMEs in Montréal, Québec | Bump',
       description: 'Bump helps Québec SMEs with workflow automation, AI integration, custom software and cybersecurity. Explore our expertise and delivery approach.',
       eyebrow: 'Our expertise', lead: 'Smoother processes. Smarter systems. A better protected business.',
       answer: 'Bump is a technology consulting firm based in Montréal. We help small and medium-sized businesses understand their needs, connect their tools, develop software for their operations and strengthen their security. Each engagement starts with your situation, followed by a proposal defining implementation and maintenance.',
@@ -62,7 +64,7 @@ const entries = [
       ],
     },
     en: {
-      path: '/en/services/workflow-automation', title: 'Workflow automation\nfor small businesses.', metaTitle: 'Workflow Automation for SMEs in Montréal | Bump',
+      path: '/en/services/workflow-automation', title: 'Workflow automation\nfor small businesses.', metaTitle: 'Workflow Automation for SMEs in Montréal, Québec | Bump',
       description: 'Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.',
       eyebrow: '01 — Workflow Optimization', lead: 'Less copying. Less manual follow-up. More time to move work forward.',
       answer: 'Workflow automation lets systems carry out repetitive steps such as receiving requests, filing information, sending notifications, collecting approvals or synchronizing data. Bump first analyses that process with your team, then connects the appropriate tools while keeping people involved in decisions and exceptions.',
@@ -85,7 +87,7 @@ const entries = [
   {
     id: 'ai', type: 'service', accent: 'blue', chapter: 'online', division: '02', related: ['workflow', 'software', 'security', 'approach', 'faq'],
     fr: {
-      path: '/services/integration-ia', title: 'Intégration IA\npour votre entreprise.', metaTitle: 'Intégration IA pour PME à Montréal, Québec | Bump',
+      path: '/services/integration-ia', title: 'Intégration IA\npour votre entreprise.', metaTitle: 'Intégration de l’IA pour PME à Montréal, Québec | Bump',
       description: 'Intégrez l’IA à vos outils et à vos processus avec Bump : agents ciblés, recherche documentaire, synthèses et tableaux de bord, avec validation humaine.',
       eyebrow: '02 — AI Integration & Software Development', lead: 'Une tâche précise. Les bonnes informations. Une décision qui reste entre vos mains.',
       answer: 'L’intégration IA relie un modèle ou un agent à vos données et à vos logiciels pour accomplir une tâche définie. Bump accompagne les PME dans le choix du cas d’usage, la connexion des sources, la définition des accès et l’évaluation des réponses. Les actions sensibles peuvent rester soumises à une validation humaine.',
@@ -148,7 +150,7 @@ const entries = [
       ],
     },
     en: {
-      path: '/en/services/custom-software-development', title: 'Software built\naround your operations.', metaTitle: 'Custom Software Development in Montréal | Bump',
+      path: '/en/services/custom-software-development', title: 'Software built\naround your operations.', metaTitle: 'Custom Software Development for SMEs in Montréal | Bump',
       description: 'Web applications, portals and internal systems for Québec SMEs. Bump builds custom software connected to your CRM, ERP and APIs.',
       eyebrow: '02 — AI Integration & Software Development', lead: 'A system that follows the way you work, rather than the other way around.',
       answer: 'Custom software development creates an application around business needs, such as request management, a portal, case tracking or an internal system. Bump analyses the required operation, designs the interface with users and develops the features and integrations needed to connect existing tools.',
@@ -171,7 +173,7 @@ const entries = [
   {
     id: 'security', type: 'service', accent: 'wine', chapter: 'operations', division: '03', related: ['workflow', 'ai', 'software', 'approach', 'faq'],
     fr: {
-      path: '/services/cybersecurite', title: 'La cybersécurité,\navec un cadre clair.', metaTitle: 'Audit de cybersécurité pour PME à Montréal | Bump',
+      path: '/services/cybersecurite', title: 'La cybersécurité,\navec un cadre clair.', metaTitle: 'Audits de cybersécurité pour PME à Montréal, Québec | Bump',
       description: 'Audits autorisés, identification des vulnérabilités, remédiation et sécurisation des systèmes. Bump accompagne les PME de Montréal et du Québec.',
       eyebrow: '03 — Cybersecurity', lead: 'Comprendre les risques. Corriger les faiblesses. Renforcer ce qui compte.',
       answer: 'Un audit de cybersécurité examine un périmètre autorisé pour identifier des vulnérabilités et proposer des corrections prioritaires. Bump accompagne les PME dans le cadrage de l’audit, l’analyse des risques, la sécurisation des applications et infrastructures, la remédiation et le suivi convenu après intervention.',
@@ -191,7 +193,7 @@ const entries = [
       ],
     },
     en: {
-      path: '/en/services/cybersecurity', title: 'Cybersecurity,\nwith a clear framework.', metaTitle: 'Cybersecurity Audits for SMEs in Montréal | Bump',
+      path: '/en/services/cybersecurity', title: 'Cybersecurity,\nwith a clear framework.', metaTitle: 'Cybersecurity Audits for SMEs in Montréal, Québec | Bump',
       description: 'Authorized audits, vulnerability identification, remediation and system hardening. Bump supports SMEs in Montréal and Québec.',
       eyebrow: '03 — Cybersecurity', lead: 'Understand risks. Address weaknesses. Strengthen what matters.',
       answer: 'A cybersecurity audit examines an authorized scope to identify vulnerabilities and propose prioritized corrections. Bump helps SMEs scope an audit, assess risks, secure applications and infrastructure, remediate issues and define follow-up after the engagement.',
@@ -256,7 +258,7 @@ const entries = [
     id: 'about', type: 'about', accent: 'olive', chapter: 'b2b', related: ['expertise', 'workflow', 'ai', 'security', 'approach'],
     fr: {
       path: '/a-propos', title: 'Ancrés à Montréal.\nTournés vers la suite.', metaTitle: 'À propos de Bump — consultation technologique à Montréal',
-      description: 'Fondée par deux entrepreneurs à Montréal, Bump aide les PME à gagner en efficacité, en intelligence et en sécurité grâce à des solutions technologiques adaptées.',
+      description: 'Fondée par deux entrepreneurs à Montréal, Bump accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.',
       eyebrow: 'Bump, consultation technologique', lead: 'Donnons de l’élan à votre entreprise.',
       answer: 'Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal, au Québec. Notre mission est d’aider les PME à devenir plus efficaces, intelligentes et sécurisées grâce à des solutions adaptées à leurs besoins. Nos trois divisions couvrent les processus, l’IA et les logiciels, ainsi que la cybersécurité.',
       figure: ['Montréal', 'PME du Québec', 'Une vision internationale'],
@@ -272,7 +274,7 @@ const entries = [
       ],
     },
     en: {
-      path: '/en/about', title: 'Rooted in Montréal.\nLooking ahead.', metaTitle: 'About Bump — Technology Consulting in Montréal',
+      path: '/en/about', title: 'Rooted in Montréal.\nLooking ahead.', metaTitle: 'About Bump — Technology Consulting in Montréal, Québec',
       description: 'Founded by two entrepreneurs in Montréal, Bump helps SMEs become more efficient, intelligent and secure through technology suited to their needs.',
       eyebrow: 'Bump, technology consulting', lead: 'Give your business fresh momentum.',
       answer: 'Bump is a technology consulting company founded by two entrepreneurs in Montréal, Québec. Our mission is to help SMEs become more efficient, intelligent and secure through solutions suited to their needs. Our three divisions cover workflows, AI and software, and cybersecurity.',
@@ -293,7 +295,7 @@ const entries = [
     id: 'faq', type: 'faq', accent: 'blue', related: ['workflow', 'ai', 'software', 'security', 'approach'],
     fr: {
       path: '/faq', title: 'Les bonnes questions,\navant de commencer.', metaTitle: 'FAQ : automatisation, IA, logiciels et cybersécurité | Bump',
-      description: 'Comment choisir entre automatisation, IA et logiciel sur mesure ? Que comprend un audit ? Réponses aux questions des PME avant un mandat technologique avec Bump.',
+      description: 'Des réponses sur l’automatisation, l’IA, les logiciels et la cybersécurité pour PME : choix, budget, validation humaine et déroulement d’un mandat.',
       eyebrow: 'Questions fréquentes', lead: 'Des repères pour savoir par où commencer et à quoi s’attendre.',
       answer: 'Une première discussion avec Bump part d’un besoin concret : un processus à simplifier, des outils à relier, un logiciel à construire ou un risque à examiner. L’analyse permet de choisir une réponse adaptée. Le périmètre, le budget, les livrables et la maintenance sont précisés dans la proposition.',
       figure: ['Votre besoin', 'Les options possibles', 'Une décision éclairée'],
@@ -342,7 +344,7 @@ const plain = value => value.replace(/<\/?p>|<br\s*\/?>/gi, ' ').replace(/\s+/g,
 const home = {
   id: 'home', type: 'home', accent: 'olive', related: ['expertise', 'workflow', 'ai', 'software', 'security', 'approach', 'about', 'faq'],
   fr: {path: '/', title: 'Un nouvel élan technologique.', metaTitle: 'Bump — Consultation technologique pour PME à Montréal', description: 'Bump, consultation technologique à Montréal : optimisation des processus, automatisation, intégration IA, logiciels sur mesure et cybersécurité pour les PME.', eyebrow: 'Bump', lead: content.brand.subtitle, sections: content.chapters.map(chapter => ({id: chapter.handle, title: chapter.title, paragraphs: [plain(chapter.descriptionHtml)]})), faqs: []},
-  en: {path: '/en', title: 'A new technological momentum.', metaTitle: 'Bump — Technology Consulting for SMEs in Montréal', description: 'Bump, technology consulting in Montréal: process optimization, automation, AI integration, custom software and cybersecurity for SMEs.', eyebrow: 'Bump', lead: 'Smoother processes. Smarter systems. A better protected business.', sections: [
+  en: {path: '/en', title: 'A new technological momentum.', metaTitle: 'Bump — Technology Consulting for SMEs in Montréal, Québec', description: 'Bump, technology consulting in Montréal: process optimization, automation, AI integration, custom software and cybersecurity for SMEs.', eyebrow: 'Bump', lead: 'Smoother processes. Smarter systems. A better protected business.', sections: [
     {id: 'sidekick', title: 'Workflow', paragraphs: ['Get your processes and tools working in the same direction.']},
     {id: 'online', title: 'AI & Software', paragraphs: ['Software built around your reality. AI integrated where it is useful.']},
     {id: 'operations', title: 'Cybersecurity', paragraphs: ['Understand risks. Address weaknesses. Strengthen what matters.']},
@@ -357,13 +359,53 @@ export const locales = ['fr', 'en'];
 export function pageFor(id, locale = 'fr') {
   const entry = catalog.find(page => page.id === id);
   if (!entry) return null;
-  const page = {...entry, ...entry[locale], locale};
+  const page = {...entry, ...entry[locale], locale,
+    published: entry.type === 'home' ? undefined : site.editorialPublished,
+    revisions: revisions[id]?.[locale] || []};
   const guide = buyerGuides[id]?.[locale];
-  if (guide) return {...page,sections:[...page.sections,guide.section],faqs:[...page.faqs,guide.faq],references:guide.references || []};
+  if (guide) {
+    page.sections = [...page.sections,guide.section];
+    page.faqs = [...page.faqs,guide.faq];
+    page.references = guide.references || [];
+  }
+  if (id === 'workflow') page.sections = [...page.sections, locale === 'fr' ? {
+    id:'charge-manuelle',title:'Combien de temps représente ce travail répétitif ?',calculator:true,
+    paragraphs:['Avant de choisir quoi automatiser, chiffrez le travail actuel : nombre de tâches par semaine × durée moyenne d’une tâche. Bump utilise ce point de départ pour discuter du périmètre, des exceptions et des contrôles à conserver.', 'Exemple illustratif : 25 demandes par semaine à 12 minutes chacune représentent 300 minutes, soit 5 heures de travail manuel. Ajustez les deux hypothèses ci-dessous. Le gain éventuel dépendra ensuite de la solution, de sa vérification et de son adoption.'],
+  } : {
+    id:'manual-workload',title:'How much time does the repeated work represent?',calculator:true,
+    paragraphs:['Before choosing what to automate, quantify the current work: tasks per week × average time per task. Bump uses this starting point to discuss scope, exceptions and controls to retain.', 'Illustrative example: 25 requests per week at 12 minutes each represent 300 minutes, or 5 hours of manual work. Adjust the two assumptions below. Any future improvement will depend on the solution, its validation and adoption.'],
+  }];
+  if (id === 'approach') page.sections = page.sections.map(section => section.id === (locale === 'fr' ? 'proposition' : 'proposal') ? {...section, table: locale === 'fr' ? {
+    headers:['Étape','Élément à remettre ou à convenir','Décision attendue'],
+    rows:[['Audit','Constats sur le processus ou les systèmes examinés.','Quel problème faut-il résoudre ?'],['Analyse','Options, contraintes et dépendances.','Quelle option mérite d’être retenue ?'],['Proposition','Périmètre, livrables, budget et validation.','Quels travaux sont approuvés ?'],['Implantation','Solution, essais et documentation convenus.','Les critères d’acceptation sont-ils satisfaits ?'],['Maintenance','Responsabilités et suivi à prévoir.','Comment traiter les corrections et évolutions ?']],
+  } : {
+    headers:['Stage','Deliverable or agreement','Decision to make'],
+    rows:[['Audit','Findings on the process or systems examined.','What problem needs to be solved?'],['Analysis','Options, constraints and dependencies.','Which option should be selected?'],['Proposal','Scope, deliverables, budget and validation.','Which work is approved?'],['Implementation','Agreed solution, tests and documentation.','Have the acceptance criteria been met?'],['Maintenance','Responsibilities and ongoing support.','How will fixes and changes be handled?']],
+  }} : section);
+  if (id === 'about') {
+    page.sections = [...page.sections, locale === 'fr' ? {
+      id:'redaction',title:'Qui prépare les informations publiées ici ?',
+      paragraphs:['Bump est responsable des contenus de cette vitrine. Les pages expliquent notre offre de consultation et notre méthode. Elles distinguent les services actuels, les exemples illustratifs et notre vision future de systèmes spécialisés.', 'Chaque guide précise les décisions à prendre, les contrôles humains à conserver et les limites du scénario. Les références externes sont reliées au sujet qu’elles éclairent ; elles ne représentent ni une certification ni un partenariat.', 'La date de publication correspond à la première mise en ligne des pages éditoriales, le 26 octobre 2026. La date de révision et les changements sont indiqués sur chaque page. Les exemples calculés décrivent leurs hypothèses et ne sont pas présentés comme des résultats clients.'],
+    } : {
+      id:'editorial-policy',title:'Who prepares the information published here?',
+      paragraphs:['Bump is responsible for the content on this website. The pages explain our consulting services and approach. They distinguish current services, illustrative examples and our future vision for specialized systems.', 'Each guide identifies decisions to make, human controls to retain and the scenario’s limits. External references relate to the topic they explain; they do not represent a certification or partnership.', 'The publication date records the first release of the editorial pages on October 26, 2026. Each page shows its revision date and changes. Calculated examples disclose their assumptions and are not presented as client results.'],
+    }];
+    page.references = [{url:site.sourceUrl,title:locale === 'fr' ? 'Code public de la vitrine Bump' : 'Public source of the Bump website',description:locale === 'fr' ? 'Les sources publiques de cette vitrine, pour examiner ses interfaces et ses interactions. Les agents propriétaires restent une vision future.' : 'The public source of this website, so you can examine its interfaces and interactions. Proprietary agents remain a future vision.'}];
+  }
+  if (id === 'faq') page.sections = page.sections.map(section => ({...section, table:locale === 'fr' ? {
+    headers:['Avant un premier échange','À préparer'],rows:[['Le besoin','Un exemple de tâche ou de difficulté à améliorer.'],['Les outils','Le nom des logiciels concernés et des connexions souhaitées.'],['Les personnes','Qui utilise le processus et qui approuve les décisions.'],['Le résultat attendu','Ce qui permettrait de juger l’amélioration.'],['Les informations sensibles','Gardez mots de passe, dossiers clients et rapports confidentiels hors d’un formulaire public.']],
+  } : {
+    headers:['Before a first conversation','What to prepare'],rows:[['The need','An example of a task or difficulty to improve.'],['The tools','The software involved and connections you need.'],['The people','Who uses the process and who approves decisions.'],['The desired outcome','What would make the improvement useful.'],['Sensitive information','Keep passwords, client records and confidential reports out of a public form.']],
+  }}));
   if (id === 'home') {
     const summaries = {sidekick:['workflow'],online:['ai','software'],operations:['security'],retail:['approach'],b2b:['about']};
     page.answer = locale === 'fr' ? 'Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Bump accompagne les PME du Québec en optimisation des processus, intégration IA, développement logiciel et cybersécurité. Un mandat suit cinq étapes : audit, analyse, proposition, implantation et maintenance.' : 'Bump is a technology consulting company founded by two entrepreneurs in Montréal. Bump helps Québec SMEs with process optimization, AI integration, custom software and cybersecurity. Engagements follow five steps: audit, analysis, proposal, implementation and maintenance.';
-    page.sections = page.sections.map(section => ({...section,paragraphs:[...section.paragraphs,...(summaries[section.id] || []).map(key => entries.find(item => item.id === key)[locale].answer)]}));
+    page.sections = page.sections.map(section => ({...section,paragraphs:[...section.paragraphs,...(summaries[section.id] || []).map(key => entries.find(item => item.id === key)[locale].answer)],
+      ...(section.id === 'sidekick' ? {table:locale === 'fr' ? {
+        caption:'Exemples illustratifs de processus et de contrôles à définir selon le mandat.',headers:['Processus','Contrôle à conserver'],rows:[['Demande de devis','Valider les informations et la proposition avant l’envoi.'],['Traitement d’une facture','Vérifier le document et les exceptions avant la suite.'],['Demande de support','Transférer les cas qui nécessitent une décision humaine.']],
+      } : {caption:'Illustrative processes and controls to define for each engagement.',headers:['Process','Control to retain'],rows:[['Quote request','Validate information and the proposal before sending.'],['Invoice processing','Check the document and exceptions before proceeding.'],['Support request','Hand over cases requiring a human decision.']]}} : {}),
+      ...(section.id === 'retail' ? {ordered: true,items:locale === 'fr' ? ['Audit : comprendre le fonctionnement actuel et les difficultés.', 'Analyse : comparer les options et les contraintes.', 'Proposition : convenir du périmètre, du budget et des livrables.', 'Implantation : construire, tester et transmettre la solution.', 'Maintenance : organiser les corrections et le suivi.'] : ['Audit: understand current work and difficulties.', 'Analysis: compare options and constraints.', 'Proposal: agree on scope, budget and deliverables.', 'Implementation: build, test and hand over the solution.', 'Maintenance: organize fixes and ongoing support.']} : {}),
+    }));
   }
   return page;
 }

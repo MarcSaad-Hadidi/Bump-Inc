@@ -3,6 +3,7 @@
 > How do you choose between automation, AI and custom software? What does an audit cover? Answers for SMEs considering a technology engagement with Bump.
 
 Canonical: __BUMP_ORIGIN__/en/faq
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 A clearer starting point and a better idea of what to expect.
@@ -14,6 +15,14 @@ A first conversation with Bump starts with a concrete need: a process to simplif
 ## A tailored engagement, rather than a universal package.
 
 These answers provide a general framework. Specific terms depend on your systems, access, data and approvals. Our service pages describe each area and the points to consider.
+
+| Before a first conversation | What to prepare |
+| --- | --- |
+| The need | An example of a task or difficulty to improve. |
+| The tools | The software involved and connections you need. |
+| The people | Who uses the process and who approves decisions. |
+| The desired outcome | What would make the improvement useful. |
+| Sensitive information | Keep passwords, client records and confidential reports out of a public form. |
 
 ## Frequently asked questions
 
@@ -65,7 +74,14 @@ No. They belong to Bump’s future vision. Current services cover consulting, in
 
 A description of the problem, tools involved, people affected and desired outcome. You do not need to have selected a technology. Keep credentials, confidential data and sensitive reports out of a public form.
 
-Published by Bump · Technology consulting in Montréal.
+## About the publisher
+
+[Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+
+## What changed
+
+- Added a checklist for preparing a first conversation.
+- Clarified useful information and what should not be shared.
 
 ## Related
 

@@ -7,6 +7,10 @@ export const site = {
   logo: '/bump/favicon.svg',
   image: '/bump/art/hero-fallback-v2.webp',
   updated: '2026-10-27',
+  // First editorial release: Site v47, published 2026-10-26T01:51:46Z.
+  // This is not an inferred founding date or the original landing launch date.
+  editorialPublished: '2026-10-26',
+  sourceUrl: 'https://github.com/MarcSaad-Hadidi/Bump-Inc/tree/main/website',
   languages: ['fr-CA', 'en-CA'],
   privatePaths: ['/admin/', '/dashboard/', '/auth/', '/api/'],
   // Training crawler choices are unchanged. Search discovery does not opt the

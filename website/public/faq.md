@@ -1,8 +1,9 @@
 # Les bonnes questions, avant de commencer.
 
-> Comment choisir entre automatisation, IA et logiciel sur mesure ? Que comprend un audit ? Réponses aux questions des PME avant un mandat technologique avec Bump.
+> Des réponses sur l’automatisation, l’IA, les logiciels et la cybersécurité pour PME : choix, budget, validation humaine et déroulement d’un mandat.
 
 Canonical: __BUMP_ORIGIN__/faq
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 Des repères pour savoir par où commencer et à quoi s’attendre.
@@ -14,6 +15,14 @@ Une première discussion avec Bump part d’un besoin concret : un processus à 
 ## Un mandat adapté, plutôt qu’un forfait universel.
 
 Les réponses ci-dessous donnent un cadre général. Les conditions précises dépendent des systèmes, des accès, des données et des validations de votre entreprise. Les pages de services détaillent chaque domaine et leurs points de vigilance.
+
+| Avant un premier échange | À préparer |
+| --- | --- |
+| Le besoin | Un exemple de tâche ou de difficulté à améliorer. |
+| Les outils | Le nom des logiciels concernés et des connexions souhaitées. |
+| Les personnes | Qui utilise le processus et qui approuve les décisions. |
+| Le résultat attendu | Ce qui permettrait de juger l’amélioration. |
+| Les informations sensibles | Gardez mots de passe, dossiers clients et rapports confidentiels hors d’un formulaire public. |
 
 ## Questions fréquentes
 
@@ -65,7 +74,14 @@ Non. Ils font partie de la vision future de Bump. Les services actuels sont la c
 
 Une description du problème, les outils concernés, les personnes impliquées et le résultat souhaité. Il n’est pas nécessaire d’avoir choisi une technologie. Gardez les identifiants, les données confidentielles et les rapports sensibles hors d’un formulaire public.
 
-Publié par Bump · Consultation technologique à Montréal.
+## À propos de l’auteur
+
+[Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+
+## Ce qui a été révisé
+
+- Ajout d’une grille pour préparer une première discussion.
+- Précision des informations utiles et de celles à ne pas transmettre.
 
 ## Related
 

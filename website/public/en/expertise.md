@@ -3,6 +3,7 @@
 > Bump helps Québec SMEs with workflow automation, AI integration, custom software and cybersecurity. Explore our expertise and delivery approach.
 
 Canonical: __BUMP_ORIGIN__/en/expertise
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 Smoother processes. Smarter systems. A better protected business.
@@ -44,7 +45,14 @@ No. You can start with an operational problem. The analysis determines whether a
 
 Yes. Integrating existing tools is part of our services. We assess their APIs, access controls and limitations before proposing a connection.
 
-Published by Bump · Technology consulting in Montréal.
+## About the publisher
+
+[Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+
+## What changed
+
+- Clarified the choice between automation, AI, software and cybersecurity.
+- Added publisher attribution and the content review approach.
 
 ## Related
 

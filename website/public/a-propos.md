@@ -1,8 +1,9 @@
 # Ancrés à Montréal. Tournés vers la suite.
 
-> Fondée par deux entrepreneurs à Montréal, Bump aide les PME à gagner en efficacité, en intelligence et en sécurité grâce à des solutions technologiques adaptées.
+> Fondée par deux entrepreneurs à Montréal, Bump accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.
 
 Canonical: __BUMP_ORIGIN__/a-propos
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 Donnons de l’élan à votre entreprise.
@@ -37,6 +38,14 @@ Notre modèle commercial suit les étapes audit, analyse, proposition, implantat
 
 Ces systèmes ne sont pas présentés comme des produits disponibles. Le site distingue cette ambition de nos services actuels de consultation, de développement et d’intégration. Les animations servent à expliquer ces services à l’aide de scénarios fictifs.
 
+## Qui prépare les informations publiées ici ?
+
+Bump est responsable des contenus de cette vitrine. Les pages expliquent notre offre de consultation et notre méthode. Elles distinguent les services actuels, les exemples illustratifs et notre vision future de systèmes spécialisés.
+
+Chaque guide précise les décisions à prendre, les contrôles humains à conserver et les limites du scénario. Les références externes sont reliées au sujet qu’elles éclairent ; elles ne représentent ni une certification ni un partenariat.
+
+La date de publication correspond à la première mise en ligne des pages éditoriales, le 26 octobre 2026. La date de révision et les changements sont indiqués sur chaque page. Les exemples calculés décrivent leurs hypothèses et ne sont pas présentés comme des résultats clients.
+
 ## Questions fréquentes
 
 ### Où Bump est-elle basée ?
@@ -47,11 +56,22 @@ Bump a été fondée à Montréal, au Québec. Sa clientèle initiale est compos
 
 Notre offre actuelle est une offre de services. Cyber AI, Developer AI et Workflow AI décrivent des systèmes que nous souhaitons développer à long terme ; ils ne sont pas proposés comme produits disponibles.
 
-Publié par Bump · Consultation technologique à Montréal.
+## Pour approfondir
+
+- [Code public de la vitrine Bump](https://github.com/MarcSaad-Hadidi/Bump-Inc/tree/main/website) — Les sources publiques de cette vitrine, pour examiner ses interfaces et ses interactions. Les agents propriétaires restent une vision future.
+
+## À propos de l’auteur
+
+[Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+
+## Ce qui a été révisé
+
+- Ajout de la méthode éditoriale et des limites des démonstrations.
+- Lien vers le code public de la vitrine comme référence vérifiable.
 
 ## Related
 
-- [La technologie, à votre mesure.](__BUMP_ORIGIN__/expertises) — Bump accompagne les PME du Québec : automatisation des processus, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre approche.
+- [La technologie, à votre mesure.](__BUMP_ORIGIN__/expertises) — Bump accompagne les PME du Québec : automatisation, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre méthode.
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
 - [Intégration IA pour votre entreprise.](__BUMP_ORIGIN__/services/integration-ia) — Intégrez l’IA à vos outils et à vos processus avec Bump : agents ciblés, recherche documentaire, synthèses et tableaux de bord, avec validation humaine.
 - [La cybersécurité, avec un cadre clair.](__BUMP_ORIGIN__/services/cybersecurite) — Audits autorisés, identification des vulnérabilités, remédiation et sécurisation des systèmes. Bump accompagne les PME de Montréal et du Québec.

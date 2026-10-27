@@ -29,7 +29,7 @@ test('the English native workflow retains its real approval guard and all three 
 });
 test('the built English document and runtime share matching language, data and route',()=>{
  const shell=readFileSync('public/en.html','utf8'),manifest=readFileSync('public/runtime/en/assets/manifest-2c6320c2.js','utf8');
- assert.match(shell,/<html lang="en"/);assert.match(shell,/<title>Bump — Technology Consulting for SMEs in Montréal<\/title>/);assert.match(readFileSync('public/runtime/en/assets/(_locale).editions.winter2026-CdSmWtXg.js','utf8'),/Your next/);assert.match(shell,/runtime\/en\/assets\/entry.client/);assert.match(manifest,/"path":"en"/);
+ assert.match(shell,/<html lang="en"/);assert.match(shell,/<title>Bump — Technology Consulting for SMEs in Montréal, Québec<\/title>/);assert.match(readFileSync('public/runtime/en/assets/(_locale).editions.winter2026-CdSmWtXg.js','utf8'),/Your next/);assert.match(shell,/runtime\/en\/assets\/entry.client/);assert.match(manifest,/"path":"en"/);
  assert.doesNotMatch(shell,/<p[^>]*>Faites travailler/);
 });
 

@@ -3,6 +3,7 @@
 > Web applications, portals and internal systems for Québec SMEs. Bump builds custom software connected to your CRM, ERP and APIs.
 
 Canonical: __BUMP_ORIGIN__/en/services/custom-software-development
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 A system that follows the way you work, rather than the other way around.
@@ -83,7 +84,14 @@ Maintenance is a stage in our model, but its scope and terms are defined in the 
 
 The proposal should define responsibility for hosting, access, backups, fixes and changes. Bump agrees on the maintenance scope with your team. Launch and ongoing support both need to be defined; no level of availability should be assumed without agreement.
 
-Published by Bump · Technology consulting in Montréal.
+## About the publisher
+
+[Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+
+## What changed
+
+- Added checks to complete before launch.
+- Clarified maintenance responsibilities to agree on.
 
 ## Related
 

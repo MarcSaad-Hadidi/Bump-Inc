@@ -11,7 +11,7 @@ export function applyLandingMetadata(records, document) {
     }
     if (!allowed[record.tag]) continue;
     if (record.tag === 'script' && record.attrs?.type !== 'application/ld+json') continue;
-    if (record.tag === 'link' && !['canonical', 'alternate'].includes(record.attrs?.rel)) continue;
+    if (record.tag === 'link' && !['canonical', 'alternate', 'author'].includes(record.attrs?.rel)) continue;
     const keys = record.tag === 'meta' ? [record.attrs.name ? 'name' : 'property'] : record.tag === 'link' ? ['rel', 'hreflang', 'type'] : ['type'];
     let element = [...document.head.querySelectorAll(record.tag)].find(node => keys.every(key => (node.getAttribute(key) || '') === (record.attrs[key] || '')));
     if (!element) { element = document.createElement(record.tag); document.head.appendChild(element); }

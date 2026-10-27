@@ -4,6 +4,7 @@ import {readFile, readdir} from 'node:fs/promises';
 import {parse} from 'parse5';
 import {listPages, pageFor} from '../src/bump/seo/pages.js';
 import {site} from '../src/bump/seo/site.js';
+import {publisherBio} from '../src/bump/seo/editorial.js';
 import {renderHtml, renderMarkdown, renderLlms, renderLlmsFull, renderRobots, renderAi, renderSitemap, htmlAsset, markdownPath, schemaFor} from '../src/bump/seo/render.js';
 import {prefersMarkdown, handleContentRequest} from '../src/bump/seo/http.js';
 import {enhanceHome, homeFallback} from '../scripts/build-seo.mjs';
@@ -68,7 +69,7 @@ test('every public editorial route has bilingual metadata, a real HTML body and 
       else assert(listPages().some(target => target.path === href.split(/[?#]/)[0]) || page.references?.some(reference => reference.url === href), href);
     }
     const graph = schemaFor(page, origin)['@graph'];
-    assert.equal(graph.find(node => node['@type'] === 'Organization').description, site.description);
+    assert.equal(graph.find(node => node['@type'] === 'Organization').description, publisherBio(page.locale));
     const keys = value => value && typeof value === 'object' ? Object.entries(value).flatMap(([key, child]) => [key, ...keys(child)]) : [];
     assert(!keys(graph).includes('aggregateRating')); assert(!keys(graph).includes('price'));
     if (page.type === 'service') assert.equal(graph.find(node => node['@type'] === 'Service').description, page.answer);
@@ -102,7 +103,9 @@ test('the landing retains an accessible text edition when scripting is disabled'
   const tree = parse(output, {scriptingEnabled: false});
   assert.equal(walk(tree, node => node.tagName === 'h1').length, 1);
   assert.equal(walk(tree, node => node.tagName === 'section').length, 6);
-  assert.equal(walk(tree, node => node.tagName === 'a').length, page.related.length);
+  const directory = walk(tree,node => node.tagName === 'nav')[0];
+  assert.equal(walk(directory, node => node.tagName === 'a').length, page.related.length);
+  assert.equal(walk(directory, node => node.tagName === 'li').length, page.related.length);
   assert(output.includes('<script>const preserve="</not-a-tag>"</script>'));
 });
 
@@ -114,6 +117,14 @@ test('initial landing HTML exposes the same business content and links before Ja
     const main = walk(tree,node => attrs(node).id === 'bump-initial-content')[0];
     assert(main); assert(contentText(main).includes(page.answer));
     for (const section of page.sections) for (const paragraph of section.paragraphs) assert(contentText(main).includes(paragraph));
+    const markdown = renderMarkdown(page,origin);
+    for (const section of page.sections) {
+      for (const item of section.items || []) {assert(contentText(main).includes(item)); assert(markdown.includes(item));}
+      for (const row of section.table?.rows || []) for (const cell of row) {assert(contentText(main).includes(cell)); assert(markdown.includes(cell));}
+    }
+    assert(walk(main,node=>node.tagName==='table').length);
+    assert(walk(main,node=>node.tagName==='ol').length);
+    assert(walk(main,node=>node.tagName==='a' && attrs(node).lang === (locale === 'fr' ? 'en' : 'fr')).length);
     for (const id of page.related) assert(walk(main,node => node.tagName === 'a' && attrs(node).href === pageFor(id,locale).path).length);
     assert(output.includes('<script>const scene="unchanged";</script>'));
     assert.equal(homeFallback(output,page),output);
@@ -127,10 +138,18 @@ test('corporate authorship, actual update dates and service FAQ schema match vis
     const web = graph.find(node => node['@id'] === origin + page.path + '#webpage');
     assert.equal(web.author['@id'],origin + '/#organization');
     assert.equal(walk(tree,node => node.tagName === 'time' && attrs(node).datetime === site.updated).length,1);
+    assert.equal(walk(tree,node => node.tagName === 'time' && attrs(node).datetime === site.editorialPublished).length,1);
+    assert.equal(web.datePublished,site.editorialPublished);
+    const author = walk(tree,node=>node.tagName==='a' && attrs(node).rel==='author')[0];
+    const profile = pageFor('about',page.locale);
+    assert.equal(attrs(author).href, profile.path + (page.locale === 'fr' ? '#redaction' : '#editorial-policy'));
+    assert(profile.sections.some(section=>section.id === attrs(author).href.split('#')[1]));
+    for (const note of page.revisions) {assert(contentText(tree).includes(note)); assert(renderMarkdown(page,origin).includes(note));}
     assert(walk(tree,node => node.tagName === 'meta' && attrs(node).name === 'author' && attrs(node).content === 'Bump').length);
     if (page.type === 'service') assert.deepEqual(graph.find(node => node['@type'] === 'FAQPage').mainEntity.map(node => node.name),page.faqs.map(faq=>faq.q));
     assert.deepEqual(web.citation || [],(page.references || []).map(reference=>reference.url));
   }
+  for (const locale of ['fr','en']) assert.equal(schemaFor(pageFor('home',locale),origin)['@graph'].find(node=>node['@type']==='WebPage').datePublished,undefined);
 });
 
 test('landing metadata survives hydration without duplicate tags or executable markup', async () => {

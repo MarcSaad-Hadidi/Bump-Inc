@@ -3,6 +3,7 @@ import {catalog, pageFor, listPages} from './pages.js';
 import {expertiseLinks} from './navigation.js';
 import {renderStoryFigure,storyAction} from './stories.js';
 import {musicLabels,MUSIC_WAVES} from '../ui/musicController.js';
+import {publisherBio} from './editorial.js';
 
 export const html = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[character]));
 export const absolute = (path, origin) => origin + path;
@@ -17,12 +18,33 @@ const link = (id, locale, label, className = '') => {
   return '<a class="' + className + '" href="' + page.path + '">' + html(label || cleanTitle(page.title)) + '</a>';
 };
 
+const authorPath = locale => pageFor('about',locale).path + (locale === 'fr' ? '#redaction' : '#editorial-policy');
+
+export function publisherCredit(page) {
+  const locale = page.locale;
+  return '<aside class="seo-editorial-credit author-bio" aria-label="' + text(locale,'Publication et révision','Publication and revision') + '"><div><h2>' + text(locale,'Publié par ','Published by ') + '<a rel="author" href="' + authorPath(locale) + '">Bump</a></h2><p>' + html(publisherBio(locale)) + '</p><a class="seo-author-link" href="' + authorPath(locale) + '">' + text(locale,'Notre démarche éditoriale','Our editorial approach') + ' ' + arrow + '</a></div><div class="seo-revision"><p>' + (page.published ? text(locale,'Première publication : ','First published: ') + '<time datetime="' + page.published + '">' + page.published + '</time><br>' : '') + text(locale,'Mis à jour le ','Updated ') + '<time datetime="' + site.updated + '">' + site.updated + '</time></p>' + (page.revisions?.length ? '<details><summary>' + text(locale,'Ce qui a été révisé','What changed') + '</summary><ul>' + page.revisions.map(note=>'<li>'+html(note)+'</li>').join('') + '</ul></details>' : '') + '</div></aside>';
+}
+
+function workloadMarkup(locale) {
+  const en = locale === 'en';
+  return '<fieldset class="seo-workload" data-workload lang="' + languageTag(locale) + '"><legend>' + text(locale,'Votre charge manuelle, en chiffres','Your manual workload, in numbers') + '</legend><p class="seo-workload-help" id="workload-help">' + text(locale,'Valeurs d’exemple. Le calcul s’effectue dans votre navigateur.','Example values. The calculation runs in your browser.') + '</p><div class="seo-workload-fields"><label for="workload-volume">' + text(locale,'Tâches par semaine','Tasks per week') + '<input id="workload-volume" data-workload-volume type="number" min="0" max="100000" step="1" value="25" inputmode="numeric" aria-describedby="workload-help"></label><label for="workload-minutes">' + text(locale,'Minutes par tâche','Minutes per task') + '<input id="workload-minutes" data-workload-minutes type="number" min="0.1" max="480" step="0.1" value="12" inputmode="decimal" aria-describedby="workload-help"></label><div class="seo-workload-result"><span>' + text(locale,'Charge estimée','Estimated workload') + '</span><output for="workload-volume workload-minutes" aria-live="polite">' + (en ? '5 h / week' : '5 h / semaine') + '</output></div></div><p data-workload-formula class="seo-workload-formula">25 × 12 ÷ 60 = 5 h</p><noscript><p>' + text(locale,'Le calcul ci-dessus montre les valeurs d’exemple. Le recalcul interactif nécessite JavaScript.','The calculation above shows the example values. Interactive recalculation requires JavaScript.') + '</p></noscript></fieldset>';
+}
+
 export function schemaFor(page, origin) {
   const url = absolute(page.path, origin), organizationId = origin + '/#organization', websiteId = origin + '/#website';
-  const organization = {'@type': 'Organization', '@id': organizationId, name: site.name, url: origin + '/', description: site.description, logo: { '@type': 'ImageObject', url: origin + site.logo }, foundingLocation: {'@type': 'City', name: 'Montréal', containedInPlace: {'@type': 'AdministrativeArea', name: 'Québec'}}, areaServed: {'@type': 'AdministrativeArea', name: 'Québec'}};
+  const organization = {'@type': 'Organization', '@id': organizationId, name: site.name, url: origin + '/', description: publisherBio(page.locale), mainEntityOfPage: origin + pageFor('about',page.locale).path, logo: { '@type': 'ImageObject', url: origin + site.logo }, foundingLocation: {'@type': 'City', name: 'Montréal', containedInPlace: {'@type': 'AdministrativeArea', name: 'Québec'}}, areaServed: {'@type': 'AdministrativeArea', name: 'Québec'}};
   const website = {'@type': 'WebSite', '@id': websiteId, name: site.name, url: origin + '/', inLanguage: site.languages, publisher: {'@id': organizationId}};
   const webpage = {'@type': page.type === 'about' ? 'AboutPage' : page.type === 'faq' ? 'FAQPage' : page.type === 'hub' ? 'CollectionPage' : 'WebPage', '@id': url + '#webpage', url, name: cleanTitle(page.title), description: page.description, inLanguage: languageTag(page.locale), isPartOf: {'@id': websiteId}, publisher: {'@id': organizationId}, author: {'@id': organizationId}, dateModified: site.updated};
   const nodes = [organization, website, webpage];
+  if (page.published) webpage.datePublished = page.published;
+  if (page.type === 'about') webpage.mainEntity = {'@id':organizationId};
+  if (page.type === 'hub') {
+    webpage.mainEntity = {'@id':url + '#domaines'};
+    nodes.push({'@type':'ItemList','@id':url + '#domaines',name:text(page.locale,'Les expertises de Bump','Bump expertise'),itemListElement:['workflow','ai','software','security'].map((id,index)=>{
+      const service = pageFor(id,page.locale);
+      return {'@type':'ListItem',position:index+1,item:{'@type':'Service',name:cleanTitle(service.title),url:origin+service.path,provider:{'@id':organizationId}}};
+    })});
+  }
   if (page.type === 'service') {
     webpage.mainEntity = {'@id': url + '#service'};
     nodes.push({'@type': 'Service', '@id': url + '#service', name: cleanTitle(page.title), serviceType: cleanTitle(page.title), description: page.answer, provider: {'@id': organizationId}, areaServed: {'@type': 'AdministrativeArea', name: 'Québec'}, url});
@@ -46,6 +68,7 @@ export function headMarkup(page, origin) {
   const url = absolute(page.path, origin), pair = catalog.find(entry => entry.id === page.id);
   return '<!-- bump:seo:start -->\n<title>' + html(page.metaTitle) + '</title>\n' +
     '<meta name="author" content="Bump">\n<meta name="description" content="' + html(page.description) + '">\n' +
+    '<link rel="author" href="' + html(origin + authorPath(page.locale)) + '">\n' +
     '<meta name="ai-summary" content="' + html(page.answer || page.description) + '">\n' +
     '<meta name="robots" content="index,follow,max-image-preview:large">\n' +
     '<link rel="canonical" href="' + html(url) + '">\n' +
@@ -70,14 +93,14 @@ export function contentAssetPaths() {
 }
 
 export function renderMarkdown(page, origin) {
-  const lines = ['# ' + mdText(cleanTitle(page.title)), '', '> ' + mdText(page.description), '', 'Canonical: ' + absolute(page.path, origin), 'Last updated: ' + site.updated, '', mdText(page.lead), ''];
+  const lines = ['# ' + mdText(cleanTitle(page.title)), '', '> ' + mdText(page.description), '', 'Canonical: ' + absolute(page.path, origin), ...(page.published ? ['First published: ' + page.published] : []), 'Last updated: ' + site.updated, '', mdText(page.lead), ''];
   if (page.answer) lines.push('## ' + text(page.locale, 'En clair', 'At a glance'), '', mdText(page.answer), '');
   for (const section of page.sections) {
     lines.push('## ' + mdText(section.title), '');
     if (section.example) lines.push('> ' + text(page.locale, 'Scénario illustratif — données fictives, aucun résultat client revendiqué.', 'Illustrative scenario — fictional data, no client result claimed.'), '');
     for (const paragraph of section.paragraphs || []) lines.push(mdText(paragraph), '');
-    if (section.items) lines.push(...section.items.map(item => '- ' + mdText(item)), '');
-    if (section.table) lines.push('| ' + section.table.headers.map(mdCell).join(' | ') + ' |', '| ' + section.table.headers.map(() => '---').join(' | ') + ' |', ...section.table.rows.map(row => '| ' + row.map(mdCell).join(' | ') + ' |'), '');
+    if (section.items) lines.push(...section.items.map((item,index) => (section.ordered ? String(index+1)+'. ' : '- ') + mdText(item)), '');
+    if (section.table) lines.push(...(section.table.caption ? [mdText(section.table.caption),''] : []), '| ' + section.table.headers.map(mdCell).join(' | ') + ' |', '| ' + section.table.headers.map(() => '---').join(' | ') + ' |', ...section.table.rows.map(row => '| ' + row.map(mdCell).join(' | ') + ' |'), '');
   }
   if (page.faqs.length) {
     lines.push('## ' + text(page.locale, 'Questions fréquentes', 'Frequently asked questions'), '');
@@ -88,7 +111,8 @@ export function renderMarkdown(page, origin) {
     for (const reference of page.references) lines.push('- [' + mdText(reference.title) + '](' + reference.url + ') — ' + mdText(reference.description));
     lines.push('');
   }
-  lines.push(text(page.locale,'Publié par Bump · Consultation technologique à Montréal.','Published by Bump · Technology consulting in Montréal.'),'');
+  lines.push('## ' + text(page.locale,'À propos de l’auteur','About the publisher'),'','[Bump](' + origin + authorPath(page.locale) + ') — ' + mdText(publisherBio(page.locale)),'');
+  if (page.revisions?.length) lines.push('## ' + text(page.locale,'Ce qui a été révisé','What changed'),'',...page.revisions.map(item=>'- '+mdText(item)),'');
   lines.push('## Related', '');
   for (const id of page.related) { const related = pageFor(id, page.locale); lines.push('- [' + mdText(cleanTitle(related.title)) + '](' + absolute(related.path, origin) + ') — ' + mdText(related.description)); }
   return lines.join('\n') + '\n';
@@ -96,7 +120,7 @@ export function renderMarkdown(page, origin) {
 
 
 function sectionMarkup(section, index, locale) {
-  return '<section id="' + section.id + '" class="seo-section' + (section.example ? ' seo-example' : '') + '"><div class="seo-section-index" aria-hidden="true">' + String(index + 1).padStart(2, '0') + '</div><div class="seo-section-main">' + (section.example ? '<p class="seo-eyebrow">' + text(locale, 'Scénario illustratif', 'Illustrative scenario') + '</p>' : '') + '<h2>' + html(section.title) + '</h2>' + (section.paragraphs || []).map(paragraph => '<p>' + html(paragraph) + '</p>').join('') + (section.items ? '<ul class="seo-list">' + section.items.map(item => '<li>' + html(item) + '</li>').join('') + '</ul>' : '') + (section.table ? '<div class="seo-table-wrap" role="region" aria-label="' + html(section.title) + '" tabindex="0"><table><thead><tr>' + section.table.headers.map(header => '<th scope="col">' + html(header) + '</th>').join('') + '</tr></thead><tbody>' + section.table.rows.map(row => '<tr>' + row.map((cell, i) => '<' + (i ? 'td' : 'th scope="row"') + '>' + html(cell) + '</' + (i ? 'td' : 'th') + '>').join('') + '</tr>').join('') + '</tbody></table></div>' : '') + '</div></section>';
+  return '<section id="' + section.id + '" class="seo-section' + (section.example ? ' seo-example' : '') + '"><div class="seo-section-index" aria-hidden="true">' + String(index + 1).padStart(2, '0') + '</div><div class="seo-section-main">' + (section.example ? '<p class="seo-eyebrow">' + text(locale, 'Scénario illustratif', 'Illustrative scenario') + '</p>' : '') + '<h2>' + html(section.title) + '</h2>' + (section.paragraphs || []).map(paragraph => '<p>' + html(paragraph) + '</p>').join('') + (section.items ? '<' + (section.ordered ? 'ol' : 'ul') + ' class="seo-list">' + section.items.map(item => '<li>' + html(item) + '</li>').join('') + '</' + (section.ordered ? 'ol' : 'ul') + '>' : '') + (section.table ? '<div class="seo-table-wrap" role="region" aria-label="' + html(section.title) + '" tabindex="0"><table>' + (section.table.caption ? '<caption>' + html(section.table.caption) + '</caption>' : '') + '<thead><tr>' + section.table.headers.map(header => '<th scope="col">' + html(header) + '</th>').join('') + '</tr></thead><tbody>' + section.table.rows.map(row => '<tr>' + row.map((cell, i) => '<' + (i ? 'td' : 'th scope="row"') + '>' + html(cell) + '</' + (i ? 'td' : 'th') + '>').join('') + '</tr>').join('') + '</tbody></table></div>' : '') + (section.calculator ? workloadMarkup(locale) : '') + '</div></section>';
 }
 
 function readingMarkup(page, toc, faq) {
@@ -131,7 +155,7 @@ export function renderHtml(page, origin) {
     return '<a href="' + item.path + '"><span>' + html(item.eyebrow) + '</span><strong>' + html(cleanTitle(item.title)) + '</strong>' + arrow + '</a>';
   }).join('') + '</div></section>';
   const footer = '<footer class="seo-footer"><div><a class="seo-brand" href="' + homePath(locale) + '">' + wordmark + '</a><p>' + text(locale, 'Donnons de l’élan à votre entreprise.', 'Give your business fresh momentum.') + '</p><span>Montréal, Québec</span></div><nav aria-label="' + text(locale, 'Nos services', 'Our services') + '"><span>' + text(locale, 'Expertises', 'Expertise') + '</span>' + link('workflow', locale, text(locale, 'Automatisation des processus', 'Workflow automation')) + link('ai', locale, text(locale, 'Intégration IA', 'AI integration')) + link('software', locale, text(locale, 'Logiciels sur mesure', 'Custom software')) + link('security', locale, text(locale, 'Cybersécurité', 'Cybersecurity')) + '</nav><nav aria-label="Bump"><span>Bump</span>' + link('expertise', locale, text(locale, 'Toutes les expertises', 'All expertise')) + link('approach', locale, text(locale, 'Notre approche', 'Our approach')) + link('about', locale, text(locale, 'À propos', 'About')) + link('faq', locale, text(locale, 'Questions fréquentes', 'Frequently asked questions')) + '</nav><div class="seo-colophon"><span>© ' + site.updated.slice(0, 4) + ' Bump</span><a href="#contenu">' + text(locale, 'Revenir en haut', 'Back to top') + ' ' + arrow.replace('<svg ', '<svg style="transform:rotate(-45deg);vertical-align:middle" ') + '</a></div></footer>';
-  return '<!doctype html><html lang="' + languageTag(locale) + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f4f1e8"><link rel="icon" href="' + site.logo + '" type="image/svg+xml"><link rel="preload" href="/bump/fonts/im-fell-english-regular.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="/bump/seo/pages.css"><link rel="stylesheet" href="/bump/music.css">' + headMarkup(page, origin) + '<script type="module" src="/bump/seo/pages.js"></script></head><body class="seo-page seo-page--' + page.id + '" data-accent="' + page.accent + '"><a class="seo-skip" href="#contenu">' + text(locale, 'Aller au contenu', 'Skip to content') + '</a><header class="seo-header">' + nav + '</header><main id="contenu"><div class="seo-breadcrumb"><a class="seo-experience-return" href="' + homePath(locale) + '#' + (page.chapter || 'hero') + '"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg>' + text(locale, 'Retour au site', 'Back to the site') + '</a><span aria-hidden="true">/</span>' + (page.type === 'service' ? link('expertise', locale, text(locale, 'Expertises', 'Expertise')) + '<span aria-hidden="true">/</span>' : '') + '<span>' + html(page.eyebrow.replace(/^\d+ — /, '')) + '</span></div><section class="seo-hero"><div class="seo-hero-copy"><p class="seo-eyebrow">' + html(page.eyebrow) + '</p><h1>' + page.title.split('\n').map(html).join('<br>') + '</h1><p class="seo-hero-lead">' + html(page.lead) + '</p><div class="seo-hero-links"><a class="seo-primary" href="' + action.href + '">' + html(action.label) + arrow + '</a><span>Montréal · Québec</span></div></div>' + renderStoryFigure(page) + '</section><section class="seo-answer" id="en-clair"><span class="seo-eyebrow">' + text(locale, 'En clair', 'At a glance') + '</span><p>' + html(page.answer) + '</p></section>' + services + readingMarkup(page, toc, faq) + referencesMarkup(page) + related + '<section class="seo-next"><p class="seo-eyebrow">' + text(locale, 'Votre prochain élan', 'Your next step') + '</p><h2>' + html(action.next) + '</h2><a href="' + brief + '" class="seo-primary">' + text(locale, 'Parlons de votre projet', 'Let’s talk about your project') + arrow + '</a></section></main>' + '<aside class="seo-editorial-credit"><a href="' + pageFor('about',locale).path + '">' + text(locale,'Publié par Bump · Consultation technologique à Montréal','Published by Bump · Technology consulting in Montréal') + '</a><p>' + text(locale,'Mis à jour le ','Updated ') + '<time datetime="' + site.updated + '">' + site.updated + '</time></p></aside>' + footer + music + '</body></html>';
+  return '<!doctype html><html lang="' + languageTag(locale) + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f4f1e8"><link rel="icon" href="' + site.logo + '" type="image/svg+xml"><link rel="preload" href="/bump/fonts/im-fell-english-regular.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="/bump/seo/pages.css"><link rel="stylesheet" href="/bump/music.css">' + headMarkup(page, origin) + '<script type="module" src="/bump/seo/pages.js"></script></head><body class="seo-page seo-page--' + page.id + '" data-accent="' + page.accent + '"><a class="seo-skip" href="#contenu">' + text(locale, 'Aller au contenu', 'Skip to content') + '</a><header class="seo-header">' + nav + '</header><main id="contenu"><div class="seo-breadcrumb"><a class="seo-experience-return" href="' + homePath(locale) + '#' + (page.chapter || 'hero') + '"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg>' + text(locale, 'Retour au site', 'Back to the site') + '</a><span aria-hidden="true">/</span>' + (page.type === 'service' ? link('expertise', locale, text(locale, 'Expertises', 'Expertise')) + '<span aria-hidden="true">/</span>' : '') + '<span>' + html(page.eyebrow.replace(/^\d+ — /, '')) + '</span></div><section class="seo-hero"><div class="seo-hero-copy"><p class="seo-eyebrow">' + html(page.eyebrow) + '</p><h1>' + page.title.split('\n').map(html).join('<br>') + '</h1><p class="seo-hero-lead">' + html(page.lead) + '</p><div class="seo-hero-links"><a class="seo-primary" href="' + action.href + '">' + html(action.label) + arrow + '</a><span>Montréal · Québec</span></div></div>' + renderStoryFigure(page) + '</section><section class="seo-answer" id="en-clair"><span class="seo-eyebrow">' + text(locale, 'En clair', 'At a glance') + '</span><p>' + html(page.answer) + '</p></section>' + services + readingMarkup(page, toc, faq) + referencesMarkup(page) + related + '<section class="seo-next"><p class="seo-eyebrow">' + text(locale, 'Votre prochain élan', 'Your next step') + '</p><h2>' + html(action.next) + '</h2><a href="' + brief + '" class="seo-primary">' + text(locale, 'Parlons de votre projet', 'Let’s talk about your project') + arrow + '</a></section></main>' + publisherCredit(page) + footer + music + '</body></html>';
 }
 
 export function renderLlms(origin) {

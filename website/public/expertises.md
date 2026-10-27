@@ -1,8 +1,9 @@
 # La technologie, à votre mesure.
 
-> Bump accompagne les PME du Québec : automatisation des processus, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre approche.
+> Bump accompagne les PME du Québec : automatisation, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre méthode.
 
 Canonical: __BUMP_ORIGIN__/expertises
+First published: 2026-10-26
 Last updated: 2026-10-27
 
 Des processus plus fluides. Des systèmes plus intelligents. Une entreprise mieux protégée.
@@ -44,7 +45,14 @@ Non. Vous pouvez partir d’un problème opérationnel. L’analyse sert à dét
 
 Oui, l’intégration des outils existants fait partie de nos services. Nous examinons leurs API, leurs droits d’accès et leurs limites avant de proposer une connexion.
 
-Publié par Bump · Consultation technologique à Montréal.
+## À propos de l’auteur
+
+[Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+
+## Ce qui a été révisé
+
+- Précision du choix entre automatisation, IA, logiciel et cybersécurité.
+- Ajout de l’attribution et de la méthode de révision des informations.
 
 ## Related
 

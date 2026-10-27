@@ -18,6 +18,12 @@
 .bump-header.bump-hero-header[data-tone=light] .bump-project-button{border-color:#4a49344d}
 .bump-header.bump-hero-header[data-tone] .bump-project-button:hover{background:var(--bump-glass-hover);box-shadow:var(--bump-glass-shadow)}
 .bump-header.bump-hero-header[data-tone] .bump-project-button:focus-visible{outline:2px solid var(--bump-glass-ink);outline-offset:3px}
+/* Keep the globe/map itself sharp; its surrounding window is clear glass. */
+.bump-header .bump-location-popover{background:var(--bump-glass-fill);-webkit-backdrop-filter:var(--bump-glass-filter);backdrop-filter:var(--bump-glass-filter);border-color:var(--bump-glass-edge);box-shadow:var(--bump-glass-shadow);color:var(--bump-glass-ink);text-shadow:var(--bump-glass-text-shadow)}
+.bump-header .bump-location-popover :is(.bump-location-copy>div>span,.bump-location-close,.bump-location-foot,.bump-location-foot a,.bump-globe-replay,.bump-globe-attribution){color:var(--bump-glass-muted)}
+.bump-header .bump-location-popover .bump-location-foot{border-color:var(--bump-glass-line)}
+.bump-header .bump-location-popover :is(.bump-location-close,.bump-globe-replay):hover{background:var(--bump-glass-hover);color:var(--bump-glass-ink)}
+.bump-header[data-tone=light] .bump-location-popover{border-color:#4a49344d}
 .seo-expertise-panel>p,.seo-expertise-panel>a>span:first-child{color:var(--bump-glass-muted)}
 .seo-header nav .seo-expertise-panel>a{color:var(--bump-glass-ink)}
 .seo-header nav .seo-expertise-panel>a:is(:hover,:focus-visible),.seo-header nav .seo-expertise-panel>a[aria-current=page]{background:var(--bump-glass-hover);color:var(--bump-glass-ink)}
@@ -38,4 +44,4 @@
 .bump-contact .bump-contact-location{border-color:var(--bump-glass-line)}
 html[data-bump-tone=dark] .bump-contact .bump-action{background:#fff9ed;color:#2a3529;border-color:#fff9ed;text-shadow:none}
 html[data-bump-tone=dark] .bump-contact .bump-action:hover{background:#fffef9}
-@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.bump-header .bump-hero-dropdown,.bump-contact .bump-dialog-inner,.seo-expertise-panel,.bump-header.bump-hero-header[data-tone] .bump-project-button{background:#f4f1e8f5}.bump-header[data-tone=dark] .bump-hero-dropdown,html[data-bump-tone=dark] .bump-contact .bump-dialog-inner,.bump-header.bump-hero-header[data-tone=dark] .bump-project-button{background:#233126f5}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.bump-header .bump-hero-dropdown,.bump-contact .bump-dialog-inner,.seo-expertise-panel,.bump-header .bump-location-popover,.bump-header.bump-hero-header[data-tone] .bump-project-button{background:#f4f1e8f5}.bump-header[data-tone=dark] .bump-hero-dropdown,html[data-bump-tone=dark] .bump-contact .bump-dialog-inner,.bump-header[data-tone=dark] .bump-location-popover,.bump-header.bump-hero-header[data-tone=dark] .bump-project-button{background:#233126f5}}

@@ -1,6 +1,8 @@
 import {site, languageTag, text, homePath} from './site.js';
 import {catalog, pageFor, listPages} from './pages.js';
 import {expertiseLinks} from './navigation.js';
+import {renderStoryFigure,storyAction} from './stories.js';
+import {musicLabels,MUSIC_WAVES} from '../ui/musicController.js';
 
 export const html = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[character]));
 export const absolute = (path, origin) => origin + path;
@@ -81,64 +83,25 @@ export function renderMarkdown(page, origin) {
   return lines.join('\n') + '\n';
 }
 
-function figure(page) {
-  const locale = page.locale;
-  const labels = {
-    expertise: [['Processus', 'Logiciels', 'Sécurité'], ['Processes', 'Software', 'Security']],
-    workflow: [['Formulaire', 'Courriel', 'Document'], ['Form', 'Email', 'Document']],
-    ai: [['CRM', 'Documents', 'ERP'], ['CRM', 'Documents', 'ERP']],
-    software: [['Équipe', 'Processus', 'Outils'], ['Team', 'Processes', 'Tools']],
-    security: [['Applications', 'Accès', 'Systèmes'], ['Applications', 'Access', 'Systems']],
-    approach: [['Besoins', 'Contexte', 'Priorités'], ['Needs', 'Context', 'Priorities']],
-    about: [['Montréal', 'PME', 'Équipe'], ['Montréal', 'SMBs', 'Team']],
-    faq: [['Objectifs', 'Outils', 'Contraintes'], ['Goals', 'Tools', 'Constraints']],
-  };
-  const notes = {
-    expertise: [
-      ['Nous partons de ce qui ralentit votre entreprise.', 'Nous choisissons les bons outils avec votre équipe.', 'Une solution adaptée, puis un suivi dans le temps.'],
-      ['We start with what slows your business down.', 'We choose the right tools with your team.', 'A fitting solution, followed by ongoing support.']],
-    workflow: [
-      ['Les informations utiles se réunissent dans un même parcours.', 'Les actions sensibles attendent l’accord de votre équipe.', 'Les données suivent dans les outils concernés.'],
-      ['Useful information comes together in one journey.', 'Sensitive actions wait for your team’s approval.', 'Information flows to the tools that need it.']],
-    ai: [
-      ['L’information est organisée dans son contexte.', 'Une proposition expliquée, avec ses sources.', 'Votre équipe décide avant l’exécution.'],
-      ['Information is organized in context.', 'An explained recommendation, with its sources.', 'Your team decides before execution.']],
-    software: [
-      ['Vos façons de travailler guident la conception.', 'Un outil testé et ajusté avec ses utilisateurs.', 'Des connexions utiles et un logiciel qui peut évoluer.'],
-      ['The way you work guides the design.', 'A tool tested and refined with its users.', 'Useful connections and software that can evolve.']],
-    security: [
-      ['L’audit se limite aux systèmes et aux accès autorisés.', 'Les constats sont expliqués et classés par priorité.', 'Les correctifs convenus sont mis en place et vérifiés.'],
-      ['The audit is limited to authorized systems and access.', 'Findings are explained and prioritized.', 'Agreed fixes are implemented and verified.']],
-    approach: [
-      ['Nous observons votre fonctionnement et vos contraintes.', 'Le périmètre, les priorités et les moyens sont convenus ensemble.', 'Nous implantons la solution et préparons son suivi.'],
-      ['We examine how you work and your constraints.', 'Scope, priorities and resources are agreed together.', 'We implement the solution and prepare ongoing support.']],
-    about: [
-      ['Deux entrepreneurs, un point de départ à Montréal.', 'Une collaboration directe avec les PME.', 'Des solutions pensées pour le travail de votre équipe.'],
-      ['Two entrepreneurs, starting in Montréal.', 'Direct collaboration with small and medium-sized businesses.', 'Solutions designed for the work your team does.']],
-    faq: [
-      ['Une situation concrète plutôt qu’une technologie imposée.', 'Des choix expliqués, avec leurs contraintes.', 'Vous gardez la décision sur la suite du projet.'],
-      ['A concrete situation, rather than a prescribed technology.', 'Explained choices, including their constraints.', 'You decide how the project moves forward.']],
-  };
-  const key = Object.hasOwn(notes, page.id) ? page.id : 'expertise';
-  const sources = labels[key][locale === 'fr' ? 0 : 1];
-  const explanations = notes[key][locale === 'fr' ? 0 : 1];
-  const icons = [
-    '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>',
-    '<path d="m5 12 4 4L19 6"/><circle cx="12" cy="12" r="10"/>',
-    '<path d="M4 7h13l-3-3M20 17H7l3 3M17 7l-3 3M7 17l3-3"/>',
-  ];
-  const icon = index => '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + icons[index] + '</svg>';
-  const approval = ['workflow', 'ai'].includes(key);
-  return '<figure class="seo-explainer" data-seo-flow tabindex="0" aria-label="' + html(text(locale, 'Parcours illustratif', 'Illustrative journey')) + '"><div class="seo-explainer-bar"><span class="seo-explainer-brand"><span class="seo-mark" aria-hidden="true"></span>Bump</span><span>' + text(locale, 'Scénario illustratif', 'Illustrative scenario') + '</span></div><div class="seo-flow-sources">' + sources.map(source => '<span>' + html(source) + '</span>').join('') + '</div><div class="seo-flow-join" aria-hidden="true"><svg viewBox="0 0 300 30" preserveAspectRatio="none"><path d="M50 0v12h200V0M150 12v18"/><path class="seo-flow-packet" d="M50 0v12h100v18M150 0v30M250 0v12H150v18"/></svg></div><ol class="seo-flow-steps">' + page.figure.map((step, index) => '<li><span class="seo-flow-number">' + String(index + 1).padStart(2, '0') + '</span><div class="seo-flow-node' + (approval && index === 1 ? ' seo-flow-node--approval' : '') + '"><span class="seo-flow-icon">' + icon(index) + '</span><div><strong>' + html(step) + '</strong><p>' + html(explanations[index]) + '</p>' + (approval && index === 1 ? '<span class="seo-flow-status"><i aria-hidden="true"></i>' + text(locale, 'Validation humaine', 'Human approval') + '</span>' : '') + '</div></div></li>').join('') + '</ol><figcaption><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg>' + text(locale, 'Votre fonctionnement guide la solution.', 'The way you work guides the solution.') + '</figcaption></figure>';
-}
 
 function sectionMarkup(section, index, locale) {
   return '<section id="' + section.id + '" class="seo-section' + (section.example ? ' seo-example' : '') + '"><div class="seo-section-index" aria-hidden="true">' + String(index + 1).padStart(2, '0') + '</div><div class="seo-section-main">' + (section.example ? '<p class="seo-eyebrow">' + text(locale, 'Scénario illustratif', 'Illustrative scenario') + '</p>' : '') + '<h2>' + html(section.title) + '</h2>' + (section.paragraphs || []).map(paragraph => '<p>' + html(paragraph) + '</p>').join('') + (section.items ? '<ul class="seo-list">' + section.items.map(item => '<li>' + html(item) + '</li>').join('') + '</ul>' : '') + (section.table ? '<div class="seo-table-wrap" role="region" aria-label="' + html(section.title) + '" tabindex="0"><table><thead><tr>' + section.table.headers.map(header => '<th scope="col">' + html(header) + '</th>').join('') + '</tr></thead><tbody>' + section.table.rows.map(row => '<tr>' + row.map((cell, i) => '<' + (i ? 'td' : 'th scope="row"') + '>' + html(cell) + '</' + (i ? 'td' : 'th') + '>').join('') + '</tr>').join('') + '</tbody></table></div>' : '') + '</div></section>';
 }
 
+function readingMarkup(page, toc, faq) {
+  const sections = page.sections.map((section, index) => sectionMarkup(section, index, page.locale)).join('');
+  const open = '<article class="seo-article" aria-label="' + html(cleanTitle(page.title)) + '">';
+  const className = 'seo-reading seo-reading--' + page.id;
+  if (page.id === 'faq') return '<div class="' + className + '">' + faq + open + sections + '</article></div>';
+  if (['expertise','software','approach','about'].includes(page.id)) return '<div class="' + className + '">' + open + sections + '</article>' + faq + '</div>';
+  return '<div class="' + className + '">' + toc + open + sections + faq + '</article></div>';
+}
+
 export function renderHtml(page, origin) {
   const locale = page.locale, en = locale === 'en', other = pageFor(page.id, en ? 'fr' : 'en');
-  const brief = homePath(locale) + '?projet=1';
+  const brief = homePath(locale) + '?projet=1', action = storyAction(page);
+  const sound = musicLabels(locale);
+  const music = '<audio src="/audio/timeless-resonance-background.mp3" loop preload="none" playsinline hidden aria-hidden="true" data-bump-background-audio></audio><button type="button" class="bump-background-music" hidden aria-label="' + html(sound.mute) + '"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path data-music-waves d="' + MUSIC_WAVES + '"/></svg><span class="bump-music-status" data-music-status role="status"></span></button>';
   const expertiseMenu = '<details class="seo-expertise-menu"><summary class="' + (page.id === 'expertise' || page.type === 'service' ? 'is-current' : '') + '">' + text(locale, 'Expertises', 'Expertise') + '<svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="m3 6 5 5 5-5"/></svg></summary><div class="seo-expertise-panel"><p>' + text(locale, 'Nos expertises', 'Our expertise') + '</p>' + expertiseLinks(locale).map((item, index) => '<a href="' + item.path + '"' + (page.id === item.id ? ' aria-current="page"' : '') + '><span aria-hidden="true">' + String(index + 1).padStart(2, '0') + '</span><span>' + html(item.label) + '</span>' + arrow + '</a>').join('') + link('expertise', locale, text(locale, 'Toutes les expertises', 'All expertise'), 'seo-expertise-all') + '</div></details>';
   const nav = '<a class="seo-brand" href="' + homePath(locale) + '" aria-label="Bump — ' + (en ? 'home' : 'accueil') + '">' + wordmark + '</a><nav aria-label="' + text(locale, 'Navigation principale', 'Main navigation') + '">' + expertiseMenu + link('approach', locale, text(locale, 'Notre approche', 'Our approach'), page.id === 'approach' ? 'is-current' : '') + link('about', locale, 'Bump', page.id === 'about' ? 'is-current' : '') + '</nav><div class="seo-header-actions"><a class="seo-language" href="' + other.path + '" lang="' + other.locale + '" hreflang="' + languageTag(other.locale) + '" aria-label="' + (en ? 'Passer en français' : 'Switch to English') + '">' + (en ? 'FR' : 'EN') + '</a><a class="seo-project" aria-label="' + text(locale, 'Parlons de votre projet', 'Let’s talk about your project') + '" href="' + brief + '"><span>' + text(locale, 'Parlons de votre projet', 'Let’s talk about your project') + '</span>' + arrow + '</a></div>';
   const services = page.id === 'expertise' ? '<section class="seo-service-directory" id="domaines"><div class="seo-directory-heading"><p class="seo-eyebrow">' + text(locale, 'Trouver votre point de départ', 'Find your starting point') + '</p><h2>' + text(locale, 'Le bon levier, au bon endroit.', 'The right change, in the right place.') + '</h2></div>' + ['workflow', 'ai', 'software', 'security'].map((id, index) => {
@@ -152,7 +115,7 @@ export function renderHtml(page, origin) {
     return '<a href="' + item.path + '"><span>' + html(item.eyebrow) + '</span><strong>' + html(cleanTitle(item.title)) + '</strong>' + arrow + '</a>';
   }).join('') + '</div></section>';
   const footer = '<footer class="seo-footer"><div><a class="seo-brand" href="' + homePath(locale) + '">' + wordmark + '</a><p>' + text(locale, 'Donnons de l’élan à votre entreprise.', 'Give your business fresh momentum.') + '</p><span>Montréal, Québec</span></div><nav aria-label="' + text(locale, 'Nos services', 'Our services') + '"><span>' + text(locale, 'Expertises', 'Expertise') + '</span>' + link('workflow', locale, text(locale, 'Automatisation des processus', 'Workflow automation')) + link('ai', locale, text(locale, 'Intégration IA', 'AI integration')) + link('software', locale, text(locale, 'Logiciels sur mesure', 'Custom software')) + link('security', locale, text(locale, 'Cybersécurité', 'Cybersecurity')) + '</nav><nav aria-label="Bump"><span>Bump</span>' + link('expertise', locale, text(locale, 'Toutes les expertises', 'All expertise')) + link('approach', locale, text(locale, 'Notre approche', 'Our approach')) + link('about', locale, text(locale, 'À propos', 'About')) + link('faq', locale, text(locale, 'Questions fréquentes', 'Frequently asked questions')) + '</nav><div class="seo-colophon"><span>© ' + site.updated.slice(0, 4) + ' Bump</span><a href="#contenu">' + text(locale, 'Revenir en haut', 'Back to top') + ' ' + arrow.replace('<svg ', '<svg style="transform:rotate(-45deg);vertical-align:middle" ') + '</a></div></footer>';
-  return '<!doctype html><html lang="' + languageTag(locale) + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f4f1e8"><link rel="icon" href="' + site.logo + '" type="image/svg+xml"><link rel="preload" href="/bump/fonts/im-fell-english-regular.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="/bump/seo/pages.css">' + headMarkup(page, origin) + '<script type="module" src="/bump/seo/pages.js"></script></head><body class="seo-page" data-accent="' + page.accent + '"><a class="seo-skip" href="#contenu">' + text(locale, 'Aller au contenu', 'Skip to content') + '</a><header class="seo-header">' + nav + '</header><main id="contenu"><div class="seo-breadcrumb"><a href="' + homePath(locale) + '">' + text(locale, 'Accueil', 'Home') + '</a><span aria-hidden="true">/</span>' + (page.type === 'service' ? link('expertise', locale, text(locale, 'Expertises', 'Expertise')) + '<span aria-hidden="true">/</span>' : '') + '<span>' + html(page.eyebrow.replace(/^\d+ — /, '')) + '</span></div><section class="seo-hero"><div class="seo-hero-copy"><p class="seo-eyebrow">' + html(page.eyebrow) + '</p><h1>' + page.title.split('\n').map(html).join('<br>') + '</h1><p class="seo-hero-lead">' + html(page.lead) + '</p><div class="seo-hero-links"><a class="seo-primary" href="' + (page.id === 'expertise' ? '#domaines' : '#en-clair') + '">' + text(locale, page.id === 'expertise' ? 'Explorer les expertises' : 'Comprendre l’approche', page.id === 'expertise' ? 'Explore our expertise' : 'Understand the approach') + arrow + '</a><span>Montréal · Québec</span></div></div>' + figure(page) + '</section><section class="seo-answer" id="en-clair"><span class="seo-eyebrow">' + text(locale, 'En clair', 'At a glance') + '</span><p>' + html(page.answer) + '</p></section>' + services + '<div class="seo-reading">' + toc + '<article class="seo-article" aria-label="' + html(cleanTitle(page.title)) + '">' + page.sections.map((section, index) => sectionMarkup(section, index, locale)).join('') + faq + '</article></div>' + related + '<section class="seo-next"><p class="seo-eyebrow">' + text(locale, 'Votre prochain élan', 'Your next step') + '</p><h2>' + text(locale, 'Et si on partait<br>de votre réalité ?', 'What if we started<br>with your reality?') + '</h2><a href="' + brief + '" class="seo-primary">' + text(locale, 'Parlons de votre projet', 'Let’s talk about your project') + arrow + '</a></section></main>' + footer + '</body></html>';
+  return '<!doctype html><html lang="' + languageTag(locale) + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f4f1e8"><link rel="icon" href="' + site.logo + '" type="image/svg+xml"><link rel="preload" href="/bump/fonts/im-fell-english-regular.ttf" as="font" type="font/ttf" crossorigin><link rel="stylesheet" href="/bump/seo/pages.css"><link rel="stylesheet" href="/bump/music.css">' + headMarkup(page, origin) + '<script type="module" src="/bump/seo/pages.js"></script></head><body class="seo-page seo-page--' + page.id + '" data-accent="' + page.accent + '"><a class="seo-skip" href="#contenu">' + text(locale, 'Aller au contenu', 'Skip to content') + '</a><header class="seo-header">' + nav + '</header><main id="contenu"><div class="seo-breadcrumb"><a class="seo-experience-return" href="' + homePath(locale) + '#' + (page.chapter || 'hero') + '"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg>' + text(locale, 'Retour au site', 'Back to the site') + '</a><span aria-hidden="true">/</span>' + (page.type === 'service' ? link('expertise', locale, text(locale, 'Expertises', 'Expertise')) + '<span aria-hidden="true">/</span>' : '') + '<span>' + html(page.eyebrow.replace(/^\d+ — /, '')) + '</span></div><section class="seo-hero"><div class="seo-hero-copy"><p class="seo-eyebrow">' + html(page.eyebrow) + '</p><h1>' + page.title.split('\n').map(html).join('<br>') + '</h1><p class="seo-hero-lead">' + html(page.lead) + '</p><div class="seo-hero-links"><a class="seo-primary" href="' + action.href + '">' + html(action.label) + arrow + '</a><span>Montréal · Québec</span></div></div>' + renderStoryFigure(page) + '</section><section class="seo-answer" id="en-clair"><span class="seo-eyebrow">' + text(locale, 'En clair', 'At a glance') + '</span><p>' + html(page.answer) + '</p></section>' + services + readingMarkup(page, toc, faq) + related + '<section class="seo-next"><p class="seo-eyebrow">' + text(locale, 'Votre prochain élan', 'Your next step') + '</p><h2>' + html(action.next) + '</h2><a href="' + brief + '" class="seo-primary">' + text(locale, 'Parlons de votre projet', 'Let’s talk about your project') + arrow + '</a></section></main>' + footer + music + '</body></html>';
 }
 
 export function renderLlms(origin) {

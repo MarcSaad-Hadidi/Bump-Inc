@@ -6,15 +6,15 @@ import {expertiseLinks} from '../src/bump/seo/navigation.js';
 import {listPages, pageFor} from '../src/bump/seo/pages.js';
 import {renderHtml} from '../src/bump/seo/render.js';
 
-function clockHarness() {
+function clockHarness(count = 3) {
   let time = 0, nextId = 0;
   const timers = new Map();
   const items = count => Array.from({length: count}, () => {
     const classes = new Set();
     return {classes, classList: {toggle(name, value) {value ? classes.add(name) : classes.delete(name);}}};
   });
-  const steps = items(3), sources = items(3);
-  const figure = {dataset: {}, querySelectorAll(selector) {return selector.includes('steps') ? steps : sources;}};
+  const steps = items(count), sources = items(3);
+  const figure = {dataset: {}, querySelectorAll(selector) {return selector.includes('steps') ? steps : selector.includes('sources') ? sources : [];}};
   const player = createDiagramPlayer(figure, {
     clock: {now: () => time},
     schedule(fn, delay) {const id = ++nextId; timers.set(id, {fn, at: time + delay}); return id;},
@@ -60,6 +60,21 @@ test('inspection and a hidden document preserve the remaining stage time; reduce
   assert.equal(ui.figure.dataset.flowPhase, '4'); assert.equal(ui.timers.size, 0);
   ui.player.setReduced(false); assert.equal(ui.figure.dataset.flowPhase, '0'); assert.equal(ui.timers.size, 1);
   ui.player.destroy(); ui.player.setVisible(true); assert.equal(ui.timers.size, 0);
+});
+
+test('the method notebook visits all five steps, then completes and repeats', () => {
+  const ui = clockHarness(5); ui.player.setVisible(true); ui.advance(1600);
+  for (let phase = 1; phase <= 5; phase++) {
+    assert.equal(ui.figure.dataset.flowPhase, String(phase));
+    assert(ui.steps[phase - 1].classes.has('is-active'));
+    assert.equal(ui.figure.dataset.flowComplete, 'false');
+    ui.advance(2400);
+  }
+  assert.equal(ui.figure.dataset.flowComplete, 'true');
+  assert(ui.steps.every(step => step.classes.has('is-done')));
+  ui.advance(2800); assert.equal(ui.figure.dataset.flowPhase, '0');
+  ui.player.setReduced(true); assert.equal(ui.figure.dataset.flowComplete, 'true');
+  assert.equal(ui.timers.size, 0); ui.player.destroy();
 });
 
 const walk = node => [node, ...(node.childNodes || []).flatMap(walk)];

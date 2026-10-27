@@ -59,9 +59,11 @@ export function buildSeo({directory = 'public', homeFile = 'src/reference-shell.
   write('/bump/seo/landing-meta.json', JSON.stringify(landingRecords) + '\n');
   write('/bump/seo/routes.json', JSON.stringify(listPages().map(page => ({id: page.id, path: page.path, locale: page.locale, html: htmlAsset(page), markdown: markdownPath(page.path)})), null, 2) + '\n');
   write('/404.html', '<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><title>Page introuvable | Bump</title><link rel="stylesheet" href="/bump/seo/pages.css"></head><body class="seo-not-found"><main><p class="seo-eyebrow">Bump · 404</p><h1>Cette page reste<br>à inventer.</h1><p>La page demandée est introuvable.<br>The requested page could not be found.</p><a class="seo-primary" href="/expertises">Découvrir nos expertises <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a><p><a href="/en/expertise">Explore our expertise <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></p></main></body></html>');
-  writeFileSync(resolve(directory, 'bump/seo/pages.css'), readFileSync('src/bump/seo/pages.css', 'utf8') + '\n' + readFileSync('src/bump/ui/glass.css', 'utf8'));
+  writeFileSync(resolve(directory, 'bump/seo/pages.css'), readFileSync('src/bump/seo/pages.css', 'utf8') + '\n' + readFileSync('src/bump/seo/stories.css', 'utf8') + '\n' + readFileSync('src/bump/ui/glass.css', 'utf8'));
   copyFileSync('src/bump/seo/client.js', resolve(directory, 'bump/seo/pages.js'));
   copyFileSync('src/bump/seo/diagram-motion.js', resolve(directory, 'bump/seo/diagram-motion.js'));
+  copyFileSync('src/bump/ui/musicController.js', resolve(directory, 'bump/background-music.js'));
+  copyFileSync('src/bump/ui/music.css', resolve(directory, 'bump/music.css'));
   console.log('Built ' + listPages().length + ' bilingual content routes and their markdown/discovery files.');
 }
 

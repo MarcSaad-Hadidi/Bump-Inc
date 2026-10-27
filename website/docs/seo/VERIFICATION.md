@@ -209,3 +209,41 @@ behavior remain. Browser checks confirmed the actual computed alpha/filter,
 ivory scene ink, a 30px desktop radius and the English mobile action fully
 inside a 390px viewport. Both desktop FR and mobile EN open the project dialog.
 The existing 190 tests and HTTP smoke pass; no geometry or scroll code changed.
+
+## Eight distinct editorial stories and landing finishing — 2026-10-27
+
+- All eight topics now have their own HTML/SVG story in both languages:
+  expertise compass, request/approval/synchronization workflow, sourced AI
+  summary, operations workspace, scoped security network, five-step mission
+  notebook, Montreal/two-entrepreneur composition and real FAQ answer preview.
+  Article compositions, primary reading actions and next-step headings vary
+  by topic. Existing substantive copy and structured/Markdown content remain.
+- The FAQ answer layers reserve their longest height, crossfade without moving
+  the page and open the actual matching question on activation. Five method
+  steps each receive an active phase. Hover/focus holds the diagram; visibility,
+  page-cache restoration and reduced motion preserve the original clock rules.
+- Landing search now includes all eight canonical localized editorial targets.
+  Editorial breadcrumbs return to the matching assisted chapter entry.
+- React and editorial pages share the same native music controller: explicit
+  on/off preference, quiet supplied audio, tab-local position, blocked autoplay,
+  hidden-tab pause and BFCache restore. Browser confirmed actual audio playing
+  across editorial navigation, and mute retained after switching FR to EN.
+- Removed text-indent, transform and drop-cap padding from each painting's
+  narrative wrapper and paragraph. Actual desktop arrivals for all six show
+  indent 0px, transform none and aligned first/subsequent lines. Paragraph
+  bottoms were 905.8–908.3px inside a 936px viewport. Mobile IA and security
+  bottoms were 765.7–766.0px inside 844px. Typography remains naturally wrapped.
+- Company Flow's text is geometrically centered independently of the logo.
+  Its symbol's separate CSS translate preserves centering during the existing
+  wave animation. Montreal's surrounding popover uses the shared 9% tint,
+  blur(12px) and saturate(150%); its sharp map/globe and interactions remain.
+- Browser reviewed all eight FR hero stories on desktop and narrow viewports.
+  At 320px all routes have document scroll width equal to client width;
+  software's sidebar becomes a top row, AI sources become a row and stage notes
+  stack. Long FAQ text and English recommendations remain inside the figure.
+  Tablet/English checks and local console checks supplement the desktop pass.
+  The browser's own extension metadata errors are excluded from app errors.
+- Regression suite includes shared music lifecycle/races, unique story/anchor
+  coverage, localized search targets and the five-stage clock. Reduced-motion
+  completion is verified by deterministic clock tests plus CSS disabling motion.
+  Chrome responsive/fallback checks do not demonstrate native iOS/WebGL FPS.

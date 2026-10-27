@@ -1,5 +1,9 @@
 // Progressive enhancement only: all page content and links work without JS.
 import {installDiagramMotion} from './diagram-motion.js';
+import {installBackgroundMusic} from '../background-music.js';
+const musicTrack = document.querySelector('[data-bump-background-audio]');
+const musicButton = document.querySelector('.bump-background-music');
+if (musicTrack && musicButton) installBackgroundMusic(musicTrack, musicButton);
 let stopDiagrams = installDiagramMotion();
 window.addEventListener('pagehide', () => {stopDiagrams();});
 // Restore the clock when a page is brought back from the browser's page cache.
@@ -18,6 +22,12 @@ for (const menu of document.querySelectorAll('.seo-expertise-menu')) {
 }
 
 const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+for (const link of document.querySelectorAll('.story-faq-questions a')) {
+  link.addEventListener('click', () => {
+    const question = document.getElementById(link.hash.slice(1));
+    if (question?.matches('.seo-faq-item')) {question.hidden = false; question.open = true;}
+  });
+}
 const search = document.querySelector('[data-faq-search]');
 if (search) {
   const questions = [...document.querySelectorAll('.seo-faq-item')];

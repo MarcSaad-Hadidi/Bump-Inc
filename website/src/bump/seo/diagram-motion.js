@@ -2,17 +2,25 @@
 export const FLOW_DURATIONS = [1600, 2400, 2800, 2400, 2800];
 
 export function createDiagramPlayer(figure, {clock = performance, schedule = setTimeout, cancel = clearTimeout} = {}) {
-  const steps = [...figure.querySelectorAll('.seo-flow-steps>li')];
-  const sources = [...figure.querySelectorAll('.seo-flow-sources>span')];
+  const steps = [...figure.querySelectorAll('.seo-flow-steps>li,[data-story-steps]>*')];
+  const sources = [...figure.querySelectorAll('.seo-flow-sources>span,[data-story-sources]>*')];
+  const durations = steps.length === 3 ? FLOW_DURATIONS : [1600,...steps.map(() => 2400),2800];
+  const answers = [...figure.querySelectorAll('[data-story-answer-copy]')];
   let phase = 0, remaining = FLOW_DURATIONS[0], started = 0, timer = null;
   let visible = false, hidden = false, reduced = false, inspecting = false, disposed = false;
   const paint = () => {
     figure.dataset.flowPhase = String(phase);
+    figure.dataset.flowComplete = String(phase === durations.length - 1);
     steps.forEach((step, index) => {
       step.classList.toggle('is-active', phase === index + 1);
       step.classList.toggle('is-done', phase > index + 1);
     });
     sources.forEach(source => source.classList.toggle('is-connected', phase > 0));
+    answers.forEach((answer,index) => {
+      const active = index === Math.min(Math.max(phase - 1,0),answers.length - 1);
+      answer.classList.toggle('is-visible', active);
+      answer.setAttribute('aria-hidden', String(!active));
+    });
   };
   const stop = () => {
     if (timer !== null) {
@@ -28,8 +36,8 @@ export function createDiagramPlayer(figure, {clock = performance, schedule = set
     started = clock.now();
     timer = schedule(() => {
       timer = null;
-      phase = (phase + 1) % FLOW_DURATIONS.length;
-      remaining = FLOW_DURATIONS[phase];
+      phase = (phase + 1) % durations.length;
+      remaining = durations[phase];
       paint(); sync();
     }, remaining);
   };
@@ -44,7 +52,7 @@ export function createDiagramPlayer(figure, {clock = performance, schedule = set
     setInspecting(value) {inspecting = value; sync();},
     setReduced(value) {
       stop(); reduced = value;
-      phase = value ? 4 : 0; remaining = FLOW_DURATIONS[phase];
+      phase = value ? durations.length - 1 : 0; remaining = durations[phase];
       paint(); sync();
     },
     destroy() {stop(); disposed = true;},

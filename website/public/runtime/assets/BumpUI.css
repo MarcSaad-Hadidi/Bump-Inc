@@ -1832,6 +1832,10 @@ html[data-bump-assisted-scroll=true] :is(#sidekick,#retail,#developer,#b2b) .bum
 .bump-background-music[data-state=loading]{opacity:.65}
 @media(max-width:700px){.bump-background-music{right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:40px;height:40px}}
 @media(prefers-reduced-motion:reduce){.bump-background-music{transition:none}}
+.bump-background-music[hidden]{display:none!important}
+.bump-background-music svg{display:block;width:18px;height:18px}
+.bump-music-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.seo-page .seo-colophon{padding-bottom:76px}
 
 /* Fourth phone state uses the same native screen and articulated thumb. */
 .bump-ops-hand[data-ready=false] .bump-ops-screen{visibility:hidden}
@@ -2710,11 +2714,11 @@ html[data-bump-assisted-scroll=true] :is(#sidekick,#retail,#developer,#b2b) .bum
 .company-flow-link{stroke:#b47c5e33;stroke-width:2}
 .company-flow-beam{stroke:#b85231;stroke-width:3;stroke-linecap:round;stroke-dasharray:24 100;stroke-dashoffset:24;opacity:0}
 [data-flow-phase=beam] .company-flow-beam{animation:company-flow-send .6s cubic-bezier(.22,1,.36,1) both}
-.company-flow-hub{position:absolute;left:25%;top:50%;width:35%;height:17%;display:flex;align-items:center;justify-content:flex-end;gap:1.5cqw;padding:1.5cqw 1.4cqw 1.5cqw 2cqw;border:1px solid #b28e6e33;border-radius:999px;transform:translate(-50%,-50%);background:#fff9efc9;box-shadow:0 12px 25px -17px #8e4d324d;transition:box-shadow .3s}
-.company-flow-hub>div{display:flex;flex-direction:column;text-align:right;gap:.4cqw}
+.company-flow-hub{position:absolute;left:25%;top:50%;width:35%;height:17%;display:flex;align-items:center;justify-content:center;gap:0;padding:1.5cqw 1.4cqw;border:1px solid #b28e6e33;border-radius:999px;transform:translate(-50%,-50%);background:#fff9efc9;box-shadow:0 12px 25px -17px #8e4d324d;transition:box-shadow .3s}
+.company-flow-hub>div{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.4cqw;width:100%;padding-inline:4.8cqw}
 .company-flow-hub strong{font:400 2.4cqw/1 var(--bump-serif)}
 .company-flow-hub span{font:1.6cqw/1.2 var(--bump-serif);color:#82725b}
-.company-flow-hub .bump-brand-mark{width:4.2cqw;height:4.2cqw;background:#22513d;flex:none}
+.company-flow-hub .bump-brand-mark{position:absolute;right:1.4cqw;top:50%;translate:0 -50%;width:4.2cqw;height:4.2cqw;background:#22513d;flex:none}
 [data-flow-phase=received] .company-flow-hub{box-shadow:0 0 0 3px #c2906220,0 10px 28px -12px #ac50364d}
 .company-flow-pill{position:absolute;left:var(--pill-x);top:var(--pill-y);width:28%;height:15.5%;display:flex;align-items:center;gap:1.2cqw;padding:1cqw;border-radius:999px;transform:translate(-50%,-50%);background:#e8e1d67a;border:1px solid #ae8d7122;text-align:left;transition:left .55s cubic-bezier(.22,1,.36,1),top .55s cubic-bezier(.22,1,.36,1),opacity .4s,background .4s;cursor:help}
 .company-flow-pill[data-selected=true]{background:#fffaf2;box-shadow:0 10px 22px -17px #874a3540}
@@ -2773,6 +2777,8 @@ html[data-bump-assisted-scroll=true] :is(#sidekick,#retail,#developer,#b2b) .bum
  :where(html[data-bump-height-max-500]) .company-flow-pill strong{font-size:15px}:where(html[data-bump-height-max-500]) .company-flow-pill small{font-size:12px}
  :where(html[data-bump-height-max-500]) .company-flow-icon{width:32px;height:32px}:where(html[data-bump-height-max-500]) .company-flow-icon svg{width:21px;height:21px}
 }
+/* Equal side reserves keep the wording centred independently of the logo. */
+@media(max-width:939px){.company-flow-hub{gap:0;padding-inline:18px}.company-flow-hub>div{padding-inline:44px}.company-flow-hub .bump-brand-mark{right:18px}}
 
 :is(.bump-workflow-import,.bump-tools-import,.bump-security-import,.bump-method-import,.bump-vision-import,.bump-port-import) .iso{
   --anatomy-page:#0b0b0b;--anatomy-card:#131313;--anatomy-text:#a3a3a3;--anatomy-strong:#e6e6e6;--anatomy-muted:#6e6e6e;
@@ -3301,6 +3307,11 @@ html[data-bump-stable-viewport] .static-fallback-wrapper{transform:translate3d(c
 :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1{max-width:40ch;font-family:var(--bump-serif);font-size:clamp(24px,min(2.2vw,calc(var(--bump-viewport-unit,1svh) * 4.4)),34px);font-weight:500;line-height:1.28;letter-spacing:0;text-align:left;text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:none}
 :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1 p{margin:0;padding:0;font:inherit;letter-spacing:inherit;text-align:inherit;color:inherit;max-width:100%}
 :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1 p::first-letter{font:inherit!important;line-height:inherit!important;letter-spacing:inherit!important;float:none!important;margin:0!important;padding:0!important;color:inherit}
+/* The retained drop-cap class also indents/translates its whole wrapper.
+   Reset that wrapper, not only the paragraph's decorative first letter. */
+:is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1{padding:0!important;text-indent:0!important;transform:none!important}
+:is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1 p{text-indent:0!important;transform:none!important}
+:is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1::first-letter{font:inherit!important;line-height:inherit!important;letter-spacing:inherit!important;float:none!important;margin:0!important;padding:0!important;color:inherit}
 @media(min-width:940px){
  :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme]{box-sizing:border-box;display:flex!important;flex-direction:column;justify-content:space-between;height:calc(var(--bump-viewport-unit,1svh) * 140);min-height:calc(var(--bump-viewport-unit,1svh) * 140);padding-top:calc(var(--bump-painting-lead,0px) + var(--bump-header-space,90px) + 18px);padding-bottom:max(28px,calc(calc(var(--bump-viewport-unit,1svh) * 40) - var(--bump-painting-lead,0px) + 28px))}
  :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme]>h2{font-size:clamp(52px,min(8vw,calc(var(--bump-viewport-unit,1svh) * 13)),132px)!important;line-height:1.08!important;margin:0!important;padding:0!important;flex:0 0 auto;justify-content:flex-start}
@@ -3334,6 +3345,12 @@ html[data-bump-stable-viewport] .static-fallback-wrapper{transform:translate3d(c
 .bump-header.bump-hero-header[data-tone=light] .bump-project-button{border-color:#4a49344d}
 .bump-header.bump-hero-header[data-tone] .bump-project-button:hover{background:var(--bump-glass-hover);box-shadow:var(--bump-glass-shadow)}
 .bump-header.bump-hero-header[data-tone] .bump-project-button:focus-visible{outline:2px solid var(--bump-glass-ink);outline-offset:3px}
+/* Keep the globe/map itself sharp; its surrounding window is clear glass. */
+.bump-header .bump-location-popover{background:var(--bump-glass-fill);-webkit-backdrop-filter:var(--bump-glass-filter);backdrop-filter:var(--bump-glass-filter);border-color:var(--bump-glass-edge);box-shadow:var(--bump-glass-shadow);color:var(--bump-glass-ink);text-shadow:var(--bump-glass-text-shadow)}
+.bump-header .bump-location-popover :is(.bump-location-copy>div>span,.bump-location-close,.bump-location-foot,.bump-location-foot a,.bump-globe-replay,.bump-globe-attribution){color:var(--bump-glass-muted)}
+.bump-header .bump-location-popover .bump-location-foot{border-color:var(--bump-glass-line)}
+.bump-header .bump-location-popover :is(.bump-location-close,.bump-globe-replay):hover{background:var(--bump-glass-hover);color:var(--bump-glass-ink)}
+.bump-header[data-tone=light] .bump-location-popover{border-color:#4a49344d}
 .seo-expertise-panel>p,.seo-expertise-panel>a>span:first-child{color:var(--bump-glass-muted)}
 .seo-header nav .seo-expertise-panel>a{color:var(--bump-glass-ink)}
 .seo-header nav .seo-expertise-panel>a:is(:hover,:focus-visible),.seo-header nav .seo-expertise-panel>a[aria-current=page]{background:var(--bump-glass-hover);color:var(--bump-glass-ink)}
@@ -3354,4 +3371,4 @@ html[data-bump-stable-viewport] .static-fallback-wrapper{transform:translate3d(c
 .bump-contact .bump-contact-location{border-color:var(--bump-glass-line)}
 html[data-bump-tone=dark] .bump-contact .bump-action{background:#fff9ed;color:#2a3529;border-color:#fff9ed;text-shadow:none}
 html[data-bump-tone=dark] .bump-contact .bump-action:hover{background:#fffef9}
-@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.bump-header .bump-hero-dropdown,.bump-contact .bump-dialog-inner,.seo-expertise-panel,.bump-header.bump-hero-header[data-tone] .bump-project-button{background:#f4f1e8f5}.bump-header[data-tone=dark] .bump-hero-dropdown,html[data-bump-tone=dark] .bump-contact .bump-dialog-inner,.bump-header.bump-hero-header[data-tone=dark] .bump-project-button{background:#233126f5}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.bump-header .bump-hero-dropdown,.bump-contact .bump-dialog-inner,.seo-expertise-panel,.bump-header .bump-location-popover,.bump-header.bump-hero-header[data-tone] .bump-project-button{background:#f4f1e8f5}.bump-header[data-tone=dark] .bump-hero-dropdown,html[data-bump-tone=dark] .bump-contact .bump-dialog-inner,.bump-header[data-tone=dark] .bump-location-popover,.bump-header.bump-hero-header[data-tone=dark] .bump-project-button{background:#233126f5}}

@@ -1,6 +1,6 @@
 import {installTouchInspection} from './touchInspection.js';
 import {installLandingMetadata} from '../seo/landing.js';
-import {expertiseLinks} from '../seo/navigation.js';
+import {expertiseLinks,searchEditorialPages} from '../seo/navigation.js';
 import{updateFallbackContrast}from'/runtime/assets/BumpContrast.js';
 import {r as React,j as R} from '/runtime/assets/components-BdJai906.js';
 import {r as useChapterNav,a as useSceneStore} from '/runtime/assets/(_locale).editions.winter2026-CdSmWtXg.js';
@@ -74,6 +74,7 @@ export default function BumpNav({navItems}){
   React.useEffect(()=>{if(search)searchInput.current?.focus();},[atHero,search]);
   const normalize=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
   const results=content.chapters.flatMap((c,i)=>c.groups.flatMap(g=>g.cards.map(x=>({...x,index:i+1,chapter:c})))).filter(c=>normalize((c.title+' '+c.descriptionHtml+' '+c.chapter.title).replace(/<[^>]*>/g,' ')).includes(normalize(query.trim())));
+  const pageResults=searchEditorialPages(query,english?'en':'fr');
   const heroMenu=h('div',{className:'bump-hero-nav-anchor',ref:menuAnchor},
     h('button',{type:'button',ref:menuButton,className:'bump-nav-trigger','aria-expanded':menu,'aria-controls':'bump-menu',onClick:()=>{setSearch(false);setMenu(!menu);},onKeyDown:event=>{if(event.key==='ArrowDown'){event.preventDefault();setSearch(false);setMenu(true);requestAnimationFrame(()=>menuAnchor.current?.querySelector('a')?.focus());}}},'Expertises',h('img',{src:'/runtime/media/25177a62ed-global-16-shrevon-down.svg',width:12,height:12,alt:''})),
     h(MotionPanel,{open:menu,id:'bump-menu',className:'bump-hero-dropdown',role:'navigation','aria-label':english?'Expertise and chapters':'Expertises et chapitres'},
@@ -100,7 +101,7 @@ export default function BumpNav({navItems}){
         searchIcon(),h('input',{ref:searchInput,type:'search',value:query,onChange:event=>setQuery(event.target.value),placeholder:'Que recherchez-vous ?','aria-label':'Rechercher un service',autoComplete:'off'}),
         h('button',{type:'submit','aria-label':'Afficher les résultats',disabled:!query.trim()},h(ArrowUpRight,{})),
         h('button',{type:'button',className:'bump-search-close','aria-label':'Fermer la recherche',onClick:()=>{setSearch(false);searchButton.current?.focus();}},h(CloseIcon,{}))),
-      h('div',{className:'bump-hero-search-results'+(query.trim()?' has-results':''),'aria-label':'Résultats de recherche','aria-hidden':!query.trim()},h('div',{},query.trim()?(results.length?results.slice(0,8).map(item=>h('div',{key:item.handle},h('span',{},item.chapter.divisionLabel),h(ChapterLink,{item:{handle:item.chapter.handle,title:item.title},index:item.index,onNavigate:()=>setSearch(false)}))):h('p',{role:'status'},'Aucun résultat. Essayez un autre terme.')):null))));
+      h('div',{className:'bump-hero-search-results'+(query.trim()?' has-results':''),'aria-label':'Résultats de recherche','aria-hidden':!query.trim()},h('div',{},query.trim()?(pageResults.length||results.length?[...pageResults.map(item=>h('div',{key:item.path},h('span',{},english?'Explore in detail':'Découvrir en détail'),h('a',{href:item.path,onClick:()=>setSearch(false)},item.label))),...results.slice(0,Math.max(2,8-pageResults.length)).map(item=>h('div',{key:item.handle},h('span',{},item.chapter.divisionLabel),h(ChapterLink,{item:{handle:item.chapter.handle,title:item.title},index:item.index,onNavigate:()=>setSearch(false)})))]:h('p',{role:'status'},'Aucun résultat. Essayez un autre terme.')):null))));
   return h(React.Fragment,{},h('div',{className:'bump-opening-progress',role:'status'},h('span',{},'L’élan se prépare'),h('span',{className:'bump-opening-track','aria-hidden':true},h('i',{}))),h('a',{className:'bump-skip',href:'#main-content'},'Aller au contenu'),h('header',{className:'bump-header bump-hero-header','data-hero':atHero,'data-tone':tone},
     h('a',{className:'bump-nav-logo',href:english?'/en':'/',onClick:e=>home.handleClick(e,0),'aria-label':'Bump — accueil'},h('span',{className:'bump-brand-mark','aria-hidden':true}),h('span',{},'Bump')),h(LocationPopover,{onOpen:()=>{setMenu(false);setSearch(false);}}),
     h('nav',{'aria-label':'Navigation principale',className:'bump-top-links'},heroMenu,heroSearch),

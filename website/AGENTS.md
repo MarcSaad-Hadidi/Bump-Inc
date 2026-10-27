@@ -1,3 +1,20 @@
+# Distinct editorial stories and shared finishing fixes — 2026-10-27
+
+Each of the eight editorial topics needs its own composition, explanatory UI,
+animation and story in French and English. Avoid one repeated graph/template.
+Use native HTML/SVG, meaningful business copy and an explicit illustrative label;
+preserve all substantive content, metadata and honest future-agent claims.
+Connect these pages through landing search/expertise navigation and a chapter
+return link. Share the landing music preference, quiet track, icon control and
+tab-local playback position across editorial navigation and browser history.
+Remove retained drop-cap text-indent, padding and translation from the wrapper
+AND paragraph of all six painting introductions, without moving scroll stops.
+Center Company Flow hub text independently of its right-hand logo. Use the
+same transparent blurred glass on the Montreal popover while keeping its map
+sharp and preserving its existing close/replay interactions.
+Verify desktop/mobile, FR/EN, animation stages and reduced motion, then publish
+on the existing GPT Site and update PR33. Do not merge automatically.
+
 # Project button glass — 2026-10-26
 
 The header's Parlons de votre projet button must use the same transparent,

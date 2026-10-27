@@ -11,11 +11,11 @@
 .company-flow-link{stroke:#b47c5e33;stroke-width:2}
 .company-flow-beam{stroke:#b85231;stroke-width:3;stroke-linecap:round;stroke-dasharray:24 100;stroke-dashoffset:24;opacity:0}
 [data-flow-phase=beam] .company-flow-beam{animation:company-flow-send .6s cubic-bezier(.22,1,.36,1) both}
-.company-flow-hub{position:absolute;left:25%;top:50%;width:35%;height:17%;display:flex;align-items:center;justify-content:flex-end;gap:1.5cqw;padding:1.5cqw 1.4cqw 1.5cqw 2cqw;border:1px solid #b28e6e33;border-radius:999px;transform:translate(-50%,-50%);background:#fff9efc9;box-shadow:0 12px 25px -17px #8e4d324d;transition:box-shadow .3s}
-.company-flow-hub>div{display:flex;flex-direction:column;text-align:right;gap:.4cqw}
+.company-flow-hub{position:absolute;left:25%;top:50%;width:35%;height:17%;display:flex;align-items:center;justify-content:center;gap:0;padding:1.5cqw 1.4cqw;border:1px solid #b28e6e33;border-radius:999px;transform:translate(-50%,-50%);background:#fff9efc9;box-shadow:0 12px 25px -17px #8e4d324d;transition:box-shadow .3s}
+.company-flow-hub>div{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.4cqw;width:100%;padding-inline:4.8cqw}
 .company-flow-hub strong{font:400 2.4cqw/1 var(--bump-serif)}
 .company-flow-hub span{font:1.6cqw/1.2 var(--bump-serif);color:#82725b}
-.company-flow-hub .bump-brand-mark{width:4.2cqw;height:4.2cqw;background:#22513d;flex:none}
+.company-flow-hub .bump-brand-mark{position:absolute;right:1.4cqw;top:50%;translate:0 -50%;width:4.2cqw;height:4.2cqw;background:#22513d;flex:none}
 [data-flow-phase=received] .company-flow-hub{box-shadow:0 0 0 3px #c2906220,0 10px 28px -12px #ac50364d}
 .company-flow-pill{position:absolute;left:var(--pill-x);top:var(--pill-y);width:28%;height:15.5%;display:flex;align-items:center;gap:1.2cqw;padding:1cqw;border-radius:999px;transform:translate(-50%,-50%);background:#e8e1d67a;border:1px solid #ae8d7122;text-align:left;transition:left .55s cubic-bezier(.22,1,.36,1),top .55s cubic-bezier(.22,1,.36,1),opacity .4s,background .4s;cursor:help}
 .company-flow-pill[data-selected=true]{background:#fffaf2;box-shadow:0 10px 22px -17px #874a3540}
@@ -57,3 +57,5 @@
  .company-flow-pill strong{font-size:15px}.company-flow-pill small{font-size:12px}
  .company-flow-icon{width:32px;height:32px}.company-flow-icon svg{width:21px;height:21px}
 }
+/* Equal side reserves keep the wording centred independently of the logo. */
+@media(max-width:939px){.company-flow-hub{gap:0;padding-inline:18px}.company-flow-hub>div{padding-inline:44px}.company-flow-hub .bump-brand-mark{right:18px}}

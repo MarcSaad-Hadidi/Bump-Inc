@@ -6,7 +6,17 @@ données Search Console du domaine commercial. Les scores de fournisseurs ont
 des périmètres et rubriques différents ; ils ne mesurent pas un classement
 mondial, des conversions ou une part de citations.
 
-Résultats finaux de la **publication 64** :
+Dernière passe : **publication 72**, mini FAQ et cas illustratifs, **207 tests**.
+Le CLS de l’accueil est désormais **0,000 en FR et EN** dans GeoDaddy v72.
+Les avertissements TBT 208 / 254 ms restent visibles ; aucun score global
+parfait n’est revendiqué. Le catalogue compte **20 routes** ; AEOTester a
+audité ces 20 pages à **125/127, 98 %** (v65, contenu inchangé ensuite).
+AIOSCAN v71 : **90/B**, Pishe : **SEO 83 / IA 90**, GeoDaddy v72 :
+**GEO 89 / global 74**, performance 96. Les audits précédents restent ci-dessous.
+[Preuves de cette passe](home-stability/VERIFICATION.md) et
+[informations officielles requises](../../OFFICIAL-INFORMATION.md).
+
+Checkpoint précédent de la **publication 64** :
 [vérification publiée](final/VERIFICATION.md),
 [rapport AEOTester des 18 pages](final/aeotester-report.md) et preuves brutes
 dans `final/`. **203 tests**, AEO **125/127 (98 %)**, SEO accueil **100/100**.

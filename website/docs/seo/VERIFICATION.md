@@ -3,7 +3,20 @@ explicitly authorized. Prepare it on fresh main, preserve Clarity, icons and
 link previews, and do not merge automatically. Earlier PR gating below is
 historical and superseded by this instruction.
 
-Latest verification (2026-10-27, publication 64): **203 tests passed**;
+Latest verification (2026-10-27, publication 72): **207 tests passed**;
+normal build, HTTP smoke and GPT artifact smoke passed. **20 public FR/EN
+routes** include the short landing FAQ and four explicitly fictional case studies.
+The native document CSS replacement was reproduced and fixed with a stylesheet /
+font readiness gate, with a bounded fallback for stalled fonts. GeoDaddy v72
+measures **CLS 0.000 in both landing editions** (FR LCP/FCP 0.39 s, EN 0.44 s).
+Its TBT 208 / 254 ms warnings remain recorded. No temporary telemetry is shipped.
+AEOTester audited all 20 pages at **125/127 (98%)**; AIOSCAN v71 **90/B**,
+Pishe v71 **SEO 83 / AI 90**, GeoDaddy v72 **GEO 89 / global 74**.
+See [home stability evidence](audits/2026-10-27/home-stability/VERIFICATION.md)
+and the [official-information checklist](OFFICIAL-INFORMATION.md).
+The v64 paragraphs and counts below are historical checkpoints.
+
+Previous checkpoint (2026-10-27, publication 64): **203 tests passed**;
 normal build, HTTP smoke and GPT artifact smoke passed. All **18 public FR/EN
 pages** were audited: **AEOTester 125/127 (98%)**, **Grow My Website 100/100**
 on the homepage, **AIOScan 90/100 (B, 20/21)** and **Pishe SEO 90 / AI 83**.

@@ -36,6 +36,9 @@ conclure sur ce résultat externe ou sur le rendu GPU natif.
   feuilles et des deux polices existantes. Le fond reste noir pendant cette
   préparation ; la scène démarre ensuite avec son ouverture et ses courbes
   habituelles. Aucun délai minimal ni nouvelle animation n’est ajouté.
+  L’attente des polices est plafonnée à 1,5 seconde : une requête qui ne
+  termine jamais laisse alors passer les polices de secours existantes, au
+  lieu de bloquer tout le landing. Un test simule ce cas et un démontage.
 
 Les nouveaux exemples et la FAQ utilisent le contrôleur de scroll existant.
 Des arrêts et lectures supplémentaires sont prévus seulement après la dernière
@@ -43,7 +46,7 @@ animation Bump ; aucun trajet ou moteur concurrent n’est ajouté.
 
 ## Vérification
 
-Build normal, smoke HTTP et **206 tests** réussis, dont la concordance des FAQ
+Build normal, smoke HTTP et **207 tests** réussis, dont la concordance des FAQ
 HTML/Markdown/JSON-LD, les ancres FR/EN des quatre scénarios et la position des
 styles critiques avant le bootstrap. Les sources des modèles importés restent
 identiques aux archives fournies. Le contrôle externe après publication et les

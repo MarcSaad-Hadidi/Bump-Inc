@@ -15,10 +15,15 @@ export function useStartupReady(){
       // A missing optional sheet must not leave the entire landing blank.
       timer=setTimeout(finish,8000);cleanups.push(finish);
     }));
-    Promise.all(waits).then(()=>document.fonts?Promise.all([
-      document.fonts.load('400 24px "EB Garamond"'),
-      document.fonts.load('400 24px "IM FELL English"'),
-    ]).catch(()=>{}):undefined).then(()=>{if(active)setReady(true);});
+    Promise.all(waits).then(()=>active&&document.fonts?new Promise(resolve=>{
+      const timer=setTimeout(resolve,1500);
+      const finish=()=>{clearTimeout(timer);resolve();};
+      cleanups.push(finish);
+      Promise.all([
+        document.fonts.load('400 24px "EB Garamond"'),
+        document.fonts.load('400 24px "IM FELL English"'),
+      ]).catch(()=>{}).then(finish);
+    }):undefined).then(()=>{if(active)setReady(true);});
     return()=>{active=false;cleanups.forEach(cleanup=>cleanup());};
   },[]);
   return ready;

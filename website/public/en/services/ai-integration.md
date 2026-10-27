@@ -3,7 +3,7 @@
 > Integrate AI into business tools and processes with Bump: focused agents, document search, summaries and dashboards, with human approval.
 
 Canonical: __BUMP_ORIGIN__/en/services/ai-integration
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 A focused task. The right information. Decisions that stay in your hands.
 
@@ -52,6 +52,18 @@ Depending on the engagement, deliverables may include use-case scoping, source c
 
 Cyber AI, Developer AI and Workflow AI are part of our future vision for specialized systems. They are not presented as available products. Our current services focus on analysis, development and integration within a defined engagement.
 
+## How do you check an agent against concrete cases?
+
+For an assistant preparing follow-ups to customer requests, one successful run is not enough. Test situations that should trigger a stop, clarification or human recovery too. This starting checklist should be adapted to the engagement; these cases are illustrative and do not represent client results.
+
+| Test case | Behaviour to check |
+| --- | --- |
+| Required information is missing | Ask for clarification instead of inventing data. |
+| Two sources disagree | Present the conflict and sources for review. |
+| A document is restricted for the user | Respect access rights without disclosing protected content. |
+| An action needs approval | Prepare the draft and wait for an explicit decision. |
+| The CRM is unavailable | Report the failure and allow recovery without duplicates. |
+
 ## Frequently asked questions
 
 ### How is an integrated AI agent different from a chatbot?
@@ -69,6 +81,16 @@ Not necessarily. We assess integration options for existing tools first. API acc
 ### How do we know whether an AI integration is useful?
 
 Compare its results on representative cases against defined criteria: quality, review time, errors, usage cost and usefulness to the team. A pilot supports that decision before a broader rollout.
+
+### How do you test an AI agent before launch?
+
+Define representative cases, expected results and errors to detect. Check the sources used, access permissions, approval requests and situations in which the agent must stop. Bump agrees on these criteria with your team; a successful demonstration does not replace validation.
+
+## Further reading
+
+- [NIST — AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — A voluntary framework for examining risks in the design, use and evaluation of AI systems.
+
+Published by Bump · Technology consulting in Montréal.
 
 ## Related
 

@@ -3,7 +3,7 @@
 > Fondée par deux entrepreneurs à Montréal, Bump aide les PME à gagner en efficacité, en intelligence et en sécurité grâce à des solutions technologiques adaptées.
 
 Canonical: __BUMP_ORIGIN__/a-propos
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Donnons de l’élan à votre entreprise.
 
@@ -46,6 +46,8 @@ Bump a été fondée à Montréal, au Québec. Sa clientèle initiale est compos
 ### Bump vend-elle une plateforme d’agents IA ?
 
 Notre offre actuelle est une offre de services. Cyber AI, Developer AI et Workflow AI décrivent des systèmes que nous souhaitons développer à long terme ; ils ne sont pas proposés comme produits disponibles.
+
+Publié par Bump · Consultation technologique à Montréal.
 
 ## Related
 

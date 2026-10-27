@@ -6,7 +6,7 @@ export const site = {
   location: 'Montréal, Québec',
   logo: '/bump/favicon.svg',
   image: '/bump/art/hero-fallback-v2.webp',
-  updated: '2026-10-26',
+  updated: '2026-10-27',
   languages: ['fr-CA', 'en-CA'],
   privatePaths: ['/admin/', '/dashboard/', '/auth/', '/api/'],
   // Training crawler choices are unchanged. Search discovery does not opt the

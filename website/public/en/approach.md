@@ -3,7 +3,7 @@
 > Explore the five stages of a Bump engagement: audit, analysis, proposal, implementation and maintenance. Technology consulting designed for SMEs.
 
 Canonical: __BUMP_ORIGIN__/en/approach
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 A real need. A clear scope. An implementation you can follow.
 
@@ -64,6 +64,8 @@ Yes. A limited scope can help verify operation and usefulness before expanding a
 ### Do we need to buy a Bump platform?
 
 No. Bump offers consulting, development, integration and cybersecurity services. Proprietary systems discussed in our vision are future ambitions, not products currently available to buy.
+
+Published by Bump · Technology consulting in Montréal.
 
 ## Related
 

@@ -3,7 +3,7 @@
 > Bump helps Québec SMEs with workflow automation, AI integration, custom software and cybersecurity. Explore our expertise and delivery approach.
 
 Canonical: __BUMP_ORIGIN__/en/expertise
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Smoother processes. Smarter systems. A better protected business.
 
@@ -43,6 +43,8 @@ No. You can start with an operational problem. The analysis determines whether a
 ### Can Bump work with our existing tools?
 
 Yes. Integrating existing tools is part of our services. We assess their APIs, access controls and limitations before proposing a connection.
+
+Published by Bump · Technology consulting in Montréal.
 
 ## Related
 

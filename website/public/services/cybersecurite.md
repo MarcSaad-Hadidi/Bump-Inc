@@ -3,7 +3,7 @@
 > Audits autorisés, identification des vulnérabilités, remédiation et sécurisation des systèmes. Bump accompagne les PME de Montréal et du Québec.
 
 Canonical: __BUMP_ORIGIN__/services/cybersecurite
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Comprendre les risques. Corriger les faiblesses. Renforcer ce qui compte.
 
@@ -52,6 +52,18 @@ Les outils, les comptes et les intégrations évoluent. La maintenance peut pré
 
 La proposition précise les protections retenues, les vérifications prévues et la façon de réévaluer les risques. Vous pouvez ainsi distinguer ce qui a été traité de ce qui reste à planifier.
 
+## Comment préparer un audit de cybersécurité autorisé ?
+
+Avant tout test, Bump convient du périmètre avec une personne habilitée à l’autoriser. L’objectif est d’examiner les risques utiles à votre entreprise tout en protégeant son fonctionnement. Le cadrage sert aussi à distinguer les constats, les corrections et les vérifications de suivi.
+
+| À convenir | Ce que votre équipe prépare |
+| --- | --- |
+| Périmètre | Les applications, environnements et accès concernés, avec les exclusions. |
+| Autorisation | La personne habilitée à approuver l’intervention et les règles retenues. |
+| Conditions | Les périodes, limites et contacts à utiliser en cas de problème. |
+| Résultats | Le format des constats, leur priorité et le traitement des informations sensibles. |
+| Suite | Les corrections convenues et la manière de vérifier leur application. |
+
 ## Questions fréquentes
 
 ### Un audit est-il la même chose qu’un test d’intrusion ?
@@ -69,6 +81,16 @@ La proposition précise les livrables. Notre démarche inclut la priorisation de
 ### Peut-on demander seulement la remédiation de problèmes connus ?
 
 Oui, les problèmes déjà identifiés peuvent servir de point de départ. Il faut disposer d’informations suffisantes pour comprendre le contexte, confirmer l’autorisation et définir les corrections ainsi que leur validation.
+
+### Un audit de cybersécurité garantit-il l’absence de vulnérabilités ?
+
+Non. Un audit examine un périmètre défini, à un moment donné et selon des méthodes convenues. Les constats aident à prioriser les corrections et le suivi ; ils ne constituent pas une garantie absolue. Bump précise les limites du mandat et les vérifications prévues.
+
+## Pour approfondir
+
+- [OWASP — Application Security Verification Standard](https://asvs.owasp.org/) — Un référentiel d’exigences pour examiner les contrôles de sécurité des applications web. Il ne constitue pas une certification de Bump.
+
+Publié par Bump · Consultation technologique à Montréal.
 
 ## Related
 

@@ -3,7 +3,7 @@
 > Découvrez les cinq étapes d’un mandat Bump : audit, analyse, proposition, implantation et maintenance. Une démarche technologique adaptée aux PME.
 
 Canonical: __BUMP_ORIGIN__/approche
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Un besoin réel. Un périmètre clair. Une implantation qu’on peut suivre.
 
@@ -64,6 +64,8 @@ Oui. Un périmètre limité peut permettre de vérifier le fonctionnement et l�
 ### Faut-il acheter une plateforme Bump ?
 
 Non. Bump propose des services de consultation, de développement, d’intégration et de cybersécurité. Les systèmes propriétaires évoqués dans notre vision sont des ambitions futures, pas des produits disponibles à acheter.
+
+Publié par Bump · Consultation technologique à Montréal.
 
 ## Related
 

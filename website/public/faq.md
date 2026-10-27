@@ -3,7 +3,7 @@
 > Comment choisir entre automatisation, IA et logiciel sur mesure ? Que comprend un audit ? Réponses aux questions des PME avant un mandat technologique avec Bump.
 
 Canonical: __BUMP_ORIGIN__/faq
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Des repères pour savoir par où commencer et à quoi s’attendre.
 
@@ -64,6 +64,8 @@ Non. Ils font partie de la vision future de Bump. Les services actuels sont la c
 ### Que préparer avant de discuter de notre projet ?
 
 Une description du problème, les outils concernés, les personnes impliquées et le résultat souhaité. Il n’est pas nécessaire d’avoir choisi une technologie. Gardez les identifiants, les données confidentielles et les rapports sensibles hors d’un formulaire public.
+
+Publié par Bump · Consultation technologique à Montréal.
 
 ## Related
 

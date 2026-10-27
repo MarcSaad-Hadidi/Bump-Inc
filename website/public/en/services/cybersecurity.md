@@ -3,7 +3,7 @@
 > Authorized audits, vulnerability identification, remediation and system hardening. Bump supports SMEs in Montréal and Québec.
 
 Canonical: __BUMP_ORIGIN__/en/services/cybersecurity
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Understand risks. Address weaknesses. Strengthen what matters.
 
@@ -52,6 +52,18 @@ Tools, accounts and integrations evolve. Maintenance may include checks, remedia
 
 The proposal specifies the selected protections, planned checks and approach to reassessing risks. This helps distinguish what has been addressed from what remains to be planned.
 
+## How do you prepare an authorized cybersecurity audit?
+
+Before testing, Bump agrees on scope with someone entitled to authorize the work. The goal is to examine risks relevant to your business while protecting its operations. Scoping also separates findings, agreed fixes and follow-up verification.
+
+| Agree on | What your team prepares |
+| --- | --- |
+| Scope | The applications, environments and access involved, including exclusions. |
+| Authorization | The person entitled to approve the work and the agreed rules. |
+| Conditions | Timing, limits and contacts to use if a problem occurs. |
+| Results | The format and priority of findings, and handling of sensitive information. |
+| Follow-up | Agreed fixes and how their application will be checked. |
+
 ## Frequently asked questions
 
 ### Is an audit the same as a penetration test?
@@ -69,6 +81,16 @@ The proposal specifies deliverables. Our approach includes prioritizing findings
 ### Can we request remediation of known issues only?
 
 Yes. Previously identified issues can be the starting point. Sufficient information is needed to understand the context, confirm authorization and define corrections and validation.
+
+### Does a cybersecurity audit guarantee there are no vulnerabilities?
+
+No. An audit examines a defined scope, at a particular time and using agreed methods. Findings help prioritize fixes and follow-up; they are not an absolute guarantee. Bump specifies the engagement’s limits and planned verification.
+
+## Further reading
+
+- [OWASP — Application Security Verification Standard](https://asvs.owasp.org/) — A requirements framework for examining web application security controls. It does not represent a Bump certification.
+
+Published by Bump · Technology consulting in Montréal.
 
 ## Related
 

@@ -2,7 +2,7 @@
 
 > Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Elle accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.
 
-Content updated: 2026-10-26
+Content updated: 2026-10-27
 
 ---
 <!-- source: __BUMP_ORIGIN__/ -->
@@ -12,25 +12,39 @@ Content updated: 2026-10-26
 > Bump, consultation technologique à Montréal : optimisation des processus, automatisation, intégration IA, logiciels sur mesure et cybersécurité pour les PME.
 
 Canonical: __BUMP_ORIGIN__/
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Des processus plus fluides. Des systèmes plus intelligents. Une entreprise mieux protégée.
+
+## En clair
+
+Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Bump accompagne les PME du Québec en optimisation des processus, intégration IA, développement logiciel et cybersécurité. Un mandat suit cinq étapes : audit, analyse, proposition, implantation et maintenance.
 
 ## Workflow
 
 Moins de tâches répétitives. Des outils connectés. Du temps pour votre équipe.
 
+L’automatisation des processus consiste à confier aux systèmes les tâches répétitives d’un parcours de travail : réception d’une demande, classement, notifications, validation ou synchronisation. Bump commence par analyser ce parcours avec votre équipe, puis relie les outils utiles en conservant une intervention humaine pour les décisions et les exceptions.
+
 ## IA & Logiciels
 
 Des logiciels à votre mesure. De l’IA utile. Votre équipe garde la main.
+
+L’intégration IA relie un modèle ou un agent à vos données et à vos logiciels pour accomplir une tâche définie. Bump accompagne les PME dans le choix du cas d’usage, la connexion des sources, la définition des accès et l’évaluation des réponses. Les actions sensibles peuvent rester soumises à une validation humaine.
+
+Le développement logiciel sur mesure crée une application autour des besoins d’une entreprise : gestion de demandes, portail, suivi de dossiers ou système interne. Bump analyse le fonctionnement attendu, conçoit l’interface avec les utilisateurs et développe les fonctionnalités ainsi que les intégrations nécessaires aux outils existants.
 
 ## Cybersécurité
 
 Identifiez les risques. Corrigez les faiblesses. Protégez votre entreprise.
 
+Un audit de cybersécurité examine un périmètre autorisé pour identifier des vulnérabilités et proposer des corrections prioritaires. Bump accompagne les PME dans le cadrage de l’audit, l’analyse des risques, la sécurisation des applications et infrastructures, la remédiation et le suivi convenu après intervention.
+
 ## Notre méthode
 
 Un cap clair, de l’audit au suivi. Une solution construite avec votre équipe.
+
+Un mandat Bump suit cinq étapes : audit, analyse, proposition, implantation et maintenance. La première sert à comprendre l’existant. L’analyse priorise les besoins. La proposition définit le périmètre et les livrables. L’implantation met la solution en place, puis la maintenance organise le suivi convenu.
 
 ## Notre vision
 
@@ -39,6 +53,10 @@ Notre vision : des systèmes et des agents IA spécialisés pour les besoins de 
 ## Bump
 
 Deux entrepreneurs à Montréal. La technologie au service de votre PME.
+
+Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal, au Québec. Notre mission est d’aider les PME à devenir plus efficaces, intelligentes et sécurisées grâce à des solutions adaptées à leurs besoins. Nos trois divisions couvrent les processus, l’IA et les logiciels, ainsi que la cybersécurité.
+
+Publié par Bump · Consultation technologique à Montréal.
 
 ## Related
 
@@ -59,25 +77,39 @@ Deux entrepreneurs à Montréal. La technologie au service de votre PME.
 > Bump, technology consulting in Montréal: process optimization, automation, AI integration, custom software and cybersecurity for SMEs.
 
 Canonical: __BUMP_ORIGIN__/en
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Smoother processes. Smarter systems. A better protected business.
+
+## At a glance
+
+Bump is a technology consulting company founded by two entrepreneurs in Montréal. Bump helps Québec SMEs with process optimization, AI integration, custom software and cybersecurity. Engagements follow five steps: audit, analysis, proposal, implementation and maintenance.
 
 ## Workflow
 
 Get your processes and tools working in the same direction.
 
+Workflow automation lets systems carry out repetitive steps such as receiving requests, filing information, sending notifications, collecting approvals or synchronizing data. Bump first analyses that process with your team, then connects the appropriate tools while keeping people involved in decisions and exceptions.
+
 ## AI & Software
 
 Software built around your reality. AI integrated where it is useful.
+
+AI integration connects a model or agent to your data and software to perform a defined task. Bump helps SMEs select a use case, connect sources, define access and evaluate responses. Sensitive actions can remain subject to human approval.
+
+Custom software development creates an application around business needs, such as request management, a portal, case tracking or an internal system. Bump analyses the required operation, designs the interface with users and develops the features and integrations needed to connect existing tools.
 
 ## Cybersecurity
 
 Understand risks. Address weaknesses. Strengthen what matters.
 
+A cybersecurity audit examines an authorized scope to identify vulnerabilities and propose prioritized corrections. Bump helps SMEs scope an audit, assess risks, secure applications and infrastructure, remediate issues and define follow-up after the engagement.
+
 ## Our method
 
 Audit, analysis, proposal, implementation and maintenance.
+
+A Bump engagement follows five stages: audit, analysis, proposal, implementation and maintenance. The audit establishes the current situation. Analysis prioritizes needs. The proposal defines scope and deliverables. Implementation puts the solution in place, followed by the agreed maintenance.
 
 ## Our vision
 
@@ -86,6 +118,10 @@ Specialized systems and AI agents are our future vision, not currently available
 ## Bump
 
 A technology consulting company founded by two entrepreneurs in Montréal, Québec.
+
+Bump is a technology consulting company founded by two entrepreneurs in Montréal, Québec. Our mission is to help SMEs become more efficient, intelligent and secure through solutions suited to their needs. Our three divisions cover workflows, AI and software, and cybersecurity.
+
+Published by Bump · Technology consulting in Montréal.
 
 ## Related
 
@@ -106,7 +142,7 @@ A technology consulting company founded by two entrepreneurs in Montréal, Québ
 > Bump accompagne les PME du Québec : automatisation des processus, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre approche.
 
 Canonical: __BUMP_ORIGIN__/expertises
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Des processus plus fluides. Des systèmes plus intelligents. Une entreprise mieux protégée.
 
@@ -147,6 +183,8 @@ Non. Vous pouvez partir d’un problème opérationnel. L’analyse sert à dét
 
 Oui, l’intégration des outils existants fait partie de nos services. Nous examinons leurs API, leurs droits d’accès et leurs limites avant de proposer une connexion.
 
+Publié par Bump · Consultation technologique à Montréal.
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
@@ -163,7 +201,7 @@ Oui, l’intégration des outils existants fait partie de nos services. Nous exa
 > Bump helps Québec SMEs with workflow automation, AI integration, custom software and cybersecurity. Explore our expertise and delivery approach.
 
 Canonical: __BUMP_ORIGIN__/en/expertise
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Smoother processes. Smarter systems. A better protected business.
 
@@ -204,6 +242,8 @@ No. You can start with an operational problem. The analysis determines whether a
 
 Yes. Integrating existing tools is part of our services. We assess their APIs, access controls and limitations before proposing a connection.
 
+Published by Bump · Technology consulting in Montréal.
+
 ## Related
 
 - [Workflow automation for small businesses.](__BUMP_ORIGIN__/en/services/workflow-automation) — Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.
@@ -220,7 +260,7 @@ Yes. Integrating existing tools is part of our services. We assess their APIs, a
 > Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
 
 Canonical: __BUMP_ORIGIN__/services/automatisation-processus
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Moins de recopies. Moins de suivis manuels. Plus de temps pour faire avancer le travail.
 
@@ -267,6 +307,17 @@ Si le CRM est indisponible ou si une donnée manque, le parcours prévoit une re
 
 Avant l’implantation, nous définissons ce qu’il est utile de suivre : temps de traitement, recopies, erreurs, demandes en attente ou interventions manuelles. Les gains dépendent du processus, de son volume et de son adoption. Ils se mesurent sur votre fonctionnement réel.
 
+## Quel premier workflow choisir pour votre PME ?
+
+Commencez par un processus délimité dont votre équipe peut expliquer les règles et vérifier le résultat. Une demande de devis, le classement d’un document ou une relance constituent des points de départ possibles. Bump examine aussi les exceptions : le parcours doit pouvoir s’arrêter et confier le dossier à une personne.
+
+| À vérifier | Bon point de départ | À clarifier avant de construire |
+| --- | --- | --- |
+| Règles | Les étapes et le responsable sont connus. | Chaque demande suit une décision différente. |
+| Informations | Les champs utiles sont disponibles dans les outils. | Les données manquent ou se contredisent. |
+| Validation | Une personne sait approuver le résultat. | Personne ne peut confirmer ce qui est correct. |
+| Reprise | Une erreur peut être signalée et corrigée. | Un échec passe inaperçu ou bloque toute l’activité. |
+
 ## Questions fréquentes
 
 ### Quelle différence entre optimiser et automatiser un processus ?
@@ -285,6 +336,12 @@ Une API facilite souvent l’intégration, mais ce n’est pas la seule possibil
 
 Il dépend du nombre d’étapes, des outils à connecter, de la qualité des données, des exceptions et du suivi attendu. Bump prépare une proposition à partir du périmètre analysé, plutôt qu’un prix fondé uniquement sur un nombre de tâches.
 
+### Faut-il utiliser de l’IA pour automatiser un processus ?
+
+Non. Des règles explicites et une connexion entre logiciels peuvent suffire. Bump évalue l’IA lorsque la tâche demande de traiter un contexte moins structuré, par exemple un document. Le choix doit rester proportionné au besoin, au coût et au niveau de contrôle attendu.
+
+Publié par Bump · Consultation technologique à Montréal.
+
 ## Related
 
 - [Des logiciels conçus pour vos opérations.](__BUMP_ORIGIN__/services/developpement-logiciel) — Applications web, portails et systèmes internes pour les PME du Québec. Bump conçoit des logiciels sur mesure reliés à vos CRM, ERP et API.
@@ -301,7 +358,7 @@ Il dépend du nombre d’étapes, des outils à connecter, de la qualité des do
 > Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.
 
 Canonical: __BUMP_ORIGIN__/en/services/workflow-automation
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Less copying. Less manual follow-up. More time to move work forward.
 
@@ -348,6 +405,17 @@ If the CRM is unavailable or data is missing, the process includes recovery and 
 
 Before implementation, we define what is worth tracking: processing time, duplicate entries, errors, pending requests or manual interventions. Improvements depend on the process, volume and adoption. They are measured in your actual operations.
 
+## Which workflow should your SME automate first?
+
+Start with a bounded process whose rules your team can explain and whose result it can check. A quote request, document filing or follow-up can be a useful starting point. Bump also examines exceptions: the workflow must be able to stop and hand the case to a person.
+
+| Check | Useful starting point | Clarify before building |
+| --- | --- | --- |
+| Rules | The steps and owner are known. | Every request requires a different decision. |
+| Information | Required fields are available in the tools. | Data is missing or contradictory. |
+| Approval | Someone can approve the result. | Nobody can confirm what is correct. |
+| Recovery | An error can be reported and corrected. | A failure goes unnoticed or blocks the whole operation. |
+
 ## Frequently asked questions
 
 ### What is the difference between process optimization and automation?
@@ -366,6 +434,12 @@ An API often makes integration easier, but it is not the only option. Connectors
 
 It depends on the number of steps, tools to connect, data quality, exceptions and expected follow-up. Bump prepares a proposal around the assessed scope rather than pricing solely by the number of tasks.
 
+### Does workflow automation require AI?
+
+No. Explicit rules and a connection between tools may be enough. Bump evaluates AI when a task needs less structured context, such as a document. The choice should match the need, cost and level of control expected.
+
+Published by Bump · Technology consulting in Montréal.
+
 ## Related
 
 - [Software built around your operations.](__BUMP_ORIGIN__/en/services/custom-software-development) — Web applications, portals and internal systems for Québec SMEs. Bump builds custom software connected to your CRM, ERP and APIs.
@@ -382,7 +456,7 @@ It depends on the number of steps, tools to connect, data quality, exceptions an
 > Intégrez l’IA à vos outils et à vos processus avec Bump : agents ciblés, recherche documentaire, synthèses et tableaux de bord, avec validation humaine.
 
 Canonical: __BUMP_ORIGIN__/services/integration-ia
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Une tâche précise. Les bonnes informations. Une décision qui reste entre vos mains.
 
@@ -431,6 +505,18 @@ Selon le mandat, les livrables peuvent comprendre le cadrage du cas d’usage, l
 
 Cyber AI, Developer AI et Workflow AI appartiennent à notre vision future de systèmes spécialisés. Ils ne sont pas présentés comme des produits disponibles. Nos services actuels portent sur l’analyse, le développement et l’intégration selon un mandat défini.
 
+## Comment vérifier un agent sur des cas concrets ?
+
+Pour un assistant qui prépare le suivi des demandes clients, un essai réussi ne suffit pas. Il faut aussi tester les situations qui doivent provoquer un arrêt, une précision ou une reprise humaine. Voici une grille de départ à adapter au mandat ; ces cas sont illustratifs et ne représentent pas des résultats clients.
+
+| Cas de test | Comportement à vérifier |
+| --- | --- |
+| Une information manque | Demander la précision plutôt qu’inventer la donnée. |
+| Deux sources se contredisent | Présenter le désaccord et les sources pour vérification. |
+| Un document est inaccessible à l’utilisateur | Respecter les droits sans révéler le contenu protégé. |
+| Une action attend une approbation | Préparer le brouillon et attendre une décision explicite. |
+| Le CRM ne répond pas | Signaler l’échec et permettre une reprise sans doublon. |
+
 ## Questions fréquentes
 
 ### Quelle différence entre un chatbot et un agent IA intégré ?
@@ -449,6 +535,16 @@ Pas nécessairement. Nous évaluons d’abord les possibilités d’intégration
 
 Il faut comparer ses résultats sur des cas représentatifs à des critères définis : qualité, temps de vérification, erreurs, coût d’utilisation et utilité pour l’équipe. Un pilote aide à prendre cette décision avant une généralisation.
 
+### Comment tester un agent IA avant sa mise en service ?
+
+Définissez des cas représentatifs, le résultat attendu et les erreurs à détecter. Vérifiez les sources utilisées, le respect des accès, les demandes d’approbation et les cas où l’agent doit s’arrêter. Bump convient de ces critères avec votre équipe ; une démonstration réussie ne remplace pas cette validation.
+
+## Pour approfondir
+
+- [NIST — AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — Un cadre volontaire pour examiner les risques liés à la conception, à l’usage et à l’évaluation des systèmes IA.
+
+Publié par Bump · Consultation technologique à Montréal.
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
@@ -465,7 +561,7 @@ Il faut comparer ses résultats sur des cas représentatifs à des critères dé
 > Integrate AI into business tools and processes with Bump: focused agents, document search, summaries and dashboards, with human approval.
 
 Canonical: __BUMP_ORIGIN__/en/services/ai-integration
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 A focused task. The right information. Decisions that stay in your hands.
 
@@ -514,6 +610,18 @@ Depending on the engagement, deliverables may include use-case scoping, source c
 
 Cyber AI, Developer AI and Workflow AI are part of our future vision for specialized systems. They are not presented as available products. Our current services focus on analysis, development and integration within a defined engagement.
 
+## How do you check an agent against concrete cases?
+
+For an assistant preparing follow-ups to customer requests, one successful run is not enough. Test situations that should trigger a stop, clarification or human recovery too. This starting checklist should be adapted to the engagement; these cases are illustrative and do not represent client results.
+
+| Test case | Behaviour to check |
+| --- | --- |
+| Required information is missing | Ask for clarification instead of inventing data. |
+| Two sources disagree | Present the conflict and sources for review. |
+| A document is restricted for the user | Respect access rights without disclosing protected content. |
+| An action needs approval | Prepare the draft and wait for an explicit decision. |
+| The CRM is unavailable | Report the failure and allow recovery without duplicates. |
+
 ## Frequently asked questions
 
 ### How is an integrated AI agent different from a chatbot?
@@ -532,6 +640,16 @@ Not necessarily. We assess integration options for existing tools first. API acc
 
 Compare its results on representative cases against defined criteria: quality, review time, errors, usage cost and usefulness to the team. A pilot supports that decision before a broader rollout.
 
+### How do you test an AI agent before launch?
+
+Define representative cases, expected results and errors to detect. Check the sources used, access permissions, approval requests and situations in which the agent must stop. Bump agrees on these criteria with your team; a successful demonstration does not replace validation.
+
+## Further reading
+
+- [NIST — AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — A voluntary framework for examining risks in the design, use and evaluation of AI systems.
+
+Published by Bump · Technology consulting in Montréal.
+
 ## Related
 
 - [Workflow automation for small businesses.](__BUMP_ORIGIN__/en/services/workflow-automation) — Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.
@@ -548,7 +666,7 @@ Compare its results on representative cases against defined criteria: quality, r
 > Applications web, portails et systèmes internes pour les PME du Québec. Bump conçoit des logiciels sur mesure reliés à vos CRM, ERP et API.
 
 Canonical: __BUMP_ORIGIN__/services/developpement-logiciel
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Un système qui suit votre façon de travailler, plutôt que l’inverse.
 
@@ -596,6 +714,16 @@ Un logiciel dépend d’un hébergement, de bibliothèques, d’accès et parfoi
 
 Les évolutions se priorisent selon l’usage réel. Un premier périmètre cohérent permet d’évaluer le fonctionnement avant d’ajouter d’autres capacités.
 
+## Que valider avant la mise en service d’un logiciel ?
+
+La mise en service se prépare avec les personnes qui utiliseront le logiciel. Bump définit les parcours à vérifier et les conditions de passage à l’usage réel dans le périmètre du mandat. Le logiciel doit résoudre le besoin retenu et votre équipe doit savoir le prendre en main.
+
+- Usage : réaliser les tâches convenues avec des cas représentatifs.
+- Accès : vérifier les rôles et les informations accessibles à chacun.
+- Connexions : tester les échanges et les erreurs des systèmes reliés.
+- Reprise : préciser comment corriger une donnée ou revenir à un fonctionnement connu.
+- Transmission : remettre la documentation et convenir du suivi après lancement.
+
 ## Questions fréquentes
 
 ### Quel type de logiciel Bump peut-elle développer ?
@@ -614,6 +742,12 @@ Le délai dépend du périmètre, des intégrations, des données à reprendre e
 
 La maintenance est une étape de notre modèle, mais son périmètre et ses modalités sont définis dans la proposition. Il faut distinguer la correction, les mises à jour, l’exploitation et les nouvelles fonctionnalités.
 
+### Qui s’occupe du logiciel après le lancement ?
+
+La proposition doit préciser les responsabilités : hébergement, accès, sauvegardes, correctifs et évolutions. Bump convient avec votre équipe du périmètre de maintenance. Le lancement et le suivi sont deux étapes à cadrer ; aucun niveau de disponibilité ne doit être présumé sans accord.
+
+Publié par Bump · Consultation technologique à Montréal.
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
@@ -630,7 +764,7 @@ La maintenance est une étape de notre modèle, mais son périmètre et ses moda
 > Web applications, portals and internal systems for Québec SMEs. Bump builds custom software connected to your CRM, ERP and APIs.
 
 Canonical: __BUMP_ORIGIN__/en/services/custom-software-development
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 A system that follows the way you work, rather than the other way around.
 
@@ -678,6 +812,16 @@ Software depends on hosting, libraries, access and sometimes other services. The
 
 Future changes are prioritized around actual use. A coherent initial scope lets the team evaluate operation before adding capabilities.
 
+## What should you validate before launching custom software?
+
+Launch preparation includes the people who will use the software. Bump defines the workflows to test and the conditions for real use within the agreed engagement. The software must address the selected need, and your team must know how to operate it.
+
+- Use: complete agreed tasks with representative cases.
+- Access: check roles and the information available to each person.
+- Connections: test data exchanges and errors in connected systems.
+- Recovery: explain how to correct data or return to a known working state.
+- Handover: provide documentation and agree on support after launch.
+
 ## Frequently asked questions
 
 ### What kinds of software can Bump develop?
@@ -696,6 +840,12 @@ The timeline depends on scope, integrations, data migration and approvals. We sp
 
 Maintenance is a stage in our model, but its scope and terms are defined in the proposal. Corrections, updates, operations and new features need to be distinguished.
 
+### Who maintains the software after launch?
+
+The proposal should define responsibility for hosting, access, backups, fixes and changes. Bump agrees on the maintenance scope with your team. Launch and ongoing support both need to be defined; no level of availability should be assumed without agreement.
+
+Published by Bump · Technology consulting in Montréal.
+
 ## Related
 
 - [Workflow automation for small businesses.](__BUMP_ORIGIN__/en/services/workflow-automation) — Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.
@@ -712,7 +862,7 @@ Maintenance is a stage in our model, but its scope and terms are defined in the 
 > Audits autorisés, identification des vulnérabilités, remédiation et sécurisation des systèmes. Bump accompagne les PME de Montréal et du Québec.
 
 Canonical: __BUMP_ORIGIN__/services/cybersecurite
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Comprendre les risques. Corriger les faiblesses. Renforcer ce qui compte.
 
@@ -761,6 +911,18 @@ Les outils, les comptes et les intégrations évoluent. La maintenance peut pré
 
 La proposition précise les protections retenues, les vérifications prévues et la façon de réévaluer les risques. Vous pouvez ainsi distinguer ce qui a été traité de ce qui reste à planifier.
 
+## Comment préparer un audit de cybersécurité autorisé ?
+
+Avant tout test, Bump convient du périmètre avec une personne habilitée à l’autoriser. L’objectif est d’examiner les risques utiles à votre entreprise tout en protégeant son fonctionnement. Le cadrage sert aussi à distinguer les constats, les corrections et les vérifications de suivi.
+
+| À convenir | Ce que votre équipe prépare |
+| --- | --- |
+| Périmètre | Les applications, environnements et accès concernés, avec les exclusions. |
+| Autorisation | La personne habilitée à approuver l’intervention et les règles retenues. |
+| Conditions | Les périodes, limites et contacts à utiliser en cas de problème. |
+| Résultats | Le format des constats, leur priorité et le traitement des informations sensibles. |
+| Suite | Les corrections convenues et la manière de vérifier leur application. |
+
 ## Questions fréquentes
 
 ### Un audit est-il la même chose qu’un test d’intrusion ?
@@ -779,6 +941,16 @@ La proposition précise les livrables. Notre démarche inclut la priorisation de
 
 Oui, les problèmes déjà identifiés peuvent servir de point de départ. Il faut disposer d’informations suffisantes pour comprendre le contexte, confirmer l’autorisation et définir les corrections ainsi que leur validation.
 
+### Un audit de cybersécurité garantit-il l’absence de vulnérabilités ?
+
+Non. Un audit examine un périmètre défini, à un moment donné et selon des méthodes convenues. Les constats aident à prioriser les corrections et le suivi ; ils ne constituent pas une garantie absolue. Bump précise les limites du mandat et les vérifications prévues.
+
+## Pour approfondir
+
+- [OWASP — Application Security Verification Standard](https://asvs.owasp.org/) — Un référentiel d’exigences pour examiner les contrôles de sécurité des applications web. Il ne constitue pas une certification de Bump.
+
+Publié par Bump · Consultation technologique à Montréal.
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
@@ -795,7 +967,7 @@ Oui, les problèmes déjà identifiés peuvent servir de point de départ. Il fa
 > Authorized audits, vulnerability identification, remediation and system hardening. Bump supports SMEs in Montréal and Québec.
 
 Canonical: __BUMP_ORIGIN__/en/services/cybersecurity
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Understand risks. Address weaknesses. Strengthen what matters.
 
@@ -844,6 +1016,18 @@ Tools, accounts and integrations evolve. Maintenance may include checks, remedia
 
 The proposal specifies the selected protections, planned checks and approach to reassessing risks. This helps distinguish what has been addressed from what remains to be planned.
 
+## How do you prepare an authorized cybersecurity audit?
+
+Before testing, Bump agrees on scope with someone entitled to authorize the work. The goal is to examine risks relevant to your business while protecting its operations. Scoping also separates findings, agreed fixes and follow-up verification.
+
+| Agree on | What your team prepares |
+| --- | --- |
+| Scope | The applications, environments and access involved, including exclusions. |
+| Authorization | The person entitled to approve the work and the agreed rules. |
+| Conditions | Timing, limits and contacts to use if a problem occurs. |
+| Results | The format and priority of findings, and handling of sensitive information. |
+| Follow-up | Agreed fixes and how their application will be checked. |
+
 ## Frequently asked questions
 
 ### Is an audit the same as a penetration test?
@@ -862,6 +1046,16 @@ The proposal specifies deliverables. Our approach includes prioritizing findings
 
 Yes. Previously identified issues can be the starting point. Sufficient information is needed to understand the context, confirm authorization and define corrections and validation.
 
+### Does a cybersecurity audit guarantee there are no vulnerabilities?
+
+No. An audit examines a defined scope, at a particular time and using agreed methods. Findings help prioritize fixes and follow-up; they are not an absolute guarantee. Bump specifies the engagement’s limits and planned verification.
+
+## Further reading
+
+- [OWASP — Application Security Verification Standard](https://asvs.owasp.org/) — A requirements framework for examining web application security controls. It does not represent a Bump certification.
+
+Published by Bump · Technology consulting in Montréal.
+
 ## Related
 
 - [Workflow automation for small businesses.](__BUMP_ORIGIN__/en/services/workflow-automation) — Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.
@@ -878,7 +1072,7 @@ Yes. Previously identified issues can be the starting point. Sufficient informat
 > Découvrez les cinq étapes d’un mandat Bump : audit, analyse, proposition, implantation et maintenance. Une démarche technologique adaptée aux PME.
 
 Canonical: __BUMP_ORIGIN__/approche
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Un besoin réel. Un périmètre clair. Une implantation qu’on peut suivre.
 
@@ -940,6 +1134,8 @@ Oui. Un périmètre limité peut permettre de vérifier le fonctionnement et l�
 
 Non. Bump propose des services de consultation, de développement, d’intégration et de cybersécurité. Les systèmes propriétaires évoqués dans notre vision sont des ambitions futures, pas des produits disponibles à acheter.
 
+Publié par Bump · Consultation technologique à Montréal.
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
@@ -956,7 +1152,7 @@ Non. Bump propose des services de consultation, de développement, d’intégrat
 > Explore the five stages of a Bump engagement: audit, analysis, proposal, implementation and maintenance. Technology consulting designed for SMEs.
 
 Canonical: __BUMP_ORIGIN__/en/approach
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 A real need. A clear scope. An implementation you can follow.
 
@@ -1018,6 +1214,8 @@ Yes. A limited scope can help verify operation and usefulness before expanding a
 
 No. Bump offers consulting, development, integration and cybersecurity services. Proprietary systems discussed in our vision are future ambitions, not products currently available to buy.
 
+Published by Bump · Technology consulting in Montréal.
+
 ## Related
 
 - [Workflow automation for small businesses.](__BUMP_ORIGIN__/en/services/workflow-automation) — Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.
@@ -1034,7 +1232,7 @@ No. Bump offers consulting, development, integration and cybersecurity services.
 > Fondée par deux entrepreneurs à Montréal, Bump aide les PME à gagner en efficacité, en intelligence et en sécurité grâce à des solutions technologiques adaptées.
 
 Canonical: __BUMP_ORIGIN__/a-propos
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Donnons de l’élan à votre entreprise.
 
@@ -1078,6 +1276,8 @@ Bump a été fondée à Montréal, au Québec. Sa clientèle initiale est compos
 
 Notre offre actuelle est une offre de services. Cyber AI, Developer AI et Workflow AI décrivent des systèmes que nous souhaitons développer à long terme ; ils ne sont pas proposés comme produits disponibles.
 
+Publié par Bump · Consultation technologique à Montréal.
+
 ## Related
 
 - [La technologie, à votre mesure.](__BUMP_ORIGIN__/expertises) — Bump accompagne les PME du Québec : automatisation des processus, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre approche.
@@ -1094,7 +1294,7 @@ Notre offre actuelle est une offre de services. Cyber AI, Developer AI et Workfl
 > Founded by two entrepreneurs in Montréal, Bump helps SMEs become more efficient, intelligent and secure through technology suited to their needs.
 
 Canonical: __BUMP_ORIGIN__/en/about
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Give your business fresh momentum.
 
@@ -1138,6 +1338,8 @@ Bump was founded in Montréal, Québec. Its initial clients are Québec small an
 
 Our current offer is service-based. Cyber AI, Developer AI and Workflow AI describe systems we aim to develop in the long term; they are not offered as available products.
 
+Published by Bump · Technology consulting in Montréal.
+
 ## Related
 
 - [Technology, shaped around you.](__BUMP_ORIGIN__/en/expertise) — Bump helps Québec SMEs with workflow automation, AI integration, custom software and cybersecurity. Explore our expertise and delivery approach.
@@ -1154,7 +1356,7 @@ Our current offer is service-based. Cyber AI, Developer AI and Workflow AI descr
 > Comment choisir entre automatisation, IA et logiciel sur mesure ? Que comprend un audit ? Réponses aux questions des PME avant un mandat technologique avec Bump.
 
 Canonical: __BUMP_ORIGIN__/faq
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Des repères pour savoir par où commencer et à quoi s’attendre.
 
@@ -1216,6 +1418,8 @@ Non. Ils font partie de la vision future de Bump. Les services actuels sont la c
 
 Une description du problème, les outils concernés, les personnes impliquées et le résultat souhaité. Il n’est pas nécessaire d’avoir choisi une technologie. Gardez les identifiants, les données confidentielles et les rapports sensibles hors d’un formulaire public.
 
+Publié par Bump · Consultation technologique à Montréal.
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
@@ -1232,7 +1436,7 @@ Une description du problème, les outils concernés, les personnes impliquées e
 > How do you choose between automation, AI and custom software? What does an audit cover? Answers for SMEs considering a technology engagement with Bump.
 
 Canonical: __BUMP_ORIGIN__/en/faq
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 A clearer starting point and a better idea of what to expect.
 
@@ -1293,6 +1497,8 @@ No. They belong to Bump’s future vision. Current services cover consulting, in
 ### What should we prepare before discussing a project?
 
 A description of the problem, tools involved, people affected and desired outcome. You do not need to have selected a technology. Keep credentials, confidential data and sensitive reports out of a public form.
+
+Published by Bump · Technology consulting in Montréal.
 
 ## Related
 

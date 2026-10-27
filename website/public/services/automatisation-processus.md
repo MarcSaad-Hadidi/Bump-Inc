@@ -3,7 +3,7 @@
 > Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
 
 Canonical: __BUMP_ORIGIN__/services/automatisation-processus
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Moins de recopies. Moins de suivis manuels. Plus de temps pour faire avancer le travail.
 
@@ -50,6 +50,17 @@ Si le CRM est indisponible ou si une donnée manque, le parcours prévoit une re
 
 Avant l’implantation, nous définissons ce qu’il est utile de suivre : temps de traitement, recopies, erreurs, demandes en attente ou interventions manuelles. Les gains dépendent du processus, de son volume et de son adoption. Ils se mesurent sur votre fonctionnement réel.
 
+## Quel premier workflow choisir pour votre PME ?
+
+Commencez par un processus délimité dont votre équipe peut expliquer les règles et vérifier le résultat. Une demande de devis, le classement d’un document ou une relance constituent des points de départ possibles. Bump examine aussi les exceptions : le parcours doit pouvoir s’arrêter et confier le dossier à une personne.
+
+| À vérifier | Bon point de départ | À clarifier avant de construire |
+| --- | --- | --- |
+| Règles | Les étapes et le responsable sont connus. | Chaque demande suit une décision différente. |
+| Informations | Les champs utiles sont disponibles dans les outils. | Les données manquent ou se contredisent. |
+| Validation | Une personne sait approuver le résultat. | Personne ne peut confirmer ce qui est correct. |
+| Reprise | Une erreur peut être signalée et corrigée. | Un échec passe inaperçu ou bloque toute l’activité. |
+
 ## Questions fréquentes
 
 ### Quelle différence entre optimiser et automatiser un processus ?
@@ -67,6 +78,12 @@ Une API facilite souvent l’intégration, mais ce n’est pas la seule possibil
 ### Comment le coût est-il établi ?
 
 Il dépend du nombre d’étapes, des outils à connecter, de la qualité des données, des exceptions et du suivi attendu. Bump prépare une proposition à partir du périmètre analysé, plutôt qu’un prix fondé uniquement sur un nombre de tâches.
+
+### Faut-il utiliser de l’IA pour automatiser un processus ?
+
+Non. Des règles explicites et une connexion entre logiciels peuvent suffire. Bump évalue l’IA lorsque la tâche demande de traiter un contexte moins structuré, par exemple un document. Le choix doit rester proportionné au besoin, au coût et au niveau de contrôle attendu.
+
+Publié par Bump · Consultation technologique à Montréal.
 
 ## Related
 

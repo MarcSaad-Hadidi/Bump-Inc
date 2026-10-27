@@ -3,7 +3,7 @@
 > Applications web, portails et systèmes internes pour les PME du Québec. Bump conçoit des logiciels sur mesure reliés à vos CRM, ERP et API.
 
 Canonical: __BUMP_ORIGIN__/services/developpement-logiciel
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Un système qui suit votre façon de travailler, plutôt que l’inverse.
 
@@ -51,6 +51,16 @@ Un logiciel dépend d’un hébergement, de bibliothèques, d’accès et parfoi
 
 Les évolutions se priorisent selon l’usage réel. Un premier périmètre cohérent permet d’évaluer le fonctionnement avant d’ajouter d’autres capacités.
 
+## Que valider avant la mise en service d’un logiciel ?
+
+La mise en service se prépare avec les personnes qui utiliseront le logiciel. Bump définit les parcours à vérifier et les conditions de passage à l’usage réel dans le périmètre du mandat. Le logiciel doit résoudre le besoin retenu et votre équipe doit savoir le prendre en main.
+
+- Usage : réaliser les tâches convenues avec des cas représentatifs.
+- Accès : vérifier les rôles et les informations accessibles à chacun.
+- Connexions : tester les échanges et les erreurs des systèmes reliés.
+- Reprise : préciser comment corriger une donnée ou revenir à un fonctionnement connu.
+- Transmission : remettre la documentation et convenir du suivi après lancement.
+
 ## Questions fréquentes
 
 ### Quel type de logiciel Bump peut-elle développer ?
@@ -68,6 +78,12 @@ Le délai dépend du périmètre, des intégrations, des données à reprendre e
 ### La maintenance est-elle incluse ?
 
 La maintenance est une étape de notre modèle, mais son périmètre et ses modalités sont définis dans la proposition. Il faut distinguer la correction, les mises à jour, l’exploitation et les nouvelles fonctionnalités.
+
+### Qui s’occupe du logiciel après le lancement ?
+
+La proposition doit préciser les responsabilités : hébergement, accès, sauvegardes, correctifs et évolutions. Bump convient avec votre équipe du périmètre de maintenance. Le lancement et le suivi sont deux étapes à cadrer ; aucun niveau de disponibilité ne doit être présumé sans accord.
+
+Publié par Bump · Consultation technologique à Montréal.
 
 ## Related
 

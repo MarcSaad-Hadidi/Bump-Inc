@@ -3,7 +3,7 @@
 > Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.
 
 Canonical: __BUMP_ORIGIN__/en/services/workflow-automation
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Less copying. Less manual follow-up. More time to move work forward.
 
@@ -50,6 +50,17 @@ If the CRM is unavailable or data is missing, the process includes recovery and 
 
 Before implementation, we define what is worth tracking: processing time, duplicate entries, errors, pending requests or manual interventions. Improvements depend on the process, volume and adoption. They are measured in your actual operations.
 
+## Which workflow should your SME automate first?
+
+Start with a bounded process whose rules your team can explain and whose result it can check. A quote request, document filing or follow-up can be a useful starting point. Bump also examines exceptions: the workflow must be able to stop and hand the case to a person.
+
+| Check | Useful starting point | Clarify before building |
+| --- | --- | --- |
+| Rules | The steps and owner are known. | Every request requires a different decision. |
+| Information | Required fields are available in the tools. | Data is missing or contradictory. |
+| Approval | Someone can approve the result. | Nobody can confirm what is correct. |
+| Recovery | An error can be reported and corrected. | A failure goes unnoticed or blocks the whole operation. |
+
 ## Frequently asked questions
 
 ### What is the difference between process optimization and automation?
@@ -67,6 +78,12 @@ An API often makes integration easier, but it is not the only option. Connectors
 ### How is the cost determined?
 
 It depends on the number of steps, tools to connect, data quality, exceptions and expected follow-up. Bump prepares a proposal around the assessed scope rather than pricing solely by the number of tasks.
+
+### Does workflow automation require AI?
+
+No. Explicit rules and a connection between tools may be enough. Bump evaluates AI when a task needs less structured context, such as a document. The choice should match the need, cost and level of control expected.
+
+Published by Bump · Technology consulting in Montréal.
 
 ## Related
 

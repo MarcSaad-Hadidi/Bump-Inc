@@ -30,4 +30,4 @@ excluded: /admin/; /dashboard/; /auth/; non-markdown /api/; /runtime/; /bump/; /
 url: __BUMP_ORIGIN__/a-propos
 email: Not published
 
-Last updated: 2026-10-26
+Last updated: 2026-10-27

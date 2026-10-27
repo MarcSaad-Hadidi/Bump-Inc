@@ -3,7 +3,7 @@
 > Web applications, portals and internal systems for Québec SMEs. Bump builds custom software connected to your CRM, ERP and APIs.
 
 Canonical: __BUMP_ORIGIN__/en/services/custom-software-development
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 A system that follows the way you work, rather than the other way around.
 
@@ -51,6 +51,16 @@ Software depends on hosting, libraries, access and sometimes other services. The
 
 Future changes are prioritized around actual use. A coherent initial scope lets the team evaluate operation before adding capabilities.
 
+## What should you validate before launching custom software?
+
+Launch preparation includes the people who will use the software. Bump defines the workflows to test and the conditions for real use within the agreed engagement. The software must address the selected need, and your team must know how to operate it.
+
+- Use: complete agreed tasks with representative cases.
+- Access: check roles and the information available to each person.
+- Connections: test data exchanges and errors in connected systems.
+- Recovery: explain how to correct data or return to a known working state.
+- Handover: provide documentation and agree on support after launch.
+
 ## Frequently asked questions
 
 ### What kinds of software can Bump develop?
@@ -68,6 +78,12 @@ The timeline depends on scope, integrations, data migration and approvals. We sp
 ### Is maintenance included?
 
 Maintenance is a stage in our model, but its scope and terms are defined in the proposal. Corrections, updates, operations and new features need to be distinguished.
+
+### Who maintains the software after launch?
+
+The proposal should define responsibility for hosting, access, backups, fixes and changes. Bump agrees on the maintenance scope with your team. Launch and ongoing support both need to be defined; no level of availability should be assumed without agreement.
+
+Published by Bump · Technology consulting in Montréal.
 
 ## Related
 

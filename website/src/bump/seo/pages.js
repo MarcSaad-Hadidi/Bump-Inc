@@ -1,4 +1,5 @@
 import content from '../content.json' with {type: 'json'};
+import {buyerGuides} from './buyer-guides.js';
 
 // HTML, markdown, structured data, discovery and navigation all use this catalog.
 // Examples describe possible engagements, not clients or measured results.
@@ -355,7 +356,16 @@ export const catalog = [home, ...entries];
 export const locales = ['fr', 'en'];
 export function pageFor(id, locale = 'fr') {
   const entry = catalog.find(page => page.id === id);
-  return entry ? {...entry, ...entry[locale], locale} : null;
+  if (!entry) return null;
+  const page = {...entry, ...entry[locale], locale};
+  const guide = buyerGuides[id]?.[locale];
+  if (guide) return {...page,sections:[...page.sections,guide.section],faqs:[...page.faqs,guide.faq],references:guide.references || []};
+  if (id === 'home') {
+    const summaries = {sidekick:['workflow'],online:['ai','software'],operations:['security'],retail:['approach'],b2b:['about']};
+    page.answer = locale === 'fr' ? 'Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Bump accompagne les PME du Québec en optimisation des processus, intégration IA, développement logiciel et cybersécurité. Un mandat suit cinq étapes : audit, analyse, proposition, implantation et maintenance.' : 'Bump is a technology consulting company founded by two entrepreneurs in Montréal. Bump helps Québec SMEs with process optimization, AI integration, custom software and cybersecurity. Engagements follow five steps: audit, analysis, proposal, implementation and maintenance.';
+    page.sections = page.sections.map(section => ({...section,paragraphs:[...section.paragraphs,...(summaries[section.id] || []).map(key => entries.find(item => item.id === key)[locale].answer)]}));
+  }
+  return page;
 }
 export function listPages() {
   return catalog.flatMap(entry => locales.map(locale => pageFor(entry.id, locale)));

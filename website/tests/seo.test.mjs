@@ -47,7 +47,7 @@ test('every public editorial route has bilingual metadata, a real HTML body and 
     assert(!descriptions.has(page.description)); descriptions.add(page.description);
     const md = renderMarkdown(page, origin);
     assert.match(md, /^# .+\n/); assert(md.includes('Canonical: ' + origin + page.path));
-    for (const target of md.matchAll(/\]\(([^)]+)\)/g)) { assert(target[1].startsWith(origin + '/')); assert(!target[1].endsWith('.md')); }
+    for (const target of md.matchAll(/\]\(([^)]+)\)/g)) { assert(target[1].startsWith(origin + '/') || page.references?.some(reference => reference.url === target[1])); assert(!target[1].endsWith('.md')); }
     if (page.type === 'home') continue;
     const tree = parse(renderHtml(page, origin));
     const main = walk(tree, node => node.tagName === 'main')[0];
@@ -65,7 +65,7 @@ test('every public editorial route has bilingual metadata, a real HTML body and 
     for (const anchor of walk(tree, node => node.tagName === 'a')) {
       const href = attrs(anchor).href;
       if (href.startsWith('#')) assert(walk(tree, node => attrs(node).id === href.slice(1)).length, page.path + href);
-      else assert(listPages().some(target => target.path === href.split(/[?#]/)[0]), href);
+      else assert(listPages().some(target => target.path === href.split(/[?#]/)[0]) || page.references?.some(reference => reference.url === href), href);
     }
     const graph = schemaFor(page, origin)['@graph'];
     assert.equal(graph.find(node => node['@type'] === 'Organization').description, site.description);
@@ -104,6 +104,33 @@ test('the landing retains an accessible text edition when scripting is disabled'
   assert.equal(walk(tree, node => node.tagName === 'section').length, 6);
   assert.equal(walk(tree, node => node.tagName === 'a').length, page.related.length);
   assert(output.includes('<script>const preserve="</not-a-tag>"</script>'));
+});
+
+test('initial landing HTML exposes the same business content and links before JavaScript starts', () => {
+  for (const locale of ['fr','en']) {
+    const page = pageFor('home',locale);
+    const source = '<!doctype html><html><head></head><body><script>const scene="unchanged";</script></body></html>';
+    const output = homeFallback(source,page), tree = parse(output,{scriptingEnabled:true});
+    const main = walk(tree,node => attrs(node).id === 'bump-initial-content')[0];
+    assert(main); assert(contentText(main).includes(page.answer));
+    for (const section of page.sections) for (const paragraph of section.paragraphs) assert(contentText(main).includes(paragraph));
+    for (const id of page.related) assert(walk(main,node => node.tagName === 'a' && attrs(node).href === pageFor(id,locale).path).length);
+    assert(output.includes('<script>const scene="unchanged";</script>'));
+    assert.equal(homeFallback(output,page),output);
+    assert(walk(main,node => node.tagName === 'img' && !!attrs(node).alt).length);
+  }
+});
+
+test('corporate authorship, actual update dates and service FAQ schema match visible content', () => {
+  for (const page of listPages().filter(page => page.type !== 'home')) {
+    const tree = parse(renderHtml(page,origin)), graph = schemaFor(page,origin)['@graph'];
+    const web = graph.find(node => node['@id'] === origin + page.path + '#webpage');
+    assert.equal(web.author['@id'],origin + '/#organization');
+    assert.equal(walk(tree,node => node.tagName === 'time' && attrs(node).datetime === site.updated).length,1);
+    assert(walk(tree,node => node.tagName === 'meta' && attrs(node).name === 'author' && attrs(node).content === 'Bump').length);
+    if (page.type === 'service') assert.deepEqual(graph.find(node => node['@type'] === 'FAQPage').mainEntity.map(node => node.name),page.faqs.map(faq=>faq.q));
+    assert.deepEqual(web.citation || [],(page.references || []).map(reference=>reference.url));
+  }
 });
 
 test('landing metadata survives hydration without duplicate tags or executable markup', async () => {

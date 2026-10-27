@@ -3,7 +3,7 @@
 > How do you choose between automation, AI and custom software? What does an audit cover? Answers for SMEs considering a technology engagement with Bump.
 
 Canonical: __BUMP_ORIGIN__/en/faq
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 A clearer starting point and a better idea of what to expect.
 
@@ -64,6 +64,8 @@ No. They belong to Bump’s future vision. Current services cover consulting, in
 ### What should we prepare before discussing a project?
 
 A description of the problem, tools involved, people affected and desired outcome. You do not need to have selected a technology. Keep credentials, confidential data and sensitive reports out of a public form.
+
+Published by Bump · Technology consulting in Montréal.
 
 ## Related
 

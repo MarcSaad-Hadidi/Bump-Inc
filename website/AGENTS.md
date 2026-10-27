@@ -1,3 +1,19 @@
+# Glass volume/consent and evidence-led SEO — 2026-10-27
+
+Apply the shared clear glass to music controls and the Clarity consent surface,
+preserving explicit consent, production-host gating and all playback behavior.
+Keep the mobile notice above the volume control. Use the requested external
+audits and GEO skills to fix concrete issues, rather than chase incompatible
+rubrics. Initial landing HTML must contain useful equivalent business content
+and links for all visitors before the retained React application mounts; no
+user-agent cloaking, hidden keyword stuffing or second scroll controller.
+Corporate authorship may name Bump, with an about link and real update dates.
+Do not invent named authors, degrees, clients, outcomes, ratings or social links.
+Keep service pages distinct, content/Markdown/schema aligned and proprietary
+agents clearly future vision. Audit scores are tool-specific readiness checks;
+an unmeasured or timed-out AI mention probe is not a measured absence or gain.
+Update the existing public GPT Site and PR33, rerun checks/review, and do not merge.
+
 # Distinct editorial stories and shared finishing fixes — 2026-10-27
 
 Each of the eight editorial topics needs its own composition, explanatory UI,

@@ -3,7 +3,7 @@
 > Intégrez l’IA à vos outils et à vos processus avec Bump : agents ciblés, recherche documentaire, synthèses et tableaux de bord, avec validation humaine.
 
 Canonical: __BUMP_ORIGIN__/services/integration-ia
-Last updated: 2026-10-26
+Last updated: 2026-10-27
 
 Une tâche précise. Les bonnes informations. Une décision qui reste entre vos mains.
 
@@ -52,6 +52,18 @@ Selon le mandat, les livrables peuvent comprendre le cadrage du cas d’usage, l
 
 Cyber AI, Developer AI et Workflow AI appartiennent à notre vision future de systèmes spécialisés. Ils ne sont pas présentés comme des produits disponibles. Nos services actuels portent sur l’analyse, le développement et l’intégration selon un mandat défini.
 
+## Comment vérifier un agent sur des cas concrets ?
+
+Pour un assistant qui prépare le suivi des demandes clients, un essai réussi ne suffit pas. Il faut aussi tester les situations qui doivent provoquer un arrêt, une précision ou une reprise humaine. Voici une grille de départ à adapter au mandat ; ces cas sont illustratifs et ne représentent pas des résultats clients.
+
+| Cas de test | Comportement à vérifier |
+| --- | --- |
+| Une information manque | Demander la précision plutôt qu’inventer la donnée. |
+| Deux sources se contredisent | Présenter le désaccord et les sources pour vérification. |
+| Un document est inaccessible à l’utilisateur | Respecter les droits sans révéler le contenu protégé. |
+| Une action attend une approbation | Préparer le brouillon et attendre une décision explicite. |
+| Le CRM ne répond pas | Signaler l’échec et permettre une reprise sans doublon. |
+
 ## Questions fréquentes
 
 ### Quelle différence entre un chatbot et un agent IA intégré ?
@@ -69,6 +81,16 @@ Pas nécessairement. Nous évaluons d’abord les possibilités d’intégration
 ### Comment savoir si une intégration IA est utile ?
 
 Il faut comparer ses résultats sur des cas représentatifs à des critères définis : qualité, temps de vérification, erreurs, coût d’utilisation et utilité pour l’équipe. Un pilote aide à prendre cette décision avant une généralisation.
+
+### Comment tester un agent IA avant sa mise en service ?
+
+Définissez des cas représentatifs, le résultat attendu et les erreurs à détecter. Vérifiez les sources utilisées, le respect des accès, les demandes d’approbation et les cas où l’agent doit s’arrêter. Bump convient de ces critères avec votre équipe ; une démonstration réussie ne remplace pas cette validation.
+
+## Pour approfondir
+
+- [NIST — AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) — Un cadre volontaire pour examiner les risques liés à la conception, à l’usage et à l’évaluation des systèmes IA.
+
+Publié par Bump · Consultation technologique à Montréal.
 
 ## Related
 

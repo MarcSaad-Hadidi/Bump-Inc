@@ -1117,9 +1117,13 @@ the user types; show matching Bump results below. Remove the header Méthode lin
 Hovering Montréal, Québec should reveal a real map of Montréal; also support
 keyboard focus, touch, dismissal and reduced motion. Keep all changes confined
 to this hero polish and shared UI, then publish for review before another chapter.
-The project dialog is a contact-form UI only, explicitly confirmed by the user.
-It must look like the finished form without brief download/copy controls. Do not
-wire an email/backend or claim that a request was sent. The search rectangle must
+The contact dialog previously remained UI-only under the 2026-10-23 scope.
+Updated user authorization (2026-10-27): connect it to Cloudflare Email Service
+and route messages to the verified destination. Preserve the existing finished
+form layout and do not introduce brief download/copy controls. A success state
+must be shown ONLY after the backend confirms successful dispatch. Validate
+inputs server-side, constrain the recipient, report delivery errors, and add
+spam/abuse protection before fully exposing the production endpoint. The search rectangle must
 exactly match the original trigger's height and fully hide the trigger behind it.
 
 ### Approved hero revision (2026-10-23)
@@ -1141,7 +1145,7 @@ paintings and objects with Bump. Use the authoritative src/bump/content.json.
 The user wants to review a functioning visual prototype, not approve a written
 design. Open the managed localhost preview and publish this separate Bump Site.
 Cyber AI, Developer AI and Workflow AI are future vision, never available products.
-Do not invent clients, results, names, contact addresses or outbound form delivery.
+Do not invent clients, results or names. Only show a contact-form delivery confirmation after Cloudflare accepts a genuine send; never simulate outbound delivery.
 
 Recreate Shopify Editions Winter 2026 as a separate, usable local prototype,
 using REA analysis and original public assets. Preserve the painterly opening,

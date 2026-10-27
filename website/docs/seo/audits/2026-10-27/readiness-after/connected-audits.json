@@ -1,0 +1,285 @@
+{
+  "site": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+  "siteVersion": 62,
+  "checks": {
+    "growHome": {
+      "content": [
+        {
+          "type": "text",
+          "text": "SEO scan for bump-renaissance-7562d3.plumtuna4.chatgpt.site — score 100/100 (A+: Outstanding)\n12 of 12 on-page checks passed.\n\nAll checks passed — nice work. This scan covers on-page basics only (titles, meta, structure, content); rankings also depend on links, speed, and competition.\nFree scan by GrowMyWebsite — full report and fixes at \thttps://www.growmywebsite.com/"
+        }
+      ],
+      "structuredContent": null,
+      "isError": false
+    },
+    "growWorkflow": {
+      "content": [
+        {
+          "type": "text",
+          "text": "SEO scan for bump-renaissance-7562d3.plumtuna4.chatgpt.site — score 96/100 (A+: Outstanding)\n11 of 12 on-page checks passed.\n\nIssues found (1):\n\n1. Image alt text (alt) [WARN] — No images detected.\n   Why it matters: Alt text is how blind visitors and Google 'see' your images — without it you lose image-search traffic and hurt accessibility.\n   Try this: Give each meaningful image a short description, e.g. alt=\"Chocolate birthday cake with candles\"; purely decorative images can stay empty.\n\nFree scan by GrowMyWebsite — full report and fixes at \thttps://www.growmywebsite.com/"
+        }
+      ],
+      "structuredContent": null,
+      "isError": false
+    },
+    "readinessHome": {
+      "content": [
+        {
+          "type": "text",
+          "text": "as_of: 2026-10-27T05:46:17.356Z\ndomain: bump-renaissance-7562d3.plumtuna4.chatgpt.site\nnotice: This shows what the site publishes to a request from Agent Tools servers at this moment, and only for pages that robots.txt allows Agent Tools to request. Tags and data added by JavaScript are not seen. Nothing is stored.\nsource: The website itself, requested from Agent Tools servers\norigin: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site\nreachable: true\nplatform: unknown\nrobots:\n- status: found\n- httpStatus: 200\n- sitemaps:\n  1. https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml\n- aiCrawlers:\n  - allowedCount: 14\npage:\n- url: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/\n- status: 200\n- blockedByRobots: false\ncitationSummary:\n- pass: 2\n- warn: 2\n- fail: 1\ncitationChecks:\n\n| id | status | title | evidence | fix |\n| --- | --- | --- | --- | --- |\n| summary_clarity | fail | Summary clarity near the top | No summary block, TL;DR, key takeaways list, or concise lead paragraph found near the top of the page. | Add a concise 2-3 sentence summary or bulleted key takeaways box directly below the main title before the body content. |\n| author_credentials | warn | Author name and credentials | Author \"Bump\" identified, but no credentials, professional title, or biography was detected. | Add the author's professional credentials, job title, and a link to a bio establishing subject-matter expertise. |\n| qa_format | warn | Q&A or FAQ format | Found only 1 question heading or an isolated Q&A element without a dedicated FAQ section. | Expand the page to include a dedicated Q&A or FAQ section addressing 3 or more key buyer questions. |\n| heading_structure | pass | Clear heading structure | Logical heading hierarchy with 1 H1 heading, 7 H2 subheadings, and no skipped levels. | Maintain sequential heading nesting (H1 -> H2 -> H3) as content expands. |\n| structured_data | pass | Structured data and content | Found Schema.org JSON-LD (WebPage, WebSite, Organization) and visible structured elements (1 table, 3 lists). | Maintain Schema.org JSON-LD structured data and continue formatting dense facts in tables and lists. |\n\nllmsTxt:\n- found: true\n- status: 200\n- title: Bump\n- links: 22\nucp:\n- found: false\n- status: 404\nagentsMd:\n- found: false\n- status: 404\nsitemap:\n- found: true\n- status: 200\n- fromRobots: true\n- kind: urlset\n- entries: 18\npresent: robots.txt, llms.txt, sitemap.xml\nmissing: agents.md\nnotes:\n1. The sitemap was read from the address in the Sitemap line of robots.txt.\n2. Five content qualities associated with AI search citations were evaluated: summary clarity, author credentials, Q&A format, heading structure, and structured data."
+        }
+      ],
+      "structuredContent": {
+        "as_of": "2026-10-27T05:46:17.356Z",
+        "domain": "bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+        "notice": "This shows what the site publishes to a request from Agent Tools servers at this moment, and only for pages that robots.txt allows Agent Tools to request. Tags and data added by JavaScript are not seen. Nothing is stored.",
+        "source": "The website itself, requested from Agent Tools servers",
+        "origin": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+        "reachable": true,
+        "platform": "unknown",
+        "robots": {
+          "status": "found",
+          "httpStatus": 200,
+          "sitemaps": [
+            "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml"
+          ],
+          "aiCrawlers": {
+            "blocked": [],
+            "allowedCount": 14
+          }
+        },
+        "page": {
+          "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+          "status": 200,
+          "blockedByRobots": false
+        },
+        "citationSummary": {
+          "pass": 2,
+          "warn": 2,
+          "fail": 1
+        },
+        "citationChecks": [
+          {
+            "id": "summary_clarity",
+            "status": "fail",
+            "title": "Summary clarity near the top",
+            "evidence": "No summary block, TL;DR, key takeaways list, or concise lead paragraph found near the top of the page.",
+            "fix": "Add a concise 2-3 sentence summary or bulleted key takeaways box directly below the main title before the body content."
+          },
+          {
+            "id": "author_credentials",
+            "status": "warn",
+            "title": "Author name and credentials",
+            "evidence": "Author \"Bump\" identified, but no credentials, professional title, or biography was detected.",
+            "fix": "Add the author's professional credentials, job title, and a link to a bio establishing subject-matter expertise."
+          },
+          {
+            "id": "qa_format",
+            "status": "warn",
+            "title": "Q&A or FAQ format",
+            "evidence": "Found only 1 question heading or an isolated Q&A element without a dedicated FAQ section.",
+            "fix": "Expand the page to include a dedicated Q&A or FAQ section addressing 3 or more key buyer questions."
+          },
+          {
+            "id": "heading_structure",
+            "status": "pass",
+            "title": "Clear heading structure",
+            "evidence": "Logical heading hierarchy with 1 H1 heading, 7 H2 subheadings, and no skipped levels.",
+            "fix": "Maintain sequential heading nesting (H1 -> H2 -> H3) as content expands."
+          },
+          {
+            "id": "structured_data",
+            "status": "pass",
+            "title": "Structured data and content",
+            "evidence": "Found Schema.org JSON-LD (WebPage, WebSite, Organization) and visible structured elements (1 table, 3 lists).",
+            "fix": "Maintain Schema.org JSON-LD structured data and continue formatting dense facts in tables and lists."
+          }
+        ],
+        "llmsTxt": {
+          "found": true,
+          "status": 200,
+          "title": "Bump",
+          "links": 22
+        },
+        "ucp": {
+          "found": false,
+          "status": 404
+        },
+        "agentsMd": {
+          "found": false,
+          "status": 404
+        },
+        "sitemap": {
+          "found": true,
+          "status": 200,
+          "fromRobots": true,
+          "kind": "urlset",
+          "entries": 18
+        },
+        "present": [
+          "robots.txt",
+          "llms.txt",
+          "sitemap.xml"
+        ],
+        "missing": [
+          "agents.md"
+        ],
+        "notes": [
+          "The sitemap was read from the address in the Sitemap line of robots.txt.",
+          "Five content qualities associated with AI search citations were evaluated: summary clarity, author credentials, Q&A format, heading structure, and structured data."
+        ]
+      },
+      "isError": false
+    },
+    "readinessAi": {
+      "content": [
+        {
+          "type": "text",
+          "text": "as_of: 2026-10-27T05:46:17.423Z\ndomain: bump-renaissance-7562d3.plumtuna4.chatgpt.site\nnotice: This shows what the site publishes to a request from Agent Tools servers at this moment, and only for pages that robots.txt allows Agent Tools to request. Tags and data added by JavaScript are not seen. Nothing is stored.\nsource: The website itself, requested from Agent Tools servers\norigin: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site\nreachable: true\nplatform: unknown\nrobots:\n- status: found\n- httpStatus: 200\n- sitemaps:\n  1. https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml\n- aiCrawlers:\n  - allowedCount: 14\npage:\n- url: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/integration-ia\n- status: 200\n- blockedByRobots: false\ncitationSummary:\n- pass: 4\n- warn: 1\n- fail: 0\ncitationChecks:\n\n| id | status | title | evidence | fix |\n| --- | --- | --- | --- | --- |\n| summary_clarity | pass | Summary clarity near the top | Found concise introductory summary paragraph (32 words) directly below the title. | Maintain a clear lead summary paragraph at the top of the page. |\n| author_credentials | warn | Author name and credentials | Author \"Bump\" identified, but no credentials, professional title, or biography was detected. | Add the author's professional credentials, job title, and a link to a bio establishing subject-matter expertise. |\n| qa_format | pass | Q&A or FAQ format | Found structured Q&A content: FAQPage structured data, 2 question headings, 7 expandable Q&A items. | Keep Q&A headings updated with concise, direct answers that address common reader queries. |\n| heading_structure | pass | Clear heading structure | Logical heading hierarchy with 1 H1 heading, 11 H2 subheadings, and no skipped levels. | Maintain sequential heading nesting (H1 -> H2 -> H3) as content expands. |\n| structured_data | pass | Structured data and content | Found Schema.org JSON-LD (BreadcrumbList, FAQPage, Service) and visible structured elements (2 tables, 2 lists). | Maintain Schema.org JSON-LD structured data and continue formatting dense facts in tables and lists. |\n\nllmsTxt:\n- found: true\n- status: 200\n- title: Bump\n- links: 22\nucp:\n- found: false\n- status: 404\nagentsMd:\n- found: false\n- status: 404\nsitemap:\n- found: true\n- status: 200\n- fromRobots: true\n- kind: urlset\n- entries: 18\npresent: robots.txt, llms.txt, sitemap.xml\nmissing: agents.md\nnotes:\n1. The sitemap was read from the address in the Sitemap line of robots.txt.\n2. Five content qualities associated with AI search citations were evaluated: summary clarity, author credentials, Q&A format, heading structure, and structured data."
+        }
+      ],
+      "structuredContent": {
+        "as_of": "2026-10-27T05:46:17.423Z",
+        "domain": "bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+        "notice": "This shows what the site publishes to a request from Agent Tools servers at this moment, and only for pages that robots.txt allows Agent Tools to request. Tags and data added by JavaScript are not seen. Nothing is stored.",
+        "source": "The website itself, requested from Agent Tools servers",
+        "origin": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+        "reachable": true,
+        "platform": "unknown",
+        "robots": {
+          "status": "found",
+          "httpStatus": 200,
+          "sitemaps": [
+            "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml"
+          ],
+          "aiCrawlers": {
+            "blocked": [],
+            "allowedCount": 14
+          }
+        },
+        "page": {
+          "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/integration-ia",
+          "status": 200,
+          "blockedByRobots": false
+        },
+        "citationSummary": {
+          "pass": 4,
+          "warn": 1,
+          "fail": 0
+        },
+        "citationChecks": [
+          {
+            "id": "summary_clarity",
+            "status": "pass",
+            "title": "Summary clarity near the top",
+            "evidence": "Found concise introductory summary paragraph (32 words) directly below the title.",
+            "fix": "Maintain a clear lead summary paragraph at the top of the page."
+          },
+          {
+            "id": "author_credentials",
+            "status": "warn",
+            "title": "Author name and credentials",
+            "evidence": "Author \"Bump\" identified, but no credentials, professional title, or biography was detected.",
+            "fix": "Add the author's professional credentials, job title, and a link to a bio establishing subject-matter expertise."
+          },
+          {
+            "id": "qa_format",
+            "status": "pass",
+            "title": "Q&A or FAQ format",
+            "evidence": "Found structured Q&A content: FAQPage structured data, 2 question headings, 7 expandable Q&A items.",
+            "fix": "Keep Q&A headings updated with concise, direct answers that address common reader queries."
+          },
+          {
+            "id": "heading_structure",
+            "status": "pass",
+            "title": "Clear heading structure",
+            "evidence": "Logical heading hierarchy with 1 H1 heading, 11 H2 subheadings, and no skipped levels.",
+            "fix": "Maintain sequential heading nesting (H1 -> H2 -> H3) as content expands."
+          },
+          {
+            "id": "structured_data",
+            "status": "pass",
+            "title": "Structured data and content",
+            "evidence": "Found Schema.org JSON-LD (BreadcrumbList, FAQPage, Service) and visible structured elements (2 tables, 2 lists).",
+            "fix": "Maintain Schema.org JSON-LD structured data and continue formatting dense facts in tables and lists."
+          }
+        ],
+        "llmsTxt": {
+          "found": true,
+          "status": 200,
+          "title": "Bump",
+          "links": 22
+        },
+        "ucp": {
+          "found": false,
+          "status": 404
+        },
+        "agentsMd": {
+          "found": false,
+          "status": 404
+        },
+        "sitemap": {
+          "found": true,
+          "status": 200,
+          "fromRobots": true,
+          "kind": "urlset",
+          "entries": 18
+        },
+        "present": [
+          "robots.txt",
+          "llms.txt",
+          "sitemap.xml"
+        ],
+        "missing": [
+          "agents.md"
+        ],
+        "notes": [
+          "The sitemap was read from the address in the Sitemap line of robots.txt.",
+          "Five content qualities associated with AI search citations were evaluated: summary clarity, author credentials, Q&A format, heading structure, and structured data."
+        ]
+      },
+      "isError": false
+    },
+    "links": {
+      "content": [
+        {
+          "type": "text",
+          "text": "as_of: 2026-10-27T05:46:17.494Z\ndomain: bump-renaissance-7562d3.plumtuna4.chatgpt.site\nnotice: This shows what the site publishes to a request from Agent Tools servers at this moment, and only for pages that robots.txt allows Agent Tools to request. Tags and data added by JavaScript are not seen. Nothing is stored.\nsource: The website itself, requested from Agent Tools servers\norigin: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site\nreachable: true\nrobots:\n- status: found\n- httpStatus: 200\nsitemap:\n- found: true\n- url: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml\n- kind: urlset\n- urlsListed: 18\nsummary:\n- sampled: 18\n- ok: 18\n- redirected: 0\n- broken: 0\n- unreachable: 0\n- skippedByRobots: 0\n- notChecked: 0\nstatuses:\n- 200: 18\nrequestsMade: 20"
+        }
+      ],
+      "structuredContent": {
+        "as_of": "2026-10-27T05:46:17.494Z",
+        "domain": "bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+        "notice": "This shows what the site publishes to a request from Agent Tools servers at this moment, and only for pages that robots.txt allows Agent Tools to request. Tags and data added by JavaScript are not seen. Nothing is stored.",
+        "source": "The website itself, requested from Agent Tools servers",
+        "origin": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+        "reachable": true,
+        "robots": {
+          "status": "found",
+          "httpStatus": 200
+        },
+        "sitemap": {
+          "found": true,
+          "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml",
+          "kind": "urlset",
+          "urlsListed": 18
+        },
+        "summary": {
+          "sampled": 18,
+          "ok": 18,
+          "redirected": 0,
+          "broken": 0,
+          "unreachable": 0,
+          "skippedByRobots": 0,
+          "notChecked": 0
+        },
+        "statuses": {
+          "200": 18
+        },
+        "issues": [],
+        "requestsMade": 20
+      },
+      "isError": false
+    }
+  }
+}

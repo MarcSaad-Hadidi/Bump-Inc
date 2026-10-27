@@ -94,6 +94,7 @@ No. An audit examines a defined scope, at a particular time and using agreed met
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 

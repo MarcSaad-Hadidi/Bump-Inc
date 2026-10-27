@@ -73,6 +73,7 @@ Bump est une entreprise de consultation technologique fondée par deux entrepren
 ## À propos de l’auteur
 
 [Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+Consultant en technologie pour PME · Montréal, Québec
 
 ## Ce qui a été révisé
 
@@ -159,6 +160,7 @@ Bump is a technology consulting company founded by two entrepreneurs in Montréa
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 
@@ -229,6 +231,7 @@ Oui, l’intégration des outils existants fait partie de nos services. Nous exa
 ## À propos de l’auteur
 
 [Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+Consultant en technologie pour PME · Montréal, Québec
 
 ## Ce qui a été révisé
 
@@ -296,6 +299,7 @@ Yes. Integrating existing tools is part of our services. We assess their APIs, a
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 
@@ -408,6 +412,7 @@ Non. Des règles explicites et une connexion entre logiciels peuvent suffire. Bu
 ## À propos de l’auteur
 
 [Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+Consultant en technologie pour PME · Montréal, Québec
 
 ## Ce qui a été révisé
 
@@ -520,6 +525,7 @@ No. Explicit rules and a connection between tools may be enough. Bump evaluates 
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 
@@ -633,6 +639,7 @@ Définissez des cas représentatifs, le résultat attendu et les erreurs à dét
 ## À propos de l’auteur
 
 [Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+Consultant en technologie pour PME · Montréal, Québec
 
 ## Ce qui a été révisé
 
@@ -746,6 +753,7 @@ Define representative cases, expected results and errors to detect. Check the so
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 
@@ -852,6 +860,7 @@ La proposition doit préciser les responsabilités : hébergement, accès, sauve
 ## À propos de l’auteur
 
 [Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+Consultant en technologie pour PME · Montréal, Québec
 
 ## Ce qui a été révisé
 
@@ -958,6 +967,7 @@ The proposal should define responsibility for hosting, access, backups, fixes an
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 
@@ -1071,6 +1081,7 @@ Non. Un audit examine un périmètre défini, à un moment donné et selon des m
 ## À propos de l’auteur
 
 [Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+Consultant en technologie pour PME · Montréal, Québec
 
 ## Ce qui a été révisé
 
@@ -1184,6 +1195,7 @@ No. An audit examines a defined scope, at a particular time and using agreed met
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 
@@ -1280,6 +1292,7 @@ Non. Bump propose des services de consultation, de développement, d’intégrat
 ## À propos de l’auteur
 
 [Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+Consultant en technologie pour PME · Montréal, Québec
 
 ## Ce qui a été révisé
 
@@ -1376,6 +1389,7 @@ No. Bump offers consulting, development, integration and cybersecurity services.
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 
@@ -1458,6 +1472,7 @@ Notre offre actuelle est une offre de services. Cyber AI, Developer AI et Workfl
 ## À propos de l’auteur
 
 [Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+Consultant en technologie pour PME · Montréal, Québec
 
 ## Ce qui a été révisé
 
@@ -1540,6 +1555,7 @@ Our current offer is service-based. Cyber AI, Developer AI and Workflow AI descr
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 
@@ -1636,6 +1652,7 @@ Une description du problème, les outils concernés, les personnes impliquées e
 ## À propos de l’auteur
 
 [Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+Consultant en technologie pour PME · Montréal, Québec
 
 ## Ce qui a été révisé
 
@@ -1732,6 +1749,7 @@ A description of the problem, tools involved, people affected and desired outcom
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 

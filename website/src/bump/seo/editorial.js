@@ -42,3 +42,7 @@ export const revisions = {
 export const publisherBio = locale => locale === 'en'
   ? 'Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.'
   : 'Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.';
+
+export const publisherRole = locale => locale === 'en'
+  ? 'Technology consultant for SMEs · Montréal, Québec'
+  : 'Consultant en technologie pour PME · Montréal, Québec';

@@ -146,7 +146,7 @@ test('corporate authorship, actual update dates and service FAQ schema match vis
     assert(profile.sections.some(section=>section.id === attrs(author).href.split('#')[1]));
     for (const note of page.revisions) {assert(contentText(tree).includes(note)); assert(renderMarkdown(page,origin).includes(note));}
     assert(walk(tree,node => node.tagName === 'meta' && attrs(node).name === 'author' && attrs(node).content === 'Bump').length);
-    if (page.type === 'service') assert.deepEqual(graph.find(node => node['@type'] === 'FAQPage').mainEntity.map(node => node.name),page.faqs.map(faq=>faq.q));
+    if (page.faqs.length) assert.deepEqual(graph.find(node => node['@type'] === 'FAQPage').mainEntity.map(node => node.name),page.faqs.map(faq=>faq.q));
     assert.deepEqual(web.citation || [],(page.references || []).map(reference=>reference.url));
   }
   for (const locale of ['fr','en']) assert.equal(schemaFor(pageFor('home',locale),origin)['@graph'].find(node=>node['@type']==='WebPage').datePublished,undefined);

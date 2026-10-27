@@ -48,6 +48,7 @@ Yes. Integrating existing tools is part of our services. We assess their APIs, a
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 

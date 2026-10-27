@@ -94,6 +94,7 @@ Définissez des cas représentatifs, le résultat attendu et les erreurs à dét
 ## À propos de l’auteur
 
 [Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+Consultant en technologie pour PME · Montréal, Québec
 
 ## Ce qui a été révisé
 

@@ -3,7 +3,7 @@ import {catalog, pageFor, listPages} from './pages.js';
 import {expertiseLinks} from './navigation.js';
 import {renderStoryFigure,storyAction} from './stories.js';
 import {musicLabels,MUSIC_WAVES} from '../ui/musicController.js';
-import {publisherBio} from './editorial.js';
+import {publisherBio,publisherRole} from './editorial.js';
 
 export const html = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[character]));
 export const absolute = (path, origin) => origin + path;
@@ -22,7 +22,7 @@ const authorPath = locale => pageFor('about',locale).path + (locale === 'fr' ? '
 
 export function publisherCredit(page) {
   const locale = page.locale;
-  return '<aside class="seo-editorial-credit author-bio" aria-label="' + text(locale,'Publication et révision','Publication and revision') + '"><div><h2>' + text(locale,'Publié par ','Published by ') + '<a rel="author" href="' + authorPath(locale) + '">Bump</a></h2><p>' + html(publisherBio(locale)) + '</p><a class="seo-author-link" href="' + authorPath(locale) + '">' + text(locale,'Notre démarche éditoriale','Our editorial approach') + ' ' + arrow + '</a></div><div class="seo-revision"><p>' + (page.published ? text(locale,'Première publication : ','First published: ') + '<time datetime="' + page.published + '">' + page.published + '</time><br>' : '') + text(locale,'Mis à jour le ','Updated ') + '<time datetime="' + site.updated + '">' + site.updated + '</time></p>' + (page.revisions?.length ? '<details><summary>' + text(locale,'Ce qui a été révisé','What changed') + '</summary><ul>' + page.revisions.map(note=>'<li>'+html(note)+'</li>').join('') + '</ul></details>' : '') + '</div></aside>';
+  return '<aside class="seo-editorial-credit author-bio" aria-label="' + text(locale,'Publication et révision','Publication and revision') + '"><div><h2>' + text(locale,'Publié par ','Published by ') + '<a rel="author" href="' + authorPath(locale) + '">Bump</a></h2><p class="seo-author-role">' + html(publisherRole(locale)) + '</p><p>' + html(publisherBio(locale)) + '</p><a class="seo-author-link" href="' + authorPath(locale) + '">' + text(locale,'Notre démarche éditoriale','Our editorial approach') + ' ' + arrow + '</a></div><div class="seo-revision"><p>' + (page.published ? text(locale,'Première publication : ','First published: ') + '<time datetime="' + page.published + '">' + page.published + '</time><br>' : '') + text(locale,'Mis à jour le ','Updated ') + '<time datetime="' + site.updated + '">' + site.updated + '</time></p>' + (page.revisions?.length ? '<details><summary>' + text(locale,'Ce qui a été révisé','What changed') + '</summary><ul>' + page.revisions.map(note=>'<li>'+html(note)+'</li>').join('') + '</ul></details>' : '') + '</div></aside>';
 }
 
 function workloadMarkup(locale) {
@@ -48,10 +48,10 @@ export function schemaFor(page, origin) {
   if (page.type === 'service') {
     webpage.mainEntity = {'@id': url + '#service'};
     nodes.push({'@type': 'Service', '@id': url + '#service', name: cleanTitle(page.title), serviceType: cleanTitle(page.title), description: page.answer, provider: {'@id': organizationId}, areaServed: {'@type': 'AdministrativeArea', name: 'Québec'}, url});
-    if (page.faqs.length) {
-      webpage.hasPart = {'@id':url + '#questions'};
-      nodes.push({'@type':'FAQPage','@id':url + '#questions',inLanguage:languageTag(page.locale),isPartOf:{'@id':url + '#webpage'},mainEntity:page.faqs.map(faq => ({'@type':'Question',name:faq.q,acceptedAnswer:{'@type':'Answer',text:faq.a}}))});
-    }
+  }
+  if (page.type !== 'faq' && page.faqs.length) {
+    webpage.hasPart = {'@id':url + '#questions'};
+    nodes.push({'@type':'FAQPage','@id':url + '#questions',inLanguage:languageTag(page.locale),isPartOf:{'@id':url + '#webpage'},mainEntity:page.faqs.map(faq => ({'@type':'Question',name:faq.q,acceptedAnswer:{'@type':'Answer',text:faq.a}}))});
   }
   if (page.references?.length) webpage.citation = page.references.map(reference => reference.url);
   if (page.type === 'faq') webpage.mainEntity = page.faqs.map(faq => ({'@type': 'Question', name: faq.q, acceptedAnswer: {'@type': 'Answer', text: faq.a}}));
@@ -111,7 +111,7 @@ export function renderMarkdown(page, origin) {
     for (const reference of page.references) lines.push('- [' + mdText(reference.title) + '](' + reference.url + ') — ' + mdText(reference.description));
     lines.push('');
   }
-  lines.push('## ' + text(page.locale,'À propos de l’auteur','About the publisher'),'','[Bump](' + origin + authorPath(page.locale) + ') — ' + mdText(publisherBio(page.locale)),'');
+  lines.push('## ' + text(page.locale,'À propos de l’auteur','About the publisher'),'','[Bump](' + origin + authorPath(page.locale) + ') — ' + mdText(publisherBio(page.locale)),mdText(publisherRole(page.locale)),'');
   if (page.revisions?.length) lines.push('## ' + text(page.locale,'Ce qui a été révisé','What changed'),'',...page.revisions.map(item=>'- '+mdText(item)),'');
   lines.push('## Related', '');
   for (const id of page.related) { const related = pageFor(id, page.locale); lines.push('- [' + mdText(cleanTitle(related.title)) + '](' + absolute(related.path, origin) + ') — ' + mdText(related.description)); }

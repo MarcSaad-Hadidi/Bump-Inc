@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-27T05:48:52.953Z",
+  "siteVersion": 62,
+  "sourceCommit": "08ab1bfecc2c4b9459fa425f48193128904e5485",
+  "job_id": "30913ed1",
+  "pages": 2,
+  "scores": {
+    "structured_data": 53,
+    "content_depth": 62,
+    "entity_authority": 38,
+    "technical_aeo": 95,
+    "ai_visibility": 73,
+    "ai_visibility_source": "heuristic",
+    "ai_visibility_details": {},
+    "overall": 68
+  },
+  "report_url": "https://aeo.projecta.ai/static/slides/bump-renaissance-7562d3-plumtuna4-chatgpt-site-b24b7048.html",
+  "worksheet": {
+    "yes": 8,
+    "no": 1,
+    "unmeasured": 11,
+    "structureAndFormat": 25,
+    "structureAndFormatMaximum": 25
+  },
+  "remainingMeasuredGap": "No verified LinkedIn/YouTube profile linked.",
+  "aiProbe": "Timed out; no observed visibility result."
+}

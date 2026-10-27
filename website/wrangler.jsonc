@@ -2,7 +2,18 @@
   "name": "bump-consultation",
   "compatibility_date": "2026-10-25",
   "assets": {
-    "directory": "./dist/client"
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ]
   },
-  "previews": {}
+  "previews": {},
+  "main": "./src/worker/contact.js",
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "destination_address": "contactmarchadidi@gmail.com"
+    }
+  ]
 }

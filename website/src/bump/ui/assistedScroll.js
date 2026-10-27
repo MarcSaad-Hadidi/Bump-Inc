@@ -243,9 +243,9 @@ export function installBumpAssistedScroll(getLenis,{isReady=()=>true}={}){
  }
  function keydown(event){
   if(event.altKey||event.metaKey||event.ctrlKey||isEditing(event.target)||consumesScroll(event.target,1))return;
+  if(event.key===' '&&event.target instanceof Element&&event.target.closest('button,a,summary,[role="tab"]'))return;
   const direction=['ArrowDown','PageDown',' '].includes(event.key)?1:['ArrowUp','PageUp'].includes(event.key)?-1:0;
   if(direction&&(moving||navigationBusy)){swallow(event);return;}
-  if(event.target instanceof Element&&event.target.closest('button,a,[role="tab"]')&&event.key===' ')return;
   if(!moving&&!navigationBusy&&activeGestureScene()?.key?.(event)){swallow(event);return;}
   if(event.target instanceof Element&&event.target.closest('[data-bump-local-keys]')&&!['PageDown','PageUp'].includes(event.key))return;
   if(!direction)return;const stop=next(event.shiftKey&&event.key===' '?-1:direction);

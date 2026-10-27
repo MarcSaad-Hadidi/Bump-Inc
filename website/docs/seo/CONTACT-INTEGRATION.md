@@ -10,7 +10,7 @@ FR/EN presentation and main landing choreography are preserved.
 - `contact@bumpconsultation.ca` is the public address; Cloudflare Email Routing
   is ready and the configured destination is verified.
 - The existing managed Turnstile widget is scoped to the primary domain.
-- 222 tests pass. Contact coverage includes validation, payload size, origin,
+- 223 tests pass. Contact coverage includes validation, payload size, origin,
   hostname/action verification, quotas, honeypot, provider failure, confirmed
   acceptance, duplicate-submit prevention, challenge reset and FR/EN fields. A navigation harness verifies no initial form mount, opening,
   retained closing state and reopening.
@@ -36,3 +36,7 @@ sent. Automated tests mock verification and delivery; no actual test message
 has been sent. After the authorized primary-domain deployment, an authorized
 person must check a real submission and receipt before calling mail delivery
 verified end to end. This consolidation does not merge into `main`.
+
+The landing CSP permits the exact Turnstile connection origin. The native FAQ
+keeps Space-key activation instead of handing it to assisted chapter navigation,
+including at short-screen continuation stops and during an active journey.

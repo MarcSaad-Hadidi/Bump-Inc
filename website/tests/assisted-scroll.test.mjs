@@ -116,6 +116,23 @@ test('native dialog headings and scroll boundaries never move the underlying cha
  }finally{f.restore();}
 });
 
+test('Space on a FAQ summary retains native activation at short-screen reading stops and during travel',()=>{
+ const f=fixture({height:390,continuation:true,native:true});try{
+  const faq=new f.nodes.b2b.constructor(26800,1000),summary=new f.nodes.b2b.constructor();
+  f.nodes['bump-home-questions']=faq;
+  summary.closest=selector=>selector.split(',').includes('summary')?summary:null;
+  const stop=f.stops.find(item=>item.id==='company-questions');
+  assert(f.stops.some(item=>item.id==='company-questions-detail-1'));
+  globalThis.scrollY=stop.y;
+  const before=f.calls.length;
+  assert.equal(f.fire('keydown',{target:summary,key:' '}),false);
+  assert.equal(f.calls.length,before);assert.equal(scrollY,stop.y);
+  assert.equal(f.fire('keydown',{key:'PageDown'}),true,'chapter keys still advance between reading stops');
+  assert.equal(document.documentElement.dataset.bumpScrollMoving,'true');
+  assert.equal(f.fire('keydown',{target:summary,key:' '}),false,'an active journey must not cancel native disclosure activation');
+ }finally{f.restore();}
+});
+
 test('browser toolbar height changes leave all assisted destinations and the current landing unchanged',()=>{
  const f=fixture({width:390,height:780});try{
   document.documentElement.dataset.bumpViewportHeight='780';

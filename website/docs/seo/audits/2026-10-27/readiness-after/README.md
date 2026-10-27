@@ -32,5 +32,6 @@ personnelle, un diplôme ou une certification ajoutés.
 
 Les résultats de cette finition doivent être datés et distingués du passage
 ci-dessus. Les contrôles GitHub/Codex et le rapport final sont liés dans PR33.
-AIOSCAN et Pishe restent sans commande d’audit disponible dans la session ;
-aucun score n’est annoncé pour eux. Voir `../READINESS-PASS.md`.
+Lors de ce checkpoint, les commandes AIOSCAN et Pishe n’étaient pas disponibles.
+Elles le sont devenues ensuite et les deux audits ont été exécutés. Les nouveaux
+résultats et ceux de GeoDaddy sont distingués dans `../final/VERIFICATION.md`.

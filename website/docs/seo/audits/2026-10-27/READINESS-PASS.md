@@ -61,11 +61,21 @@ personne déduite d’un compte GitHub n’est présentée comme fondateur. Le l
 GitHub de la vitrine est une source technique vérifiable ; ce n’est pas une
 mention indépendante dans la presse ni une preuve de résultats clients.
 
-AIOSCAN a été sélectionné et son skill `get-started` lu. Ses commandes d’audit
-ne sont pas exposées dans cette session. Aucune commande Pishe n’est exposée
-non plus ; la recherche de plugins n’a pas résolu cette disponibilité. Aucun
-score n’est inventé pour ces deux services et aucun autre outil n’est présenté
-comme s’il s’agissait d’AIOSCAN ou de Pishe.
+Au premier contrôle, AIOSCAN et Pishe n’exposaient pas de commande d’audit.
+Elles sont devenues disponibles ensuite : les deux scans ont été exécutés
+sur la publication 63. AIOSCAN indique 90/100, B, 20/21 contrôles ; Pishe
+90/100 en SEO et 83/100 en préparation IA. Les réponses et limites finales
+sont conservées dans `final/`. Aucun service de prise de contact n’a été appelé.
+
+GeoDaddy a aussi été exécuté sur une page, puis cinq avec Web Vitals. Sa
+détection JSON-LD exige `@type` à la racine et ne reconnaît pas le graphe valide
+utilisé ici. Les manifestes d’agents, d’authentification et de paiement ne
+correspondent pas à l’offre de cette vitrine ; ils ne sont pas fabriqués pour
+le score. Son instabilité de chargement a motivé un correctif réel : l’édition
+initiale devient une surface de lecture indépendante du flux, retirée lorsque
+React démarre, afin que sa longueur ne déplace pas le document de la scène.
+Le scroll du site après démarrage reste inchangé. Le sujet de l’accueil est
+relié à l’entreprise dans le JSON-LD et sa description française est raccourcie.
 
 ## Contrôles avant publication
 

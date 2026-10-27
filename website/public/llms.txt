@@ -10,7 +10,7 @@ Cyber AI, Developer AI et Workflow AI sont une vision future, pas des produits d
 
 ## Pages principales — français
 
-- [Un nouvel élan technologique.](__BUMP_ORIGIN__/index.md): Bump, consultation technologique à Montréal : optimisation des processus, automatisation, intégration IA, logiciels sur mesure et cybersécurité pour les PME.
+- [Un nouvel élan technologique.](__BUMP_ORIGIN__/index.md): Bump, consultation technologique à Montréal pour PME : automatisation, intégration IA, logiciels sur mesure et cybersécurité.
 - [La technologie, à votre mesure.](__BUMP_ORIGIN__/expertises.md): Bump accompagne les PME du Québec : automatisation, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre méthode.
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus.md): Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
 - [Intégration IA pour votre entreprise.](__BUMP_ORIGIN__/services/integration-ia.md): Intégrez l’IA à vos outils et à vos processus avec Bump : agents ciblés, recherche documentaire, synthèses et tableaux de bord, avec validation humaine.

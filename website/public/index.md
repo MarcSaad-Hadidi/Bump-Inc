@@ -1,6 +1,6 @@
 # Un nouvel élan technologique.
 
-> Bump, consultation technologique à Montréal : optimisation des processus, automatisation, intégration IA, logiciels sur mesure et cybersécurité pour les PME.
+> Bump, consultation technologique à Montréal pour PME : automatisation, intégration IA, logiciels sur mesure et cybersécurité.
 
 Canonical: __BUMP_ORIGIN__/
 Last updated: 2026-10-27

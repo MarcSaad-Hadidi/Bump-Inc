@@ -37,6 +37,7 @@ export function schemaFor(page, origin) {
   const webpage = {'@type': page.type === 'about' ? 'AboutPage' : page.type === 'faq' ? 'FAQPage' : page.type === 'hub' ? 'CollectionPage' : 'WebPage', '@id': url + '#webpage', url, name: cleanTitle(page.title), description: page.description, inLanguage: languageTag(page.locale), isPartOf: {'@id': websiteId}, publisher: {'@id': organizationId}, author: {'@id': organizationId}, dateModified: site.updated};
   const nodes = [organization, website, webpage];
   if (page.published) webpage.datePublished = page.published;
+  if (page.type === 'home') webpage.about = {'@id':organizationId};
   if (page.type === 'about') webpage.mainEntity = {'@id':organizationId};
   if (page.type === 'hub') {
     webpage.mainEntity = {'@id':url + '#domaines'};

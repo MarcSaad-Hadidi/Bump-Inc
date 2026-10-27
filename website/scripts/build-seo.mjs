@@ -40,7 +40,7 @@ export function homeFallback(source, page) {
   // hidden content. Without scripting it remains a readable, linked edition.
   const styles = `<style data-bump-initial-style>
 .bump-loading{z-index:2147482000}
-.seo-home-fallback{box-sizing:border-box;background:#f4f1e8;color:#302e28;font:20px/1.5 Georgia,serif;padding:50px max(24px,calc((100% - 1100px)/2));min-height:100vh}
+.seo-home-fallback{box-sizing:border-box;position:fixed;inset:0;overflow:auto;background:#f4f1e8;color:#302e28;font:20px/1.5 Georgia,serif;padding:50px max(24px,calc((100% - 1100px)/2));min-height:100vh}
 .seo-home-fallback h1{font:400 clamp(38px,6vw,72px)/1.08 Georgia,serif;margin:0 0 24px}
 .seo-home-fallback h2{font:400 32px/1.2 Georgia,serif;margin:34px 0 14px}
 .seo-home-fallback p{max-width:800px;margin:0 0 16px}.seo-home-fallback a{color:#315e49;text-decoration:underline}

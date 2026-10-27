@@ -84,6 +84,10 @@ Technology consultant for SMEs · Montréal, Québec
 - Added a checklist for preparing a first conversation.
 - Clarified useful information and what should not be shared.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Workflow automation for small businesses.](__BUMP_ORIGIN__/en/services/workflow-automation) — Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.

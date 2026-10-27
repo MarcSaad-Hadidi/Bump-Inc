@@ -1,4 +1,5 @@
 import test from 'node:test';
+import {CONTACT_EMAIL} from '../src/bump/contact.js';
 import assert from 'node:assert/strict';
 import {readFile, readdir} from 'node:fs/promises';
 import {parse} from 'parse5';
@@ -48,7 +49,7 @@ test('every public editorial route has bilingual metadata, a real HTML body and 
     assert(!descriptions.has(page.description)); descriptions.add(page.description);
     const md = renderMarkdown(page, origin);
     assert.match(md, /^# .+\n/); assert(md.includes('Canonical: ' + origin + page.path));
-    for (const target of md.matchAll(/\]\(([^)]+)\)/g)) { assert(target[1].startsWith(origin + '/') || page.references?.some(reference => reference.url === target[1])); assert(!target[1].endsWith('.md')); }
+    for (const target of md.matchAll(/\]\(([^)]+)\)/g)) { assert(target[1]==='mailto:'+CONTACT_EMAIL || target[1].startsWith(origin + '/') || page.references?.some(reference => reference.url === target[1])); assert(!target[1].endsWith('.md')); }
     if (page.type === 'home') continue;
     const tree = parse(renderHtml(page, origin));
     const main = walk(tree, node => node.tagName === 'main')[0];
@@ -66,10 +67,12 @@ test('every public editorial route has bilingual metadata, a real HTML body and 
     for (const anchor of walk(tree, node => node.tagName === 'a')) {
       const href = attrs(anchor).href;
       if (href.startsWith('#')) assert(walk(tree, node => attrs(node).id === href.slice(1)).length, page.path + href);
-      else assert(listPages().some(target => target.path === href.split(/[?#]/)[0]) || page.references?.some(reference => reference.url === href), href);
+      else assert(href==='mailto:'+CONTACT_EMAIL || listPages().some(target => target.path === href.split(/[?#]/)[0]) || page.references?.some(reference => reference.url === href), href);
     }
     const graph = schemaFor(page, origin)['@graph'];
     assert.equal(graph.find(node => node['@type'] === 'Organization').description, publisherBio(page.locale));
+    assert.equal(graph.find(node=>node['@type']==='Organization').email,CONTACT_EMAIL);
+    assert(md.includes('[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)'));
     const keys = value => value && typeof value === 'object' ? Object.entries(value).flatMap(([key, child]) => [key, ...keys(child)]) : [];
     assert(!keys(graph).includes('aggregateRating')); assert(!keys(graph).includes('price'));
     if (page.type === 'service') assert.equal(graph.find(node => node['@type'] === 'Service').description, page.answer);

@@ -55,6 +55,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Précision du choix entre automatisation, IA, logiciel et cybersécurité.
 - Ajout de l’attribution et de la méthode de révision des informations.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.

@@ -202,6 +202,12 @@ body{font-size:18px;font-synthesis:none}
 .bump-contact .bump-close{display:grid;place-items:center;right:16px;top:14px;width:32px;height:32px;padding:7px;border:1px solid;border-radius:50%;line-height:0;transition:background-color .2s}
 .bump-contact .bump-close svg{width:17px;height:17px}
 .bump-contact .bump-form-status{grid-column:1/-1;margin:0;padding:12px 0 0;font-size:15px;line-height:1.4;animation:bump-contact-status .25s ease-out both}
+.bump-contact-email{display:inline-block;margin-top:18px;font-size:16px;line-height:1.4;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+.bump-contact-turnstile,.bump-contact-note{grid-column:1/-1;min-width:0}
+.bump-contact-note{font-size:14px;line-height:1.4;margin:0}
+.bump-contact-note .bump-contact-email,.bump-form-status .bump-contact-email{margin:0 0 0 .3em;font-size:inherit}
+.bump-contact .bump-action:disabled{opacity:.55;cursor:default;transform:none}
+.bump-contact-trap{position:absolute!important;left:-10000px!important;top:0!important;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;pointer-events:none}
 @keyframes bump-contact-status{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:800px){.bump-contact .bump-dialog-inner{padding:52px 28px 30px}.bump-contact-layout{gap:28px;grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr)}.bump-contact h2{font-size:37px}.bump-contact form{grid-template-columns:1fr;gap:17px}.bump-contact-bottom{align-items:flex-start;flex-direction:column;gap:12px}.bump-contact .bump-action{width:100%}}
 @media(max-width:600px){.bump-contact .bump-dialog-inner{padding:46px 22px 25px}.bump-contact-layout{grid-template-columns:minmax(0,1fr);gap:27px}.bump-contact h2{font-size:37px;max-width:300px;margin-bottom:14px}.bump-contact .bump-eyebrow{margin-bottom:15px}.bump-contact .bump-brief-intro{font-size:18px;max-width:330px}.bump-contact-location{display:none}.bump-contact form{gap:17px}.bump-contact textarea{min-height:105px}.bump-contact-bottom{gap:14px;padding-top:3px}.bump-contact .bump-action{min-height:47px;font-size:17px}}

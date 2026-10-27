@@ -98,6 +98,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Ajout d’une mini FAQ et de liens vers quatre scénarios de mandats illustratifs.
 - Stabilisation de la géométrie initiale et préchargement des polices.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [La technologie, à votre mesure.](__BUMP_ORIGIN__/expertises) — Bump accompagne les PME du Québec : automatisation, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre méthode.

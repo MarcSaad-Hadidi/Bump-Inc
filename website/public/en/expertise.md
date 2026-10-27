@@ -55,6 +55,10 @@ Technology consultant for SMEs · Montréal, Québec
 - Clarified the choice between automation, AI, software and cybersecurity.
 - Added publisher attribution and the content review approach.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Workflow automation for small businesses.](__BUMP_ORIGIN__/en/services/workflow-automation) — Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.

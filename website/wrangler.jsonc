@@ -9,5 +9,21 @@
     "html_handling": "none",
     "not_found_handling": "none"
   },
-  "previews": {}
+  "previews": {},
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "destination_address": "contactmarchadidi@gmail.com"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "CONTACT_RATE_LIMITER",
+      "namespace_id": "332034",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    }
+  ]
 }

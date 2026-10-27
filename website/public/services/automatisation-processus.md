@@ -100,6 +100,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Ajout d’une grille pour choisir un premier workflow.
 - Ajout d’un calcul de charge manuelle avec des hypothèses modifiables.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Des logiciels conçus pour vos opérations.](__BUMP_ORIGIN__/services/developpement-logiciel) — Applications web, portails et systèmes internes pour les PME du Québec. Bump conçoit des logiciels sur mesure reliés à vos CRM, ERP et API.

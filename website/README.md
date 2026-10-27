@@ -151,9 +151,35 @@ npm test
 - `.openai/hosting.json` et `worker/` : publication GPT Sites et routage du Worker ;
   le serveur Node partage le même contrat sans exiger Cloudflare.
 
-Le formulaire « Parlons de votre projet » est une démonstration d'interface ;
-aucun envoi de courriel ni CRM réel n'est connecté. Les démonstrations utilisent
-des données fictives. Les agents propriétaires sont une vision future.
+Le formulaire « Parlons de votre projet » utilise `POST /api/contact` dans le
+même Worker que les pages SEO. Conserver `main: ./dist/server/index.js`,
+`assets.run_worker_first: true` et la configuration de routage existante.
+Le build regroupe le serveur de contact ; ne pas remplacer son entrée par
+`src/worker/contact.js`, ce qui désactiverait le routage SEO/Markdown.
+
+Sur `bumpconsultation.ca` et `www.bumpconsultation.ca`, le formulaire exige un
+jeton Turnstile vérifié côté serveur (action `contact`, même hostname), valide
+les champs et limite les tentatives par IP via `CONTACT_RATE_LIMITER` (5 par
+minute et par emplacement Cloudflare, limite approximative). Le binding `EMAIL`
+est limité à la destination déjà vérifiée. Le visiteur ne peut choisir le
+recipient ni l'expéditeur ; son courriel est utilisé comme `replyTo`. La
+confirmation attend l'acceptation du fournisseur et les erreurs conservent
+les champs. Aucun envoi n'est rejoué automatiquement.
+
+Configurer `TURNSTILE_SECRET` dans les secrets du Worker `bump-consultation`
+avec le widget « Bump Consultation - Contact Form ». Sa clé publique est
+`0x4AAAAAAFnvTBtc-P3OUjx3` ; le secret ne doit jamais être commité. Les bindings
+email et limitation sont déclarés dans `wrangler.jsonc`. Les aperçus GPT,
+Workers et le serveur statique Node affichent l'adresse professionnelle et un
+lien `mailto:` sans prétendre envoyer ni charger un challenge de domaine invalide.
+
+Le domaine et l'adresse publics sont **https://bumpconsultation.ca** et
+**contact@bumpconsultation.ca**. Le transfert Cloudflare vers la destination
+vérifiée est configuré. Un contrôle d'envoi/réception réel après déploiement
+doit être effectué par une personne autorisée ; les tests automatisés emploient
+uniquement des bindings et réponses de vérification simulés, sans courriel réel.
+Les autres démonstrations conservent leurs données fictives et les agents
+propriétaires restent une vision future.
 
 L'export conserve les modèles et animations de la version 46. Les tests de rendu
 et les captures en mode de secours ne constituent pas une nouvelle validation

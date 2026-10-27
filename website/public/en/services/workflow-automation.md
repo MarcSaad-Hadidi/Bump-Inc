@@ -100,6 +100,10 @@ Technology consultant for SMEs · Montréal, Québec
 - Added a checklist for choosing a first workflow.
 - Added a manual workload calculation with editable assumptions.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Software built around your operations.](__BUMP_ORIGIN__/en/services/custom-software-development) — Web applications, portals and internal systems for Québec SMEs. Bump builds custom software connected to your CRM, ERP and APIs.

@@ -1,7 +1,10 @@
 import {handleContentRequest} from '../src/bump/seo/http.js';
+import {contactRoute} from '../src/worker/contact.js';
 
 export function createWorker(files = {}) { return {
   async fetch(request, env) {
+    const contact=await contactRoute(request,env);
+    if(contact)return contact;
     const origin = typeof __BUMP_PUBLIC_ORIGIN__ === 'string' ? __BUMP_PUBLIC_ORIGIN__ : '';
     const content = await handleContentRequest(request, file => {
       if (Object.hasOwn(files, file)) return new Response(files[file]);

@@ -4,14 +4,22 @@ Fournir uniquement ce qui peut être publié. Un élément inexistant peut être
 indiqué comme tel. Aucun mot de passe, code de connexion, clé API, document
 confidentiel ou donnée personnelle sensible n’est nécessaire.
 
+## Informations déjà confirmées
+
+- Domaine principal : https://bumpconsultation.ca.
+- Courriel professionnel public : contact@bumpconsultation.ca.
+- Destination de transfert vérifiée et Email Routing actif dans Cloudflare.
+- Widget Turnstile du formulaire existant. Son secret reste hors du dépôt.
+
+Ces éléments proviennent du PR34 et ont été contrôlés dans Cloudflare lors de
+son intégration au PR33. Il n'est pas nécessaire de les demander à nouveau.
+
 ## À fournir en priorité
 
 - Nom commercial exact, raison sociale et lien vers le registre public si vous
   souhaitez afficher l’identité légale. Date de création à publier, si souhaitée.
-- Domaine principal définitif, variantes qui doivent rediriger vers lui et
-  préférence de langue par défaut. Pas besoin de transmettre des accès DNS.
-- Courriel professionnel public, téléphone professionnel public et lien de
-  prise de rendez-vous s’il existe. Indiquer le canal à mettre en avant.
+- Téléphone professionnel public et lien de prise de rendez-vous s’il existe.
+  Le courriel professionnel est déjà confirmé.
 - Adresse professionnelle à publier, ou préciser que l’activité fonctionne
   à distance/sur rendez-vous. Une adresse personnelle n’est pas nécessaire.
 - Territoires réellement desservis, langues de service et horaires de contact,
@@ -61,6 +69,7 @@ Les quatre études actuellement proposées sont clairement **illustratives et
 fictives**. Elles ne revendiquent ni clients, ni réalisations, ni gains mesurés.
 Les futurs Cyber AI, Developer AI et Workflow AI restent une vision future.
 
-Le formulaire du site reste la démonstration UI demandée. Le courriel public
-pourra être ajouté au contact ; aucun envoi réel n’est activé sans mise en place
-et validation explicites du traitement des demandes.
+Le formulaire réel est intégré au même Worker que le site, avec Turnstile et
+limitation. Les aperçus hors domaine proposent le courriel officiel directement.
+Le contrôle de réception réelle après déploiement reste distinct des tests
+automatisés ; aucun envoi de test n’est déclenché sans autorisation.

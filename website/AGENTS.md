@@ -1,3 +1,20 @@
+# Consolidate the contact-email PR into PR33 — 2026-10-27
+
+The user explicitly authorizes combining PR34's real contact-email capability
+with this PR. This supersedes every earlier UI-only form restriction. Preserve
+the accepted transparent two-column form, bilingual copy, SVG arrows, scenes
+and scroll. Keep the SEO Worker entrypoint and worker-first routing; integrate
+the contact API into that same Worker, preserving /api/md/ discovery. Restrict
+the inbox, validate input and Turnstile on the server, enforce rate limits and
+show success only after provider acceptance. Preview hosts without the actual
+mail binding expose the verified public mailto, never a simulated successful
+send or an invalid-host challenge. No email test is sent to anyone automatically.
+The domain bumpconsultation.ca and contact@bumpconsultation.ca are verified
+facts from PR34 and Cloudflare; use them in visible contact content, Markdown
+and Organization metadata, and remove them from the owner-information gaps.
+Retain all fixes and documentation in PR33, rerun CI and Codex on the combined
+head, and do not merge into main. Once verified, close the superseded PR34.
+
 # Landing stability, short FAQ and illustrative case studies — 2026-10-27
 
 Native startup attribution found that createRoot(document) recreates head CSS
@@ -1253,9 +1270,13 @@ the user types; show matching Bump results below. Remove the header Méthode lin
 Hovering Montréal, Québec should reveal a real map of Montréal; also support
 keyboard focus, touch, dismissal and reduced motion. Keep all changes confined
 to this hero polish and shared UI, then publish for review before another chapter.
-The project dialog is a contact-form UI only, explicitly confirmed by the user.
-It must look like the finished form without brief download/copy controls. Do not
-wire an email/backend or claim that a request was sent. The search rectangle must
+The contact dialog previously remained UI-only under the 2026-10-23 scope.
+Updated user authorization (2026-10-27): connect it to Cloudflare Email Service
+and route messages to the verified destination. Preserve the existing finished
+form layout and do not introduce brief download/copy controls. A success state
+must be shown ONLY after the backend confirms successful dispatch. Validate
+inputs server-side, constrain the recipient, report delivery errors, and add
+spam/abuse protection before fully exposing the production endpoint. The search rectangle must
 exactly match the original trigger's height and fully hide the trigger behind it.
 
 ### Approved hero revision (2026-10-23)
@@ -1277,7 +1298,7 @@ paintings and objects with Bump. Use the authoritative src/bump/content.json.
 The user wants to review a functioning visual prototype, not approve a written
 design. Open the managed localhost preview and publish this separate Bump Site.
 Cyber AI, Developer AI and Workflow AI are future vision, never available products.
-Do not invent clients, results, names, contact addresses or outbound form delivery.
+Do not invent clients, results or names. Only show a contact-form delivery confirmation after Cloudflare accepts a genuine send; never simulate outbound delivery.
 
 Recreate Shopify Editions Winter 2026 as a separate, usable local prototype,
 using REA analysis and original public assets. Preserve the painterly opening,

@@ -180,6 +180,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Publication de quatre scénarios fictifs avec contexte, livrables et critères de validation.
 - Distinction explicite entre exemples de mandats et résultats clients.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.

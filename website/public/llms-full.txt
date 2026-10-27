@@ -107,6 +107,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Ajout d’une mini FAQ et de liens vers quatre scénarios de mandats illustratifs.
 - Stabilisation de la géométrie initiale et préchargement des polices.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [La technologie, à votre mesure.](__BUMP_ORIGIN__/expertises) — Bump accompagne les PME du Québec : automatisation, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre méthode.
@@ -222,6 +226,10 @@ Technology consultant for SMEs · Montréal, Québec
 - Added a short FAQ and links to four illustrative engagement scenarios.
 - Stabilized initial geometry and preloaded the fonts.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Technology, shaped around you.](__BUMP_ORIGIN__/en/expertise) — Bump helps Québec SMEs with workflow automation, AI integration, custom software and cybersecurity. Explore our expertise and delivery approach.
@@ -294,6 +302,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Précision du choix entre automatisation, IA, logiciel et cybersécurité.
 - Ajout de l’attribution et de la méthode de révision des informations.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
@@ -361,6 +373,10 @@ Technology consultant for SMEs · Montréal, Québec
 
 - Clarified the choice between automation, AI, software and cybersecurity.
 - Added publisher attribution and the content review approach.
+
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
 
 ## Related
 
@@ -475,6 +491,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Ajout d’une grille pour choisir un premier workflow.
 - Ajout d’un calcul de charge manuelle avec des hypothèses modifiables.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Des logiciels conçus pour vos opérations.](__BUMP_ORIGIN__/services/developpement-logiciel) — Applications web, portails et systèmes internes pour les PME du Québec. Bump conçoit des logiciels sur mesure reliés à vos CRM, ERP et API.
@@ -587,6 +607,10 @@ Technology consultant for SMEs · Montréal, Québec
 
 - Added a checklist for choosing a first workflow.
 - Added a manual workload calculation with editable assumptions.
+
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
 
 ## Related
 
@@ -702,6 +726,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Ajout de cinq cas d’essai : données manquantes, sources, accès, approbation et reprise.
 - Précision des critères de validation avant mise en service.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
@@ -816,6 +844,10 @@ Technology consultant for SMEs · Montréal, Québec
 - Added five test cases covering missing data, sources, access, approval and recovery.
 - Clarified validation criteria before launch.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Workflow automation for small businesses.](__BUMP_ORIGIN__/en/services/workflow-automation) — Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.
@@ -923,6 +955,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Ajout des points à valider avant la mise en service.
 - Précision des responsabilités à convenir pour la maintenance.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
@@ -1029,6 +1065,10 @@ Technology consultant for SMEs · Montréal, Québec
 
 - Added checks to complete before launch.
 - Clarified maintenance responsibilities to agree on.
+
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
 
 ## Related
 
@@ -1144,6 +1184,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Ajout d’une grille de préparation d’un audit autorisé.
 - Précision du périmètre, des limites et du suivi des corrections.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
@@ -1258,6 +1302,10 @@ Technology consultant for SMEs · Montréal, Québec
 - Added an authorized-audit preparation checklist.
 - Clarified scope, limits and remediation follow-up.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Workflow automation for small businesses.](__BUMP_ORIGIN__/en/services/workflow-automation) — Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.
@@ -1354,6 +1402,10 @@ Consultant en technologie pour PME · Montréal, Québec
 
 - Précision des éléments à convenir avant l’implantation.
 - Ajout des livrables et des décisions attendus aux cinq étapes.
+
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
 
 ## Related
 
@@ -1452,6 +1504,10 @@ Technology consultant for SMEs · Montréal, Québec
 - Clarified what to agree on before implementation.
 - Added deliverables and decisions for each of the five stages.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Workflow automation for small businesses.](__BUMP_ORIGIN__/en/services/workflow-automation) — Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.
@@ -1535,6 +1591,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Ajout de la méthode éditoriale et des limites des démonstrations.
 - Lien vers le code public de la vitrine comme référence vérifiable.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [La technologie, à votre mesure.](__BUMP_ORIGIN__/expertises) — Bump accompagne les PME du Québec : automatisation, intégration IA, logiciels sur mesure et cybersécurité. Découvrez nos expertises et notre méthode.
@@ -1617,6 +1677,10 @@ Technology consultant for SMEs · Montréal, Québec
 
 - Added the editorial approach and demonstration boundaries.
 - Linked the public website source as a verifiable reference.
+
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
 
 ## Related
 
@@ -1715,6 +1779,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Ajout d’une grille pour préparer une première discussion.
 - Précision des informations utiles et de celles à ne pas transmettre.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
@@ -1811,6 +1879,10 @@ Technology consultant for SMEs · Montréal, Québec
 
 - Added a checklist for preparing a first conversation.
 - Clarified useful information and what should not be shared.
+
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
 
 ## Related
 
@@ -2005,6 +2077,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Publication de quatre scénarios fictifs avec contexte, livrables et critères de validation.
 - Distinction explicite entre exemples de mandats et résultats clients.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
@@ -2197,6 +2273,10 @@ Technology consultant for SMEs · Montréal, Québec
 
 - Published four fictional scenarios with context, deliverables and acceptance checks.
 - Explicitly distinguished engagement examples from client outcomes.
+
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
 
 ## Related
 

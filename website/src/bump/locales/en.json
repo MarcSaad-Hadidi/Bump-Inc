@@ -1425,6 +1425,10 @@
   "Couper la musique d’ambiance": "Mute background music",
   "Réessayer la musique": "Retry background music",
   "La musique n’a pas pu démarrer. Réessayez avec le bouton son.": "The music could not start. Try again with the sound button.",
+  "Envoi…": "Sending…",
+  "Votre demande a bien été envoyée. Merci !": "Your request has been sent. Thank you!",
+  "L’envoi a échoué. Réessayez ou écrivez à contact@bumpconsultation.ca.": "We couldn't send your request. Please try again or email contact@bumpconsultation.ca.",
+  "Veuillez terminer la vérification de sécurité.": "Please complete the security verification.",
   "Libérez vos équipes des tâches répétitives et faites circuler l’information entre vos outils.": "Free your team from repetitive tasks and keep information flowing between your tools.",
   "Des logiciels sur mesure et une IA intégrée à vos outils, avec votre équipe aux commandes.": "Custom software and AI built into your tools, with your team in control.",
   "Identifiez les risques, corrigez les faiblesses et renforcez la sécurité de votre entreprise.": "Identify risks, address weaknesses and strengthen your business security.",
@@ -1438,5 +1442,11 @@
   "Deux entrepreneurs à Montréal. La technologie au service de votre PME.": "Two entrepreneurs in Montréal. Technology that serves your business.",
   "UN PREMIER ÉCHANGE": "LET’S START A CONVERSATION",
   "Ce qui vous ralentit aujourd’hui peut devenir votre prochain élan.": "What slows you down today can become your next step forward.",
-  "Des solutions pensées avec votre équipe.": "Solutions designed with your team."
+  "Des solutions pensées avec votre équipe.": "Solutions designed with your team.",
+  "Veuillez patienter une minute avant de réessayer.": "Please wait a minute before trying again.",
+  "Le formulaire est momentanément indisponible. Écrivez-nous directement.": "The form is temporarily unavailable. Please email us directly.",
+  "L’envoi n’a pas pu être confirmé. Réessayez ou écrivez-nous.": "We could not confirm your request. Please try again or email us.",
+  "Vérification de sécurité": "Security verification",
+  "Pour envoyer votre demande, écrivez-nous directement :": "To send your request, email us directly:",
+  "La vérification est indisponible. Vous pouvez nous écrire directement :": "Verification is unavailable. You can email us directly:"
 }

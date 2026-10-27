@@ -101,6 +101,10 @@ Technology consultant for SMEs · Montréal, Québec
 - Added five test cases covering missing data, sources, access, approval and recovery.
 - Clarified validation criteria before launch.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Workflow automation for small businesses.](__BUMP_ORIGIN__/en/services/workflow-automation) — Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.

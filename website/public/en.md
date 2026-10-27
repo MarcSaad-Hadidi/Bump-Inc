@@ -98,6 +98,10 @@ Technology consultant for SMEs · Montréal, Québec
 - Added a short FAQ and links to four illustrative engagement scenarios.
 - Stabilized initial geometry and preloaded the fonts.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Technology, shaped around you.](__BUMP_ORIGIN__/en/expertise) — Bump helps Québec SMEs with workflow automation, AI integration, custom software and cybersecurity. Explore our expertise and delivery approach.

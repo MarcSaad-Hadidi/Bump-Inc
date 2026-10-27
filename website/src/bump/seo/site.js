@@ -1,7 +1,10 @@
-// Public facts only. Keep contact details and proprietary products unpublished
-// until Bump supplies them; deployment origins come from the host or build env.
+import {CONTACT_EMAIL,CONTACT_ORIGIN} from '../contact.js';
+// Public contact facts come from PR34 and its verified Cloudflare setup.
+// Other unknown company details and future products remain unpublished.
 export const site = {
   name: 'Bump',
+  email: CONTACT_EMAIL,
+  primaryOrigin: CONTACT_ORIGIN,
   description: 'Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Elle accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.',
   location: 'Montréal, Québec',
   logo: '/bump/favicon.svg',

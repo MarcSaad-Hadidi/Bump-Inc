@@ -101,6 +101,10 @@ Consultant en technologie pour PME · Montréal, Québec
 - Ajout d’une grille de préparation d’un audit autorisé.
 - Précision du périmètre, des limites et du suivi des corrections.
 
+## Contact
+
+[contact@bumpconsultation.ca](mailto:contact@bumpconsultation.ca)
+
 ## Related
 
 - [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.

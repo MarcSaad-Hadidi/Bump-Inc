@@ -1,6 +1,6 @@
 # Contact email consolidation — 2026-10-27
 
-PR34 is incorporated into PR33. The public website keeps one Worker entrypoint
+The latest PR34, including its deferred form mount, is incorporated into PR33. The public website keeps one Worker entrypoint
 for HTML, Markdown discovery and `/api/contact`. The existing transparent form,
 FR/EN presentation and main landing choreography are preserved.
 
@@ -10,9 +10,10 @@ FR/EN presentation and main landing choreography are preserved.
 - `contact@bumpconsultation.ca` is the public address; Cloudflare Email Routing
   is ready and the configured destination is verified.
 - The existing managed Turnstile widget is scoped to the primary domain.
-- 221 tests pass. Contact coverage includes validation, payload size, origin,
+- 222 tests pass. Contact coverage includes validation, payload size, origin,
   hostname/action verification, quotas, honeypot, provider failure, confirmed
-  acceptance, duplicate-submit prevention, challenge reset and FR/EN fields.
+  acceptance, duplicate-submit prevention, challenge reset and FR/EN fields. A navigation harness verifies no initial form mount, opening,
+  retained closing state and reopening.
 - Normal build and HTTP SEO smoke pass. The Docker runtime isolation test
   includes the public contact configuration imported by the SEO catalog.
 - Browser QA confirms the accepted glass form, public email, stable expertise

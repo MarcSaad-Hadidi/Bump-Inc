@@ -73,3 +73,25 @@ test('preview hosts expose the real email address without loading an invalid pro
   assert(nodes.find(node=>node.type==='button'&&node.props.type==='submit').props.disabled);
   assert(ui.text().includes('email us directly'));assert.equal(ui.scripts(),0);ui.unmount();
 });
+
+test('navigation defers the form until requested and retains it through closing and reopening',()=>{
+  const source=readFileSync('src/bump/ui/BumpNav.js','utf8').replace(/^import[^\n]+\n/gm,'').replace('export default function BumpNav','function BumpNav');
+  const slots=[];let cursor=0;
+  const marker=()=>null;
+  const context={
+    React:{Fragment:'fragment',useEffect(){},useRef:initial=>({current:initial}),useState(initial){const i=cursor++;if(!(i in slots))slots[i]=initial;return[slots[i],value=>{slots[i]=typeof value==='function'?value(slots[i]):value;}];}},
+    R:{jsxs:(type,props)=>({type,props})},Brief:marker,
+    MotionPanel:'panel',LocationPopover:'location',ArrowUpRight:'arrow',CloseIcon:'close',BackgroundMusic:'music',DeviceMotionControl:'motion',BumpClarityConsent:'consent',
+    document:{documentElement:{lang:'fr'}},window:{location:{hostname:'preview.example'}},location:{hash:''},
+    content:{chapters:[]},useChapterNav:()=>({}),useSceneStore:read=>read({activeSection:0}),
+    expertiseLinks:()=>[],searchEditorialPages:()=>[],isBumpProductionHost:()=>false,
+  };
+  vm.createContext(context);vm.runInContext(source+';this.makeNav=BumpNav;',context);
+  const nodes=()=>{cursor=0;return walk(context.makeNav({navItems:[]}));};
+  const form=()=>nodes().find(node=>node.type===marker);
+  const open=()=>nodes().find(node=>node.props?.className==='bump-project-button').props.onClick();
+  assert.equal(form(),undefined);
+  open();assert.equal(form().props.open,true);
+  form().props.onClose();assert.equal(form().props.open,false);
+  open();assert.equal(form().props.open,true);
+});

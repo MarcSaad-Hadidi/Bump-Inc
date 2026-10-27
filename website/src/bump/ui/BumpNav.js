@@ -22,6 +22,9 @@ export default function BumpNav({navItems}){
   React.useEffect(()=>installLandingMetadata(),[]);
   const english=document.documentElement.lang==='en';
   const [menu,setMenu]=React.useState(false),[search,setSearch]=React.useState(false),[brief,setBrief]=React.useState(false),[query,setQuery]=React.useState('');
+  // Delay the form's first mount, then retain it for the accepted exit animation.
+  const [briefMounted,setBriefMounted]=React.useState(false);
+  const openBrief=()=>{setBriefMounted(true);setBrief(true);};
   const [tone,setTone]=React.useState('dark');
   React.useEffect(()=>{
     let frame=0;
@@ -62,7 +65,7 @@ export default function BumpNav({navItems}){
   const menuAnchor=React.useRef(null),searchAnchor=React.useRef(null),menuButton=React.useRef(null),searchButton=React.useRef(null),searchInput=React.useRef(null);
   const home=useChapterNav({index:0,handle:'hero'});
   const atHero=useSceneStore(state=>state.activeSection===0);
-  React.useEffect(()=>{const open=()=>setBrief(true);window.addEventListener('bump:brief',open);if(new URLSearchParams(location.search).get('projet')==='1'){setBrief(true);const url=new URL(location.href);url.searchParams.delete('projet');history.replaceState(history.state,'',url.pathname+url.search+url.hash);}return()=>window.removeEventListener('bump:brief',open);},[]);
+  React.useEffect(()=>{window.addEventListener('bump:brief',openBrief);if(new URLSearchParams(location.search).get('projet')==='1'){openBrief();const url=new URL(location.href);url.searchParams.delete('projet');history.replaceState(history.state,'',url.pathname+url.search+url.hash);}return()=>window.removeEventListener('bump:brief',openBrief);},[]);
   React.useEffect(()=>{setMenu(false);setSearch(false);},[atHero]);
   React.useEffect(()=>{
     if(!menu&&!search)return;
@@ -106,6 +109,6 @@ export default function BumpNav({navItems}){
   return h(React.Fragment,{},h('div',{className:'bump-opening-progress',role:'status'},h('span',{},'L’élan se prépare'),h('span',{className:'bump-opening-track','aria-hidden':true},h('i',{}))),h('a',{className:'bump-skip',href:'#main-content'},'Aller au contenu'),h('header',{className:'bump-header bump-hero-header','data-hero':atHero,'data-tone':tone},
     h('a',{className:'bump-nav-logo',href:english?'/en':'/',onClick:e=>home.handleClick(e,0),'aria-label':'Bump — accueil'},h('span',{className:'bump-brand-mark','aria-hidden':true}),h('span',{},'Bump')),h(LocationPopover,{onOpen:()=>{setMenu(false);setSearch(false);}}),
     h('nav',{'aria-label':'Navigation principale',className:'bump-top-links'},heroMenu,heroSearch),
-    h('div',{className:'bump-header-actions'},h('a',{className:'bump-language-switch',href:(english?'/':'/en')+location.hash,onClick:event=>{event.currentTarget.href=(english?'/':'/en')+location.hash;},lang:english?'fr':'en',hrefLang:english?'fr':'en','aria-label':english?'Passer en français':'Switch to English',title:english?'Français':'English','data-bump-locale-switch':'true'},english?'FR':'EN'),h('button',{type:'button',className:'bump-project-button','aria-label':'Parlons de votre projet',onClick:()=>setBrief(true)},h('span',{className:'bump-project-full'},'Parlons de votre projet'),h('span',{className:'bump-project-short'},'Projet'),h(ArrowUpRight,{})))),
-    h(Brief,{open:brief,onClose:()=>setBrief(false)}),h(BackgroundMusic,{}),h(DeviceMotionControl,{}),h(BumpClarityConsent,{}));
+    h('div',{className:'bump-header-actions'},h('a',{className:'bump-language-switch',href:(english?'/':'/en')+location.hash,onClick:event=>{event.currentTarget.href=(english?'/':'/en')+location.hash;},lang:english?'fr':'en',hrefLang:english?'fr':'en','aria-label':english?'Passer en français':'Switch to English',title:english?'Français':'English','data-bump-locale-switch':'true'},english?'FR':'EN'),h('button',{type:'button',className:'bump-project-button','aria-label':'Parlons de votre projet',onClick:openBrief},h('span',{className:'bump-project-full'},'Parlons de votre projet'),h('span',{className:'bump-project-short'},'Projet'),h(ArrowUpRight,{})))),
+    briefMounted&&h(Brief,{open:brief,onClose:()=>setBrief(false)}),h(BackgroundMusic,{}),h(DeviceMotionControl,{}),h(BumpClarityConsent,{}));
 }

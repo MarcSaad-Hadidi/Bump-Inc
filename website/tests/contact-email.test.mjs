@@ -111,3 +111,9 @@ test('all new contact statuses have translated English copy',()=>{
  assert.match(src,/status==='sent'/);
  assert.match(src,/window.turnstile.reset\(widgetId.current\)/);
 });
+
+test('contact dialog is isolated from the initial site render and only mounts on demand',()=>{
+ const nav=readFileSync('src/bump/ui/BumpNav.js','utf8');
+ assert.match(nav,/brief&&h\(Brief,\{open:true,onClose:/);
+ assert.doesNotMatch(nav,/h\(Brief,\{open:brief,onClose:/);
+});

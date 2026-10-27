@@ -73,7 +73,14 @@ function faq(page, t) {
   const items = page.faqs.slice(0,3);
   return '<div class="story-faq-questions" data-story-steps>' + items.map((item,i) => '<a class="story-step" href="#question-' + (i+1) + '"><span aria-hidden="true">0' + (i+1) + '</span><strong>' + escape(item.q) + '</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>').join('') + '</div><div class="story-faq-answer"><span>' + t('UNE PREMIÈRE RÉPONSE', 'A FIRST ANSWER') + '</span><div class="story-faq-answer-stack">' + items.map((item,i) => '<p class="story-faq-answer-copy' + (i === 0 ? ' is-visible' : '') + '" data-story-answer-copy aria-hidden="' + (i !== 0) + '">' + escape(item.a) + '</p>').join('') + '</div></div><p class="story-takeaway">' + t('Une question précise ouvre la bonne conversation.', 'A clear question starts the right conversation.') + '</p>';
 }
-const scenes = {expertise, workflow, ai, software, security, approach, about, faq};
+function cases(page,t){
+  return '<div class="story-case-ledger" data-story-steps>'+[
+    [t('Le besoin réel','The real need'),t('Demandes, documents, interventions ou accès.','Requests, documents, service work or access.')],
+    [t('Le parcours proposé','The proposed workflow'),t('Des étapes, des outils et une décision humaine.','Steps, tools and a human decision.')],
+    [t('La vérification attendue','The expected verification'),t('Des essais définis avant de passer à l’action.','Checks defined before moving forward.')],
+  ].map((item,i)=>step(i,item[0],item[1],['document','connect','check'][i])).join('')+'</div><p class="story-takeaway">'+t('Scénarios fictifs. Aucun résultat client revendiqué.','Fictional scenarios. No client outcomes claimed.')+'</p>';
+}
+const scenes = {expertise, workflow, ai, software, security, approach, about, faq,cases};
 export function renderStoryFigure(page) {
   const t = (fr,en) => text(page.locale,fr,en);
   const scene = Object.hasOwn(scenes,page.id) ? scenes[page.id] : expertise;
@@ -90,6 +97,7 @@ export function storyAction(page) {
     approach: ['#audit','Parcourir les cinq étapes','Explore the five steps','Commençons par comprendre.','Let’s start by understanding.'],
     about: ['#mission','Découvrir notre manière de travailler','Discover how we work','Et si nous avancions ensemble ?','What if we moved forward together?'],
     faq: ['#questions','Trouver une réponse','Find an answer','Il vous reste une question ?','Still have a question?'],
+    cases: ['#devis','Explorer les scénarios','Explore the scenarios','Un besoin qui ressemble au vôtre ?','A need that sounds familiar?'],
   };
   const item = choices[page.id] || choices.expertise;
   const target = page.id === 'expertise' || page.id === 'faq' ? item[0] : '#' + page.sections[0].id;

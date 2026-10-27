@@ -269,3 +269,7 @@
  .story-ai-sources>span::after{left:50%;top:100%;width:0;height:15px;border-top:0;border-left:1px solid #b6c7ca}
  .story-ai-brief blockquote{font-size:22px}
 }
+
+.story-case-ledger{display:grid;gap:15px;padding:12px 0}.story-case-ledger .story-step{display:grid;grid-template-columns:20px 24px minmax(0,1fr);gap:5px 15px;align-items:start;border-bottom:1px solid var(--line,#65715a33);padding:16px 0}.story-case-ledger .story-step>svg{grid-row:auto}.story-case-ledger .story-step strong{font-size:24px;font-weight:400}.story-case-ledger .story-step p{grid-column:2;font-size:17px;line-height:1.35;margin:0}.seo-reading--cases .seo-example{border-top:1px solid var(--line);padding-top:28px}.seo-reading--cases .seo-section-main>p:first-of-type{font-size:16px;color:var(--muted);font-style:italic}
+
+.seo-section-main h3{font:400 26px/1.2 "IM FELL English",Garamond,serif;margin:26px 0 12px}.story-case-ledger .story-step-number{font:italic 18px "IM FELL English",Garamond,serif;color:#66715b}

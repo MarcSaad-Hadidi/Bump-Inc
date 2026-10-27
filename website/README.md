@@ -76,14 +76,18 @@ origine publique explicite pour conserver le bon protocole canonique.
 
 ## Pages éditoriales et lecture par les agents
 
-Le catalogue `src/bump/seo/pages.js` contient les huit pages FR/EN, et les deux
+Le catalogue `src/bump/seo/pages.js` contient neuf pages par langue, et les deux
 accueils. Les quatre pages services couvrent l'automatisation, l'intégration IA,
 le développement logiciel et la cybersécurité. Les autres présentent les
-expertises, l'approche, Bump et les questions fréquentes.
+expertises, l'approche, Bump, les questions fréquentes et quatre études de cas
+illustratives sur `/cas-d-usage` et `/en/use-cases`. Ces scénarios fictifs ne
+revendiquent ni client ni résultat mesuré. L’accueil contient aussi une mini FAQ
+et des liens vers les scénarios. Les informations officielles à compléter sont
+listées dans `docs/seo/OFFICIAL-INFORMATION.md`.
 
 `scripts/build-seo.mjs` génère l'HTML, le Markdown, `sitemap.xml`, `robots.txt`,
 `llms.txt`, `llms-full.txt` et `ai.txt` depuis les mêmes données. Les fichiers
-Markdown sont des variantes noindex ; le sitemap ne contient que les 18 URL HTML.
+Markdown sont des variantes noindex ; le sitemap ne contient que les 20 URL HTML.
 
 Trois accès au même texte sont pris en charge : `/services/integration-ia.md`,
 `/api/md/services/integration-ia`, ou `/services/integration-ia` avec une

@@ -31,7 +31,14 @@ export function enhanceHome(source, page, origin) {
 export function homeFallback(source, page) {
   const start = source.indexOf('<!-- bump:fallback:start -->'), end = source.indexOf('<!-- bump:fallback:end -->');
   if (start !== -1 && end !== -1) source = source.slice(0, start) + source.slice(end + '<!-- bump:fallback:end -->'.length);
+  // Keep critical geometry in the head, including across repeated builds.
+  // Body-inserted styles arrived too late to prevent the first unstyled frame.
+  const previous=parse(source,{sourceCodeLocationInfo:true});
+  const previousHead=previous.childNodes.find(node=>node.tagName==='html')?.childNodes.find(node=>node.tagName==='head');
+  const removals=(previousHead?.childNodes||[]).filter(node=>(node.attrs||[]).some(attr=>['data-bump-startup','data-bump-initial-style','data-bump-startup-font'].includes(attr.name))).map(node=>node.sourceCodeLocation).filter(Boolean).sort((a,b)=>b.startOffset-a.startOffset);
+  for(const location of removals)source=source.slice(0,location.startOffset)+source.slice(location.endOffset);
   const tree = parse(source, {sourceCodeLocationInfo: true});
+  const head=tree.childNodes.find(node=>node.tagName==='html')?.childNodes.find(node=>node.tagName==='head');
   const body = tree.childNodes.find(node => node.tagName === 'html')?.childNodes.find(node => node.tagName === 'body');
   if (!body?.sourceCodeLocation?.endTag) throw new Error('The retained shell has no source-located body.');
   const en = page.locale === 'en';
@@ -50,6 +57,7 @@ export function homeFallback(source, page) {
 .seo-home-fallback nav p{font-size:16px;margin:5px 0 0}.seo-home-fallback section>ol{padding-left:25px;max-width:800px}.seo-home-fallback section>ol li{margin-bottom:10px}
 .seo-home-table{max-width:100%;overflow:auto;margin-block:24px}.seo-home-table table{width:100%;border-collapse:collapse;text-align:left;font-size:17px;line-height:1.4}.seo-home-table caption{text-align:left;font-size:15px;padding-bottom:12px}.seo-home-table :is(th,td){padding:12px;border:1px solid #b4b6a6;vertical-align:top}.seo-home-table thead{background:#e4e9dd}
 .seo-home-fallback img{display:block;width:100%;height:auto;border-radius:6px;margin:36px 0}
+.seo-home-faq details{max-width:850px;border-top:1px solid #b4b6a6}.seo-home-faq summary{cursor:pointer;padding:17px 0}.seo-home-faq h3{display:inline;font-size:23px;line-height:1.3;font-weight:400}.seo-home-faq details>p{padding-bottom:18px}
 .seo-home-fallback .seo-editorial-credit{width:auto;margin:0;padding-top:24px;border-top:1px solid #b4b6a6;font-size:16px}.seo-home-fallback .seo-editorial-credit h2{font-size:25px;margin-top:0}.seo-home-fallback .seo-revision{margin-top:24px}.seo-home-fallback .seo-revision summary{cursor:pointer}
 </style>`;
   const noScript = '<noscript><style>html,body{overflow:auto!important;height:auto!important;background:#f4f1e8!important}html[data-bump-opening] body::before{display:none!important;content:none!important}.bump-loading{display:none!important}</style></noscript>';
@@ -64,10 +72,16 @@ export function homeFallback(source, page) {
     return '<section id="' + section.id + '"><h2>' + html(section.title) + '</h2>' + section.paragraphs.map(paragraph=>'<p>'+html(paragraph)+'</p>').join('') + items + table + '</section>';
   }).join('');
   const language = '<a class="seo-home-language" href="' + (en ? '/' : '/en') + '" lang="' + (en ? 'fr' : 'en') + '" hreflang="' + (en ? 'fr-CA' : 'en-CA') + '">' + (en ? 'Lire en français' : 'Read in English') + '</a>';
-  const content = '<main class="seo-home-fallback" id="bump-initial-content"><header><p>Bump · Montréal, Québec</p>' + language + '<h1>' + html(page.title) + '</h1><p class="seo-home-summary summary">' + html(page.answer) + '</p><p>' + html(page.lead) + '</p></header><nav aria-label="' + (en ? 'Explore Bump expertise' : 'Découvrir les expertises Bump') + '">' + directory + '</nav>' + chapters + '<img src="/bump/art/hero-fallback-v2.webp" alt="' + (en ? 'Two Bump consultants in a Renaissance-inspired scene' : 'Deux consultants Bump dans une scène inspirée de la Renaissance') + '" width="1900" height="900" loading="lazy" decoding="async"><footer>' + publisherCredit(page) + '</footer></main>';
-  const fallback = '<!-- bump:fallback:start -->' + styles + content + noScript + '<!-- bump:fallback:end -->';
+  const faq='<section id="bump-home-questions" class="seo-home-faq"><p>'+(en?'Frequently asked questions':'Questions fréquentes')+'</p><h2>'+(en?'How can we move forward together?':'Comment avancer ensemble ?')+'</h2>'+page.faqs.map(item=>'<details><summary><h3>'+html(item.q)+'</h3></summary><p>'+html(item.a)+'</p></details>').join('')+'</section>';
+  const content = '<main class="seo-home-fallback" id="bump-initial-content"><header><p>Bump · Montréal, Québec</p>' + language + '<h1>' + html(page.title) + '</h1><p class="seo-home-summary summary">' + html(page.answer) + '</p><p>' + html(page.lead) + '</p></header><nav aria-label="' + (en ? 'Explore Bump expertise' : 'Découvrir les expertises Bump') + '">' + directory + '</nav>' + chapters +faq+ '<img src="/bump/art/hero-fallback-v2.webp" alt="' + (en ? 'Two Bump consultants in a Renaissance-inspired scene' : 'Deux consultants Bump dans une scène inspirée de la Renaissance') + '" width="1900" height="900" loading="lazy" decoding="async"><footer>' + publisherCredit(page) + '</footer></main>';
+  const fallback = '<!-- bump:fallback:start -->' + content + noScript + '<!-- bump:fallback:end -->';
   const offset = body.sourceCodeLocation.endTag.startOffset;
-  return source.slice(0, offset) + fallback + source.slice(offset);
+  source=source.slice(0, offset) + fallback + source.slice(offset);
+  const charset=head?.childNodes.find(node=>node.tagName==='meta'&&(node.attrs||[]).some(attr=>attr.name==='charset'));
+  const headOffset=charset?.sourceCodeLocation?.endOffset??head?.sourceCodeLocation?.startTag?.endOffset;
+  if(!headOffset)throw new Error('The retained shell has no source-located head.');
+  const critical='<style data-bump-startup>'+readFileSync('src/bump/ui/startup.css','utf8')+'</style><link data-bump-startup-font rel="preload" href="/bump/fonts/eb-garamond-latin-variable.woff2" as="font" type="font/woff2" crossorigin><link data-bump-startup-font rel="preload" href="/bump/fonts/im-fell-english-regular.ttf" as="font" type="font/ttf" crossorigin>';
+  return source.slice(0,headOffset)+critical+styles+source.slice(headOffset);
 }
 
 export function buildSeo({directory = 'public', homeFile = 'src/reference-shell.html', origin = publicOrigin() || originMarker} = {}) {

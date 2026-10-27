@@ -25,12 +25,12 @@ test('every editorial page has its own visual story and an action anchored to re
       const back=document.find(node=>attrs(node).class==='seo-experience-return');
       assert.equal(attrs(back).href,(locale==='en'?'/en':'/')+'#'+(page.chapter||'hero'));
     }
-    assert.equal(stories.size,8);
+    assert.equal(stories.size,9);
   }
 });
 test('the landing search reaches all editorial pages using canonical localized destinations', () => {
   for(const locale of ['fr','en']){
-    assert.equal(editorialLinks(locale).length,8);
+    assert.equal(editorialLinks(locale).length,9);
     for(const item of editorialLinks(locale))assert.equal(item.path,pageFor(item.id,locale).path);
     for(const [query,id] of [['automatisation','workflow'],['agents','ai'],['logiciel','software'],['cybersécurité','security'],['budget','faq'],['méthode','approach']]){
       assert(searchEditorialPages(query,locale).some(item=>item.id===id),query+' '+locale);

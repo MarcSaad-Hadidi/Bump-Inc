@@ -40,7 +40,7 @@ test('explicit Accept preference respects q-values, specificity, ties, quotes an
 });
 
 test('every public editorial route has bilingual metadata, a real HTML body and a markdown renderer', () => {
-  assert.equal(listPages().length, 18);
+  assert.equal(listPages().length, 20);
   const paths = new Set(), titles = new Set(), descriptions = new Set();
   for (const page of listPages()) {
     assert(!paths.has(page.path)); paths.add(page.path);
@@ -102,7 +102,7 @@ test('the landing retains an accessible text edition when scripting is disabled'
   assert.equal(homeFallback(output, page), output);
   const tree = parse(output, {scriptingEnabled: false});
   assert.equal(walk(tree, node => node.tagName === 'h1').length, 1);
-  assert.equal(walk(tree, node => node.tagName === 'section').length, 6);
+  assert.equal(walk(tree, node => node.tagName === 'section' && ['sidekick','online','operations','retail','developer','b2b'].includes(attrs(node).id)).length, 6);
   const directory = walk(tree,node => node.tagName === 'nav')[0];
   assert.equal(walk(directory, node => node.tagName === 'a').length, page.related.length);
   assert.equal(walk(directory, node => node.tagName === 'li').length, page.related.length);
@@ -137,9 +137,9 @@ test('corporate authorship, actual update dates and service FAQ schema match vis
     const tree = parse(renderHtml(page,origin)), graph = schemaFor(page,origin)['@graph'];
     const web = graph.find(node => node['@id'] === origin + page.path + '#webpage');
     assert.equal(web.author['@id'],origin + '/#organization');
-    assert.equal(walk(tree,node => node.tagName === 'time' && attrs(node).datetime === site.updated).length,1);
-    assert.equal(walk(tree,node => node.tagName === 'time' && attrs(node).datetime === site.editorialPublished).length,1);
-    assert.equal(web.datePublished,site.editorialPublished);
+    assert.deepEqual(walk(tree,node => node.tagName === 'time').map(node=>attrs(node).datetime),[page.published,site.updated]);
+    assert.equal(web.datePublished,page.published);
+    assert.equal(page.published,page.id==='cases'?'2026-10-27':site.editorialPublished);
     const author = walk(tree,node=>node.tagName==='a' && attrs(node).rel==='author')[0];
     const profile = pageFor('about',page.locale);
     assert.equal(attrs(author).href, profile.path + (page.locale === 'fr' ? '#redaction' : '#editorial-policy'));
@@ -215,7 +215,7 @@ test('HEAD, OPTIONS, aliases, catalog, discovery, and unsupported verbs have coh
     assert.equal((await handleContentRequest(request(path, {method: 'POST'}), assets)).status, 405);
   }
   for (const path of ['/en/', '/en.html', '/expertises/']) assert.equal((await handleContentRequest(request(path), assets)).status, 308);
-  const catalog = await (await handleContentRequest(request('/api/md/_catalog'), assets)).json(); assert.equal(catalog.routes.length, 18);
+  const catalog = await (await handleContentRequest(request('/api/md/_catalog'), assets)).json(); assert.equal(catalog.routes.length, 20);
   for (const path of ['/robots.txt', '/sitemap.xml', '/llms.txt', '/llms-full.txt', '/ai.txt']) {
     const response = await handleContentRequest(request(path), assets); assert.equal(response.status, 200); const body = await response.text(); assert(!body.includes('__BUMP_ORIGIN__')); assert(body.includes(origin));
   }

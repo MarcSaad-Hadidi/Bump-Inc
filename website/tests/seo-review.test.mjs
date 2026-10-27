@@ -10,7 +10,7 @@ const [{bodyStart, bodyEnd}] = scriptBlocks(html);
 const script = html.slice(bodyStart, bodyEnd);
 const routes = ['/', '/en', '/expertises', '/services/automatisation-processus',
   '/services/integration-ia', '/services/developpement-logiciel',
-  '/services/cybersecurite', '/approche', '/a-propos', '/faq', '/en/services/ai-integration'];
+  '/services/cybersecurite', '/approche', '/a-propos', '/faq', '/en/services/ai-integration', '/cas-d-usage', '/en/use-cases'];
 
 function harness(selectedIndex = 0, value = '/') {
   const navigations = [], attributes = new Map(), keys = [];

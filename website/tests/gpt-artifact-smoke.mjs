@@ -35,4 +35,4 @@ for (const [legacy, current] of [['/editions/winter2026', '/'], ['/en/editions/w
   const response = await worker.fetch(new Request(origin + legacy), {});
   assert.equal(response.status, 308); assert.equal(response.headers.get('Location'), current);
 }
-console.log('GPT artifact verified: 18 HTML routes, 36 markdown accesses, discovery, native origins and 404; all scene/media assets retained.');
+console.log('GPT artifact verified: '+listPages().length+' HTML routes, '+listPages().length*2+' markdown accesses, discovery, native origins and 404; all scene/media assets retained.');

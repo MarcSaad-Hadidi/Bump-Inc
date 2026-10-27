@@ -124,5 +124,19 @@
     "locale": "en",
     "html": "/en/faq/index.html",
     "markdown": "/en/faq.md"
+  },
+  {
+    "id": "cases",
+    "path": "/cas-d-usage",
+    "locale": "fr",
+    "html": "/cas-d-usage/index.html",
+    "markdown": "/cas-d-usage.md"
+  },
+  {
+    "id": "cases",
+    "path": "/en/use-cases",
+    "locale": "en",
+    "html": "/en/use-cases/index.html",
+    "markdown": "/en/use-cases.md"
   }
 ]

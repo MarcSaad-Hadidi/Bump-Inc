@@ -2,8 +2,8 @@
 // dates forward merely because a build or deployment runs.
 export const revisions = {
   home: {
-    fr: ['Ajout d’une lecture des processus et des contrôles à conserver.', 'Présentation des cinq étapes du mandat et des liens vers les expertises.'],
-    en: ['Added a readable overview of processes and controls to retain.', 'Presented the five engagement stages and links to the service guides.'],
+    fr: ['Ajout d’une mini FAQ et de liens vers quatre scénarios de mandats illustratifs.', 'Stabilisation de la géométrie initiale et préchargement des polices.'],
+    en: ['Added a short FAQ and links to four illustrative engagement scenarios.', 'Stabilized initial geometry and preloaded the fonts.'],
   },
   expertise: {
     fr: ['Précision du choix entre automatisation, IA, logiciel et cybersécurité.', 'Ajout de l’attribution et de la méthode de révision des informations.'],
@@ -37,6 +37,7 @@ export const revisions = {
     fr: ['Ajout d’une grille pour préparer une première discussion.', 'Précision des informations utiles et de celles à ne pas transmettre.'],
     en: ['Added a checklist for preparing a first conversation.', 'Clarified useful information and what should not be shared.'],
   },
+  cases:{fr:['Publication de quatre scénarios fictifs avec contexte, livrables et critères de validation.','Distinction explicite entre exemples de mandats et résultats clients.'],en:['Published four fictional scenarios with context, deliverables and acceptance checks.','Explicitly distinguished engagement examples from client outcomes.']},
 };
 
 export const publisherBio = locale => locale === 'en'

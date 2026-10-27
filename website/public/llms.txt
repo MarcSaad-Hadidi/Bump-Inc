@@ -19,6 +19,7 @@ Cyber AI, Developer AI et Workflow AI sont une vision future, pas des produits d
 - [Comprendre avant de construire.](__BUMP_ORIGIN__/approche.md): Découvrez les cinq étapes d’un mandat Bump : audit, analyse, proposition, implantation et maintenance. Une démarche technologique adaptée aux PME.
 - [Ancrés à Montréal. Tournés vers la suite.](__BUMP_ORIGIN__/a-propos.md): Fondée par deux entrepreneurs à Montréal, Bump accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.
 - [Les bonnes questions, avant de commencer.](__BUMP_ORIGIN__/faq.md): Des réponses sur l’automatisation, l’IA, les logiciels et la cybersécurité pour PME : choix, budget, validation humaine et déroulement d’un mandat.
+- [Des cas concrets, avant de passer à l’action.](__BUMP_ORIGIN__/cas-d-usage.md): Explorez quatre cas d’usage illustratifs pour PME : automatiser les devis, retrouver des informations, coordonner les interventions et vérifier les accès.
 
 ## English pages
 
@@ -31,6 +32,7 @@ Cyber AI, Developer AI et Workflow AI sont une vision future, pas des produits d
 - [Understand before you build.](__BUMP_ORIGIN__/en/approach.md): Explore the five stages of a Bump engagement: audit, analysis, proposal, implementation and maintenance. Technology consulting designed for SMEs.
 - [Rooted in Montréal. Looking ahead.](__BUMP_ORIGIN__/en/about.md): Founded by two entrepreneurs in Montréal, Bump helps SMEs become more efficient, intelligent and secure through technology suited to their needs.
 - [Good questions, before you begin.](__BUMP_ORIGIN__/en/faq.md): How do you choose between automation, AI and custom software? What does an audit cover? Answers for SMEs considering a technology engagement with Bump.
+- [Concrete scenarios, before the next step.](__BUMP_ORIGIN__/en/use-cases.md): Explore four illustrative SME use cases: quote automation, document search, service coordination and access review, with human checks and clear limits.
 
 ## Machine-readable
 

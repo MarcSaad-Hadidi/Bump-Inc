@@ -70,6 +70,33 @@ Deux entrepreneurs à Montréal. La technologie au service de votre PME.
 
 Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal, au Québec. Notre mission est d’aider les PME à devenir plus efficaces, intelligentes et sécurisées grâce à des solutions adaptées à leurs besoins. Nos trois divisions couvrent les processus, l’IA et les logiciels, ainsi que la cybersécurité.
 
+## Qu’est-ce qui pourrait changer dans votre quotidien ?
+
+Quatre scénarios fictifs, du problème de départ aux vérifications à convenir avec votre équipe. Des exemples, sans résultats clients revendiqués.
+
+- Du courriel au devis à valider. Une demande est structurée, vérifiée puis transmise au CRM après une décision humaine.
+- Retrouver la bonne information. Un assistant consulte les documents autorisés et relie sa réponse à des sources vérifiables.
+- Un suivi commun pour les interventions. Demandes, responsables et prochaines actions se retrouvent dans un espace adapté à l’équipe.
+- Du risque identifié au correctif vérifié. Un audit autorisé examine les accès, priorise les écarts et organise leur correction.
+
+## Questions fréquentes
+
+### Comment Bump peut-elle aider votre PME ?
+
+Bump accompagne les PME en optimisation des processus, automatisation, intégration IA, développement logiciel et cybersécurité. Nous partons de votre fonctionnement et de vos outils pour définir une intervention adaptée.
+
+### Faut-il remplacer les outils déjà en place ?
+
+Pas nécessairement. Nous examinons ce qui peut être simplifié ou connecté avant de proposer un nouveau logiciel. Les accès, les API, les coûts et les limites des outils font partie de l’analyse.
+
+### Comment commence un mandat avec Bump ?
+
+Un mandat suit cinq étapes : audit, analyse, proposition, implantation et maintenance. La proposition précise le périmètre, les livrables, le budget et les validations avant de commencer l’implantation.
+
+### Les agents Cyber AI, Developer AI et Workflow AI sont-ils disponibles ?
+
+Non. Ces systèmes spécialisés font partie de notre vision future. Nos services actuels portent sur la consultation, l’intégration, le développement et la cybersécurité dans le cadre d’un mandat défini.
+
 ## À propos de l’auteur
 
 [Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
@@ -77,8 +104,8 @@ Consultant en technologie pour PME · Montréal, Québec
 
 ## Ce qui a été révisé
 
-- Ajout d’une lecture des processus et des contrôles à conserver.
-- Présentation des cinq étapes du mandat et des liens vers les expertises.
+- Ajout d’une mini FAQ et de liens vers quatre scénarios de mandats illustratifs.
+- Stabilisation de la géométrie initiale et préchargement des polices.
 
 ## Related
 
@@ -90,6 +117,7 @@ Consultant en technologie pour PME · Montréal, Québec
 - [Comprendre avant de construire.](__BUMP_ORIGIN__/approche) — Découvrez les cinq étapes d’un mandat Bump : audit, analyse, proposition, implantation et maintenance. Une démarche technologique adaptée aux PME.
 - [Ancrés à Montréal. Tournés vers la suite.](__BUMP_ORIGIN__/a-propos) — Fondée par deux entrepreneurs à Montréal, Bump accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.
 - [Les bonnes questions, avant de commencer.](__BUMP_ORIGIN__/faq) — Des réponses sur l’automatisation, l’IA, les logiciels et la cybersécurité pour PME : choix, budget, validation humaine et déroulement d’un mandat.
+- [Des cas concrets, avant de passer à l’action.](__BUMP_ORIGIN__/cas-d-usage) — Explorez quatre cas d’usage illustratifs pour PME : automatiser les devis, retrouver des informations, coordonner les interventions et vérifier les accès.
 
 ---
 <!-- source: __BUMP_ORIGIN__/en -->
@@ -157,6 +185,33 @@ A technology consulting company founded by two entrepreneurs in Montréal, Québ
 
 Bump is a technology consulting company founded by two entrepreneurs in Montréal, Québec. Our mission is to help SMEs become more efficient, intelligent and secure through solutions suited to their needs. Our three divisions cover workflows, AI and software, and cybersecurity.
 
+## What could change in your day-to-day work?
+
+Four fictional scenarios, from the initial problem to checks to agree with your team. They are examples, not client results.
+
+- From an email to a quote ready for review. A request is structured, checked and sent to the CRM after a human decision.
+- Find the information that matters. An assistant searches authorized documents and connects its answer to verifiable sources.
+- One place to coordinate service work. Requests, owners and next actions come together in a workspace built around the team.
+- From an identified risk to a verified fix. An authorized audit reviews access, prioritizes findings and organizes remediation.
+
+## Frequently asked questions
+
+### How can Bump help your business?
+
+Bump helps SMEs with process optimization, automation, AI integration, custom software and cybersecurity. We start with the way your team works and the tools it uses to define a suitable engagement.
+
+### Do we have to replace our existing tools?
+
+Not necessarily. We examine what can be simplified or connected before proposing new software. Access, APIs, costs and tool limitations are part of the analysis.
+
+### How does an engagement with Bump begin?
+
+An engagement follows five stages: audit, analysis, proposal, implementation and maintenance. The proposal defines scope, deliverables, budget and approvals before implementation begins.
+
+### Are Cyber AI, Developer AI and Workflow AI available?
+
+No. These specialized systems are part of our future vision. Our current services cover consulting, integration, development and cybersecurity within a defined engagement.
+
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
@@ -164,8 +219,8 @@ Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 
-- Added a readable overview of processes and controls to retain.
-- Presented the five engagement stages and links to the service guides.
+- Added a short FAQ and links to four illustrative engagement scenarios.
+- Stabilized initial geometry and preloaded the fonts.
 
 ## Related
 
@@ -177,6 +232,7 @@ Technology consultant for SMEs · Montréal, Québec
 - [Understand before you build.](__BUMP_ORIGIN__/en/approach) — Explore the five stages of a Bump engagement: audit, analysis, proposal, implementation and maintenance. Technology consulting designed for SMEs.
 - [Rooted in Montréal. Looking ahead.](__BUMP_ORIGIN__/en/about) — Founded by two entrepreneurs in Montréal, Bump helps SMEs become more efficient, intelligent and secure through technology suited to their needs.
 - [Good questions, before you begin.](__BUMP_ORIGIN__/en/faq) — How do you choose between automation, AI and custom software? What does an audit cover? Answers for SMEs considering a technology engagement with Bump.
+- [Concrete scenarios, before the next step.](__BUMP_ORIGIN__/en/use-cases) — Explore four illustrative SME use cases: quote automation, document search, service coordination and access review, with human checks and clear limits.
 
 ---
 <!-- source: __BUMP_ORIGIN__/expertises -->
@@ -1755,6 +1811,392 @@ Technology consultant for SMEs · Montréal, Québec
 
 - Added a checklist for preparing a first conversation.
 - Clarified useful information and what should not be shared.
+
+## Related
+
+- [Workflow automation for small businesses.](__BUMP_ORIGIN__/en/services/workflow-automation) — Analyse processes, automate repetitive tasks and connect business software with Bump in Montréal. Workflows designed around your SME’s operations.
+- [AI integration for your business.](__BUMP_ORIGIN__/en/services/ai-integration) — Integrate AI into business tools and processes with Bump: focused agents, document search, summaries and dashboards, with human approval.
+- [Software built around your operations.](__BUMP_ORIGIN__/en/services/custom-software-development) — Web applications, portals and internal systems for Québec SMEs. Bump builds custom software connected to your CRM, ERP and APIs.
+- [Cybersecurity, with a clear framework.](__BUMP_ORIGIN__/en/services/cybersecurity) — Authorized audits, vulnerability identification, remediation and system hardening. Bump supports SMEs in Montréal and Québec.
+- [Understand before you build.](__BUMP_ORIGIN__/en/approach) — Explore the five stages of a Bump engagement: audit, analysis, proposal, implementation and maintenance. Technology consulting designed for SMEs.
+
+---
+<!-- source: __BUMP_ORIGIN__/cas-d-usage -->
+
+# Des cas concrets, avant de passer à l’action.
+
+> Explorez quatre cas d’usage illustratifs pour PME : automatiser les devis, retrouver des informations, coordonner les interventions et vérifier les accès.
+
+Canonical: __BUMP_ORIGIN__/cas-d-usage
+First published: 2026-10-27
+Last updated: 2026-10-27
+
+Un problème de départ. Un parcours proposé. Des critères pour décider.
+
+## En clair
+
+Ces quatre études de cas sont des scénarios fictifs qui expliquent comment un mandat Bump pourrait répondre à un besoin de PME. Elles détaillent le contexte, le parcours proposé, les validations humaines et les vérifications attendues. Elles ne décrivent ni clients réels, ni déploiements réalisés, ni gains mesurés.
+
+## Du courriel au devis à valider.
+
+Étude de cas illustrative — scénario fictif, aucun mandat client revendiqué.
+
+### Quel est le problème de départ ?
+
+Dans ce scénario fictif, une PME de fabrication reçoit des demandes par courriel. Un membre de l’équipe recopie les coordonnées dans le CRM, recherche les pièces jointes et relance le demandeur lorsqu’une information manque.
+
+### Quel parcours pourrait y répondre ?
+
+Le parcours proposé extrait les champs utiles, vérifie leur présence et prépare un dossier de devis. Une personne examine la demande et approuve la suite. Le système peut ensuite mettre à jour le CRM et préparer une confirmation, selon les règles convenues.
+
+### Quelles décisions restent humaines ?
+
+Le workflow ne décide ni du prix ni de l’engagement commercial. Une demande incomplète attend une précision. Si le CRM est indisponible, une reprise et un signalement sont prévus pour éviter de perdre le dossier.
+
+### Comment évaluer le résultat ?
+
+Avant l’implantation, relever le volume de demandes, les recopies et le temps consacré au traitement. Après validation et adoption, comparer ces mêmes mesures et les exceptions. Aucun gain n’a été mesuré pour ce scénario.
+
+### Les livrables à convenir
+
+- Un point d’entrée structuré pour les demandes et leurs documents.
+- Une file de validation avec responsable et état du dossier.
+- Une connexion au CRM, un journal et un parcours de reprise.
+
+### Les critères de validation
+
+Critères à convenir avant l’implantation.
+
+| Situation | Vérification attendue |
+| --- | --- |
+| Demande complète | Un dossier est préparé, puis attend une approbation. |
+| Information manquante | La demande est signalée ; aucune transmission finale n’est déclenchée. |
+| Approbation refusée | Le dossier revient à la préparation avec le motif. |
+| CRM indisponible | L’échec est visible et la reprise ne crée pas de doublon. |
+
+## Retrouver la bonne information.
+
+Étude de cas illustrative — scénario fictif, aucun mandat client revendiqué.
+
+### Quel est le problème de départ ?
+
+Dans ce scénario fictif, une PME de services conserve ses procédures dans plusieurs espaces documentaires. Pour répondre à une question interne, l’équipe doit retrouver la version applicable et vérifier qu’elle a le droit de la consulter.
+
+### Quel parcours pourrait y répondre ?
+
+L’intégration proposée relie un assistant à un ensemble documentaire délimité. La réponse présente les passages utiles et leurs références. Lorsqu’une source est absente, périmée ou contradictoire, l’assistant l’indique et propose une vérification humaine.
+
+### Quelles décisions restent humaines ?
+
+Les droits de consultation restent ceux définis par l’entreprise. Une réponse ne doit pas révéler un document interdit. L’assistant peut préparer une prochaine action ; une personne valide les décisions sensibles avant leur exécution.
+
+### Comment évaluer le résultat ?
+
+Évaluer les réponses sur un jeu de questions validé par l’équipe : exactitude, sources, limites et respect des accès. Ces critères doivent être satisfaits avant d’étendre l’usage. Le scénario ne revendique aucun taux de précision mesuré.
+
+### Les livrables à convenir
+
+- Une carte des sources, des versions et des droits d’accès.
+- Une interface de questions-réponses avec références consultables.
+- Un jeu de questions de contrôle et des règles de transfert à l’équipe.
+
+### Les critères de validation
+
+Critères à convenir avant l’implantation.
+
+| Situation | Vérification attendue |
+| --- | --- |
+| Question documentée | La réponse renvoie aux sources qui la soutiennent. |
+| Source absente | L’assistant exprime la limite au lieu de compléter par supposition. |
+| Document interdit | Le contenu n’est ni recherché ni révélé à la personne. |
+| Versions contradictoires | L’écart est montré et une vérification est demandée. |
+
+## Un suivi commun pour les interventions.
+
+Étude de cas illustrative — scénario fictif, aucun mandat client revendiqué.
+
+### Quel est le problème de départ ?
+
+Dans ce scénario fictif, une PME de maintenance répartit les demandes entre courriels et fichiers de suivi. Le responsable cherche qui intervient, quelle information manque et quel dossier doit être repris.
+
+### Quel parcours pourrait y répondre ?
+
+L’application proposée réunit la demande, les documents, le responsable et la prochaine action. Les vues de l’équipe et de la coordination montrent les mêmes états. Les connexions utiles aux outils existants sont définies après examen de leurs API et de leurs limites.
+
+### Quelles décisions restent humaines ?
+
+Le responsable conserve les décisions de priorité et d’affectation. Les rôles encadrent les modifications autorisées. Une fermeture de dossier exige les informations convenues ; les échecs de synchronisation restent visibles.
+
+### Comment évaluer le résultat ?
+
+Suivre les dossiers sans responsable, les demandes en attente et les reprises manuelles. Le point de départ est mesuré avant lancement, puis comparé après adoption. Les volumes et résultats restent à établir sur un projet réel.
+
+### Les livrables à convenir
+
+- Une application web et des vues adaptées aux rôles définis.
+- Un parcours de réception, d’affectation, de suivi et de clôture.
+- Les intégrations retenues, les essais et la documentation du mandat.
+
+### Les critères de validation
+
+Critères à convenir avant l’implantation.
+
+| Situation | Vérification attendue |
+| --- | --- |
+| Nouvelle demande | Un responsable et une prochaine action sont identifiables. |
+| Changement d’état | Les personnes autorisées retrouvent le même suivi. |
+| Accès insuffisant | La modification est refusée sans exposer le dossier. |
+| Clôture incomplète | Les informations manquantes sont indiquées avant validation. |
+
+## Du risque identifié au correctif vérifié.
+
+Étude de cas illustrative — scénario fictif, aucun mandat client revendiqué.
+
+### Quel est le problème de départ ?
+
+Dans ce scénario fictif, une PME veut vérifier les accès à une application interne après des changements dans son équipe. Certains comptes ou droits peuvent ne plus correspondre aux responsabilités actuelles.
+
+### Quel parcours pourrait y répondre ?
+
+L’audit commence par un périmètre écrit et une autorisation. Les accès et paramètres convenus sont examinés. Chaque constat décrit le risque, les éléments observés, une priorité et une correction proposée, puis fait l’objet d’un suivi avec le responsable.
+
+### Quelles décisions restent humaines ?
+
+Aucun examen ne dépasse le périmètre autorisé. Les modifications sont convenues avec l’entreprise, testées et documentées. Une correction est suivie d’une vérification ; le suivi continu dépend du mandat de maintenance.
+
+### Comment évaluer le résultat ?
+
+Suivre les constats ouverts, les corrections vérifiées et les accès revus dans le périmètre convenu. Ce scénario n’est pas un audit réalisé et ne garantit pas l’absence de vulnérabilités.
+
+### Les livrables à convenir
+
+- Un périmètre et des règles d’intervention approuvés.
+- Un registre des constats, priorités et corrections convenues.
+- La vérification des corrections et les responsabilités de suivi.
+
+### Les critères de validation
+
+Critères à convenir avant l’implantation.
+
+| Situation | Vérification attendue |
+| --- | --- |
+| Compte devenu inutile | Le responsable confirme la désactivation et ses conséquences. |
+| Droits trop étendus | Les permissions sont rapprochées des responsabilités réelles. |
+| Correction appliquée | Le fonctionnement attendu et la protection sont vérifiés. |
+| Suivi à organiser | Un responsable et une condition de réexamen sont définis. |
+
+## Questions fréquentes
+
+### Ces études de cas décrivent-elles des clients de Bump ?
+
+Non. Les quatre scénarios sont fictifs et illustratifs. Ils montrent un type de projet possible et ses critères de validation, sans revendiquer de client, de réalisation ou de résultat mesuré.
+
+### Comment passer d’un exemple à un projet réel ?
+
+Le fonctionnement, les outils, les accès et les contraintes de votre entreprise sont examinés. Une proposition définit ensuite le périmètre, les livrables, le budget, les responsabilités et les essais avant l’implantation.
+
+## À propos de l’auteur
+
+[Bump](__BUMP_ORIGIN__/a-propos#redaction) — Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Ses services relient optimisation des processus, IA et développement logiciel, et cybersécurité pour les PME.
+Consultant en technologie pour PME · Montréal, Québec
+
+## Ce qui a été révisé
+
+- Publication de quatre scénarios fictifs avec contexte, livrables et critères de validation.
+- Distinction explicite entre exemples de mandats et résultats clients.
+
+## Related
+
+- [Automatisation des processus pour les PME.](__BUMP_ORIGIN__/services/automatisation-processus) — Analysez vos processus, automatisez les tâches répétitives et connectez vos logiciels avec Bump à Montréal. Des workflows adaptés aux opérations de votre PME.
+- [Intégration IA pour votre entreprise.](__BUMP_ORIGIN__/services/integration-ia) — Intégrez l’IA à vos outils et à vos processus avec Bump : agents ciblés, recherche documentaire, synthèses et tableaux de bord, avec validation humaine.
+- [Des logiciels conçus pour vos opérations.](__BUMP_ORIGIN__/services/developpement-logiciel) — Applications web, portails et systèmes internes pour les PME du Québec. Bump conçoit des logiciels sur mesure reliés à vos CRM, ERP et API.
+- [La cybersécurité, avec un cadre clair.](__BUMP_ORIGIN__/services/cybersecurite) — Audits autorisés, identification des vulnérabilités, remédiation et sécurisation des systèmes. Bump accompagne les PME de Montréal et du Québec.
+- [Comprendre avant de construire.](__BUMP_ORIGIN__/approche) — Découvrez les cinq étapes d’un mandat Bump : audit, analyse, proposition, implantation et maintenance. Une démarche technologique adaptée aux PME.
+
+---
+<!-- source: __BUMP_ORIGIN__/en/use-cases -->
+
+# Concrete scenarios, before the next step.
+
+> Explore four illustrative SME use cases: quote automation, document search, service coordination and access review, with human checks and clear limits.
+
+Canonical: __BUMP_ORIGIN__/en/use-cases
+First published: 2026-10-27
+Last updated: 2026-10-27
+
+A starting problem. A proposed workflow. Criteria for deciding.
+
+## At a glance
+
+These four case studies are fictional scenarios explaining how a Bump engagement could address an SME need. They describe context, proposed workflows, human approvals and acceptance checks. They represent neither real clients nor completed deployments or measured improvements.
+
+## From an email to a quote ready for review.
+
+Illustrative case study — fictional scenario, not a client engagement.
+
+### What is the starting problem?
+
+In this fictional scenario, a manufacturing SME receives requests by email. A team member re-enters contact details in the CRM, finds attachments and follows up when information is missing.
+
+### What workflow could address it?
+
+The proposed workflow extracts useful fields, checks completeness and prepares a quote request. A person reviews the request and approves the next action. The system can then update the CRM and prepare a confirmation under the agreed rules.
+
+### Which decisions remain human?
+
+The workflow decides neither pricing nor commercial commitments. An incomplete request waits for clarification. If the CRM is unavailable, recovery and an alert are planned so the request is not lost.
+
+### How would the result be evaluated?
+
+Before implementation, record request volume, repeated entry and handling time. After validation and adoption, compare the same measures and exceptions. No improvement has been measured for this scenario.
+
+### Deliverables to agree
+
+- A structured entry point for requests and documents.
+- An approval queue with an owner and request status.
+- A CRM connection, an activity log and a recovery path.
+
+### Acceptance checks
+
+Acceptance checks to agree before implementation.
+
+| Situation | Expected check |
+| --- | --- |
+| Complete request | A case is prepared and waits for approval. |
+| Missing information | The request is flagged; final transmission does not run. |
+| Approval rejected | The request returns to preparation with a reason. |
+| CRM unavailable | The failure is visible and recovery does not create a duplicate. |
+
+## Find the information that matters.
+
+Illustrative case study — fictional scenario, not a client engagement.
+
+### What is the starting problem?
+
+In this fictional scenario, a service SME stores procedures in several document spaces. To answer an internal question, the team must find the applicable version and confirm it has permission to read it.
+
+### What workflow could address it?
+
+The proposed integration connects an assistant to a defined document collection. Answers show useful passages and references. When a source is missing, outdated or contradictory, the assistant states the limitation and asks for human verification.
+
+### Which decisions remain human?
+
+Read permissions remain those defined by the business. An answer must not reveal a restricted document. The assistant can prepare a next action; a person approves sensitive decisions before execution.
+
+### How would the result be evaluated?
+
+Evaluate answers against a team-approved question set: correctness, sources, limitations and access control. These criteria must be met before broader use. This scenario claims no measured accuracy rate.
+
+### Deliverables to agree
+
+- A map of sources, versions and access permissions.
+- A question-and-answer interface with inspectable references.
+- A team-approved evaluation set and rules for handing questions to a person.
+
+### Acceptance checks
+
+Acceptance checks to agree before implementation.
+
+| Situation | Expected check |
+| --- | --- |
+| Documented question | The answer points to supporting sources. |
+| Missing source | The assistant states its limitation instead of guessing. |
+| Restricted document | The content is neither retrieved nor revealed to the person. |
+| Conflicting versions | The conflict is shown and verification is requested. |
+
+## One place to coordinate service work.
+
+Illustrative case study — fictional scenario, not a client engagement.
+
+### What is the starting problem?
+
+In this fictional scenario, a maintenance SME coordinates requests through email and tracking files. The coordinator needs to identify who is assigned, what information is missing and which request needs attention.
+
+### What workflow could address it?
+
+The proposed application brings the request, documents, owner and next action together. Team and coordination views show the same statuses. Useful connections to existing tools are defined after reviewing their APIs and limitations.
+
+### Which decisions remain human?
+
+The coordinator retains priority and assignment decisions. Roles define permitted changes. Closing a request requires the agreed information, and synchronization failures remain visible.
+
+### How would the result be evaluated?
+
+Track unassigned requests, waiting work and manual recovery. Measure a baseline before launch and compare after adoption. Volumes and outcomes still need to be established in a real project.
+
+### Deliverables to agree
+
+- A web application with views for the defined roles.
+- A workflow for intake, assignment, tracking and closure.
+- Selected integrations, acceptance checks and engagement documentation.
+
+### Acceptance checks
+
+Acceptance checks to agree before implementation.
+
+| Situation | Expected check |
+| --- | --- |
+| New request | An owner and a next action are identifiable. |
+| Status change | Authorized people see the same progress. |
+| Insufficient access | The change is refused without exposing the request. |
+| Incomplete closure | Missing information is identified before approval. |
+
+## From an identified risk to a verified fix.
+
+Illustrative case study — fictional scenario, not a client engagement.
+
+### What is the starting problem?
+
+In this fictional scenario, an SME wants to review access to an internal application after staffing changes. Some accounts or permissions may no longer match current responsibilities.
+
+### What workflow could address it?
+
+The audit begins with written scope and authorization. Agreed access and settings are examined. Each finding records the risk, observed evidence, a priority and a proposed fix, followed up with the responsible person.
+
+### Which decisions remain human?
+
+No examination goes beyond the authorized scope. Changes are agreed with the business, tested and documented. Each fix is followed by verification; ongoing monitoring depends on the maintenance engagement.
+
+### How would the result be evaluated?
+
+Track open findings, verified fixes and reviewed access within the agreed scope. This scenario is not a completed audit and does not guarantee the absence of vulnerabilities.
+
+### Deliverables to agree
+
+- Approved scope and rules of engagement.
+- A register of findings, priorities and agreed fixes.
+- Verification of fixes and assigned follow-up responsibilities.
+
+### Acceptance checks
+
+Acceptance checks to agree before implementation.
+
+| Situation | Expected check |
+| --- | --- |
+| Unneeded account | The owner confirms deactivation and its implications. |
+| Excessive permissions | Access is aligned with actual responsibilities. |
+| Applied fix | Expected operation and protection are verified. |
+| Ongoing review | An owner and a condition for re-examination are defined. |
+
+## Frequently asked questions
+
+### Do these case studies describe Bump clients?
+
+No. The four scenarios are fictional and illustrative. They show a possible project and its acceptance criteria without claiming a client, completed engagement or measured result.
+
+### How can an example become a real project?
+
+Your business operations, tools, access and constraints are examined. A proposal then defines scope, deliverables, budget, responsibilities and checks before implementation.
+
+## About the publisher
+
+[Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
+Technology consultant for SMEs · Montréal, Québec
+
+## What changed
+
+- Published four fictional scenarios with context, deliverables and acceptance checks.
+- Explicitly distinguished engagement examples from client outcomes.
 
 ## Related
 

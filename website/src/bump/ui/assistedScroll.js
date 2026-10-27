@@ -101,12 +101,16 @@ export function getBumpScrollStops(paddingPass=0){
  if(companyFlow){add('company-connections',companyFlow,-clearance);lastCompany='company-connections';finalAnchor={anchor:companyFlow,end:top(companyFlow)+companyFlow.getBoundingClientRect().height};}
  const companyEnd=companyFlow?null:serviceStops(document.getElementById('b2b'),'company');
  if(companyEnd){lastCompany=companyEnd.id;finalAnchor=companyEnd;}
+ for(const [id,handle] of [['company-examples','bump-home-examples'],['company-questions','bump-home-questions']]){
+  const element=document.getElementById(handle);
+  if(element){add(id,element,-clearance);lastCompany=id;finalAnchor={anchor:element,end:top(element)+element.getBoundingClientRect().height};}
+ }
  // Landscape and very short phones may need more than one readable screen.
  // Continue inside that same section before exiting; never skip its bottom or
  // reduce the app to illegible text. The four pinned folder stops stay intact.
  const readingEnds=new Map();
  {
-  const panels=new Set(['workflow-execution','workflow-cloud','software-operations','software-data','software-integration','security-system','security-audits','security-vulnerabilites','security-remediation','security-suivi','method-workshop','vision-sculpture','vision-research-network','company-manifesto','company-connections']);
+  const panels=new Set(['workflow-execution','workflow-cloud','software-operations','software-data','software-integration','security-system','security-audits','security-vulnerabilites','security-remediation','security-suivi','method-workshop','vision-sculpture','vision-research-network','company-manifesto','company-connections','company-examples','company-questions']);
   for(const stop of [...stops]){
    const anchor=anchors.get(stop.id);if(!panels.has(stop.id)||!anchor)continue;
    const element=anchor.querySelector?.('.bump-tools-live,.bump-security-live,.bump-method-live,.bump-vision-live,.bump-port-live,.bump-research')||anchor;

@@ -2,6 +2,8 @@ import content from '../content.json' with {type: 'json'};
 import {buyerGuides} from './buyer-guides.js';
 import {site} from './site.js';
 import {revisions} from './editorial.js';
+import {homeQuestions,casePreviews} from './home-content.js';
+import {caseSections} from './case-studies.js';
 
 // HTML, markdown, structured data, discovery and navigation all use this catalog.
 // Examples describe possible engagements, not clients or measured results.
@@ -354,15 +356,26 @@ const home = {
   ], faqs: []},
 };
 
-export const catalog = [home, ...entries];
+const cases = {
+  id:'cases',type:'examples',accent:'olive',chapter:'b2b',published:'2026-10-27',related:['workflow','ai','software','security','approach'],
+  fr:{path:'/cas-d-usage',title:'Des cas concrets,\navant de passer à l’action.',metaTitle:'Cas d’usage : automatisation, IA et cybersécurité | Bump',description:'Explorez quatre cas d’usage illustratifs pour PME : automatiser les devis, retrouver des informations, coordonner les interventions et vérifier les accès.',eyebrow:'Études de cas illustratives',lead:'Un problème de départ. Un parcours proposé. Des critères pour décider.',answer:'Ces quatre études de cas sont des scénarios fictifs qui expliquent comment un mandat Bump pourrait répondre à un besoin de PME. Elles détaillent le contexte, le parcours proposé, les validations humaines et les vérifications attendues. Elles ne décrivent ni clients réels, ni déploiements réalisés, ni gains mesurés.',figure:['Le besoin','Le parcours','La vérification'],sections:caseSections('fr'),faqs:[{q:'Ces études de cas décrivent-elles des clients de Bump ?',a:'Non. Les quatre scénarios sont fictifs et illustratifs. Ils montrent un type de projet possible et ses critères de validation, sans revendiquer de client, de réalisation ou de résultat mesuré.'},{q:'Comment passer d’un exemple à un projet réel ?',a:'Le fonctionnement, les outils, les accès et les contraintes de votre entreprise sont examinés. Une proposition définit ensuite le périmètre, les livrables, le budget, les responsabilités et les essais avant l’implantation.'}]},
+  en:{path:'/en/use-cases',title:'Concrete scenarios,\nbefore the next step.',metaTitle:'SME Use Cases: Automation, AI and Cybersecurity | Bump',description:'Explore four illustrative SME use cases: quote automation, document search, service coordination and access review, with human checks and clear limits.',eyebrow:'Illustrative case studies',lead:'A starting problem. A proposed workflow. Criteria for deciding.',answer:'These four case studies are fictional scenarios explaining how a Bump engagement could address an SME need. They describe context, proposed workflows, human approvals and acceptance checks. They represent neither real clients nor completed deployments or measured improvements.',figure:['The need','The workflow','The verification'],sections:caseSections('en'),faqs:[{q:'Do these case studies describe Bump clients?',a:'No. The four scenarios are fictional and illustrative. They show a possible project and its acceptance criteria without claiming a client, completed engagement or measured result.'},{q:'How can an example become a real project?',a:'Your business operations, tools, access and constraints are examined. A proposal then defines scope, deliverables, budget, responsibilities and checks before implementation.'}]},
+};
+
+export const catalog = [home, ...entries, cases];
 export const locales = ['fr', 'en'];
 export function pageFor(id, locale = 'fr') {
   const entry = catalog.find(page => page.id === id);
   if (!entry) return null;
   const page = {...entry, ...entry[locale], locale,
-    published: entry.type === 'home' ? undefined : site.editorialPublished,
+    published: entry.type === 'home' ? undefined : entry.published || site.editorialPublished,
     revisions: revisions[id]?.[locale] || []};
   const guide = buyerGuides[id]?.[locale];
+  if(id==='home'){
+    page.related=[...page.related,'cases'];
+    page.faqs=homeQuestions[locale];
+    page.sections=[...page.sections,{id:'bump-home-examples',title:locale==='fr'?'Qu’est-ce qui pourrait changer dans votre quotidien ?':'What could change in your day-to-day work?',paragraphs:[locale==='fr'?'Quatre scénarios fictifs, du problème de départ aux vérifications à convenir avec votre équipe. Des exemples, sans résultats clients revendiqués.':'Four fictional scenarios, from the initial problem to checks to agree with your team. They are examples, not client results.'],items:casePreviews.map(item=>item[locale].title+' '+item[locale].summary)}];
+  }
   if (guide) {
     page.sections = [...page.sections,guide.section];
     page.faqs = [...page.faqs,guide.faq];

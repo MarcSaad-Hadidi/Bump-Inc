@@ -17,6 +17,7 @@ export function editorialLinks(locale) {
     {id:'approach',label:english?'Our approach':'Notre approche',path:english?'/en/approach':'/approche'},
     {id:'about',label:english?'About Bump':'À propos de Bump',path:english?'/en/about':'/a-propos'},
     {id:'faq',label:english?'Frequently asked questions':'Questions fréquentes',path:english?'/en/faq':'/faq'},
+    {id:'cases',label:english?'Illustrative case studies':'Études de cas illustratives',path:english?'/en/use-cases':'/cas-d-usage'},
   ];
 }
 
@@ -33,6 +34,7 @@ export function searchEditorialPages(query, locale) {
     approach:'methode method approche approach audit analyse proposition implantation maintenance',
     about:'bump montreal quebec entreprise company entrepreneurs propos about',
     faq:'faq question questions reponse answer budget prix price',
+    cases:'etude etudes cas usage scenario exemple projet case studies use cases example project',
   };
   return editorialLinks(locale).filter(item => normalize(item.label + ' ' + keywords[item.id]).includes(term));
 }

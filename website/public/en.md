@@ -61,6 +61,33 @@ A technology consulting company founded by two entrepreneurs in Montréal, Québ
 
 Bump is a technology consulting company founded by two entrepreneurs in Montréal, Québec. Our mission is to help SMEs become more efficient, intelligent and secure through solutions suited to their needs. Our three divisions cover workflows, AI and software, and cybersecurity.
 
+## What could change in your day-to-day work?
+
+Four fictional scenarios, from the initial problem to checks to agree with your team. They are examples, not client results.
+
+- From an email to a quote ready for review. A request is structured, checked and sent to the CRM after a human decision.
+- Find the information that matters. An assistant searches authorized documents and connects its answer to verifiable sources.
+- One place to coordinate service work. Requests, owners and next actions come together in a workspace built around the team.
+- From an identified risk to a verified fix. An authorized audit reviews access, prioritizes findings and organizes remediation.
+
+## Frequently asked questions
+
+### How can Bump help your business?
+
+Bump helps SMEs with process optimization, automation, AI integration, custom software and cybersecurity. We start with the way your team works and the tools it uses to define a suitable engagement.
+
+### Do we have to replace our existing tools?
+
+Not necessarily. We examine what can be simplified or connected before proposing new software. Access, APIs, costs and tool limitations are part of the analysis.
+
+### How does an engagement with Bump begin?
+
+An engagement follows five stages: audit, analysis, proposal, implementation and maintenance. The proposal defines scope, deliverables, budget and approvals before implementation begins.
+
+### Are Cyber AI, Developer AI and Workflow AI available?
+
+No. These specialized systems are part of our future vision. Our current services cover consulting, integration, development and cybersecurity within a defined engagement.
+
 ## About the publisher
 
 [Bump](__BUMP_ORIGIN__/en/about#editorial-policy) — Bump is a technology consulting company founded by two entrepreneurs in Montréal. Its services connect workflow optimization, AI and software development, and cybersecurity for SMEs.
@@ -68,8 +95,8 @@ Technology consultant for SMEs · Montréal, Québec
 
 ## What changed
 
-- Added a readable overview of processes and controls to retain.
-- Presented the five engagement stages and links to the service guides.
+- Added a short FAQ and links to four illustrative engagement scenarios.
+- Stabilized initial geometry and preloaded the fonts.
 
 ## Related
 
@@ -81,3 +108,4 @@ Technology consultant for SMEs · Montréal, Québec
 - [Understand before you build.](__BUMP_ORIGIN__/en/approach) — Explore the five stages of a Bump engagement: audit, analysis, proposal, implementation and maintenance. Technology consulting designed for SMEs.
 - [Rooted in Montréal. Looking ahead.](__BUMP_ORIGIN__/en/about) — Founded by two entrepreneurs in Montréal, Bump helps SMEs become more efficient, intelligent and secure through technology suited to their needs.
 - [Good questions, before you begin.](__BUMP_ORIGIN__/en/faq) — How do you choose between automation, AI and custom software? What does an audit cover? Answers for SMEs considering a technology engagement with Bump.
+- [Concrete scenarios, before the next step.](__BUMP_ORIGIN__/en/use-cases) — Explore four illustrative SME use cases: quote automation, document search, service coordination and access review, with human checks and clear limits.

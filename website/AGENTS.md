@@ -1,3 +1,17 @@
+# Landing stability, short FAQ and illustrative case studies — 2026-10-27
+
+Fix startup layout instability with reproducible browser evidence. Deliver
+critical geometry before the scene bootstrap and preload existing fonts without
+changing the accepted opening, renderer, models or camera/scroll choreography.
+Add a visible short FAQ and four illustrative case studies to the end of the
+real landing, with the same content in initial HTML, Markdown and JSON-LD.
+Use the existing assisted controller for their reading stops. Provide FR/EN
+case-study pages and direct navigation/search links. These are fictional
+examples until real client projects and publication rights are supplied; never
+claim fabricated clients, completed work or measured gains. Publish on this
+public Site and update PR33, rerun checks/Codex and do not merge. At completion,
+give the owner the official-information checklist needed for factual additions.
+
 # Glass volume/consent and evidence-led SEO — 2026-10-27
 
 Apply the shared clear glass to music controls and the Clarity consent surface,

@@ -84,6 +84,7 @@ export default function BumpNav({navItems}){
       h('p',{className:'bump-menu-label bump-menu-label--chapters'},english?'Explore the experience':'Explorer l’expérience'),
       h('div',{className:'bump-menu-chapters'},...navItems.map((item,i)=>h('div',{className:'bump-hero-dropdown-row',key:item.handle},h('span',{'aria-hidden':true},String(i+1).padStart(2,'0')),h(ChapterLink,{item,index:i+1,onNavigate:()=>setMenu(false)})))),
       h('div',{className:'bump-editorial-links'},h('a',{href:english?'/en/faq':'/faq'},english?'Frequently asked questions':'Questions fréquentes',h(ArrowUpRight,{}))),
+      h('div',{className:'bump-editorial-links'},h('a',{href:english?'/en/use-cases':'/cas-d-usage'},english?'Illustrative case studies':'Études de cas illustratives',h(ArrowUpRight,{}))),
       isBumpProductionHost(window.location.hostname)&&h('button',{
         type:'button',
         className:'bump-analytics-menu-button',

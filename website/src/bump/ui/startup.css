@@ -1,0 +1,7 @@
+/* Critical geometry is available before the retained CSS/React arrive. */
+html,body{margin:0;padding:0;min-height:100%;box-sizing:border-box}
+html[data-bump-opening=type],html[data-bump-opening=type] body{background:#000}
+html[data-bump-opening=type] body::before{content:"";position:fixed;inset:0;z-index:300;background:#000;pointer-events:none}
+html[data-bump-opening=type] .main-wrapper{position:relative;z-index:301}
+html[data-bump-opening=type] .bump-header{opacity:0;pointer-events:none}
+html[data-bump-opening=type] :is(canvas[data-engine],.static-fallback-wrapper){opacity:0}

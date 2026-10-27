@@ -6,6 +6,11 @@ données Search Console du domaine commercial. Les scores de fournisseurs ont
 des périmètres et rubriques différents ; ils ne mesurent pas un classement
 mondial, des conversions ou une part de citations.
 
+Résultats après correction : [vérification publiée](after/VERIFICATION.md),
+[rapport AEOTester des 18 pages](after/aeotester-report.md) et résultats bruts
+dans `after/`. Le code revu est identique à celui qui a été audité ; les
+derniers changements du dossier ajoutent uniquement ces preuves.
+
 ## Outils utilisés et décisions
 
 | Outil demandé | Contrôle effectivement réalisé | État de départ / décision appliquée |

@@ -3,6 +3,13 @@ explicitly authorized. Prepare it on fresh main, preserve Clarity, icons and
 link previews, and do not merge automatically. Earlier PR gating below is
 historical and superseded by this instruction.
 
+Latest verification (2026-10-27): the readable initial HTML, service decision
+guides, corporate authorship and glass volume/consent controls are documented in
+[the audit register](audits/2026-10-27/AUDIT-REGISTER.md) and
+[published verification](audits/2026-10-27/after/VERIFICATION.md).
+The current suite passes 200 tests. Public audits cover all 18 FR/EN pages;
+AEOTester reports 121/127 (95%). Older counts below describe earlier checkpoints.
+
 # SEO release verification
 
 ## Content and routing

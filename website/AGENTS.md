@@ -1,3 +1,9 @@
+# Project button glass — 2026-10-26
+
+The header's Parlons de votre projet button must use the same transparent,
+blurred glass as search and expertise navigation. Keep its pill shape, size,
+responsive label, accessible contrast and existing form-opening interaction.
+
 # Glass menus and project form — 2026-10-26
 
 The expertise dropdown must have the same clear, blurred glass surface as the

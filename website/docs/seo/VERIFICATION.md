@@ -200,3 +200,12 @@ WebGL performance measurements.
   390px was also checked. Tall mobile forms scroll internally and the submit
   action remains reachable within the viewport. These are responsive Chrome
   checks; no physical Safari test is claimed.
+
+## Header project button — 2026-10-26
+
+The landing's project CTA now uses the existing 9% translucent glass and 12px
+blur. Its pill radius, dimensions, responsive label and native form-opening
+behavior remain. Browser checks confirmed the actual computed alpha/filter,
+ivory scene ink, a 30px desktop radius and the English mobile action fully
+inside a 390px viewport. Both desktop FR and mobile EN open the project dialog.
+The existing 190 tests and HTTP smoke pass; no geometry or scroll code changed.

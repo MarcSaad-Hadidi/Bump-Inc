@@ -1,5 +1,12 @@
 # Landing stability, short FAQ and illustrative case studies — 2026-10-27
 
+Native startup attribution found that createRoot(document) recreates head CSS
+links, allowing an unstyled first scene frame. Keep the retained root's small
+stylesheet/font readiness gate before its Outlet mounts. The original opening
+must begin on that mount; do not start its clock behind an unready scene.
+Preserve the final title's geometry under the opening wordmark. The temporary
+layout-attribution code is removed; do not ship a logging endpoint or observer.
+
 Fix startup layout instability with reproducible browser evidence. Deliver
 critical geometry before the scene bootstrap and preload existing fonts without
 changing the accepted opening, renderer, models or camera/scroll choreography.

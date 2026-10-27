@@ -103,8 +103,22 @@ npm test
 - `.openai/hosting.json` et `worker/` : compatibilité de l'export Sites d'origine ;
   ils ne sont pas nécessaires pour lancer le serveur Node.
 
-Le formulaire « Parlons de votre projet » est une démonstration d'interface ;
-aucun envoi de courriel ni CRM réel n'est connecté. Les démonstrations utilisent
+Le formulaire « Parlons de votre projet » envoie désormais les demandes via
+`POST /api/contact` sur Cloudflare Workers. Il valide les champs côté serveur,
+protège le point de contact par Turnstile, et utilise le binding `EMAIL` du
+service Cloudflare Email Service pour transmettre une notification à l'adresse
+personnelle vérifiée (la destination est volontairement limitée à une seule
+adresse). Le succès ne s'affiche qu'après acceptation de l'envoi par le
+fournisseur. **Avant fusion de la PR**, ajouter dans Cloudflare Workers,
+`bump-consultation → Settings → Variables and Secrets`, un secret
+`TURNSTILE_SECRET` avec la clé secrète du widget Turnstile nommé
+« Bump Consultation - Contact Form » (clé publique
+`0x4AAAAAAFnvTBtc-P3OUjx3`). Ne jamais stocker ni publier le secret dans
+GitHub. Vérifier un envoi réel et la réception Gmail après déploiement.
+
+Le routage MX vers Cloudflare et le transfert de
+`contact@bumpconsultation.ca` vers la destination vérifiée sont configurés
+directement dans Cloudflare. Les démonstrations du reste du site utilisent
 des données fictives. Les agents propriétaires sont une vision future.
 
 L'export conserve les modèles et animations de la version 46. Les tests de rendu

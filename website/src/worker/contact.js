@@ -1,11 +1,11 @@
 const DESTINATION = 'contactmarchadidi@gmail.com';
 const FROM = 'contact@bumpconsultation.ca';
 const MAX_BYTES = 12_000;
-const EXPERTISE = new Set([
-  'Optimisation des processus',
-  'IA et développement logiciel',
-  'Cybersécurité',
-  'Je souhaite être conseillé',
+const EXPERTISE = new Map([
+  ['process', 'Optimisation des processus'],
+  ['software', 'IA et développement logiciel'],
+  ['security', 'Cybersécurité'],
+  ['advisory', 'Je souhaite être conseillé'],
 ]);
 
 export function sanitizeContact(body) {
@@ -52,7 +52,7 @@ export async function handleContact(request, env) {
     'Nom : '+asText(details.name),
     'Entreprise : '+asText(details.company||'Non précisée'),
     'Courriel : '+asText(details.email),
-    'Expertise : '+asText(details.expertise),'',
+    'Expertise : '+asText(EXPERTISE.get(details.expertise)),'',
     'Message :','',asText(details.message),
   ].join('\n');
   try {

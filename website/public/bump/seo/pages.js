@@ -7,11 +7,11 @@ import {installBackgroundMusic} from '../background-music.js';
 const musicTrack = document.querySelector('[data-bump-background-audio]');
 const musicButton = document.querySelector('.bump-background-music');
 if (musicTrack && musicButton) installBackgroundMusic(musicTrack, musicButton);
-const nativeFigures=document.querySelector('[data-seo-figure]');
-let stopDiagrams = nativeFigures?()=>{}:installDiagramMotion();
+// Hero diagrams and the lower Anatomy figures have separate visibility gates.
+let stopDiagrams = installDiagramMotion();
 window.addEventListener('pagehide', () => {stopDiagrams();});
 // Restore the clock when a page is brought back from the browser's page cache.
-window.addEventListener('pageshow', event => {if (event.persisted&&!nativeFigures) stopDiagrams = installDiagramMotion();});
+window.addEventListener('pageshow', event => {if (event.persisted) stopDiagrams = installDiagramMotion();});
 
 for (const menu of document.querySelectorAll('.seo-expertise-menu')) {
   const summary = menu.querySelector('summary');

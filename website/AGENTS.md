@@ -4,10 +4,15 @@ The user reports that the SEO models are too large and their brief native
 readouts do not explain each step like the landing. Add an editorial title,
 step number and client-facing explanation for every actual native stage.
 Synchronize from the delivered controls, crossfade without layout jumps and
-reserve the tallest explanation. Fit the model, explanation and illustrative
+reserve the tallest explanation. Bound the SVG’s actual CSS grid track with
+minmax(0,1fr), not only its outer drawing container: intrinsic SVG height must
+never overflow into the explanation. Verify the SVG rectangle itself. Fit the
+model, explanation and illustrative
 caption together within the available viewport; support short landscape and
 narrow phones. Do not change the landing, native source/geometry/clocks,
-posters, English poster-only policy, metadata or global scroll. Keep this fix
+posters, English poster-only policy, metadata or global scroll. Keep the
+existing hero diagram player active independently of Anatomy loading in both
+languages, including pagehide cleanup and BFCache restoration. Keep this fix
 in the existing PR and GPT Site, with real visual validation before completion.
 
 # Supplied SEO figures — 2026-10-28

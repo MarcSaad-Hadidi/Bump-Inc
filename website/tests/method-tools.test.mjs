@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
-import {resolve} from 'node:path';
+import {basename,resolve} from 'node:path';
 import {build} from 'esbuild';
 import {translateModule} from '../scripts/build-bump-english.mjs';
 import {pageFor} from '../src/bump/seo/pages.js';
@@ -66,7 +66,7 @@ test('manual stage choice holds fifteen seconds, native pause works and reduced 
 });
 
 test('English readouts translate without changing the native state identifiers',async()=>{
- const source=compiled.outputFiles.find(f=>f.path.endsWith('/model.js')).text;
+ const source=compiled.outputFiles.find(f=>basename(f.path)==='model.js').text;
  const en=await load(translateModule(source));
  assert.deepEqual(en.STATES,model.STATES);
  assert.match(en.createToolMap().readout(0),/tool inventory/);

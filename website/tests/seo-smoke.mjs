@@ -1,5 +1,6 @@
 import {execFile} from 'node:child_process';
 import {promisify} from 'node:util';
+import {devNull} from 'node:os';
 import {createSiteServer} from '../scripts/serve-production.mjs';
 
 const run = promisify(execFile), server = createSiteServer();
@@ -23,5 +24,5 @@ try {
   const home = await curl([origin + '/']);
   console.log('Homepage ai-summary: ' + home.includes('name="ai-summary"'));
   console.log('Homepage JSON-LD: ' + home.includes('application/ld+json'));
-  console.log('Private markdown: ' + (await curl(['--output', '/dev/null', '--write-out', '%{http_code}', origin + '/api/md/admin'])));
+  console.log('Private markdown: ' + (await curl(['--output', devNull, '--write-out', '%{http_code}', origin + '/api/md/admin'])));
 } finally { await new Promise(resolve => server.close(resolve)); }

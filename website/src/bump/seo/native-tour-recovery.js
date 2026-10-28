@@ -1,10 +1,10 @@
 import {createDemoTimeout} from '../ui/demoTransport.js';
 
-export const VAULT_INSPECTION_GRACE_MS = 30000;
+export const NATIVE_INSPECTION_GRACE_MS = 30000;
 
-// The supplied vault intentionally ends its one-shot tour after manual input.
+// These supplied models end their one-shot tour after manual input.
 // Recover by replaying that same component after idle time, without changing it.
-export function mountVaultRecovery(root, {restart, cancelReplay}) {
+export function mountNativeTourRecovery(root, {restart, cancelReplay, kind}) {
  let ready = false, inspecting = false, disposed = false;
  const held = new Set();
  const timer = createDemoTimeout(root, () => ready && !held.size);
@@ -15,23 +15,24 @@ export function mountVaultRecovery(root, {restart, cancelReplay}) {
   if(disposed || !inspecting)return;
   timer.clear();
   mark(held.size ? 'holding' : 'waiting');
-  timer.schedule(VAULT_INSPECTION_GRACE_MS, () => {
+  timer.schedule(NATIVE_INSPECTION_GRACE_MS, () => {
    inspecting = false;mark('replaying');restart();
   });
   sync();
  };
  const begin = () => {inspecting = true;cancelReplay();};
- const drawer = event => event.target?.closest?.('[data-drawer]');
+ const controls = kind === 'workflow' ? '[data-btn],[data-accept],[data-refuse],[data-kind],[data-step],[data-insert],[data-next],[data-prev],[data-replay],[data-reset]' : '[data-drawer],[data-step],[data-next],[data-prev],[data-replay],[data-reset]';
+ const control = event => event.target?.closest?.(controls);
  const stage = event => event.target?.closest?.('.iso-stage');
  const pointerDown = event => {
-  if(!event.isTrusted || !drawer(event))return;
+  if(!event.isTrusted || !control(event))return;
   begin();held.add('pointer:' + event.pointerId);idle();
  };
- const click = event => {if(event.isTrusted && drawer(event)){begin();idle();}};
+ const click = event => {if(event.isTrusted && control(event)){begin();idle();}};
  const keyDown = event => {
   if(!event.isTrusted || !stage(event) || event.target.closest('input,textarea,select,[contenteditable="true"]'))return;
   // Space belongs to the shared explicit pause control, not the native tour.
-  if(!['ArrowRight','ArrowLeft','Home','Enter'].includes(event.key) && !/^[1-9]$/.test(event.key))return;
+  if(!['ArrowRight','ArrowLeft','Home','Enter'].includes(event.key) && !/^[1-9]$/.test(event.key) && !(kind === 'workflow' && /^[aArR]$/.test(event.key)))return;
   begin();held.add('key:' + event.code);idle();
  };
  const release = event => {
@@ -42,6 +43,7 @@ export function mountVaultRecovery(root, {restart, cancelReplay}) {
  const blur = () => {held.clear();idle();};
  const listeners = [
   [root,'pointerdown',pointerDown,true], [root,'click',click,true],
+  [root,'change',click,true],
   [root,'keydown',keyDown,true], [root,'pointermove',move,false],
   [window,'pointerup',release,false], [window,'pointercancel',release,false],
   [window,'keyup',release,false],

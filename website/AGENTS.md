@@ -9,8 +9,9 @@ or reversed trackpad impulses from decaying momentum. Keep one stop per fresh
 gesture, discard input during travel and accept light precision-wheel gestures.
 Use the existing controller only; preserve other chapter input behavior.
 
-Codex's vault inspection finding must also be fixed in the SEO host: the
-unmodified supplied vault stops its one-shot tour after manual input. Recover
+Codex's inspection/refusal findings must also be fixed in the SEO host: the
+unmodified supplied vault and workflow stop their one-shot tours after manual
+input, including workflow refusal, approval and A/R shortcuts. Recover
 by remounting the same native component after 30 seconds without interaction,
 excluding held input, offscreen time and explicit pause. Never alter native
 Anatomy geometry, sources or clocks. Verify recovery and preserve the public

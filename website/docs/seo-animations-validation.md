@@ -24,7 +24,7 @@ Paquet : `bump-pages-seo.zip`. Les instructions originales sont conservées dans
 
 ## Vérifications exécutées
 
-`npm run build`, `npm test` : **247 tests réussis, aucun échec ni test ignoré**, comprenant TypeScript strict, intégrité, SSR, placement, métadonnées, chargement EN, horloges et régressions existantes. `node tests/seo-smoke.mjs` réussi. Le test de l’artefact GPT a révélé un 404 sur le nouveau graphe SEO ; le Worker sert désormais ses modules exacts sans liaison ASSETS, avec revalidation de l’entrée stable et cache immuable des chunks nommés par hash. Le test de régression reproduit le 404 avant correction.
+`npm run build`, `npm test` : **248 tests réussis, aucun échec ni test ignoré**, comprenant TypeScript strict, intégrité, SSR, placement, métadonnées, chargement EN, horloges et régressions existantes. `node tests/seo-smoke.mjs` réussi. Le test de l’artefact GPT a révélé un 404 sur le nouveau graphe SEO ; le Worker sert désormais ses modules exacts sans liaison ASSETS, avec revalidation de l’entrée stable et cache immuable des chunks nommés par hash. Le test de régression reproduit le 404 avant correction.
 
 ## Correction des explications et du cadrage
 
@@ -83,3 +83,16 @@ navigateur, un clic sur la face d’un tiroir a armé cette reprise ; une pause
 prolongée a conservé la même étape et le même tour, puis la reprise a remonté
 le modèle natif à l’étape 0 (tour 2 vers tour 3). Les sources natives n’ont pas
 été modifiées.
+
+La nouvelle revue Codex a identifié le même arrêt natif après un refus manuel
+dans le Workflow. La reprise après inactivité est désormais commune aux deux
+modèles à tour unique : coffre et Workflow. Elle couvre les boutons SVG
+d’approbation/refus, les raccourcis A/R et les changements de scénario en plus
+des commandes de progression. Un quatrième test vérifie ces interactions avec
+la même priorité à la pause. Les cinq autres modèles conservent leurs boucles
+natives sans cette reprise supplémentaire.
+
+Contrôle navigateur du Workflow : la commande native a placé le modèle en
+validation, le clic réel sur le bouton rouge l’a renvoyé en préparation
+(étape 2, tour 0). Après inactivité, le modèle a repris son parcours et atteint
+l’étape finale au tour 2, sans quitter la figure ni appuyer sur lecture.

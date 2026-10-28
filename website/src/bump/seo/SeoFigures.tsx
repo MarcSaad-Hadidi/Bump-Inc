@@ -5,7 +5,7 @@ import {figureProps,seoFigures} from './figures.js';
 import {figureStories,currentFigureStep} from './figure-stories.js';
 import {mountDemoTransport,createDemoTimeout,demoIsPaused} from '../ui/demoTransport.js';
 import {observeDemoReady} from '../ui/demoReady.js';
-import {mountVaultRecovery} from './vault-recovery.js';
+import {mountNativeTourRecovery} from './native-tour-recovery.js';
 
 function present(Native:ComponentType,kind:string) {
  return function SeoNativeFigure() {
@@ -21,7 +21,7 @@ function present(Native:ComponentType,kind:string) {
    const transport=mountDemoTransport(node,'la démonstration');
    if(paused.current)node.querySelector<HTMLButtonElement>('.bump-demo-toggle')?.click();
    const timer=createDemoTimeout(node,()=>ready);
-   const recovery=kind==='security-engine'&&!motion.matches?mountVaultRecovery(node,{restart:replay,cancelReplay:()=>timer.clear()}):null;
+   const recovery=['workflow','security-engine'].includes(kind)&&!motion.matches?mountNativeTourRecovery(node,{restart:replay,cancelReplay:()=>timer.clear(),kind}):null;
    const readout=node.querySelector('[data-readout]');
    const steps=[...node.querySelectorAll('[data-step]')];
    const sync=()=>{

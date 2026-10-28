@@ -13,5 +13,6 @@ test('cursor tours skip transparent SVG surfaces and hidden parent trays despite
   part.css.opacity='0';assert.equal(hoverTargetIsVisible(part,root),false);
   part.css.opacity='.3';assert.equal(hoverTargetIsVisible(part,root),true);
   part.css.visibility='hidden';assert.equal(hoverTargetIsVisible(part,root),false);
+  part.css.visibility='visible';part.isConnected=false;assert.equal(hoverTargetIsVisible(part,root),false);
  }finally{if(previous)globalThis.getComputedStyle=previous;else delete globalThis.getComputedStyle;}
 });

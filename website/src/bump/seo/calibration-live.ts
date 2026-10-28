@@ -5,6 +5,7 @@ import {mountDemoTransport} from '../ui/demoTransport.js';
 import {mountHoverDemonstration} from '../ui/hoverDemonstration.js';
 import {mountCaptionTransitions} from '../ui/captionTransitions.js';
 import {observeDemoReady} from '../ui/demoReady.js';
+import {installTouchInspection} from '../ui/touchInspection.js';
 
 // This is the preserved laboratory's own renderer, not a second simulation or
 // a landing-page iframe. The original native loop still owns its only RAF.
@@ -17,6 +18,7 @@ export function mountCalibrationLesson(root:HTMLElement){
  const stopCaptions=mountCaptionTransitions(root);
  const stopTransport=mountDemoTransport(root,'le laboratoire illustratif');
  const stopTour=mountHoverDemonstration(root,'method');
+ const stopTouch=installTouchInspection();
  const stopReady=observeDemoReady(live,(ready:boolean)=>{live.dataset.methodActive=String(ready);},{onReenter:()=>{stopNative();stopNative=mount(figure,DATA as never);}});
- return()=>{stopReady();stopTour();stopTransport();stopCaptions();stopNotes();stopNative();};
+ return()=>{stopReady();stopTouch();stopTour();stopTransport();stopCaptions();stopNotes();stopNative();};
 }

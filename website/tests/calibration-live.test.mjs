@@ -5,7 +5,7 @@ import {build} from 'esbuild';
 
 // Exercise the original live renderer and geometry calculations. Only its RAF
 // driver is replaced by a virtual clock; no model or animation logic is mocked.
-const compiled=await build({entryPoints:['src/components/bump-anatomy/methode/live.ts','src/components/bump-anatomy/methode/art.generated.ts','src/bump/machines/methodRuntime.ts'],bundle:true,platform:'node',format:'esm',write:false,outdir:'/tmp/bump-method-tests',plugins:[{name:'virtual-frame',setup(b){
+const compiled=await build({entryPoints:['src/components/bump-anatomy/calibration/live.ts','src/components/bump-anatomy/calibration/art.generated.ts','src/bump/machines/methodRuntime.ts'],bundle:true,platform:'node',format:'esm',write:false,outdir:'/tmp/bump-method-tests',plugins:[{name:'virtual-frame',setup(b){
  b.onResolve({filter:/^\.\.\/shared\/runtime$/},()=>({path:'driver',namespace:'test-driver'}));
  b.onLoad({filter:/.*/,namespace:'test-driver'},()=>({resolveDir:process.cwd(),contents:`export * from ${JSON.stringify(resolve('src/components/bump-anatomy/shared/runtime.ts'))};export function createLoop(stage,tick){globalThis.__bumpMethodTick=tick;return {kick(){},calm(){return false},destroy(){}};}`}));
 }}]});

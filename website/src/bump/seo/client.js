@@ -53,3 +53,21 @@ if ('IntersectionObserver' in window) {
   }, {rootMargin: '-5% 0px -65% 0px'});
   for (const link of links) { const section = document.getElementById(link.hash.slice(1)); if (section) observer.observe(section); }
 }
+
+// Only the approach page contains this static laboratory. Enhance it lazily;
+// the drawing and explanation stay useful if a script cannot be loaded.
+function installCalibrationLesson(){
+ const node=document.querySelector('[data-calibration-model]');if(!node)return()=>{};
+ let disposed=false,stop=null,loading=false;
+ const observer=new IntersectionObserver(entries=>{
+  if(loading||!entries.some(entry=>entry.isIntersecting))return;
+  loading=true;observer.disconnect();
+  const moduleUrl=document.documentElement.lang.startsWith('en')?'/runtime/en/assets/BumpCalibrationLab.js':'/runtime/assets/BumpCalibrationLab.js';
+  import(moduleUrl).then(module=>{if(!disposed)stop=module.mountCalibrationLesson(node);}).catch(()=>{if(!disposed)console.error('Bump illustrative laboratory could not be enhanced');});
+ },{rootMargin:'200px'});
+ observer.observe(node);
+ return()=>{disposed=true;observer.disconnect();stop?.();};
+}
+let stopCalibration=installCalibrationLesson();
+window.addEventListener('pagehide',()=>stopCalibration());
+window.addEventListener('pageshow',event=>{if(event.persisted)stopCalibration=installCalibrationLesson();});

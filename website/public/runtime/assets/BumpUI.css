@@ -1884,6 +1884,11 @@ html[data-bump-tone=dark] .bump-background-music{color:#fff9ed;border-color:#fff
 @media(max-width:700px){.bump-group .bump-home-details{width:calc(100% - 36px);margin-top:28px;padding-top:30px}.bump-home-cases{grid-template-columns:minmax(0,1fr)}.bump-home-cases>a{padding:21px 0;gap:10px;grid-template-columns:20px minmax(0,1fr) 18px}.bump-home-cases h3{font-size:25px}.bump-home-details .bump-home-lead{font-size:20px}.bump-home-questions summary h3{font-size:22px}.bump-home-questions details>p{font-size:20px;margin-right:0}}
 @media(prefers-reduced-motion:reduce){.bump-home-details svg,.bump-home-questions summary>span{transition:none}}
 
+/* Host layout only: the supplied SVG, projection and animation stay intact. */
+.bump-method-live[data-method-model="tools"] .bump-method-figure{aspect-ratio:780/500;max-width:max(230px,calc((calc(var(--bump-viewport-unit,1svh) * 100) - 370px)*1.56))}
+.bump-method-live[data-method-model="tools"] :is([data-tool],[data-connector],[data-score],[data-opt]){cursor:help}
+@media(max-width:640px){.bump-method-live[data-method-model="tools"] .bump-method-figure{max-width:100%}}
+
 /* Fourth phone state uses the same native screen and articulated thumb. */
 .bump-ops-hand[data-ready=false] .bump-ops-screen{visibility:hidden}
 .bump-ops-loading{position:absolute;left:9.6%;top:28%;width:27.3%;text-align:center;font:12px/1.4 var(--bump-serif,Georgia,serif);color:#786b51}

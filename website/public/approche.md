@@ -32,6 +32,8 @@ Nous rapprochons les constats des priorités de l’entreprise. Une tâche peut 
 
 La proposition présente les travaux retenus, les livrables, les exclusions et les responsabilités. Elle précise les hypothèses nécessaires, les validations attendues et les modalités de maintenance. Le budget et le calendrier se définissent à partir de ce périmètre.
 
+Le laboratoire illustratif ci-dessous montre comment mesurer un problème, comparer plusieurs réglages et vérifier le changement retenu. Les mesures sont fictives et ne représentent pas un résultat client.
+
 - Décrire ce qui sera livré et comment ce sera validé.
 - Préciser les dépendances et les accès nécessaires.
 - Distinguer l’implantation, le suivi et les évolutions futures.

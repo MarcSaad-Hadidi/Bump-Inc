@@ -32,6 +32,8 @@ We connect findings to business priorities. A task might be removed, a tool used
 
 The proposal describes the selected work, deliverables, exclusions and responsibilities. It specifies assumptions, required approvals and maintenance terms. Budget and schedule are established around that scope.
 
+The illustrative laboratory below shows how to measure a problem, compare settings and verify the selected change. Measurements are fictional and do not represent a client outcome.
+
 - Describe what will be delivered and how it will be accepted.
 - Specify dependencies and required access.
 - Distinguish implementation, follow-up and future changes.

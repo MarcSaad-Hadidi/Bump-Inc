@@ -1,0 +1,4 @@
+/* Host layout only: the supplied SVG, projection and animation stay intact. */
+.bump-method-live[data-method-model="tools"] .bump-method-figure{aspect-ratio:780/500;max-width:max(230px,calc((100svh - 370px)*1.56))}
+.bump-method-live[data-method-model="tools"] :is([data-tool],[data-connector],[data-score],[data-opt]){cursor:help}
+@media(max-width:640px){.bump-method-live[data-method-model="tools"] .bump-method-figure{max-width:100%}}

@@ -3,10 +3,10 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {build} from 'esbuild';
-const result=await build({entryPoints:['src/components/bump-anatomy/methode/model.ts'],bundle:true,platform:'node',format:'esm',write:false});
+const result=await build({entryPoints:['src/components/bump-anatomy/calibration/model.ts'],bundle:true,platform:'node',format:'esm',write:false});
 const {createLab,STATES,STEP_TEXT,SETTINGS,BEST}=await import('data:text/javascript;base64,'+Buffer.from(result.outputFiles[0].text).toString('base64'));
 test('the delivered Method geometry, live loop, model and shared kit remain intact',()=>{
- const m=JSON.parse(readFileSync('src/components/bump-method-source.json','utf8'));assert.equal(Object.keys(m.sha256).length,11);
+ const m=JSON.parse(readFileSync('src/components/bump-calibration-source.json','utf8'));assert.equal(Object.keys(m.sha256).length,11);
  for(const[f,h]of Object.entries(m.sha256))assert.equal(createHash('sha256').update(readFileSync('src/components/bump-anatomy/'+f)).digest('hex'),h,f);
 });
 test('the five laboratory stages tell the complete audit to maintenance story',()=>{

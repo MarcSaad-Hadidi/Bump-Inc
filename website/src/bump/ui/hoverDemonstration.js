@@ -2,6 +2,17 @@ import {createDemoTimeout,demoIsPaused,setDemoInspectionPaused} from './demoTran
 import {observeDemoReady} from './demoReady.js';
 
 const highlighted=new WeakMap();
+// SVG parts retain a bounding box when their native scene sets opacity to 0.
+// Tour only surfaces that the visitor can actually see, including parent groups.
+export function hoverTargetIsVisible(element,root){
+ const box=element.getBoundingClientRect();if(!box.width||!box.height)return false;
+ if(typeof getComputedStyle!=='function')return true;
+ for(let node=element;node&&node!==root;node=node.parentElement){
+  const css=getComputedStyle(node);
+  if(css.display==='none'||css.visibility==='hidden'||Number.parseFloat(css.opacity)<.05)return false;
+ }
+ return true;
+}
 export function highlightHoveredPart(root,part){
  const previous=highlighted.get(root);if(previous===part)return;
  previous?.removeAttribute('data-bump-demo-hover');
@@ -64,7 +75,7 @@ export function mountHoverDemonstration(root,kind){
    const port=root.querySelector('.bump-port-live');
    if(!port||port.dataset.portLoaded!=='6'||Number(port.dataset.portStage)!==3){timer.schedule(200,begin);return;}
   }
-  run=[...new Set(selectors.flatMap(selector=>[...root.querySelectorAll(selector)]))].filter(element=>{const b=element.getBoundingClientRect();return b.width>0&&b.height>0;});
+  run=[...new Set(selectors.flatMap(selector=>[...root.querySelectorAll(selector)]))].filter(element=>hoverTargetIsVisible(element,root));
   if(kind==='port'&&(run.length!==6||run.some(element=>!element.querySelector('.port-cargo-label')))){timer.schedule(200,begin);return;}
   if(!run.length){timer.schedule(200,begin);return;}index=0;visited=[];root.dataset.bumpHoverVisited='';visit();
  }

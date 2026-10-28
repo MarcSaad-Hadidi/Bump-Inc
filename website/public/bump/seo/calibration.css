@@ -1,0 +1,435 @@
+.seo-calibration .iso{
+  --anatomy-page:#0b0b0b;--anatomy-card:#131313;--anatomy-text:#a3a3a3;--anatomy-strong:#e6e6e6;--anatomy-muted:#6e6e6e;
+  --anatomy-paper:#131313;--anatomy-face:#1b1b1b;--anatomy-top:#1c1c1c;
+  --anatomy-shade-0:#0f0f0f;--anatomy-shade-1:#121212;--anatomy-shade-2:#151515;--anatomy-shade-3:#181818;
+  --anatomy-lit-top:#262626;--anatomy-lit-shade:#1d1d1d;
+  --anatomy-hi:#d4d4d4;--anatomy-mid:#6a6a6a;--anatomy-lo:#3e3e3e;--anatomy-faint:#2a2a2a;--anatomy-lit:#ffffff;
+  --anatomy-halo:#050505;--anatomy-halo-opacity:.9;--anatomy-dot:#e6e6e6;
+  --anatomy-red:#ff6b6b;--anatomy-green:#6be0a0;--anatomy-blue:#6b9bff;
+  --anatomy-weight:.6px;--anatomy-ease:cubic-bezier(.32,.72,0,1);
+  --anatomy-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --anatomy-lift:inset 0 1px 0 0 #ffffff0a,inset 0 0 0 1px #ffffff06,0 0 0 1px #00000026,0 1px 1px -.5px #00000014,0 3px 3px -1.5px #00000014,0 6px 6px -3px #00000014,0 12px 12px -6px #00000014;
+}
+.seo-calibration .iso[data-theme="light"]{
+  --anatomy-page:#f2f2ef;--anatomy-card:#fbfbfa;--anatomy-text:#57575a;--anatomy-strong:#18181a;--anatomy-muted:#8c8c90;
+  --anatomy-paper:#fbfbfa;--anatomy-face:#ffffff;--anatomy-top:#ffffff;
+  --anatomy-shade-0:#dcdcd9;--anatomy-shade-1:#e5e5e2;--anatomy-shade-2:#ededea;--anatomy-shade-3:#f4f4f1;
+  --anatomy-lit-top:#ffffff;--anatomy-lit-shade:#eeeeeb;
+  --anatomy-hi:#26262a;--anatomy-mid:#8a8a8f;--anatomy-lo:#b4b4b8;--anatomy-faint:#d4d4d6;--anatomy-lit:#000000;
+  --anatomy-halo:#8a8a80;--anatomy-halo-opacity:.32;--anatomy-dot:#3a3a3e;
+  --anatomy-red:#e5484d;--anatomy-green:#30a46c;--anatomy-blue:#3e63dd;
+  --anatomy-lift:inset 0 1px 0 0 #ffffff,0 0 0 1px #0000000f,0 1px 1px -.5px #0000000a,0 3px 3px -1.5px #0000000a,0 6px 6px -3px #0000000a,0 12px 12px -6px #0000000a;
+}
+.seo-calibration .iso-svg{display:block;width:100%;height:auto;overflow:visible}
+.seo-calibration .iso-svg path,.seo-calibration .iso-svg circle{vector-effect:non-scaling-stroke}
+.seo-calibration .iso-fill{fill:var(--anatomy-paper);stroke:none}
+.seo-calibration .iso-solid[data-lit]>.iso-fill{fill:var(--anatomy-face)}
+.seo-calibration .iso-shade,.seo-calibration .iso-top{stroke:none}
+.seo-calibration .iso-shade[data-shade="0"]{fill:var(--anatomy-shade-0)}
+.seo-calibration .iso-shade[data-shade="1"]{fill:var(--anatomy-shade-1)}
+.seo-calibration .iso-shade[data-shade="2"]{fill:var(--anatomy-shade-2)}
+.seo-calibration .iso-shade[data-shade="3"]{fill:var(--anatomy-shade-3)}
+.seo-calibration .iso-top{fill:var(--anatomy-top)}
+.seo-calibration .iso-solid[data-lit]>.iso-top{fill:var(--anatomy-lit-top)}
+.seo-calibration .iso-solid[data-lit]>.iso-shade{fill:var(--anatomy-lit-shade)}
+.seo-calibration .iso-solid[data-seamless]>.iso-shade,.seo-calibration .iso-solid[data-seamless]>.iso-top{stroke-width:.4;stroke-linejoin:round}
+.seo-calibration .iso-solid[data-seamless]>.iso-shade[data-shade="0"]{stroke:var(--anatomy-shade-0)}
+.seo-calibration .iso-solid[data-seamless]>.iso-shade[data-shade="1"]{stroke:var(--anatomy-shade-1)}
+.seo-calibration .iso-solid[data-seamless]>.iso-shade[data-shade="2"]{stroke:var(--anatomy-shade-2)}
+.seo-calibration .iso-solid[data-seamless]>.iso-shade[data-shade="3"]{stroke:var(--anatomy-shade-3)}
+.seo-calibration .iso-solid[data-seamless]>.iso-top{stroke:var(--anatomy-top)}
+.seo-calibration .iso-solid[data-seamless][data-lit]>.iso-top{stroke:var(--anatomy-lit-top)}
+.seo-calibration .iso-solid[data-seamless][data-lit]>.iso-shade{stroke:var(--anatomy-lit-shade)}
+.seo-calibration .iso-solid[data-lit]>.iso-edge{stroke:var(--anatomy-lit)}
+.seo-calibration .iso-halo{fill:var(--anatomy-halo);stroke:none;filter:blur(9px);opacity:var(--anatomy-halo-opacity);transform:translateY(3px)}
+.seo-calibration .iso-line{fill:none;stroke:var(--anatomy-lo);stroke-width:var(--anatomy-weight);stroke-linecap:round;stroke-linejoin:round}
+.seo-calibration .iso-line[data-tone="hi"]{stroke:var(--anatomy-hi)}
+.seo-calibration .iso-line[data-tone="mid"]{stroke:var(--anatomy-mid)}
+.seo-calibration .iso-line[data-tone="lo"]{stroke:var(--anatomy-lo)}
+.seo-calibration .iso-line[data-tone="faint"]{stroke:var(--anatomy-faint)}
+.seo-calibration .iso-line[data-tone="lit"]{stroke:var(--anatomy-lit)}
+.seo-calibration .iso-line[data-tone="red"]{stroke:var(--anatomy-red)}
+.seo-calibration .iso-line[data-tone="green"]{stroke:var(--anatomy-green)}
+.seo-calibration .iso-line[data-tone="blue"]{stroke:var(--anatomy-blue)}
+.seo-calibration .iso-line[data-dotted]{stroke-dasharray:.01 3.5;stroke-width:1}
+.seo-calibration .iso-line[data-dashed]{stroke-dasharray:3 3}
+.seo-calibration .iso-line[data-flow]{stroke-dasharray:2 6}
+.seo-calibration .iso-wire-end{fill:var(--anatomy-paper);stroke:var(--anatomy-lo);stroke-width:var(--anatomy-weight)}
+.seo-calibration .iso-wire[data-tone="hi"] .iso-wire-end{stroke:var(--anatomy-hi)}
+.seo-calibration .iso-wire[data-tone="mid"] .iso-wire-end{stroke:var(--anatomy-mid)}
+.seo-calibration .iso-wire[data-tone="faint"] .iso-wire-end{stroke:var(--anatomy-faint)}
+.seo-calibration .iso-wire[data-tone="lit"] .iso-wire-end{stroke:var(--anatomy-lit)}
+.seo-calibration .iso-dots circle{fill:var(--anatomy-dot);stroke:none;opacity:.32}
+.seo-calibration .iso-dots[data-tone="hi"] circle{opacity:.85}
+.seo-calibration .iso-dots[data-tone="mid"] circle{opacity:.45}
+.seo-calibration .iso-dots[data-tone="lo"] circle{opacity:.22}
+.seo-calibration .iso-dots[data-tone="faint"] circle{opacity:.12}
+.seo-calibration .iso-face-text{fill:var(--anatomy-mid);font-family:var(--anatomy-mono);letter-spacing:.04em}
+.seo-calibration .iso-face-text[data-tone="hi"]{fill:var(--anatomy-hi)}
+.seo-calibration .iso-face-text[data-tone="lo"]{fill:var(--anatomy-lo)}
+.seo-calibration .iso-face-text[data-tone="faint"]{fill:var(--anatomy-faint)}
+.seo-calibration .tb-body{fill:var(--anatomy-shade-2);stroke:none}
+.seo-calibration .tb-shine{fill:var(--anatomy-top);stroke:none}
+.seo-calibration .tb-shade{fill:var(--anatomy-shade-0);stroke:none}
+.seo-calibration .tb-ring{fill:none;stroke:var(--anatomy-lo);stroke-width:.45;stroke-linecap:butt;stroke-linejoin:round}
+.seo-calibration .tb-ring[data-tone="mid"]{stroke:var(--anatomy-mid)}
+.seo-calibration .tb-ring[data-tone="faint"]{stroke:var(--anatomy-faint)}
+.seo-calibration .tb-ring[data-tone="hi"]{stroke:var(--anatomy-hi)}
+@keyframes iso-flow{to{stroke-dashoffset:-32}}
+@keyframes iso-pulse{0%,100%{opacity:.18}12%{opacity:1}40%{opacity:.18}}
+.seo-calibration .iso-line[data-flow]{animation:iso-flow 1600ms linear infinite}
+.seo-calibration .iso-dots circle[data-pulse]{animation:iso-pulse 1600ms steps(1,end) infinite;animation-delay:var(--pulse-at,0ms)}
+.seo-calibration .iso-figure{margin:32px 0 36px}
+.seo-calibration .iso-plate{position:relative;padding:52px 24px;border-radius:0;background:var(--anatomy-card);box-shadow:0 0 0 1px var(--anatomy-mid);--anatomy-paper:var(--anatomy-card)}
+.seo-calibration .iso-plate-corners{position:absolute;inset:18px 20px;pointer-events:none}
+.seo-calibration .iso-plate-corner{position:absolute;color:var(--anatomy-muted);font-family:var(--anatomy-mono);font-size:10.5px;line-height:1;letter-spacing:.04em;white-space:nowrap}
+.seo-calibration .iso-plate-corner[data-corner="fig"]{top:0;left:0;color:var(--anatomy-text)}
+.seo-calibration .iso-plate-corner[data-corner="title"]{top:0;right:0;text-transform:uppercase;letter-spacing:.1em}
+.seo-calibration .iso-plate-corner[data-corner="hint"]{bottom:0;left:0;text-transform:uppercase;letter-spacing:.1em}
+.seo-calibration .iso-plate-corner[data-corner="readout"]{right:0;bottom:0;color:var(--anatomy-text);font-variant-numeric:tabular-nums}
+.seo-calibration .iso-plate .iso-svg{margin:0 auto}
+.seo-calibration .iso-legend{display:grid;gap:8px;margin-top:12px;color:var(--anatomy-muted);font-size:13px;line-height:1.55}
+.seo-calibration .iso-keys{display:flex;flex-wrap:wrap;gap:6px 18px}
+.seo-calibration .iso-key{display:inline-flex;align-items:center;gap:7px}
+.seo-calibration .iso-swatch{width:16px;height:10px;flex:none;overflow:visible}
+.seo-calibration .iso-swatch path{fill:none;stroke:var(--anatomy-hi);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+.seo-calibration .iso-swatch[data-mark="raised"] path,.seo-calibration .iso-swatch[data-mark="flat"] path{stroke:var(--anatomy-mid)}
+.seo-calibration .iso-swatch[data-mark="lit"] path{stroke:var(--anatomy-lit)}
+.seo-calibration .iso-swatch[data-mark="dim"] path{stroke:var(--anatomy-lo)}
+.seo-calibration .iso-swatch[data-mark="dotted"] path{stroke-dasharray:.01 3;stroke-width:1.4}
+.seo-calibration .iso-swatch[data-mark="dashed"] path{stroke-dasharray:3 2.5}
+.seo-calibration .iso-swatch[data-mark="red"] path{stroke:var(--anatomy-red)}
+.seo-calibration .iso-swatch[data-mark="green"] path{stroke:var(--anatomy-green)}
+.seo-calibration .iso-swatch[data-mark="blue"] path{stroke:var(--anatomy-blue)}
+.seo-calibration .iso-swatch-crease{stroke:var(--anatomy-lo)!important}
+@media (max-width:560px){.seo-calibration .iso-plate{padding:48px 12px 70px}.seo-calibration .iso-plate-corner[data-corner="hint"]{bottom:18px}}
+@media (prefers-reduced-motion:reduce){.seo-calibration .iso-line[data-flow],.seo-calibration .iso-dots circle[data-pulse]{animation:none}}
+
+/* Palette Bump : remplace les jetons du thème clair d'Anatomy (kit/iso.css).
+   Placer après iso.css, sur l'élément qui porte class="iso bump" data-theme="light".
+   Modifier une valeur ici recolore les huit modèles. */
+.seo-calibration .iso.bump, .seo-calibration .bump .iso {
+  /* Papier : crème et ivoire */
+  --anatomy-page: #ece6d8;
+  --anatomy-card: #f6f2e8;
+  --anatomy-paper: #f6f2e8;
+  --anatomy-face: #fbf8f1;
+  --anatomy-top: #fffdf7;
+  --anatomy-shade-0: #e2dbc9;
+  --anatomy-shade-1: #e9e3d4;
+  --anatomy-shade-2: #efeadf;
+  --anatomy-shade-3: #f4f0e6;
+  --anatomy-lit-top: #fff6dc;
+  --anatomy-lit-shade: #ecdcb2;
+
+  /* Traits : vert profond pour le sujet, gris métal pour la structure, beige pour la base */
+  --anatomy-hi: #1e3a2c;
+  --anatomy-mid: #7b827d;
+  --anatomy-lo: #b5ad9b;
+  --anatomy-faint: #dad2c1;
+  /* Accent unique : laiton (ce que le lecteur doit regarder) */
+  --anatomy-lit: #7a5a14;
+
+  --anatomy-text: #4f514c;
+  --anatomy-strong: #16201b;
+  --anatomy-muted: #8d8b82;
+  --anatomy-dot: #26261f;
+  --anatomy-halo: #6b5f45;
+  --anatomy-halo-opacity: .30;
+
+  /* Couleurs porteuses de sens uniquement */
+  --anatomy-red: #b83a26;    /* refus, anomalie */
+  --anatomy-green: #2f6b4a;  /* validé, protégé */
+  --anatomy-blue: #3e5f7a;   /* donnée */
+  --bump-orange: #cf7a25;    /* attention, en cours */
+}
+
+/* Matériaux : un groupe <g data-mat="…"> remappe les jetons de ses pièces. */
+.seo-calibration .bump [data-mat="enamel"] {
+  --anatomy-paper: #2e4c3c; --anatomy-face: #34543f; --anatomy-top: #3f6451;
+  --anatomy-shade-0: #1f3528; --anatomy-shade-1: #253e2f; --anatomy-shade-2: #2b4636; --anatomy-shade-3: #324f3e;
+  --anatomy-lit-top: #4d7562; --anatomy-lit-shade: #3a5c49;
+  --anatomy-hi: #10201a; --anatomy-mid: #7f9a8b; --anatomy-lo: #587666; --anatomy-faint: #48665a;
+  --anatomy-dot: #e7dfc8;
+}
+.seo-calibration .bump [data-mat="brass"] {
+  --anatomy-paper: #d6b866; --anatomy-face: #dcc073; --anatomy-top: #ecd89a;
+  --anatomy-shade-0: #a8853a; --anatomy-shade-1: #b8964a; --anatomy-shade-2: #c6a65a; --anatomy-shade-3: #d2b469;
+  --anatomy-lit-top: #f5e6b4; --anatomy-lit-shade: #dcc27c;
+  --anatomy-hi: #4a3712; --anatomy-mid: #8a6a28; --anatomy-lo: #a6873f; --anatomy-faint: #bc9e55;
+  --anatomy-lit: #3d2c08; --anatomy-dot: #3b2c0e;
+}
+.seo-calibration .bump [data-mat="steel"] {
+  --anatomy-paper: #d8dbd6; --anatomy-face: #e1e3df; --anatomy-top: #eef0ec;
+  --anatomy-shade-0: #adb2ad; --anatomy-shade-1: #bbc0bb; --anatomy-shade-2: #c8ccc8; --anatomy-shade-3: #d4d7d3;
+  --anatomy-hi: #29302c; --anatomy-mid: #7c8480; --anatomy-lo: #a0a7a2; --anatomy-faint: #bcc1bc;
+  --anatomy-dot: #29302c;
+}
+.seo-calibration .bump [data-mat="black"] {
+  --anatomy-paper: #34342f; --anatomy-face: #3a3a35; --anatomy-top: #47463f;
+  --anatomy-shade-0: #22221e; --anatomy-shade-1: #292925; --anatomy-shade-2: #30302b; --anatomy-shade-3: #373731;
+  --anatomy-hi: #0d0d0b; --anatomy-mid: #7c7a70; --anatomy-lo: #5b5950; --anatomy-faint: #4a4942;
+  --anatomy-dot: #d8d2c0;
+}
+/* Verre : corps teinté translucide, reflet clair, arêtes vert gris. */
+.seo-calibration .bump [data-mat="glass"] .tb-body { fill: #d4e3d9; fill-opacity: .38; }
+.seo-calibration .bump [data-mat="glass"] .tb-shine { fill: #ffffff; fill-opacity: .5; }
+.seo-calibration .bump [data-mat="glass"] .tb-shade { fill: #93ad9f; fill-opacity: .28; }
+.seo-calibration .bump [data-mat="glass"] { --anatomy-hi: #5d7a6b; --anatomy-mid: #8aa597; }
+.seo-calibration .bump [data-mat="glass"] .iso-fill { fill: #d4e3d9; fill-opacity: .38; }
+.seo-calibration .bump [data-mat="glass"] .iso-top, .seo-calibration .bump [data-mat="glass"] .iso-shade { fill-opacity: .35; }
+
+/* Voyants : une couleur de sens, allumée par la vue (data-on). */
+.seo-calibration .bump .lamp { fill: var(--anatomy-faint); transition: fill .4s var(--anatomy-ease); }
+.seo-calibration .bump .lamp[data-on="amber"] { fill: var(--bump-orange); }
+.seo-calibration .bump .lamp[data-on="green"] { fill: #4f9e70; }
+.seo-calibration .bump .lamp[data-on="red"] { fill: var(--anatomy-red); }
+
+/* Pièces dessinées à la volée par live.ts (levier, drapeau) : mêmes jetons que les solides. */
+.seo-calibration .bump .lever-face { fill: var(--anatomy-top); stroke: var(--anatomy-hi); stroke-width: .6; stroke-linejoin: round; }
+.seo-calibration .bump .lever-side { fill: var(--anatomy-shade-1); stroke: var(--anatomy-hi); stroke-width: .6; stroke-linejoin: round; }
+.seo-calibration .bump .flag-arm { fill: none; stroke: var(--anatomy-hi); stroke-width: 1.3; stroke-linecap: round; }
+.seo-calibration .bump .flag-cloth { fill: var(--anatomy-faint); stroke: var(--anatomy-hi); stroke-width: .6; stroke-linejoin: round; transition: fill .5s var(--anatomy-ease); }
+.seo-calibration .bump [data-part="flag"][data-on] .flag-cloth { fill: var(--anatomy-green); }
+
+/* Bande d'étiquette de la capsule : vierge, préparée (vert), refusée (rouge). */
+.seo-calibration .bump [data-label] .cap-band { --anatomy-face: #f3efe4; --anatomy-lit-top: #fffaf0; --anatomy-lit-shade: #ddd5c2; --anatomy-lit: #6b6656; }
+.seo-calibration .bump [data-label="prepared"] .cap-band { --anatomy-face: #d6b866; --anatomy-lit-top: #f0dc9c; --anatomy-lit-shade: #b8964a; --anatomy-lit: #4a3712; }
+.seo-calibration .bump [data-label="rejected"] .cap-band { --anatomy-face: #b8452f; --anatomy-lit-top: #d06a50; --anatomy-lit-shade: #96351f; --anatomy-lit: #4a1408; }
+
+/* Barre de commandes sous la figure (hors du dessin, comme la légende). */
+.seo-calibration .bump-controls { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 10px 0 0; font: 12px/1 var(--anatomy-mono); }
+.seo-calibration .bump-controls button, .seo-calibration .bump-controls select {
+  font: inherit; color: var(--anatomy-strong); background: var(--anatomy-card); border: 1px solid var(--anatomy-faint);
+  border-radius: 6px; padding: 6px 9px; cursor: pointer;
+}
+.seo-calibration .bump-controls button:hover { border-color: var(--anatomy-mid); }
+.seo-calibration .bump-controls button[aria-pressed="true"], .seo-calibration .bump-controls button[data-current] { background: var(--anatomy-hi); color: var(--anatomy-card); border-color: var(--anatomy-hi); }
+.seo-calibration .bump-controls button:disabled { opacity: .4; cursor: default; }
+.seo-calibration .bump-controls .sep { width: 1px; height: 18px; background: var(--anatomy-faint); margin: 0 4px; }
+.seo-calibration .bump-controls [data-accept] { border-color: var(--anatomy-green); color: var(--anatomy-green); }
+.seo-calibration .bump-controls [data-refuse] { border-color: var(--anatomy-red); color: var(--anatomy-red); }
+.seo-calibration .iso-stage:focus-visible { outline: 1px solid var(--anatomy-muted); outline-offset: 6px; }
+
+/* 02 · fente vide (vide sombre) et cartouches non choisies (émail éteint). */
+.seo-calibration .bump .slot-void { fill: #24261f; fill-opacity: .6; stroke: var(--anatomy-hi); stroke-width: .4; }
+.seo-calibration .bump .cart { cursor: pointer; }
+.seo-calibration .bump .cart:not([data-on]) [data-mat="enamel"] {
+  --anatomy-paper: #c9cbc2; --anatomy-face: #d0d2ca; --anatomy-top: #e2e3dc; --anatomy-lit-top: #e2e3dc; --anatomy-lit-shade: #c3c6bd;
+  --anatomy-shade-0: #aeb2a8; --anatomy-shade-1: #b8bbb2; --anatomy-shade-2: #c2c5bc; --anatomy-shade-3: #cbcec5;
+  --anatomy-hi: #4f554f; --anatomy-lit: #4f554f; --anatomy-faint: #b8bbb2; --anatomy-dot: #4f554f;
+}
+
+/* 01 · tubes traversés par la demande, boutons de validation, coche d'envoi. */
+.seo-calibration .bump [data-mat="glass"][data-on] .tb-body { fill: #7fc29b; fill-opacity: .55; }
+.seo-calibration .bump [data-mat="glass"][data-on] { --anatomy-hi: #2f6b4a; }
+.seo-calibration .bump .btn { cursor: pointer; }
+.seo-calibration .bump [data-btn="ok"] { --anatomy-face: #3f8a5f; --anatomy-lit-top: #5aa87a; --anatomy-lit-shade: #2f6b4a; --anatomy-lit: #12301f; }
+.seo-calibration .bump [data-btn="no"] { --anatomy-face: #c4553c; --anatomy-lit-top: #dc7358; --anatomy-lit-shade: #a2402a; --anatomy-lit: #4a1408; }
+.seo-calibration .bump .check { stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; transition: opacity .3s; }
+.seo-calibration .bump [data-t] { font-family: var(--anatomy-mono); }
+
+/* Autonome dans une app hôte (React) : police de base et texte réservé aux lecteurs d'écran. */
+.seo-calibration .iso.bump { font: 14px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--anatomy-text); }
+.seo-calibration .iso.bump .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* 03 : impulsions de synchronisation (même fiche partout). */
+.seo-calibration .bump [data-pulse] circle { fill: #4f9e70; stroke: #f7f2e6; stroke-width: .8; }
+
+/* 04 : coffre-fort. Voyant « actif », cartes d'accès, pistes gravées et fils du scanner. */
+.seo-calibration .bump .lamp[data-on="white"] { fill: #fff3cf; }
+.seo-calibration .bump [data-mat="alert"] {
+  --anatomy-paper: #c9573a; --anatomy-face: #d0603f; --anatomy-top: #df7a5a;
+  --anatomy-shade-0: #9c3a24; --anatomy-shade-1: #ab432b; --anatomy-shade-2: #b94c32; --anatomy-shade-3: #c45439;
+  --anatomy-hi: #4a160a; --anatomy-mid: #f3d2c4; --anatomy-lo: #8a3420; --anatomy-faint: #a8452c;
+}
+.seo-calibration .bump [data-mat="ok"] {
+  --anatomy-paper: #4f9e70; --anatomy-face: #57a678; --anatomy-top: #6db98c;
+  --anatomy-shade-0: #337a52; --anatomy-shade-1: #3b8559; --anatomy-shade-2: #438f61; --anatomy-shade-3: #4a986a;
+  --anatomy-hi: #12301f; --anatomy-mid: #e3f3e8; --anatomy-lo: #2f6b4a; --anatomy-faint: #3f8a5f;
+}
+.seo-calibration .bump [data-trace] { transition: stroke .3s; }
+.seo-calibration .bump [data-trace][data-on] { stroke: var(--bump-orange); stroke-width: 1.2; }
+.seo-calibration .bump [data-wire] { stroke: var(--bump-orange); stroke-width: 1; fill: none; }
+
+.seo-calibration .bump [data-zone="ok"] { stroke: #4f9e70; stroke-width: 1.6; }
+.seo-calibration .bump [data-zone="bad"] { stroke: var(--bump-orange); stroke-width: 1.6; }
+
+/* 05 : cloche de verre en deux couches. */
+.seo-calibration .bump .glass-back { fill: #d4e3d9; fill-opacity: .2; stroke: none; }
+.seo-calibration .bump .glass-top { fill: #f4fbf7; fill-opacity: .22; stroke: none; }
+.seo-calibration .bump .glass-edge { stroke: #5d7a6b; stroke-width: 1.1; fill: none; }
+
+/* 06 : lumière du banc optique, cloches éclairées, prototypes en fil de fer. */
+.seo-calibration .bump .ray { stroke: #f0b72a; stroke-width: 1.2; fill: none; stroke-linecap: round; }
+.seo-calibration .bump .beam-glow { stroke: #f0b72a; stroke-width: 6; stroke-opacity: .35; fill: none; stroke-linecap: round; }
+.seo-calibration .bump .beam-core { stroke: #fff3cf; stroke-width: 1.8; fill: none; stroke-linecap: round; }
+.seo-calibration .bump .glass-back[data-on] { fill: #fff3cf; fill-opacity: .45; }
+/* Halo crème sous le trait : le prototype se lit sur le verre clair comme sur le fond vert de la cloche. */
+.seo-calibration .bump [data-proto] .proto-halo { stroke: #fffaf0; stroke-width: 5; stroke-opacity: .9; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.seo-calibration .bump [data-proto] .proto-line { stroke: #1f4d35; stroke-width: 2; stroke-dasharray: 4 2; fill: none; stroke-linejoin: round; }
+.seo-calibration .bump [data-proto][data-on] .proto-line { stroke: #8a6a22; stroke-width: 2.3; }
+
+/* 07 : port de Montréal. Eau du bassin, plaque allumée. */
+.seo-calibration .bump [data-mat="water"] {
+  --anatomy-paper: #9fbdb8; --anatomy-face: #a8c4bf; --anatomy-top: #b7d0cb;
+  --anatomy-shade-0: #7f9f99; --anatomy-shade-1: #88a7a1; --anatomy-shade-2: #91afa9; --anatomy-shade-3: #99b6b0;
+  --anatomy-hi: #3d5f58; --anatomy-mid: #6f918a; --anatomy-lo: #d7e6e2; --anatomy-faint: #e6f0ed;
+}
+.seo-calibration .bump [data-plaque][data-on] [data-mat="brass"] { --anatomy-top: #fbeec2; --anatomy-face: #f0d98e; --anatomy-paper: #ecd38a; }
+.seo-calibration .bump-controls .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; border: 1px solid #00000033; }
+.seo-calibration .bump-controls .swatch[data-color="0"] { background: #d6b866; }
+.seo-calibration .bump-controls .swatch[data-color="1"] { background: #3f6451; }
+.seo-calibration .bump-controls .swatch[data-color="2"] { background: #d0603f; }
+
+@keyframes iso-flow{}
+@keyframes iso-pulse{}
+@media (max-width:560px){}
+@media (prefers-reduced-motion:reduce){}
+@media(min-width:681px) and (max-height:820px){}
+@media(max-width:900px){}
+@media(max-width:680px){}
+@media(prefers-reduced-motion:reduce){}
+/* The site's assisted scroll grants exactly one viewport to this instrument. */
+@media(max-width:680px){
+}
+@media(max-width:350px){}
+/* Anatomy's authentic four-face SolidPaths are given Bump material ramps. */
+@media(min-width:721px) and (max-height:840px){}
+@media(max-width:1000px) and (min-width:721px){}
+@media(max-width:720px){}
+@media(max-width:720px) and (max-height:760px){}
+@media(prefers-reduced-motion:reduce){}
+@media(min-width:1600px) { }
+@media(max-height:800px) and (min-width:901px) {
+}
+@media(max-width:1000px) and (min-width:701px) {
+}
+@media(max-width:700px) {
+}
+@media(max-width:350px) {
+}
+@media(prefers-reduced-motion:reduce) { }
+
+/* The native security chapter already reserves the sidebar and paper gutters.
+   Keep the standalone frame's vertical clearance without adding a second
+   sidebar-sized horizontal inset inside that narrower content column. */
+@media(max-width:700px) {
+}
+@media(max-width:350px) {
+}
+/* Anatomy face paths retain their four physical facing tones. All tokens stay local. */
+@media(min-width:1440px){}
+@media(max-width:1000px){}
+@media(max-width:680px){}
+@media(prefers-reduced-motion:reduce){}
+/* One complete mobile stop: keep the future status, explanation, mechanism
+   and accessible range visible together rather than cropping the controls. */
+@media(max-width:680px){
+}
+@media(max-width:680px) and (max-height:760px){
+}
+@media (max-width: 640px) {
+}
+
+/* Continuous native chapter paper, no enclosing dashboard/card surface. */
+.seo-calibration .bump-workflow-live .bump-demo-cursor[hidden],.seo-calibration .bump-workflow-live .bump-demo-click[hidden]{display:none}
+.seo-calibration .bump-workflow-tooltip{position:absolute;z-index:35;width:min(250px,calc(100% - 16px));padding:13px 16px;background:#fffaf0;color:#243b2c;border:1px solid #d4c7a9;border-radius:5px;box-shadow:0 7px 20px #33412612;pointer-events:none}
+.seo-calibration .bump-workflow-tooltip[hidden]{display:none}
+.seo-calibration .bump-workflow-tooltip strong{display:block;font:400 18px/1.15 "IM FELL English",Georgia,serif;margin-bottom:6px}
+.seo-calibration .bump-workflow-tooltip p{font:16px/1.3 "EB Garamond",Georgia,serif!important;margin:0;color:#53604d}
+/* Supplied 03 sits on the same paper; its physical round platform is retained. */
+/* No preassembled adapter or repair-sector flash at first paint or reset. */
+.seo-calibration .bump-tools-live .bump-demo-cursor[hidden],.seo-calibration .bump-tools-live .bump-demo-click[hidden]{display:none}
+@media(max-width:640px){
+}
+.seo-calibration .bump-security-live .bump-demo-cursor[hidden],.seo-calibration .bump-security-live .bump-demo-click[hidden]{display:none}
+@media(max-width:640px){}
+.seo-calibration .bump-method-live{position:relative;box-sizing:border-box;min-height:100svh;max-width:900px;margin-inline:auto;padding:100px 0 30px;display:flex;flex-direction:column;justify-content:center;color:#263b2d}
+.seo-calibration .bump-method-heading{font:400 30px/1.1 "IM FELL English",Georgia,serif!important;letter-spacing:-.02em!important;margin:0 0 18px!important}
+.seo-calibration .bump-method-import .bump-method-live .iso-figure{margin:0}
+.seo-calibration .bump-method-import .bump-method-live .iso-plate{padding:0;border:0;box-shadow:none;background:transparent}
+.seo-calibration .bump-method-import .bump-method-live :is(.iso-plate-corners,.bump-controls,.iso-legend){display:none}
+.seo-calibration .bump-method-figure{width:100%;max-width:max(230px,calc((100svh - 370px)*1.357143));aspect-ratio:760/560;margin-inline:auto}
+.seo-calibration .bump-method-description{display:flex;align-items:baseline;gap:20px;min-height:100px;margin-top:8px}
+.seo-calibration .bump-method-description>[data-method-number]{font:19px/1 "EB Garamond",Georgia,serif;color:#9d6c24}
+.seo-calibration .bump-method-description h4{font:400 28px/1.1 "IM FELL English",Georgia,serif!important;letter-spacing:-.02em!important;margin:0 0 8px!important}
+.seo-calibration .bump-method-description p{font:19px/1.3 "EB Garamond",Georgia,serif!important;max-width:700px;margin:0;color:#555c4e}
+.seo-calibration .bump-method-reading{display:block;font:14px/1.3 "EB Garamond",Georgia,serif;letter-spacing:.015em;color:#4b7357;margin:0 0 10px 43px}
+.seo-calibration .bump-method-live .bump-method-fiction{font:13px/1.2 "EB Garamond",Georgia,serif!important;margin:0;color:#767868}
+.seo-calibration .bump-method-live [data-knob]{cursor:pointer}
+@media(max-width:640px){.seo-calibration .bump-method-live{padding:84px 0 22px}.seo-calibration .bump-method-heading{font-size:25px!important;margin-bottom:14px!important}.seo-calibration .bump-method-figure{max-width:100%}.seo-calibration .bump-method-description{gap:12px;min-height:155px;margin-top:20px}.seo-calibration .bump-method-description h4{font-size:24px!important}.seo-calibration .bump-method-description p{font-size:18px!important}}
+.seo-calibration .bump-method-capture{height:100svh;min-height:100svh}
+@media(min-width:721px){}
+@media(max-width:480px){}
+@media(max-width:700px){
+}
+
+@media(max-width:640px){}
+
+/* Supplied optical bench: the original platform lives on the chapter paper. */
+@media(max-width:640px){}
+@media(max-width:640px){}
+@media(max-width:640px){}
+.seo-calibration .bump-demo-toggle{position:absolute;right:12px;top:10px;z-index:25;width:32px;height:32px;display:grid;place-items:center;padding:7px;border:1px solid #9b927755;border-radius:50%;background:#f4f1e8;color:#4b5645;cursor:pointer;box-shadow:none;line-height:1}
+.seo-calibration .bump-demo-toggle[hidden]{display:none}
+.seo-calibration .bump-demo-heading{padding-inline-end:48px!important}
+.seo-calibration .bump-demo-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.seo-calibration .bump-demo-toggle:hover{border-color:#25533d;color:#25533d}
+.seo-calibration .bump-demo-toggle:focus-visible{outline:2px solid #25533d;outline-offset:4px}
+.seo-calibration [data-bump-demo-paused=true] *{animation-play-state:paused!important}
+.seo-calibration [data-bump-demo-inspecting=true] .iso-stage,.seo-calibration [data-bump-demo-inspecting=true] .iso-stage *{animation-play-state:paused!important}
+.seo-calibration .bump-demo-hover-cursor[hidden]{display:none}
+.seo-calibration [data-bump-demo-hover=true] .iso-line.iso-edge{stroke:#bc8b2b;stroke-width:1.5}
+
+.seo-calibration .bump-caption-transition{position:relative}
+.seo-calibration .bump-caption-ghost{position:absolute;inset:0;pointer-events:none;display:inherit;align-items:inherit;gap:inherit;text-align:inherit}
+@media(prefers-reduced-motion:reduce){.seo-calibration .bump-caption-ghost{display:none}}
+/* Approval is a real waiting state, rather than another automatic white card. */
+@keyframes bump-approval-surface{}
+@keyframes bump-approval-pulse{}
+@media(max-width:640px){}
+@media(prefers-reduced-motion:reduce){}
+@media(min-width:701px) and (max-height:800px){}
+@media(max-width:700px){}
+@container (max-width:459px){}
+@media(min-width:940px) and (max-height:820px){
+}
+@keyframes company-flow-send{}
+@media(min-width:701px) and (max-height:820px){}
+@media(max-width:939px){}
+@media(prefers-reduced-motion:reduce){}
+
+@media(max-width:939px) and (max-height:500px) and (orientation:landscape){
+}
+/* Equal side reserves keep the wording centred independently of the logo. */
+@media(max-width:939px){}
+@keyframes bump-backdrop-in{}
+@keyframes bump-backdrop-out{}
+@media(prefers-reduced-motion:reduce){}
+@keyframes bump-scene-loading{}
+@media(prefers-reduced-motion:reduce){}
+/* Shared pointer for the real interactive demonstrations. */
+.seo-calibration .bump-demo-cursor{position:absolute;width:25px;height:30px;z-index:25;pointer-events:none;transition:left .34s cubic-bezier(.22,1,.36,1),top .34s cubic-bezier(.22,1,.36,1);filter:drop-shadow(0 2px 3px #14271d36)}
+.seo-calibration .bump-demo-cursor>svg{display:block;width:100%;height:100%;fill:#fffcf3;stroke:#234f3b;stroke-width:1.7;stroke-linejoin:round}
+.seo-calibration .bump-demo-click{position:absolute;left:-11px;top:-10px;width:25px;height:25px;border:2px solid #238458;border-radius:50%;animation:bump-demo-click .52s ease-out both}
+.seo-calibration [data-bump-fixed-timing] .bump-demo-cursor{transition-duration:calc(.34s / var(--bump-motion-rate,2))}
+.seo-calibration [data-bump-fixed-timing] .bump-demo-click{animation-duration:calc(.52s / var(--bump-motion-rate,2))}
+@keyframes bump-demo-click{}
+@media(prefers-reduced-motion:reduce){.seo-calibration .bump-demo-cursor{display:none}}
+
+/* This final layer is scoped to the editorial laboratory; native kit/theme
+   declarations are compiled ahead of it, with the same scope. */
+.seo-calibration{margin:40px 0 0;border-top:1px solid var(--line);padding-top:30px}
+.seo-calibration-model{position:relative;min-width:0}
+.seo-calibration .bump-method-live{min-height:0;max-width:none;padding:0;display:flex}
+.seo-calibration .bump-method-heading{padding-right:48px}
+.seo-calibration .seo-calibration-intro{font-size:19px;line-height:1.45;margin:0 0 20px;max-width:760px}
+.seo-calibration .bump-method-figure{max-width:760px;width:100%;aspect-ratio:760/560}
+.seo-calibration .bump-method-description{min-height:110px;margin-top:16px}
+.seo-calibration .bump-method-description h4{font-size:26px!important}
+.seo-calibration .bump-method-description p{font-size:19px!important}
+.seo-calibration .bump-method-reading{overflow-wrap:anywhere}
+.seo-calibration .bump-demo-toggle{top:0!important;right:0!important}
+.seo-calibration .bump-method-tooltip{font-size:16px}
+@media(max-width:640px){.seo-calibration .bump-method-heading{font-size:25px!important}.seo-calibration .bump-method-description{min-height:160px}.seo-calibration .bump-method-description h4{font-size:24px!important}.seo-calibration .bump-method-reading{margin-left:0}.seo-calibration .bump-method-figure{max-width:100%}}

@@ -1,3 +1,4 @@
+import {installSeoFigureLoading} from './figure-loading.js';
 // Progressive enhancement only: all page content and links work without JS.
 import {installDiagramMotion} from './diagram-motion.js';
 import {installWorkloadCalculators} from './workload.js';
@@ -6,10 +7,11 @@ import {installBackgroundMusic} from '../background-music.js';
 const musicTrack = document.querySelector('[data-bump-background-audio]');
 const musicButton = document.querySelector('.bump-background-music');
 if (musicTrack && musicButton) installBackgroundMusic(musicTrack, musicButton);
-let stopDiagrams = installDiagramMotion();
+const nativeFigures=document.querySelector('[data-seo-figure]');
+let stopDiagrams = nativeFigures?()=>{}:installDiagramMotion();
 window.addEventListener('pagehide', () => {stopDiagrams();});
 // Restore the clock when a page is brought back from the browser's page cache.
-window.addEventListener('pageshow', event => {if (event.persisted) stopDiagrams = installDiagramMotion();});
+window.addEventListener('pageshow', event => {if (event.persisted&&!nativeFigures) stopDiagrams = installDiagramMotion();});
 
 for (const menu of document.querySelectorAll('.seo-expertise-menu')) {
   const summary = menu.querySelector('summary');
@@ -54,20 +56,6 @@ if ('IntersectionObserver' in window) {
   for (const link of links) { const section = document.getElementById(link.hash.slice(1)); if (section) observer.observe(section); }
 }
 
-// Only the approach page contains this static laboratory. Enhance it lazily;
-// the drawing and explanation stay useful if a script cannot be loaded.
-function installCalibrationLesson(){
- const node=document.querySelector('[data-calibration-model]');if(!node)return()=>{};
- let disposed=false,stop=null,loading=false;
- const observer=new IntersectionObserver(entries=>{
-  if(loading||!entries.some(entry=>entry.isIntersecting))return;
-  loading=true;observer.disconnect();
-  const moduleUrl=document.documentElement.lang.startsWith('en')?'/runtime/en/assets/BumpCalibrationLab.js':'/runtime/assets/BumpCalibrationLab.js';
-  import(moduleUrl).then(module=>{if(!disposed)stop=module.mountCalibrationLesson(node);}).catch(()=>{if(!disposed)console.error('Bump illustrative laboratory could not be enhanced');});
- },{rootMargin:'200px'});
- observer.observe(node);
- return()=>{disposed=true;observer.disconnect();stop?.();};
-}
-let stopCalibration=installCalibrationLesson();
-window.addEventListener('pagehide',()=>stopCalibration());
-window.addEventListener('pageshow',event=>{if(event.persisted)stopCalibration=installCalibrationLesson();});
+let stopFigures=installSeoFigureLoading();
+window.addEventListener('pagehide',()=>stopFigures());
+window.addEventListener('pageshow',event=>{if(event.persisted)stopFigures=installSeoFigureLoading();});

@@ -1,3 +1,20 @@
+# Supplied SEO figures — 2026-10-28
+
+The user now explicitly requests bump-pages-seo.zip. Its complete instructions
+are retained in docs/seo-animations-INSTRUCTIONS-IA.md. Mount the supplied
+LazyFigure on the seven mapped editorial topics after En clair, plus one
+corresponding figure per illustrative case study. English editions stay
+poster-only and never import native models. FAQ gets no Anatomy figure.
+Use the supplied posters, exact dimensions/captions and per-page social cards.
+This supersedes the previous instruction to render the calibration laboratory
+on the approach page: preserve its source, but that page now gets only the new
+tool map, with no native SVG in initial HTML. Keep the existing landing, model
+geometry and native animation sources intact. Host sizing, visibility/pause and
+replay integration may reuse existing site mechanisms; add no application
+library. Verify strict TypeScript, responsive rendering and Lighthouse mobile,
+and report actual limitations. Keep the work in the existing website PR and
+publish on the existing GPT Site; never merge automatically.
+
 # Consolidate the contact-email PR into PR33 — 2026-10-27
 
 The user explicitly authorizes combining PR34's real contact-email capability

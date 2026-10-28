@@ -12,7 +12,7 @@
     "shared/AnatomyFigure.tsx": "45e49948f7b79706000625778d8c5e302fc118940da4f52bddb3c9531fd872d6",
     "shared/bump-theme.css": "bf30a94b820fab62d14a275d307059e1f7b6ac4ac0c54dd8a23e515c7c31892e",
     "shared/controller.ts": "62b8621c173e14f474e0dd0458ebc6a3dcc45486a3863ab6dfbe6a7ae6572168",
-    "shared/runtime.ts": "6594ac2445214885bfebe6d5d309c9c11f5ae2fc970608cf1de51a181693a0be"
+    "shared/runtime.ts": "c0142fe94503541a1d64b95706947ff4d714cc6be767b3f32b031346a2a32cfb"
   },
   "upstreamUpdates": {
     "shared/bump-theme.css": {

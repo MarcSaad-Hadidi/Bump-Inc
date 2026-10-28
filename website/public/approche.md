@@ -12,6 +12,10 @@ Un besoin réel. Un périmètre clair. Une implantation qu’on peut suivre.
 
 Un mandat Bump suit cinq étapes : audit, analyse, proposition, implantation et maintenance. La première sert à comprendre l’existant. L’analyse priorise les besoins. La proposition définit le périmètre et les livrables. L’implantation met la solution en place, puis la maintenance organise le suivi convenu.
 
+Notre méthode en 5 étapes : comprendre, choisir, convenir, construire, faire durer. Scénario illustratif.
+
+![Carte des outils d'une PME : audit, analyse, proposition, implantation et maintenance, santé de 42 à 92](__BUMP_ORIGIN__/bump/approche.webp)
+
 ## 01. Audit — voir le fonctionnement réel.
 
 Nous examinons avec vous les processus, les outils et les contraintes liés au besoin. L’objectif est de comprendre où le travail bloque, quelles données circulent et quelles personnes participent. Pour un audit de sécurité, l’autorisation et les conditions d’intervention sont définies explicitement.
@@ -31,8 +35,6 @@ Nous rapprochons les constats des priorités de l’entreprise. Une tâche peut 
 ## 03. Proposition — savoir à quoi s’engager.
 
 La proposition présente les travaux retenus, les livrables, les exclusions et les responsabilités. Elle précise les hypothèses nécessaires, les validations attendues et les modalités de maintenance. Le budget et le calendrier se définissent à partir de ce périmètre.
-
-Le laboratoire illustratif ci-dessous montre comment mesurer un problème, comparer plusieurs réglages et vérifier le changement retenu. Les mesures sont fictives et ne représentent pas un résultat client.
 
 - Décrire ce qui sera livré et comment ce sera validé.
 - Préciser les dépendances et les accès nécessaires.

@@ -16,7 +16,6 @@ COPY --from=build --chown=node:node /site/src/bump/ui/musicController.js ./src/b
 COPY --from=build --chown=node:node /site/src/bump/content.json ./src/bump/content.json
 COPY --from=build --chown=node:node /site/src/bump/contact.js ./src/bump/contact.js
 COPY --from=build --chown=node:node /site/src/bump/locales ./src/bump/locales
-COPY --from=build --chown=node:node /site/src/components/bump-anatomy/calibration/art.generated.ts ./src/components/bump-anatomy/calibration/art.generated.ts
 USER node
 EXPOSE 3000
 CMD ["node", "scripts/serve-production.mjs"]

@@ -12,6 +12,10 @@ Moins de recopies. Moins de suivis manuels. Plus de temps pour faire avancer le 
 
 L’automatisation des processus consiste à confier aux systèmes les tâches répétitives d’un parcours de travail : réception d’une demande, classement, notifications, validation ou synchronisation. Bump commence par analyser ce parcours avec votre équipe, puis relie les outils utiles en conservant une intervention humaine pour les décisions et les exceptions.
 
+Automatisation des processus : du formulaire au CRM, avec la validation de votre équipe. Scénario illustratif.
+
+![Flux d'une demande de devis : réception, qualification, préparation, validation humaine, transmission au CRM](__BUMP_ORIGIN__/bump/automatisation-processus.webp)
+
 ## Repérer les tâches qui méritent d’être automatisées.
 
 Un bon candidat revient souvent, suit des règles explicites et mobilise du temps sans demander un jugement nouveau à chaque occurrence. Il peut s’agir d’un suivi de demande, d’un transfert de données ou de la préparation d’un rapport. Automatiser un processus mal défini risque simplement d’en reproduire les problèmes plus vite.

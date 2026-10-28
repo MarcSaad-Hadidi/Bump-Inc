@@ -78,12 +78,12 @@ test('English readouts translate without changing the native state identifiers',
  assert.equal(methodReadingForLocale('→ analyse','fr'),'→ analyse');
 });
 
-test('the preserved laboratory appears only on the approach pages with an honest explanation and Markdown parity',()=>{
+test('the approach page now reserves the supplied tool-map poster, while calibration stays archived',()=>{
  for(const locale of ['fr','en']){
   const page=pageFor('approach',locale),html=renderHtml(page,'https://example.com'),markdown=renderMarkdown(page,'https://example.com');
-  assert.match(html,/data-calibration-model/);assert.match(html,/bump\/seo\/calibration\.css/);assert.match(html,/data-knob="A"/);
-  const paragraph=page.sections.find(s=>s.calibration).paragraphs.at(-1);
-  assert(html.includes(paragraph));assert(markdown.includes(paragraph));
-  assert(!renderHtml(pageFor('security',locale),'https://example.com').includes('data-calibration-model'));
+  assert.match(html,/data-seo-figure="approach"/);assert.match(html,/src="\/bump\/approche.webp"/);
+  assert.doesNotMatch(html,/data-calibration-model|iso-figure/);
+  const proposal=page.sections.find(s=>s.id===(locale==='fr'?'proposition':'proposal'));
+  for(const paragraph of proposal.paragraphs){assert(html.includes(paragraph));assert(markdown.includes(paragraph));}
  }
 });

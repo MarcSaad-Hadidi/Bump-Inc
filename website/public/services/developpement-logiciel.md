@@ -12,6 +12,10 @@ Un système qui suit votre façon de travailler, plutôt que l’inverse.
 
 Le développement logiciel sur mesure crée une application autour des besoins d’une entreprise : gestion de demandes, portail, suivi de dossiers ou système interne. Bump analyse le fonctionnement attendu, conçoit l’interface avec les utilisateurs et développe les fonctionnalités ainsi que les intégrations nécessaires aux outils existants.
 
+Logiciel sur mesure : une demande, un responsable, un état visible, relié à vos outils. Scénario illustratif.
+
+![Tableau des opérations : une demande D-024 passe de reçue à terminée avec un responsable, puis met à jour le CRM](__BUMP_ORIGIN__/bump/developpement-logiciel.webp)
+
 ## Acheter, intégrer ou développer ?
 
 Un logiciel sur mesure n’est pas automatiquement la meilleure réponse. Un outil du marché peut convenir si ses fonctions couvrent vos besoins et si son fonctionnement reste acceptable. Une intégration peut suffire lorsque le problème se situe entre deux logiciels. Le sur mesure devient pertinent quand votre processus exige des fonctions que l’existant couvre mal.

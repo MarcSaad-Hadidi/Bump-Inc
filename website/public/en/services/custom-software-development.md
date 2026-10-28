@@ -12,6 +12,10 @@ A system that follows the way you work, rather than the other way around.
 
 Custom software development creates an application around business needs, such as request management, a portal, case tracking or an internal system. Bump analyses the required operation, designs the interface with users and develops the features and integrations needed to connect existing tools.
 
+Custom software: one request, one owner, one visible status, connected to your tools. Illustrative scenario.
+
+![Operations board: request D-024 moves from received to completed with an owner, then updates the CRM](__BUMP_ORIGIN__/bump/developpement-logiciel.webp)
+
 ## Buy, integrate or build?
 
 Custom software is not automatically the best answer. An existing product may fit if its features cover your needs and its operation remains acceptable. An integration may be enough when the problem sits between two tools. Custom development becomes relevant when your process requires features poorly covered by existing solutions.

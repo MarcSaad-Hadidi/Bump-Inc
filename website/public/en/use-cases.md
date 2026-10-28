@@ -20,6 +20,10 @@ Illustrative case study — fictional scenario, not a client engagement.
 
 In this fictional scenario, a manufacturing SME receives requests by email. A team member re-enters contact details in the CRM, finds attachments and follows up when information is missing.
 
+Workflow automation: from form to CRM, with your team's approval. Illustrative scenario.
+
+![Quote request workflow: intake, qualification, preparation, human approval and transfer to the CRM](__BUMP_ORIGIN__/bump/automatisation-processus.webp)
+
 ### What workflow could address it?
 
 The proposed workflow extracts useful fields, checks completeness and prepares a quote request. A person reviews the request and approves the next action. The system can then update the CRM and prepare a confirmation under the agreed rules.
@@ -56,6 +60,10 @@ Illustrative case study — fictional scenario, not a client engagement.
 ### What is the starting problem?
 
 In this fictional scenario, a service SME stores procedures in several document spaces. To answer an internal question, the team must find the applicable version and confirm it has permission to read it.
+
+AI integration: the assistant only uses authorized sources, links each point to its source, and your team decides. Illustrative scenario.
+
+![AI assistant consulting authorized documents, CRM and ERP, preparing a source-linked summary, then waiting for the team’s approval](__BUMP_ORIGIN__/bump/integration-ia.webp)
 
 ### What workflow could address it?
 
@@ -94,6 +102,10 @@ Illustrative case study — fictional scenario, not a client engagement.
 
 In this fictional scenario, a maintenance SME coordinates requests through email and tracking files. The coordinator needs to identify who is assigned, what information is missing and which request needs attention.
 
+Custom software: one request, one owner, one visible status, connected to your tools. Illustrative scenario.
+
+![Operations board: request D-024 moves from received to completed with an owner, then updates the CRM](__BUMP_ORIGIN__/bump/developpement-logiciel.webp)
+
 ### What workflow could address it?
 
 The proposed application brings the request, documents, owner and next action together. Team and coordination views show the same statuses. Useful connections to existing tools are defined after reviewing their APIs and limitations.
@@ -130,6 +142,10 @@ Illustrative case study — fictional scenario, not a client engagement.
 ### What is the starting problem?
 
 In this fictional scenario, an SME wants to review access to an internal application after staffing changes. Some accounts or permissions may no longer match current responsibilities.
+
+Cybersecurity: authorized audit, prioritized weaknesses, verified fixes. Illustrative scenario.
+
+![Drawer vault: domains examined within an authorized scope, with a risk revealed, corrected and verified](__BUMP_ORIGIN__/bump/cybersecurite.webp)
 
 ### What workflow could address it?
 

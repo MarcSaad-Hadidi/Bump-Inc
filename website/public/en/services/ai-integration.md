@@ -12,6 +12,10 @@ A focused task. The right information. Decisions that stay in your hands.
 
 AI integration connects a model or agent to your data and software to perform a defined task. Bump helps SMEs select a use case, connect sources, define access and evaluate responses. Sensitive actions can remain subject to human approval.
 
+AI integration: the assistant only uses authorized sources, links each point to its source, and your team decides. Illustrative scenario.
+
+![AI assistant consulting authorized documents, CRM and ERP, preparing a source-linked summary, then waiting for the team’s approval](__BUMP_ORIGIN__/bump/integration-ia.webp)
+
 ## Start with a task that matters.
 
 A useful integration starts with an operational question: what should the user be able to do more easily? Model selection comes afterwards. We distinguish tasks that benefit from AI from those a rule or conventional automation can handle more simply.

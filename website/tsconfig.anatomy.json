@@ -10,12 +10,25 @@
     "checkJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"]
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ]
   },
   "files": [
     "src/components/bump-anatomy/methode/MethodLab.tsx",
     "src/components/bump-anatomy/calibration/MethodLab.tsx",
     "src/bump/machines/methodToolsRuntime.ts",
-    "src/bump/seo/calibration-live.ts"
+    "src/bump/seo/calibration-live.ts",
+    "src/components/bump-anatomy/shared/LazyFigure.tsx",
+    "src/components/bump-anatomy/workflow/Workflow.tsx",
+    "src/components/bump-anatomy/security-engine/SecurityEngine.tsx",
+    "src/components/bump-anatomy/port/BumpPort.tsx",
+    "src/components/bump-anatomy/ia/AssistantIA.tsx",
+    "src/components/bump-anatomy/logiciel/TableauOperations.tsx",
+    "src/components/bump-anatomy/aiguillage/Aiguillage.tsx",
+    "src/bump/seo/SeoFigures.tsx",
+    "src/bump/seo/figure-runtime.ts"
   ]
 }

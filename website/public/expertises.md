@@ -12,6 +12,10 @@ Des processus plus fluides. Des systèmes plus intelligents. Une entreprise mieu
 
 Bump est une firme de consultation technologique basée à Montréal. Nous aidons les PME à analyser leurs besoins, à connecter leurs outils, à développer les logiciels utiles à leurs opérations et à renforcer leur sécurité. Un mandat commence par votre réalité, puis une proposition définit ce qui sera implanté et maintenu.
 
+Le bon levier, au bon endroit : on part de ce qui vous ralentit et Bump oriente vers la bonne expertise. Scénario illustratif.
+
+![Aiguillage : chaque besoin est envoyé vers l'expertise qui convient, de l'automatisation à la cybersécurité](__BUMP_ORIGIN__/bump/expertises.webp)
+
 ## Partir de ce qui vous ralentit.
 
 Une demande circule par courriel, un fichier est recopié dans trois outils, une information arrive trop tard. Le point de départ est souvent très concret. Nous cherchons avec votre équipe le changement qui simplifiera le travail sans ajouter une nouvelle couche de complexité.

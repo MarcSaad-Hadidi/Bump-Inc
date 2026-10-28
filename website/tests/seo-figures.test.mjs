@@ -13,9 +13,32 @@ import {figureMarkup} from '../src/bump/seo/figure-markup.js';
 import {pageFor} from '../src/bump/seo/pages.js';
 import {renderHtml} from '../src/bump/seo/render.js';
 import {installSeoFigureLoading} from '../src/bump/seo/figure-loading.js';
+import {figureStories,currentFigureStep} from '../src/bump/seo/figure-stories.js';
 const walk=node=>[node,...(node.childNodes||[]).flatMap(walk)];
 const attrs=node=>Object.fromEntries((node.attrs||[]).map(a=>[a.name,a.value]));
 const text=node=>(node.childNodes||[]).map(n=>n.value||text(n)).join('');
+
+test('every delivered native stage has its own substantive editorial explanation',async()=>{
+ for(const spec of Object.values(seoFigures)){
+  const bundled=await build({entryPoints:['src/components/bump-anatomy/'+spec.model+'/model.ts'],bundle:true,format:'esm',platform:'node',write:false});
+  const native=await import('data:text/javascript;base64,'+Buffer.from(bundled.outputFiles[0].text).toString('base64'));
+  const story=figureStories[spec.model];assert.equal(story.length,native.STATES.length,spec.model);
+  assert.equal(new Set(story.map(([title])=>title)).size,story.length);
+  for(const[title,detail]of story){assert(title.length>10);assert(detail.trim().split(/\s+/).length>=12);}
+ }
+});
+
+test('editorial stage selection follows the real current control and safely resets',()=>{
+ const controls=Array.from({length:9},(_,index)=>({selected:false,hasAttribute:()=>controls[index].selected,getAttribute:()=>String(index)}));
+ assert.equal(currentFigureStep(controls,9),0);
+ for(let index=0;index<9;index++){
+  controls.forEach((control,i)=>control.selected=i===index);
+  assert.equal(currentFigureStep(controls,9),index);
+ }
+ assert.equal(currentFigureStep(controls,4),0);
+ assert.equal(currentFigureStep([{hasAttribute:()=>true,getAttribute:()=>'-1'}],4),0);
+ assert.equal(currentFigureStep([{hasAttribute:()=>true,getAttribute:()=>'not-a-stage'}],4),0);
+});
 
 test('all 39 native sources and all 14 supplied images retain their delivered bytes',async()=>{
  const m=JSON.parse(readFileSync('src/components/bump-seo-source.json','utf8'));

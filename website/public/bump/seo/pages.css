@@ -418,25 +418,53 @@ html[data-bump-tone=dark] .bump-contact .bump-action{background:#fff9ed;color:#2
 html[data-bump-tone=dark] .bump-contact .bump-action:hover{background:#fffef9}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.bump-header .bump-hero-dropdown,.bump-contact .bump-dialog-inner,.seo-expertise-panel,.bump-header .bump-location-popover,.bump-header.bump-hero-header[data-tone] .bump-project-button{background:#f4f1e8f5}.bump-header[data-tone=dark] .bump-hero-dropdown,html[data-bump-tone=dark] .bump-contact .bump-dialog-inner,.bump-header[data-tone=dark] .bump-location-popover,.bump-header.bump-hero-header[data-tone=dark] .bump-project-button{background:#233126f5}}
 
-/* Host composition only. Native SVG paths, projection and clocks are intact. */
-.seo-anatomy{position:relative;max-width:1040px;min-width:0;margin:38px auto 56px;container-type:inline-size;--seo-reading-space:72px}
-.seo-anatomy .seo-lazy-figure{display:grid;grid-template-columns:minmax(0,1fr);min-width:0}
-.seo-anatomy .seo-lazy-figure>img{grid-area:1/1;width:100%;aspect-ratio:var(--seo-figure-width)/var(--seo-figure-height);min-width:0;align-self:start}
-.seo-anatomy:not([data-poster-only]) .seo-lazy-figure::before{content:"";grid-area:1/1;width:100%;aspect-ratio:var(--seo-figure-width)/var(--seo-figure-height);min-height:calc(100cqw * var(--seo-drawing-ratio) + var(--seo-reading-space))}
-.seo-anatomy .seo-anatomy-live{grid-area:1/1;position:relative;width:100%;height:auto;min-width:0;align-self:stretch;color:var(--ink);animation:seo-figure-arrive .25s ease-out}
-.seo-anatomy .seo-native-drawing{position:absolute;inset:0 0 var(--seo-reading-space);min-width:0}
-.seo-anatomy .seo-native-drawing>.iso,.seo-anatomy .iso-figure,.seo-anatomy .iso-stage{width:100%;height:100%;min-width:0;margin:0}
+/* Fit the drawing, editorial stage explanation and illustrative caption together.
+   Supplied geometry, viewBox, animation and LazyFigure stay intact. */
+.seo-anatomy{position:relative;max-width:800px;min-width:0;margin:28px auto 40px;container-type:inline-size;scroll-margin-block:80px 24px}
+.seo-anatomy .seo-lazy-figure{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:14px;height:min(600px,calc(100svh - 112px),calc(100cqw * var(--seo-drawing-ratio) + 250px));min-width:0}
+.seo-anatomy .seo-lazy-figure>img{grid-area:1/1;align-self:stretch;width:100%;height:100%!important;min-width:0;min-height:0;object-fit:contain}
+.seo-anatomy .seo-anatomy-live{grid-area:1/1;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:14px;position:relative;width:100%;height:100%;min-width:0;min-height:0;color:var(--ink);animation:seo-figure-arrive .25s ease-out}
+.seo-anatomy .seo-native-drawing{position:relative;width:100%;height:100%;min-width:0;min-height:0}
+.seo-anatomy .seo-native-drawing>.iso,.seo-anatomy .iso-figure,.seo-anatomy .iso-stage{width:100%;height:100%;min-width:0;min-height:0;margin:0}
 .seo-anatomy .iso-plate{display:contents;background:transparent;box-shadow:none;padding:0}
 .seo-anatomy .iso-stage{display:grid;place-items:center}
 .seo-anatomy .iso-stage svg{display:block;width:100%;height:100%!important;max-width:100%;overflow:visible}
 .seo-anatomy :is(.iso-plate-corners,.bump-controls,.iso-legend){display:none}
 .seo-anatomy .iso.bump{background:transparent}
 .seo-anatomy .seo-anatomy-live:is([data-bump-demo-ready="false"],[data-bump-demo-paused="true"]) :is(.iso-line[data-flow],.iso-dots circle[data-pulse]){animation-play-state:paused}
-.seo-anatomy .seo-native-reading{position:absolute;inset:auto 0 0;margin:0;min-height:52px;max-width:100%;font:inherit;font-size:20px;line-height:1.4;color:#315d48;overflow-wrap:anywhere;text-align:center}
-.seo-anatomy .seo-lazy-figure>figcaption{grid-row:2;margin:18px 0 0;padding-top:18px;border-top:1px solid var(--line);font-size:18px;line-height:1.45;color:var(--muted)}
+/* Overlapping panels reserve the tallest explanation: stage changes never
+   move the drawing or the following article. Inactive text is also aria-hidden. */
+.seo-anatomy .seo-stage-copy{display:grid;min-width:0;max-width:700px;width:100%;justify-self:center}
+.seo-anatomy .seo-step-panel{grid-area:1/1;display:grid;grid-template-columns:58px minmax(0,1fr);gap:18px;align-content:start;visibility:hidden;opacity:0;transform:translateY(5px);transition:opacity .28s ease,transform .28s ease,visibility .28s;pointer-events:none}
+.seo-anatomy .seo-step-panel[data-active="true"]{visibility:visible;opacity:1;transform:none;pointer-events:auto}
+.seo-anatomy .seo-step-number{padding-top:5px;white-space:nowrap;font-size:17px;line-height:1.4;color:#315d48;font-variant-numeric:tabular-nums}
+.seo-anatomy .seo-step-number>span{color:var(--muted);font-size:13px}
+.seo-anatomy .seo-step-panel h3{margin:0;font:inherit;font-size:clamp(24px,2.6vw,31px);font-weight:400;line-height:1.12;letter-spacing:-.02em;overflow-wrap:anywhere}
+.seo-anatomy .seo-step-panel p{margin:8px 0 0;font:inherit;font-size:20px;line-height:1.35;color:var(--muted);overflow-wrap:anywhere}
+.seo-anatomy .seo-native-reading{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.seo-anatomy .seo-lazy-figure>figcaption{grid-row:2;margin:0;padding-top:10px;border-top:1px solid var(--line);font-size:16px;line-height:1.35;color:var(--muted)}
 .seo-anatomy .bump-demo-toggle{position:absolute;z-index:3;top:0!important;right:0!important;width:36px;height:36px;display:grid;place-items:center;padding:8px;border:1px solid #9b927755;border-radius:50%;background:#f4f1e8c0;color:#315d48;cursor:pointer}
 .seo-anatomy .bump-demo-toggle svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 .seo-anatomy .bump-demo-toggle:hover{border-color:#315d48}.seo-anatomy .bump-demo-toggle:focus-visible{outline:2px solid #315d48;outline-offset:4px}
 @keyframes seo-figure-arrive{from{opacity:0}to{opacity:1}}
-@media(max-width:600px){.seo-anatomy{margin:28px auto 38px;--seo-reading-space:88px}.seo-anatomy .seo-native-reading{font-size:17px;min-height:74px}.seo-anatomy .seo-lazy-figure>figcaption{font-size:17px;margin-top:14px;padding-top:14px}}
-@media(prefers-reduced-motion:reduce){.seo-anatomy .seo-anatomy-live{animation:none}}
+@media(max-width:600px){
+ .seo-anatomy{margin:24px auto 32px}
+ .seo-anatomy .seo-lazy-figure,.seo-anatomy .seo-anatomy-live{gap:12px}
+ .seo-anatomy .seo-step-panel{grid-template-columns:46px minmax(0,1fr);gap:12px}
+ .seo-anatomy .seo-step-panel h3{font-size:24px}
+ .seo-anatomy .seo-step-panel p{font-size:18px;line-height:1.3;margin-top:7px}
+ .seo-anatomy .seo-step-number{font-size:15px;padding-top:3px}
+ .seo-anatomy .seo-step-number>span{font-size:11px}
+ .seo-anatomy .seo-lazy-figure>figcaption{font-size:15px}
+}
+@media(max-height:600px) and (min-width:600px){
+ .seo-anatomy .seo-lazy-figure{height:min(488px,calc(100svh - 96px))}
+ .seo-anatomy .seo-anatomy-live{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:24px;align-items:center}
+ .seo-anatomy .seo-step-panel{grid-template-columns:38px minmax(0,1fr);gap:10px}
+ .seo-anatomy .seo-step-panel h3{font-size:23px}
+ .seo-anatomy .seo-step-panel p{font-size:17px;line-height:1.25}
+ .seo-anatomy .seo-step-number{font-size:14px;padding-top:3px}
+ .seo-anatomy .seo-step-number>span{font-size:10px}
+ .seo-anatomy .seo-lazy-figure>figcaption{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){.seo-anatomy .seo-anatomy-live{animation:none}.seo-anatomy .seo-step-panel{transition:none;transform:none}}

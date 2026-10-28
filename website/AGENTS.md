@@ -1,3 +1,15 @@
+# SEO stage explanations and complete viewport — 2026-10-28
+
+The user reports that the SEO models are too large and their brief native
+readouts do not explain each step like the landing. Add an editorial title,
+step number and client-facing explanation for every actual native stage.
+Synchronize from the delivered controls, crossfade without layout jumps and
+reserve the tallest explanation. Fit the model, explanation and illustrative
+caption together within the available viewport; support short landscape and
+narrow phones. Do not change the landing, native source/geometry/clocks,
+posters, English poster-only policy, metadata or global scroll. Keep this fix
+in the existing PR and GPT Site, with real visual validation before completion.
+
 # Supplied SEO figures — 2026-10-28
 
 The user now explicitly requests bump-pages-seo.zip. Its complete instructions

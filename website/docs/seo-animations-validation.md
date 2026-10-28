@@ -24,7 +24,7 @@ Paquet : `bump-pages-seo.zip`. Les instructions originales sont conservées dans
 
 ## Vérifications exécutées
 
-`npm run build`, `npm test` : **237 tests réussis, aucun échec ni test ignoré**, comprenant TypeScript strict, intégrité, SSR, placement, métadonnées, chargement EN, horloges et régressions existantes. `node tests/seo-smoke.mjs` réussi.
+`npm run build`, `npm test` : **238 tests réussis, aucun échec ni test ignoré**, comprenant TypeScript strict, intégrité, SSR, placement, métadonnées, chargement EN, horloges et régressions existantes. `node tests/seo-smoke.mjs` réussi. Le test de l’artefact GPT a révélé un 404 sur le nouveau graphe SEO ; le Worker sert désormais ses modules exacts sans liaison ASSETS, avec revalidation de l’entrée stable et cache immuable des chunks nommés par hash. Le test de régression reproduit le 404 avant correction.
 
 ## Lighthouse mobile — mesure de laboratoire
 

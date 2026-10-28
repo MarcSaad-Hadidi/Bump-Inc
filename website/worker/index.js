@@ -14,12 +14,14 @@ export function createWorker(files = {}) { return {
     }, {origin});
     if (content) return content;
     const pathname = new URL(request.url).pathname;
-    if (/^\/runtime\/(?:en\/)?assets\/bump-shared-[A-Z0-9]+\.js$/.test(pathname) && Object.hasOwn(files, pathname)) {
+    const sharedModule = /^\/runtime\/(?:en\/)?assets\/bump-shared-[A-Z0-9]+\.js$/.test(pathname);
+    const seoModule = /^\/runtime\/seo\/(?:BumpSeoFigures|native-[A-Za-z0-9_-]+)\.js$/.test(pathname);
+    if ((sharedModule || seoModule) && Object.hasOwn(files, pathname)) {
       if (!['GET', 'HEAD'].includes(request.method)) return new Response(null, {status: 405, headers: {Allow: 'GET, HEAD'}});
       return new Response(request.method === 'HEAD' ? null : files[pathname], {headers: {
         'Content-Type': 'text/javascript; charset=utf-8',
         'X-Content-Type-Options': 'nosniff',
-        'Cache-Control': 'public, max-age=31536000, immutable',
+        'Cache-Control': pathname === '/runtime/seo/BumpSeoFigures.js' ? 'public, max-age=0, must-revalidate' : 'public, max-age=31536000, immutable',
       }});
     }
     const response = env.ASSETS?.fetch ? await env.ASSETS.fetch(request) : new Response('Not found', {status: 404});

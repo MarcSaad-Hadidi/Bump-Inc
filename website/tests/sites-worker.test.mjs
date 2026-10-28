@@ -22,6 +22,25 @@ test('embedded shared modules work without an ASSETS binding in both languages',
   }
 });
 
+test('SEO entry and native chunks are served from the verified build graph', async () => {
+  for (const pathname of ['/runtime/seo/BumpSeoFigures.js', '/runtime/seo/native-AssistantIA-ABC123.js']) {
+    const source = 'export const ready = true;';
+    const app = createWorker({[pathname]: source, '/runtime/seo/private.txt': 'never exposed'});
+    const response = await app.fetch(new Request('https://example.test' + pathname), {});
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('Content-Type'), 'text/javascript; charset=utf-8');
+    assert.equal(response.headers.get('X-Content-Type-Options'), 'nosniff');
+    assert.equal(await response.text(), source);
+    assert.equal(response.headers.get('Cache-Control'), pathname.endsWith('/BumpSeoFigures.js') ? 'public, max-age=0, must-revalidate' : 'public, max-age=31536000, immutable');
+    const head = await app.fetch(new Request('https://example.test' + pathname, {method: 'HEAD'}), {});
+    assert.equal(head.status, 200); assert.equal(await head.text(), '');
+    assert.equal((await app.fetch(new Request('https://example.test' + pathname, {method: 'POST'}), {})).status, 405);
+    for (const missing of ['/runtime/seo/native-MISSING.js', '/runtime/seo/private.txt']) {
+      assert.equal((await app.fetch(new Request('https://example.test' + missing), {})).status, 404);
+    }
+  }
+});
+
 test("serves existing static assets without a fallback", async () => {
   const calls = [];
   const response = await worker.fetch(new Request("https://example.test/assets/app.js"), {

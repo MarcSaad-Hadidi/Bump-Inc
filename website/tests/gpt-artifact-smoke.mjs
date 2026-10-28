@@ -1,11 +1,14 @@
 import assert from 'node:assert/strict';
 import {existsSync} from 'node:fs';
+import {parse} from 'parse5';
 import {listPages} from '../src/bump/seo/pages.js';
 import {htmlAsset, markdownPath, contentAssetPaths} from '../src/bump/seo/render.js';
 import worker from '../dist/server/index.js';
 import {runtimeChunks} from '../scripts/runtime-chunks.mjs';
 
 const origin = 'https://bump-artifact.example';
+const walk = node => [node, ...(node.childNodes || []).flatMap(walk)];
+const attrs = node => Object.fromEntries((node.attrs || []).map(attr => [attr.name, attr.value]));
 for (const file of contentAssetPaths()) assert(!existsSync('dist/client' + file), 'Content must reach the Worker on Sites: ' + file);
 for (const file of ['/runtime/assets/BumpNav.js', '/bump/seo/pages.css', '/bump/seo/landing-meta.json', '/bump/art/hero-fallback-v2.webp']) assert(existsSync('dist/client' + file), 'Missing static asset: ' + file);
 for (const page of listPages()) {
@@ -13,7 +16,13 @@ for (const page of listPages()) {
     const response = await worker.fetch(new Request(origin + url, {headers: {Accept: accept}}), {});
     assert.equal(response.status, 200, url);
     assert.match(response.headers.get('Content-Type'), accept === 'text/html' ? /^text\/html/ : /^text\/markdown/);
-    const body = await response.text(); assert(!body.includes('__BUMP_ORIGIN__')); assert(body.includes(origin + page.path));
+    const body = await response.text(); assert(!body.includes('__BUMP_ORIGIN__'));
+    if (accept === 'text/html') {
+      const canonicals = walk(parse(body)).filter(node => node.tagName === 'link' && attrs(node).rel === 'canonical').map(node => attrs(node).href);
+      assert.deepEqual(canonicals, [origin + page.path], url);
+    } else {
+      assert.deepEqual(body.split('\n').filter(line => line.startsWith('Canonical: ')), ['Canonical: ' + origin + page.path], url);
+    }
   }
 }
 for (const url of ['/robots.txt', '/sitemap.xml', '/llms.txt', '/llms-full.txt', '/ai.txt', '/api/md/_catalog']) assert.equal((await worker.fetch(new Request(origin + url), {})).status, 200);

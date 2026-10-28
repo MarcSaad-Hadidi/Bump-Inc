@@ -1,3 +1,21 @@
+# Landing labels, subtitle spacing and folder input — 2026-10-28
+
+Keep labels below the Vision network icons fully visible, including short
+windows: reserve their actual line height between adjacent cards. Raise all
+six painting-introduction subtitles slightly without changing the headings,
+scene/camera geometry or assisted-stop coordinates. Preserve natural wrapping.
+For the stacked folders, distinguish new physical wheel notches and renewed
+or reversed trackpad impulses from decaying momentum. Keep one stop per fresh
+gesture, discard input during travel and accept light precision-wheel gestures.
+Use the existing controller only; preserve other chapter input behavior.
+
+Codex's vault inspection finding must also be fixed in the SEO host: the
+unmodified supplied vault stops its one-shot tour after manual input. Recover
+by remounting the same native component after 30 seconds without interaction,
+excluding held input, offscreen time and explicit pause. Never alter native
+Anatomy geometry, sources or clocks. Verify recovery and preserve the public
+GPT Site and existing PR without merging.
+
 # SEO stage explanations and complete viewport — 2026-10-28
 
 The user reports that the SEO models are too large and their brief native

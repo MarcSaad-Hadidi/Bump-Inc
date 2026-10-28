@@ -19,7 +19,8 @@ function harness(selectedIndex = 0, value = '/') {
     set src(value) { navigations.push(value); },
     setAttribute(name, value) { attributes.set(name, value); },
     removeAttribute(name) { attributes.delete(name); },
-    contentWindow: {KeyboardEvent: class {constructor(type, options) {Object.assign(this, {type}, options);}}, dispatchEvent(event) {keys.push(event.key);}},
+    contentWindow: {KeyboardEvent: class {constructor(type, options) {Object.assign(this, {type}, options);}}, dispatchEvent() {assert.fail('Window dispatch does not reach the document scroll handler');}},
+    contentDocument: {body: {dispatchEvent(event) {assert.equal(event.bubbles, true);keys.push(event.key);}}},
   };
   const toggle = {getAttribute(name) {return attributes.get(name);}, setAttribute(name, value) {attributes.set(name, value);}};
   const elements = {frame, page: select, scripts: toggle, previous: {}, next: {}, report: {}};

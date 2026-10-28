@@ -168,7 +168,7 @@ function consumesScroll(target,delta){
 
 export function installBumpAssistedScroll(getLenis,{isReady=()=>true}={}){
  const root=document.documentElement,reduced=matchMedia('(prefers-reduced-motion: reduce)');
- let moving=false,navigationBusy=false,disposed=false,lastWheel=-Infinity,settledAt=-Infinity,accumulated=0,pendingBurst=false,frame=0,resizeTimer=0,navigationRun=0,curtain=null,curtainAnimation=null;
+ let moving=false,navigationBusy=false,disposed=false,lastWheel=-Infinity,lastWheelDelta=0,settledAt=-Infinity,accumulated=0,pendingBurst=false,frame=0,resizeTimer=0,navigationRun=0,curtain=null,curtainAnimation=null;
  let currentId='home',landedY=scrollY,destination=null,touch=null,stops=[],revision=0,layoutWidth=innerWidth,layoutHeight=getBumpViewportHeight();
  const update=()=>{stops=getBumpScrollStops();root.dataset.bumpScrollStops=String(stops.filter(stop=>stop.guided!==false).length);};
  const announce=()=>{root.dataset.bumpScrollMoving=String(moving||navigationBusy);root.dataset.bumpScrollStop=currentId;};
@@ -221,24 +221,33 @@ export function installBumpAssistedScroll(getLenis,{isReady=()=>true}={}){
  function wheel(event){
   if(event.ctrlKey||Math.abs(event.deltaX)>Math.abs(event.deltaY)||!event.deltaY)return;
   const now=performance.now(),gap=now-lastWheel;
+  const delta=event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?getBumpViewportHeight():1),previous=lastWheelDelta;
+  const remember=()=>{lastWheel=now;lastWheelDelta=delta;};
   if(consumesScroll(event.target,event.deltaY)){event.lenisStopPropagation=true;return;}
   if(isEditing(event.target)&&!moving)return;
-  if(!isReady()){swallow(event);lastWheel=now;return;}
-  if(moving||navigationBusy){swallow(event);lastWheel=now;accumulated=0;pendingBurst=false;return;}
-  if(activeGestureScene()?.wheel?.(event)){swallow(event);lastWheel=now;return;}
+  if(!isReady()){swallow(event);remember();return;}
+  if(moving||navigationBusy){swallow(event);remember();accumulated=0;pendingBurst=false;return;}
+  if(activeGestureScene()?.wheel?.(event)){swallow(event);remember();return;}
   const stop=next(Math.sign(event.deltaY));if(!stop)return;
-  swallow(event);lastWheel=now;
+  swallow(event);remember();
   // All events in the original burst are discarded, including inertial tails
   // arriving after completion. A quiet gap and a real settled stop re-arm it.
   // Folder changes are short, deliberate steps. The chapter-level 240ms idle
   // plus 180ms landing guard swallowed whole new mouse/trackpad gestures here.
-  // Keep rejecting continuous momentum, but re-arm a settled folder sooner.
+  // A physical mouse notch or a renewed/reversed trackpad impulse is also a
+  // new intent. Requiring silence after every tail otherwise swallows these
+  // gestures indefinitely. Never queue an intent received during the journey.
   const folders=currentId.startsWith('software-story-'),quiet=folders?80:240;
-  if((gap<quiet&&!pendingBurst)||!folders&&now-settledAt<180){accumulated=0;pendingBurst=false;return;}
-  if(gap>=quiet)accumulated=0;
+  const legacy=event.wheelDeltaY??event.wheelDelta;
+  const notch=event.deltaMode===1&&Number.isInteger(event.deltaY)||event.deltaMode===0&&[100,120].includes(Math.abs(event.deltaY))&&Number.isFinite(legacy)&&Math.abs(legacy)===120;
+  const reversal=Math.sign(delta)!==Math.sign(previous)&&Math.abs(delta)>=6;
+  const impulse=Math.abs(delta)>=8&&Math.abs(delta)>=Math.abs(previous)*2.5&&Math.abs(delta)-Math.abs(previous)>=6;
+  const freshFolder=folders&&(notch||reversal||impulse);
+  if((gap<quiet&&!pendingBurst&&!freshFolder)||!folders&&now-settledAt<180){accumulated=0;pendingBurst=false;return;}
+  if(gap>=quiet||freshFolder||Math.sign(accumulated)!==Math.sign(delta))accumulated=0;
   pendingBurst=true;
-  accumulated+=event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?getBumpViewportHeight():1);
-  if(Math.abs(accumulated)<6)return;
+  accumulated+=delta;
+  if(Math.abs(accumulated)<(folders?2:6))return;
   accumulated=0;pendingBurst=false;go(stop);
  }
  function keydown(event){

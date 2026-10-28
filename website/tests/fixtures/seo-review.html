@@ -31,7 +31,7 @@ document.getElementById('scripts').onclick = event => {
 };
 for (const [id, key] of [['previous', 'PageUp'], ['next', 'PageDown']]) {
   document.getElementById(id).onclick = () => {
-    frame.contentWindow.dispatchEvent(new frame.contentWindow.KeyboardEvent('keydown', {key, bubbles: true, cancelable: true}));
+    frame.contentDocument.body.dispatchEvent(new frame.contentWindow.KeyboardEvent('keydown', {key, bubbles: true, cancelable: true}));
   };
 }
 frame.onload = () => { document.getElementById('report').textContent = 'Chargé'; };

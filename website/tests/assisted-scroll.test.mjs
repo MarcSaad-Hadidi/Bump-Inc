@@ -4,7 +4,7 @@ import {getBumpScrollStops,installBumpAssistedScroll,navigateBumpChapter} from '
 
 // Test the actual input policy with a synchronous Lenis adapter. Rendering and
 // the real continuous journey are checked separately in the browser.
-function fixture({reduced=false,native=false,width=1440,height=900,continuation=false,staleEngine=false,folders=false}={}){
+function fixture({reduced=false,native=false,width=1440,height=900,continuation=false,staleEngine=false,folders=false,deferred=false}={}){
  const saved=new Map(),events=new Map(),calls=[],frames=new Map();let now=1000,frameId=0;
  const set=(key,value)=>{saved.set(key,Object.getOwnPropertyDescriptor(globalThis,key));Object.defineProperty(globalThis,key,{value,writable:true,configurable:true});};
  class ElementStub{
@@ -39,11 +39,11 @@ function fixture({reduced=false,native=false,width=1440,height=900,continuation=
  set('requestAnimationFrame',callback=>{frames.set(++frameId,callback);return frameId;});
  set('cancelAnimationFrame',id=>frames.delete(id));
  set('scrollTo',({top})=>{globalThis.scrollY=top;calls.push({y:top,native:true});});
- let engineTarget=0;
- const lenis={reset(){engineTarget=scrollY;},scrollTo(y,options){calls.push({y,...options});if(staleEngine&&y===engineTarget){options.onComplete?.();return;}engineTarget=y;globalThis.scrollY=y;options.onComplete?.();}};
+ let engineTarget=0,completion=null;
+ const lenis={reset(){engineTarget=scrollY;},scrollTo(y,options){calls.push({y,...options});if(staleEngine&&y===engineTarget){options.onComplete?.();return;}engineTarget=y;globalThis.scrollY=y;if(deferred&&!options.immediate)completion=options.onComplete;else options.onComplete?.();}};
  const cleanup=installBumpAssistedScroll(()=>native?null:lenis);
- const wheel=(delta=100,gap=350)=>{now+=gap;let prevented=false;events.get('wheel')({deltaX:0,deltaY:delta,deltaMode:0,target:document.body,cancelable:true,preventDefault(){prevented=true;}});return prevented;};
- return{calls,wheel,nodes,selectors,fire(name,event={}){let prevented=false;events.get(name)?.({target:document.body,cancelable:true,preventDefault(){prevented=true;},...event});return prevented;},advance(ms){now+=ms;const pending=[...frames.values()];frames.clear();pending.forEach(callback=>callback(now));},get stops(){return getBumpScrollStops();},restore(){cleanup();for(const [key,descriptor]of saved){if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];}}};
+ const wheel=(delta=100,gap=350,extra={})=>{now+=gap;let prevented=false;events.get('wheel')({deltaX:0,deltaY:delta,deltaMode:0,target:document.body,cancelable:true,preventDefault(){prevented=true;},...extra});return prevented;};
+ return{calls,wheel,nodes,selectors,complete(ms=0){now+=ms;const done=completion;completion=null;done?.();},fire(name,event={}){let prevented=false;events.get(name)?.({target:document.body,cancelable:true,preventDefault(){prevented=true;},...event});return prevented;},advance(ms){now+=ms;const pending=[...frames.values()];frames.clear();pending.forEach(callback=>callback(now));},get stops(){return getBumpScrollStops();},restore(){cleanup();for(const [key,descriptor]of saved){if(descriptor)Object.defineProperty(globalThis,key,descriptor);else delete globalThis[key];}}};
 }
 
 test('a touch claims vertical movement before native momentum, then advances only once per gesture',()=>{
@@ -273,5 +273,39 @@ test('a new wheel gesture advances each stacked folder without repeated attempts
    f.wheel(1200,110);assert.equal(document.documentElement.dataset.bumpScrollStop,id,'One new gesture advances exactly one folder');
   }
   f.wheel(-100,110);assert.equal(document.documentElement.dataset.bumpScrollStop,'software-story-3');
+ }finally{f.restore();}
+});
+
+test('a fresh mouse notch after folder arrival is not lost behind a recent inertial tail',()=>{
+ const f=fixture({folders:true,deferred:true});try{
+  navigateBumpChapter('online',{immediate:true});f.wheel();f.wheel(20,400);f.wheel(8,100);f.complete(16);
+  for(const id of ['software-story-2','software-story-3','software-story-4']){
+   const before=f.calls.length;f.wheel(4,16);assert.equal(f.calls.length,before);
+   f.wheel(100,40,{wheelDeltaY:-120});assert.equal(f.calls.length,before+1,'A new wheel notch must advance immediately');
+   f.wheel(18,350);f.wheel(6,80);assert.equal(f.calls.length,before+1,'Input during travel is discarded');f.complete(16);
+   assert.equal(document.documentElement.dataset.bumpScrollStop,id);
+  }
+ }finally{f.restore();}
+});
+
+test('a renewed trackpad impulse or direction change advances one folder but decaying momentum never does',()=>{
+ const f=fixture({folders:true,deferred:true});try{
+  navigateBumpChapter('online',{immediate:true});f.wheel();f.wheel(12,400);f.wheel(4,100);f.complete(16);
+  const before=f.calls.length;f.wheel(2,16);f.wheel(1,16);assert.equal(f.calls.length,before);
+  f.wheel(12,24);assert.equal(f.calls.length,before+1,'A deliberate new impulse must not require an 80ms silence');
+  f.wheel(8,350);f.wheel(3,80);f.complete(16);
+  f.wheel(2,16);f.wheel(1,16);assert.equal(f.calls.length,before+1);
+  assert.equal(document.documentElement.dataset.bumpScrollStop,'software-story-2');
+  f.wheel(-8,24);assert.equal(f.calls.length,before+2,'A deliberate reversal is a new gesture');f.complete(500);
+  assert.equal(document.documentElement.dataset.bumpScrollStop,'software-story-1');
+ }finally{f.restore();}
+});
+
+test('a light precision-wheel gesture accumulates without having to spam a folder',()=>{
+ const f=fixture({folders:true});try{
+  navigateBumpChapter('online',{immediate:true});f.wheel();const before=f.calls.length;
+  f.wheel(.75,110);f.wheel(.75,8);assert.equal(f.calls.length,before);
+  f.wheel(.5,8);assert.equal(document.documentElement.dataset.bumpScrollStop,'software-story-2');
+  assert.equal(f.calls.length,before+1);
  }finally{f.restore();}
 });

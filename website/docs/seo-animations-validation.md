@@ -24,7 +24,7 @@ Paquet : `bump-pages-seo.zip`. Les instructions originales sont conservées dans
 
 ## Vérifications exécutées
 
-`npm run build`, `npm test` : **241 tests réussis, aucun échec ni test ignoré**, comprenant TypeScript strict, intégrité, SSR, placement, métadonnées, chargement EN, horloges et régressions existantes. `node tests/seo-smoke.mjs` réussi. Le test de l’artefact GPT a révélé un 404 sur le nouveau graphe SEO ; le Worker sert désormais ses modules exacts sans liaison ASSETS, avec revalidation de l’entrée stable et cache immuable des chunks nommés par hash. Le test de régression reproduit le 404 avant correction.
+`npm run build`, `npm test` : **247 tests réussis, aucun échec ni test ignoré**, comprenant TypeScript strict, intégrité, SSR, placement, métadonnées, chargement EN, horloges et régressions existantes. `node tests/seo-smoke.mjs` réussi. Le test de l’artefact GPT a révélé un 404 sur le nouveau graphe SEO ; le Worker sert désormais ses modules exacts sans liaison ASSETS, avec revalidation de l’entrée stable et cache immuable des chunks nommés par hash. Le test de régression reproduit le 404 avant correction.
 
 ## Correction des explications et du cadrage
 
@@ -52,3 +52,34 @@ Les premières mesures ont révélé un CLS de 0,249 dû au chargement tardif d�
 | `/cas-d-usage` | 99 | 1.66 s | 0 | H1 |
 | `/faq` | 100 | 1.35 s | 0 | H1 |
 | `/en/services/ai-integration` | 100 | 1.35 s | 0 | H1 |
+
+## Finition landing et reprise du coffre — 28 octobre 2026
+
+Les six introductions ont un espace supplémentaire de 24–44 px sous leur
+sous-titre, sans changement des titres, des scènes ou des arrêts. Vérification
+navigateur aux six destinations : 54–56 px sous le texte à 1366×650 ;
+111–113 px à 390×844, sans débordement du texte. Le schéma Vision réserve
+l’espace réel des libellés entre les cartes dans les fenêtres basses :
+6,2 px libres avant chaque carte suivante, schéma complet entre 84 et
+628 px dans une fenêtre de 650 px de haut. Sur
+mobile, les six libellés restent dans la largeur disponible sans recouvrir
+une carte (largeur cliente 375 px, largeur défilante 375 px).
+
+Les trois nouveaux tests de scroll reproduisent l’échec avant correction :
+un cran de souris après une traîne récente, une nouvelle impulsion ou une
+inversion du trackpad et un geste de faible amplitude. Ils passent après
+correction. Les événements reçus pendant le trajet ne sont pas mis en file ;
+la décélération seule n’avance pas un dossier. Le navigateur confirme avec
+les véritables gestes de scroll : dossiers 1 → 2 → 3 → 4, puis 4 → 3, un
+geste par arrêt et étape native correspondante 0 → 1 → 2 → 3 → 2.
+Les autres chapitres gardent
+leur filtre et leur contrôleur existants.
+
+Le point P2 de Codex sur le coffre est corrigé dans l’hôte SEO. Une inspection
+manuelle qui arrête le tour natif autorise une relance après 30 secondes sans
+interaction. Les entrées maintenues, la pause choisie et le temps hors écran
+suspendent ce délai. Trois tests d’horloge et de nettoyage passent. Dans le
+navigateur, un clic sur la face d’un tiroir a armé cette reprise ; une pause
+prolongée a conservé la même étape et le même tour, puis la reprise a remonté
+le modèle natif à l’étape 0 (tour 2 vers tour 3). Les sources natives n’ont pas
+été modifiées.

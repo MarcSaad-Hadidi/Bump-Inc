@@ -3,20 +3,25 @@ import {hydratePoster} from './react-root.js';
 import {LazyFigure} from '../../components/bump-anatomy/shared/LazyFigure';
 import {figureProps,seoFigures} from './figures.js';
 import {figureStories,currentFigureStep} from './figure-stories.js';
-import {mountDemoTransport,createDemoTimeout} from '../ui/demoTransport.js';
+import {mountDemoTransport,createDemoTimeout,demoIsPaused} from '../ui/demoTransport.js';
 import {observeDemoReady} from '../ui/demoReady.js';
+import {mountVaultRecovery} from './vault-recovery.js';
 
 function present(Native:ComponentType,kind:string) {
  return function SeoNativeFigure() {
   const root=useRef<HTMLDivElement>(null),[revision,restart]=useState(0),[reading,setReading]=useState(''),[current,setCurrent]=useState(0);
+  const paused=useRef(false);
   const story=figureStories[kind as keyof typeof figureStories];
   useEffect(()=>{
    const node=root.current;if(!node)return;
    const motion=matchMedia('(prefers-reduced-motion: reduce)');
-   const motionChanged=()=>restart(n=>n+1);motion.addEventListener('change',motionChanged);
+   const replay=()=>{setCurrent(0);restart(n=>n+1);};
+   const motionChanged=replay;motion.addEventListener('change',motionChanged);
    let ready=false;
    const transport=mountDemoTransport(node,'la démonstration');
+   if(paused.current)node.querySelector<HTMLButtonElement>('.bump-demo-toggle')?.click();
    const timer=createDemoTimeout(node,()=>ready);
+   const recovery=kind==='security-engine'&&!motion.matches?mountVaultRecovery(node,{restart:replay,cancelReplay:()=>timer.clear()}):null;
    const readout=node.querySelector('[data-readout]');
    const steps=[...node.querySelectorAll('[data-step]')];
    const sync=()=>{
@@ -25,7 +30,8 @@ function present(Native:ComponentType,kind:string) {
     // The delivered workflow/vault play one native tour. Repeat by remounting
     // that same component after its settled final step, like the landing.
     const last=steps.length>0&&steps.at(-1)?.hasAttribute('data-current');
-    if(['workflow','security-engine'].includes(kind)&&last&&!text.includes('→')&&!motion.matches)timer.schedule(4500,()=>restart(n=>n+1));
+    if(recovery?.pending){timer.clear();return;}
+    if(['workflow','security-engine'].includes(kind)&&last&&!text.includes('→')&&!motion.matches)timer.schedule(4500,replay);
     else timer.clear();
    };
    // Follow only the native reading and stage controls, not the SVG's many
@@ -33,11 +39,11 @@ function present(Native:ComponentType,kind:string) {
    const observer=new MutationObserver(sync);
    if(readout)observer.observe(readout,{subtree:true,childList:true,characterData:true});
    steps.forEach(step=>observer.observe(step,{attributes:true,attributeFilter:['data-current']}));
-   const stopReady=observeDemoReady(node,(value:boolean)=>{ready=value;if(ready)timer.resume();else timer.suspend();},{onReenter:()=>restart(n=>n+1)});
+   const stopReady=observeDemoReady(node,(value:boolean)=>{ready=value;recovery?.setReady(value);if(ready)timer.resume();else timer.suspend();},{onReenter:replay});
    sync();
-   return()=>{stopReady();observer.disconnect();timer.destroy();transport();motion.removeEventListener('change',motionChanged);};
+   return()=>{paused.current=demoIsPaused(node);stopReady();observer.disconnect();recovery?.destroy();timer.destroy();transport();motion.removeEventListener('change',motionChanged);};
   },[revision]);
-  return <div ref={root} className="seo-anatomy-live" data-bump-transport="true" data-bump-fixed-timing="true" data-seo-native={kind} data-seo-step={current}>
+  return <div ref={root} className="seo-anatomy-live" data-bump-transport="true" data-bump-fixed-timing="true" data-seo-native={kind} data-seo-step={current} data-seo-run={revision}>
    <div className="seo-native-drawing"><Native key={revision}/></div>
    <div className="seo-stage-copy" aria-live="off">
     {story.map(([title,detail],index)=><div key={index} className="seo-step-panel" data-active={String(current===index)} aria-hidden={current!==index}>

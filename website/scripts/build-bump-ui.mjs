@@ -6,6 +6,10 @@ import postcss from 'postcss';
 import {resolve} from 'node:path';
 import {stabilizeMobileViewport} from './stabilize-mobile-viewport.mjs';
 import {secureThreeIdentifiers,hardenRetainedIdentifiers} from './secure-render-identifiers.mjs';
+import {preparePortableSceneAssets} from './portable-scene-assets.mjs';
+import {stabilizeStartup} from './stabilize-startup.mjs';
+await build({entryPoints:{BumpStartup:'src/bump/ui/startupReady.js'},bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,external:['/runtime/*'],outdir:'public/runtime/assets'});
+stabilizeStartup();
 await build({entryPoints:['src/bump/ui/secureUuid.js'],bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,outfile:'public/runtime/secure-uuid.js'});
 await build({entryPoints:{BumpViewport:'src/bump/ui/viewport.js',BumpDeviceMotion:'src/bump/ui/deviceMotion.js',BumpSceneCamera:'src/bump/ui/sceneCamera.js'},bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,outdir:'public/runtime/assets'});
 await build({entryPoints:{BumpUI:'src/bump/ui/index.js',BumpAssistedScroll:'src/bump/ui/assistedScroll.js',BumpPlayback:'src/bump/ui/playback.js',BumpContrast:'src/bump/ui/contrast.js',BumpGaze:'src/bump/security/gaze.js',BumpMethodSurfaces:'src/bump/method/MethodSurfaces.js',BumpMethodAppearance:'src/bump/method/appearance.js',BumpNav:'src/bump/ui/BumpNav.js',BumpContent:'src/bump/chapters/Content.js',BumpGlobe:'src/bump/ui/globe/renderer.js'},bundle:true,format:'esm',platform:'browser',target:'es2022',minify:true,external:['/runtime/*'],plugins:[secureThreeIdentifiers()],outdir:'public/runtime/assets',legalComments:'linked'});
@@ -23,7 +27,7 @@ const sharedReact={name:'bump-existing-react',setup(builder){
   `import{j,r}from'${runtime}';export const jsx=j.jsx,jsxs=j.jsxs,jsxDEV=j.jsx,Fragment=r.Fragment;`}));
 }};
 await build({entryPoints:{BumpSoftwareDemos:'src/bump/software/demos/SoftwareDemos.jsx',BumpSecurityDemos:'src/bump/security/SecurityDemos.jsx',BumpWorkflowMachine:'src/bump/machines/SuppliedWorkflow.jsx',BumpWorkshop:'src/bump/machines/SuppliedMethod.jsx',BumpSecurityEngine:'src/bump/machines/SuppliedSecurityEngine.jsx',BumpVisionSculpture:'src/bump/machines/SuppliedVision.jsx',BumpResearchNetwork:'src/bump/vision/ResearchConnections.jsx',BumpPort:'src/bump/machines/SuppliedPort.jsx',BumpCompanyFlow:'src/bump/company/CompanyFlow.jsx',BumpIntegrationCore:'src/bump/machines/SuppliedVosOutils.jsx'},bundle:true,splitting:true,chunkNames:'bump-shared-[hash]',format:'esm',platform:'browser',target:'es2022',minify:true,external:['/runtime/*'],plugins:[sharedReact,methodClock],outdir:'public/runtime/assets',legalComments:'linked'});
-const styles=['motion','location','typography','search','contact','navigation','chapters','workflow','task-cloud','software','responsive','software-demos','security-demos','contrast','assisted-scroll','music'].filter(name=>existsSync(`src/bump/ui/${name}.css`)).map(name=>readFileSync(`src/bump/ui/${name}.css`,'utf8')).join('\n');
+const styles=['startup','motion','location','typography','search','contact','navigation','chapters','workflow','task-cloud','software','responsive','software-demos','security-demos','contrast','assisted-scroll','music','home-details'].filter(name=>existsSync(`src/bump/ui/${name}.css`)).map(name=>readFileSync(`src/bump/ui/${name}.css`,'utf8')).join('\n');
 const machineStyles=['src/bump/anatomy/kit/iso.css','src/bump/machines/workflow/workflow-machine.css','src/bump/machines/method/method-workshop.css','src/bump/machines/security/security-engine.css','src/bump/machines/vision/vision.css','src/bump/machines/integration/integration-core.css','src/bump/machines/machines.css','src/bump/vision/research-connections.css','src/bump/company/company-flow.css'].map(path=>readFileSync(path,'utf8')).join('\n');
 // Keep every supplied file byte-for-byte. Prefix only the compiled CSS selectors
 // so this kit's figure/theme cannot restyle the four existing Anatomy figures.
@@ -35,8 +39,12 @@ const suppliedStyles=['src/components/bump-anatomy/kit/iso.css','src/components/
 writeFileSync('public/runtime/assets/BumpUI.css',':root{--bump-paper:'+BUMP_PAPER_CSS+';--bump-motion-rate:'+BUMP_PLAYBACK_RATE+'}\n'+styles+'\n'+readFileSync('src/bump/software/phone-v21.css','utf8')+'\n'+readFileSync('src/bump/software/cascade.css','utf8')+'\n'+machineStyles+'\n'+suppliedStyles+'\n'+readFileSync('src/bump/ui/cursor.css','utf8'));
 for(const name of readdirSync('src/bump/chapters/runtime'))copyFileSync('src/bump/chapters/runtime/'+name,'public/runtime/assets/'+name);
 writeFileSync('public/runtime/assets/BumpUI.css',readFileSync('public/runtime/assets/BumpUI.css','utf8')+'\n'+readFileSync('src/bump/ui/mobile.css','utf8'));
+writeFileSync('public/runtime/assets/BumpUI.css',readFileSync('public/runtime/assets/BumpUI.css','utf8')+'\n'+readFileSync('src/bump/ui/chapter-intros.css','utf8'));
+writeFileSync('public/runtime/assets/BumpUI.css',readFileSync('public/runtime/assets/BumpUI.css','utf8')+'\n'+readFileSync('src/bump/ui/glass.css','utf8'));
 stabilizeMobileViewport();
 hardenRetainedIdentifiers();
 // Ship source-controlled analytics consent styles with the public site assets.
 copyFileSync('src/bump/ui/clarity-consent.css', 'public/runtime/clarity-consent.css');
+
+preparePortableSceneAssets();
 console.log('Built Bump motion components with the existing React runtime.');

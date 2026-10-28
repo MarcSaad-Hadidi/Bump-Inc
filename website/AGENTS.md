@@ -1,3 +1,156 @@
+# Consolidate the contact-email PR into PR33 — 2026-10-27
+
+The user explicitly authorizes combining PR34's real contact-email capability
+with this PR. This supersedes every earlier UI-only form restriction. Preserve
+the accepted transparent two-column form, bilingual copy, SVG arrows, scenes
+and scroll. Keep the SEO Worker entrypoint and worker-first routing; integrate
+the contact API into that same Worker, preserving /api/md/ discovery. Restrict
+the inbox, validate input and Turnstile on the server, enforce rate limits and
+show success only after provider acceptance. Preview hosts without the actual
+mail binding expose the verified public mailto, never a simulated successful
+send or an invalid-host challenge. No email test is sent to anyone automatically.
+The domain bumpconsultation.ca and contact@bumpconsultation.ca are verified
+facts from PR34 and Cloudflare; use them in visible contact content, Markdown
+and Organization metadata, and remove them from the owner-information gaps.
+Retain all fixes and documentation in PR33, rerun CI and Codex on the combined
+head, and do not merge into main. Once verified, close the superseded PR34.
+
+# Landing stability, short FAQ and illustrative case studies — 2026-10-27
+
+Native startup attribution found that createRoot(document) recreates head CSS
+links, allowing an unstyled first scene frame. Keep the retained root's small
+stylesheet/font readiness gate before its Outlet mounts. The original opening
+must begin on that mount; do not start its clock behind an unready scene.
+Preserve the final title's geometry under the opening wordmark. The temporary
+layout-attribution code is removed; do not ship a logging endpoint or observer.
+
+Fix startup layout instability with reproducible browser evidence. Deliver
+critical geometry before the scene bootstrap and preload existing fonts without
+changing the accepted opening, renderer, models or camera/scroll choreography.
+Add a visible short FAQ and four illustrative case studies to the end of the
+real landing, with the same content in initial HTML, Markdown and JSON-LD.
+Use the existing assisted controller for their reading stops. Provide FR/EN
+case-study pages and direct navigation/search links. These are fictional
+examples until real client projects and publication rights are supplied; never
+claim fabricated clients, completed work or measured gains. Publish on this
+public Site and update PR33, rerun checks/Codex and do not merge. At completion,
+give the owner the official-information checklist needed for factual additions.
+
+# Glass volume/consent and evidence-led SEO — 2026-10-27
+
+Apply the shared clear glass to music controls and the Clarity consent surface,
+preserving explicit consent, production-host gating and all playback behavior.
+Keep the mobile notice above the volume control. Use the requested external
+audits and GEO skills to fix concrete issues, rather than chase incompatible
+rubrics. Initial landing HTML must contain useful equivalent business content
+and links for all visitors before the retained React application mounts; no
+user-agent cloaking, hidden keyword stuffing or second scroll controller.
+Corporate authorship may name Bump, with an about link and real update dates.
+Do not invent named authors, degrees, clients, outcomes, ratings or social links.
+Keep service pages distinct, content/Markdown/schema aligned and proprietary
+agents clearly future vision. Audit scores are tool-specific readiness checks;
+an unmeasured or timed-out AI mention probe is not a measured absence or gain.
+Update the existing public GPT Site and PR33, rerun checks/review, and do not merge.
+
+# Distinct editorial stories and shared finishing fixes — 2026-10-27
+
+Each of the eight editorial topics needs its own composition, explanatory UI,
+animation and story in French and English. Avoid one repeated graph/template.
+Use native HTML/SVG, meaningful business copy and an explicit illustrative label;
+preserve all substantive content, metadata and honest future-agent claims.
+Connect these pages through landing search/expertise navigation and a chapter
+return link. Share the landing music preference, quiet track, icon control and
+tab-local playback position across editorial navigation and browser history.
+Remove retained drop-cap text-indent, padding and translation from the wrapper
+AND paragraph of all six painting introductions, without moving scroll stops.
+Center Company Flow hub text independently of its right-hand logo. Use the
+same transparent blurred glass on the Montreal popover while keeping its map
+sharp and preserving its existing close/replay interactions.
+Verify desktop/mobile, FR/EN, animation stages and reduced motion, then publish
+on the existing GPT Site and update PR33. Do not merge automatically.
+
+# Project button glass — 2026-10-26
+
+The header's Parlons de votre projet button must use the same transparent,
+blurred glass as search and expertise navigation. Keep its pill shape, size,
+responsive label, accessible contrast and existing form-opening interaction.
+
+# Glass menus and project form — 2026-10-26
+
+The expertise dropdown must have the same clear, blurred glass surface as the
+search bar, including its open trigger. Preserve direct page and chapter links.
+Refine the project form with an editorial introduction and comfortable fields,
+transparent panels/controls, scene-white and paper-dark ink, and stacked mobile
+layout. Keep native dialog focus/validation and the UI-only submission behavior.
+
+# Direct expertise access and diagram motion — 2026-10-26
+
+Expertises in the top bar must be a dropdown linking directly to all four
+editorial service pages, on the landing and every SEO page, in FR/EN. Keep the
+landing's chapter navigation too. Animate the accepted explanatory diagrams
+themselves: sources, connections and successive stages, with readable static
+copy, automatic replay, hover hold, offscreen/hidden suspension and reduced motion.
+Do not replace these diagrams with decorative photographs.
+
+# Latest corrections — 2026-10-26
+
+The six painting introductions must have concise business copy, natural wrapping
+without authored br tags, a consistent editorial measure and comfortable line
+height. Keep titles high and introductions inside the lower viewport, in FR/EN.
+The SEO hero must explain the service with a polished actual diagram/UI: the
+user explicitly rejected random generated atelier photos. Preserve readable
+stage labels, meaningful sources/connections and human approval where relevant.
+Investigate the Bump character transition specifically: avoid repeated backdrop
+bounds work and defer one-time material/texture preparation before its first draw.
+Do not claim native WebGL FPS from the cloud browser's fallback renderer.
+Keep all corrections in PR33, and re-run Codex review on the final head until clean.
+
+# Current task — editorial SEO pages and AI-readable content
+
+Search must look like clear Apple-style glass, not an opaque beige rectangle:
+very low-opacity tint, background blur, and contrasting ink on scene/paper.
+Painting titles and introductions must fit below the floating header at each
+existing assisted arrival. Fit imported model display widths around the actual
+control/caption heights, preserving all supplied geometry and native animations.
+The folder story re-arms a new wheel gesture after 80ms of quiet; keep continuous
+momentum and all in-flight input blocked, with one folder per new gesture.
+Short desktop windows get separate software-demo stops and, where necessary,
+reading continuations using the existing scroll engine. Audit all six chapters.
+
+The search panel uses translucent warm glass with backdrop blur so the painting
+remains visible. An expanded white navigation trigger always uses dark ink and
+no text shadow; the global scene-contrast rules must not override that local state.
+
+Use drawn currentColor SVG icons for navigation/action arrows throughout both
+languages. Never use diagonal Unicode arrow glyphs that iOS renders as emoji.
+Keep meaningful textual process separators and supplied Anatomy sources intact.
+
+The published landing failed on WebGL-capable devices because the retained
+texture lookup called new URL(asset.url) on portable root-relative URLs.
+Keep its explicit current-page base, applied by portable-scene-assets.mjs
+before generating English. Test the actual native resolver with portable FR/EN
+assets; poster-only browser screenshots do not exercise this startup path.
+Preserve the legacy /editions/winter2026 retry redirect to the Bump homepage.
+
+The user has approved the SEO/GEO/AEO implementation plan. Add useful bilingual
+service, expertise, approach, about and FAQ pages to the current Bump Site.
+The user now explicitly authorizes a GitHub PR with all fixes and these pages.
+Target fresh main in MarcSaad-Hadidi/Bump-Inc; preserve concurrent changes and
+limit the patch to website/. Do not merge automatically.
+Publish on the existing public GPT Site for visual validation. This authorization
+supersedes the export-only restriction on editing/deploying the original Site.
+Start from the merged Bump-Inc website source (a2e23687e37d66a60ab284814f7c20e8a2686502).
+For GPT Site packaging only, run scripts/prepare-gpt-routing.mjs AFTER the
+normal build, npm test and the HTTP smoke checks. The verified Worker embeds
+the generated public text; remove matching text paths from the client artifact
+so native Sites static-file precedence cannot bypass its headers and routing.
+Node/Cloudflare builds keep the normal client tree.
+Preserve the accepted landing scenes, supplied model sources, scroll and other
+interactions. The page catalog is the source for HTML, markdown and discovery.
+Never invent client outcomes, prices, reviews, certifications, contact details
+or current availability of future proprietary agents. Preserve training crawler
+choices; discoverability files are not a guarantee of indexing or AI citations.
+
 # Public website export
 
 This directory is the standalone public Bump website exported from Sites version
@@ -1117,9 +1270,13 @@ the user types; show matching Bump results below. Remove the header Méthode lin
 Hovering Montréal, Québec should reveal a real map of Montréal; also support
 keyboard focus, touch, dismissal and reduced motion. Keep all changes confined
 to this hero polish and shared UI, then publish for review before another chapter.
-The project dialog is a contact-form UI only, explicitly confirmed by the user.
-It must look like the finished form without brief download/copy controls. Do not
-wire an email/backend or claim that a request was sent. The search rectangle must
+The contact dialog previously remained UI-only under the 2026-10-23 scope.
+Updated user authorization (2026-10-27): connect it to Cloudflare Email Service
+and route messages to the verified destination. Preserve the existing finished
+form layout and do not introduce brief download/copy controls. A success state
+must be shown ONLY after the backend confirms successful dispatch. Validate
+inputs server-side, constrain the recipient, report delivery errors, and add
+spam/abuse protection before fully exposing the production endpoint. The search rectangle must
 exactly match the original trigger's height and fully hide the trigger behind it.
 
 ### Approved hero revision (2026-10-23)
@@ -1141,7 +1298,7 @@ paintings and objects with Bump. Use the authoritative src/bump/content.json.
 The user wants to review a functioning visual prototype, not approve a written
 design. Open the managed localhost preview and publish this separate Bump Site.
 Cyber AI, Developer AI and Workflow AI are future vision, never available products.
-Do not invent clients, results, names, contact addresses or outbound form delivery.
+Do not invent clients, results or names. Only show a contact-form delivery confirmation after Cloudflare accepts a genuine send; never simulate outbound delivery.
 
 Recreate Shopify Editions Winter 2026 as a separate, usable local prototype,
 using REA analysis and original public assets. Preserve the painterly opening,
@@ -1153,3 +1310,18 @@ fallback usable without WebGL and document any remaining differences.
 ## Fidelity corrections requested by user
 
 Reproduce every chapter and all visible interactions from a fresh, complete source capture. The chapter painting must transition to the light content background with the original torn/dissolving edge, not remain behind every feature. Include Sidekick’s interactive floating app cards and skills cards. Verify source and implementation at matching scroll positions, chapter by chapter; do not claim exact equivalence from a hero-only or build-only check.
+# SEO/GEO completion pass — 2026-10-27
+
+Improve measurable readiness toward 100 while preserving the accepted landing,
+all six scenes and existing scroll. Fix actual extraction/content gaps, not
+rubric artifacts. The fresh Magnet baseline is 63/100 (two pages, 11 unmeasured
+checks); 11 neutral N/A checks cap that quick rubric around 73 even if every
+measured check succeeds. Never replace unknowns with invented evidence.
+Use the requested AIOSCAN and Pishe capabilities when available; record missing
+tool access honestly. Preserve real profiles only; public searches have not
+verified Bump LinkedIn/YouTube or named founders. Editorial pages first shipped
+in Site v47, commit 44cdb624f1344aa9df14c287c670cb7c18b5bb31, deployment
+appgdep_6adeb1a52e1c81919c5b7b51ee0c2d0e on 2026-10-26. Use this verified date,
+visible corporate authorship, useful first-party examples and meaningful semantic
+HTML. Keep fictional calculator inputs distinct from client results. Publish on
+the existing public Site, update PR33 and rerun checks/Codex; do not merge.

@@ -1,20 +1,33 @@
-.bump-contact .bump-dialog-inner{padding:44px 46px 36px;background:#f5f1e6;border:1px solid #dbd2bf;border-radius:7px}
-.bump-contact h2{font-size:48px;line-height:1.02;margin-bottom:15px;max-width:570px}
-.bump-contact .bump-eyebrow{font-size:11px;letter-spacing:.13em;color:#8b775a;margin-bottom:15px}
-.bump-contact .bump-brief-intro{max-width:490px;font-size:18px;line-height:1.35;color:#7d705e;margin-bottom:27px}
-.bump-contact form{gap:20px 22px}
-.bump-contact label{display:block;font-size:16px;font-weight:600;margin-bottom:8px;color:#4b4235}
-.bump-contact label>span{color:#9e8a69;font-weight:400}
+.bump-contact .bump-dialog-inner{padding:54px 40px 36px}
+.bump-contact-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr);gap:42px;align-items:start}
+.bump-contact-copy{min-width:0;padding-right:4px}
+.bump-contact h2{font-size:clamp(35px,3.8vw,46px);line-height:1.07;letter-spacing:-.035em;margin:0 0 22px;max-width:300px}
+.bump-contact .bump-eyebrow{font:10px/1.3 system-ui,sans-serif;letter-spacing:.15em;margin:0 0 22px}
+.bump-contact .bump-brief-intro{font-size:19px;line-height:1.45;margin:0;max-width:270px}
+.bump-contact-location{margin:32px 0 0;padding-top:20px;border-top:1px solid;font-size:15px;line-height:1.35}
+.bump-contact-location span{display:block;max-width:220px;font-size:15px;margin-top:8px;opacity:.85}
+.bump-contact form{min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 18px;margin:0}
+.bump-contact .bump-field{min-width:0}
+.bump-contact label{display:block;font-size:15px;font-weight:400;line-height:1.25;margin-bottom:9px}
 .bump-contact .bump-field-wide{grid-column:1/-1}
-.bump-contact input,.bump-contact select,.bump-contact textarea{background:#fdfbf6;border-color:#d0c5b2;border-radius:3px;font-size:17px;line-height:1.35;padding:12px 13px;transition:border-color .2s,box-shadow .2s}
-.bump-contact :is(input,select,textarea):focus{outline:0;border-color:#8a7858;box-shadow:0 0 0 2px #8a785818}
-.bump-contact :is(input,textarea)::placeholder{color:#a09482;opacity:1}
-.bump-contact textarea{min-height:112px;resize:vertical}
-.bump-contact-bottom{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:6px}
-.bump-contact-bottom>p{font-size:13px;color:#9a8d76;margin:0}
-.bump-contact .bump-action{font-size:17px;padding:13px 20px;gap:32px;border-radius:4px;background:#34392e;border-color:#34392e;transition:background .2s,transform .2s}
-.bump-contact .bump-action:hover{background:#4a5141;transform:translateY(-1px)}
-.bump-contact .bump-close{color:#7e705b;right:20px;top:17px}
-.bump-contact .bump-form-status{margin-top:14px;font-size:15px;color:#58634a;letter-spacing:0}
-@media(max-width:600px){.bump-contact .bump-dialog-inner{padding:36px 23px 26px}.bump-contact h2{font-size:38px}.bump-contact form{grid-template-columns:1fr;gap:16px}.bump-contact .bump-brief-intro{font-size:17px}.bump-contact-bottom{align-items:flex-start;flex-direction:column;gap:12px}.bump-contact .bump-action{width:100%;justify-content:space-between}}
-@media(prefers-reduced-motion:reduce){.bump-contact :is(input,select,textarea),.bump-contact .bump-action{transition:none}}
+.bump-contact :is(input,select,textarea){display:block;width:100%;min-height:47px;border:1px solid;border-radius:7px;font:400 17px/1.35 var(--bump-serif);padding:12px 13px;transition:border-color .2s,box-shadow .2s,background-color .2s}
+.bump-contact :is(input,select,textarea):focus{outline:0}
+.bump-contact textarea{min-height:122px;max-height:240px;resize:vertical}
+.bump-contact select{padding-right:8px}
+.bump-contact-bottom{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:15px;padding-top:2px}
+.bump-contact-bottom>p{font-size:12px;line-height:1.3;margin:0}
+.bump-contact .bump-action{display:inline-flex;align-items:center;justify-content:space-between;font-size:16px;line-height:1.2;padding:13px 17px;gap:26px;min-height:46px;border:1px solid #314432;border-radius:7px;background:#314432;color:#fff9ed;transition:background .2s,transform .2s;white-space:nowrap}
+.bump-contact .bump-action:hover{background:#435641;transform:translateY(-1px)}
+.bump-contact .bump-close{display:grid;place-items:center;right:16px;top:14px;width:32px;height:32px;padding:7px;border:1px solid;border-radius:50%;line-height:0;transition:background-color .2s}
+.bump-contact .bump-close svg{width:17px;height:17px}
+.bump-contact .bump-form-status{grid-column:1/-1;margin:0;padding:12px 0 0;font-size:15px;line-height:1.4;animation:bump-contact-status .25s ease-out both}
+.bump-contact-email{display:inline-block;margin-top:18px;font-size:16px;line-height:1.4;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+.bump-contact-turnstile,.bump-contact-note{grid-column:1/-1;min-width:0}
+.bump-contact-note{font-size:14px;line-height:1.4;margin:0}
+.bump-contact-note .bump-contact-email,.bump-form-status .bump-contact-email{margin:0 0 0 .3em;font-size:inherit}
+.bump-contact .bump-action:disabled{opacity:.55;cursor:default;transform:none}
+.bump-contact-trap{position:absolute!important;left:-10000px!important;top:0!important;width:1px!important;height:1px!important;min-height:0!important;padding:0!important;pointer-events:none}
+@keyframes bump-contact-status{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:800px){.bump-contact .bump-dialog-inner{padding:52px 28px 30px}.bump-contact-layout{gap:28px;grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr)}.bump-contact h2{font-size:37px}.bump-contact form{grid-template-columns:1fr;gap:17px}.bump-contact-bottom{align-items:flex-start;flex-direction:column;gap:12px}.bump-contact .bump-action{width:100%}}
+@media(max-width:600px){.bump-contact .bump-dialog-inner{padding:46px 22px 25px}.bump-contact-layout{grid-template-columns:minmax(0,1fr);gap:27px}.bump-contact h2{font-size:37px;max-width:300px;margin-bottom:14px}.bump-contact .bump-eyebrow{margin-bottom:15px}.bump-contact .bump-brief-intro{font-size:18px;max-width:330px}.bump-contact-location{display:none}.bump-contact form{gap:17px}.bump-contact textarea{min-height:105px}.bump-contact-bottom{gap:14px;padding-top:3px}.bump-contact .bump-action{min-height:47px;font-size:17px}}
+@media(prefers-reduced-motion:reduce){.bump-contact :is(input,select,textarea,.bump-action,.bump-close){transition:none}.bump-contact .bump-form-status{animation:none}}

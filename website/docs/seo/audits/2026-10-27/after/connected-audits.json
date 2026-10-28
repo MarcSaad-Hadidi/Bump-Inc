@@ -1,0 +1,338 @@
+{
+  "site": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+  "version": 60,
+  "sourceCommit": "60c95360be681643f8043f4f6f4921dd0e6bc2e3",
+  "prCodeCommit": "c7aa38b2b6a35cd3806f45b1a09ed3425f4cc7bc",
+  "checks": {
+    "readinessHome": {
+      "as_of": "2026-10-27T05:02:03.018Z",
+      "domain": "bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+      "notice": "This shows what the site publishes to a request from Agent Tools servers at this moment, and only for pages that robots.txt allows Agent Tools to request. Tags and data added by JavaScript are not seen. Nothing is stored.",
+      "source": "The website itself, requested from Agent Tools servers",
+      "origin": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+      "reachable": true,
+      "platform": "unknown",
+      "robots": {
+        "status": "found",
+        "httpStatus": 200,
+        "sitemaps": [
+          "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml"
+        ],
+        "aiCrawlers": {
+          "blocked": [],
+          "allowedCount": 14
+        }
+      },
+      "page": {
+        "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+        "status": 200,
+        "blockedByRobots": false
+      },
+      "citationSummary": {
+        "pass": 2,
+        "warn": 2,
+        "fail": 1
+      },
+      "citationChecks": [
+        {
+          "id": "summary_clarity",
+          "status": "pass",
+          "title": "Summary clarity near the top",
+          "evidence": "Found concise introductory summary paragraph (15 words) directly below the title.",
+          "fix": "Maintain a clear lead summary paragraph at the top of the page."
+        },
+        {
+          "id": "author_credentials",
+          "status": "warn",
+          "title": "Author name and credentials",
+          "evidence": "Author \"Bump\" identified, but no credentials, professional title, or biography was detected.",
+          "fix": "Add the author's professional credentials, job title, and a link to a bio establishing subject-matter expertise."
+        },
+        {
+          "id": "qa_format",
+          "status": "fail",
+          "title": "Q&A or FAQ format",
+          "evidence": "No question-and-answer format, FAQ section, or question headings detected on the page.",
+          "fix": "Add a FAQ or Q&A section with clear question headings and direct answers to address user search prompts."
+        },
+        {
+          "id": "heading_structure",
+          "status": "pass",
+          "title": "Clear heading structure",
+          "evidence": "Logical heading hierarchy with 1 H1 heading, 6 H2 subheadings, and no skipped levels.",
+          "fix": "Maintain sequential heading nesting (H1 -> H2 -> H3) as content expands."
+        },
+        {
+          "id": "structured_data",
+          "status": "warn",
+          "title": "Structured data and content",
+          "evidence": "Found Schema.org JSON-LD (WebPage, WebSite, Organization), but no visible tables or bulleted lists in page body.",
+          "fix": "Format key comparisons and data points into visible HTML tables or bulleted lists to help models segment the content."
+        }
+      ],
+      "llmsTxt": {
+        "found": true,
+        "status": 200,
+        "title": "Bump",
+        "links": 22
+      },
+      "ucp": {
+        "found": false,
+        "status": 404
+      },
+      "agentsMd": {
+        "found": false,
+        "status": 404
+      },
+      "sitemap": {
+        "found": true,
+        "status": 200,
+        "fromRobots": true,
+        "kind": "urlset",
+        "entries": 18
+      },
+      "present": [
+        "robots.txt",
+        "llms.txt",
+        "sitemap.xml"
+      ],
+      "missing": [
+        "agents.md"
+      ],
+      "notes": [
+        "The sitemap was read from the address in the Sitemap line of robots.txt.",
+        "Five content qualities associated with AI search citations were evaluated: summary clarity, author credentials, Q&A format, heading structure, and structured data."
+      ]
+    },
+    "readinessAi": {
+      "as_of": "2026-10-27T05:02:03.528Z",
+      "domain": "bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+      "notice": "This shows what the site publishes to a request from Agent Tools servers at this moment, and only for pages that robots.txt allows Agent Tools to request. Tags and data added by JavaScript are not seen. Nothing is stored.",
+      "source": "The website itself, requested from Agent Tools servers",
+      "origin": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+      "reachable": true,
+      "platform": "unknown",
+      "robots": {
+        "status": "found",
+        "httpStatus": 200,
+        "sitemaps": [
+          "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml"
+        ],
+        "aiCrawlers": {
+          "blocked": [],
+          "allowedCount": 14
+        }
+      },
+      "page": {
+        "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/integration-ia",
+        "status": 200,
+        "blockedByRobots": false
+      },
+      "citationSummary": {
+        "pass": 4,
+        "warn": 1,
+        "fail": 0
+      },
+      "citationChecks": [
+        {
+          "id": "summary_clarity",
+          "status": "pass",
+          "title": "Summary clarity near the top",
+          "evidence": "Found concise introductory summary paragraph (32 words) directly below the title.",
+          "fix": "Maintain a clear lead summary paragraph at the top of the page."
+        },
+        {
+          "id": "author_credentials",
+          "status": "warn",
+          "title": "Author name and credentials",
+          "evidence": "Author \"Bump\" identified, but no credentials, professional title, or biography was detected.",
+          "fix": "Add the author's professional credentials, job title, and a link to a bio establishing subject-matter expertise."
+        },
+        {
+          "id": "qa_format",
+          "status": "pass",
+          "title": "Q&A or FAQ format",
+          "evidence": "Found structured Q&A content: FAQPage structured data, 2 question headings, 6 expandable Q&A items.",
+          "fix": "Keep Q&A headings updated with concise, direct answers that address common reader queries."
+        },
+        {
+          "id": "heading_structure",
+          "status": "pass",
+          "title": "Clear heading structure",
+          "evidence": "Logical heading hierarchy with 1 H1 heading, 10 H2 subheadings, and no skipped levels.",
+          "fix": "Maintain sequential heading nesting (H1 -> H2 -> H3) as content expands."
+        },
+        {
+          "id": "structured_data",
+          "status": "pass",
+          "title": "Structured data and content",
+          "evidence": "Found Schema.org JSON-LD (BreadcrumbList, FAQPage, Service) and visible structured elements (2 tables, 1 list).",
+          "fix": "Maintain Schema.org JSON-LD structured data and continue formatting dense facts in tables and lists."
+        }
+      ],
+      "llmsTxt": {
+        "found": true,
+        "status": 200,
+        "title": "Bump",
+        "links": 22
+      },
+      "ucp": {
+        "found": false,
+        "status": 404
+      },
+      "agentsMd": {
+        "found": false,
+        "status": 404
+      },
+      "sitemap": {
+        "found": true,
+        "status": 200,
+        "fromRobots": true,
+        "kind": "urlset",
+        "entries": 18
+      },
+      "present": [
+        "robots.txt",
+        "llms.txt",
+        "sitemap.xml"
+      ],
+      "missing": [
+        "agents.md"
+      ],
+      "notes": [
+        "The sitemap was read from the address in the Sitemap line of robots.txt.",
+        "Five content qualities associated with AI search citations were evaluated: summary clarity, author credentials, Q&A format, heading structure, and structured data."
+      ]
+    },
+    "tags": {
+      "as_of": "2026-10-27T05:02:01.694Z",
+      "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/cybersecurite",
+      "reachable": true,
+      "finalUrl": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/cybersecurite",
+      "status": 200,
+      "notice": "This shows what the site publishes to a request from Agent Tools servers at this moment. Firewalls and CDNs can treat real crawlers or visitors differently, and robots.txt is a request that crawlers follow by choice, not access control.",
+      "source": "The website itself, requested from Agent Tools servers",
+      "redirectCount": 0,
+      "contentType": "text/html",
+      "page": {
+        "icons": [
+          {
+            "rel": "icon",
+            "href": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/favicon.svg"
+          }
+        ],
+        "alternates": [
+          {
+            "hreflang": "fr-CA",
+            "href": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/cybersecurite"
+          },
+          {
+            "hreflang": "en-CA",
+            "href": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/cybersecurity"
+          },
+          {
+            "hreflang": "fr",
+            "href": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/cybersecurite"
+          },
+          {
+            "hreflang": "en",
+            "href": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/cybersecurity"
+          },
+          {
+            "hreflang": "x-default",
+            "href": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/cybersecurite"
+          }
+        ],
+        "title": "Audit de cybersécurité pour PME à Montréal | Bump",
+        "language": "fr-CA",
+        "charset": "utf-8",
+        "viewport": "width=device-width,initial-scale=1,viewport-fit=cover",
+        "themeColor": "#f4f1e8",
+        "description": "Audits autorisés, identification des vulnérabilités, remédiation et sécurisation des systèmes. Bump accompagne les PME de Montréal et du Québec.",
+        "robots": "index,follow,max-image-preview:large",
+        "canonical": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/cybersecurite",
+        "titleLength": 49,
+        "descriptionLength": 144
+      },
+      "openGraph": {
+        "site_name": "Bump",
+        "type": "website",
+        "title": "Audit de cybersécurité pour PME à Montréal | Bump",
+        "description": "Audits autorisés, identification des vulnérabilités, remédiation et sécurisation des systèmes. Bump accompagne les PME de Montréal et du Québec.",
+        "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/cybersecurite",
+        "locale": "fr_CA",
+        "locale:alternate": "en_CA",
+        "image": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/art/hero-fallback-v2.webp",
+        "image:alt": "Bump — les deux consultants de la scène Renaissance",
+        "image:secure_url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/art/hero-fallback-v2.webp",
+        "image:type": "image/webp",
+        "image:width": "1900",
+        "image:height": "900"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Audit de cybersécurité pour PME à Montréal | Bump",
+        "description": "Audits autorisés, identification des vulnérabilités, remédiation et sécurisation des systèmes. Bump accompagne les PME de Montréal et du Québec.",
+        "image": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/art/hero-fallback-v2.webp"
+      },
+      "missing": [],
+      "notes": [
+        "Search results usually cut titles near 60 characters and descriptions near 160. Tags added by JavaScript after the page loads are not seen."
+      ]
+    },
+    "links": {
+      "as_of": "2026-10-27T05:02:03.888Z",
+      "domain": "bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+      "notice": "This shows what the site publishes to a request from Agent Tools servers at this moment, and only for pages that robots.txt allows Agent Tools to request. Tags and data added by JavaScript are not seen. Nothing is stored.",
+      "source": "The website itself, requested from Agent Tools servers",
+      "origin": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+      "reachable": true,
+      "robots": {
+        "status": "found",
+        "httpStatus": 200
+      },
+      "sitemap": {
+        "found": true,
+        "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml",
+        "kind": "urlset",
+        "urlsListed": 18
+      },
+      "summary": {
+        "sampled": 18,
+        "ok": 18,
+        "redirected": 0,
+        "broken": 0,
+        "unreachable": 0,
+        "skippedByRobots": 0,
+        "notChecked": 0
+      },
+      "statuses": {
+        "200": 18
+      },
+      "issues": [],
+      "requestsMade": 20
+    }
+  },
+  "grow": {
+    "growHome": {
+      "content": [
+        {
+          "type": "text",
+          "text": "SEO scan for bump-renaissance-7562d3.plumtuna4.chatgpt.site — score 96/100 (A+: Outstanding)\n11 of 12 on-page checks passed.\n\nIssues found (1):\n\n1. Content depth (content) [WARN] — 583 words. Thin content can struggle to rank — aim for 600+ meaningful words.\n   Why it matters: Pages with little text give Google almost nothing to rank you for, so thin pages rarely show up in searches.\n   Try this: Grow the page toward 600+ words: describe your services, answer common customer questions, and add a short FAQ or about section.\n\nFree scan by GrowMyWebsite — full report and fixes at \thttps://www.growmywebsite.com/"
+        }
+      ],
+      "structuredContent": null,
+      "isError": false
+    },
+    "growAi": {
+      "content": [
+        {
+          "type": "text",
+          "text": "SEO scan for bump-renaissance-7562d3.plumtuna4.chatgpt.site — score 96/100 (A+: Outstanding)\n11 of 12 on-page checks passed.\n\nIssues found (1):\n\n1. Image alt text (alt) [WARN] — No images detected.\n   Why it matters: Alt text is how blind visitors and Google 'see' your images — without it you lose image-search traffic and hurt accessibility.\n   Try this: Give each meaningful image a short description, e.g. alt=\"Chocolate birthday cake with candles\"; purely decorative images can stay empty.\n\nFree scan by GrowMyWebsite — full report and fixes at \thttps://www.growmywebsite.com/"
+        }
+      ],
+      "structuredContent": null,
+      "isError": false
+    }
+  }
+}

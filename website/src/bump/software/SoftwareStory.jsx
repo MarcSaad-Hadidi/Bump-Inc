@@ -1,3 +1,4 @@
+import {ArrowDown} from '../ui/Icons.js';
 import {r as React} from '/runtime/assets/components-BdJai906.js';
 import {mountCaptionTransitions} from '../ui/captionTransitions.js';
 import {BumpSoftwareHand} from './SoftwareHand.jsx';
@@ -46,7 +47,7 @@ export function BumpSoftwareStory(){
       <div className="bump-software-cascade-body"><h4>{item.title}</h4><p>{item.copy}</p></div>
      </article>)}
     </div>
-    <a href="#software-capabilities" className="bump-software-explore">Explorer les possibilités <span aria-hidden="true">↓</span></a>
+    <a href="#software-capabilities" className="bump-software-explore">Explorer les possibilités <ArrowDown /></a>
    </div>
    <div className="bump-software-device" role="img" aria-label={referenceHand.description}>
     <div className="bump-software-reference-hand">{handAvailable?<BumpSoftwareHand onLoadError={handError}/>:<div className="bump-software-fallback"><div className="bump-software-fallback-phone"><span className="bump-brand-mark"/><strong>Votre espace</strong><p>{current.title}</p><div>{step<2?'Proposition à relire':step===2?'Validation de votre équipe':'Vos outils sont à jour'}</div><span>{step===3?'✓ CRM synchronisé':'Demande · Sources · Prochaine étape'}</span></div></div>}</div>

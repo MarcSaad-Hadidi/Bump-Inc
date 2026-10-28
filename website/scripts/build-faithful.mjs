@@ -5,7 +5,10 @@ import {buildEnglishEdition} from './build-bump-english.mjs';
 import {publicOrigin} from './hosting-config.mjs';
 import {buildShareAssets} from './build-share-assets.mjs';
 buildShareAssets();
+
+import {buildSeo} from './build-seo.mjs';
 buildEnglishEdition();
+buildSeo();
 
 const root = process.cwd();
 // Default to this host. An export must never fetch its renderer/media from the

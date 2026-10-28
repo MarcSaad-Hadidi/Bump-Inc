@@ -1,7 +1,26 @@
 import assert from "node:assert/strict";
 import { access } from "node:fs/promises";
 import test from "node:test";
-import worker from "../worker/index.js";
+import worker, {createWorker} from "../worker/index.js";
+
+test('embedded shared modules work without an ASSETS binding in both languages', async () => {
+  for (const prefix of ['/runtime/assets/', '/runtime/en/assets/']) {
+    const pathname = prefix + 'bump-shared-ABC123.js';
+    const source = 'export const ready = true;';
+    const app = createWorker({[pathname]: source, '/private.txt': 'never exposed'});
+    const response = await app.fetch(new Request('https://example.test' + pathname), {});
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('Content-Type'), 'text/javascript; charset=utf-8');
+    assert.equal(response.headers.get('X-Content-Type-Options'), 'nosniff');
+    assert.equal(await response.text(), source);
+    const head = await app.fetch(new Request('https://example.test' + pathname, {method: 'HEAD'}), {});
+    assert.equal(head.status, 200); assert.equal(await head.text(), '');
+    assert.equal((await app.fetch(new Request('https://example.test' + pathname, {method: 'POST'}), {})).status, 405);
+    for (const missing of [prefix + 'bump-shared-MISSING.js', '/private.txt']) {
+      assert.equal((await app.fetch(new Request('https://example.test' + missing), {})).status, 404);
+    }
+  }
+});
 
 test("serves existing static assets without a fallback", async () => {
   const calls = [];
@@ -18,7 +37,7 @@ test("serves existing static assets without a fallback", async () => {
   assert.deepEqual(calls, ["/assets/app.js"]);
 });
 
-test("falls back to index.html for an unknown app route", async () => {
+test("unknown pages return a real 404 instead of an indexable homepage", async () => {
   const calls = [];
   const response = await worker.fetch(
     new Request("https://example.test/flow/step-two?source=share", {
@@ -37,14 +56,15 @@ test("falls back to index.html for an unknown app route", async () => {
     },
   );
 
-  assert.equal(response.status, 200);
-  assert.deepEqual(calls, ["/flow/step-two?source=share", "/index.html"]);
+  assert.equal(response.status, 404);
+  assert.equal(response.headers.get('X-Robots-Tag'), 'noindex, follow');
+  assert.deepEqual(calls, ["/404.html"]);
 });
 
 test("does not turn missing API or write requests into the app shell", async () => {
-  for (const request of [
-    new Request("https://example.test/api/missing", { headers: { accept: "application/json" } }),
-    new Request("https://example.test/flow", { method: "POST", headers: { accept: "text/html" } }),
+  for (const [request,expectedAssetCalls] of [
+    [new Request("https://example.test/api/missing", { headers: { accept: "application/json" } }),0],
+    [new Request("https://example.test/flow", { method: "POST", headers: { accept: "text/html" } }),1],
   ]) {
     let calls = 0;
     const response = await worker.fetch(request, {
@@ -57,7 +77,12 @@ test("does not turn missing API or write requests into the app shell", async () 
     });
 
     assert.equal(response.status, 404);
-    assert.equal(calls, 1);
+    assert.equal(calls, expectedAssetCalls);
+    if(!expectedAssetCalls){
+      assert.match(response.headers.get('Content-Type'),/application\/json/);
+      assert.equal(response.headers.get('Cache-Control'),'no-store');
+      assert.deepEqual(await response.json(),{error:'not_found'});
+    }
   }
 });
 

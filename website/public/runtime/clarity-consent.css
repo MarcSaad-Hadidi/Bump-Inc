@@ -1,6 +1,8 @@
 /* Non-modal Bump analytics choice; independent of the 3D scene and assisted scroll. */
-.bump-clarity-notice,
-.bump-clarity-settings {
+.bump-clarity-notice {
+  --clarity-ink: #302e28;
+  --clarity-muted: #4c5247;
+  --clarity-edge: #4a49344d;
   box-sizing: border-box;
   position: fixed;
   left: max(14px, env(safe-area-inset-left, 0px));
@@ -10,8 +12,7 @@
   line-height: 1.5;
   letter-spacing: normal;
 }
-.bump-clarity-notice[hidden],
-.bump-clarity-settings[hidden] {
+.bump-clarity-notice[hidden] {
   display: none !important;
 }
 .bump-clarity-notice {
@@ -19,11 +20,13 @@
   max-height: calc(100dvh - 28px - env(safe-area-inset-bottom, 0px));
   overflow-y: auto;
   padding: 20px;
-  border: 1px solid #91a092;
+  border: 1px solid var(--clarity-edge);
   border-radius: 10px;
-  background: #182b22;
-  color: #f7f3e9;
-  box-shadow: 0 12px 44px #07150bb3;
+  background: var(--bump-glass-fill, rgba(255,255,255,.09));
+  -webkit-backdrop-filter: var(--bump-glass-filter, blur(12px) saturate(150%));
+  backdrop-filter: var(--bump-glass-filter, blur(12px) saturate(150%));
+  color: var(--clarity-ink);
+  box-shadow: var(--bump-glass-shadow, inset 0 1px 0 #ffffff42, 0 6px 24px #111a1820);
   overscroll-behavior: contain;
   touch-action: pan-y;
 }
@@ -34,15 +37,22 @@
 }
 .bump-clarity-description {
   margin: 0 0 9px;
-  color: #e3e7df;
+  color: var(--clarity-muted);
   font: 400 13px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 .bump-clarity-link {
-  color: #e5d2ac;
+  color: inherit;
   font-size: 12px;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.bump-clarity-error {
+  margin: 10px 0 0;
+  color: var(--clarity-ink);
+  font-size: 12px;
+  line-height: 1.4;
+}
+.bump-clarity-error[hidden] { display: none !important; }
 .bump-clarity-actions {
   display: flex;
   flex-wrap: wrap;
@@ -53,7 +63,7 @@
   flex: 1 1 155px;
   min-height: 42px;
   padding: 9px 12px;
-  border: 1px solid #b3b9ad;
+  border: 1px solid var(--clarity-edge);
   border-radius: 5px;
   font: 600 13px/1.3 system-ui, -apple-system, "Segoe UI", sans-serif;
   cursor: pointer;
@@ -61,30 +71,47 @@
 }
 .bump-clarity-refuse {
   background: transparent;
-  color: #f7f3e9;
+  color: inherit;
 }
 .bump-clarity-allow {
-  background: #f0e9dc;
-  color: #1a3226;
+  background: #ffffff26;
+  color: inherit;
 }
 .bump-clarity-button:hover {
-  filter: brightness(1.08);
+  background: #ffffff40;
 }
-.bump-clarity-settings {
-  padding: 8px 12px;
-  border: 1px solid #a4ada0;
-  border-radius: 999px;
-  background: #182b22f0;
-  color: #f7f3e9;
-  box-shadow: 0 2px 12px #07150b4d;
-  font: 500 11px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+html[data-bump-tone=dark] .bump-clarity-notice{--clarity-ink:#fff9ed;--clarity-muted:#fff9edd9;--clarity-edge:#ffffff61;text-shadow:0 1px 3px #10181590}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.bump-clarity-notice{background:#f4f1e8f5}html[data-bump-tone=dark] .bump-clarity-notice{background:#233126f5}}
+@media(max-width:600px){.bump-clarity-notice{bottom:calc(70px + env(safe-area-inset-bottom,0px));max-height:calc(100dvh - 96px - env(safe-area-inset-bottom,0px))}}
+/* Once selected, preferences live inside the existing navigation dropdown:
+   no badge or floating overlay obscures the landing page. */
+.bump-hero-header .bump-hero-dropdown button.bump-analytics-menu-button {
+  display: flex;
+  width: 100%;
+  min-height: 38px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  padding: 10px 8px;
+  justify-content: flex-start;
+  align-items: center;
+  border: 0;
+  border-top: 1px solid #e4e5df;
+  border-radius: 2px;
+  background: transparent;
+  color: #46594c;
+  text-align: left;
+  white-space: normal;
+  font: 500 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
   cursor: pointer;
-  touch-action: manipulation;
+}
+.bump-hero-header .bump-hero-dropdown button.bump-analytics-menu-button:hover,
+.bump-hero-header .bump-hero-dropdown button.bump-analytics-menu-button:focus-visible {
+  background: #f1f1ed;
 }
 .bump-clarity-button:focus-visible,
-.bump-clarity-settings:focus-visible,
+.bump-analytics-menu-button:focus-visible,
 .bump-clarity-link:focus-visible {
-  outline: 3px solid #e5d2ac;
+  outline: 3px solid currentColor;
   outline-offset: 3px;
 }
 @media (max-width: 420px) {
@@ -93,5 +120,5 @@
   .bump-clarity-button { flex-basis: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .bump-clarity-button, .bump-clarity-settings { transition: none; }
+  .bump-clarity-button, .bump-analytics-menu-button { transition: none; }
 }

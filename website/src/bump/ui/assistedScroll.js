@@ -16,6 +16,7 @@ export function navigateBumpChapter(chapter,options={}){
  return !!navigateChapter?.(chapterStops[index],options);
 }
 export function registerBumpGestureScene(scene){gestureScenes.add(scene);return()=>gestureScenes.delete(scene);}
+const combinedSoftwareDemos=()=>innerWidth>1100&&getBumpViewportHeight()>=1000;
 const activeGestureScene=()=>[...gestureScenes].find(scene=>scene.isActive());
 
 // A tiny negative native paper rest value left a ragged preview of the next
@@ -38,7 +39,10 @@ export function getBumpFallbackFrame(y=scrollY){
 export function getBumpScrollStops(paddingPass=0){
  const vh=getBumpViewportHeight(),header=document.querySelector('.bump-header')?.getBoundingClientRect().bottom||0;
  const clearance=Math.max(84,vh*.105,header+16),stops=[{id:'home',y:0}],anchors=new Map(),add=(id,element,offset=0,guided=true)=>{if(element){anchors.set(id,element);stops.push({id,y:Math.max(0,top(element)+offset),guided});}};
- if(document.documentElement.dataset.bumpStableViewport)document.documentElement.style?.setProperty('--bump-header-space',clearance+'px');
+ document.documentElement.style?.setProperty('--bump-header-space',clearance+'px');
+ for(const [handle,lead] of [['sidekick',document.documentElement.dataset.bumpStableViewport?2:vh*.48],['online',document.documentElement.dataset.bumpStableViewport?2:vh*.4]]){
+  document.getElementById(handle)?.style.setProperty('--bump-painting-lead',lead+'px');
+ }
  const chapter=document.getElementById('sidekick');
  if(chapter)stops.push({id:'hero-approach',y:Math.min(vh*.45,top(chapter)-vh*1.05)});
  const mobilePainting=document.documentElement.dataset.bumpStableViewport?2:null;
@@ -52,7 +56,7 @@ export function getBumpScrollStops(paddingPass=0){
   const start=top(story)+padding-sticky,travel=Math.max(1,story.clientHeight-padding-stage.offsetHeight);
   for(let i=0;i<4;i++)stops.push({id:'software-story-'+(i+1),y:start+(i?travel*(i/4+.015):1)});
  }
- if(innerWidth>1100)add('software-demos',document.getElementById('software-capabilities'));
+ if(combinedSoftwareDemos())add('software-demos',document.getElementById('software-capabilities'));
  else{
   add('software-operations',document.querySelector('.bsd-section--operations'),-clearance);
   add('software-data',document.querySelector('.bsd-section--data'),-clearance);
@@ -97,12 +101,16 @@ export function getBumpScrollStops(paddingPass=0){
  if(companyFlow){add('company-connections',companyFlow,-clearance);lastCompany='company-connections';finalAnchor={anchor:companyFlow,end:top(companyFlow)+companyFlow.getBoundingClientRect().height};}
  const companyEnd=companyFlow?null:serviceStops(document.getElementById('b2b'),'company');
  if(companyEnd){lastCompany=companyEnd.id;finalAnchor=companyEnd;}
+ for(const [id,handle] of [['company-examples','bump-home-examples'],['company-questions','bump-home-questions']]){
+  const element=document.getElementById(handle);
+  if(element){add(id,element,-clearance);lastCompany=id;finalAnchor={anchor:element,end:top(element)+element.getBoundingClientRect().height};}
+ }
  // Landscape and very short phones may need more than one readable screen.
  // Continue inside that same section before exiting; never skip its bottom or
  // reduce the app to illegible text. The four pinned folder stops stay intact.
  const readingEnds=new Map();
- if(document.documentElement.dataset.bumpStableViewport){
-  const panels=new Set(['workflow-execution','workflow-cloud','software-operations','software-data','software-integration','security-system','security-audits','security-vulnerabilites','security-remediation','security-suivi','method-workshop','vision-sculpture','vision-research-network','company-manifesto','company-connections']);
+ {
+  const panels=new Set(['workflow-execution','workflow-cloud','software-operations','software-data','software-integration','security-system','security-audits','security-vulnerabilites','security-remediation','security-suivi','method-workshop','vision-sculpture','vision-research-network','company-manifesto','company-connections','company-examples','company-questions']);
   for(const stop of [...stops]){
    const anchor=anchors.get(stop.id);if(!panels.has(stop.id)||!anchor)continue;
    const element=anchor.querySelector?.('.bump-tools-live,.bump-security-live,.bump-method-live,.bump-vision-live,.bump-port-live,.bump-research')||anchor;
@@ -122,7 +130,7 @@ export function getBumpScrollStops(paddingPass=0){
  const find=id=>stops.find(item=>item.id===id)?.y;
  // Measure all pairs before changing any padding: absolute layout shifts then
  // cancel out, and one fresh pass gets the new positions for buttons and wheel.
- const ends=['workflow-cloud',integration?'software-integration':innerWidth>1100?'software-demos':'software-data','security-suivi','method-workshop',lastVision].map(contentEnd);
+ const ends=['workflow-cloud',integration?'software-integration':combinedSoftwareDemos()?'software-demos':'software-data','security-suivi','method-workshop',lastVision].map(contentEnd);
  const tails=ends.flatMap((id,i)=>{
   const group=document.getElementById(chapterHandles[i+1])?.querySelector?.('.bump-group-last'),next=document.getElementById(chapterHandles[i+2]),last=find(id);
   if(!group||!next||last===undefined)return [];
@@ -133,7 +141,7 @@ export function getBumpScrollStops(paddingPass=0){
  if(tails.length&&paddingPass<2){for(const {group,value}of tails)group.style.setProperty('--bump-chapter-tail',value+'px');return getBumpScrollStops(paddingPass+1);}
 
  blendRanges=chapterHandles.slice(1).map((handle,i)=>{const el=document.getElementById(handle);return el?nativeBlendRange(top(el),el.getBoundingClientRect().height,vh,i>=2?.2:0):{start:Infinity,end:Infinity};});
- const contentEnds=[['workflow-execution','workflow-cloud'],['software-story-1',integration?'software-integration':innerWidth>1100?'software-demos':'software-data'],['security-system','security-suivi'],['method-workshop','method-workshop'],['vision-sculpture',lastVision],['company-manifesto',lastCompany]].map(([first,last])=>[first,contentEnd(last)]);
+ const contentEnds=[['workflow-execution','workflow-cloud'],['software-story-1',integration?'software-integration':combinedSoftwareDemos()?'software-demos':'software-data'],['security-system','security-suivi'],['method-workshop','method-workshop'],['vision-sculpture',lastVision],['company-manifesto',lastCompany]].map(([first,last])=>[first,contentEnd(last)]);
  paperRoutes=contentEnds.flatMap(([first,last],i)=>{
   const painting=find(chapterStops[i+1]),firstY=find(first),lastY=find(last),nextPainting=find(chapterStops[i+2]);
   return painting===undefined||firstY===undefined||lastY===undefined?[]:[{painting,first:firstY,last:lastY,nextPainting:nextPainting??null,exitStart:Math.max(lastY,blendRanges[i+1]?.start??Infinity),exitEnd:Math.min(nextPainting??Infinity,blendRanges[i+1]?.end??Infinity)}];
@@ -222,8 +230,12 @@ export function installBumpAssistedScroll(getLenis,{isReady=()=>true}={}){
   swallow(event);lastWheel=now;
   // All events in the original burst are discarded, including inertial tails
   // arriving after completion. A quiet gap and a real settled stop re-arm it.
-  if((gap<240&&!pendingBurst)||now-settledAt<180){accumulated=0;pendingBurst=false;return;}
-  if(gap>=240)accumulated=0;
+  // Folder changes are short, deliberate steps. The chapter-level 240ms idle
+  // plus 180ms landing guard swallowed whole new mouse/trackpad gestures here.
+  // Keep rejecting continuous momentum, but re-arm a settled folder sooner.
+  const folders=currentId.startsWith('software-story-'),quiet=folders?80:240;
+  if((gap<quiet&&!pendingBurst)||!folders&&now-settledAt<180){accumulated=0;pendingBurst=false;return;}
+  if(gap>=quiet)accumulated=0;
   pendingBurst=true;
   accumulated+=event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?getBumpViewportHeight():1);
   if(Math.abs(accumulated)<6)return;
@@ -231,9 +243,9 @@ export function installBumpAssistedScroll(getLenis,{isReady=()=>true}={}){
  }
  function keydown(event){
   if(event.altKey||event.metaKey||event.ctrlKey||isEditing(event.target)||consumesScroll(event.target,1))return;
+  if(event.key===' '&&event.target instanceof Element&&event.target.closest('button,a,summary,[role="tab"]'))return;
   const direction=['ArrowDown','PageDown',' '].includes(event.key)?1:['ArrowUp','PageUp'].includes(event.key)?-1:0;
   if(direction&&(moving||navigationBusy)){swallow(event);return;}
-  if(event.target instanceof Element&&event.target.closest('button,a,[role="tab"]')&&event.key===' ')return;
   if(!moving&&!navigationBusy&&activeGestureScene()?.key?.(event)){swallow(event);return;}
   if(event.target instanceof Element&&event.target.closest('[data-bump-local-keys]')&&!['PageDown','PageUp'].includes(event.key))return;
   if(!direction)return;const stop=next(event.shiftKey&&event.key===' '?-1:direction);
@@ -317,7 +329,7 @@ export function installBumpAssistedScroll(getLenis,{isReady=()=>true}={}){
   if(url.origin!==location.origin||url.pathname!==location.pathname||url.search!==location.search||!url.hash)return;
   let handle;try{handle=decodeURIComponent(url.hash.slice(1));}catch{return;}
   const index=chapterHandles.indexOf(handle),target=document.getElementById(handle);
-  const aliases={'software-capabilities':innerWidth>1100?'software-demos':'software-operations','bump-operations-demo':innerWidth>1100?'software-demos':'software-operations','bump-data-demo':innerWidth>1100?'software-demos':'software-data',...Object.fromEntries(['vision-workflow-ai','vision-developer-ai','vision-cyber-ai','vision-infrastructure'].map(id=>[id,'vision-research-network']))};
+  const aliases={'software-capabilities':combinedSoftwareDemos()?'software-demos':'software-operations','bump-operations-demo':combinedSoftwareDemos()?'software-demos':'software-operations','bump-data-demo':combinedSoftwareDemos()?'software-demos':'software-data',...Object.fromEntries(['vision-workflow-ai','vision-developer-ai','vision-cyber-ai','vision-infrastructure'].map(id=>[id,'vision-research-network']))};
   const id=index>=0?chapterStops[index]:aliases[handle]||target?.closest('.bsc-row')?.id||handle;
   update();if(!stops.some(stop=>stop.id===id))return;
   event.preventDefault();navigate(id,{});

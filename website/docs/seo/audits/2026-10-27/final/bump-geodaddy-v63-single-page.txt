@@ -1,0 +1,327 @@
+https://geodaddy.dev/playground?url=https%3A%2F%2Fbump-renaissance-7562d3.plumtuna4.chatgpt.site%2F
+- banner:
+  - link "GeoDaddy GeoDaddy":
+    - /url: /
+    - img "GeoDaddy"
+    - generic: GeoDaddy
+  - navigation:
+    - link "Home":
+      - /url: /
+    - link "GEO Optimization":
+      - /url: /geo-optimization
+    - link "Playground":
+      - /url: /playground
+    - link "App Check":
+      - /url: /playground/app
+    - link "llms.txt":
+      - /url: /playground/llms-txt
+    - link "Guides":
+      - /url: /guides
+    - link "Docs":
+      - /url: /docs
+    - link "GitHub":
+      - /url: https://github.com/borabiricik/geodaddy-cli
+      - text: GitHub
+- main:
+  - heading "GeoDaddy" [level=1]
+  - paragraph: Analyze your site's visibility in AI search engines.
+  - textbox "Site URL":
+    - /placeholder: https://example.com
+    - text: https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/
+  - button "Analyze":
+    - text: Analyze
+  - button "Add a site to compare":
+    - text: Add a site to compare
+  - button "Advanced Options" [expanded] [active]:
+    - generic: Advanced Options
+  - generic: Max pages
+  - slider: "1"
+  - generic: "1"
+  - paragraph: Pages to crawl (up to 5 on web, unlimited with CLI)
+  - generic: Enable JavaScript
+  - switch
+  - checkbox
+  - paragraph: Use headless Chromium for JS-heavy pages
+  - generic: Web Vitals
+  - switch [checked]
+  - checkbox [checked]
+  - paragraph: Measure LCP, FCP, CLS, TTFB, TBT via real browser
+  - generic: Fail threshold
+  - spinbutton: "0"
+  - paragraph: Minimum passing score (0 = no threshold)
+  - paragraph:
+    - text: Need more pages or CI/CD integration?
+    - link "Install the CLI":
+      - /url: /docs/cli
+    - text: .
+  - application:
+    - generic: "72"
+  - button "Show History":
+    - text: Show History
+  - button "Share":
+    - text: Share
+  - application:
+    - generic: "86"
+  - generic: GEO
+  - application:
+    - generic: "90"
+  - generic: Technical
+  - application:
+    - generic: "55"
+  - generic: Content
+  - application:
+    - generic: "39"
+  - generic: Agent
+  - application:
+    - generic: "90"
+  - generic: Performance
+  - application:
+    - generic: Technical
+    - generic: Content
+    - generic: GEO
+    - generic: Agent
+    - generic: Performance
+  - heading "Technical" [level=3]
+  - generic: 2 warn
+  - generic: 7 pass
+  - button "Warn Broken link detection requires site-wide crawl mode":
+    - text: Warn
+    - generic: Broken link detection requires site-wide crawl mode
+  - 'button "Warn Meta description is 162 chars (optimal: 120-158)"':
+    - text: Warn
+    - generic: "Meta description is 162 chars (optimal: 120-158)"
+  - text: Pass
+  - generic: No redirect chain issues detected for this URL
+  - text: Pass
+  - generic: Title is 57 chars (optimal range 50-60)
+  - text: Pass
+  - generic: Page has exactly one H1 heading (correct)
+  - text: Pass
+  - generic: Mobile viewport meta tag is correctly configured
+  - text: Pass
+  - generic: robots.txt found and contains Sitemap directive
+  - text: Pass
+  - generic: sitemap.xml is valid and contains 18 URLs
+  - text: Pass
+  - generic: Page is served over HTTPS with no mixed content
+  - heading "Content" [level=3]
+  - generic: 1 fail
+  - generic: 3 pass
+  - button "Fail JSON-LD block is missing required @type property" [expanded]:
+    - text: Fail
+    - generic: JSON-LD block is missing required @type property
+  - paragraph: How to fix
+  - paragraph: "Add an @type property to your JSON-LD (e.g., \"@type\": \"Article\"). @type tells search engines what kind of content this is"
+  - text: Pass
+  - generic: Heading hierarchy is correctly nested with no skipped levels
+  - text: Pass
+  - generic: Page uses 11 semantic HTML element(s) (good content structure)
+  - text: Pass
+  - generic: All 1 image(s) have alt text
+  - heading "GEO" [level=3]
+  - generic: 1 fail
+  - generic: 7 warn
+  - generic: 18 pass
+  - heading "AI Bot Access" [level=4]
+  - generic: "6"
+  - text: Pass
+  - generic: GPTBot is allowed in robots.txt. Your content can appear in ChatGPT search results.
+  - text: Pass
+  - generic: ClaudeBot is allowed in robots.txt. Your content can appear in Claude search results.
+  - text: Pass
+  - generic: PerplexityBot is allowed in robots.txt. Your content can appear in Perplexity search results.
+  - text: Pass
+  - generic: GoogleOther is allowed in robots.txt. Your content can appear in Google AI search results.
+  - text: Pass
+  - generic: Bytespider is allowed in robots.txt. Your content can appear in ByteDance AI search results.
+  - text: Pass
+  - generic: CCBot is allowed in robots.txt. Your content can appear in Common Crawl (used by many AI systems) search results.
+  - heading "Citations & Sources" [level=4]
+  - generic: "4"
+  - button "Warn No source attributions found in content.":
+    - text: Warn
+    - generic: No source attributions found in content.
+  - button "Warn No reference or bibliography section detected.":
+    - text: Warn
+    - generic: No reference or bibliography section detected.
+  - text: Pass
+  - generic: Statistics/numerical data found in content.
+  - text: Pass
+  - generic: Quotation/blockquote content found.
+  - heading "Entity Recognition" [level=4]
+  - generic: "4"
+  - button "Warn No 'about' or 'mentions' properties found in JSON-LD schema.":
+    - text: Warn
+    - generic: No 'about' or 'mentions' properties found in JSON-LD schema.
+  - text: Pass
+  - generic: "Entity schema found: Organization."
+  - text: Pass
+  - generic: 20 proper nouns/named entities detected in content.
+  - text: Pass
+  - generic: "Author attribution found: meta author tag."
+  - heading "Query Optimization" [level=4]
+  - generic: "4"
+  - button "Warn No question-answer heading patterns detected.":
+    - text: Warn
+    - generic: No question-answer heading patterns detected.
+  - button "Warn No FAQ section found.":
+    - text: Warn
+    - generic: No FAQ section found.
+  - text: Pass
+  - generic: Summary/TL;DR section detected.
+  - text: Pass
+  - generic: Featured snippet-formatted content found (concise answer blocks).
+  - heading "Schema Markup" [level=4]
+  - generic: "2"
+  - button "Fail No GEO-relevant schema types found (Article, ItemList, FAQPage)" [expanded]:
+    - text: Fail
+    - generic: No GEO-relevant schema types found (Article, ItemList, FAQPage)
+  - paragraph: How to fix
+  - paragraph: Add JSON-LD schema markup with Article, ItemList, and FAQPage types. Triple schema stacking (all three on one page) is a GEO best practice for AI search visibility
+  - button "Warn No HowTo schema found. Consider adding if this page contains step-by-step instructions.":
+    - text: Warn
+    - generic: No HowTo schema found. Consider adding if this page contains step-by-step instructions.
+  - heading "Freshness" [level=4]
+  - generic: "1"
+  - text: Pass
+  - generic: "Freshness signals found: dateModified in JSON-LD."
+  - heading "General GEO" [level=4]
+  - generic: "5"
+  - button "Warn No FAQPage schema found for FAQ quality analysis.":
+    - text: Warn
+    - generic: No FAQPage schema found for FAQ quality analysis.
+  - text: Pass
+  - generic: "Listicle format detected: ordered list (<ol>), comparison table"
+  - text: Pass
+  - generic: /llms.txt found (6086 bytes) with valid structure.
+  - text: Pass
+  - generic: No AI-blocking meta robot directives found. AI crawlers can process this page.
+  - text: Pass
+  - generic: No AI-blocking X-Robots-Tag headers found.
+  - heading "Agent Readiness" [level=3]
+  - generic: 8 fail
+  - generic: 6 warn
+  - generic: 2 pass
+  - button "Fail No Content-Signal directive found in robots.txt." [expanded]:
+    - text: Fail
+    - generic: No Content-Signal directive found in robots.txt.
+  - paragraph: How to fix
+  - paragraph: "Add Cloudflare Content Signals (e.g. `Content-Signal: search=yes, ai-input=yes, ai-train=no`) to robots.txt to express granular AI usage preferences. See https://blog.cloudflare.com/content-signals/"
+  - button "Fail No MCP Server Card at /.well-known/mcp/server-card(s).json or /.well-known/mcp.json." [expanded]:
+    - text: Fail
+    - generic: No MCP Server Card at /.well-known/mcp/server-card(s).json or /.well-known/mcp.json.
+  - paragraph: How to fix
+  - paragraph: If your site exposes MCP servers, publish a Server Card at /.well-known/mcp/server-cards.json listing them so AI assistants can discover and connect. See https://modelcontextprotocol.io
+  - button "Fail No A2A Agent Card at /.well-known/agent-card.json." [expanded]:
+    - text: Fail
+    - generic: No A2A Agent Card at /.well-known/agent-card.json.
+  - paragraph: How to fix
+  - paragraph: If your site hosts an A2A-compatible agent, publish an Agent Card at /.well-known/agent-card.json describing its capabilities and endpoints.
+  - button "Fail No Agent Skills index at /.well-known/agent-skills/index.json or /.well-known/skills/index.json." [expanded]:
+    - text: Fail
+    - generic: No Agent Skills index at /.well-known/agent-skills/index.json or /.well-known/skills/index.json.
+  - paragraph: How to fix
+  - paragraph: Publish an Agent Skills catalog describing the structured capabilities your site exposes to agents. See https://agentskills.io
+  - button "Fail No WebMCP tools detected in page markup or scripts." [expanded]:
+    - text: Fail
+    - generic: No WebMCP tools detected in page markup or scripts.
+  - paragraph: How to fix
+  - paragraph: "Expose in-page agent tools via WebMCP: register them through navigator.modelContext or a <script type=\"webmcp\"> tag. See https://webmcp.org"
+  - button "Fail No API Catalog at /.well-known/api-catalog." [expanded]:
+    - text: Fail
+    - generic: No API Catalog at /.well-known/api-catalog.
+  - paragraph: How to fix
+  - paragraph: If your site exposes APIs, publish a linkset JSON catalogue at /.well-known/api-catalog so agents can discover endpoints. See the IETF httpapi-api-catalog draft.
+  - button "Fail No OAuth/OIDC discovery at /.well-known/oauth-authorization-server or /.well-known/openid-configuration." [expanded]:
+    - text: Fail
+    - generic: No OAuth/OIDC discovery at /.well-known/oauth-authorization-server or /.well-known/openid-configuration.
+  - paragraph: How to fix
+  - paragraph: If your site fronts an OAuth authorization server, publish RFC 8414 metadata at /.well-known/oauth-authorization-server. Agents use this for authenticated API access.
+  - button "Fail No OAuth Protected Resource Metadata at /.well-known/oauth-protected-resource." [expanded]:
+    - text: Fail
+    - generic: No OAuth Protected Resource Metadata at /.well-known/oauth-protected-resource.
+  - paragraph: How to fix
+  - paragraph: If your site is an OAuth-protected resource, publish RFC 9728 metadata at /.well-known/oauth-protected-resource so agents know how to authenticate.
+  - button "Warn Web Bot Auth directory not found (informational — mostly relevant to bot operators).":
+    - text: Warn
+    - generic: Web Bot Auth directory not found (informational — mostly relevant to bot operators).
+  - button "Warn x402 payment protocol not detected (neutral for non-commerce sites).":
+    - text: Warn
+    - generic: x402 payment protocol not detected (neutral for non-commerce sites).
+  - button "Warn MPP payment discovery not detected (neutral for non-commerce sites).":
+    - text: Warn
+    - generic: MPP payment discovery not detected (neutral for non-commerce sites).
+  - button "Warn UCP profile not found (neutral for non-commerce sites).":
+    - text: Warn
+    - generic: UCP profile not found (neutral for non-commerce sites).
+  - button "Warn ACP discovery document not found (neutral for non-commerce sites).":
+    - text: Warn
+    - generic: ACP discovery document not found (neutral for non-commerce sites).
+  - button "Warn AP2 not detected — requires an A2A Agent Card.":
+    - text: Warn
+    - generic: AP2 not detected — requires an A2A Agent Card.
+  - text: Pass
+  - generic: "Link header present: <https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/llms.txt>; rel=\"describedby\", <https://bump-renaissance-7562d3.plumtuna4.chatgpt.sit…"
+  - text: Pass
+  - generic: "Server returned text/markdown; charset=utf-8 for Accept: text/markdown."
+  - heading "Performance" [level=3]
+  - generic: 1 warn
+  - generic: 4 pass
+  - button "Warn CLS 0.204 — needs improvement (0.1–0.25)":
+    - text: Warn
+    - generic: CLS 0.204 — needs improvement (0.1–0.25)
+  - button "Pass LCP 0.42s — good (≤2.5s)":
+    - text: Pass
+    - generic: LCP 0.42s — good (≤2.5s)
+  - button "Pass FCP 0.42s — good (≤1.8s)":
+    - text: Pass
+    - generic: FCP 0.42s — good (≤1.8s)
+  - button "Pass TTFB 177ms — good (≤800ms)":
+    - text: Pass
+    - generic: TTFB 177ms — good (≤800ms)
+  - button "Pass TBT 1ms — good (≤200ms)":
+    - text: Pass
+    - generic: TBT 1ms — good (≤200ms)
+  - link "Need an llms.txt for your site? Generate a spec-compliant index from any URL.":
+    - /url: /playground/llms-txt
+    - paragraph: Need an llms.txt for your site?
+    - paragraph: Generate a spec-compliant index from any URL.
+- contentinfo:
+  - link "GeoDaddy":
+    - /url: /
+  - paragraph: Free, open-source GEO optimization tool for AI search visibility in ChatGPT, Perplexity, Gemini, and Claude.
+  - heading "Product" [level=3]
+  - list:
+    - link "Playground":
+      - /url: /playground
+    - link "Compare sites":
+      - /url: /playground?mode=compare
+    - link "App AI-visibility check":
+      - /url: /playground/app
+  - heading "Learn" [level=3]
+  - list:
+    - link "GEO Optimization guide":
+      - /url: /geo-optimization
+    - link "What is GEO?":
+      - /url: /docs/what-is-geo
+    - link "GEO vs SEO":
+      - /url: /guides/geo-vs-seo
+    - link "AI search checklist":
+      - /url: /guides/ai-search-visibility-checklist
+    - link "All guides":
+      - /url: /guides
+  - heading "Tools" [level=3]
+  - list:
+    - link "CLI":
+      - /url: /docs/cli
+    - link "MCP Server":
+      - /url: /docs/mcp
+    - link "Checks reference":
+      - /url: /docs/checks
+    - link "Documentation":
+      - /url: /docs
+  - paragraph: © 2026 GeoDaddy. Open source (MIT).
+  - link "GitHub":
+    - /url: https://github.com/borabiricik/geodaddy-cli
+    - text: GitHub
+- alert: Playground — Free GEO Analysis for Any URL — GeoDaddy

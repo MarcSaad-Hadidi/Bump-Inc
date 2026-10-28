@@ -1,0 +1,1150 @@
+{
+  "site": {
+    "root": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+    "stack": {
+      "id": "live",
+      "evidence": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site"
+    },
+    "mode": "full",
+    "servedRoot": null,
+    "sourcePublicDir": null,
+    "baseUrl": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+    "pages": 18,
+    "totalPages": 18,
+    "notes": [
+      "Fetched live from https://bump-renaissance-7562d3.plumtuna4.chatgpt.site with the user agent \"Mozilla/5.0 (compatible; AEOTester-Audit/0.2; +https://github.com/shapito27/aeotester-site-audit)\"."
+    ]
+  },
+  "rubricVersion": "1.2.0",
+  "maxScore": 133,
+  "total": 124,
+  "excludedPages": [],
+  "available": 127,
+  "percentage": 98,
+  "grade": "Ready for AI",
+  "naWeight": 6,
+  "skippedWeight": 0,
+  "categories": [
+    {
+      "id": "ai-access",
+      "name": "AI crawler access",
+      "score": 18,
+      "max": 18,
+      "skipped": 0
+    },
+    {
+      "id": "crawlability",
+      "name": "Crawlability and indexing",
+      "score": 18,
+      "max": 18,
+      "skipped": 0
+    },
+    {
+      "id": "structured-data",
+      "name": "Structured data",
+      "score": 19.1,
+      "max": 20,
+      "skipped": 0
+    },
+    {
+      "id": "meta",
+      "name": "Meta and social tags",
+      "score": 22,
+      "max": 22,
+      "skipped": 0
+    },
+    {
+      "id": "content",
+      "name": "Content structure and quality",
+      "score": 33.8,
+      "max": 36,
+      "skipped": 0
+    },
+    {
+      "id": "agent-readiness",
+      "name": "Agent readiness",
+      "score": 13,
+      "max": 13,
+      "skipped": 6
+    }
+  ],
+  "checks": [
+    {
+      "id": "ai-access.bot-crawlability",
+      "name": "AI Bot Crawlability",
+      "category": "ai-access",
+      "weight": 12,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 12,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "126/126 AI bots can access /",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 1,
+      "excludedPages": 0,
+      "details": {
+        "robotsTxtExists": true,
+        "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/robots.txt",
+        "path": "/",
+        "totalBots": 126,
+        "allowedCount": 126,
+        "blockedCount": 0,
+        "allowedPercentage": 100,
+        "blockedBots": [],
+        "majorBots": [
+          "GPTBot",
+          "OAI-SearchBot",
+          "ChatGPT-User",
+          "ClaudeBot",
+          "Claude-SearchBot",
+          "Claude-User",
+          "PerplexityBot",
+          "Perplexity-User",
+          "Google-Extended",
+          "Applebot-Extended"
+        ],
+        "majorBlocked": [],
+        "delayWarnings": [],
+        "hasExcessiveDelays": false
+      }
+    },
+    {
+      "id": "ai-access.llms-txt",
+      "name": "llms.txt Detection",
+      "category": "ai-access",
+      "weight": 6,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 6,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "llms.txt found (valid format)",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 1,
+      "excludedPages": 0,
+      "details": {
+        "exists": true,
+        "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/llms.txt",
+        "fileSize": 5982,
+        "fileSizeKB": 5.8,
+        "blockedByRobots": false,
+        "robotsUnknown": false,
+        "format": {
+          "hasH1": true,
+          "title": "Bump",
+          "hasSummary": true,
+          "linkCount": 22,
+          "sectionCount": 3,
+          "valid": true,
+          "issues": []
+        },
+        "llmsFullTxt": {
+          "exists": true,
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/llms-full.txt",
+          "fileSizeKB": 117.7
+        },
+        "issues": [],
+        "preview": "# Bump\n\n> Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Elle accompagne les PME en optimisation des processus, intégration IA, développement logiciel ..."
+      }
+    },
+    {
+      "id": "ai-access.content-signals",
+      "name": "Content Signals",
+      "category": "ai-access",
+      "weight": 3,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": true,
+      "status": "advice",
+      "score": 1,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "robots.txt addresses 6 AI bots but declares no Content Signals",
+      "recommendation": "Add a line such as \"Content-Signal: search=yes, ai-input=yes, ai-train=no\" to robots.txt to state how AI may use your content (the yes/no values are your policy choice). See https://contentsignals.org/",
+      "findings": [],
+      "advice": [
+        {
+          "message": "robots.txt controls AI crawler access but declares no Content-Signal",
+          "locations": [
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/robots.txt",
+              "line": 13
+            }
+          ]
+        }
+      ],
+      "failingPages": [],
+      "pages": 1,
+      "excludedPages": 0,
+      "details": {
+        "robotsSignals": {},
+        "robotsLines": [],
+        "headerSignals": {},
+        "headerRaw": null,
+        "headerSource": null,
+        "source": null,
+        "signals": {},
+        "aiBotsAddressed": [
+          "chatgpt-user",
+          "claude-searchbot",
+          "claude-user",
+          "oai-searchbot",
+          "perplexity-user",
+          "perplexitybot"
+        ],
+        "aiBotsAddressedCount": 6,
+        "robotsTxtExists": true,
+        "robotsFile": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/robots.txt"
+      }
+    },
+    {
+      "id": "crawlability.indexability",
+      "name": "Indexability",
+      "category": "crawlability",
+      "weight": 8,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 8,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Indexability: canonical OK, indexable, not a soft 404",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "crawlability.sitemap",
+      "name": "Sitemap Detection",
+      "category": "crawlability",
+      "weight": 5,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 5,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Sitemap found with 18 URLs",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 1,
+      "excludedPages": 0,
+      "details": {
+        "exists": true,
+        "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml",
+        "url": "/sitemap.xml",
+        "foundVia": "probe",
+        "generator": null,
+        "isSitemapIndex": false,
+        "urlCount": 18,
+        "referencedInRobots": true,
+        "robotsTxtExists": true,
+        "issues": []
+      }
+    },
+    {
+      "id": "crawlability.https",
+      "name": "SSL / HTTPS",
+      "category": "crawlability",
+      "weight": 2,
+      "fixable": "assisted",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 2,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Site uses HTTPS",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 1,
+      "excludedPages": 0,
+      "details": {
+        "scheme": "https",
+        "origin": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site",
+        "isHttps": true,
+        "hsts": false,
+        "hstsValue": null,
+        "httpRedirect": {
+          "status": null,
+          "location": null,
+          "error": "UND_ERR_SOCKET",
+          "redirectsToHttps": false
+        },
+        "pagesScanned": 18,
+        "measured": true,
+        "mixedContent": [],
+        "mixedContentCount": 0
+      }
+    },
+    {
+      "id": "crawlability.http-behavior",
+      "name": "HTTP Behavior",
+      "category": "crawlability",
+      "weight": 3,
+      "fixable": "assisted",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 3,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Correct HTTP behavior: real 404s, 200 pages, no noindex header",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 1,
+      "excludedPages": 0,
+      "details": {
+        "measured": true,
+        "probe": {
+          "point": 1,
+          "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/aeotester-404-check-rosxgt9k",
+          "status": 404,
+          "soft404": false,
+          "inconclusive": false,
+          "reason": "unknown URL returns 404",
+          "finalUrl": null
+        },
+        "pages": {
+          "checked": 18,
+          "notOk": [],
+          "unreachable": 0
+        },
+        "xRobotsTag": {
+          "blocked": [],
+          "blockedByHeader": false
+        },
+        "issues": []
+      }
+    },
+    {
+      "id": "structured-data.present",
+      "name": "Structured Data",
+      "category": "structured-data",
+      "weight": 15,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 14.1,
+      "lost": 0.9,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Found: 1 Organization schema (valid), 1 BreadcrumbList schema (valid), 1 WebSite schema (valid)",
+      "recommendation": "Add BreadcrumbList schema (+1 pt)",
+      "findings": [],
+      "advice": [],
+      "failingPages": [
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+          "score": 12,
+          "message": "Found: 1 Organization schema (valid), 1 WebSite schema (valid)"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en",
+          "score": 12,
+          "message": "Found: 1 Organization schema (valid), 1 WebSite schema (valid)"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/expertises",
+          "score": 14,
+          "message": "Found: 1 Organization schema (valid), 1 BreadcrumbList schema (valid), 1 ItemList schema (valid), 1 WebSite schema (valid)"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/expertise",
+          "score": 14,
+          "message": "Found: 1 Organization schema (valid), 1 BreadcrumbList schema (valid), 1 ItemList schema (valid), 1 WebSite schema (valid)"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/approche",
+          "score": 13,
+          "message": "Found: 1 Organization schema (valid), 1 BreadcrumbList schema (valid), 1 WebSite schema (valid)"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/approach",
+          "score": 13,
+          "message": "Found: 1 Organization schema (valid), 1 BreadcrumbList schema (valid), 1 WebSite schema (valid)"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos",
+          "score": 13,
+          "message": "Found: 1 Organization schema (valid), 1 BreadcrumbList schema (valid), 1 WebSite schema (valid)"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/about",
+          "score": 13,
+          "message": "Found: 1 Organization schema (valid), 1 BreadcrumbList schema (valid), 1 WebSite schema (valid)"
+        }
+      ],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "structured-data.valid",
+      "name": "Schema Validation",
+      "category": "structured-data",
+      "weight": 5,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 5,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "3 schemas valid: Organization, WebSite, WebPage",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "meta.title",
+      "name": "Meta Title",
+      "category": "meta",
+      "weight": 5,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 5,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Title OK (53 chars)",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "meta.description",
+      "name": "Meta Description",
+      "category": "meta",
+      "weight": 5,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 5,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Description OK (157 chars)",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "meta.open-graph",
+      "name": "Open Graph",
+      "category": "meta",
+      "weight": 3,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 3,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Open Graph: 7/7 tags present",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "meta.twitter-cards",
+      "name": "Twitter Cards",
+      "category": "meta",
+      "weight": 3,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 3,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Twitter Cards: 4/6 tags present (summary_large_image)",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "meta.language",
+      "name": "Language Tags",
+      "category": "meta",
+      "weight": 3,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 3,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Language: fr (5 hreflang link(s))",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "meta.viewport",
+      "name": "Mobile Friendly",
+      "category": "meta",
+      "weight": 3,
+      "fixable": "auto",
+      "parity": "full",
+      "advisory": false,
+      "status": "pass",
+      "score": 3,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Mobile-friendly viewport configured",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "content.headings",
+      "name": "Semantic Headings",
+      "category": "content",
+      "weight": 8,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 8,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "8 heading(s), well structured",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "content.quality",
+      "name": "Content Quality",
+      "category": "content",
+      "weight": 5,
+      "fixable": "assisted",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 5,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Good content quality: 460 words (homepage page)",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "content.freshness",
+      "name": "Content Freshness",
+      "category": "content",
+      "weight": 5,
+      "fixable": "assisted",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 4.8,
+      "lost": 0.2,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Found modified date only",
+      "recommendation": "Add the missing publish date as a meta tag (article:published_time) or in JSON-LD (datePublished).",
+      "findings": [
+        {
+          "message": "Missing publish date (article:published_time or JSON-LD datePublished)",
+          "locations": [
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+              "line": 22
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en",
+              "line": 22
+            }
+          ]
+        }
+      ],
+      "advice": [],
+      "failingPages": [
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+          "score": 3,
+          "message": "Found modified date only"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en",
+          "score": 3,
+          "message": "Found modified date only"
+        }
+      ],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "content.author",
+      "name": "Author Signals",
+      "category": "content",
+      "weight": 5,
+      "fixable": "assisted",
+      "parity": "partial",
+      "advisory": false,
+      "status": "warning",
+      "score": 3,
+      "lost": 2,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials",
+      "recommendation": "Add credentials (certifications, degrees, years of experience) to establish expertise. Link to /about and /contact pages for trustworthiness",
+      "findings": [
+        {
+          "message": "No expertise signals (credentials, job title, years of experience) near the author or in the page text",
+          "locations": [
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+              "line": 42
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en",
+              "line": 42
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/expertises",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/expertise",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/automatisation-processus",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/workflow-automation",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/integration-ia",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/ai-integration",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/developpement-logiciel",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/custom-software-development",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/cybersecurite",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/cybersecurity",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/approche",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/approach",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/about",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/faq",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/faq",
+              "line": 23
+            }
+          ]
+        },
+        {
+          "message": "Fewer than 3 trust signals; missing: /about, /contact, /privacy, /terms, <address>",
+          "locations": [
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/expertises",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/automatisation-processus",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/integration-ia",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/developpement-logiciel",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/cybersecurite",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/approche",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/faq",
+              "line": 23
+            }
+          ]
+        },
+        {
+          "message": "Fewer than 3 trust signals; missing: /contact, /privacy, /terms, <address>",
+          "locations": [
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/expertise",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/workflow-automation",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/ai-integration",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/custom-software-development",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/cybersecurity",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/approach",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/about",
+              "line": 23
+            },
+            {
+              "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/faq",
+              "line": 23
+            }
+          ]
+        }
+      ],
+      "advice": [],
+      "failingPages": [
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+          "score": 3,
+          "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en",
+          "score": 3,
+          "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/expertises",
+          "score": 3,
+          "message": "Author: \"Bump\" + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/expertise",
+          "score": 3,
+          "message": "Author: \"Bump\" + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/automatisation-processus",
+          "score": 3,
+          "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/workflow-automation",
+          "score": 3,
+          "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/integration-ia",
+          "score": 3,
+          "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/ai-integration",
+          "score": 3,
+          "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/developpement-logiciel",
+          "score": 3,
+          "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/custom-software-development",
+          "score": 3,
+          "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/services/cybersecurite",
+          "score": 3,
+          "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/services/cybersecurity",
+          "score": 3,
+          "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/approche",
+          "score": 3,
+          "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/approach",
+          "score": 3,
+          "message": "Author: \"Bump\" (schema) + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/a-propos",
+          "score": 3,
+          "message": "Author: \"Bump\" + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/about",
+          "score": 3,
+          "message": "Author: \"Bump\" + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/faq",
+          "score": 3,
+          "message": "Author: \"Bump\" + author bio. Missing: expertise credentials"
+        },
+        {
+          "file": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/en/faq",
+          "score": 3,
+          "message": "Author: \"Bump\" + author bio. Missing: expertise credentials"
+        }
+      ],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "content.image-alt",
+      "name": "Image Alt Text",
+      "category": "content",
+      "weight": 5,
+      "fixable": "assisted",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 5,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "1/1 images have alt text",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "content.internal-links",
+      "name": "Internal Linking",
+      "category": "content",
+      "weight": 4,
+      "fixable": "assisted",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 4,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "11 internal links, 100% descriptive",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "content.accessibility",
+      "name": "Accessibility",
+      "category": "content",
+      "weight": 4,
+      "fixable": "auto",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 4,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Good accessibility: 11 semantic elements, 3 ARIA attributes",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "agent-readiness.server-rendered",
+      "name": "Server-Rendered Content",
+      "category": "agent-readiness",
+      "weight": 6,
+      "fixable": "assisted",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 6,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Server-rendered: 724 words in the HTML",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "agent-readiness.markdown",
+      "name": "Markdown for Agents",
+      "category": "agent-readiness",
+      "weight": 3,
+      "fixable": "assisted",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 3,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "Serves Markdown via content negotiation (Accept: text/markdown)",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "agent-readiness.controls",
+      "name": "Agent-Usable Controls",
+      "category": "agent-readiness",
+      "weight": 4,
+      "fixable": "assisted",
+      "parity": "partial",
+      "advisory": false,
+      "status": "pass",
+      "score": 4,
+      "lost": 0,
+      "inconclusive": false,
+      "predicted": false,
+      "message": "All interactive controls are usable by agents",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "failingPages": [],
+      "pages": 18,
+      "excludedPages": 0
+    },
+    {
+      "id": "agent-readiness.protocols",
+      "name": "Agent Protocol Discovery",
+      "category": "agent-readiness",
+      "weight": 6,
+      "fixable": "assisted",
+      "parity": "partial",
+      "advisory": false,
+      "status": "na",
+      "score": 0,
+      "message": "Not applicable: no API or agent surface detected",
+      "recommendation": "",
+      "findings": [],
+      "advice": [],
+      "pages": 1,
+      "details": {
+        "probed": [
+          {
+            "path": "/.well-known/mcp/server-card.json",
+            "file": null,
+            "found": false,
+            "predicted": false,
+            "invalid": false
+          },
+          {
+            "path": "/.well-known/mcp.json",
+            "file": null,
+            "found": false,
+            "predicted": false,
+            "invalid": false
+          },
+          {
+            "path": "/.well-known/agent-card.json",
+            "file": null,
+            "found": false,
+            "predicted": false,
+            "invalid": false
+          },
+          {
+            "path": "/.well-known/agent.json",
+            "file": null,
+            "found": false,
+            "predicted": false,
+            "invalid": false
+          },
+          {
+            "path": "/.well-known/agent-skills/index.json",
+            "file": null,
+            "found": false,
+            "predicted": false,
+            "invalid": false
+          },
+          {
+            "path": "/.well-known/api-catalog",
+            "file": null,
+            "found": false,
+            "predicted": false,
+            "invalid": false
+          },
+          {
+            "path": "/.well-known/openapi.json",
+            "file": null,
+            "found": false,
+            "predicted": false,
+            "invalid": false
+          },
+          {
+            "path": "/openapi.json",
+            "file": null,
+            "found": false,
+            "predicted": false,
+            "invalid": false
+          },
+          {
+            "path": "/.well-known/oauth-authorization-server",
+            "file": null,
+            "found": false,
+            "predicted": false,
+            "invalid": false
+          },
+          {
+            "path": "/.well-known/oauth-protected-resource",
+            "file": null,
+            "found": false,
+            "predicted": false,
+            "invalid": false
+          },
+          {
+            "path": "/.well-known/ai",
+            "file": null,
+            "found": false,
+            "predicted": false,
+            "invalid": false
+          }
+        ],
+        "found": [],
+        "foundFiles": [],
+        "predicted": [],
+        "foundLabels": [],
+        "categories": [],
+        "webmcpElements": 0,
+        "applicable": false,
+        "apiEvidence": []
+      }
+    }
+  ]
+}

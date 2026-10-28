@@ -1,4 +1,4 @@
-export const viewportBreakpoints=[400,500,600,730,740,750,760,800,810,820,840];
+export const viewportBreakpoints=[400,500,600,730,740,750,760,800,810,820,840,999];
 const breakpoints=viewportBreakpoints;
 
 export function resolveViewport(previous,next){

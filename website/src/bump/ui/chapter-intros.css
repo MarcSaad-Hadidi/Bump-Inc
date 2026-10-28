@@ -1,0 +1,23 @@
+/* The same editorial measure for all six paintings, including nested rich
+   text. Natural wrapping follows the viewport rather than authored <br>s. */
+:is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme]>[data-nav-style=solid]{width:100%;max-width:680px;min-width:0;flex:0 0 auto;align-self:flex-start;margin:0!important;padding:0!important}
+:is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1{max-width:40ch;font-family:var(--bump-serif);font-size:clamp(24px,min(2.2vw,4.4svh),34px);font-weight:500;line-height:1.28;letter-spacing:0;text-align:left;text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:none}
+:is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1 p{margin:0;padding:0;font:inherit;letter-spacing:inherit;text-align:inherit;color:inherit;max-width:100%}
+:is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1 p::first-letter{font:inherit!important;line-height:inherit!important;letter-spacing:inherit!important;float:none!important;margin:0!important;padding:0!important;color:inherit}
+/* The retained drop-cap class also indents/translates its whole wrapper.
+   Reset that wrapper, not only the paragraph's decorative first letter. */
+:is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1{padding:0!important;text-indent:0!important;transform:none!important}
+:is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1 p{text-indent:0!important;transform:none!important}
+:is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1::first-letter{font:inherit!important;line-height:inherit!important;letter-spacing:inherit!important;float:none!important;margin:0!important;padding:0!important;color:inherit}
+@media(min-width:940px){
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme]{box-sizing:border-box;display:flex!important;flex-direction:column;justify-content:space-between;height:140svh;min-height:140svh;padding-top:calc(var(--bump-painting-lead,0px) + var(--bump-header-space,90px) + 18px);padding-bottom:max(28px,calc(40svh - var(--bump-painting-lead,0px) + 28px))}
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme]>h2{font-size:clamp(52px,min(8vw,13svh),132px)!important;line-height:1.08!important;margin:0!important;padding:0!important;flex:0 0 auto;justify-content:flex-start}
+ /* Workflow's arrival is 48vh into the native 140vh interval. Offset only
+    the caption, preserving all authored section/camera geometry. */
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme]>[data-nav-style=solid]{position:relative;top:max(0px,calc(var(--bump-painting-lead,0px) - 40svh))}
+}
+@media(max-width:939px){
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1{font-size:clamp(22px,min(6vw,4.4svh),29px);line-height:1.25;max-width:32ch}
+}
+
+:is(#sidekick,#online,#operations,#retail,#developer,#b2b) .narrative-1[data-bump-surface=scene]{text-shadow:0 1px 4px #17201999!important}

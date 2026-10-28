@@ -29,3 +29,12 @@
 @media(min-width:701px) and (max-height:800px){.bump-research{padding-top:0;padding-bottom:16px}.bump-research-heading h3{font-size:45px}.bump-research-heading>p:last-child{margin-top:12px}.bump-research-eyebrow{margin-bottom:12px}.bump-research-diagram{margin:20px auto 26px;max-width:720px}.bump-research .ui-ib__group{gap:34px}.bump-research-explanation{min-height:88px}}
 @media(max-width:700px){.bump-research{padding:16px 0 28px;min-height:calc(100svh - 100px)}.bump-research-heading h3{font-size:clamp(31px,7.6vw,46px)}.bump-research-heading>p:last-child{font-size:16px}.bump-research-diagram{max-width:590px;margin:26px auto}.bump-research-axis{margin-inline:0;font-size:8px;letter-spacing:.07em}.bump-research .ui-ib__tool-label{font-size:12px}.bump-research-explanation{min-height:116px}.bump-research-explanation h4{font-size:23px}.bump-research-explanation p{font-size:16px}.bump-research footer{gap:9px;font-size:11px}}
 @container (max-width:459px){.bump-research .ui-ib__scene{row-gap:70px;padding-bottom:26px}.bump-research .ui-ib__group{gap:clamp(26px,10cqw,48px)}.bump-research .ui-ib__tool{width:56px;height:56px}.bump-research .ui-ib__center{width:74px;height:74px;border-radius:20px}}
+@media(min-width:940px) and (max-height:820px){
+ .bump-research{padding-block:0 16px}
+ .bump-research-heading h3{font-size:38px;line-height:1.08}
+ .bump-research-diagram{margin:14px auto 18px}
+ .bump-research-axis{margin-bottom:18px}
+ .bump-research .ui-ib__group{gap:18px}
+ .bump-research .ui-ib__tool{width:52px;height:52px;border-radius:13px}
+ .bump-research .ui-ib__scene{padding-block:4px 20px}
+}

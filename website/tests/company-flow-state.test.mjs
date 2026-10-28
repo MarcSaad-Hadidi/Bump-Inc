@@ -28,7 +28,7 @@ test('Company Flow resumes its service, phase, remaining delay and inspection af
  const status=()=>[String(tree.props['data-flow-index']),tree.props['data-flow-phase'],tree.props['data-flow-paused']];
  try{
   set('document',document);set('window',window);set('innerHeight',900);set('IntersectionObserver',class{constructor(fn){observers.push(fn);}observe(){}disconnect(){}});set('MutationObserver',class{observe(){}disconnect(){}});
-  component=runInNewContext(compiled.code+';CompanyFlow',{React,...React,observeDemoReady,observeDemoPaused,matchMedia:()=>media,performance:{now:()=>now},setTimeout(callback,delay){timers.set(++id,{at:now+delay,callback});return id;},clearTimeout(key){timers.delete(key);},document,window});
+  component=runInNewContext(compiled.code+';CompanyFlow',{React,...React,ArrowUpRight:()=>null,observeDemoReady,observeDemoPaused,matchMedia:()=>media,performance:{now:()=>now},setTimeout(callback,delay){timers.set(++id,{at:now+delay,callback});return id;},clearTimeout(key){timers.delete(key);},document,window});
   render();advance(2400);assert.deepEqual(status(),['1','charge','false']);
   window.dispatchEvent(new Event('blur'));tab(true);advance(10000);tab(false);assert.deepEqual(status(),['1','charge','false']);
   advance(199);assert.equal(status()[1],'charge');advance(1);assert.equal(status()[1],'beam');

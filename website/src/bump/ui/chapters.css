@@ -229,3 +229,15 @@ html[data-bump-webgl=true] main section>div:first-child>.bg-light{background:tra
 #b2b>div:first-child>div:first-child[data-nav-theme=dark]>[data-nav-style=solid]{margin:0!important;padding:0;width:100%;max-width:570px;align-self:end}
 #b2b>div:first-child>div:first-child[data-nav-theme=dark] .narrative-1{font-size:clamp(28px,2vw,38px);line-height:1.12;letter-spacing:-.035em}
 @media(max-width:700px){#b2b>div:first-child>div:first-child[data-nav-theme=dark]{height:100svh;min-height:100svh;padding-bottom:11svh}#b2b>div:first-child>div:first-child[data-nav-theme=dark]>h2{padding-top:11svh;font-size:clamp(64px,18vw,92px)!important}#b2b>div:first-child>div:first-child[data-nav-theme=dark] .narrative-1{font-size:26px;line-height:1.12}}
+/* Preserve native chapter lengths, while placing editorial ink inside each
+   painting's actual arrival window, below the floating navigation. */
+@media(min-width:940px){
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme]{box-sizing:border-box;display:flex!important;flex-direction:column;justify-content:space-between;height:140svh;min-height:140svh;padding-top:calc(var(--bump-painting-lead,0px) + var(--bump-header-space,90px) + 18px);padding-bottom:max(28px,calc(40svh - var(--bump-painting-lead,0px) + 28px))}
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme]>h2{flex:0 0 auto;justify-content:flex-start;font-size:clamp(52px,min(8vw,13svh),132px)!important;line-height:1.08!important;margin:0!important;padding:0!important;max-width:100%;overflow-wrap:normal}
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme]>[data-nav-style=solid]{width:100%;max-width:620px;margin:0!important;padding:0!important;align-self:start}
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1{font-size:clamp(24px,min(2.5vw,4.7svh),38px);line-height:1.18;letter-spacing:-.02em}
+ :is(#sidekick,#online,#operations,#retail,#developer,#b2b)>div:first-child>div:first-child[data-nav-theme] .narrative-1::first-letter{font:inherit!important;line-height:inherit!important;letter-spacing:inherit!important}
+}
+@media(min-width:940px){
+ .bump-machine-slot[data-bump-model-fit=true] .iso-stage{width:var(--bump-model-stage-width)!important;max-width:100%!important;margin-inline:auto}
+}

@@ -1,0 +1,12 @@
+.bump-background-music{position:fixed;right:22px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:340;display:grid;place-items:center;width:38px;height:38px;padding:0;border:1px solid #4a49344d;border-radius:50%;background:var(--bump-glass-fill,rgba(255,255,255,.09));-webkit-backdrop-filter:var(--bump-glass-filter,blur(12px) saturate(150%));backdrop-filter:var(--bump-glass-filter,blur(12px) saturate(150%));color:#302e28;box-shadow:var(--bump-glass-shadow,inset 0 1px 0 #ffffff42,0 6px 24px #111a1820);transition:background .2s,border-color .2s,transform .2s;touch-action:manipulation}
+.bump-background-music:hover{background:#ffffff26;transform:translateY(-1px)}
+.bump-background-music:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+html[data-bump-tone=dark] .bump-background-music{color:#fff9ed;border-color:#ffffff61;filter:drop-shadow(0 1px 2px #10181570)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.bump-background-music{background:#f4f1e8f5}html[data-bump-tone=dark] .bump-background-music{background:#233126f5}}
+.bump-background-music[data-state=loading]{opacity:.65}
+@media(max-width:700px){.bump-background-music{right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:40px;height:40px}}
+@media(prefers-reduced-motion:reduce){.bump-background-music{transition:none}}
+.bump-background-music[hidden]{display:none!important}
+.bump-background-music svg{display:block;width:18px;height:18px}
+.bump-music-status{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.seo-page .seo-colophon{padding-bottom:76px}

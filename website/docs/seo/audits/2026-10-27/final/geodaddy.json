@@ -1,0 +1,55 @@
+{
+  "source": "Manual transcription of rendered GeoDaddy report; complete DOM snapshots are adjacent. Not a provider JSON API response.",
+  "date": "2026-10-27",
+  "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+  "report_link": "https://geodaddy.dev/playground?url=https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/&max_pages=5",
+  "version": 64,
+  "pages": 5,
+  "options": {
+    "max_pages": 5,
+    "enable_javascript": false,
+    "web_vitals": true
+  },
+  "overall": 73,
+  "categories": {
+    "geo": 88,
+    "technical": 91,
+    "content": 55,
+    "agent": 39,
+    "performance": 93
+  },
+  "selected_home_page_metrics": {
+    "lcp_seconds": 0.62,
+    "fcp_seconds": 0.62,
+    "ttfb_ms": 169,
+    "tbt_ms": 6,
+    "cls": 1.0
+  },
+  "earlier_v63": {
+    "single_page": {
+      "overall": 72,
+      "geo": 86,
+      "technical": 90,
+      "content": 55,
+      "agent": 39,
+      "performance": 90,
+      "home_cls": 0.204
+    },
+    "five_pages": {
+      "overall": 74,
+      "geo": 88,
+      "technical": 90,
+      "content": 55,
+      "agent": 39,
+      "performance": 97,
+      "home_cls": 1.0
+    }
+  },
+  "limits": [
+    "Overall includes agent, authentication and commerce features this marketing site does not provide. No dummy endpoints were added.",
+    "The JSON-LD analyzer requires @type at the JSON root and rejects valid @context + @graph documents. See src/analyzers/content.rs in the official GeoDaddy CLI source.",
+    "Description and title lengths are counted as UTF-8 bytes in the observed report: 53 title characters appear as 57; the new French description has 125 characters and 130 bytes.",
+    "Broken-link warning remains on selected home even in five-page mode. Independent live sitemap link sampling found 18/18 HTTP 200 on v62.",
+    "The external CLS warning remains unresolved by this measurement. Local cloud-fallback instrumentation recorded approximately 0.000187, so these environments must not be represented as equivalent."
+  ]
+}

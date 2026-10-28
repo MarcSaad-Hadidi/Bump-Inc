@@ -1,0 +1,143 @@
+{
+  "publication": 71,
+  "aioscan": {
+    "url": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+    "score": 90,
+    "grade": "B",
+    "checks_passed": 20,
+    "checks_run": 21,
+    "top_fixes": [
+      {
+        "check": "Question-formatted headings",
+        "fix": "Phrase your headings as questions",
+        "points": 10,
+        "guide": "https://aioscan.com/fix/question-headings/?utm_source=chatgpt_app&utm_medium=app&utm_campaign=aioscan_app"
+      }
+    ],
+    "more_fixes_in_report": 0,
+    "full_report": "https://aioscan.com/scan/bump-renaissance-7562d3.plumtuna4.chatgpt.site?utm_source=chatgpt_app&utm_medium=app&utm_campaign=aioscan_app",
+    "note": "Scores measure whether AI can access and read the site, not whether AI recommends the business. Scan by AIOScan (aioscan.com)."
+  },
+  "pishe": {
+    "checkedUrl": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+    "finalUrl": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+    "status": 200,
+    "https": true,
+    "httpRedirectsToHttps": true,
+    "ttfbMs": 1508,
+    "htmlKb": 54,
+    "page": {
+      "title": "Bump — Consultation technologique pour PME à Montréal",
+      "description": "Bump, consultation technologique à Montréal pour PME : automatisation, intégration IA, logiciels sur mesure et cybersécurité.",
+      "robotsMeta": "index,follow,max-image-preview:large",
+      "viewport": "width=device-width,initial-scale=1,viewport-fit=cover",
+      "ogTitle": "Bump — Consultation technologique pour PME à Montréal",
+      "ogImage": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/bump/art/hero-fallback-v2.webp",
+      "lang": "fr",
+      "canonical": "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/",
+      "h1s": [
+        "Un nouvel élan technologique."
+      ],
+      "images": 1,
+      "imagesWithoutAlt": 0,
+      "structuredData": [
+        "Organization",
+        "ImageObject",
+        "City",
+        "AdministrativeArea",
+        "WebSite",
+        "WebPage",
+        "FAQPage",
+        "Question",
+        "Answer"
+      ],
+      "telLinks": 0,
+      "mailtoLinks": 0,
+      "forms": 0,
+      "words": 943,
+      "business": {
+        "address": false,
+        "telephone": false,
+        "openingHours": false,
+        "sameAs": false,
+        "geo": false
+      },
+      "subheadings": 13,
+      "faq": true,
+      "phoneInText": false,
+      "dateModified": "2026-10-27"
+    },
+    "robots": {
+      "found": true,
+      "blockedAiBots": [],
+      "blocksEveryone": false,
+      "sitemaps": [
+        "https://bump-renaissance-7562d3.plumtuna4.chatgpt.site/sitemap.xml"
+      ]
+    },
+    "sitemap": {
+      "found": true
+    },
+    "llmsTxt": {
+      "found": true
+    },
+    "aiAccess": {
+      "bots": {
+        "GPTBot": "ok",
+        "OAI-SearchBot": "ok",
+        "ClaudeBot": "ok",
+        "PerplexityBot": "ok"
+      },
+      "cdn": true
+    },
+    "score": 87,
+    "googleScore": 83,
+    "aiVisibilityScore": 90,
+    "findings": [
+      {
+        "group": "google",
+        "severity": "medium",
+        "area": "скорост",
+        "issue": "Сървърът отговаря бавно: 1.5 сек. до първи байт.",
+        "impact": "Бавните сайтове губят посетители от телефон и се класират по-ниско."
+      },
+      {
+        "group": "google",
+        "severity": "medium",
+        "area": "клиенти",
+        "issue": "Телефонът не може да се натисне от мобилен.",
+        "impact": "Всяка допълнителна стъпка губи обаждания."
+      },
+      {
+        "group": "google",
+        "severity": "low",
+        "area": "клиенти",
+        "issue": "Няма форма за запитване или имейл линк.",
+        "impact": "Който не иска да звъни, няма как да ви пише."
+      },
+      {
+        "group": "ai",
+        "severity": "medium",
+        "area": "AI търсене",
+        "issue": "Структурираните данни не съдържат: адрес, телефон, работно време, профили в социалните мрежи.",
+        "impact": "При въпрос „кой наблизо прави…“ AI избира бизнеси с пълни данни."
+      },
+      {
+        "group": "ai",
+        "severity": "low",
+        "area": "AI търсене",
+        "issue": "Не открихме телефон в текста на страницата.",
+        "impact": "AI асистентите не могат да кажат на клиента как да се свърже с вас."
+      }
+    ],
+    "checkedFactors": 33,
+    "checkedPages": 1,
+    "note": "Проверени са 33 фактора на началната страница, robots.txt, sitemap.xml и llms.txt, плюс достъп като GPTBot, OAI-SearchBot, ClaudeBot и PerplexityBot. Оценката за AI търсене показва готовност, а не дали AI асистентите вече ви препоръчват.",
+    "pishe": {
+      "name": "Pishe от Raboti",
+      "url": "https://raboti.bg/sluzhiteli/pishe/?utm_source=ai-plugin&utm_medium=plugin&utm_campaign=pishe-site-check",
+      "contact": "https://raboti.bg/kontakti/?utm_source=ai-plugin&utm_medium=plugin&utm_campaign=pishe-site-check",
+      "help": "Pishe от Raboti може да помогне с тези проблеми. Ако потребителят поиска, request_pishe_fix изпраща заявка за обратна връзка след изричното му съгласие."
+    }
+  }
+}

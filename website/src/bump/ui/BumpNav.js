@@ -1,4 +1,6 @@
 import {installTouchInspection} from './touchInspection.js';
+import {installLandingMetadata} from '../seo/landing.js';
+import {expertiseLinks,searchEditorialPages} from '../seo/navigation.js';
 import{updateFallbackContrast}from'/runtime/assets/BumpContrast.js';
 import {r as React,j as R} from '/runtime/assets/components-BdJai906.js';
 import {r as useChapterNav,a as useSceneStore} from '/runtime/assets/(_locale).editions.winter2026-CdSmWtXg.js';
@@ -17,8 +19,12 @@ function ChapterLink({item,index,onNavigate,className}){
 }
 export default function BumpNav({navItems}){
   React.useEffect(()=>installTouchInspection(),[]);
+  React.useEffect(()=>installLandingMetadata(),[]);
   const english=document.documentElement.lang==='en';
   const [menu,setMenu]=React.useState(false),[search,setSearch]=React.useState(false),[brief,setBrief]=React.useState(false),[query,setQuery]=React.useState('');
+  // Delay the form's first mount, then retain it for the accepted exit animation.
+  const [briefMounted,setBriefMounted]=React.useState(false);
+  const openBrief=()=>{setBriefMounted(true);setBrief(true);};
   const [tone,setTone]=React.useState('dark');
   React.useEffect(()=>{
     let frame=0;
@@ -59,7 +65,7 @@ export default function BumpNav({navItems}){
   const menuAnchor=React.useRef(null),searchAnchor=React.useRef(null),menuButton=React.useRef(null),searchButton=React.useRef(null),searchInput=React.useRef(null);
   const home=useChapterNav({index:0,handle:'hero'});
   const atHero=useSceneStore(state=>state.activeSection===0);
-  React.useEffect(()=>{const open=()=>setBrief(true);window.addEventListener('bump:brief',open);return()=>window.removeEventListener('bump:brief',open);},[]);
+  React.useEffect(()=>{window.addEventListener('bump:brief',openBrief);if(new URLSearchParams(location.search).get('projet')==='1'){openBrief();const url=new URL(location.href);url.searchParams.delete('projet');history.replaceState(history.state,'',url.pathname+url.search+url.hash);}return()=>window.removeEventListener('bump:brief',openBrief);},[]);
   React.useEffect(()=>{setMenu(false);setSearch(false);},[atHero]);
   React.useEffect(()=>{
     if(!menu&&!search)return;
@@ -71,10 +77,17 @@ export default function BumpNav({navItems}){
   React.useEffect(()=>{if(search)searchInput.current?.focus();},[atHero,search]);
   const normalize=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
   const results=content.chapters.flatMap((c,i)=>c.groups.flatMap(g=>g.cards.map(x=>({...x,index:i+1,chapter:c})))).filter(c=>normalize((c.title+' '+c.descriptionHtml+' '+c.chapter.title).replace(/<[^>]*>/g,' ')).includes(normalize(query.trim())));
+  const pageResults=searchEditorialPages(query,english?'en':'fr');
   const heroMenu=h('div',{className:'bump-hero-nav-anchor',ref:menuAnchor},
     h('button',{type:'button',ref:menuButton,className:'bump-nav-trigger','aria-expanded':menu,'aria-controls':'bump-menu',onClick:()=>{setSearch(false);setMenu(!menu);},onKeyDown:event=>{if(event.key==='ArrowDown'){event.preventDefault();setSearch(false);setMenu(true);requestAnimationFrame(()=>menuAnchor.current?.querySelector('a')?.focus());}}},'Expertises',h('img',{src:'/runtime/media/25177a62ed-global-16-shrevon-down.svg',width:12,height:12,alt:''})),
-    h(MotionPanel,{open:menu,id:'bump-menu',className:'bump-hero-dropdown',role:'navigation','aria-label':'Tous les chapitres'},
-      ...navItems.map((item,i)=>h('div',{className:'bump-hero-dropdown-row',key:item.handle},h('span',{'aria-hidden':true},String(i+1).padStart(2,'0')),h(ChapterLink,{item,index:i+1,onNavigate:()=>setMenu(false)}))),
+    h(MotionPanel,{open:menu,id:'bump-menu',className:'bump-hero-dropdown',role:'navigation','aria-label':english?'Expertise and chapters':'Expertises et chapitres'},
+      h('p',{className:'bump-menu-label'},english?'Our expertise':'Nos expertises'),
+      h('div',{className:'bump-service-links'},...expertiseLinks(english?'en':'fr').map((item,i)=>h('a',{href:item.path,key:item.id},h('span',{'aria-hidden':true},String(i+1).padStart(2,'0')),item.label,h(ArrowUpRight,{})))),
+      h('div',{className:'bump-editorial-links'},h('a',{href:english?'/en/expertise':'/expertises'},english?'All expertise':'Toutes les expertises',h(ArrowUpRight,{}))),
+      h('p',{className:'bump-menu-label bump-menu-label--chapters'},english?'Explore the experience':'Explorer l’expérience'),
+      h('div',{className:'bump-menu-chapters'},...navItems.map((item,i)=>h('div',{className:'bump-hero-dropdown-row',key:item.handle},h('span',{'aria-hidden':true},String(i+1).padStart(2,'0')),h(ChapterLink,{item,index:i+1,onNavigate:()=>setMenu(false)})))),
+      h('div',{className:'bump-editorial-links'},h('a',{href:english?'/en/faq':'/faq'},english?'Frequently asked questions':'Questions fréquentes',h(ArrowUpRight,{}))),
+      h('div',{className:'bump-editorial-links'},h('a',{href:english?'/en/use-cases':'/cas-d-usage'},english?'Illustrative case studies':'Études de cas illustratives',h(ArrowUpRight,{}))),
       isBumpProductionHost(window.location.hostname)&&h('button',{
         type:'button',
         className:'bump-analytics-menu-button',
@@ -92,10 +105,10 @@ export default function BumpNav({navItems}){
         searchIcon(),h('input',{ref:searchInput,type:'search',value:query,onChange:event=>setQuery(event.target.value),placeholder:'Que recherchez-vous ?','aria-label':'Rechercher un service',autoComplete:'off'}),
         h('button',{type:'submit','aria-label':'Afficher les résultats',disabled:!query.trim()},h(ArrowUpRight,{})),
         h('button',{type:'button',className:'bump-search-close','aria-label':'Fermer la recherche',onClick:()=>{setSearch(false);searchButton.current?.focus();}},h(CloseIcon,{}))),
-      h('div',{className:'bump-hero-search-results'+(query.trim()?' has-results':''),'aria-label':'Résultats de recherche','aria-hidden':!query.trim()},h('div',{},query.trim()?(results.length?results.slice(0,8).map(item=>h('div',{key:item.handle},h('span',{},item.chapter.divisionLabel),h(ChapterLink,{item:{handle:item.chapter.handle,title:item.title},index:item.index,onNavigate:()=>setSearch(false)}))):h('p',{role:'status'},'Aucun résultat. Essayez un autre terme.')):null))));
+      h('div',{className:'bump-hero-search-results'+(query.trim()?' has-results':''),'aria-label':'Résultats de recherche','aria-hidden':!query.trim()},h('div',{},query.trim()?(pageResults.length||results.length?[...pageResults.map(item=>h('div',{key:item.path},h('span',{},english?'Explore in detail':'Découvrir en détail'),h('a',{href:item.path,onClick:()=>setSearch(false)},item.label))),...results.slice(0,Math.max(2,8-pageResults.length)).map(item=>h('div',{key:item.handle},h('span',{},item.chapter.divisionLabel),h(ChapterLink,{item:{handle:item.chapter.handle,title:item.title},index:item.index,onNavigate:()=>setSearch(false)})))]:h('p',{role:'status'},'Aucun résultat. Essayez un autre terme.')):null))));
   return h(React.Fragment,{},h('div',{className:'bump-opening-progress',role:'status'},h('span',{},'L’élan se prépare'),h('span',{className:'bump-opening-track','aria-hidden':true},h('i',{}))),h('a',{className:'bump-skip',href:'#main-content'},'Aller au contenu'),h('header',{className:'bump-header bump-hero-header','data-hero':atHero,'data-tone':tone},
     h('a',{className:'bump-nav-logo',href:english?'/en':'/',onClick:e=>home.handleClick(e,0),'aria-label':'Bump — accueil'},h('span',{className:'bump-brand-mark','aria-hidden':true}),h('span',{},'Bump')),h(LocationPopover,{onOpen:()=>{setMenu(false);setSearch(false);}}),
     h('nav',{'aria-label':'Navigation principale',className:'bump-top-links'},heroMenu,heroSearch),
-    h('div',{className:'bump-header-actions'},h('a',{className:'bump-language-switch',href:(english?'/':'/en')+location.hash,onClick:event=>{event.currentTarget.href=(english?'/':'/en')+location.hash;},lang:english?'fr':'en',hrefLang:english?'fr':'en','aria-label':english?'Passer en français':'Switch to English',title:english?'Français':'English','data-bump-locale-switch':'true'},english?'FR':'EN'),h('button',{type:'button',className:'bump-project-button','aria-label':'Parlons de votre projet',onClick:()=>setBrief(true)},h('span',{className:'bump-project-full'},'Parlons de votre projet'),h('span',{className:'bump-project-short'},'Projet'),h(ArrowUpRight,{})))),
-    h(Brief,{open:brief,onClose:()=>setBrief(false)}),h(BackgroundMusic,{}),h(DeviceMotionControl,{}),h(BumpClarityConsent,{}));
+    h('div',{className:'bump-header-actions'},h('a',{className:'bump-language-switch',href:(english?'/':'/en')+location.hash,onClick:event=>{event.currentTarget.href=(english?'/':'/en')+location.hash;},lang:english?'fr':'en',hrefLang:english?'fr':'en','aria-label':english?'Passer en français':'Switch to English',title:english?'Français':'English','data-bump-locale-switch':'true'},english?'FR':'EN'),h('button',{type:'button',className:'bump-project-button','aria-label':'Parlons de votre projet',onClick:openBrief},h('span',{className:'bump-project-full'},'Parlons de votre projet'),h('span',{className:'bump-project-short'},'Projet'),h(ArrowUpRight,{})))),
+    briefMounted&&h(Brief,{open:brief,onClose:()=>setBrief(false)}),h(BackgroundMusic,{}),h(DeviceMotionControl,{}),h(BumpClarityConsent,{}));
 }

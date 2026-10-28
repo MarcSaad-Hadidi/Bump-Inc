@@ -10,7 +10,7 @@
       "handle": "sidekick",
       "title": "Workflow",
       "divisionLabel": "01 — Workflow Optimization",
-      "descriptionHtml": "<p>Faites travailler vos processus et vos outils dans le même sens.</p>",
+      "descriptionHtml": "<p>Moins de tâches répétitives. Des outils connectés. Du temps pour votre équipe.</p>",
       "artKey": "workflow",
       "groups": [
         {
@@ -69,7 +69,7 @@
       "handle": "online",
       "title": "IA & Logiciels",
       "divisionLabel": "02 — AI Integration & Software Development",
-      "descriptionHtml": "<p>Des logiciels conçus autour de votre réalité. De l’IA intégrée là où elle est utile.</p>",
+      "descriptionHtml": "<p>Des logiciels à votre mesure. De l’IA utile. Votre équipe garde la main.</p>",
       "artKey": "software",
       "groups": [
         {
@@ -138,7 +138,7 @@
       "handle": "operations",
       "title": "Cybersécurité",
       "divisionLabel": "03 — Cybersecurity",
-      "descriptionHtml": "<p>Comprendre les risques.<br>Corriger les faiblesses.<br>Renforcer ce qui compte.</p>",
+      "descriptionHtml": "<p>Identifiez les risques. Corrigez les faiblesses. Protégez votre entreprise.</p>",
       "artKey": "security",
       "groups": [
         {
@@ -197,7 +197,7 @@
       "handle": "retail",
       "title": "Notre méthode",
       "divisionLabel": "04 — De l’audit à la maintenance",
-      "descriptionHtml": "<p>Un accompagnement structuré,<br>de la compréhension du besoin<br>au suivi de la solution.</p>",
+      "descriptionHtml": "<p>Un cap clair, de l’audit au suivi. Une solution construite avec votre équipe.</p>",
       "artKey": "method",
       "groups": [
         {
@@ -256,7 +256,7 @@
       "handle": "developer",
       "title": "Notre vision",
       "divisionLabel": "05 — Une infrastructure à construire",
-      "descriptionHtml": "<p>À long terme, nous voulons développer des systèmes et des agents IA spécialisés. Cette infrastructure est une vision future.</p>",
+      "descriptionHtml": "<p>Notre vision : des systèmes et des agents IA spécialisés pour les besoins de demain.</p>",
       "artKey": "vision",
       "groups": [
         {
@@ -311,7 +311,7 @@
       "handle": "b2b",
       "title": "Bump",
       "divisionLabel": "06 — Parlons de vous",
-      "descriptionHtml": "<p>Fondée par deux entrepreneurs à Montréal, Bump accompagne les PME dans leurs projets technologiques.</p>",
+      "descriptionHtml": "<p>Deux entrepreneurs à Montréal. La technologie au service de votre PME.</p>",
       "artKey": "contact",
       "groups": [
         {

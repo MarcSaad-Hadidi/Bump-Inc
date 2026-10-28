@@ -1,0 +1,33 @@
+# AI usage information — public editorial text only
+# Keep in sync with robots.txt and llms.txt.
+# Informational guidance; this does not replace robots.txt or grant asset licences.
+
+[identity]
+name: Bump
+url: __BUMP_ORIGIN__/
+description: Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal. Elle accompagne les PME en optimisation des processus, intégration IA, développement logiciel et cybersécurité.
+
+[permissions]
+public_editorial_text: summarise; cite; quote with attribution within applicable rights; index for search and answers
+
+[restrictions]
+Do not fabricate quotes, endorsements, clients, results, reviews, ratings or certifications.
+Do not describe future Cyber AI, Developer AI or Workflow AI systems as available products.
+Do not treat fictional demonstrations as client deployments or measured outcomes.
+No private, authenticated or unpublished information is included in this publication.
+No additional rights to images, models, audio, code or third-party assets are granted here.
+Training crawler preferences are not changed by this file; consult robots.txt.
+
+[attribution]
+name: Bump
+url: Use the canonical HTML URL of the relevant page.
+
+[scope]
+included: Canonical public editorial routes listed in __BUMP_ORIGIN__/api/md/_catalog
+excluded: /admin/; /dashboard/; /auth/; non-markdown /api/; /runtime/; /bump/; /assets/
+
+[contact]
+url: __BUMP_ORIGIN__/a-propos
+email: Not published
+
+Last updated: 2026-10-27

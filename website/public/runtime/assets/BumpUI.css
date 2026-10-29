@@ -16,6 +16,8 @@ html[data-bump-opening=type] [data-section-name=side-and-lines][data-scrolled=fa
 .bump-motion-panel[data-motion-state=closing]{pointer-events:none}
 .bump-hero-header .bump-nav-trigger{transition:background-color .26s ease,color .26s ease,box-shadow .26s ease}
 .bump-hero-header .bump-nav-trigger img{transition:transform .32s cubic-bezier(.22,1,.36,1),filter .26s ease}
+.bump-nav-chevron{flex:none;transition:transform .32s cubic-bezier(.22,1,.36,1)}
+.bump-nav-trigger[aria-expanded=true]>.bump-nav-chevron{transform:rotate(180deg)}
 .bump-hero-dropdown-row a{transition:background-color .2s ease,padding-left .25s cubic-bezier(.22,1,.36,1)}
 .bump-hero-dropdown-row a:hover{padding-left:41px}
 .bump-hero-search-results{display:grid;grid-template-rows:0fr;padding-block:0;border-top-color:transparent;transition:grid-template-rows .32s cubic-bezier(.22,1,.36,1),padding .32s ease,border-color .25s ease}
@@ -32,7 +34,7 @@ html[data-bump-opening=type] [data-section-name=side-and-lines][data-scrolled=fa
 html:has(.bump-dialog[open]){overflow:hidden}
 @keyframes bump-backdrop-in{from{opacity:0}to{opacity:1}}
 @keyframes bump-backdrop-out{from{opacity:1}to{opacity:0}}
-@media(prefers-reduced-motion:reduce){.bump-hero-header .bump-nav-trigger,.bump-hero-header .bump-nav-trigger img,.bump-hero-dropdown-row a,.bump-hero-search-results,.bump-project-button{transition:none}.bump-dialog::backdrop{animation:none!important}}
+@media(prefers-reduced-motion:reduce){.bump-hero-header .bump-nav-trigger,.bump-hero-header .bump-nav-trigger img,.bump-nav-chevron,.bump-hero-dropdown-row a,.bump-hero-search-results,.bump-project-button{transition:none}.bump-dialog::backdrop{animation:none!important}}
 .bump-opening-progress{display:none}
 html[data-bump-opening=type] .bump-opening-progress{position:fixed;z-index:305;bottom:max(35px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;color:#eee9da;font-family:var(--bump-serif);font-size:16px;letter-spacing:.015em;pointer-events:none}
 .bump-opening-track{position:relative;display:block;width:145px;height:1px;overflow:hidden;background:#eee9da38}

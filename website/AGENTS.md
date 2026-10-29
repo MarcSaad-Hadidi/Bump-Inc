@@ -1,3 +1,18 @@
+# Consistent scene and paper ink in the header — 2026-10-28
+
+From Cybersecurity onward some floating controls remain dark over paintings.
+Use the existing compositor paper sampling for the header glass theme as well
+as its individual controls, including the language switch and project button.
+Do not derive header ink from the retained chapter data-nav-theme markers:
+Method and Vision may have light markers while the painting is visible.
+Observe only sampled surface changes, preserving React ownership of data-tone,
+existing scroll and native rendering. Do not apply blanket header text overrides
+to every menu descendant or recolor application-owned controls. The expertise
+chevron must inherit currentColor as an SVG, including its open rotation and
+reduced-motion behavior. Verify all six scene arrivals, paper transitions, open
+menus/search/form, FR/EN and mobile. Publish on the same GPT Site, update the
+existing PR, rerun checks and Codex, and do not merge automatically.
+
 # Landing labels, subtitle spacing and folder input — 2026-10-28
 
 Keep labels below the Vision network icons fully visible, including short

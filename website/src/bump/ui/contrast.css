@@ -7,6 +7,12 @@
 .bump-nav-logo[data-bump-contrast=true] .bump-brand-mark{background:var(--bump-adaptive-ink)!important}
 .sidebar-link[data-bump-contrast=true]::after{color:var(--bump-adaptive-ink)!important}
 .sidebar-link[data-bump-contrast=true]>span::after{background-image:radial-gradient(circle,var(--bump-adaptive-ink) 1.25px,transparent 1.55px)!important;filter:none!important}
+/* The retained active label/number use !important inside Tailwind's base
+   layer, which outranks every unlayered override. Stay in that same layer. */
+@layer base{
+ html .main-wrapper aside .sidebar-link[data-bump-contrast=true]>span>span,
+ html .main-wrapper aside .sidebar-link[data-bump-contrast=true]::after{color:var(--bump-adaptive-ink)!important}
+}
 @media(prefers-reduced-motion:reduce){[data-bump-contrast=true]{transition:none}}
 
 .bump-nav-trigger[data-bump-surface=scene]>img{filter:invert(1)}

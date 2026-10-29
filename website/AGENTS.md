@@ -9,7 +9,11 @@ Observe only sampled surface changes, preserving React ownership of data-tone,
 existing scroll and native rendering. Do not apply blanket header text overrides
 to every menu descendant or recolor application-owned controls. The expertise
 chevron must inherit currentColor as an SVG, including its open rotation and
-reduced-motion behavior. Verify all six scene arrivals, paper transitions, open
+reduced-motion behavior. The active sidebar label and Roman numeral must also
+use sampled ink: their retained !important rules are in Tailwind's base layer,
+so override those two parts in the same layer with a scoped selector. Verify
+the actual nested label and pseudo-element colors, not only the link's color.
+Verify all six scene arrivals, paper transitions, open
 menus/search/form, FR/EN and mobile. Publish on the same GPT Site, update the
 existing PR, rerun checks and Codex, and do not merge automatically.
 

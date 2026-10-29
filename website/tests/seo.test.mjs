@@ -219,8 +219,8 @@ test('HEAD, OPTIONS, aliases, catalog, discovery, and unsupported verbs have coh
   }
   for (const path of ['/en/', '/en.html', '/expertises/']) assert.equal((await handleContentRequest(request(path), assets)).status, 308);
   const catalog = await (await handleContentRequest(request('/api/md/_catalog'), assets)).json(); assert.equal(catalog.routes.length, 20);
-  for (const path of ['/robots.txt', '/sitemap.xml', '/llms.txt', '/llms-full.txt', '/ai.txt']) {
-    const response = await handleContentRequest(request(path), assets); assert.equal(response.status, 200); const body = await response.text(); assert(!body.includes('__BUMP_ORIGIN__')); assert(body.includes(origin));
+  for (const [path, render] of [['/robots.txt', renderRobots], ['/sitemap.xml', renderSitemap], ['/llms.txt', renderLlms], ['/llms-full.txt', renderLlmsFull], ['/ai.txt', renderAi]]) {
+    const response = await handleContentRequest(request(path), assets); assert.equal(response.status, 200); const body = await response.text(); assert(!body.includes('__BUMP_ORIGIN__')); assert.equal(body, render(origin), path);
   }
   assert.equal(await handleContentRequest(request('/runtime/assets/app.js', {headers: {Accept: 'text/markdown'}}), assets), null);
   assert.equal((await handleContentRequest(request('/not-a-public-route'), assets)).status, 404);
@@ -249,7 +249,13 @@ test('the published Worker serves every content route without an ASSETS binding'
     for (const [path, accept] of [[page.path, 'text/html'], [page.path, 'text/markdown'], [markdownPath(page.path), '*/*']]) {
       const response = await compiled.fetch(request(path, {headers: {Accept: accept}}), {});
       assert.equal(response.status, 200, path);
-      const body = await response.text(); assert(!body.includes('__BUMP_ORIGIN__')); assert(body.includes(origin));
+      const body = await response.text(); assert(!body.includes('__BUMP_ORIGIN__'));
+      if (accept === 'text/html') {
+        const canonicals = walk(parse(body), node => node.tagName === 'link' && attrs(node).rel === 'canonical').map(node => attrs(node).href);
+        assert.deepEqual(canonicals, [origin + page.path], path);
+      } else {
+        assert.deepEqual(body.split('\n').filter(line => line.startsWith('Canonical: ')), ['Canonical: ' + origin + page.path], path);
+      }
       assert.match(response.headers.get('Content-Type'), accept === 'text/html' ? /^text\/html/ : /^text\/markdown/);
     }
   }

@@ -1,0 +1,15 @@
+/* This final layer is scoped to the editorial laboratory; native kit/theme
+   declarations are compiled ahead of it, with the same scope. */
+.seo-calibration{margin:40px 0 0;border-top:1px solid var(--line);padding-top:30px}
+.seo-calibration-model{position:relative;min-width:0}
+.seo-calibration .bump-method-live{min-height:0;max-width:none;padding:0;display:flex}
+.seo-calibration .bump-method-heading{padding-right:48px}
+.seo-calibration .seo-calibration-intro{font-size:19px;line-height:1.45;margin:0 0 20px;max-width:760px}
+.seo-calibration .bump-method-figure{max-width:760px;width:100%;aspect-ratio:760/560}
+.seo-calibration .bump-method-description{min-height:110px;margin-top:16px}
+.seo-calibration .bump-method-description h4{font-size:26px!important}
+.seo-calibration .bump-method-description p{font-size:19px!important}
+.seo-calibration .bump-method-reading{overflow-wrap:anywhere}
+.seo-calibration .bump-demo-toggle{top:0!important;right:0!important}
+.seo-calibration .bump-method-tooltip{font-size:16px}
+@media(max-width:640px){.seo-calibration .bump-method-heading{font-size:25px!important}.seo-calibration .bump-method-description{min-height:160px}.seo-calibration .bump-method-description h4{font-size:24px!important}.seo-calibration .bump-method-reading{margin-left:0}.seo-calibration .bump-method-figure{max-width:100%}}

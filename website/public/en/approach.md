@@ -12,6 +12,10 @@ A real need. A clear scope. An implementation you can follow.
 
 A Bump engagement follows five stages: audit, analysis, proposal, implementation and maintenance. The audit establishes the current situation. Analysis prioritizes needs. The proposal defines scope and deliverables. Implementation puts the solution in place, followed by the agreed maintenance.
 
+Our five-step method: understand, choose, agree, build, sustain. Illustrative scenario.
+
+![An SME’s tool map: audit, analysis, proposal, implementation and maintenance, with health rising from 42 to 92](__BUMP_ORIGIN__/bump/approche.webp)
+
 ## 01. Audit — understand how work happens.
 
 With your team, we examine the processes, tools and constraints related to the need. The aim is to understand where work stalls, which data moves and who is involved. For a security audit, authorization and intervention conditions are explicitly defined.

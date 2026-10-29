@@ -1,0 +1,1 @@
+import{C as m,a as s,q as r,x as d}from"./bump-shared-GFYDHDSM.js";m();function u({html:a,data:t,mount:o,className:e}){let n=d(null);return r(()=>{let i=n.current?.querySelector(".iso-figure");if(i)return o(i,t)},[a,t,o]),s("div",{ref:n,className:`iso bump${e?` ${e}`:""}`,"data-theme":"light",dangerouslySetInnerHTML:{__html:a}})}export{u as a};

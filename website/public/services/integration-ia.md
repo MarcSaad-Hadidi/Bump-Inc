@@ -12,6 +12,10 @@ Une tâche précise. Les bonnes informations. Une décision qui reste entre vos 
 
 L’intégration IA relie un modèle ou un agent à vos données et à vos logiciels pour accomplir une tâche définie. Bump accompagne les PME dans le choix du cas d’usage, la connexion des sources, la définition des accès et l’évaluation des réponses. Les actions sensibles peuvent rester soumises à une validation humaine.
 
+Intégration IA : l'assistant puise seulement dans les sources autorisées, relie chaque point à sa source, et votre équipe décide. Scénario illustratif.
+
+![Assistant IA qui consulte les documents, le CRM et l'ERP autorisés, rédige une synthèse reliée à ses sources, puis attend la validation de l'équipe](__BUMP_ORIGIN__/bump/integration-ia.webp)
+
 ## Commencer par une tâche qui compte.
 
 Une intégration utile répond à une question opérationnelle : que doit pouvoir faire l’utilisateur plus facilement ? Le choix d’un modèle vient ensuite. Nous distinguons les tâches qui bénéficient de l’IA de celles qu’une règle ou une automatisation classique peut traiter plus simplement.

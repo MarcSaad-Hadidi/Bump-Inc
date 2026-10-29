@@ -12,6 +12,10 @@ Understand risks. Address weaknesses. Strengthen what matters.
 
 A cybersecurity audit examines an authorized scope to identify vulnerabilities and propose prioritized corrections. Bump helps SMEs scope an audit, assess risks, secure applications and infrastructure, remediate issues and define follow-up after the engagement.
 
+Cybersecurity: authorized audit, prioritized weaknesses, verified fixes. Illustrative scenario.
+
+![Drawer vault: domains examined within an authorized scope, with a risk revealed, corrected and verified](__BUMP_ORIGIN__/bump/cybersecurite.webp)
+
 ## Agree on the rules before examining systems.
 
 An audit starts with explicit authorization and scope. Systems, exclusions, access, intervention windows and incident contacts need to be defined. Tests are adapted to the business’s constraints.

@@ -12,6 +12,10 @@ Give your business fresh momentum.
 
 Bump is a technology consulting company founded by two entrepreneurs in Montréal, Québec. Our mission is to help SMEs become more efficient, intelligent and secure through solutions suited to their needs. Our three divisions cover workflows, AI and software, and cybersecurity.
 
+Rooted in Montréal, looking ahead: technology should give you momentum. Illustrative scenario.
+
+![Port of Montréal: an empty ship arrives, loads three services and departs with momentum](__BUMP_ORIGIN__/bump/a-propos.webp)
+
 ## Technology should serve the work.
 
 A useful system helps a team complete a task, understand a situation or make a decision. We approach automation, software development and security from that perspective: start with operations, then choose the technical means.

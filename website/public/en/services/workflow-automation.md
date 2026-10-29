@@ -12,6 +12,10 @@ Less copying. Less manual follow-up. More time to move work forward.
 
 Workflow automation lets systems carry out repetitive steps such as receiving requests, filing information, sending notifications, collecting approvals or synchronizing data. Bump first analyses that process with your team, then connects the appropriate tools while keeping people involved in decisions and exceptions.
 
+Workflow automation: from form to CRM, with your team's approval. Illustrative scenario.
+
+![Quote request workflow: intake, qualification, preparation, human approval and transfer to the CRM](__BUMP_ORIGIN__/bump/automatisation-processus.webp)
+
 ## Find the tasks worth automating.
 
 A good candidate happens repeatedly, follows explicit rules and consumes time without requiring new judgment on every occurrence. It might involve following up on a request, transferring data or preparing a report. Automating an unclear process can simply repeat its problems faster.

@@ -6,7 +6,7 @@ import {fallbackPaperContains,fallbackPaperClip} from './chapterMotion.js';
 const selector=[
  'main section>div:first-child>div:first-child>h2',
  'main section>div:first-child>div:first-child>[data-nav-style=solid] .narrative-1',
- '.bump-editorial-title','.bump-nav-logo','.bump-header .bump-nav-trigger','.bump-header .bump-location',
+ '.bump-editorial-title','.bump-header','.bump-nav-logo','.bump-header .bump-nav-trigger','.bump-header .bump-location','.bump-header .bump-language-switch','.bump-header .bump-project-button',
  'aside[data-section-name=side-nav] .sidebar-link','aside[data-section-name=side-nav]>p','aside[data-section-name=side-nav] .title-link',
  '.bump-group-title','.bump-research-heading h3','.bump-research-heading>p:last-child','.bump-research-explanation h4','.bump-research-explanation p','.bsd-editorial h3','.bsd-editorial p','.bsd-editorial-link','.bsd-handwritten','.bsd-ops-annotation',
  '.bsc-editorial h3','.bsc-editorial p','.bsc-editorial .bsc-eyebrow','.bsc-text-link','.bsc-row-annotation h4','.bsc-row-annotation p',
@@ -19,7 +19,11 @@ function refresh(){
  if(!observer&&document.body){observer=new MutationObserver(records=>{if(records.some(record=>!record.target.closest?.('.iso-stage,.bvs-art,.bsc-ui,.bsd-app')&&[...record.addedNodes,...record.removedNodes].some(node=>node.nodeType===1)))stale=true;});observer.observe(document.body,{childList:true,subtree:true});}
  if(stale){targets=[...document.querySelectorAll(selector)].filter(e=>!e.closest('dialog,.bsc-ui,.bsc-orbit-panel,.bsd-app,.bsd-assistant,.bump-ops-screen'));stale=false;}
 }
-function ink(node,paper){const value=paper?'#302e28':'#fff9ed',surface=paper?'paper':'scene';if(node.dataset.bumpSurface!==surface){node.dataset.bumpContrast='true';node.dataset.bumpSurface=surface;node.style.setProperty('--bump-adaptive-ink',value);}}
+function ink(node,paper){const value=paper?'#302e28':'#fff9ed',surface=paper?'paper':'scene';if(node.dataset.bumpSurface!==surface){node.dataset.bumpSurface=surface;
+ // The container supplies the glass theme, not an inherited override for its
+ // menus. Individual floating controls still sample their own coordinates.
+ if(node.matches('.bump-header'))return;
+ node.dataset.bumpContrast='true';node.style.setProperty('--bump-adaptive-ink',value);}}
 function fallbackPaper(node,x,y){if(fallbackFrame)return fallbackPaperContains(fallbackFrame.paper,x/innerWidth,y/getBumpViewportHeight());if(node.closest('.bump-group,.bg-light'))return true;return [...document.querySelectorAll('main section>div:first-child>.bg-light')].some(e=>{const b=e.getBoundingClientRect();return b.top<=1&&b.bottom>=getBumpViewportHeight()-1||x>=b.left&&x<=b.right&&y>=b.top&&y<=b.bottom;});}
 export function updateBumpSurfaceContrast(canvas,position,color=[.862745,.862745,.815686]){
  if(typeof document==='undefined'||document.hidden)return;

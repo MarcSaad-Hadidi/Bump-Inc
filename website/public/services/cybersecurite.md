@@ -12,6 +12,10 @@ Comprendre les risques. Corriger les faiblesses. Renforcer ce qui compte.
 
 Un audit de cybersécurité examine un périmètre autorisé pour identifier des vulnérabilités et proposer des corrections prioritaires. Bump accompagne les PME dans le cadrage de l’audit, l’analyse des risques, la sécurisation des applications et infrastructures, la remédiation et le suivi convenu après intervention.
 
+Cybersécurité : audit autorisé, faiblesses priorisées, corrections vérifiées. Scénario illustratif.
+
+![Coffre-fort à tiroirs : domaines inspectés dans un périmètre autorisé, risque révélé, corrigé puis vérifié](__BUMP_ORIGIN__/bump/cybersecurite.webp)
+
 ## Définir les règles avant d’examiner les systèmes.
 
 Un audit commence par une autorisation et un périmètre explicites. Il faut préciser les systèmes concernés, les exclusions, les accès, les plages d’intervention et les personnes à joindre en cas d’incident. Les tests sont adaptés aux contraintes de l’entreprise.

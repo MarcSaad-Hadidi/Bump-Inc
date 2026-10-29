@@ -2,6 +2,18 @@ import {createDemoTimeout,demoIsPaused,setDemoInspectionPaused} from './demoTran
 import {observeDemoReady} from './demoReady.js';
 
 const highlighted=new WeakMap();
+// SVG parts retain a bounding box when their native scene sets opacity to 0.
+// Tour only surfaces that the visitor can actually see, including parent groups.
+export function hoverTargetIsVisible(element,root){
+ if(element.isConnected===false)return false;
+ const box=element.getBoundingClientRect();if(!box.width||!box.height)return false;
+ if(typeof getComputedStyle!=='function')return true;
+ for(let node=element;node&&node!==root;node=node.parentElement){
+  const css=getComputedStyle(node);
+  if(css.display==='none'||css.visibility==='hidden'||css.visibility==='collapse'||Number.parseFloat(css.opacity)<.05)return false;
+ }
+ return true;
+}
 export function highlightHoveredPart(root,part){
  const previous=highlighted.get(root);if(previous===part)return;
  previous?.removeAttribute('data-bump-demo-hover');
@@ -37,12 +49,16 @@ export function mountHoverDemonstration(root,kind){
  const busy=()=>!!root.querySelector('[data-workflow-cursor="approach"],[data-workflow-cursor="click"],[data-tools-cursor="approach"],[data-tools-cursor="click"],[data-security-cursor="approach"],[data-security-cursor="click"]');
  function visit(){
   if(!allowed()||busy()){stop();return;}
-  leave();current=run[index++];if(!current){completion(true);stop();return;}
+  leave();
+  // Native SVG parts can disappear after a route was prepared. Validate at
+  // departure and again on arrival, before moving to or inspecting a ghost.
+  do{current=run[index++];}while(current&&!hoverTargetIsVisible(current,root));
+  if(!current){completion(true);stop();return;}
   setDemoInspectionPaused(root,true);
   const first=cursor.hidden;cursor.hidden=false;root.dataset.bumpHoverDemo='moving';point(current,first);
   if(first)frame=requestAnimationFrame(()=>{frame=requestAnimationFrame(()=>{if(current)point(current);});});
   timer.schedule(380,()=>{
-   if(!current)return;root.dataset.bumpHoverDemo='hovering';inspect(current);visited.push(current.closest('[data-cargo]')?.getAttribute('data-cargo')??String(index-1));root.dataset.bumpHoverVisited=visited.join(',');
+   if(!current)return;if(!hoverTargetIsVisible(current,root)){visit();return;}root.dataset.bumpHoverDemo='hovering';inspect(current);visited.push(current.closest('[data-cargo]')?.getAttribute('data-cargo')??String(index-1));root.dataset.bumpHoverVisited=visited.join(',');
    timer.schedule(1300,visit);
   });
  }
@@ -64,7 +80,10 @@ export function mountHoverDemonstration(root,kind){
    const port=root.querySelector('.bump-port-live');
    if(!port||port.dataset.portLoaded!=='6'||Number(port.dataset.portStage)!==3){timer.schedule(200,begin);return;}
   }
-  run=[...new Set(selectors.flatMap(selector=>[...root.querySelectorAll(selector)]))].filter(element=>{const b=element.getBoundingClientRect();return b.width>0&&b.height>0;});
+  // The tools map introduction ends at the health dial. Its connector and
+  // option tray belong to later phases and remain available for manual hover.
+  const tourSelectors=kind==='method'&&root.querySelector('.bump-method-live[data-method-model="tools"]')?['[data-tool][data-bump-info]','[data-score][data-bump-info]']:selectors;
+  run=[...new Set(tourSelectors.flatMap(selector=>[...root.querySelectorAll(selector)]))].filter(element=>hoverTargetIsVisible(element,root));
   if(kind==='port'&&(run.length!==6||run.some(element=>!element.querySelector('.port-cargo-label')))){timer.schedule(200,begin);return;}
   if(!run.length){timer.schedule(200,begin);return;}index=0;visited=[];root.dataset.bumpHoverVisited='';visit();
  }

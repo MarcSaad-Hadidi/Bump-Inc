@@ -1,23 +1,34 @@
 {
-  "source": "bump-methode-05.zip",
-  "sharedRuntimeNote": "Existing identical shared runtime retained; archive only adds a trailing newline.",
+  "source": "bump-methode-outils-05.zip",
   "sha256": {
-    "kit/LICENSE-anatomy": "87c078ab9d90a3044f359e6b563d4e6afea7aa060897cf4f21618687b3856796",
-    "kit/iso-kit.ts": "e9fc988c61a11bfac1f097e62419915ea86b2130ab091f1b50c0e019c907e253",
-    "kit/iso.css": "ef19bac5a42ba9be42b56b2c1cf7fc7e21d332a8060765e9ca1d987b8ab23924",
-    "methode/MethodLab.tsx": "02e5aeb4342bea487ae83c05b09f8cec0695cdda5b231ffee242aaa5ff49f70d",
-    "methode/art.generated.ts": "96b499e956d9ad1996b08ea863e411657b144f4730034af5945756339db6115c",
-    "methode/live.ts": "fd3aea707bd976ab620d548a35173f0debe0256200c1780b3996622e91813452",
-    "methode/model.ts": "53b05b88c888a5604fb210be0ee57ebe0815287158cf2109db8aef9ae473c5b0",
-    "shared/AnatomyFigure.tsx": "45e49948f7b79706000625778d8c5e302fc118940da4f52bddb3c9531fd872d6",
     "shared/bump-theme.css": "bf30a94b820fab62d14a275d307059e1f7b6ac4ac0c54dd8a23e515c7c31892e",
+    "shared/AnatomyFigure.tsx": "45e49948f7b79706000625778d8c5e302fc118940da4f52bddb3c9531fd872d6",
+    "shared/step-loop.ts": "3fc6abb6481067823e60aebbf4f1828262e771eecc3bb055b83ae7c470d8d6fc",
+    "shared/runtime.ts": "c0142fe94503541a1d64b95706947ff4d714cc6be767b3f32b031346a2a32cfb",
+    "shared/method.ts": "05500d9c003298a08545f6612ac428e471a868d635e28fa75bc68e032abcf3ac",
     "shared/controller.ts": "62b8621c173e14f474e0dd0458ebc6a3dcc45486a3863ab6dfbe6a7ae6572168",
-    "shared/runtime.ts": "6594ac2445214885bfebe6d5d309c9c11f5ae2fc970608cf1de51a181693a0be"
+    "kit/iso.css": "ef19bac5a42ba9be42b56b2c1cf7fc7e21d332a8060765e9ca1d987b8ab23924",
+    "kit/iso-kit.ts": "e9fc988c61a11bfac1f097e62419915ea86b2130ab091f1b50c0e019c907e253",
+    "kit/LICENSE-anatomy": "87c078ab9d90a3044f359e6b563d4e6afea7aa060897cf4f21618687b3856796",
+    "methode/model.ts": "da602fe1500eb34cc003ca01e078491a60084f6fed6ba757b54564320f234838",
+    "methode/art.generated.ts": "b34bee2a91e7fc792099160dfbbe397799b240cb44c18aec0e382c00a3e1b870",
+    "methode/MethodLab.tsx": "1649e23b96df7ebbb3ddb57d0ac2a50e6261d35a63c1137cc3989944fec8a199",
+    "methode/live.ts": "8f544f1fcd1e8b4e8dad6334999978d600478c375fadd8d711be430a7b50dbe6"
   },
-  "upstreamUpdates": {
-    "shared/bump-theme.css": {
-      "source": "bump-port-07.zip",
-      "change": "Original palette preserved verbatim; supplied model 03\u201307 rules appended."
-    }
+  "sharedRuntimeNote": "The installed shared runtime is preserved; the archive differs only by a trailing newline. All supplied art, live, step-loop, kit and other shared bytes match the archive.",
+  "archiveSha256": {
+    "shared/bump-theme.css": "bf30a94b820fab62d14a275d307059e1f7b6ac4ac0c54dd8a23e515c7c31892e",
+    "shared/AnatomyFigure.tsx": "45e49948f7b79706000625778d8c5e302fc118940da4f52bddb3c9531fd872d6",
+    "shared/step-loop.ts": "3fc6abb6481067823e60aebbf4f1828262e771eecc3bb055b83ae7c470d8d6fc",
+    "shared/runtime.ts": "c0142fe94503541a1d64b95706947ff4d714cc6be767b3f32b031346a2a32cfb",
+    "shared/method.ts": "05500d9c003298a08545f6612ac428e471a868d635e28fa75bc68e032abcf3ac",
+    "shared/controller.ts": "62b8621c173e14f474e0dd0458ebc6a3dcc45486a3863ab6dfbe6a7ae6572168",
+    "kit/iso.css": "ef19bac5a42ba9be42b56b2c1cf7fc7e21d332a8060765e9ca1d987b8ab23924",
+    "kit/iso-kit.ts": "e9fc988c61a11bfac1f097e62419915ea86b2130ab091f1b50c0e019c907e253",
+    "kit/LICENSE-anatomy": "87c078ab9d90a3044f359e6b563d4e6afea7aa060897cf4f21618687b3856796",
+    "methode/model.ts": "da602fe1500eb34cc003ca01e078491a60084f6fed6ba757b54564320f234838",
+    "methode/art.generated.ts": "b34bee2a91e7fc792099160dfbbe397799b240cb44c18aec0e382c00a3e1b870",
+    "methode/MethodLab.tsx": "1649e23b96df7ebbb3ddb57d0ac2a50e6261d35a63c1137cc3989944fec8a199",
+    "methode/live.ts": "8f544f1fcd1e8b4e8dad6334999978d600478c375fadd8d711be430a7b50dbe6"
   }
 }

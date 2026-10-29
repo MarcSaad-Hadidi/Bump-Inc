@@ -1,0 +1,283 @@
+.seo-anatomy .iso{
+  --anatomy-page:#0b0b0b;--anatomy-card:#131313;--anatomy-text:#a3a3a3;--anatomy-strong:#e6e6e6;--anatomy-muted:#6e6e6e;
+  --anatomy-paper:#131313;--anatomy-face:#1b1b1b;--anatomy-top:#1c1c1c;
+  --anatomy-shade-0:#0f0f0f;--anatomy-shade-1:#121212;--anatomy-shade-2:#151515;--anatomy-shade-3:#181818;
+  --anatomy-lit-top:#262626;--anatomy-lit-shade:#1d1d1d;
+  --anatomy-hi:#d4d4d4;--anatomy-mid:#6a6a6a;--anatomy-lo:#3e3e3e;--anatomy-faint:#2a2a2a;--anatomy-lit:#ffffff;
+  --anatomy-halo:#050505;--anatomy-halo-opacity:.9;--anatomy-dot:#e6e6e6;
+  --anatomy-red:#ff6b6b;--anatomy-green:#6be0a0;--anatomy-blue:#6b9bff;
+  --anatomy-weight:.6px;--anatomy-ease:cubic-bezier(.32,.72,0,1);
+  --anatomy-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --anatomy-lift:inset 0 1px 0 0 #ffffff0a,inset 0 0 0 1px #ffffff06,0 0 0 1px #00000026,0 1px 1px -.5px #00000014,0 3px 3px -1.5px #00000014,0 6px 6px -3px #00000014,0 12px 12px -6px #00000014;
+}
+.seo-anatomy .iso[data-theme="light"]{
+  --anatomy-page:#f2f2ef;--anatomy-card:#fbfbfa;--anatomy-text:#57575a;--anatomy-strong:#18181a;--anatomy-muted:#8c8c90;
+  --anatomy-paper:#fbfbfa;--anatomy-face:#ffffff;--anatomy-top:#ffffff;
+  --anatomy-shade-0:#dcdcd9;--anatomy-shade-1:#e5e5e2;--anatomy-shade-2:#ededea;--anatomy-shade-3:#f4f4f1;
+  --anatomy-lit-top:#ffffff;--anatomy-lit-shade:#eeeeeb;
+  --anatomy-hi:#26262a;--anatomy-mid:#8a8a8f;--anatomy-lo:#b4b4b8;--anatomy-faint:#d4d4d6;--anatomy-lit:#000000;
+  --anatomy-halo:#8a8a80;--anatomy-halo-opacity:.32;--anatomy-dot:#3a3a3e;
+  --anatomy-red:#e5484d;--anatomy-green:#30a46c;--anatomy-blue:#3e63dd;
+  --anatomy-lift:inset 0 1px 0 0 #ffffff,0 0 0 1px #0000000f,0 1px 1px -.5px #0000000a,0 3px 3px -1.5px #0000000a,0 6px 6px -3px #0000000a,0 12px 12px -6px #0000000a;
+}
+.seo-anatomy .iso-svg{display:block;width:100%;height:auto;overflow:visible}
+.seo-anatomy .iso-svg path,.seo-anatomy .iso-svg circle{vector-effect:non-scaling-stroke}
+.seo-anatomy .iso-fill{fill:var(--anatomy-paper);stroke:none}
+.seo-anatomy .iso-solid[data-lit]>.iso-fill{fill:var(--anatomy-face)}
+.seo-anatomy .iso-shade,.seo-anatomy .iso-top{stroke:none}
+.seo-anatomy .iso-shade[data-shade="0"]{fill:var(--anatomy-shade-0)}
+.seo-anatomy .iso-shade[data-shade="1"]{fill:var(--anatomy-shade-1)}
+.seo-anatomy .iso-shade[data-shade="2"]{fill:var(--anatomy-shade-2)}
+.seo-anatomy .iso-shade[data-shade="3"]{fill:var(--anatomy-shade-3)}
+.seo-anatomy .iso-top{fill:var(--anatomy-top)}
+.seo-anatomy .iso-solid[data-lit]>.iso-top{fill:var(--anatomy-lit-top)}
+.seo-anatomy .iso-solid[data-lit]>.iso-shade{fill:var(--anatomy-lit-shade)}
+.seo-anatomy .iso-solid[data-seamless]>.iso-shade,.seo-anatomy .iso-solid[data-seamless]>.iso-top{stroke-width:.4;stroke-linejoin:round}
+.seo-anatomy .iso-solid[data-seamless]>.iso-shade[data-shade="0"]{stroke:var(--anatomy-shade-0)}
+.seo-anatomy .iso-solid[data-seamless]>.iso-shade[data-shade="1"]{stroke:var(--anatomy-shade-1)}
+.seo-anatomy .iso-solid[data-seamless]>.iso-shade[data-shade="2"]{stroke:var(--anatomy-shade-2)}
+.seo-anatomy .iso-solid[data-seamless]>.iso-shade[data-shade="3"]{stroke:var(--anatomy-shade-3)}
+.seo-anatomy .iso-solid[data-seamless]>.iso-top{stroke:var(--anatomy-top)}
+.seo-anatomy .iso-solid[data-seamless][data-lit]>.iso-top{stroke:var(--anatomy-lit-top)}
+.seo-anatomy .iso-solid[data-seamless][data-lit]>.iso-shade{stroke:var(--anatomy-lit-shade)}
+.seo-anatomy .iso-solid[data-lit]>.iso-edge{stroke:var(--anatomy-lit)}
+.seo-anatomy .iso-halo{fill:var(--anatomy-halo);stroke:none;filter:blur(9px);opacity:var(--anatomy-halo-opacity);transform:translateY(3px)}
+.seo-anatomy .iso-line{fill:none;stroke:var(--anatomy-lo);stroke-width:var(--anatomy-weight);stroke-linecap:round;stroke-linejoin:round}
+.seo-anatomy .iso-line[data-tone="hi"]{stroke:var(--anatomy-hi)}
+.seo-anatomy .iso-line[data-tone="mid"]{stroke:var(--anatomy-mid)}
+.seo-anatomy .iso-line[data-tone="lo"]{stroke:var(--anatomy-lo)}
+.seo-anatomy .iso-line[data-tone="faint"]{stroke:var(--anatomy-faint)}
+.seo-anatomy .iso-line[data-tone="lit"]{stroke:var(--anatomy-lit)}
+.seo-anatomy .iso-line[data-tone="red"]{stroke:var(--anatomy-red)}
+.seo-anatomy .iso-line[data-tone="green"]{stroke:var(--anatomy-green)}
+.seo-anatomy .iso-line[data-tone="blue"]{stroke:var(--anatomy-blue)}
+.seo-anatomy .iso-line[data-dotted]{stroke-dasharray:.01 3.5;stroke-width:1}
+.seo-anatomy .iso-line[data-dashed]{stroke-dasharray:3 3}
+.seo-anatomy .iso-line[data-flow]{stroke-dasharray:2 6}
+.seo-anatomy .iso-wire-end{fill:var(--anatomy-paper);stroke:var(--anatomy-lo);stroke-width:var(--anatomy-weight)}
+.seo-anatomy .iso-wire[data-tone="hi"] .iso-wire-end{stroke:var(--anatomy-hi)}
+.seo-anatomy .iso-wire[data-tone="mid"] .iso-wire-end{stroke:var(--anatomy-mid)}
+.seo-anatomy .iso-wire[data-tone="faint"] .iso-wire-end{stroke:var(--anatomy-faint)}
+.seo-anatomy .iso-wire[data-tone="lit"] .iso-wire-end{stroke:var(--anatomy-lit)}
+.seo-anatomy .iso-dots circle{fill:var(--anatomy-dot);stroke:none;opacity:.32}
+.seo-anatomy .iso-dots[data-tone="hi"] circle{opacity:.85}
+.seo-anatomy .iso-dots[data-tone="mid"] circle{opacity:.45}
+.seo-anatomy .iso-dots[data-tone="lo"] circle{opacity:.22}
+.seo-anatomy .iso-dots[data-tone="faint"] circle{opacity:.12}
+.seo-anatomy .iso-face-text{fill:var(--anatomy-mid);font-family:var(--anatomy-mono);letter-spacing:.04em}
+.seo-anatomy .iso-face-text[data-tone="hi"]{fill:var(--anatomy-hi)}
+.seo-anatomy .iso-face-text[data-tone="lo"]{fill:var(--anatomy-lo)}
+.seo-anatomy .iso-face-text[data-tone="faint"]{fill:var(--anatomy-faint)}
+.seo-anatomy .tb-body{fill:var(--anatomy-shade-2);stroke:none}
+.seo-anatomy .tb-shine{fill:var(--anatomy-top);stroke:none}
+.seo-anatomy .tb-shade{fill:var(--anatomy-shade-0);stroke:none}
+.seo-anatomy .tb-ring{fill:none;stroke:var(--anatomy-lo);stroke-width:.45;stroke-linecap:butt;stroke-linejoin:round}
+.seo-anatomy .tb-ring[data-tone="mid"]{stroke:var(--anatomy-mid)}
+.seo-anatomy .tb-ring[data-tone="faint"]{stroke:var(--anatomy-faint)}
+.seo-anatomy .tb-ring[data-tone="hi"]{stroke:var(--anatomy-hi)}
+@keyframes iso-flow{to{stroke-dashoffset:-32}}
+@keyframes iso-pulse{0%,100%{opacity:.18}12%{opacity:1}40%{opacity:.18}}
+.seo-anatomy .iso-line[data-flow]{animation:iso-flow 1600ms linear infinite}
+.seo-anatomy .iso-dots circle[data-pulse]{animation:iso-pulse 1600ms steps(1,end) infinite;animation-delay:var(--pulse-at,0ms)}
+.seo-anatomy .iso-figure{margin:32px 0 36px}
+.seo-anatomy .iso-plate{position:relative;padding:52px 24px;border-radius:0;background:var(--anatomy-card);box-shadow:0 0 0 1px var(--anatomy-mid);--anatomy-paper:var(--anatomy-card)}
+.seo-anatomy .iso-plate-corners{position:absolute;inset:18px 20px;pointer-events:none}
+.seo-anatomy .iso-plate-corner{position:absolute;color:var(--anatomy-muted);font-family:var(--anatomy-mono);font-size:10.5px;line-height:1;letter-spacing:.04em;white-space:nowrap}
+.seo-anatomy .iso-plate-corner[data-corner="fig"]{top:0;left:0;color:var(--anatomy-text)}
+.seo-anatomy .iso-plate-corner[data-corner="title"]{top:0;right:0;text-transform:uppercase;letter-spacing:.1em}
+.seo-anatomy .iso-plate-corner[data-corner="hint"]{bottom:0;left:0;text-transform:uppercase;letter-spacing:.1em}
+.seo-anatomy .iso-plate-corner[data-corner="readout"]{right:0;bottom:0;color:var(--anatomy-text);font-variant-numeric:tabular-nums}
+.seo-anatomy .iso-plate .iso-svg{margin:0 auto}
+.seo-anatomy .iso-legend{display:grid;gap:8px;margin-top:12px;color:var(--anatomy-muted);font-size:13px;line-height:1.55}
+.seo-anatomy .iso-keys{display:flex;flex-wrap:wrap;gap:6px 18px}
+.seo-anatomy .iso-key{display:inline-flex;align-items:center;gap:7px}
+.seo-anatomy .iso-swatch{width:16px;height:10px;flex:none;overflow:visible}
+.seo-anatomy .iso-swatch path{fill:none;stroke:var(--anatomy-hi);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+.seo-anatomy .iso-swatch[data-mark="raised"] path,.seo-anatomy .iso-swatch[data-mark="flat"] path{stroke:var(--anatomy-mid)}
+.seo-anatomy .iso-swatch[data-mark="lit"] path{stroke:var(--anatomy-lit)}
+.seo-anatomy .iso-swatch[data-mark="dim"] path{stroke:var(--anatomy-lo)}
+.seo-anatomy .iso-swatch[data-mark="dotted"] path{stroke-dasharray:.01 3;stroke-width:1.4}
+.seo-anatomy .iso-swatch[data-mark="dashed"] path{stroke-dasharray:3 2.5}
+.seo-anatomy .iso-swatch[data-mark="red"] path{stroke:var(--anatomy-red)}
+.seo-anatomy .iso-swatch[data-mark="green"] path{stroke:var(--anatomy-green)}
+.seo-anatomy .iso-swatch[data-mark="blue"] path{stroke:var(--anatomy-blue)}
+.seo-anatomy .iso-swatch-crease{stroke:var(--anatomy-lo)!important}
+@media (max-width:560px){.seo-anatomy .iso-plate{padding:48px 12px 70px}.seo-anatomy .iso-plate-corner[data-corner="hint"]{bottom:18px}}
+@media (prefers-reduced-motion:reduce){.seo-anatomy .iso-line[data-flow],.seo-anatomy .iso-dots circle[data-pulse]{animation:none}}
+
+/* Palette Bump : remplace les jetons du thème clair d'Anatomy (kit/iso.css).
+   Placer après iso.css, sur l'élément qui porte class="iso bump" data-theme="light".
+   Modifier une valeur ici recolore les huit modèles. */
+.seo-anatomy .iso.bump, .seo-anatomy .bump .iso {
+  /* Papier : crème et ivoire */
+  --anatomy-page: #ece6d8;
+  --anatomy-card: #f6f2e8;
+  --anatomy-paper: #f6f2e8;
+  --anatomy-face: #fbf8f1;
+  --anatomy-top: #fffdf7;
+  --anatomy-shade-0: #e2dbc9;
+  --anatomy-shade-1: #e9e3d4;
+  --anatomy-shade-2: #efeadf;
+  --anatomy-shade-3: #f4f0e6;
+  --anatomy-lit-top: #fff6dc;
+  --anatomy-lit-shade: #ecdcb2;
+
+  /* Traits : vert profond pour le sujet, gris métal pour la structure, beige pour la base */
+  --anatomy-hi: #1e3a2c;
+  --anatomy-mid: #7b827d;
+  --anatomy-lo: #b5ad9b;
+  --anatomy-faint: #dad2c1;
+  /* Accent unique : laiton (ce que le lecteur doit regarder) */
+  --anatomy-lit: #7a5a14;
+
+  --anatomy-text: #4f514c;
+  --anatomy-strong: #16201b;
+  --anatomy-muted: #8d8b82;
+  --anatomy-dot: #26261f;
+  --anatomy-halo: #6b5f45;
+  --anatomy-halo-opacity: .30;
+
+  /* Couleurs porteuses de sens uniquement */
+  --anatomy-red: #b83a26;    /* refus, anomalie */
+  --anatomy-green: #2f6b4a;  /* validé, protégé */
+  --anatomy-blue: #3e5f7a;   /* donnée */
+  --bump-orange: #cf7a25;    /* attention, en cours */
+}
+
+/* Matériaux : un groupe <g data-mat="…"> remappe les jetons de ses pièces. */
+.seo-anatomy .bump [data-mat="enamel"] {
+  --anatomy-paper: #2e4c3c; --anatomy-face: #34543f; --anatomy-top: #3f6451;
+  --anatomy-shade-0: #1f3528; --anatomy-shade-1: #253e2f; --anatomy-shade-2: #2b4636; --anatomy-shade-3: #324f3e;
+  --anatomy-lit-top: #4d7562; --anatomy-lit-shade: #3a5c49;
+  --anatomy-hi: #10201a; --anatomy-mid: #7f9a8b; --anatomy-lo: #587666; --anatomy-faint: #48665a;
+  --anatomy-dot: #e7dfc8;
+}
+.seo-anatomy .bump [data-mat="brass"] {
+  --anatomy-paper: #d6b866; --anatomy-face: #dcc073; --anatomy-top: #ecd89a;
+  --anatomy-shade-0: #a8853a; --anatomy-shade-1: #b8964a; --anatomy-shade-2: #c6a65a; --anatomy-shade-3: #d2b469;
+  --anatomy-lit-top: #f5e6b4; --anatomy-lit-shade: #dcc27c;
+  --anatomy-hi: #4a3712; --anatomy-mid: #8a6a28; --anatomy-lo: #a6873f; --anatomy-faint: #bc9e55;
+  --anatomy-lit: #3d2c08; --anatomy-dot: #3b2c0e;
+}
+.seo-anatomy .bump [data-mat="steel"] {
+  --anatomy-paper: #d8dbd6; --anatomy-face: #e1e3df; --anatomy-top: #eef0ec;
+  --anatomy-shade-0: #adb2ad; --anatomy-shade-1: #bbc0bb; --anatomy-shade-2: #c8ccc8; --anatomy-shade-3: #d4d7d3;
+  --anatomy-hi: #29302c; --anatomy-mid: #7c8480; --anatomy-lo: #a0a7a2; --anatomy-faint: #bcc1bc;
+  --anatomy-dot: #29302c;
+}
+.seo-anatomy .bump [data-mat="black"] {
+  --anatomy-paper: #34342f; --anatomy-face: #3a3a35; --anatomy-top: #47463f;
+  --anatomy-shade-0: #22221e; --anatomy-shade-1: #292925; --anatomy-shade-2: #30302b; --anatomy-shade-3: #373731;
+  --anatomy-hi: #0d0d0b; --anatomy-mid: #7c7a70; --anatomy-lo: #5b5950; --anatomy-faint: #4a4942;
+  --anatomy-dot: #d8d2c0;
+}
+/* Verre : corps teinté translucide, reflet clair, arêtes vert gris. */
+.seo-anatomy .bump [data-mat="glass"] .tb-body { fill: #d4e3d9; fill-opacity: .38; }
+.seo-anatomy .bump [data-mat="glass"] .tb-shine { fill: #ffffff; fill-opacity: .5; }
+.seo-anatomy .bump [data-mat="glass"] .tb-shade { fill: #93ad9f; fill-opacity: .28; }
+.seo-anatomy .bump [data-mat="glass"] { --anatomy-hi: #5d7a6b; --anatomy-mid: #8aa597; }
+.seo-anatomy .bump [data-mat="glass"] .iso-fill { fill: #d4e3d9; fill-opacity: .38; }
+.seo-anatomy .bump [data-mat="glass"] .iso-top, .seo-anatomy .bump [data-mat="glass"] .iso-shade { fill-opacity: .35; }
+
+/* Voyants : une couleur de sens, allumée par la vue (data-on). */
+.seo-anatomy .bump .lamp { fill: var(--anatomy-faint); transition: fill .4s var(--anatomy-ease); }
+.seo-anatomy .bump .lamp[data-on="amber"] { fill: var(--bump-orange); }
+.seo-anatomy .bump .lamp[data-on="green"] { fill: #4f9e70; }
+.seo-anatomy .bump .lamp[data-on="red"] { fill: var(--anatomy-red); }
+
+/* Pièces dessinées à la volée par live.ts (levier, drapeau) : mêmes jetons que les solides. */
+.seo-anatomy .bump .lever-face { fill: var(--anatomy-top); stroke: var(--anatomy-hi); stroke-width: .6; stroke-linejoin: round; }
+.seo-anatomy .bump .lever-side { fill: var(--anatomy-shade-1); stroke: var(--anatomy-hi); stroke-width: .6; stroke-linejoin: round; }
+.seo-anatomy .bump .flag-arm { fill: none; stroke: var(--anatomy-hi); stroke-width: 1.3; stroke-linecap: round; }
+.seo-anatomy .bump .flag-cloth { fill: var(--anatomy-faint); stroke: var(--anatomy-hi); stroke-width: .6; stroke-linejoin: round; transition: fill .5s var(--anatomy-ease); }
+.seo-anatomy .bump [data-part="flag"][data-on] .flag-cloth { fill: var(--anatomy-green); }
+
+/* Bande d'étiquette de la capsule : vierge, préparée (vert), refusée (rouge). */
+.seo-anatomy .bump [data-label] .cap-band { --anatomy-face: #f3efe4; --anatomy-lit-top: #fffaf0; --anatomy-lit-shade: #ddd5c2; --anatomy-lit: #6b6656; }
+.seo-anatomy .bump [data-label="prepared"] .cap-band { --anatomy-face: #d6b866; --anatomy-lit-top: #f0dc9c; --anatomy-lit-shade: #b8964a; --anatomy-lit: #4a3712; }
+.seo-anatomy .bump [data-label="rejected"] .cap-band { --anatomy-face: #b8452f; --anatomy-lit-top: #d06a50; --anatomy-lit-shade: #96351f; --anatomy-lit: #4a1408; }
+
+/* Barre de commandes sous la figure (hors du dessin, comme la légende). */
+.seo-anatomy .bump-controls { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 10px 0 0; font: 12px/1 var(--anatomy-mono); }
+.seo-anatomy .bump-controls button, .seo-anatomy .bump-controls select {
+  font: inherit; color: var(--anatomy-strong); background: var(--anatomy-card); border: 1px solid var(--anatomy-faint);
+  border-radius: 6px; padding: 6px 9px; cursor: pointer;
+}
+.seo-anatomy .bump-controls button:hover { border-color: var(--anatomy-mid); }
+.seo-anatomy .bump-controls button[aria-pressed="true"], .seo-anatomy .bump-controls button[data-current] { background: var(--anatomy-hi); color: var(--anatomy-card); border-color: var(--anatomy-hi); }
+.seo-anatomy .bump-controls button:disabled { opacity: .4; cursor: default; }
+.seo-anatomy .bump-controls .sep { width: 1px; height: 18px; background: var(--anatomy-faint); margin: 0 4px; }
+.seo-anatomy .bump-controls [data-accept] { border-color: var(--anatomy-green); color: var(--anatomy-green); }
+.seo-anatomy .bump-controls [data-refuse] { border-color: var(--anatomy-red); color: var(--anatomy-red); }
+.seo-anatomy .iso-stage:focus-visible { outline: 1px solid var(--anatomy-muted); outline-offset: 6px; }
+
+/* 02 · fente vide (vide sombre) et cartouches non choisies (émail éteint). */
+.seo-anatomy .bump .slot-void { fill: #24261f; fill-opacity: .6; stroke: var(--anatomy-hi); stroke-width: .4; }
+.seo-anatomy .bump .cart { cursor: pointer; }
+.seo-anatomy .bump .cart:not([data-on]) [data-mat="enamel"] {
+  --anatomy-paper: #c9cbc2; --anatomy-face: #d0d2ca; --anatomy-top: #e2e3dc; --anatomy-lit-top: #e2e3dc; --anatomy-lit-shade: #c3c6bd;
+  --anatomy-shade-0: #aeb2a8; --anatomy-shade-1: #b8bbb2; --anatomy-shade-2: #c2c5bc; --anatomy-shade-3: #cbcec5;
+  --anatomy-hi: #4f554f; --anatomy-lit: #4f554f; --anatomy-faint: #b8bbb2; --anatomy-dot: #4f554f;
+}
+
+/* 01 · tubes traversés par la demande, boutons de validation, coche d'envoi. */
+.seo-anatomy .bump [data-mat="glass"][data-on] .tb-body { fill: #7fc29b; fill-opacity: .55; }
+.seo-anatomy .bump [data-mat="glass"][data-on] { --anatomy-hi: #2f6b4a; }
+.seo-anatomy .bump .btn { cursor: pointer; }
+.seo-anatomy .bump [data-btn="ok"] { --anatomy-face: #3f8a5f; --anatomy-lit-top: #5aa87a; --anatomy-lit-shade: #2f6b4a; --anatomy-lit: #12301f; }
+.seo-anatomy .bump [data-btn="no"] { --anatomy-face: #c4553c; --anatomy-lit-top: #dc7358; --anatomy-lit-shade: #a2402a; --anatomy-lit: #4a1408; }
+.seo-anatomy .bump .check { stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; transition: opacity .3s; }
+.seo-anatomy .bump [data-t] { font-family: var(--anatomy-mono); }
+
+/* Autonome dans une app hôte (React) : police de base et texte réservé aux lecteurs d'écran. */
+.seo-anatomy .iso.bump { font: 14px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--anatomy-text); }
+.seo-anatomy .iso.bump .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* 03 : impulsions de synchronisation (même fiche partout). */
+.seo-anatomy .bump [data-pulse] circle { fill: #4f9e70; stroke: #f7f2e6; stroke-width: .8; }
+
+/* 04 : coffre-fort. Voyant « actif », cartes d'accès, pistes gravées et fils du scanner. */
+.seo-anatomy .bump .lamp[data-on="white"] { fill: #fff3cf; }
+.seo-anatomy .bump [data-mat="alert"] {
+  --anatomy-paper: #c9573a; --anatomy-face: #d0603f; --anatomy-top: #df7a5a;
+  --anatomy-shade-0: #9c3a24; --anatomy-shade-1: #ab432b; --anatomy-shade-2: #b94c32; --anatomy-shade-3: #c45439;
+  --anatomy-hi: #4a160a; --anatomy-mid: #f3d2c4; --anatomy-lo: #8a3420; --anatomy-faint: #a8452c;
+}
+.seo-anatomy .bump [data-mat="ok"] {
+  --anatomy-paper: #4f9e70; --anatomy-face: #57a678; --anatomy-top: #6db98c;
+  --anatomy-shade-0: #337a52; --anatomy-shade-1: #3b8559; --anatomy-shade-2: #438f61; --anatomy-shade-3: #4a986a;
+  --anatomy-hi: #12301f; --anatomy-mid: #e3f3e8; --anatomy-lo: #2f6b4a; --anatomy-faint: #3f8a5f;
+}
+.seo-anatomy .bump [data-trace] { transition: stroke .3s; }
+.seo-anatomy .bump [data-trace][data-on] { stroke: var(--bump-orange); stroke-width: 1.2; }
+.seo-anatomy .bump [data-wire] { stroke: var(--bump-orange); stroke-width: 1; fill: none; }
+
+.seo-anatomy .bump [data-zone="ok"] { stroke: #4f9e70; stroke-width: 1.6; }
+.seo-anatomy .bump [data-zone="bad"] { stroke: var(--bump-orange); stroke-width: 1.6; }
+
+/* 05 : cloche de verre en deux couches. */
+.seo-anatomy .bump .glass-back { fill: #d4e3d9; fill-opacity: .2; stroke: none; }
+.seo-anatomy .bump .glass-top { fill: #f4fbf7; fill-opacity: .22; stroke: none; }
+.seo-anatomy .bump .glass-edge { stroke: #5d7a6b; stroke-width: 1.1; fill: none; }
+
+/* 06 : lumière du banc optique, cloches éclairées, prototypes en fil de fer. */
+.seo-anatomy .bump .ray { stroke: #f0b72a; stroke-width: 1.2; fill: none; stroke-linecap: round; }
+.seo-anatomy .bump .beam-glow { stroke: #f0b72a; stroke-width: 6; stroke-opacity: .35; fill: none; stroke-linecap: round; }
+.seo-anatomy .bump .beam-core { stroke: #fff3cf; stroke-width: 1.8; fill: none; stroke-linecap: round; }
+.seo-anatomy .bump .glass-back[data-on] { fill: #fff3cf; fill-opacity: .45; }
+/* Halo crème sous le trait : le prototype se lit sur le verre clair comme sur le fond vert de la cloche. */
+.seo-anatomy .bump [data-proto] .proto-halo { stroke: #fffaf0; stroke-width: 5; stroke-opacity: .9; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.seo-anatomy .bump [data-proto] .proto-line { stroke: #1f4d35; stroke-width: 2; stroke-dasharray: 4 2; fill: none; stroke-linejoin: round; }
+.seo-anatomy .bump [data-proto][data-on] .proto-line { stroke: #8a6a22; stroke-width: 2.3; }
+
+/* 07 : port de Montréal. Eau du bassin, plaque allumée. */
+.seo-anatomy .bump [data-mat="water"] {
+  --anatomy-paper: #9fbdb8; --anatomy-face: #a8c4bf; --anatomy-top: #b7d0cb;
+  --anatomy-shade-0: #7f9f99; --anatomy-shade-1: #88a7a1; --anatomy-shade-2: #91afa9; --anatomy-shade-3: #99b6b0;
+  --anatomy-hi: #3d5f58; --anatomy-mid: #6f918a; --anatomy-lo: #d7e6e2; --anatomy-faint: #e6f0ed;
+}
+.seo-anatomy .bump [data-plaque][data-on] [data-mat="brass"] { --anatomy-top: #fbeec2; --anatomy-face: #f0d98e; --anatomy-paper: #ecd38a; }
+.seo-anatomy .bump-controls .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; border: 1px solid #00000033; }
+.seo-anatomy .bump-controls .swatch[data-color="0"] { background: #d6b866; }
+.seo-anatomy .bump-controls .swatch[data-color="1"] { background: #3f6451; }
+.seo-anatomy .bump-controls .swatch[data-color="2"] { background: #d0603f; }

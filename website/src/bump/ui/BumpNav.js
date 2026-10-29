@@ -28,20 +28,18 @@ export default function BumpNav({navItems}){
   const [tone,setTone]=React.useState('dark');
   React.useEffect(()=>{
     let frame=0;
-    const update=()=>{
-      frame=0;
-      const y=(document.querySelector('.bump-header')?.getBoundingClientRect().height||60)/2;
-      let next='dark';
-      for(const element of document.querySelectorAll('main section>div:first-child>[data-nav-theme],main section>div:first-child>.bg-light')){
-        const bounds=element.getBoundingClientRect();
-        if(bounds.top<=y&&bounds.bottom>y)next=element.classList.contains('bg-light')?'light':element.dataset.navTheme||'dark';
-      }
-      // The earlier IA wipe already places its lower painting caption on paper.
-      const paperCaption=document.querySelector('#online>div:first-child>div:first-child>[data-nav-style=solid]')?.getBoundingClientRect();
-      if(paperCaption&&paperCaption.top<=y+100&&paperCaption.bottom>y)next='light';
-      updateFallbackContrast();
+    const header=document.querySelector('.bump-header');
+    const syncTone=()=>{
+      // Use the same native paper sampling as the floating text. Authored
+      // chapter themes can be light even while their painting fills the screen.
+      const next=header?.dataset.bumpSurface==='paper'?'light':'dark';
       document.documentElement.dataset.bumpTone=next;
       setTone(previous=>previous===next?previous:next);
+    };
+    const update=()=>{
+      frame=0;
+      updateFallbackContrast();
+      syncTone();
     };
     const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
     // A finite guided journey can finish within the sampling throttle's final
@@ -49,11 +47,13 @@ export default function BumpNav({navItems}){
     const settled=()=>{updateFallbackContrast(true);schedule();};
     const observer=new ResizeObserver(schedule);
     const main=document.querySelector('main');if(main)observer.observe(main);
+    const surfaceObserver=new MutationObserver(syncTone);
+    if(header)surfaceObserver.observe(header,{attributes:true,attributeFilter:['data-bump-surface']});
     window.addEventListener('scroll',schedule,{passive:true});
     window.addEventListener('resize',schedule);
     window.addEventListener('bump:scroll-settled',settled);
     schedule();
-    return()=>{cancelAnimationFrame(frame);observer.disconnect();window.removeEventListener('scroll',schedule);window.removeEventListener('resize',schedule);window.removeEventListener('bump:scroll-settled',settled);};
+    return()=>{cancelAnimationFrame(frame);observer.disconnect();surfaceObserver.disconnect();window.removeEventListener('scroll',schedule);window.removeEventListener('resize',schedule);window.removeEventListener('bump:scroll-settled',settled);};
   },[]);
   React.useEffect(()=>{
     const mark=()=>{const ready=!!document.querySelector('canvas[data-engine]');document.documentElement.dataset.bumpWebgl=String(ready);return ready;};
@@ -79,7 +79,7 @@ export default function BumpNav({navItems}){
   const results=content.chapters.flatMap((c,i)=>c.groups.flatMap(g=>g.cards.map(x=>({...x,index:i+1,chapter:c})))).filter(c=>normalize((c.title+' '+c.descriptionHtml+' '+c.chapter.title).replace(/<[^>]*>/g,' ')).includes(normalize(query.trim())));
   const pageResults=searchEditorialPages(query,english?'en':'fr');
   const heroMenu=h('div',{className:'bump-hero-nav-anchor',ref:menuAnchor},
-    h('button',{type:'button',ref:menuButton,className:'bump-nav-trigger','aria-expanded':menu,'aria-controls':'bump-menu',onClick:()=>{setSearch(false);setMenu(!menu);},onKeyDown:event=>{if(event.key==='ArrowDown'){event.preventDefault();setSearch(false);setMenu(true);requestAnimationFrame(()=>menuAnchor.current?.querySelector('a')?.focus());}}},'Expertises',h('img',{src:'/runtime/media/25177a62ed-global-16-shrevon-down.svg',width:12,height:12,alt:''})),
+    h('button',{type:'button',ref:menuButton,className:'bump-nav-trigger','aria-expanded':menu,'aria-controls':'bump-menu',onClick:()=>{setSearch(false);setMenu(!menu);},onKeyDown:event=>{if(event.key==='ArrowDown'){event.preventDefault();setSearch(false);setMenu(true);requestAnimationFrame(()=>menuAnchor.current?.querySelector('a')?.focus());}}},'Expertises',h('svg',{className:'bump-nav-chevron',width:12,height:12,viewBox:'0 0 16 16',fill:'none',stroke:'currentColor',strokeWidth:1.4,strokeLinecap:'round',strokeLinejoin:'round','aria-hidden':true},h('path',{d:'m4 6 4 4 4-4'}))),
     h(MotionPanel,{open:menu,id:'bump-menu',className:'bump-hero-dropdown',role:'navigation','aria-label':english?'Expertise and chapters':'Expertises et chapitres'},
       h('p',{className:'bump-menu-label'},english?'Our expertise':'Nos expertises'),
       h('div',{className:'bump-service-links'},...expertiseLinks(english?'en':'fr').map((item,i)=>h('a',{href:item.path,key:item.id},h('span',{'aria-hidden':true},String(i+1).padStart(2,'0')),item.label,h(ArrowUpRight,{})))),

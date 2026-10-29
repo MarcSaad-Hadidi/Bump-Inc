@@ -12,6 +12,10 @@ Smoother processes. Smarter systems. A better protected business.
 
 Bump is a technology consulting firm based in Montréal. We help small and medium-sized businesses understand their needs, connect their tools, develop software for their operations and strengthen their security. Each engagement starts with your situation, followed by a proposal defining implementation and maintenance.
 
+The right lever, in the right place: we start from what slows you down and route it to the right expertise. Illustrative scenario.
+
+![Switchyard routing each need to the right expertise, from workflow automation to cybersecurity](__BUMP_ORIGIN__/bump/expertises.webp)
+
 ## Start with what slows you down.
 
 A request moves through email, a file gets copied into three tools, or information arrives too late. The starting point is usually concrete. With your team, we identify the change that simplifies the work without adding another layer of complexity.

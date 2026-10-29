@@ -5,6 +5,29 @@ import {createDiagramPlayer, FLOW_DURATIONS} from '../src/bump/seo/diagram-motio
 import {expertiseLinks} from '../src/bump/seo/navigation.js';
 import {listPages, pageFor} from '../src/bump/seo/pages.js';
 import {renderHtml} from '../src/bump/seo/render.js';
+import {build} from 'esbuild';
+import {runInNewContext} from 'node:vm';
+
+test('the editorial client retains hero motion beside Anatomy posters and restores it from page cache',async()=>{
+ const compiled=await build({entryPoints:['src/bump/seo/client.js'],format:'cjs',write:false,platform:'node'});
+ for(const locale of ['fr-CA','en-CA']){
+  let started=0,stopped=0;const handlers=new Map();
+  const doc={documentElement:{lang:locale},querySelector:selector=>selector==='[data-seo-figure]'?{}:null,querySelectorAll:()=>[]};
+  const win={addEventListener(type,fn){if(!handlers.has(type))handlers.set(type,[]);handlers.get(type).push(fn);}};
+  const modules={
+   './diagram-motion.js':{installDiagramMotion(){started++;return()=>{stopped++;};}},
+   './figure-loading.js':{installSeoFigureLoading:()=>()=>{}},
+   './workload.js':{installWorkloadCalculators(){}},
+   '../background-music.js':{installBackgroundMusic(){}},
+  };
+  runInNewContext(compiled.outputFiles[0].text,{document:doc,window:win,require:id=>{assert(id in modules);return modules[id];}});
+  assert.equal(started,1,locale+' must keep its existing hero animation');
+  handlers.get('pageshow').forEach(fn=>fn({persisted:false}));assert.equal(started,1);
+  handlers.get('pagehide').forEach(fn=>fn());assert.equal(stopped,1);
+  handlers.get('pageshow').forEach(fn=>fn({persisted:true}));assert.equal(started,2);
+  handlers.get('pagehide').forEach(fn=>fn());assert.equal(stopped,2);
+ }
+});
 
 function clockHarness(count = 3) {
   let time = 0, nextId = 0;

@@ -60,3 +60,4 @@ export function announcerOf(root: Element) {
   let said = "";
   return (text: string) => { if (el && text !== said) { el.textContent = said = text; } };
 }
+

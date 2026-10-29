@@ -1,15 +1,31 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {runInNewContext} from 'node:vm';
 import {build} from 'esbuild';
 import {BUMP_PLAYBACK_RATE,motionSeconds} from '../src/bump/ui/playback.js';
 
 // Replace only the original RAF driver. Test the real host clock adapters,
 // settled-arrival observer and elapsed-time accumulation together.
-const compiled=await build({entryPoints:['src/bump/machines/suppliedRuntime.ts','src/bump/machines/methodRuntime.ts','src/bump/machines/visionRuntime.ts','src/bump/machines/workflowRuntime.ts','src/bump/machines/securityRuntime.ts'],bundle:true,platform:'node',format:'esm',write:false,outdir:'/tmp/bump-clock-tests',plugins:[{name:'virtual-native-raf',setup(b){
+const compiled=await build({entryPoints:['src/bump/machines/suppliedRuntime.ts','src/bump/machines/methodRuntime.ts','src/bump/machines/visionRuntime.ts','src/bump/machines/workflowRuntime.ts','src/bump/machines/securityRuntime.ts','src/bump/seo/figure-runtime.ts'],bundle:true,platform:'node',format:'esm',write:false,outdir:'/tmp/bump-clock-tests',plugins:[{name:'virtual-native-raf',setup(b){
  b.onResolve({filter:/components\/bump-anatomy\/shared\/runtime$/},()=>({path:'driver',namespace:'test-driver'}));
  b.onLoad({filter:/.*/,namespace:'test-driver'},()=>({contents:'export function createLoop(stage,tick){globalThis.__bumpClockTicks.push(tick);return {kick(){},calm(){return false},destroy(){}}}'}));
 }}]});
 const modules=await Promise.all(compiled.outputFiles.map(async file=>[file.path,await import('data:text/javascript;base64,'+Buffer.from(file.text).toString('base64'))]));
+
+test('the actual build routes supplied clocks on both Windows and POSIX paths',()=>{
+ const source=readFileSync(new URL('../scripts/build-bump-ui.mjs',import.meta.url),'utf8');
+ const plugin=runInNewContext(source.slice(source.indexOf('const methodClock='),source.indexOf('const sharedReact='))+'\nmethodClock',{resolve});
+ let resolveImport;
+ plugin.setup({onResolve(_options,callback){resolveImport=callback;}});
+ const adapters=[['shared/step-loop.ts','methodToolsRuntime'],['methode/live.ts','methodToolsRuntime'],['calibration/live.ts','methodRuntime'],['vision/live.ts','visionRuntime'],['security-engine/live.ts','securityRuntime'],['workflow/live.ts','workflowRuntime'],['port/live.ts','portCraneRuntime'],['vos-outils/live.ts','suppliedRuntime']];
+ for(const separator of ['/','\\'])for(const [file,adapter]of adapters){
+  const importer=['root','src','components','bump-anatomy',...file.split('/')].join(separator);
+  assert.equal(resolveImport({importer})?.path,resolve('src/bump/machines/'+adapter+'.ts'),importer);
+ }
+ assert.equal(resolveImport({importer:'/root/src/unrelated.ts'}),undefined);
+});
 
 test('all supplied clocks use the calmer actual motion while preserving arrival and reading time',()=>{
  const originals=new Map(),set=(k,v)=>{originals.set(k,Object.getOwnPropertyDescriptor(globalThis,k));Object.defineProperty(globalThis,k,{value:v,writable:true,configurable:true});};
@@ -23,7 +39,7 @@ test('all supplied clocks use the calmer actual motion while preserving arrival 
    const stage=Object.assign(new EventTarget(),{dataset:{},closest(){return this;},getBoundingClientRect:()=>({top:110,bottom:810,width:800,height:700})}),values=[];
    const loop=module.createLoop(stage,(dt,clock)=>{values.push([dt,clock]);return true;});cleanups.push(()=>loop.destroy());
    const tick=globalThis.__bumpClockTicks.at(-1);assert.equal(tick(10,1000,false),false);assert.equal(values.length,0);
-   const stageRate=path.endsWith('methodRuntime.js')||path.endsWith('visionRuntime.js')?1:path.endsWith('workflowRuntime.js')?1.4:path.endsWith('securityRuntime.js')?1.3:BUMP_PLAYBACK_RATE,motionRate=path.endsWith('workflowRuntime.js')?1.4:path.endsWith('securityRuntime.js')?1.3:BUMP_PLAYBACK_RATE;
+   const stageRate=path.endsWith('figure-runtime.js')?1:path.endsWith('methodRuntime.js')||path.endsWith('visionRuntime.js')?1:path.endsWith('workflowRuntime.js')?1.4:path.endsWith('securityRuntime.js')?1.3:BUMP_PLAYBACK_RATE,motionRate=path.endsWith('figure-runtime.js')?1:path.endsWith('workflowRuntime.js')?1.4:path.endsWith('securityRuntime.js')?1.3:BUMP_PLAYBACK_RATE;
    observed.push({stage,tick,values,stageRate,motionRate});
   }
   state.bumpScrollMoving='false';window.dispatchEvent(new Event('bump:scroll-settled'));

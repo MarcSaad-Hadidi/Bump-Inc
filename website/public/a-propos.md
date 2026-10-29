@@ -12,6 +12,10 @@ Donnons de l’élan à votre entreprise.
 
 Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal, au Québec. Notre mission est d’aider les PME à devenir plus efficaces, intelligentes et sécurisées grâce à des solutions adaptées à leurs besoins. Nos trois divisions couvrent les processus, l’IA et les logiciels, ainsi que la cybersécurité.
 
+Ancrés à Montréal, tournés vers la suite : la technologie doit vous donner de l'élan. Scénario illustratif.
+
+![Port de Montréal : un navire arrive vide, est chargé de trois services, puis repart avec élan](__BUMP_ORIGIN__/bump/a-propos.webp)
+
 ## La technologie doit servir le travail.
 
 Un système utile aide une équipe à accomplir une tâche, à comprendre une situation ou à prendre une décision. C’est dans cette perspective que nous abordons l’automatisation, le développement logiciel et la sécurité : partir des opérations, puis choisir les moyens techniques.

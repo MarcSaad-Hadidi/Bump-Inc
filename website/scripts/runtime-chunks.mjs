@@ -17,5 +17,7 @@ export function runtimeChunks(clientDirectory) {
     }
     for (const name of readdirSync(directory).filter(name => /^Bump.*\.js$/.test(name))) visit(name);
   }
+  const seo = path.join(clientDirectory, 'runtime/seo');
+  for (const name of readdirSync(seo).filter(name=>name.endsWith('.js'))) files['/runtime/seo/'+name]=readFileSync(path.join(seo,name),'utf8');
   return files;
 }

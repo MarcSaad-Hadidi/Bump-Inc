@@ -20,6 +20,10 @@ Ces quatre études de cas sont des scénarios fictifs qui expliquent comment un 
 
 Dans ce scénario fictif, une PME de fabrication reçoit des demandes par courriel. Un membre de l’équipe recopie les coordonnées dans le CRM, recherche les pièces jointes et relance le demandeur lorsqu’une information manque.
 
+Automatisation des processus : du formulaire au CRM, avec la validation de votre équipe. Scénario illustratif.
+
+![Flux d'une demande de devis : réception, qualification, préparation, validation humaine, transmission au CRM](__BUMP_ORIGIN__/bump/automatisation-processus.webp)
+
 ### Quel parcours pourrait y répondre ?
 
 Le parcours proposé extrait les champs utiles, vérifie leur présence et prépare un dossier de devis. Une personne examine la demande et approuve la suite. Le système peut ensuite mettre à jour le CRM et préparer une confirmation, selon les règles convenues.
@@ -56,6 +60,10 @@ Critères à convenir avant l’implantation.
 ### Quel est le problème de départ ?
 
 Dans ce scénario fictif, une PME de services conserve ses procédures dans plusieurs espaces documentaires. Pour répondre à une question interne, l’équipe doit retrouver la version applicable et vérifier qu’elle a le droit de la consulter.
+
+Intégration IA : l'assistant puise seulement dans les sources autorisées, relie chaque point à sa source, et votre équipe décide. Scénario illustratif.
+
+![Assistant IA qui consulte les documents, le CRM et l'ERP autorisés, rédige une synthèse reliée à ses sources, puis attend la validation de l'équipe](__BUMP_ORIGIN__/bump/integration-ia.webp)
 
 ### Quel parcours pourrait y répondre ?
 
@@ -94,6 +102,10 @@ Critères à convenir avant l’implantation.
 
 Dans ce scénario fictif, une PME de maintenance répartit les demandes entre courriels et fichiers de suivi. Le responsable cherche qui intervient, quelle information manque et quel dossier doit être repris.
 
+Logiciel sur mesure : une demande, un responsable, un état visible, relié à vos outils. Scénario illustratif.
+
+![Tableau des opérations : une demande D-024 passe de reçue à terminée avec un responsable, puis met à jour le CRM](__BUMP_ORIGIN__/bump/developpement-logiciel.webp)
+
 ### Quel parcours pourrait y répondre ?
 
 L’application proposée réunit la demande, les documents, le responsable et la prochaine action. Les vues de l’équipe et de la coordination montrent les mêmes états. Les connexions utiles aux outils existants sont définies après examen de leurs API et de leurs limites.
@@ -130,6 +142,10 @@ Critères à convenir avant l’implantation.
 ### Quel est le problème de départ ?
 
 Dans ce scénario fictif, une PME veut vérifier les accès à une application interne après des changements dans son équipe. Certains comptes ou droits peuvent ne plus correspondre aux responsabilités actuelles.
+
+Cybersécurité : audit autorisé, faiblesses priorisées, corrections vérifiées. Scénario illustratif.
+
+![Coffre-fort à tiroirs : domaines inspectés dans un périmètre autorisé, risque révélé, corrigé puis vérifié](__BUMP_ORIGIN__/bump/cybersecurite.webp)
 
 ### Quel parcours pourrait y répondre ?
 

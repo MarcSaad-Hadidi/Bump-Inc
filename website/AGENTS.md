@@ -1,3 +1,75 @@
+# Consistent scene and paper ink in the header — 2026-10-28
+
+From Cybersecurity onward some floating controls remain dark over paintings.
+Use the existing compositor paper sampling for the header glass theme as well
+as its individual controls, including the language switch and project button.
+Do not derive header ink from the retained chapter data-nav-theme markers:
+Method and Vision may have light markers while the painting is visible.
+Observe only sampled surface changes, preserving React ownership of data-tone,
+existing scroll and native rendering. Do not apply blanket header text overrides
+to every menu descendant or recolor application-owned controls. The expertise
+chevron must inherit currentColor as an SVG, including its open rotation and
+reduced-motion behavior. The active sidebar label and Roman numeral must also
+use sampled ink: their retained !important rules are in Tailwind's base layer,
+so override those two parts in the same layer with a scoped selector. Verify
+the actual nested label and pseudo-element colors, not only the link's color.
+Verify all six scene arrivals, paper transitions, open
+menus/search/form, FR/EN and mobile. Publish on the same GPT Site, update the
+existing PR, rerun checks and Codex, and do not merge automatically.
+
+# Landing labels, subtitle spacing and folder input — 2026-10-28
+
+Keep labels below the Vision network icons fully visible, including short
+windows: reserve their actual line height between adjacent cards. Raise all
+six painting-introduction subtitles slightly without changing the headings,
+scene/camera geometry or assisted-stop coordinates. Preserve natural wrapping.
+For the stacked folders, distinguish new physical wheel notches and renewed
+or reversed trackpad impulses from decaying momentum. Keep one stop per fresh
+gesture, discard input during travel and accept light precision-wheel gestures.
+Use the existing controller only; preserve other chapter input behavior.
+
+Codex's inspection/refusal findings must also be fixed in the SEO host: the
+unmodified supplied vault and workflow stop their one-shot tours after manual
+input, including workflow refusal, approval and A/R shortcuts. Recover
+by remounting the same native component after 30 seconds without interaction,
+excluding held input, offscreen time and explicit pause. Never alter native
+Anatomy geometry, sources or clocks. Verify recovery and preserve the public
+GPT Site and existing PR without merging.
+
+# SEO stage explanations and complete viewport — 2026-10-28
+
+The user reports that the SEO models are too large and their brief native
+readouts do not explain each step like the landing. Add an editorial title,
+step number and client-facing explanation for every actual native stage.
+Synchronize from the delivered controls, crossfade without layout jumps and
+reserve the tallest explanation. Bound the SVG’s actual CSS grid track with
+minmax(0,1fr), not only its outer drawing container: intrinsic SVG height must
+never overflow into the explanation. Verify the SVG rectangle itself. Fit the
+model, explanation and illustrative
+caption together within the available viewport; support short landscape and
+narrow phones. Do not change the landing, native source/geometry/clocks,
+posters, English poster-only policy, metadata or global scroll. Keep the
+existing hero diagram player active independently of Anatomy loading in both
+languages, including pagehide cleanup and BFCache restoration. Keep this fix
+in the existing PR and GPT Site, with real visual validation before completion.
+
+# Supplied SEO figures — 2026-10-28
+
+The user now explicitly requests bump-pages-seo.zip. Its complete instructions
+are retained in docs/seo-animations-INSTRUCTIONS-IA.md. Mount the supplied
+LazyFigure on the seven mapped editorial topics after En clair, plus one
+corresponding figure per illustrative case study. English editions stay
+poster-only and never import native models. FAQ gets no Anatomy figure.
+Use the supplied posters, exact dimensions/captions and per-page social cards.
+This supersedes the previous instruction to render the calibration laboratory
+on the approach page: preserve its source, but that page now gets only the new
+tool map, with no native SVG in initial HTML. Keep the existing landing, model
+geometry and native animation sources intact. Host sizing, visibility/pause and
+replay integration may reuse existing site mechanisms; add no application
+library. Verify strict TypeScript, responsive rendering and Lighthouse mobile,
+and report actual limitations. Keep the work in the existing website PR and
+publish on the existing GPT Site; never merge automatically.
+
 # Consolidate the contact-email PR into PR33 — 2026-10-27
 
 The user explicitly authorizes combining PR34's real contact-email capability

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mountMethodAnnotations} from '../src/bump/machines/suppliedMethodPresentation.js';
+import {mountMethodAnnotations} from '../src/bump/machines/suppliedCalibrationPresentation.js';
 
 test('laboratory measurements do not rewrite the narrative until the phase changes',()=>{
  const saved=new Map(),callbacks=[];let phase=0;

@@ -1,3 +1,4 @@
+import {installSeoFigureLoading} from './figure-loading.js';
 // Progressive enhancement only: all page content and links work without JS.
 import {installDiagramMotion} from './diagram-motion.js';
 import {installWorkloadCalculators} from './workload.js';
@@ -6,6 +7,7 @@ import {installBackgroundMusic} from '../background-music.js';
 const musicTrack = document.querySelector('[data-bump-background-audio]');
 const musicButton = document.querySelector('.bump-background-music');
 if (musicTrack && musicButton) installBackgroundMusic(musicTrack, musicButton);
+// Hero diagrams and the lower Anatomy figures have separate visibility gates.
 let stopDiagrams = installDiagramMotion();
 window.addEventListener('pagehide', () => {stopDiagrams();});
 // Restore the clock when a page is brought back from the browser's page cache.
@@ -53,3 +55,7 @@ if ('IntersectionObserver' in window) {
   }, {rootMargin: '-5% 0px -65% 0px'});
   for (const link of links) { const section = document.getElementById(link.hash.slice(1)); if (section) observer.observe(section); }
 }
+
+let stopFigures=installSeoFigureLoading();
+window.addEventListener('pagehide',()=>stopFigures());
+window.addEventListener('pageshow',event=>{if(event.persisted)stopFigures=installSeoFigureLoading();});

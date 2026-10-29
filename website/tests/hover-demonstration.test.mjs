@@ -52,5 +52,21 @@ test('hover introduction opens real affordances, pauses in place and yields to t
   root.handlers.get('pointermove').at(-1)({isTrusted:true,type:'pointermove',target:root});
   port.dataset.portLoaded='6';advance(1000);assert.equal(seen.length,beforePort+1);
   advance(10000);assert.equal(root.dataset.bumpHoverVisited,'0,1,2,3,4,5');assert.equal(root.dataset.bumpHoverComplete,'true','Departure can resume only after all six actual hover visits');
+  stop();
+  const toolsModel=new Node(),beforeMethod=seen.length;
+  root.querySelector=selector=>selector.includes('data-workflow-cursor')?null:selector==='.bump-method-live[data-method-model="tools"]'?toolsModel:null;
+  root.querySelectorAll=selector=>selector==='[data-tool][data-bump-info]'?nodes.slice(0,5):selector==='[data-score][data-bump-info]'?[nodes[5]]:nodes;
+  nodes.forEach(node=>{node.css={display:'block',visibility:'visible',opacity:'1'};});
+  set('getComputedStyle',node=>node.css);
+  stop=mountHoverDemonstration(root,'method');advance(20000);
+  assert.deepEqual(seen.slice(beforeMethod),[0,1,2,3,4,5],'The tools map tour ends at the health dial, with no later-phase ghost stops');
+  assert.equal(root.children.at(-1).hidden,true);assert.equal(root.dataset.bumpHoverComplete,'true');
+  stop();const beforeChanging=seen.length;
+  stop=mountHoverDemonstration(root,'method');advance(800);
+  nodes[0].css.opacity='0'; // disappears while the cursor approaches
+  nodes[2].css.opacity='0'; // disappears before the next departure
+  advance(20000);
+  assert.deepEqual(seen.slice(beforeChanging),[1,3,4,5],'Revalidate both before departure and before dispatching the hover');
+  assert.equal(root.children.at(-1).hidden,true);assert.equal(root.dataset.bumpDemoInspecting,'false');
  }finally{stop?.();for(const[key,value]of saved){if(value)Object.defineProperty(globalThis,key,value);else delete globalThis[key];}}
 });

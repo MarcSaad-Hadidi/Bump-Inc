@@ -259,6 +259,10 @@ Des processus plus fluides. Des systèmes plus intelligents. Une entreprise mieu
 
 Bump est une firme de consultation technologique basée à Montréal. Nous aidons les PME à analyser leurs besoins, à connecter leurs outils, à développer les logiciels utiles à leurs opérations et à renforcer leur sécurité. Un mandat commence par votre réalité, puis une proposition définit ce qui sera implanté et maintenu.
 
+Le bon levier, au bon endroit : on part de ce qui vous ralentit et Bump oriente vers la bonne expertise. Scénario illustratif.
+
+![Aiguillage : chaque besoin est envoyé vers l'expertise qui convient, de l'automatisation à la cybersécurité](__BUMP_ORIGIN__/bump/expertises.webp)
+
 ## Partir de ce qui vous ralentit.
 
 Une demande circule par courriel, un fichier est recopié dans trois outils, une information arrive trop tard. Le point de départ est souvent très concret. Nous cherchons avec votre équipe le changement qui simplifiera le travail sans ajouter une nouvelle couche de complexité.
@@ -331,6 +335,10 @@ Smoother processes. Smarter systems. A better protected business.
 
 Bump is a technology consulting firm based in Montréal. We help small and medium-sized businesses understand their needs, connect their tools, develop software for their operations and strengthen their security. Each engagement starts with your situation, followed by a proposal defining implementation and maintenance.
 
+The right lever, in the right place: we start from what slows you down and route it to the right expertise. Illustrative scenario.
+
+![Switchyard routing each need to the right expertise, from workflow automation to cybersecurity](__BUMP_ORIGIN__/bump/expertises.webp)
+
 ## Start with what slows you down.
 
 A request moves through email, a file gets copied into three tools, or information arrives too late. The starting point is usually concrete. With your team, we identify the change that simplifies the work without adding another layer of complexity.
@@ -402,6 +410,10 @@ Moins de recopies. Moins de suivis manuels. Plus de temps pour faire avancer le 
 ## En clair
 
 L’automatisation des processus consiste à confier aux systèmes les tâches répétitives d’un parcours de travail : réception d’une demande, classement, notifications, validation ou synchronisation. Bump commence par analyser ce parcours avec votre équipe, puis relie les outils utiles en conservant une intervention humaine pour les décisions et les exceptions.
+
+Automatisation des processus : du formulaire au CRM, avec la validation de votre équipe. Scénario illustratif.
+
+![Flux d'une demande de devis : réception, qualification, préparation, validation humaine, transmission au CRM](__BUMP_ORIGIN__/bump/automatisation-processus.webp)
 
 ## Repérer les tâches qui méritent d’être automatisées.
 
@@ -520,6 +532,10 @@ Less copying. Less manual follow-up. More time to move work forward.
 
 Workflow automation lets systems carry out repetitive steps such as receiving requests, filing information, sending notifications, collecting approvals or synchronizing data. Bump first analyses that process with your team, then connects the appropriate tools while keeping people involved in decisions and exceptions.
 
+Workflow automation: from form to CRM, with your team's approval. Illustrative scenario.
+
+![Quote request workflow: intake, qualification, preparation, human approval and transfer to the CRM](__BUMP_ORIGIN__/bump/automatisation-processus.webp)
+
 ## Find the tasks worth automating.
 
 A good candidate happens repeatedly, follows explicit rules and consumes time without requiring new judgment on every occurrence. It might involve following up on a request, transferring data or preparing a report. Automating an unclear process can simply repeat its problems faster.
@@ -636,6 +652,10 @@ Une tâche précise. Les bonnes informations. Une décision qui reste entre vos 
 ## En clair
 
 L’intégration IA relie un modèle ou un agent à vos données et à vos logiciels pour accomplir une tâche définie. Bump accompagne les PME dans le choix du cas d’usage, la connexion des sources, la définition des accès et l’évaluation des réponses. Les actions sensibles peuvent rester soumises à une validation humaine.
+
+Intégration IA : l'assistant puise seulement dans les sources autorisées, relie chaque point à sa source, et votre équipe décide. Scénario illustratif.
+
+![Assistant IA qui consulte les documents, le CRM et l'ERP autorisés, rédige une synthèse reliée à ses sources, puis attend la validation de l'équipe](__BUMP_ORIGIN__/bump/integration-ia.webp)
 
 ## Commencer par une tâche qui compte.
 
@@ -755,6 +775,10 @@ A focused task. The right information. Decisions that stay in your hands.
 
 AI integration connects a model or agent to your data and software to perform a defined task. Bump helps SMEs select a use case, connect sources, define access and evaluate responses. Sensitive actions can remain subject to human approval.
 
+AI integration: the assistant only uses authorized sources, links each point to its source, and your team decides. Illustrative scenario.
+
+![AI assistant consulting authorized documents, CRM and ERP, preparing a source-linked summary, then waiting for the team’s approval](__BUMP_ORIGIN__/bump/integration-ia.webp)
+
 ## Start with a task that matters.
 
 A useful integration starts with an operational question: what should the user be able to do more easily? Model selection comes afterwards. We distinguish tasks that benefit from AI from those a rule or conventional automation can handle more simply.
@@ -873,6 +897,10 @@ Un système qui suit votre façon de travailler, plutôt que l’inverse.
 
 Le développement logiciel sur mesure crée une application autour des besoins d’une entreprise : gestion de demandes, portail, suivi de dossiers ou système interne. Bump analyse le fonctionnement attendu, conçoit l’interface avec les utilisateurs et développe les fonctionnalités ainsi que les intégrations nécessaires aux outils existants.
 
+Logiciel sur mesure : une demande, un responsable, un état visible, relié à vos outils. Scénario illustratif.
+
+![Tableau des opérations : une demande D-024 passe de reçue à terminée avec un responsable, puis met à jour le CRM](__BUMP_ORIGIN__/bump/developpement-logiciel.webp)
+
 ## Acheter, intégrer ou développer ?
 
 Un logiciel sur mesure n’est pas automatiquement la meilleure réponse. Un outil du marché peut convenir si ses fonctions couvrent vos besoins et si son fonctionnement reste acceptable. Une intégration peut suffire lorsque le problème se situe entre deux logiciels. Le sur mesure devient pertinent quand votre processus exige des fonctions que l’existant couvre mal.
@@ -984,6 +1012,10 @@ A system that follows the way you work, rather than the other way around.
 
 Custom software development creates an application around business needs, such as request management, a portal, case tracking or an internal system. Bump analyses the required operation, designs the interface with users and develops the features and integrations needed to connect existing tools.
 
+Custom software: one request, one owner, one visible status, connected to your tools. Illustrative scenario.
+
+![Operations board: request D-024 moves from received to completed with an owner, then updates the CRM](__BUMP_ORIGIN__/bump/developpement-logiciel.webp)
+
 ## Buy, integrate or build?
 
 Custom software is not automatically the best answer. An existing product may fit if its features cover your needs and its operation remains acceptable. An integration may be enough when the problem sits between two tools. Custom development becomes relevant when your process requires features poorly covered by existing solutions.
@@ -1094,6 +1126,10 @@ Comprendre les risques. Corriger les faiblesses. Renforcer ce qui compte.
 ## En clair
 
 Un audit de cybersécurité examine un périmètre autorisé pour identifier des vulnérabilités et proposer des corrections prioritaires. Bump accompagne les PME dans le cadrage de l’audit, l’analyse des risques, la sécurisation des applications et infrastructures, la remédiation et le suivi convenu après intervention.
+
+Cybersécurité : audit autorisé, faiblesses priorisées, corrections vérifiées. Scénario illustratif.
+
+![Coffre-fort à tiroirs : domaines inspectés dans un périmètre autorisé, risque révélé, corrigé puis vérifié](__BUMP_ORIGIN__/bump/cybersecurite.webp)
 
 ## Définir les règles avant d’examiner les systèmes.
 
@@ -1213,6 +1249,10 @@ Understand risks. Address weaknesses. Strengthen what matters.
 
 A cybersecurity audit examines an authorized scope to identify vulnerabilities and propose prioritized corrections. Bump helps SMEs scope an audit, assess risks, secure applications and infrastructure, remediate issues and define follow-up after the engagement.
 
+Cybersecurity: authorized audit, prioritized weaknesses, verified fixes. Illustrative scenario.
+
+![Drawer vault: domains examined within an authorized scope, with a risk revealed, corrected and verified](__BUMP_ORIGIN__/bump/cybersecurite.webp)
+
 ## Agree on the rules before examining systems.
 
 An audit starts with explicit authorization and scope. Systems, exclusions, access, intervention windows and incident contacts need to be defined. Tests are adapted to the business’s constraints.
@@ -1331,6 +1371,10 @@ Un besoin réel. Un périmètre clair. Une implantation qu’on peut suivre.
 
 Un mandat Bump suit cinq étapes : audit, analyse, proposition, implantation et maintenance. La première sert à comprendre l’existant. L’analyse priorise les besoins. La proposition définit le périmètre et les livrables. L’implantation met la solution en place, puis la maintenance organise le suivi convenu.
 
+Notre méthode en 5 étapes : comprendre, choisir, convenir, construire, faire durer. Scénario illustratif.
+
+![Carte des outils d'une PME : audit, analyse, proposition, implantation et maintenance, santé de 42 à 92](__BUMP_ORIGIN__/bump/approche.webp)
+
 ## 01. Audit — voir le fonctionnement réel.
 
 Nous examinons avec vous les processus, les outils et les contraintes liés au besoin. L’objectif est de comprendre où le travail bloque, quelles données circulent et quelles personnes participent. Pour un audit de sécurité, l’autorisation et les conditions d’intervention sont définies explicitement.
@@ -1431,6 +1475,10 @@ A real need. A clear scope. An implementation you can follow.
 ## At a glance
 
 A Bump engagement follows five stages: audit, analysis, proposal, implementation and maintenance. The audit establishes the current situation. Analysis prioritizes needs. The proposal defines scope and deliverables. Implementation puts the solution in place, followed by the agreed maintenance.
+
+Our five-step method: understand, choose, agree, build, sustain. Illustrative scenario.
+
+![An SME’s tool map: audit, analysis, proposal, implementation and maintenance, with health rising from 42 to 92](__BUMP_ORIGIN__/bump/approche.webp)
 
 ## 01. Audit — understand how work happens.
 
@@ -1533,6 +1581,10 @@ Donnons de l’élan à votre entreprise.
 
 Bump est une entreprise de consultation technologique fondée par deux entrepreneurs à Montréal, au Québec. Notre mission est d’aider les PME à devenir plus efficaces, intelligentes et sécurisées grâce à des solutions adaptées à leurs besoins. Nos trois divisions couvrent les processus, l’IA et les logiciels, ainsi que la cybersécurité.
 
+Ancrés à Montréal, tournés vers la suite : la technologie doit vous donner de l'élan. Scénario illustratif.
+
+![Port de Montréal : un navire arrive vide, est chargé de trois services, puis repart avec élan](__BUMP_ORIGIN__/bump/a-propos.webp)
+
 ## La technologie doit servir le travail.
 
 Un système utile aide une équipe à accomplir une tâche, à comprendre une situation ou à prendre une décision. C’est dans cette perspective que nous abordons l’automatisation, le développement logiciel et la sécurité : partir des opérations, puis choisir les moyens techniques.
@@ -1619,6 +1671,10 @@ Give your business fresh momentum.
 ## At a glance
 
 Bump is a technology consulting company founded by two entrepreneurs in Montréal, Québec. Our mission is to help SMEs become more efficient, intelligent and secure through solutions suited to their needs. Our three divisions cover workflows, AI and software, and cybersecurity.
+
+Rooted in Montréal, looking ahead: technology should give you momentum. Illustrative scenario.
+
+![Port of Montréal: an empty ship arrives, loads three services and departs with momentum](__BUMP_ORIGIN__/bump/a-propos.webp)
 
 ## Technology should serve the work.
 
@@ -1917,6 +1973,10 @@ Ces quatre études de cas sont des scénarios fictifs qui expliquent comment un 
 
 Dans ce scénario fictif, une PME de fabrication reçoit des demandes par courriel. Un membre de l’équipe recopie les coordonnées dans le CRM, recherche les pièces jointes et relance le demandeur lorsqu’une information manque.
 
+Automatisation des processus : du formulaire au CRM, avec la validation de votre équipe. Scénario illustratif.
+
+![Flux d'une demande de devis : réception, qualification, préparation, validation humaine, transmission au CRM](__BUMP_ORIGIN__/bump/automatisation-processus.webp)
+
 ### Quel parcours pourrait y répondre ?
 
 Le parcours proposé extrait les champs utiles, vérifie leur présence et prépare un dossier de devis. Une personne examine la demande et approuve la suite. Le système peut ensuite mettre à jour le CRM et préparer une confirmation, selon les règles convenues.
@@ -1953,6 +2013,10 @@ Critères à convenir avant l’implantation.
 ### Quel est le problème de départ ?
 
 Dans ce scénario fictif, une PME de services conserve ses procédures dans plusieurs espaces documentaires. Pour répondre à une question interne, l’équipe doit retrouver la version applicable et vérifier qu’elle a le droit de la consulter.
+
+Intégration IA : l'assistant puise seulement dans les sources autorisées, relie chaque point à sa source, et votre équipe décide. Scénario illustratif.
+
+![Assistant IA qui consulte les documents, le CRM et l'ERP autorisés, rédige une synthèse reliée à ses sources, puis attend la validation de l'équipe](__BUMP_ORIGIN__/bump/integration-ia.webp)
 
 ### Quel parcours pourrait y répondre ?
 
@@ -1991,6 +2055,10 @@ Critères à convenir avant l’implantation.
 
 Dans ce scénario fictif, une PME de maintenance répartit les demandes entre courriels et fichiers de suivi. Le responsable cherche qui intervient, quelle information manque et quel dossier doit être repris.
 
+Logiciel sur mesure : une demande, un responsable, un état visible, relié à vos outils. Scénario illustratif.
+
+![Tableau des opérations : une demande D-024 passe de reçue à terminée avec un responsable, puis met à jour le CRM](__BUMP_ORIGIN__/bump/developpement-logiciel.webp)
+
 ### Quel parcours pourrait y répondre ?
 
 L’application proposée réunit la demande, les documents, le responsable et la prochaine action. Les vues de l’équipe et de la coordination montrent les mêmes états. Les connexions utiles aux outils existants sont définies après examen de leurs API et de leurs limites.
@@ -2027,6 +2095,10 @@ Critères à convenir avant l’implantation.
 ### Quel est le problème de départ ?
 
 Dans ce scénario fictif, une PME veut vérifier les accès à une application interne après des changements dans son équipe. Certains comptes ou droits peuvent ne plus correspondre aux responsabilités actuelles.
+
+Cybersécurité : audit autorisé, faiblesses priorisées, corrections vérifiées. Scénario illustratif.
+
+![Coffre-fort à tiroirs : domaines inspectés dans un périmètre autorisé, risque révélé, corrigé puis vérifié](__BUMP_ORIGIN__/bump/cybersecurite.webp)
 
 ### Quel parcours pourrait y répondre ?
 
@@ -2114,6 +2186,10 @@ Illustrative case study — fictional scenario, not a client engagement.
 
 In this fictional scenario, a manufacturing SME receives requests by email. A team member re-enters contact details in the CRM, finds attachments and follows up when information is missing.
 
+Workflow automation: from form to CRM, with your team's approval. Illustrative scenario.
+
+![Quote request workflow: intake, qualification, preparation, human approval and transfer to the CRM](__BUMP_ORIGIN__/bump/automatisation-processus.webp)
+
 ### What workflow could address it?
 
 The proposed workflow extracts useful fields, checks completeness and prepares a quote request. A person reviews the request and approves the next action. The system can then update the CRM and prepare a confirmation under the agreed rules.
@@ -2150,6 +2226,10 @@ Illustrative case study — fictional scenario, not a client engagement.
 ### What is the starting problem?
 
 In this fictional scenario, a service SME stores procedures in several document spaces. To answer an internal question, the team must find the applicable version and confirm it has permission to read it.
+
+AI integration: the assistant only uses authorized sources, links each point to its source, and your team decides. Illustrative scenario.
+
+![AI assistant consulting authorized documents, CRM and ERP, preparing a source-linked summary, then waiting for the team’s approval](__BUMP_ORIGIN__/bump/integration-ia.webp)
 
 ### What workflow could address it?
 
@@ -2188,6 +2268,10 @@ Illustrative case study — fictional scenario, not a client engagement.
 
 In this fictional scenario, a maintenance SME coordinates requests through email and tracking files. The coordinator needs to identify who is assigned, what information is missing and which request needs attention.
 
+Custom software: one request, one owner, one visible status, connected to your tools. Illustrative scenario.
+
+![Operations board: request D-024 moves from received to completed with an owner, then updates the CRM](__BUMP_ORIGIN__/bump/developpement-logiciel.webp)
+
 ### What workflow could address it?
 
 The proposed application brings the request, documents, owner and next action together. Team and coordination views show the same statuses. Useful connections to existing tools are defined after reviewing their APIs and limitations.
@@ -2224,6 +2308,10 @@ Illustrative case study — fictional scenario, not a client engagement.
 ### What is the starting problem?
 
 In this fictional scenario, an SME wants to review access to an internal application after staffing changes. Some accounts or permissions may no longer match current responsibilities.
+
+Cybersecurity: authorized audit, prioritized weaknesses, verified fixes. Illustrative scenario.
+
+![Drawer vault: domains examined within an authorized scope, with a risk revealed, corrected and verified](__BUMP_ORIGIN__/bump/cybersecurite.webp)
 
 ### What workflow could address it?
 

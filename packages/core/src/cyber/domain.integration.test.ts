@@ -17,6 +17,7 @@ import { claimExecution } from '../execution.js';
 import { approveCyberReport, createCyberReport, readCyberReport } from './reports.js';
 import {
   approveCyberMandate,
+  assignCyberRole,
   createCyberAsset,
   createCyberClient,
   createCyberMandate,
@@ -27,6 +28,7 @@ import {
   readCyberSnapshot,
   recordCyberRetest,
   reviewCyberFinding,
+  withCyber,
 } from './service.js';
 
 const url = process.env.DATABASE_URL;
@@ -70,6 +72,45 @@ beforeAll(async () => {
       'INSERT INTO member (id,organization_id,user_id,role) VALUES ($1,$2,$3,$4)',
       [randomUUID(), o, u, r],
     );
+});
+
+it('serializes role revocation with a currently authorized tenant transaction', async () => {
+  let entered!: () => void, release!: () => void;
+  const started = new Promise<void>((resolve) => {
+    entered = resolve;
+  });
+  const gate = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  const active = withCyber(db, { ...scope, userId: analyst }, async (_tx, role) => {
+    expect(role).toBe('analyst');
+    entered();
+    await gate;
+  });
+  await started;
+  const revocation = assignCyberRole(db, scope, analyst, 'reviewer');
+  try {
+    await expect
+      .poll(
+        async () =>
+          (
+            await admin.pool.query<{ waiting: boolean }>(
+              `SELECT EXISTS (SELECT 1 FROM pg_stat_activity WHERE datname=current_database() AND cardinality(pg_blocking_pids(pid))>0 AND query ILIKE '%"member"%for update%') AS waiting`,
+            )
+          ).rows[0]?.waiting,
+        { timeout: 1500, interval: 20 },
+      )
+      .toBe(true);
+  } finally {
+    release();
+    await active;
+    await revocation;
+  }
+  expect((await readCyberSnapshot(db, { ...scope, userId: analyst })).role).toBe('reviewer');
+  await expect(assignCyberRole(db, scope, user, 'analyst')).rejects.toMatchObject({
+    code: 'inherited_admin_role',
+  });
+  await assignCyberRole(db, scope, analyst, 'analyst');
 });
 afterAll(async () => {
   for (const table of [

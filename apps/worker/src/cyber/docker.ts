@@ -9,6 +9,7 @@ import { parseCyberOutput } from './parsers.js';
 import {
   GITLEAKS_RULES,
   type NativeEngine,
+  SCANNER_EXECUTABLES,
   SCANNER_IMAGES,
   SCANNER_VERSIONS,
   SEMGREP_RULES,
@@ -30,7 +31,7 @@ export interface ScannerAdapter {
   version: string;
   validateConfiguration(input: unknown): ScannerFiles;
   prepareExecution(input: unknown): Promise<ExecutionPlan>;
-  execute(plan: ExecutionPlan, signal: AbortSignal): Promise<string>;
+  execute(plan: ExecutionPlan, signal: AbortSignal, deadline?: Date): Promise<string>;
   parseResults(raw: string): CyberObservation[];
   normalizeFindings(observations: CyberObservation[]): CyberObservation[];
   collectEvidence(raw: string): string;
@@ -104,6 +105,7 @@ export function hasDockerIsolation(input: unknown) {
       SwapLimit: z.literal(true),
       CpuCfsQuota: z.literal(true),
       PidsLimit: z.literal(true),
+      InitBinary: z.string().min(1),
       SecurityOptions: z.array(z.string()),
     })
     .safeParse(input);
@@ -186,7 +188,15 @@ export async function nativeCapabilities() {
     }),
   );
 }
-export function buildDockerArguments(plan: ExecutionPlan): string[] {
+export function scannerSecondsUntil(deadline: Date, now = Date.now()) {
+  const seconds = Math.min(30, Math.floor((deadline.getTime() - now) / 1000));
+  if (!Number.isFinite(seconds) || seconds < 1)
+    throw new ScannerFailure('scanner_deadline_elapsed');
+  return seconds;
+}
+export function buildDockerArguments(plan: ExecutionPlan, maximumSeconds = 30): string[] {
+  if (!Number.isInteger(maximumSeconds) || maximumSeconds < 1 || maximumSeconds > 30)
+    throw new ScannerFailure('invalid_execution_deadline');
   if (!Object.hasOwn(SCANNER_IMAGES, plan.engine) || !/^bump-cyber-[a-f0-9-]{36}$/.test(plan.name))
     throw new ScannerFailure('invalid_execution_plan');
   for (const path of [plan.source, plan.rules, ...(plan.cache ? [plan.cache] : [])])
@@ -194,6 +204,8 @@ export function buildDockerArguments(plan: ExecutionPlan): string[] {
   const args = [
     'run',
     '--rm',
+    '--init',
+    '--entrypoint=/usr/bin/timeout',
     '--sig-proxy=false',
     '--pull=never',
     '--name',
@@ -248,9 +260,11 @@ export function buildDockerArguments(plan: ExecutionPlan): string[] {
     args.push('--mount', `type=bind,src=${plan.cache},dst=/cache,readonly`);
   }
   args.push(SCANNER_IMAGES[plan.engine]);
+  // BusyBox's detached watchdog survives the host controller. Tini must own
+  // PID 1 so that the watchdog can kill the scanner and end the namespace.
+  args.push('-s', 'KILL', String(maximumSeconds), SCANNER_EXECUTABLES[plan.engine]);
   if (plan.engine === 'semgrep')
     args.push(
-      'semgrep',
       'scan',
       '--config',
       '/rules/semgrep.yml',
@@ -298,6 +312,10 @@ export function buildDockerArguments(plan: ExecutionPlan): string[] {
       '--skip-check-update',
       '--scanners',
       'vuln,misconfig',
+      '--list-all-pkgs',
+      '--include-non-failures',
+      '--detection-priority',
+      'precise',
       '--parallel',
       '1',
       '--format',
@@ -361,10 +379,16 @@ export function createScannerAdapter(engine: NativeEngine): ScannerAdapter {
         throw new ScannerFailure('scanner_preparation_failed');
       }
     },
-    async execute(plan, signal) {
+    async execute(plan, signal, deadline = new Date(Date.now() + 30000)) {
       if (!(await resourceIsolationAvailable()))
         throw new ScannerFailure('resource_isolation_unavailable');
-      return dockerCommand(buildDockerArguments(plan), signal, 1048576, plan.name);
+      if (signal.aborted) throw new ScannerFailure('scanner_cancelled');
+      return dockerCommand(
+        buildDockerArguments(plan, scannerSecondsUntil(deadline)),
+        signal,
+        1048576,
+        plan.name,
+      );
     },
     parseResults(raw) {
       return parseCyberOutput(engine, raw);

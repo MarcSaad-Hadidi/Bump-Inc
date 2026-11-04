@@ -8,6 +8,12 @@ export const SCANNER_IMAGES = {
     'ghcr.io/gitleaks/gitleaks:v8.30.1@sha256:c00b6bd0aeb3071cbcb79009cb16a60dd9e0a7c60e2be9ab65d25e6bc8abbb7f',
 } as const;
 export type NativeEngine = keyof typeof SCANNER_IMAGES;
+export const SCANNER_EXECUTABLES = {
+  semgrep: '/usr/bin/semgrep',
+  trivy: '/usr/local/bin/trivy',
+  gitleaks: '/usr/bin/gitleaks',
+} as const;
+export const NATIVE_RUNNER_PROFILE = 'reviewed-native-v2-init-busybox-hard-deadline';
 export const SCANNER_VERSIONS = {
   semgrep: '1.183.0',
   trivy: '0.76.1',
@@ -34,7 +40,7 @@ export const SEMGREP_RULES = `rules:
     pattern: eval(...)
 `;
 export const GITLEAKS_RULES = '# Bump Cyber gitleaks profile v2\n[extend]\nuseDefault = true\n';
-export const TRIVY_PROFILE = 'reviewed-default-v2-no-source-inline-suppressions';
+export const TRIVY_PROFILE = 'reviewed-default-v3-native-package-and-executed-check-inventory';
 export const SCANNER_DESCRIPTORS = (Object.keys(SCANNER_VERSIONS) as CyberEngine[]).map((id) => ({
   id,
   version: SCANNER_VERSIONS[id],

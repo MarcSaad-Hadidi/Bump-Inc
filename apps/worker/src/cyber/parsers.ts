@@ -123,7 +123,7 @@ const trivyMisconfiguration = z.object({
   ID: identifier,
   AVDID: identifier.optional(),
   Severity: z.enum(['UNKNOWN', 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL']),
-  Status: z.string().optional(),
+  Status: z.enum(['PASS', 'FAIL', 'EXCEPTION']).optional(),
   PrimaryURL: bounded.optional(),
   CauseMetadata: z.object({ StartLine: line.optional() }).optional(),
 });

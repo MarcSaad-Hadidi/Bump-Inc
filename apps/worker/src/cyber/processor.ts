@@ -12,11 +12,18 @@ import {
 import type { Database } from '@bump/db';
 import { type CyberVault, loadCyberVault } from '@bump/integrations';
 import { z } from 'zod';
+import { trivyCoverage } from './coverage.js';
 import { createScannerAdapter, trivyDatabaseIdentity } from './docker.js';
 import { parseCyberOutput } from './parsers.js';
 import { passiveObservations, runCyberPassive } from './passive.js';
 import type { NativeEngine } from './registry.js';
-import { GITLEAKS_RULES, SCANNER_VERSIONS, SEMGREP_RULES, TRIVY_PROFILE } from './registry.js';
+import {
+  GITLEAKS_RULES,
+  NATIVE_RUNNER_PROFILE,
+  SCANNER_VERSIONS,
+  SEMGREP_RULES,
+  TRIVY_PROFILE,
+} from './registry.js';
 
 type Attempt = { organizationId: string; userId: string; jobId: string; token: string };
 export async function processCyberScan(
@@ -89,7 +96,7 @@ export async function processCyberScan(
         const plan = await adapter.prepareExecution(JSON.parse(source));
         try {
           await stageCyberScan(database, scope, 'running');
-          raw = await adapter.execute(plan, stop.signal);
+          raw = await adapter.execute(plan, stop.signal, options.deadline);
           observations = adapter.normalizeFindings(adapter.parseResults(raw));
           if (engine === 'semgrep') {
             const paths = z
@@ -97,8 +104,11 @@ export async function processCyberScan(
               .parse(JSON.parse(raw));
             coverage = paths.paths.scanned.map((v) => v.replace(/^\/src\//, ''));
           } else coverage = plan.files.map((f) => f.path);
-          if (engine === 'trivy' && plan.cache)
+          if (engine === 'trivy') {
+            coverage.push(...trivyCoverage(JSON.parse(raw), plan.files));
+            if (!plan.cache) throw new Error('Trivy database unavailable');
             coverage.push('database:' + (await trivyDatabaseIdentity(plan.cache)));
+          }
           raw = adapter.collectEvidence(raw);
         } finally {
           await adapter.cleanup(plan);
@@ -116,6 +126,7 @@ export async function processCyberScan(
             JSON.stringify({
               engine,
               version: SCANNER_VERSIONS[engine],
+              runner: NATIVE_RUNNER_PROFILE,
               rules:
                 engine === 'semgrep'
                   ? SEMGREP_RULES

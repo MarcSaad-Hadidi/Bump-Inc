@@ -18,6 +18,7 @@ try {
 // Whitelist capabilities only: never publish host identity, daemon configuration,
 // proxy settings, raw errors or customer paths from Docker's diagnostic output.
 const boundaries = {
+  init: typeof info.InitBinary === 'string' && info.InitBinary.length > 0,
   memory: info.MemoryLimit === true,
   swap: info.SwapLimit === true,
   cpu: info.CpuCfsQuota === true,

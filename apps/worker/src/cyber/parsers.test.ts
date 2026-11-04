@@ -47,6 +47,38 @@ it('preserves CVE, affected/fixed versions and CVSS', () => {
     cvss: 8.5,
   });
 });
+it('rejects an unknown Trivy check state rather than treating it as a clean result', () => {
+  expect(() =>
+    parseTrivy({
+      SchemaVersion: 2,
+      Results: [
+        {
+          Target: 'Dockerfile',
+          Misconfigurations: [
+            { ID: 'DS002', AVDID: 'AVD-DS-0002', Severity: 'HIGH', Status: 'UNKNOWN' },
+          ],
+        },
+      ],
+    }),
+  ).toThrow();
+});
+it('does not turn Trivy PASS or EXCEPTION checks into findings', () => {
+  const result = parseTrivy({
+    SchemaVersion: 2,
+    Results: [
+      {
+        Target: 'Dockerfile',
+        Misconfigurations: ['PASS', 'EXCEPTION', 'FAIL'].map((Status, index) => ({
+          ID: `DS00${index}`,
+          AVDID: `AVD-DS-000${index}`,
+          Severity: 'HIGH',
+          Status,
+        })),
+      },
+    ],
+  });
+  expect(result.map((finding) => finding.ruleId)).toEqual(['AVD-DS-0002']);
+});
 it('never exposes complete secret, match or commit metadata', () => {
   const secret = 'synthetic-' + String.fromCharCode(65).repeat(30);
   const result = parseGitleaks([

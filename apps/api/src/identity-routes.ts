@@ -43,6 +43,10 @@ const authEndpoints = new Set([
   'POST /revoke-session',
   'POST /revoke-sessions',
   'POST /revoke-other-sessions',
+  'POST /two-factor/enable',
+  'POST /two-factor/disable',
+  'POST /two-factor/verify-totp',
+  'POST /two-factor/verify-backup-code',
 ]);
 const organizationParams = z.object({ organizationId: z.uuid() });
 const invitationParams = z.object({ invitationId: z.uuid() });
@@ -137,7 +141,13 @@ export async function registerIdentityRoutes(app: FastifyInstance, context: Iden
 
   app.get('/me', async (request) => {
     const { user } = await sessionFor(request);
-    return { id: user.id, name: user.name, email: user.email, emailVerified: user.emailVerified };
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      emailVerified: user.emailVerified,
+      twoFactorEnabled: user.twoFactorEnabled === true,
+    };
   });
 
   app.get('/organizations', async (request) => {

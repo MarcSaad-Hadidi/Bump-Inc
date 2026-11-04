@@ -6,6 +6,7 @@ import {
   cyberFinding,
   cyberReport,
   cyberRetest,
+  cyberScan,
   cyberSource,
   migrateDatabase,
   withTenant,
@@ -17,6 +18,7 @@ import { claimExecution } from '../execution.js';
 import { approveCyberReport, createCyberReport, readCyberReport } from './reports.js';
 import {
   approveCyberMandate,
+  assignCyberRole,
   createCyberAsset,
   createCyberClient,
   createCyberMandate,
@@ -27,6 +29,8 @@ import {
   readCyberSnapshot,
   recordCyberRetest,
   reviewCyberFinding,
+  updateCyberTask,
+  withCyber,
 } from './service.js';
 
 const url = process.env.DATABASE_URL;
@@ -70,6 +74,45 @@ beforeAll(async () => {
       'INSERT INTO member (id,organization_id,user_id,role) VALUES ($1,$2,$3,$4)',
       [randomUUID(), o, u, r],
     );
+});
+
+it('serializes role revocation with a currently authorized tenant transaction', async () => {
+  let entered!: () => void, release!: () => void;
+  const started = new Promise<void>((resolve) => {
+    entered = resolve;
+  });
+  const gate = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  const active = withCyber(db, { ...scope, userId: analyst }, async (_tx, role) => {
+    expect(role).toBe('analyst');
+    entered();
+    await gate;
+  });
+  await started;
+  const revocation = assignCyberRole(db, scope, analyst, 'reviewer');
+  try {
+    await expect
+      .poll(
+        async () =>
+          (
+            await admin.pool.query<{ waiting: boolean }>(
+              `SELECT EXISTS (SELECT 1 FROM pg_stat_activity WHERE datname=current_database() AND cardinality(pg_blocking_pids(pid))>0 AND query ILIKE '%"member"%for update%') AS waiting`,
+            )
+          ).rows[0]?.waiting,
+        { timeout: 1500, interval: 20 },
+      )
+      .toBe(true);
+  } finally {
+    release();
+    await active;
+    await revocation;
+  }
+  expect((await readCyberSnapshot(db, { ...scope, userId: analyst })).role).toBe('reviewer');
+  await expect(assignCyberRole(db, scope, user, 'analyst')).rejects.toMatchObject({
+    code: 'inherited_admin_role',
+  });
+  await assignCyberRole(db, scope, analyst, 'analyst');
 });
 afterAll(async () => {
   for (const table of [
@@ -692,4 +735,55 @@ it('does not confirm a correction when its resolution event has no matching abse
   const report = await createCyberReport(db, scope, { ...scenario.input, auditId: clean.id });
   expect(report.snapshot.unreviewedCount).toBe(1);
   expect(report.snapshot.findings).toEqual([]);
+});
+
+it('records inconclusive verification without asserting a fix, and protects remediation updates', async () => {
+  const snapshot = await readCyberSnapshot(db, scope);
+  const finding = snapshot.findings.find(
+    (f) => f.status === 'confirmed' && f.observation.ruleId === 'synthetic-reappearance',
+  )!;
+  const scan = snapshot.scans.find((s) => s.scan.auditId === finding.lastAuditId)!;
+  await withTenant(db, scope, (tx) =>
+    tx.update(cyberScan).set({ coverageHash: '' }).where(eq(cyberScan.id, scan.scan.id)),
+  );
+  const input = {
+    findingId: finding.id,
+    auditId: finding.lastAuditId,
+    note: 'Synthetic imported result does not establish comparable coverage.',
+  };
+  await expect(
+    recordCyberRetest(db, scope, { ...input, conclusion: 'absent' }),
+  ).rejects.toMatchObject({ code: 'comparable_completed_coverage_required' });
+  await recordCyberRetest(db, scope, { ...input, conclusion: 'inconclusive' });
+  expect(
+    (await readCyberSnapshot(db, scope)).findings.find((f) => f.id === finding.id)?.status,
+  ).toBe('confirmed');
+  const task = await createCyberTask(db, scope, {
+    findingId: finding.id,
+    assignee: 'Synthetic lab engineer',
+    dueAt: new Date(Date.now() + 86400000).toISOString(),
+    description: 'Remove synthetic unsafe evaluation.',
+  });
+  await expect(
+    updateCyberTask(db, other, task!.id, { status: 'in_progress', note: 'Forbidden organization' }),
+  ).rejects.toMatchObject({ statusCode: 404 });
+  await expect(
+    updateCyberTask(db, scope, task!.id, {
+      status: 'verified_fixed',
+      note: 'Cannot bypass a retest',
+    }),
+  ).rejects.toThrow();
+  expect(
+    (
+      await updateCyberTask(db, { ...scope, userId: analyst }, task!.id, {
+        status: 'in_progress',
+        note: 'Synthetic work started',
+      })
+    )?.status,
+  ).toBe('in_progress');
+  expect(
+    (await readCyberSnapshot(db, scope)).events.some(
+      (e) => e.action === 'remediation.in_progress' && e.targetId === finding.id,
+    ),
+  ).toBe(true);
 });

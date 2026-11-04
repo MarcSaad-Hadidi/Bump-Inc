@@ -1,14 +1,40 @@
 import { randomUUID } from 'node:crypto';
 import { cyberRoleSchema } from '@bump/contracts';
-import { cyberEvidence, cyberRole, cyberSource, type Database } from '@bump/db';
+import { authSchema, cyberEvidence, cyberRole, cyberSource, type Database } from '@bump/db';
 import { and, eq, sql } from 'drizzle-orm';
 import {
   CyberError,
   type CyberMutation,
+  type CyberScope,
   cyberEventIn,
   requireCyberRole,
   withCyber,
 } from './context.js';
+export async function readCyberRoles(database: Database, scope: CyberScope) {
+  return withCyber(database, scope, async (tx, role) => {
+    requireCyberRole(role, ['admin']);
+    const rows = await tx
+      .select({
+        userId: authSchema.member.userId,
+        tenantRole: authSchema.member.role,
+        cyberRole: cyberRole.role,
+      })
+      .from(authSchema.member)
+      .leftJoin(
+        cyberRole,
+        and(
+          eq(cyberRole.organizationId, authSchema.member.organizationId),
+          eq(cyberRole.userId, authSchema.member.userId),
+        ),
+      )
+      .where(eq(authSchema.member.organizationId, scope.organizationId))
+      .limit(100);
+    return rows.map((r) => ({
+      userId: r.userId,
+      role: ['owner', 'admin'].includes(r.tenantRole) ? 'admin' : (r.cyberRole ?? 'analyst'),
+    }));
+  });
+}
 export async function purgeCyberArtifacts(database: Database, scope: CyberMutation) {
   return withCyber(database, scope, async (tx, role) => {
     requireCyberRole(role, ['admin']);
@@ -54,10 +80,25 @@ export async function assignCyberRole(
   const role = cyberRoleSchema.parse(input);
   return withCyber(database, scope, async (tx, actorRole) => {
     requireCyberRole(actorRole, ['admin']);
-    const members = await tx.execute<{ n: number }>(
-      sql`select count(*)::int as n from member where organization_id=${scope.organizationId} and user_id=${userId}`,
+    // Tenant transactions hold the actor's membership FOR SHARE. Serialize a
+    // grant/revocation with those transactions, including the default analyst
+    // case where no cyber_role row exists to lock yet.
+    const memberWhere = and(
+      eq(authSchema.member.organizationId, scope.organizationId),
+      eq(authSchema.member.userId, userId),
     );
-    if (members.rows[0]?.n !== 1) throw new CyberError(403, 'current_member_required');
+    const [target] = await tx
+      .select({ id: authSchema.member.id })
+      .from(authSchema.member)
+      .where(and(memberWhere, eq(authSchema.member.role, 'member')))
+      .for('update');
+    if (!target) {
+      const [inherited] = await tx
+        .select({ id: authSchema.member.id })
+        .from(authSchema.member)
+        .where(memberWhere);
+      throw new CyberError(403, inherited ? 'inherited_admin_role' : 'current_member_required');
+    }
     const [existing] = await tx
       .select()
       .from(cyberRole)

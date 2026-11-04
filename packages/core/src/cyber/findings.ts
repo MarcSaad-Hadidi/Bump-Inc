@@ -11,6 +11,7 @@ import {
   executionJob,
 } from '@bump/db';
 import { and, desc, eq, inArray } from 'drizzle-orm';
+import { z } from 'zod';
 import {
   CyberError,
   type CyberMutation,
@@ -79,6 +80,54 @@ export async function createCyberTask(database: Database, scope: CyberMutation, 
     return v;
   });
 }
+export async function updateCyberTask(
+  database: Database,
+  scope: CyberMutation,
+  id: string,
+  input: unknown,
+) {
+  const data = z
+    .strictObject({
+      status: z.enum(['planned', 'in_progress', 'to_retest']),
+      note: z.string().trim().min(1).max(4000),
+    })
+    .parse(input);
+  return withCyber(database, scope, async (tx, role) => {
+    requireCyberRole(role, ['admin', 'consultant', 'analyst']);
+    const [task] = await tx
+      .select()
+      .from(cyberTask)
+      .where(and(eq(cyberTask.organizationId, scope.organizationId), eq(cyberTask.id, id)))
+      .for('update');
+    if (!task) throw new CyberError(404, 'task_not_found');
+    const [finding] = await tx
+      .select()
+      .from(cyberFinding)
+      .where(
+        and(
+          eq(cyberFinding.organizationId, scope.organizationId),
+          eq(cyberFinding.id, task.findingId),
+        ),
+      )
+      .for('update');
+    if (!finding || !['confirmed', 'planned', 'in_progress', 'to_retest'].includes(finding.status))
+      throw new CyberError(409, 'confirmed_finding_required');
+    const [updated] = await tx
+      .update(cyberTask)
+      .set({ status: data.status })
+      .where(eq(cyberTask.id, id))
+      .returning();
+    await cyberEventIn(
+      tx,
+      scope,
+      `remediation.${data.status}`,
+      task.findingId,
+      task.clientId,
+      data.note,
+    );
+    return updated;
+  });
+}
 export async function recordCyberRetest(database: Database, scope: CyberMutation, input: unknown) {
   const data = cyberRetestInputSchema.parse(input);
   return withCyber(database, scope, async (tx, role) => {
@@ -116,21 +165,23 @@ export async function recordCyberRetest(database: Database, scope: CyberMutation
           eq(cyberScan.assetId, finding.assetId),
         ),
       );
+    if (!scans.length || scans.some((s) => ['queued', 'running', 'retry_wait'].includes(s.status)))
+      throw new CyberError(409, 'completed_asset_audit_required');
     if (
-      !scans.length ||
-      scans.some((s) => s.status !== 'succeeded') ||
-      !scans.some(
-        (s) =>
-          s.scan.engine === finding.observation.engine &&
-          s.scan.engineVersion === finding.observation.engineVersion &&
-          s.scan.coverageHash &&
-          initialScans.some(
-            (initial) =>
-              initial.engine === s.scan.engine &&
-              initial.engineVersion === s.scan.engineVersion &&
-              initial.coverageHash === s.scan.coverageHash,
-          ),
-      )
+      data.conclusion !== 'inconclusive' &&
+      (scans.some((s) => s.status !== 'succeeded') ||
+        !scans.some(
+          (s) =>
+            s.scan.engine === finding.observation.engine &&
+            s.scan.engineVersion === finding.observation.engineVersion &&
+            s.scan.coverageHash &&
+            initialScans.some(
+              (initial) =>
+                initial.engine === s.scan.engine &&
+                initial.engineVersion === s.scan.engineVersion &&
+                initial.coverageHash === s.scan.coverageHash,
+            ),
+        ))
     )
       throw new CyberError(409, 'comparable_completed_coverage_required');
     const [latestPositive] = await tx
@@ -183,6 +234,16 @@ export async function recordCyberRetest(database: Database, scope: CyberMutation
           updatedAt: new Date(),
         })
         .where(eq(cyberFinding.id, finding.id));
+    if (data.conclusion === 'absent')
+      await tx
+        .update(cyberTask)
+        .set({ status: 'verified_fixed' })
+        .where(
+          and(
+            eq(cyberTask.organizationId, scope.organizationId),
+            eq(cyberTask.findingId, finding.id),
+          ),
+        );
     await cyberEventIn(
       tx,
       scope,

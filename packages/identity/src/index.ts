@@ -4,7 +4,7 @@ import type { ApiEnv } from '@bump/contracts';
 import { authSchema, type Database, type Transaction } from '@bump/db';
 import type { MailMessage } from '@bump/integrations';
 import { betterAuth } from 'better-auth';
-import { organization } from 'better-auth/plugins';
+import { organization, twoFactor } from 'better-auth/plugins';
 
 export type SendMail = (message: MailMessage) => Promise<void>;
 
@@ -60,6 +60,11 @@ export function createAuth(
     },
     rateLimit: { enabled: true, window: 60, max: 60 },
     plugins: [
+      twoFactor({
+        issuer: 'Bump Cyber',
+        skipVerificationOnEnable: false,
+        backupCodeOptions: { storeBackupCodes: 'encrypted' },
+      }),
       organization({
         organizationLimit: 5,
         disableOrganizationDeletion: true,

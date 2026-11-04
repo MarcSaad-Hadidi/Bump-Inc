@@ -23,6 +23,9 @@ importers:
       '@bump/db':
         specifier: workspace:*
         version: link:packages/db
+      '@bump/identity':
+        specifier: workspace:*
+        version: link:packages/identity
       '@bump/integrations':
         specifier: workspace:*
         version: link:packages/integrations
@@ -108,6 +111,9 @@ importers:
       '@bump/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
+      '@bump/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       next:
         specifier: 16.4.2
         version: 16.4.2(@playwright/test@1.64.1)(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)

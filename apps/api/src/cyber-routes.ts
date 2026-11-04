@@ -16,12 +16,14 @@ import {
   purgeCyberArtifacts,
   readCyberFinding,
   readCyberReport,
+  readCyberRoles,
   readCyberSnapshot,
   recordCyberRetest,
   renderCyberReportHtml,
   reviewCyberFinding,
   saveCyberSource,
   updateCyberClient,
+  updateCyberTask,
 } from '@bump/core';
 import type { Database } from '@bump/db';
 import { type CyberVault, loadCyberVault } from '@bump/integrations';
@@ -177,6 +179,10 @@ export async function registerCyberRoutes(
   app.post(`${base}/tasks`, async (req, reply) =>
     reply.code(201).send(await createCyberTask(database, await scopeFor(req), req.body)),
   );
+  app.patch(`${base}/tasks/:id`, async (req) => {
+    const scope = await selectFor(req);
+    return updateCyberTask(database, scope, scope.id, req.body);
+  });
   app.post(`${base}/retests`, async (req, reply) =>
     reply.code(201).send(await recordCyberRetest(database, await scopeFor(req), req.body)),
   );
@@ -244,4 +250,5 @@ export async function registerCyberRoutes(
       .parse(req.body);
     return assignCyberRole(database, scope, scope.id, role);
   });
+  app.get(`${base}/roles`, async (req) => readCyberRoles(database, await scopeFor(req)));
 }

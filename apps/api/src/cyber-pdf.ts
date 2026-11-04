@@ -1,6 +1,11 @@
 import { fileURLToPath } from 'node:url';
 import { type CyberReportSnapshot, cyberReportSnapshotSchema } from '@bump/contracts';
-import { reportLabels } from '@bump/core';
+import {
+  isPriorityCyberReportFinding,
+  reportEvidenceLabel,
+  reportLabels,
+  reportResolutionLabel,
+} from '@bump/core';
 import PDFDocument from 'pdfkit';
 export async function renderCyberPdf(input: CyberReportSnapshot): Promise<Buffer> {
   const s = cyberReportSnapshotSchema.parse(input),
@@ -93,9 +98,7 @@ export async function renderCyberPdf(input: CyberReportSnapshot): Promise<Buffer
     if (!s.findings.length) paragraph(t.none);
     for (const f of s.findings) row([f.observation.title, f.observation.severity, f.status]);
     heading(t.risks);
-    for (const f of s.findings.filter(
-      (f) => !['verified_fixed', 'accepted_risk'].includes(f.status),
-    ))
+    for (const f of s.findings.filter(isPriorityCyberReportFinding))
       row([f.observation.title, `${t.priority}: ${f.priority.score}/100`, f.businessImpact]);
     page();
     heading(t.technical);
@@ -104,6 +107,8 @@ export async function renderCyberPdf(input: CyberReportSnapshot): Promise<Buffer
       if (doc.y > 450) page();
       heading(`${i + 1}. ${f.observation.title}`);
       row([f.id, f.status]);
+      const resolution = reportResolutionLabel(f, s.locale);
+      if (resolution) paragraph(resolution);
       const asset = s.assets.find((a) => a.id === f.assetId);
       paragraph(asset ? `${asset.label} · ${asset.target}` : f.assetId);
       row([
@@ -111,7 +116,10 @@ export async function renderCyberPdf(input: CyberReportSnapshot): Promise<Buffer
         `${t.priority}: ${f.priority.score}`,
         `${t.confidence}: ${f.observation.confidence}`,
       ]);
-      paragraph(`${t.source}: ${f.sources.map((v) => `${v.engine} ${v.version}`).join('; ')}`);
+      paragraph(reportEvidenceLabel(f, s.audit.id, s.locale));
+      paragraph(
+        `${t.source}: ${f.sources.map((v) => `${v.engine} ${v.version} · ${v.detectedAt}`).join('; ')}`,
+      );
       paragraph(
         `${f.observation.location}\n${f.observation.component} ${f.observation.affectedVersion}\n${f.observation.cve ?? ''}${f.observation.cvss === null ? '' : ` · CVSS ${f.observation.cvss}`}`,
       );
@@ -135,7 +143,9 @@ export async function renderCyberPdf(input: CyberReportSnapshot): Promise<Buffer
     heading(t.retests);
     if (!s.retests.length) paragraph(t.none);
     for (const r of s.retests)
-      paragraph(`${r.findingId} · ${r.conclusion}\n${r.createdAt} · ${r.auditId}\n${r.note}`);
+      paragraph(
+        `${r.findingId} · ${r.conclusion}\n${r.createdAt}\n${t.retestAudit}: ${r.auditId}\n${r.note}`,
+      );
     heading(t.annex);
     paragraph(t.noSecrets);
     for (const scan of s.scans)

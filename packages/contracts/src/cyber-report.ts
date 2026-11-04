@@ -8,7 +8,7 @@ export const cyberReportInputSchema = z.strictObject({
   executiveSummary: cyberText(8000),
   reviewNotes: cyberText(4000),
 });
-export const cyberReportSnapshotSchema = z.strictObject({
+const legacyCyberReportSnapshotSchema = z.strictObject({
   version: z.literal('cyber-report-v1'),
   reportId: cyberId,
   organizationId: cyberId,
@@ -99,4 +99,28 @@ export const cyberReportSnapshotSchema = z.strictObject({
     )
     .max(1000),
 });
+
+const cyberReportFindingSchema = legacyCyberReportSnapshotSchema.shape.findings.element.extend({
+  evidenceAuditId: cyberId,
+  evidenceFromSelectedAudit: z.boolean(),
+  resolution: z
+    .strictObject({
+      kind: z.enum(['verified_fixed', 'accepted_risk', 'false_positive']),
+      eventId: cyberId,
+      reviewerId: text,
+      reviewedAt: z.iso.datetime(),
+      note: text,
+      auditId: cyberId.nullable(),
+    })
+    .nullable(),
+});
+const currentCyberReportSnapshotSchema = legacyCyberReportSnapshotSchema.extend({
+  version: z.literal('cyber-report-v2'),
+  findings: z.array(cyberReportFindingSchema).max(1000),
+});
+// Parse existing frozen v1 snapshots without adding keys or changing their digest.
+export const cyberReportSnapshotSchema = z.discriminatedUnion('version', [
+  legacyCyberReportSnapshotSchema,
+  currentCyberReportSnapshotSchema,
+]);
 export type CyberReportSnapshot = z.infer<typeof cyberReportSnapshotSchema>;

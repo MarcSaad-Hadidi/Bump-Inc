@@ -36,3 +36,93 @@ export const syntheticReport: CyberReportSnapshot = {
   unreviewedCount: 1,
   falsePositiveCount: 0,
 };
+
+const historicalFinding = {
+  id: '10000000-0000-4000-8000-000000000010',
+  assetId: '10000000-0000-4000-8000-000000000011',
+  status: 'closed',
+  evidenceAuditId: '10000000-0000-4000-8000-000000000012',
+  evidenceFromSelectedAudit: false,
+  resolution: {
+    kind: 'verified_fixed' as const,
+    eventId: '10000000-0000-4000-8000-000000000013',
+    reviewerId: 'Synthetic reviewer',
+    reviewedAt: '2026-11-04T11:30:00.000Z',
+    note: 'Synthetic comparable clean retest reviewed before closure.',
+    auditId: syntheticReport.audit.id,
+  },
+  observation: {
+    engine: 'semgrep' as const,
+    engineVersion: 'synthetic-1',
+    ruleId: 'synthetic-report',
+    title: 'Historically corrected synthetic pattern',
+    severity: 'high' as const,
+    confidence: 'medium' as const,
+    location: 'fixture.py:1',
+    component: '',
+    affectedVersion: '',
+    fixedVersion: '',
+    cve: null,
+    cvss: null,
+    references: [],
+    evidence: 'Historical synthetic evidence, absent from the selected audit.',
+    recommendation: 'Synthetic recommendation',
+  },
+  businessImpact: 'Synthetic laboratory impact',
+  recommendation: 'Synthetic corrective action',
+  reviewedBy: 'Synthetic reviewer',
+  reviewedAt: '2026-11-04T11:35:00.000Z',
+  priority: { score: 50, factors: ['Synthetic priority factor'] },
+  sources: [{ engine: 'semgrep', version: 'synthetic-1', detectedAt: '2026-11-03T11:00:00.000Z' }],
+};
+
+export const syntheticResolvedReport: CyberReportSnapshot = {
+  ...syntheticReport,
+  version: 'cyber-report-v2',
+  locale: 'en',
+  unreviewedCount: 0,
+  assets: [
+    {
+      id: historicalFinding.assetId,
+      label: 'Synthetic report repository',
+      kind: 'repository',
+      target: 'lab/synthetic',
+      exposure: 'internal',
+    },
+  ],
+  findings: [
+    historicalFinding,
+    {
+      ...historicalFinding,
+      id: '10000000-0000-4000-8000-000000000014',
+      evidenceAuditId: syntheticReport.audit.id,
+      evidenceFromSelectedAudit: true,
+      observation: { ...historicalFinding.observation, title: 'Closed accepted synthetic risk' },
+      resolution: {
+        ...historicalFinding.resolution,
+        kind: 'accepted_risk',
+        auditId: null,
+        note: 'Synthetic explicitly accepted risk before closure.',
+      },
+    },
+    {
+      ...historicalFinding,
+      id: '10000000-0000-4000-8000-000000000015',
+      status: 'confirmed',
+      evidenceAuditId: syntheticReport.audit.id,
+      evidenceFromSelectedAudit: true,
+      observation: { ...historicalFinding.observation, title: 'Active synthetic priority risk' },
+      resolution: null,
+    },
+  ],
+  retests: [
+    {
+      findingId: historicalFinding.id,
+      auditId: syntheticReport.audit.id,
+      conclusion: 'absent',
+      note: 'Synthetic selected audit clean retest.',
+      reviewerId: 'Synthetic reviewer',
+      createdAt: '2026-11-04T11:30:00.000Z',
+    },
+  ],
+};

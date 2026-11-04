@@ -1,5 +1,6 @@
-import { expect, it } from 'vitest';
-import { syntheticReport } from '../../../tests/fixtures/cyber-report.js';
+import PDFDocument from 'pdfkit';
+import { expect, it, vi } from 'vitest';
+import { syntheticReport, syntheticResolvedReport } from '../../../tests/fixtures/cyber-report.js';
 import { renderCyberPdf } from '../src/cyber-pdf.js';
 
 it('generates a self-contained PDF with the Unicode font and real report pages', async () => {
@@ -8,4 +9,32 @@ it('generates a self-contained PDF with the Unicode font and real report pages',
   expect(pdf.length).toBeGreaterThan(10000);
   expect(pdf.toString('latin1')).toContain('/Type /Pages');
   expect(pdf.subarray(-20).toString()).toContain('%%EOF');
+});
+
+it('prints historical provenance and closed resolutions, while keeping priority risks active', async () => {
+  const rendered = vi.spyOn(PDFDocument.prototype, 'text');
+  try {
+    const pdf = await renderCyberPdf(syntheticResolvedReport);
+    expect(pdf.subarray(0, 5).toString()).toBe('%PDF-');
+    const lines = rendered.mock.calls.map(([value]) => String(value));
+    expect(lines.some((line) => line.includes('Historical evidence from an earlier audit'))).toBe(
+      true,
+    );
+    expect(lines.some((line) => line.includes('not a detection in the selected audit'))).toBe(true);
+    expect(lines.some((line) => line.includes('Recorded resolution: Verified correction'))).toBe(
+      true,
+    );
+    expect(lines.some((line) => line.includes('Recorded resolution: Accepted risk'))).toBe(true);
+    expect(
+      lines.some((line) => line.includes(`Retest audit: ${syntheticResolvedReport.audit.id}`)),
+    ).toBe(true);
+    const risks = lines
+      .slice(lines.indexOf('Priority risks') + 1, lines.indexOf('Technical findings'))
+      .join('\n');
+    expect(risks).toContain('Active synthetic priority risk');
+    expect(risks).not.toContain('Historically corrected synthetic pattern');
+    expect(risks).not.toContain('Closed accepted synthetic risk');
+  } finally {
+    rendered.mockRestore();
+  }
 });

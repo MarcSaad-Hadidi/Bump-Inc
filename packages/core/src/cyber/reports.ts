@@ -9,6 +9,7 @@ import {
   cyberAsset,
   cyberAudit,
   cyberClient,
+  cyberEvent,
   cyberFinding,
   cyberMandate,
   cyberObservation,
@@ -21,7 +22,7 @@ import {
   engagementVersion,
   executionJob,
 } from '@bump/db';
-import { and, eq, inArray } from 'drizzle-orm';
+import { and, desc, eq, inArray, like, lte, or } from 'drizzle-orm';
 import {
   CyberError,
   type CyberMutation,
@@ -85,7 +86,9 @@ export async function createCyberReport(database: Database, scope: CyberMutation
             eq(cyberScan.auditId, data.auditId),
           ),
         )
-        .orderBy(cyberScan.createdAt, cyberScan.id);
+        .orderBy(cyberScan.createdAt, cyberScan.id)
+        .limit(201);
+      if (scans.length > 200) throw new CyberError(409, 'report_scan_limit');
       if (
         !scans.length ||
         scans.some((s) => ['queued', 'running', 'retry_wait'].includes(s.job.status))
@@ -100,7 +103,9 @@ export async function createCyberReport(database: Database, scope: CyberMutation
             inArray(cyberAsset.id, [...new Set(scans.map((s) => s.scan.assetId))]),
           ),
         )
-        .orderBy(cyberAsset.label, cyberAsset.id);
+        .orderBy(cyberAsset.label, cyberAsset.id)
+        .limit(101);
+      if (assets.length > 100) throw new CyberError(409, 'report_asset_limit');
       const records = await tx
         .select({ finding: cyberFinding, observation: cyberObservation })
         .from(cyberObservation)
@@ -108,7 +113,10 @@ export async function createCyberReport(database: Database, scope: CyberMutation
         .where(
           and(
             eq(cyberObservation.organizationId, scope.organizationId),
+            eq(cyberObservation.clientId, head.client.id),
             eq(cyberObservation.auditId, data.auditId),
+            eq(cyberFinding.organizationId, scope.organizationId),
+            eq(cyberFinding.clientId, head.client.id),
           ),
         )
         .orderBy(cyberObservation.createdAt, cyberObservation.id)
@@ -117,6 +125,116 @@ export async function createCyberReport(database: Database, scope: CyberMutation
       const grouped = new Map<string, typeof records>();
       for (const record of records)
         grouped.set(record.finding.id, [...(grouped.get(record.finding.id) ?? []), record]);
+      const selectedRetests = await tx
+        .select({ retest: cyberRetest, finding: cyberFinding })
+        .from(cyberRetest)
+        .innerJoin(
+          cyberFinding,
+          and(
+            eq(cyberFinding.id, cyberRetest.findingId),
+            eq(cyberFinding.organizationId, cyberRetest.organizationId),
+            eq(cyberFinding.clientId, cyberRetest.clientId),
+          ),
+        )
+        .where(
+          and(
+            eq(cyberRetest.organizationId, scope.organizationId),
+            eq(cyberRetest.clientId, head.client.id),
+            eq(cyberRetest.auditId, data.auditId),
+          ),
+        )
+        .orderBy(cyberRetest.createdAt, cyberRetest.id)
+        .limit(1001);
+      if (selectedRetests.length > 1000) throw new CyberError(409, 'report_retest_limit');
+      const historicalIds = [
+        ...new Set(selectedRetests.map((r) => r.finding.id).filter((id) => !grouped.has(id))),
+      ];
+      if (historicalIds.length) {
+        // A clean retest has no observation of its own. Select the latest prior
+        // observation before its recorded review, never the mutable finding JSON.
+        const historical = await tx
+          .selectDistinctOn([cyberObservation.findingId], {
+            finding: cyberFinding,
+            observation: cyberObservation,
+          })
+          .from(cyberObservation)
+          .innerJoin(
+            cyberFinding,
+            and(
+              eq(cyberFinding.id, cyberObservation.findingId),
+              eq(cyberFinding.organizationId, cyberObservation.organizationId),
+              eq(cyberFinding.clientId, cyberObservation.clientId),
+            ),
+          )
+          .innerJoin(
+            cyberRetest,
+            and(
+              eq(cyberRetest.findingId, cyberObservation.findingId),
+              eq(cyberRetest.organizationId, cyberObservation.organizationId),
+              eq(cyberRetest.clientId, cyberObservation.clientId),
+              eq(cyberRetest.auditId, data.auditId),
+              lte(cyberObservation.createdAt, cyberRetest.createdAt),
+            ),
+          )
+          .where(
+            and(
+              eq(cyberObservation.organizationId, scope.organizationId),
+              eq(cyberObservation.clientId, head.client.id),
+              inArray(cyberObservation.findingId, historicalIds),
+            ),
+          )
+          .orderBy(
+            cyberObservation.findingId,
+            desc(cyberObservation.createdAt),
+            desc(cyberObservation.id),
+          )
+          .limit(1001);
+        for (const record of historical) grouped.set(record.finding.id, [record]);
+        if (historicalIds.some((id) => !grouped.has(id)))
+          throw new CyberError(409, 'report_evidence_unavailable');
+      }
+      if (grouped.size > 1000) throw new CyberError(409, 'report_finding_limit');
+      const findingIds = [...grouped.keys()];
+      // Retest and event share PostgreSQL now() within recordCyberRetest's
+      // transaction. Match the recorded conclusion, reviewer and note as well.
+      const history = findingIds.length
+        ? await tx
+            .select({ event: cyberEvent, retestAuditId: cyberRetest.auditId })
+            .from(cyberEvent)
+            .leftJoin(
+              cyberRetest,
+              and(
+                eq(cyberEvent.action, 'retest.absent'),
+                eq(cyberRetest.organizationId, cyberEvent.organizationId),
+                eq(cyberRetest.clientId, cyberEvent.clientId),
+                eq(cyberRetest.findingId, cyberEvent.targetId),
+                eq(cyberRetest.createdAt, cyberEvent.createdAt),
+                eq(cyberRetest.conclusion, 'absent'),
+                eq(cyberRetest.reviewerId, cyberEvent.actorId),
+                eq(cyberRetest.note, cyberEvent.detail),
+              ),
+            )
+            .where(
+              and(
+                eq(cyberEvent.organizationId, scope.organizationId),
+                eq(cyberEvent.clientId, head.client.id),
+                inArray(cyberEvent.targetId, findingIds),
+                or(
+                  like(cyberEvent.action, 'finding.%'),
+                  inArray(cyberEvent.action, ['retest.absent', 'retest.present']),
+                ),
+              ),
+            )
+            .orderBy(desc(cyberEvent.createdAt), desc(cyberEvent.id))
+            .limit(10001)
+        : [];
+      if (history.length > 10000) throw new CyberError(409, 'report_history_limit');
+      const historyByFinding = new Map<string, typeof history>();
+      for (const entry of history)
+        historyByFinding.set(entry.event.targetId, [
+          ...(historyByFinding.get(entry.event.targetId) ?? []),
+          entry,
+        ]);
       const [responsible] = await tx
         .select({ name: authSchema.user.name })
         .from(authSchema.user)
@@ -132,76 +250,119 @@ export async function createCyberReport(database: Database, scope: CyberMutation
               ),
             )
         : [];
+      let unreviewedCount = 0;
+      let falsePositiveCount = 0;
       const findings = [...grouped.values()]
-        .filter((v) =>
-          [
-            'confirmed',
-            'planned',
-            'in_progress',
-            'to_retest',
-            'verified_fixed',
-            'accepted_risk',
-          ].includes(v[0]!.finding.status),
-        )
-        .map((rows) => {
+        .flatMap((rows) => {
           const f = rows[0]!.finding;
-          const observation = rows[0]!.observation.data;
+          const events = historyByFinding.get(f.id) ?? [];
+          const decision =
+            f.status === 'closed'
+              ? events[0]?.event.action === 'finding.closed'
+                ? events[1]
+                : undefined
+              : events[0];
+          const kind =
+            decision?.event.action === 'finding.accepted_risk'
+              ? ('accepted_risk' as const)
+              : decision?.event.action === 'finding.false_positive'
+                ? ('false_positive' as const)
+                : decision?.event.action === 'retest.absent' && decision.retestAuditId
+                  ? ('verified_fixed' as const)
+                  : null;
+          const resolution =
+            decision && kind && (f.status === 'closed' || f.status === kind)
+              ? {
+                  kind,
+                  eventId: decision.event.id,
+                  reviewerId: decision.event.actorId,
+                  reviewedAt: decision.event.createdAt.toISOString(),
+                  note: decision.event.detail,
+                  auditId: decision.retestAuditId,
+                }
+              : null;
+          if (resolution?.kind === 'false_positive') {
+            falsePositiveCount++;
+            return [];
+          }
+          if (
+            !f.reviewedBy ||
+            !f.reviewedAt ||
+            ![
+              'confirmed',
+              'planned',
+              'in_progress',
+              'to_retest',
+              'verified_fixed',
+              'accepted_risk',
+              'closed',
+            ].includes(f.status) ||
+            (['verified_fixed', 'accepted_risk', 'closed'].includes(f.status) && !resolution)
+          ) {
+            unreviewedCount++;
+            return [];
+          }
+          if (rows.length > 100) throw new CyberError(409, 'report_source_limit');
+          const evidence = rows.at(-1)!.observation;
+          const observation = evidence.data;
           const asset = assets.find((a) => a.id === f.assetId);
-          return {
-            id: f.id,
-            assetId: f.assetId,
-            status: f.status,
-            observation,
-            businessImpact: f.businessImpact,
-            recommendation: f.recommendation,
-            reviewedBy: f.reviewedBy,
-            reviewedAt: f.reviewedAt?.toISOString() ?? null,
-            priority: prioritizeCyber({
-              severity: observation.severity,
-              cvss: observation.cvss,
-              epss: null,
-              kev: null,
-              exposure:
-                asset?.exposure === 'public'
-                  ? 'public'
-                  : asset?.exposure === 'restricted'
-                    ? 'restricted'
-                    : 'internal',
-              criticality: head.client.criticality,
-              confidence: observation.confidence,
-              humanAdjustment: f.humanAdjustment,
-              compensatingControls: f.compensatingControls,
-            }),
-            sources: rows.map((r) => ({
-              engine: r.observation.data.engine,
-              version: r.observation.data.engineVersion,
-              detectedAt: r.observation.createdAt.toISOString(),
-            })),
-          };
+          return [
+            {
+              id: f.id,
+              assetId: f.assetId,
+              status: f.status,
+              evidenceAuditId: evidence.auditId,
+              evidenceFromSelectedAudit: evidence.auditId === head.audit.id,
+              resolution,
+              observation,
+              businessImpact: f.businessImpact,
+              recommendation: f.recommendation,
+              reviewedBy: f.reviewedBy,
+              reviewedAt: f.reviewedAt?.toISOString() ?? null,
+              priority: prioritizeCyber({
+                severity: observation.severity,
+                cvss: observation.cvss,
+                epss: null,
+                kev: null,
+                exposure:
+                  asset?.exposure === 'public'
+                    ? 'public'
+                    : asset?.exposure === 'restricted'
+                      ? 'restricted'
+                      : 'internal',
+                criticality: head.client.criticality,
+                confidence: observation.confidence,
+                humanAdjustment: f.humanAdjustment,
+                compensatingControls: f.compensatingControls,
+              }),
+              sources: rows.map((r) => ({
+                engine: r.observation.data.engine,
+                version: r.observation.data.engineVersion,
+                detectedAt: r.observation.createdAt.toISOString(),
+              })),
+            },
+          ];
         })
         .sort((a, b) => b.priority.score - a.priority.score || a.id.localeCompare(b.id));
-      const tasks = await tx
-        .select()
-        .from(cyberTask)
-        .where(
-          and(
-            eq(cyberTask.organizationId, scope.organizationId),
-            eq(cyberTask.clientId, head.client.id),
-          ),
-        );
-      const retests = await tx
-        .select()
-        .from(cyberRetest)
-        .where(
-          and(
-            eq(cyberRetest.organizationId, scope.organizationId),
-            eq(cyberRetest.clientId, head.client.id),
-          ),
-        );
       const ids = new Set(findings.map((f) => f.id));
+      const tasks = ids.size
+        ? await tx
+            .select()
+            .from(cyberTask)
+            .where(
+              and(
+                eq(cyberTask.organizationId, scope.organizationId),
+                eq(cyberTask.clientId, head.client.id),
+                inArray(cyberTask.findingId, [...ids]),
+              ),
+            )
+            .orderBy(cyberTask.createdAt, cyberTask.id)
+            .limit(1001)
+        : [];
+      if (tasks.length > 1000) throw new CyberError(409, 'report_task_limit');
       const id = randomUUID();
       const snapshot = cyberReportSnapshotSchema.parse({
-        version: 'cyber-report-v1',
+        version: 'cyber-report-v2',
         reportId: id,
         organizationId: scope.organizationId,
         locale: data.locale,
@@ -245,11 +406,8 @@ export async function createCyberReport(database: Database, scope: CyberMutation
           coverageHash: s.scan.coverageHash,
         })),
         findings,
-        unreviewedCount: [...grouped.values()].filter((r) => r[0]?.finding.status === 'to_review')
-          .length,
-        falsePositiveCount: [...grouped.values()].filter(
-          (r) => r[0]?.finding.status === 'false_positive',
-        ).length,
+        unreviewedCount,
+        falsePositiveCount,
         tasks: tasks
           .filter((t) => ids.has(t.findingId))
           .map((t) => ({
@@ -259,9 +417,9 @@ export async function createCyberReport(database: Database, scope: CyberMutation
             description: t.description,
             status: t.status,
           })),
-        retests: retests
-          .filter((r) => ids.has(r.findingId))
-          .map((r) => ({
+        retests: selectedRetests
+          .filter(({ retest }) => ids.has(retest.findingId))
+          .map(({ retest: r }) => ({
             findingId: r.findingId,
             auditId: r.auditId,
             conclusion: r.conclusion,

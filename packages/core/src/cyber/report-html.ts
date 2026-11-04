@@ -35,6 +35,17 @@ export const reportLabels = {
     priority: 'Priorité métier',
     confidence: 'Confiance',
     evidence: 'Preuves minimisées',
+    selectedEvidence: 'Preuves de l’audit sélectionné',
+    historicalEvidence:
+      'Preuves historiques d’un audit antérieur — aucune détection attestée dans l’audit sélectionné',
+    resolution: 'Résolution enregistrée',
+    resolutionAudit: 'Audit de la résolution',
+    retestAudit: 'Audit du retest',
+    resolutions: {
+      verified_fixed: 'Correction vérifiée',
+      accepted_risk: 'Risque accepté',
+      false_positive: 'Faux positif',
+    },
     impact: 'Impact métier évalué',
     fix: 'Correction recommandée',
     source: 'Origine',
@@ -83,6 +94,17 @@ export const reportLabels = {
     priority: 'Business priority',
     confidence: 'Confidence',
     evidence: 'Minimized evidence',
+    selectedEvidence: 'Evidence from the selected audit',
+    historicalEvidence:
+      'Historical evidence from an earlier audit — not a detection in the selected audit',
+    resolution: 'Recorded resolution',
+    resolutionAudit: 'Resolution audit',
+    retestAudit: 'Retest audit',
+    resolutions: {
+      verified_fixed: 'Verified correction',
+      accepted_risk: 'Accepted risk',
+      false_positive: 'False positive',
+    },
     impact: 'Assessed business impact',
     fix: 'Recommended correction',
     source: 'Source',
@@ -96,6 +118,30 @@ export const reportLabels = {
       'Failed, cancelled, missing or different coverage is not a favorable result. Not observed does not mean fixed. EPSS and CISA KEV remain unknown until a verified source is integrated.',
   },
 } as const;
+type ReportFinding = CyberReportSnapshot['findings'][number];
+export function isPriorityCyberReportFinding(finding: ReportFinding) {
+  return ['confirmed', 'planned', 'in_progress', 'to_retest'].includes(finding.status);
+}
+export function reportEvidenceLabel(
+  finding: ReportFinding,
+  selectedAuditId: string,
+  locale: CyberReportSnapshot['locale'],
+) {
+  const t = reportLabels[locale];
+  // v1 only contained observations from its selected audit.
+  const auditId = 'evidenceAuditId' in finding ? finding.evidenceAuditId : selectedAuditId;
+  const historical = 'evidenceFromSelectedAudit' in finding && !finding.evidenceFromSelectedAudit;
+  return `${historical ? t.historicalEvidence : t.selectedEvidence}: ${auditId}`;
+}
+export function reportResolutionLabel(
+  finding: ReportFinding,
+  locale: CyberReportSnapshot['locale'],
+) {
+  if (!('resolution' in finding) || !finding.resolution) return null;
+  const t = reportLabels[locale];
+  const r = finding.resolution;
+  return `${t.resolution}: ${t.resolutions[r.kind]} · ${r.reviewedAt} · ${r.reviewerId}${r.auditId ? `\n${t.resolutionAudit}: ${r.auditId}` : ''}\n${r.note}`;
+}
 export function escapeReport(value: unknown) {
   return String(value ?? '')
     .replaceAll('&', '&amp;')
@@ -118,7 +164,7 @@ export function renderCyberReportHtml(input: CyberReportSnapshot, approved: bool
   const findings = s.findings
     .map(
       (f, i) =>
-        `<article><h3>${i + 1}. ${e(f.observation.title)}</h3><p class="meta">${e(f.id)} · ${e(f.status)}</p>${table([t.severity, t.priority, t.confidence], [[f.observation.severity, f.priority.score, f.observation.confidence]])}${p(s.assets.find((a) => a.id === f.assetId)?.label ?? f.assetId)}${p(`${t.source}: ${f.sources.map((v) => `${v.engine} ${v.version}`).join('; ')}`)}${p(`${f.observation.location} · ${f.observation.component} ${f.observation.affectedVersion}`)}${p(`${f.observation.cve ?? ''}${f.observation.cvss === null ? '' : ` · CVSS ${f.observation.cvss}`}`)}<h4>${e(t.evidence)}</h4>${p(f.observation.evidence)}<h4>${e(t.impact)}</h4>${p(f.businessImpact)}${p(f.priority.factors.join('; '))}<h4>${e(t.fix)}</h4>${p(f.recommendation)}<h4>${e(t.refs)}</h4>${f.observation.references.length ? `<ul>${f.observation.references.map((url) => `<li><a href="${e(url)}" rel="noreferrer">${e(url)}</a></li>`).join('')}</ul>` : p(t.none)}</article>`,
+        `<article><h3>${i + 1}. ${e(f.observation.title)}</h3><p class="meta">${e(f.id)} · ${e(f.status)}</p>${reportResolutionLabel(f, s.locale) ? p(reportResolutionLabel(f, s.locale)!) : ''}${table([t.severity, t.priority, t.confidence], [[f.observation.severity, f.priority.score, f.observation.confidence]])}${p(s.assets.find((a) => a.id === f.assetId)?.label ?? f.assetId)}${p(reportEvidenceLabel(f, s.audit.id, s.locale))}${p(`${t.source}: ${f.sources.map((v) => `${v.engine} ${v.version} · ${v.detectedAt}`).join('; ')}`)}${p(`${f.observation.location} · ${f.observation.component} ${f.observation.affectedVersion}`)}${p(`${f.observation.cve ?? ''}${f.observation.cvss === null ? '' : ` · CVSS ${f.observation.cvss}`}`)}<h4>${e(t.evidence)}</h4>${p(f.observation.evidence)}<h4>${e(t.impact)}</h4>${p(f.businessImpact)}${p(f.priority.factors.join('; '))}<h4>${e(t.fix)}</h4>${p(f.recommendation)}<h4>${e(t.refs)}</h4>${f.observation.references.length ? `<ul>${f.observation.references.map((url) => `<li><a href="${e(url)}" rel="noreferrer">${e(url)}</a></li>`).join('')}</ul>` : p(t.none)}</article>`,
     )
     .join('');
   const body =
@@ -175,7 +221,7 @@ export function renderCyberReportHtml(input: CyberReportSnapshot, approved: bool
       table(
         ['Constat / Finding', t.priority, t.impact],
         s.findings
-          .filter((f) => !['verified_fixed', 'accepted_risk'].includes(f.status))
+          .filter(isPriorityCyberReportFinding)
           .map((f) => [f.observation.title, f.priority.score, f.businessImpact]),
       ),
     ) +
@@ -195,7 +241,7 @@ export function renderCyberReportHtml(input: CyberReportSnapshot, approved: bool
     section(
       t.retests,
       table(
-        ['ID', 'Audit', t.state, 'Note'],
+        ['ID', t.retestAudit, t.state, 'Note'],
         s.retests.map((v) => [v.findingId, v.auditId, v.conclusion, v.note]),
       ),
     ) +

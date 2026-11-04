@@ -11,7 +11,7 @@ const database = createDatabase(url);
 const repository = createAuditRepository(database.db);
 const ids: string[] = [];
 describe('audit persistence', () => {
-  beforeAll(() => migrateDatabase(url));
+  beforeAll(() => migrateDatabase(process.env.MIGRATION_DATABASE_URL!));
   afterAll(async () => {
     await database.pool.query('DELETE FROM audits WHERE id = ANY($1::uuid[])', [ids]);
     await database.pool.end();

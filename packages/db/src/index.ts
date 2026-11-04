@@ -2,10 +2,29 @@ import { drizzle } from 'drizzle-orm/node-postgres';
 import pg from 'pg';
 import * as schema from './schema.js';
 
-export { createAuditRepository } from './audits.js';
+export { authSchema } from './auth-schema.js';
+export { engagement, engagementApproval, engagementVersion } from './engagement-schema.js';
+export {
+  executionAttempt,
+  executionControl,
+  executionEvent,
+  executionJob,
+  executionOutbox,
+} from './execution-schema.js';
+export { auditImport, auditImportRequest, auditObservation } from './ingestion-schema.js';
 export { migrateDatabase } from './migration.js';
-export { auditFindings, audits, systemProbes } from './schema.js';
+export { organizationAudit, organizationSettings, systemProbes } from './schema.js';
+export {
+  assertRuntimeRole,
+  setTenantContext,
+  TenantAccessError,
+  type TenantRole,
+  type Transaction,
+  withTenant,
+} from './tenant.js';
 export { schema };
+
+export type Database = ReturnType<typeof createDatabase>;
 
 export function createDatabase(url: string) {
   const pool = new pg.Pool({
@@ -18,3 +37,6 @@ export function createDatabase(url: string) {
   });
   return { db: drizzle(pool, { schema }), pool };
 }
+
+export { createAuditRepository } from './audits.js';
+export { auditFindings, audits } from './schema.js';

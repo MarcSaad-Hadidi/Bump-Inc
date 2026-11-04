@@ -1,0 +1,26 @@
+{
+  "name": "@bump/identity",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@bump/contracts": "workspace:*",
+    "@bump/db": "workspace:*",
+    "@bump/integrations": "workspace:*",
+    "@better-auth/drizzle-adapter": "1.7.12",
+    "better-auth": "1.7.12"
+  },
+  "files": [
+    "dist"
+  ]
+}

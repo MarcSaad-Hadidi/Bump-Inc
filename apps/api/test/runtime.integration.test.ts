@@ -2,13 +2,14 @@ import { apiEnvSchema, type Loi25AuditReport, PROBE_QUEUE_NAME, parseEnv } from 
 import { createDatabase, migrateDatabase } from '@bump/db';
 import { Queue } from 'bullmq';
 import { Redis } from 'ioredis';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { createProbeWorker } from '../../worker/src/probe.js';
 import * as dns from '../../worker/src/scanners/loi25/dns-email.js';
 import * as http from '../../worker/src/scanners/loi25/http-security.js';
 import { buildServer } from '../src/server.js';
 
 describe('API with PostgreSQL and Redis', () => {
+  beforeAll(() => migrateDatabase(process.env.MIGRATION_DATABASE_URL!));
   it('serves live and ready responses using real dependencies', async () => {
     const env = parseEnv(apiEnvSchema);
     if (env.NODE_ENV !== 'test' || !new URL(env.DATABASE_URL).pathname.endsWith('_test')) {
@@ -39,7 +40,7 @@ describe('API with PostgreSQL and Redis', () => {
       new URL(env.REDIS_URL).pathname !== '/1'
     )
       throw new Error('Dedicated test services required');
-    await migrateDatabase(env.DATABASE_URL);
+    await migrateDatabase(process.env.MIGRATION_DATABASE_URL!);
     const database = createDatabase(env.DATABASE_URL);
     const connection = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null });
     const worker = createProbeWorker({ connection, database, concurrency: 1 });

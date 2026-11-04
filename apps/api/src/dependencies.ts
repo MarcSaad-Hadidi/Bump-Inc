@@ -1,11 +1,15 @@
 import { type ApiEnv, PROBE_QUEUE_NAME } from '@bump/contracts';
-import { createDatabase } from '@bump/db';
+import { assertRuntimeRole, createDatabase } from '@bump/db';
+import { createAuth } from '@bump/identity';
+import { createArtifactStore, createMailer } from '@bump/integrations';
 import { Queue, QueueEvents } from 'bullmq';
 import type { FastifyBaseLogger } from 'fastify';
 import { Redis } from 'ioredis';
 import { type AuditService, createAuditService } from './audits.js';
+import type { IdentityContext } from './identity-routes.js';
 
 export interface Dependencies {
+  identity?: IdentityContext;
   start(): Promise<void>;
   database(): Promise<unknown>;
   redis(): Promise<unknown>;
@@ -20,6 +24,16 @@ export function createDependencies(env: ApiEnv, logger: FastifyBaseLogger): Depe
   let auditQueue: Queue | undefined;
   let auditEvents: QueueEvents | undefined;
   let auditEventConnection: Redis | undefined;
+  const mailer = createMailer(env);
+  const artifactStore = createArtifactStore(process.env);
+  const sendMail = async (message: Parameters<typeof mailer.send>[0]) => {
+    try {
+      await mailer.send(message);
+    } catch (error) {
+      logger.error('Identity email delivery failed');
+      throw error;
+    }
+  };
   const redis = new Redis(env.REDIS_URL, {
     lazyConnect: true,
     enableOfflineQueue: false,
@@ -36,8 +50,20 @@ export function createDependencies(env: ApiEnv, logger: FastifyBaseLogger): Depe
   });
 
   return {
+    ...(env.AUTH_ENABLED
+      ? {
+          identity: {
+            database,
+            env,
+            auth: createAuth(database.db, env, sendMail),
+            sendMail,
+            artifactStore,
+          },
+        }
+      : {}),
     async start() {
-      // Liveness must remain available during a dependency outage; readiness reports failure.
+      if (env.AUTH_ENABLED) await assertRuntimeRole(pool);
+      // A Redis outage affects readiness without preventing startup.
       await redis.connect().catch(() => undefined);
     },
     database: () => pool.query('SELECT 1'),
@@ -90,6 +116,8 @@ export function createDependencies(env: ApiEnv, logger: FastifyBaseLogger): Depe
       await auditEvents?.close();
       auditEventConnection?.disconnect();
       redis.disconnect();
+      mailer.close();
+      artifactStore.close();
       await pool.end();
     },
   };

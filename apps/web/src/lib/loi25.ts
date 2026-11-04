@@ -1,4 +1,8 @@
-import { type Loi25AuditReport, Loi25AuditReportSchema, type Loi25Finding } from '@bump/contracts';
+import {
+  type Loi25AuditReport,
+  Loi25AuditReportSchema,
+  type Loi25Finding,
+} from '@bump/contracts/loi25';
 import { getApiOrigin } from './health';
 
 export function auditApiOrigin() {

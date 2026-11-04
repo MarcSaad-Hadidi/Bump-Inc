@@ -14,7 +14,7 @@ test('operator validation persists and controls the printable client proposal', 
   const findingId = randomUUID();
   const companyName = 'Entreprise synthétique';
   try {
-    await migrateDatabase(url);
+    await migrateDatabase(process.env.MIGRATION_DATABASE_URL!);
     await repository.create({ companyName, domain: 'example.com' }, auditId);
     await repository.save({
       auditId,

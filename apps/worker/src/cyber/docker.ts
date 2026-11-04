@@ -118,7 +118,11 @@ export async function resourceIsolationAvailable() {
   try {
     return hasDockerIsolation(
       JSON.parse(
-        await dockerCommand(['info', '--format', '{{json .}}'], AbortSignal.timeout(3000), 1048576),
+        await dockerCommand(
+          ['info', '--format', '{{json .}}'],
+          AbortSignal.timeout(10000),
+          1048576,
+        ),
       ),
     );
   } catch {

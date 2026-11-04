@@ -30,3 +30,28 @@ it('refuses traversal, unbounded source content and shell-like configuration', (
     false,
   );
 });
+
+it('enforces source file limits in UTF-8 bytes, including multi-byte text', () => {
+  const source = {
+    assetId: '00000000-0000-4000-8000-000000000001',
+    name: 'Synthetic Unicode',
+    files: [{ path: 'app.py', content: 'é'.repeat(65536) }],
+  };
+  expect(cyberSourceInputSchema.safeParse(source).success).toBe(true);
+  expect(
+    cyberSourceInputSchema.safeParse({
+      ...source,
+      files: [{ path: 'app.py', content: 'é'.repeat(65537) }],
+    }).success,
+  ).toBe(false);
+});
+
+it('rejects embedded NUL source bytes', () => {
+  expect(
+    cyberSourceInputSchema.safeParse({
+      assetId: '00000000-0000-4000-8000-000000000001',
+      name: 'Synthetic',
+      files: [{ path: 'app.py', content: String.fromCharCode(0) }],
+    }).success,
+  ).toBe(false);
+});

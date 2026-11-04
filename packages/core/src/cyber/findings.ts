@@ -133,6 +133,22 @@ export async function recordCyberRetest(database: Database, scope: CyberMutation
       )
     )
       throw new CyberError(409, 'comparable_completed_coverage_required');
+    const [latestPositive] = await tx
+      .select({ createdAt: cyberObservation.createdAt })
+      .from(cyberObservation)
+      .where(
+        and(
+          eq(cyberObservation.organizationId, scope.organizationId),
+          eq(cyberObservation.findingId, finding.id),
+        ),
+      )
+      .orderBy(desc(cyberObservation.createdAt))
+      .limit(1);
+    if (
+      data.conclusion === 'absent' &&
+      (!latestPositive || scans.some((s) => s.scan.createdAt <= latestPositive.createdAt))
+    )
+      throw new CyberError(409, 'retest_predates_latest_detection');
     const observed = await tx
       .select()
       .from(cyberObservation)

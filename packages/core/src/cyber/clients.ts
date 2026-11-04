@@ -155,7 +155,9 @@ export async function approveCyberMandate(database: Database, scope: CyberMutati
     return v;
   });
   return approveEngagement(database, {
-    ...scope,
+    organizationId: scope.organizationId,
+    userId: scope.userId,
+    requestId: scope.requestId,
     engagementId: row.mandate.engagementId,
     expectedRevision: 1,
     authorizationSha256: row.version.authorizationSha256,

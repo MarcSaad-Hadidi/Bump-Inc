@@ -16,6 +16,31 @@ export function cyberFingerprint(input: {
       : [input.assetId, input.component, input.affectedVersion, input.ruleId, input.location];
   return createHash('sha256').update(JSON.stringify(identity)).digest('hex');
 }
+
+type RetestIdentity = Pick<
+  CyberObservation,
+  'engine' | 'ruleId' | 'location' | 'component' | 'cve'
+>;
+export function conflictsWithAbsentCyberRetest(
+  finding: { fingerprint: string; observation: RetestIdentity },
+  candidate: { fingerprint: string; data: RetestIdentity },
+) {
+  if (candidate.fingerprint === finding.fingerprint) return true;
+  const previous = finding.observation;
+  const current = candidate.data;
+  if (
+    previous.cve &&
+    previous.component &&
+    previous.cve === current.cve &&
+    previous.component === current.component
+  )
+    return true;
+  if (previous.engine !== current.engine || previous.ruleId !== current.ruleId) return false;
+  const previousFile = previous.location.replace(/:\d+(?::\d+)?$/, '');
+  const currentFile = current.location.replace(/:\d+(?::\d+)?$/, '');
+  // A missing location cannot disambiguate two alerts from the same rule.
+  return !previousFile || !currentFile || previousFile === currentFile;
+}
 const riskSchema = z.strictObject({
   severity: z.enum(['unknown', 'info', 'low', 'medium', 'high', 'critical']),
   cvss: z.number().min(0).max(10).nullable(),

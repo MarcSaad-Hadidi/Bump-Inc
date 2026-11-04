@@ -25,6 +25,15 @@ Consultant/réviseur/administrateur peuvent revoir les constats ; un analyste ne
 peut pas confirmer un constat ni publier un rapport. Le client en lecture seule
 reste une phase ultérieure.
 
+Une affectation ou révocation de rôle Cyber verrouille la ligne d'appartenance
+du membre ciblé en `FOR UPDATE`. Les transactions autorisées détiennent déjà
+cette ligne en `FOR SHARE` via `withTenant` : le changement attend donc leur fin,
+y compris pour un analyste par défaut qui n'a pas encore de ligne `cyber_role`.
+Les rôles owner/admin hérités ne peuvent pas être remplacés par une affectation
+Cyber (`inherited_admin_role`) ; un utilisateur sans appartenance courante est
+refusé (`current_member_required`). Aucun verrou `FOR SHARE` n'est ajouté sur
+`cyber_role`, dont les politiques RLS distinguent lecture et administration.
+
 ## Mandat, exécution et données
 
 Un mandat Cyber contient signataire, date, référence, texte d'autorisation,
@@ -72,6 +81,26 @@ contredit une conclusion « absent ». Une réapparition après clôture rouvre 
 constat à examiner. Une comparaison distingue nouveaux/persistants/non observés
 et avertit des réductions de couverture. « Non observé » n'est pas « corrigé ».
 
+Le contrôle d'absence est volontairement plus conservateur que le fingerprint
+de corrélation. Dans le même audit, client, actif et organisation, une observation
+interdit « absent » si elle présente le même fingerprint, le même composant et
+la même CVE quelle que soit la version affectée, ou le même moteur/règle dans le
+même fichier après retrait du suffixe `:ligne[:colonne]`. Une localisation
+manquante pour le même moteur/règle reste ambiguë et interdit aussi une correction
+vérifiée. Déplacer une ligne Semgrep ou installer une autre version encore
+vulnérable d'un composant ne constitue donc pas une correction. Les titres ne
+sont jamais comparés et les constats restent distincts : aucune fusion ni
+confirmation automatique n'est faite à partir de ces correspondances possibles.
+
+Une correspondance renvoie `retest_evidence_conflict` sans modifier le constat.
+La revue peut enregistrer `inconclusive`, qui conserve son statut, ou apporter
+un nouveau retest comparable. Une conclusion `present` continue d'exiger le
+fingerprint exact. La recherche d'absence examine au plus 6 000 observations par
+audit/actif (six moteurs, mille observations chacun) et refuse explicitement un
+dépassement avec `retest_observation_limit` ; aucun candidat n'est ignoré par
+troncature. Les contrôles préalables de couverture, moteur/version, autorisation,
+expiration et chronologie de la dernière détection restent obligatoires.
+
 ## API et limites
 
 Routes sous `/organizations/:id/cyber`, protégées par Better Auth, vérification
@@ -97,7 +126,24 @@ contrats stricts communs projettent explicitement les champs permis : approbatio
 HTTP, annulation et finalisation ne propagent pas d'ID de route supplémentaire.
 Le téléversement vérifie la session avant de demander une clé de chiffrement.
 
-Après correction : `pnpm check` réussit avec 210 tests unitaires ; 129 tests
-service-backed et 2 tests Chromium réussissent. Les régressions ont été reproduites
+Les régressions supplémentaires utilisent PostgreSQL et le pipeline de scans
+contrôlés avec des observations exclusivement synthétiques : déplacement de
+ligne/colonne, CVE encore présente dans une nouvelle version, homonymie sans lien,
+présence similaire sur un autre actif et refus d'un changement de couverture ou
+de version du moteur. Les deux fausses corrections ont été acceptées avant le
+correctif puis refusées après celui-ci. Le test de concurrence observe dans
+`pg_stat_activity` qu'un changement de rôle attend le verrou du membre détenu par
+une transaction déjà autorisée. Aucun scanner réel ni cible externe n'est lancé.
+
+Validation historique du domaine : `pnpm check` réussissait avec 210 tests
+unitaires ; 129 tests service-backed et 2 tests Chromium avaient réussi. Les régressions ont été reproduites
 avant correction, dont le refus HTTP 400 à l'approbation et l'ancien retest accepté
 à tort. Aucun contrôle n'a été assoupli.
+
+La révision des retests apparentés et du verrouillage des rôles passe
+`pnpm check` avec 215 unités et la suite complète de 136 intégrations réelles.
+Elle utilise la base isolée `bump_domain_test` et une instance Redis locale
+distincte sur le port 16383, base `/1`, afin de ne pas partager les files d'un
+autre worktree. Les trois régressions ciblées ont échoué avant correction puis
+réussi après celle-ci. Les tests Chromium historiques n'ont pas été réexécutés
+dans cette révision du domaine.

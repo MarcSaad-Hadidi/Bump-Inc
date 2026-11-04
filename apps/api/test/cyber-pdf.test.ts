@@ -11,6 +11,16 @@ it('generates a self-contained PDF with the Unicode font and real report pages',
   expect(pdf.subarray(-20).toString()).toContain('%%EOF');
 });
 
+it.each(['fr', 'en'] as const)(
+  'keeps the %s confidentiality footer on each content page without adding blank pages',
+  async (locale) => {
+    const pdf = await renderCyberPdf({ ...syntheticReport, locale });
+    // The small empty synthetic report has five content pages. A footer below
+    // the flow margin must not create another page for every existing page.
+    expect([...pdf.toString('latin1').matchAll(/\/Type \/Page\b/g)]).toHaveLength(5);
+  },
+);
+
 it('prints historical provenance and closed resolutions, while keeping priority risks active', async () => {
   const rendered = vi.spyOn(PDFDocument.prototype, 'text');
   try {

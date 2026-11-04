@@ -94,23 +94,39 @@ export async function updateCyberTask(
     .parse(input);
   return withCyber(database, scope, async (tx, role) => {
     requireCyberRole(role, ['admin', 'consultant', 'analyst']);
-    const [task] = await tx
-      .select()
+    // This reference read must stay unlocked: retests lock finding then tasks.
+    // Recheck the task association after taking the same finding-first locks.
+    const [reference] = await tx
+      .select({ findingId: cyberTask.findingId, clientId: cyberTask.clientId })
       .from(cyberTask)
-      .where(and(eq(cyberTask.organizationId, scope.organizationId), eq(cyberTask.id, id)))
-      .for('update');
-    if (!task) throw new CyberError(404, 'task_not_found');
+      .where(and(eq(cyberTask.organizationId, scope.organizationId), eq(cyberTask.id, id)));
+    if (!reference) throw new CyberError(404, 'task_not_found');
     const [finding] = await tx
       .select()
       .from(cyberFinding)
       .where(
         and(
           eq(cyberFinding.organizationId, scope.organizationId),
-          eq(cyberFinding.id, task.findingId),
+          eq(cyberFinding.id, reference.findingId),
+          eq(cyberFinding.clientId, reference.clientId),
         ),
       )
       .for('update');
-    if (!finding || !['confirmed', 'planned', 'in_progress', 'to_retest'].includes(finding.status))
+    if (!finding) throw new CyberError(409, 'confirmed_finding_required');
+    const [task] = await tx
+      .select()
+      .from(cyberTask)
+      .where(
+        and(
+          eq(cyberTask.organizationId, scope.organizationId),
+          eq(cyberTask.id, id),
+          eq(cyberTask.findingId, finding.id),
+          eq(cyberTask.clientId, finding.clientId),
+        ),
+      )
+      .for('update');
+    if (!task) throw new CyberError(404, 'task_not_found');
+    if (!['confirmed', 'planned', 'in_progress', 'to_retest'].includes(finding.status))
       throw new CyberError(409, 'confirmed_finding_required');
     const [updated] = await tx
       .update(cyberTask)

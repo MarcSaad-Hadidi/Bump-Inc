@@ -39,6 +39,17 @@ it('rejects source traversal and extra command input before any process starts',
     scanner.validateConfiguration([{ path: 'a.py', content: 'x', command: 'sh' }]),
   ).toThrow();
 });
+it.each([
+  '# trivy:ignore:AVD-DS-0002',
+  '#tfsec:ignore:aws-s3-enable-versioning',
+  '# TRIVY : ignore : AVD-DS-0002',
+])('rejects source-controlled Trivy suppression: %s', async (comment) => {
+  await expect(
+    createScannerAdapter('trivy').prepareExecution([
+      { path: 'Dockerfile', content: `${comment}\nFROM alpine\nUSER root\n` },
+    ]),
+  ).rejects.toMatchObject({ code: 'source_suppression_not_allowed' });
+});
 
 it('fails closed when Docker cannot enforce any requested resource boundary', () => {
   const info = {

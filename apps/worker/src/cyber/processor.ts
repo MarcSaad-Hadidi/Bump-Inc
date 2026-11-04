@@ -16,7 +16,7 @@ import { createScannerAdapter, trivyDatabaseIdentity } from './docker.js';
 import { parseCyberOutput } from './parsers.js';
 import { passiveObservations, runCyberPassive } from './passive.js';
 import type { NativeEngine } from './registry.js';
-import { GITLEAKS_RULES, SCANNER_VERSIONS, SEMGREP_RULES } from './registry.js';
+import { GITLEAKS_RULES, SCANNER_VERSIONS, SEMGREP_RULES, TRIVY_PROFILE } from './registry.js';
 
 type Attempt = { organizationId: string; userId: string; jobId: string; token: string };
 export async function processCyberScan(
@@ -121,7 +121,9 @@ export async function processCyberScan(
                   ? SEMGREP_RULES
                   : engine === 'gitleaks'
                     ? GITLEAKS_RULES
-                    : 'reviewed-default-v1',
+                    : engine === 'trivy'
+                      ? TRIVY_PROFILE
+                      : 'reviewed-default-v1',
               paths: [...coverage].sort(),
             }),
           )

@@ -15,9 +15,10 @@ import {
   readAuditImportForExecution,
 } from '@bump/core';
 import type { Database } from '@bump/db';
-import type { ArtifactStore } from '@bump/integrations';
+import type { ArtifactStore, CyberVault } from '@bump/integrations';
 import { type Job, type Queue, UnrecoverableError, Worker } from 'bullmq';
 import type { Redis } from 'ioredis';
+import { processCyberScan } from './cyber/processor.js';
 
 type Routing = { job_id: string; organization_id: string; actor_user_id: string };
 
@@ -68,7 +69,7 @@ export function startExecutionDispatcher(
 
 export function createExecutionProcessor(
   database: Database,
-  options: { signal?: AbortSignal; artifactStore?: ArtifactStore } = {},
+  options: { signal?: AbortSignal; artifactStore?: ArtifactStore; cyberVault?: CyberVault } = {},
 ) {
   return async (notification: Pick<Job<unknown>, 'name' | 'data'>): Promise<void> => {
     const payload = executionNotificationSchema.safeParse(notification.data);
@@ -92,6 +93,15 @@ export function createExecutionProcessor(
       if (!job) return;
       const attempt = { ...scope, token: job.token };
       active = attempt;
+      if (job.kind === 'cyber.scan') {
+        if (!job.deadlineAt) throw new Error('Missing execution deadline');
+        await processCyberScan(database, attempt, job.payload, {
+          ...(options.signal ? { signal: options.signal } : {}),
+          ...(options.cyberVault ? { vault: options.cyberVault } : {}),
+          deadline: job.deadlineAt,
+        });
+        return;
+      }
       if (job.kind === 'audit.import') {
         const store = options.artifactStore;
         if (!store) throw new Error('Import storage unavailable');
@@ -166,6 +176,7 @@ export function createExecutionWorker(options: {
   concurrency: number;
   signal?: AbortSignal;
   artifactStore?: ArtifactStore;
+  cyberVault?: CyberVault;
 }) {
   return new Worker(EXECUTION_QUEUE_NAME, createExecutionProcessor(options.database, options), {
     connection: options.connection,

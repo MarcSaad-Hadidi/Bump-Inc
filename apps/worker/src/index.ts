@@ -5,6 +5,7 @@ import { loggerOptions } from '@bump/observability';
 import { Queue } from 'bullmq';
 import { Redis } from 'ioredis';
 import { pino } from 'pino';
+import { startCyberCapabilities } from './cyber/capabilities.js';
 import { createExecutionWorker, startExecutionDispatcher } from './execution.js';
 import { buildHealthServer, checkWorkerReady } from './health.js';
 import { createProbeWorker } from './probe.js';
@@ -58,6 +59,9 @@ const app = buildHealthServer(async () => {
   await Promise.all([connection.ping(), database.pool.query('SELECT 1')]);
 });
 
+const cyberCapabilities = startCyberCapabilities();
+app.get('/cyber/scanners', async () => cyberCapabilities.read());
+
 let closing = false;
 async function shutdown() {
   if (closing) return;
@@ -70,6 +74,7 @@ async function shutdown() {
   deadline.unref();
   try {
     await app.close();
+    await cyberCapabilities.close();
     await dispatcher.close();
     await Promise.all([worker.close(), executionWorker.close()]);
     await executionQueue.close();

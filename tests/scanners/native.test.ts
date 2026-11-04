@@ -190,6 +190,9 @@ it('detects real Trivy precise inventory loss and never reports a passing Docker
   }
   const before = await scan(exact);
   const after = await scan(unresolved);
+  // Trivy 0.76.1 emits ID=DS-0002 (AVDID is deprecated), as documented by
+  // its integration/testdata/dockerfile.json.golden reference output.
+  expect(before.observations.some((o) => o.ruleId === 'DS-0002')).toBe(true);
   expect(before.observations.some((o) => o.component.toLowerCase() === 'django' && o.cve)).toBe(
     true,
   );
@@ -204,10 +207,10 @@ it('detects real Trivy precise inventory loss and never reports a passing Docker
     Results: { Misconfigurations?: { ID: string; AVDID?: string; Status: string }[] }[];
   };
   const userCheck = report.Results.flatMap((result) => result.Misconfigurations ?? []).find(
-    (check) => (check.AVDID ?? check.ID) === 'AVD-DS-0002',
+    (check) => check.ID === 'DS-0002',
   );
   expect(userCheck?.Status).toBe('PASS');
-  expect(after.observations.some((o) => o.ruleId === 'AVD-DS-0002')).toBe(false);
+  expect(after.observations.some((o) => o.ruleId === 'DS-0002')).toBe(false);
 });
 it('cancels the scanner and removes its container', async () => {
   const adapter = createScannerAdapter('semgrep'),

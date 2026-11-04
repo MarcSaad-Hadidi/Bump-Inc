@@ -36,7 +36,7 @@ export const canonicalObservationSchema = z
       })
       .optional(),
     component: component.optional(),
-    sourcePointer: text(512).regex(/^(?:\/(?:[^~\u0000-\u001f\u007f]|~[01])*)*$/),
+    sourcePointer: text(512).regex(/^(?:\/(?:[^~\/\u0000-\u001f\u007f]|~[01])*)*$/),
   })
   .refine((value) => (value.kind === 'component') === Boolean(value.component), {
     message: 'Component observations require component inventory data',

@@ -11,6 +11,16 @@ const issue = {
   reportedSeverity: 'unknown',
   sourcePointer: '/observations/0',
 };
+
+it('rejects malformed JSON pointer escapes after many path separators', () => {
+  expect(
+    canonicalObservationSchema.safeParse({ ...issue, sourcePointer: `${'/'.repeat(500)}~x` })
+      .success,
+  ).toBe(false);
+  expect(
+    canonicalObservationSchema.safeParse({ ...issue, sourcePointer: '/a~1b/~0c//' }).success,
+  ).toBe(true);
+});
 const submission = {
   engagementId: '123E4567-E89B-42D3-A456-426614174000',
   expectedRevision: 1,

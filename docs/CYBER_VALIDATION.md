@@ -4,7 +4,6 @@
 
 Compte GitHub vérifié : MarcSaad-Hadidi (shipping). Base main c220029 et branche
 existante d'ingestion 36f4bcb. Aucun fichier de website modifié.
-
 - `pnpm check` : lint, TypeScript strict, **202 tests unitaires**, builds réussis.
 - `pnpm test:integration` : **122 tests réussis**, 16 fichiers, PostgreSQL 17,
   Redis 7 et S3 SeaweedFS réels. Inclut les deux migrations de lignées, leur

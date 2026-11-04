@@ -56,6 +56,10 @@ même si le scanner ignore SIGTERM. Les sorties trop volumineuses suivent ce mê
 Les fichiers de contrôle `.semgrepignore`/`.gitleaksignore` téléversés ne pilotent
 pas les scanners ; les règles sont celles du runner. Le profil Gitleaks ignore
 les commentaires `gitleaks:allow` afin qu’un fichier fourni ne puisse masquer un secret.
+Le profil Trivy refuse tout contenu comportant une directive `trivy:ignore` ou
+`tfsec:ignore`, y compris dans les documents : ce refus conservateur empêche de
+présenter une suppression source comme une correction. Son profil de couverture
+est versionné. Semgrep utilise `--disable-nosem` ; les directives ne valent pas revue humaine.
 Les conteneurs sont supprimés
 à l'annulation et en nettoyage final, et les fichiers temporaires sont retirés.
 Le worker revalide membership, rôle, mandat, arrêt d'urgence et tentative pendant

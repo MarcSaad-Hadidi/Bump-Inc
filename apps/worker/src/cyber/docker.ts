@@ -304,18 +304,24 @@ export function buildDockerArguments(plan: ExecutionPlan): string[] {
   return args;
 }
 export function createScannerAdapter(engine: NativeEngine): ScannerAdapter {
+  const validate = (input: unknown) => {
+    const files = filesSchema.parse(input);
+    // Trivy has source-level suppressions without a global disable switch. Fail
+    // closed rather than accepting a suppressed result as a clean retest.
+    if (engine === 'trivy' && files.some((f) => /(?:trivy|tfsec)\s*:\s*ignore\b/i.test(f.content)))
+      throw new ScannerFailure('source_suppression_not_allowed');
+    return files;
+  };
   return {
     id: engine,
     version: SCANNER_VERSIONS[engine],
     validateConfiguration(input) {
-      return filesSchema.parse(input);
+      return validate(input);
     },
     async prepareExecution(input) {
-      const files = filesSchema
-        .parse(input)
-        .filter(
-          (f) => !['.semgrepignore', '.gitleaksignore'].includes(f.path.split('/').at(-1) ?? ''),
-        );
+      const files = validate(input).filter(
+        (f) => !['.semgrepignore', '.gitleaksignore'].includes(f.path.split('/').at(-1) ?? ''),
+      );
       if (!files.length) throw new ScannerFailure('no_eligible_source_files');
       if (
         new Set(files.map((f) => f.path)).size !== files.length ||

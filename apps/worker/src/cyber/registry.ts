@@ -34,6 +34,7 @@ export const SEMGREP_RULES = `rules:
     pattern: eval(...)
 `;
 export const GITLEAKS_RULES = '# Bump Cyber gitleaks profile v2\n[extend]\nuseDefault = true\n';
+export const TRIVY_PROFILE = 'reviewed-default-v2-no-source-inline-suppressions';
 export const SCANNER_DESCRIPTORS = (Object.keys(SCANNER_VERSIONS) as CyberEngine[]).map((id) => ({
   id,
   version: SCANNER_VERSIONS[id],

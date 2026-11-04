@@ -33,7 +33,7 @@ const fakePat =
   'ghp_' +
   createHash('sha256').update('SYNTHETIC-NEVER-A-REAL-CREDENTIAL').digest('hex').slice(0, 36);
 const files = [
-  { path: 'app.py', content: 'value = input()\nprint(eval(value))\n' },
+  { path: 'app.py', content: 'value = input()\nprint(eval(value)) # nosemgrep\n' },
   { path: 'config.py', content: `api_key = "${fakePat}" # gitleaks:allow\n` },
   { path: 'Dockerfile', content: 'FROM alpine:3.20\nUSER root\n' },
   {
@@ -136,6 +136,12 @@ afterAll(async () => {
 it.each(['semgrep', 'trivy', 'gitleaks'] as const)(
   'executes the pinned %s image without network and parses real output',
   async (engine) => {
+    if (engine === 'trivy')
+      await expect(
+        createScannerAdapter(engine).prepareExecution([
+          { path: 'Dockerfile', content: '#trivy:ignore:AVD-DS-0002\nFROM alpine\nUSER root\n' },
+        ]),
+      ).rejects.toMatchObject({ code: 'source_suppression_not_allowed' });
     const adapter = createScannerAdapter(engine),
       plan = await adapter.prepareExecution(files);
     try {

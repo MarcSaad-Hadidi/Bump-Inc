@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
+import { runCyberComposeSmoke } from './cyber-compose-smoke.mjs';
 
 for (const port of [3001, 3002]) {
   for (const check of ['live', 'ready']) {
@@ -214,6 +215,15 @@ const afterRevocation = await post(decisionPath, decisionInput, cookie);
 assert.equal(afterRevocation.status, 200);
 assert.equal((await afterRevocation.json()).allowed, false, 'Revocation must deny further actions');
 console.log('Compose mandate draft, explicit approval, exact authorization and revocation passed.');
+if (process.env.CYBER_COMPOSE_SMOKE === 'true') {
+  await runCyberComposeSmoke({
+    origin,
+    cookie,
+    organizationId: organization.id,
+    userId: signedInUser.id,
+    post,
+  });
+}
 assert.equal((await post('/api/auth/sign-out', {}, cookie)).status, 200);
 assert.equal(
   (await fetch(`${origin}/me`, { headers: { cookie }, signal: AbortSignal.timeout(5_000) })).status,

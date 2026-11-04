@@ -5,7 +5,7 @@ import {
   Loi25AuditReportSchema,
   type Loi25Finding,
   type UpdateLoi25Finding,
-} from '@bump/contracts';
+} from '@bump/contracts/loi25';
 import { type FormEvent, useEffect, useState } from 'react';
 import { cad, severityLabels } from '../../lib/loi25';
 

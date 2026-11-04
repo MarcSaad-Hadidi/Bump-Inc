@@ -73,3 +73,7 @@ GitHub Actions supplies automated checks, dependency analysis and secret scannin
 | `docs`               | Architecture, roadmap, decisions and validation |
 
 See [architecture](docs/ARCHITECTURE.md), [contributing](CONTRIBUTING.md), [security reporting](SECURITY.md), and [the foundation ADR](docs/adr/0001-modular-monolith.md). Add domain packages only when real functionality needs them.
+
+## Bump Cyber security foundation
+
+The verified identity, mandate, execution and private ingestion modules are reconciled from the existing PR02–05 branches. See [Cyber architecture](docs/CYBER_ARCHITECTURE.md), [identity](docs/IDENTITY.md) and [mandates](docs/ENGAGEMENTS.md). Runtime uses the non-owner `bump_app` role; migrations use `MIGRATION_DATABASE_URL`. Local defaults do not authorize customer use.

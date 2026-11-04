@@ -15,6 +15,41 @@
       "when": 1792787734535,
       "tag": "0001_bizarre_slyde",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792697783416,
+      "tag": "0001_identity_tenancy",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792699349571,
+      "tag": "0002_engagement_authorization",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792708058332,
+      "tag": "0003_execution_engine",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1792710678336,
+      "tag": "0004_audit_ingestion",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1793825000006,
+      "tag": "0005_loi25_runtime",
+      "breakpoints": true
     }
   ]
 }

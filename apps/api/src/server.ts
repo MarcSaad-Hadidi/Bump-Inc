@@ -8,6 +8,7 @@ import Fastify from 'fastify';
 import { ZodError } from 'zod';
 import { registerAuditRoutes } from './audits.js';
 import { createDependencies, type Dependencies } from './dependencies.js';
+import { registerIdentityRoutes } from './identity-routes.js';
 
 export function buildServer(env: ApiEnv, injectedDependencies?: Dependencies) {
   const app = Fastify({
@@ -69,6 +70,10 @@ export function buildServer(env: ApiEnv, injectedDependencies?: Dependencies) {
       return { status: 'ok' };
     });
   });
+  if (dependencies.identity) {
+    const identity = dependencies.identity;
+    app.register(async (routes) => registerIdentityRoutes(routes, identity));
+  }
 
   registerAuditRoutes(
     app,

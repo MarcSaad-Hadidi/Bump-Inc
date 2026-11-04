@@ -1,8 +1,11 @@
-import { parseEnv, workerEnvSchema } from '@bump/contracts';
-import { createDatabase } from '@bump/db';
+import { EXECUTION_QUEUE_NAME, parseEnv, workerEnvSchema } from '@bump/contracts';
+import { assertRuntimeRole, createDatabase } from '@bump/db';
+import { createArtifactStore } from '@bump/integrations';
 import { loggerOptions } from '@bump/observability';
+import { Queue } from 'bullmq';
 import { Redis } from 'ioredis';
 import { pino } from 'pino';
+import { createExecutionWorker, startExecutionDispatcher } from './execution.js';
 import { buildHealthServer, checkWorkerReady } from './health.js';
 import { createProbeWorker } from './probe.js';
 
@@ -10,14 +13,48 @@ const env = parseEnv(workerEnvSchema);
 const logger = pino(loggerOptions('worker', env.LOG_LEVEL));
 const database = createDatabase(env.DATABASE_URL);
 database.pool.on('error', () => logger.error('Idle database connection failed'));
+try {
+  await assertRuntimeRole(database.pool);
+} catch {
+  logger.error('Database runtime role is unsafe or unavailable');
+  await database.pool.end();
+  process.exit(1);
+}
 const connection = new Redis(env.REDIS_URL, { maxRetriesPerRequest: null, connectTimeout: 3_000 });
 connection.on('error', () => logger.error('Redis connection failed'));
 const worker = createProbeWorker({ connection, database, concurrency: env.WORKER_CONCURRENCY });
 worker.on('error', () => logger.error('Queue worker error'));
 worker.on('failed', () => logger.warn('System probe job failed'));
 
+const executionStop = new AbortController();
+const artifactStore = createArtifactStore(process.env);
+const executionWorker = createExecutionWorker({
+  connection,
+  database,
+  concurrency: env.WORKER_CONCURRENCY,
+  signal: executionStop.signal,
+  artifactStore,
+});
+executionWorker.on('error', () => logger.error('Execution worker error'));
+executionWorker.on('failed', () =>
+  logger.warn('Execution notification failed; durable recovery pending'),
+);
+// Producers fail promptly during Redis outages; consumers retain their reconnecting connection.
+const producer = connection.duplicate({
+  maxRetriesPerRequest: 1,
+  enableOfflineQueue: false,
+  commandTimeout: 3_000,
+});
+producer.on('error', () => logger.error('Execution transport unavailable'));
+const executionQueue = new Queue(EXECUTION_QUEUE_NAME, { connection: producer });
+executionQueue.on('error', () => logger.error('Execution queue error'));
+const dispatcher = startExecutionDispatcher(database, executionQueue, () =>
+  logger.error('Execution dispatch unavailable'),
+);
+
 const app = buildHealthServer(async () => {
   await checkWorkerReady(worker, connection);
+  await checkWorkerReady(executionWorker, connection);
   await Promise.all([connection.ping(), database.pool.query('SELECT 1')]);
 });
 
@@ -25,6 +62,7 @@ let closing = false;
 async function shutdown() {
   if (closing) return;
   closing = true;
+  executionStop.abort();
   const deadline = setTimeout(() => {
     logger.error('Worker shutdown deadline exceeded');
     process.exit(1);
@@ -32,7 +70,11 @@ async function shutdown() {
   deadline.unref();
   try {
     await app.close();
-    await worker.close();
+    await dispatcher.close();
+    await Promise.all([worker.close(), executionWorker.close()]);
+    await executionQueue.close();
+    artifactStore.close();
+    await producer.quit();
     await database.pool.end();
     await connection.quit();
   } catch {

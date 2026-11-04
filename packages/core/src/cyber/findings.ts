@@ -20,7 +20,7 @@ import {
   requireCyberRole,
   withCyber,
 } from './context.js';
-import { compareCyberCoverage } from './policy.js';
+import { compareCyberCoverage, conflictsWithAbsentCyberRetest } from './policy.js';
 export async function reviewCyberFinding(
   database: Database,
   scope: CyberMutation,
@@ -216,21 +216,30 @@ export async function recordCyberRetest(database: Database, scope: CyberMutation
       (!latestPositive || scans.some((s) => s.scan.createdAt <= latestPositive.createdAt))
     )
       throw new CyberError(409, 'retest_predates_latest_detection');
-    const observed = await tx
-      .select()
-      .from(cyberObservation)
-      .where(
-        and(
-          eq(cyberObservation.organizationId, scope.organizationId),
-          eq(cyberObservation.auditId, data.auditId),
-          eq(cyberObservation.fingerprint, finding.fingerprint),
-        ),
-      );
-    if (
-      (data.conclusion === 'absent' && observed.length) ||
-      (data.conclusion === 'present' && !observed.length)
-    )
-      throw new CyberError(409, 'retest_evidence_conflict');
+    const observationScope = and(
+      eq(cyberObservation.organizationId, scope.organizationId),
+      eq(cyberObservation.clientId, finding.clientId),
+      eq(cyberObservation.auditId, data.auditId),
+      eq(cyberObservation.assetId, finding.assetId),
+    );
+    if (data.conclusion === 'absent') {
+      // At most six engines with 1,000 observations each for this audit/asset.
+      const candidates = await tx
+        .select({ fingerprint: cyberObservation.fingerprint, data: cyberObservation.data })
+        .from(cyberObservation)
+        .where(observationScope)
+        .limit(6001);
+      if (candidates.length > 6000) throw new CyberError(409, 'retest_observation_limit');
+      if (candidates.some((candidate) => conflictsWithAbsentCyberRetest(finding, candidate)))
+        throw new CyberError(409, 'retest_evidence_conflict');
+    } else if (data.conclusion === 'present') {
+      const observed = await tx
+        .select({ id: cyberObservation.id })
+        .from(cyberObservation)
+        .where(and(observationScope, eq(cyberObservation.fingerprint, finding.fingerprint)))
+        .limit(1);
+      if (!observed.length) throw new CyberError(409, 'retest_evidence_conflict');
+    }
     const [v] = await tx
       .insert(cyberRetest)
       .values({

@@ -1,3 +1,4 @@
+import { spawn } from 'node:child_process';
 import { createHash, randomUUID } from 'node:crypto';
 import { setTimeout as delay } from 'node:timers/promises';
 import { EXECUTION_QUEUE_NAME } from '@bump/contracts';
@@ -19,6 +20,7 @@ import { createCyberVault } from '@bump/integrations';
 import { Queue } from 'bullmq';
 import { Redis } from 'ioredis';
 import { afterAll, beforeAll, expect, it } from 'vitest';
+import { trivyCoverage } from '../../apps/worker/src/cyber/coverage.js';
 import {
   buildDockerArguments,
   createScannerAdapter,
@@ -166,6 +168,50 @@ it.each(['semgrep', 'trivy', 'gitleaks'] as const)(
     }
   },
 );
+it('detects real Trivy precise inventory loss and never reports a passing Dockerfile check', async () => {
+  const adapter = createScannerAdapter('trivy');
+  const exact = [
+    { path: 'requirements.txt', content: 'Django==1.2\nurllib3==2.0.7\n' },
+    { path: 'Dockerfile', content: 'FROM alpine:3.20\nUSER root\n' },
+  ];
+  const unresolved = [
+    { path: 'requirements.txt', content: 'Django>=1.2\nurllib3==2.0.7\n' },
+    { path: 'Dockerfile', content: 'FROM alpine:3.20\nUSER 10001\n' },
+  ];
+  async function scan(source: typeof exact) {
+    const plan = await adapter.prepareExecution(source);
+    try {
+      const raw = await adapter.execute(plan, AbortSignal.timeout(28000));
+      const report: unknown = JSON.parse(raw);
+      return { report, observations: adapter.parseResults(raw), coverage: trivyCoverage(report) };
+    } finally {
+      await adapter.cleanup(plan);
+    }
+  }
+  const before = await scan(exact);
+  const after = await scan(unresolved);
+  // Trivy 0.76.1 emits ID=DS-0002 (AVDID is deprecated), as documented by
+  // its integration/testdata/dockerfile.json.golden reference output.
+  expect(before.observations.some((o) => o.ruleId === 'DS-0002')).toBe(true);
+  expect(before.observations.some((o) => o.component.toLowerCase() === 'django' && o.cve)).toBe(
+    true,
+  );
+  expect(after.observations.some((o) => o.component.toLowerCase() === 'django')).toBe(false);
+  expect(before.coverage.join('\n')).toContain('"django"');
+  expect(after.coverage.join('\n')).not.toContain('"django"');
+  expect(before.coverage).not.toEqual(after.coverage);
+  expect(trivyCoverage(before.report, exact)).toEqual(before.coverage);
+  expect(() => trivyCoverage(after.report, unresolved)).toThrow('Incomplete Trivy coverage');
+
+  const report = after.report as {
+    Results: { Misconfigurations?: { ID: string; AVDID?: string; Status: string }[] }[];
+  };
+  const userCheck = report.Results.flatMap((result) => result.Misconfigurations ?? []).find(
+    (check) => check.ID === 'DS-0002',
+  );
+  expect(userCheck?.Status).toBe('PASS');
+  expect(after.observations.some((o) => o.ruleId === 'DS-0002')).toBe(false);
+});
 it('cancels the scanner and removes its container', async () => {
   const adapter = createScannerAdapter('semgrep'),
     plan = await adapter.prepareExecution(files);
@@ -325,4 +371,76 @@ it('force-stops a container that ignores SIGTERM', async () => {
   await expect(
     dockerCommand(['inspect', plan.name], AbortSignal.timeout(3000), 2000),
   ).rejects.toThrow();
+});
+
+it('keeps the hard container deadline after the host controller is killed', async () => {
+  const adapter = createScannerAdapter('gitleaks'),
+    plan = await adapter.prepareExecution(files);
+  const args = buildDockerArguments(plan, 3);
+  const imageIndex = args.indexOf(SCANNER_IMAGES.gitleaks);
+  // Trusted synthetic hang behind the exact init/timeout boundary used by native
+  // adapters. No command or shell source can enter this path from the dashboard.
+  const run = [
+    ...args.slice(0, imageIndex + 1),
+    '-s',
+    'KILL',
+    '3',
+    '/bin/sh',
+    '-c',
+    'trap "" TERM; while :; do sleep 1; done',
+  ];
+  const controller = spawn(
+    process.execPath,
+    [
+      '--input-type=module',
+      '-e',
+      "import {spawn} from 'node:child_process'; spawn('docker',['--host=unix:///var/run/docker.sock',...JSON.parse(process.argv[1])],{shell:false,stdio:'ignore'}); setInterval(()=>{},1000);",
+      JSON.stringify(run),
+    ],
+    { shell: false, stdio: 'ignore' },
+  );
+  const exit = new Promise<void>((resolve) => controller.once('close', () => resolve()));
+  const running = async () => {
+    try {
+      return (
+        (
+          await dockerCommand(
+            ['inspect', '--format', '{{.State.Running}}', plan.name],
+            AbortSignal.timeout(1000),
+            128,
+          )
+        ).trim() === 'true'
+      );
+    } catch {
+      return false;
+    }
+  };
+  const present = async () =>
+    (
+      await dockerCommand(
+        ['ps', '--all', '--filter', `name=^/${plan.name}$`, '--format', '{{.Names}}'],
+        AbortSignal.timeout(3000),
+        2000,
+      )
+    ).trim() === plan.name;
+  const began = Date.now();
+  try {
+    while (!(await running()) && Date.now() - began < 5000) await delay(100);
+    expect(await running()).toBe(true);
+    controller.kill('SIGKILL');
+    await exit;
+    expect(await running()).toBe(true);
+    while (await present()) {
+      if (Date.now() - began > 10000)
+        throw new Error('Independent container deadline was not enforced');
+      await delay(100);
+    }
+    await expect(
+      dockerCommand(['inspect', plan.name], AbortSignal.timeout(3000), 2000),
+    ).rejects.toThrow();
+  } finally {
+    controller.kill('SIGKILL');
+    await exit;
+    await adapter.cleanup(plan);
+  }
 });

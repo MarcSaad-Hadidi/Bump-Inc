@@ -160,8 +160,9 @@ export async function renderCyberPdf(input: CyberReportSnapshot): Promise<Buffer
         .fontSize(7)
         .fillColor('#627087')
         .text(`${t.confidential}     ${i + 1} / ${range.count}`, 52, 806, {
+          // A width enables PDFKit's flow wrapper even with lineBreak:false;
+          // the footer sits below that flow margin and must be drawn directly.
           lineBreak: false,
-          width: 490,
         });
     }
     doc.end();

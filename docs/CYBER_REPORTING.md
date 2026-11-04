@@ -60,6 +60,9 @@ avec membership courant, rôle Cyber et RLS ; les exports ne sont jamais publics
   restrictive et entêtes `private, no-store`.
 - PDF A4 produit côté API par PDFKit 0.20.2 (MIT), avec DejaVu Sans embarquée et
   sa licence de redistribution dans `apps/api/assets/fonts/`.
+  Les pieds de page sont dessinés sans activer la pagination du texte : deux
+  régressions FR/EN vérifient les cinq pages réelles du petit rapport synthétique,
+  sans pages supplémentaires réservées au pied de page.
 - Couverture Bump, client/mandat/date/responsable, périmètre, exclusions, synthèse,
   méthodologie, versions, couverture, résultats examinés, risques prioritaires,
   constats techniques, recommandations, actions, retests et annexes de provenance.

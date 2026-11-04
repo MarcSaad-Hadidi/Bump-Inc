@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, "codex/cyber-**"]
+    branches: [main]
   pull_request:
     branches: [main, "codex/cyber-**"]
 
@@ -99,6 +99,9 @@ jobs:
         run: pnpm cyber:tools
       - name: Real isolated Cyber scanner and queue acceptance
         run: pnpm test:scanners
+      - name: Safe Cyber host capabilities
+        if: always()
+        run: node scripts/cyber-doctor.mjs --require-native
       # Tests use headless Chromium; install its shell only. Do not run apt on
       # every CI execution (Ubuntu runners already contain browser system libs).
       - name: Install Playwright headless Chromium

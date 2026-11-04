@@ -26,6 +26,7 @@
     "audit:dependencies": "pnpm audit --audit-level=high",
     "cyber:init": "node scripts/cyber-init.mjs",
     "cyber:tools": "pnpm build:packages && node scripts/cyber-tools.mjs",
+    "cyber:doctor": "pnpm build:packages && node scripts/cyber-doctor.mjs",
     "test:scanners": "pnpm build:packages && node --env-file-if-exists=.env.test node_modules/vitest/vitest.mjs run --config vitest.scanners.config.ts"
   },
   "devDependencies": {

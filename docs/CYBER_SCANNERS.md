@@ -45,6 +45,11 @@ Sans ces capacités, les moteurs natifs sont **indisponibles**. Le runner local
 fourni à cette session est rootless sans cgroups utilisables : l'acceptation native
 y est bloquée, sans fallback permissif. Les tests natifs sont obligatoires en CI
 Linux via `pnpm test:scanners` et ne sont pas remplacés par des fixtures.
+`pnpm cyber:doctor` expose uniquement les capacités mémoire/swap/CPU/PID/seccomp
+et l’état des images, sans nom de machine, configuration Docker ou erreur brute.
+Le probe local Docker est borné à 10 secondes : une exécution CI a dépassé son
+ancien délai de 3 secondes lors du précontrôle, tandis que le job PR parallèle
+a exécuté les six tests. Ce délai ne change aucune limite ni condition d’autorisation.
 
 La durée maximale est 30 secondes/job, les sorties sont limitées à 1 Mio et les
 observations à 1000. Le code est préparé dans un répertoire privé temporaire.

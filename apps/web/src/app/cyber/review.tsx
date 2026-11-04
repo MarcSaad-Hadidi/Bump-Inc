@@ -563,8 +563,10 @@ export function RetestForm({
         <select
           value={conclusion}
           onChange={(event) => {
-            setConclusion(event.target.value as RetestConclusion);
-            setAuditId('');
+            const next = event.target.value as RetestConclusion;
+            setConclusion(next);
+            if (!retestAuditCandidates(data, finding, next).some((audit) => audit.id === auditId))
+              setAuditId('');
           }}
         >
           {(['inconclusive', 'present', 'absent'] as const).map((value) => (

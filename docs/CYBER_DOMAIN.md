@@ -86,3 +86,18 @@ données complètes via PostgreSQL. Pagination avancée et gros volumes restent 
 
 Ce lot ne revendique ni MVP complet, ni certification, ni disponibilité de
 scanners, ni identité/MFA de production validée. Loi25 et website restent séparés.
+
+## Revue et régressions
+
+La revue Codex a signalé la réutilisation possible d'un ancien retest après une
+réapparition et une limite de fichier mesurée en caractères plutôt qu'en octets.
+Les tests A positif → B absent → C positif refusent désormais de réutiliser B ;
+chaque contenu est borné à 128 Kio UTF-8 et refuse les octets NUL. Les appels aux
+contrats stricts communs projettent explicitement les champs permis : approbation
+HTTP, annulation et finalisation ne propagent pas d'ID de route supplémentaire.
+Le téléversement vérifie la session avant de demander une clé de chiffrement.
+
+Après correction : `pnpm check` réussit avec 210 tests unitaires ; 129 tests
+service-backed et 2 tests Chromium réussissent. Les régressions ont été reproduites
+avant correction, dont le refus HTTP 400 à l'approbation et l'ancien retest accepté
+à tort. Aucun contrôle n'a été assoupli.

@@ -94,7 +94,7 @@ export const cyberSourceInputSchema = z
           content: z
             .string()
             .max(131072)
-            .refine((v) => !v.includes('\0')),
+            .refine((v) => !v.includes('\0') && Buffer.byteLength(v, 'utf8') <= 131072),
         }),
       )
       .min(1)

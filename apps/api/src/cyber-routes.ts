@@ -99,11 +99,10 @@ export async function registerCyberRoutes(
     z.strictObject({ confirm: z.literal(true) }).parse(req.body);
     return approveCyberMandate(database, scope, scope.id);
   });
-  app.post(`${base}/sources`, async (req, reply) =>
-    reply
-      .code(201)
-      .send(await createCyberSource(database, await vault(), await scopeFor(req), req.body)),
-  );
+  app.post(`${base}/sources`, async (req, reply) => {
+    const scope = await scopeFor(req);
+    return reply.code(201).send(await createCyberSource(database, await vault(), scope, req.body));
+  });
   app.post(`${base}/imports`, async (req, reply) => {
     const scope = await scopeFor(req);
     const data = z
@@ -147,7 +146,12 @@ export async function registerCyberRoutes(
   app.post(`${base}/jobs/:id/cancel`, async (req) => {
     const scope = await selectFor(req);
     z.strictObject({ confirm: z.literal(true) }).parse(req.body);
-    const job = await cancelExecution(database, { ...scope, jobId: scope.id });
+    const job = await cancelExecution(database, {
+      organizationId: scope.organizationId,
+      userId: scope.userId,
+      requestId: scope.requestId,
+      jobId: scope.id,
+    });
     return { id: job.id, status: job.status, cancelRequestedAt: job.cancelRequestedAt };
   });
   app.get(`${base}/findings/:id`, async (req) => {

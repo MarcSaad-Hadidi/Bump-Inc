@@ -10,14 +10,17 @@ import {
 import { createCyberVault } from '@bump/integrations';
 import { eq } from 'drizzle-orm';
 import { afterAll, beforeAll, expect, it } from 'vitest';
+import { claimExecution } from '../execution.js';
 import {
   approveCyberMandate,
   createCyberAsset,
   createCyberClient,
   createCyberMandate,
   createCyberSource,
+  finishCyberScan,
   launchCyberAudit,
   readCyberSnapshot,
+  recordCyberRetest,
   reviewCyberFinding,
 } from './service.js';
 
@@ -280,5 +283,84 @@ it('denies cross-tenant review and disallows verified closure without a retest',
   ).rejects.toMatchObject({ statusCode: 409 });
   await expect(
     reviewCyberFinding(db, scope, finding!.id, { ...review, status: 'closed' }),
+  ).rejects.toMatchObject({ statusCode: 409 });
+});
+
+it('cannot reuse an old clean audit to close a newly reopened finding', async () => {
+  const observation = {
+    engine: 'semgrep' as const,
+    engineVersion: 'synthetic-1',
+    ruleId: 'synthetic-reappearance',
+    title: 'Synthetic finding',
+    severity: 'high' as const,
+    confidence: 'medium' as const,
+    location: 'app.py:2',
+    component: '',
+    affectedVersion: '',
+    fixedVersion: '',
+    cve: null,
+    cvss: null,
+    references: [],
+    evidence: 'Synthetic controlled evidence',
+    recommendation: 'Synthetic corrective action',
+  };
+  async function execute(positive: boolean) {
+    const audit = await launchCyberAudit(
+      db,
+      scope,
+      {
+        clientId,
+        mandateId,
+        assetIds: [assetId],
+        engines: ['semgrep'],
+        idempotencyKey: randomUUID(),
+        title: 'Synthetic chronological retest',
+      },
+      ['semgrep'],
+    );
+    const scan = (await readCyberSnapshot(db, scope)).scans.find(
+      (s) => s.scan.auditId === audit.id,
+    )!.scan;
+    const job = await claimExecution(db, {
+      organizationId: org,
+      userId: user,
+      jobId: scan.executionJobId,
+    });
+    expect(job).not.toBeNull();
+    await finishCyberScan(
+      db,
+      vault,
+      { ...scope, scanId: scan.id, jobId: scan.executionJobId, token: job!.token },
+      {
+        raw: 'Synthetic controlled result',
+        observations: positive ? [observation] : [],
+        engineVersion: 'synthetic-1',
+        coverageHash: 'c'.repeat(64),
+      },
+    );
+    return audit;
+  }
+  await execute(true);
+  const finding = (await readCyberSnapshot(db, scope)).findings.find(
+    (f) => f.observation.ruleId === 'synthetic-reappearance',
+  )!;
+  const clean = await execute(false);
+  await recordCyberRetest(db, scope, {
+    findingId: finding.id,
+    auditId: clean.id,
+    conclusion: 'absent',
+    note: 'Synthetic reviewed clean result B',
+  });
+  await execute(true);
+  expect(
+    (await readCyberSnapshot(db, scope)).findings.find((f) => f.id === finding.id)?.status,
+  ).toBe('to_review');
+  await expect(
+    recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: clean.id,
+      conclusion: 'absent',
+      note: 'Attempted replay of stale synthetic result B',
+    }),
   ).rejects.toMatchObject({ statusCode: 409 });
 });

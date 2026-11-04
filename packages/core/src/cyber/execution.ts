@@ -117,117 +117,127 @@ export async function finishCyberScan(
 ) {
   const observations = z.array(cyberObservationSchema).max(1000).parse(result.observations);
   if (Buffer.byteLength(result.raw) > 1048576) throw new CyberError(409, 'evidence_limit');
-  return finishExecution(database, { ...scope, outcome: 'succeeded' }, async (tx, job) => {
-    if (
-      job.kind !== 'cyber.scan' ||
-      !('scanId' in job.payload) ||
-      job.payload.scanId !== scope.scanId
-    )
-      throw new CyberError(409, 'scan_binding_denied');
-    const [scan] = await tx
-      .select()
-      .from(cyberScan)
-      .where(
-        and(
-          eq(cyberScan.organizationId, scope.organizationId),
-          eq(cyberScan.id, scope.scanId),
-          eq(cyberScan.executionJobId, job.id),
-        ),
-      );
-    if (!scan) throw new CyberError(404, 'scan_not_found');
-    const client = await clientFor(tx, scope, scan.clientId);
-    if (client.archivedAt) throw new CyberError(403, 'client_archived');
-    const [mandate] = await tx
-      .select({ mandate: cyberMandate })
-      .from(cyberAudit)
-      .innerJoin(cyberMandate, eq(cyberMandate.id, cyberAudit.mandateId))
-      .where(eq(cyberAudit.id, scan.auditId));
-    if (!mandate || !mandate.mandate.engines.includes(scan.engine as CyberEngine))
-      throw new CyberError(403, 'scan_binding_denied');
-    const seen = new Set<string>();
-    for (const data of observations) {
-      const fingerprint = cyberFingerprint({ assetId: scan.assetId, ...data });
-      if (seen.has(fingerprint)) continue;
-      seen.add(fingerprint);
-      const [existing] = await tx
+  return finishExecution(
+    database,
+    {
+      organizationId: scope.organizationId,
+      userId: scope.userId,
+      jobId: scope.jobId,
+      token: scope.token,
+      outcome: 'succeeded',
+    },
+    async (tx, job) => {
+      if (
+        job.kind !== 'cyber.scan' ||
+        !('scanId' in job.payload) ||
+        job.payload.scanId !== scope.scanId
+      )
+        throw new CyberError(409, 'scan_binding_denied');
+      const [scan] = await tx
         .select()
-        .from(cyberFinding)
+        .from(cyberScan)
         .where(
           and(
-            eq(cyberFinding.organizationId, scope.organizationId),
-            eq(cyberFinding.clientId, scan.clientId),
-            eq(cyberFinding.fingerprint, fingerprint),
+            eq(cyberScan.organizationId, scope.organizationId),
+            eq(cyberScan.id, scope.scanId),
+            eq(cyberScan.executionJobId, job.id),
           ),
-        )
-        .for('update');
-      let findingId: string;
-      if (existing) {
-        findingId = existing.id;
-        const reopen = ['verified_fixed', 'closed'].includes(existing.status);
-        await tx
-          .update(cyberFinding)
-          .set({
-            lastAuditId: scan.auditId,
-            observation: data,
-            updatedAt: new Date(),
-            ...(reopen ? { status: 'to_review', reviewedBy: null, reviewedAt: null } : {}),
-          })
-          .where(eq(cyberFinding.id, findingId));
-        if (reopen) await cyberEventIn(tx, scope, 'finding.reopened', findingId, scan.clientId);
-      } else {
-        const [f] = await tx
-          .insert(cyberFinding)
-          .values({
-            organizationId: scope.organizationId,
-            clientId: scan.clientId,
-            assetId: scan.assetId,
-            firstAuditId: scan.auditId,
-            lastAuditId: scan.auditId,
-            fingerprint,
-            observation: data,
-            recommendation: data.recommendation,
-          })
-          .returning();
-        if (!f) throw new CyberError(409, 'state_conflict');
-        findingId = f.id;
+        );
+      if (!scan) throw new CyberError(404, 'scan_not_found');
+      const client = await clientFor(tx, scope, scan.clientId);
+      if (client.archivedAt) throw new CyberError(403, 'client_archived');
+      const [mandate] = await tx
+        .select({ mandate: cyberMandate })
+        .from(cyberAudit)
+        .innerJoin(cyberMandate, eq(cyberMandate.id, cyberAudit.mandateId))
+        .where(eq(cyberAudit.id, scan.auditId));
+      if (!mandate || !mandate.mandate.engines.includes(scan.engine as CyberEngine))
+        throw new CyberError(403, 'scan_binding_denied');
+      const seen = new Set<string>();
+      for (const data of observations) {
+        const fingerprint = cyberFingerprint({ assetId: scan.assetId, ...data });
+        if (seen.has(fingerprint)) continue;
+        seen.add(fingerprint);
+        const [existing] = await tx
+          .select()
+          .from(cyberFinding)
+          .where(
+            and(
+              eq(cyberFinding.organizationId, scope.organizationId),
+              eq(cyberFinding.clientId, scan.clientId),
+              eq(cyberFinding.fingerprint, fingerprint),
+            ),
+          )
+          .for('update');
+        let findingId: string;
+        if (existing) {
+          findingId = existing.id;
+          const reopen = ['verified_fixed', 'closed'].includes(existing.status);
+          await tx
+            .update(cyberFinding)
+            .set({
+              lastAuditId: scan.auditId,
+              observation: data,
+              updatedAt: new Date(),
+              ...(reopen ? { status: 'to_review', reviewedBy: null, reviewedAt: null } : {}),
+            })
+            .where(eq(cyberFinding.id, findingId));
+          if (reopen) await cyberEventIn(tx, scope, 'finding.reopened', findingId, scan.clientId);
+        } else {
+          const [f] = await tx
+            .insert(cyberFinding)
+            .values({
+              organizationId: scope.organizationId,
+              clientId: scan.clientId,
+              assetId: scan.assetId,
+              firstAuditId: scan.auditId,
+              lastAuditId: scan.auditId,
+              fingerprint,
+              observation: data,
+              recommendation: data.recommendation,
+            })
+            .returning();
+          if (!f) throw new CyberError(409, 'state_conflict');
+          findingId = f.id;
+        }
+        await tx.insert(cyberObservation).values({
+          organizationId: scope.organizationId,
+          clientId: scan.clientId,
+          assetId: scan.assetId,
+          auditId: scan.auditId,
+          scanId: scan.id,
+          findingId,
+          fingerprint,
+          data,
+        });
       }
-      await tx.insert(cyberObservation).values({
+      const evidenceId = randomUUID();
+      await tx.insert(cyberEvidence).values({
+        id: evidenceId,
         organizationId: scope.organizationId,
         clientId: scan.clientId,
-        assetId: scan.assetId,
-        auditId: scan.auditId,
         scanId: scan.id,
-        findingId,
-        fingerprint,
-        data,
+        ciphertext: vault.seal(`${scope.organizationId}/${evidenceId}`, result.raw),
+        sha256: hashCyber(result.raw),
+        expiresAt: new Date(Date.now() + client.retentionDays * 86400000),
       });
-    }
-    const evidenceId = randomUUID();
-    await tx.insert(cyberEvidence).values({
-      id: evidenceId,
-      organizationId: scope.organizationId,
-      clientId: scan.clientId,
-      scanId: scan.id,
-      ciphertext: vault.seal(`${scope.organizationId}/${evidenceId}`, result.raw),
-      sha256: hashCyber(result.raw),
-      expiresAt: new Date(Date.now() + client.retentionDays * 86400000),
-    });
-    await tx
-      .update(cyberScan)
-      .set({
-        stage: 'completed',
-        engineVersion: result.engineVersion,
-        coverageHash: result.coverageHash,
-        observationCount: seen.size,
-      })
-      .where(eq(cyberScan.id, scan.id));
-    await cyberEventIn(
-      tx,
-      scope,
-      'scan.completed',
-      scan.id,
-      scan.clientId,
-      `${seen.size} observations`,
-    );
-  });
+      await tx
+        .update(cyberScan)
+        .set({
+          stage: 'completed',
+          engineVersion: result.engineVersion,
+          coverageHash: result.coverageHash,
+          observationCount: seen.size,
+        })
+        .where(eq(cyberScan.id, scan.id));
+      await cyberEventIn(
+        tx,
+        scope,
+        'scan.completed',
+        scan.id,
+        scan.clientId,
+        `${seen.size} observations`,
+      );
+    },
+  );
 }

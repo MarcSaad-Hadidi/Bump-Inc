@@ -179,6 +179,16 @@ afterAll(async () => {
     await admin.pool.query('DELETE FROM cyber_event WHERE organization_id = ANY($1::text[])', [
       organizationIds,
     ]);
+    for (const table of [
+      'cyber_mandate',
+      'cyber_asset',
+      'engagement_approval',
+      'engagement_version',
+      'engagement',
+    ])
+      await admin.pool.query(`DELETE FROM ${table} WHERE organization_id=ANY($1::text[])`, [
+        organizationIds,
+      ]);
     await admin.pool.query('DELETE FROM cyber_client WHERE organization_id = ANY($1::text[])', [
       organizationIds,
     ]);
@@ -519,4 +529,49 @@ it('protects Cyber routes with real sessions, tenant membership and CSRF', async
   });
   expect(forged.statusCode).toBe(403);
   expect((await request('GET', `${base}/findings/${randomUUID()}`, ownerA)).statusCode).toBe(404);
+});
+
+it('records and explicitly approves a Cyber mandate through authenticated HTTP', async () => {
+  const base = `/organizations/${organizationA}/cyber`;
+  const created = await request('POST', `${base}/clients`, ownerA, {
+    name: 'Synthetic mandate HTTP client',
+    contact: 'lab@example.invalid',
+  });
+  expect(created.statusCode).toBe(201);
+  const asset = await request('POST', `${base}/assets`, ownerA, {
+    clientId: created.json().id,
+    label: 'Synthetic authorized repository',
+    target: { kind: 'repository', value: 'lab/synthetic-http' },
+  });
+  expect(asset.statusCode).toBe(201);
+  const mandate = await request('POST', `${base}/mandates`, ownerA, {
+    clientId: created.json().id,
+    reference: 'SYNTHETIC-HTTP-MANDATE',
+    signedBy: 'Synthetic owner',
+    authorizedAt: new Date(Date.now() - 60000).toISOString(),
+    responsibleUserId: ownerA.id,
+    authorizationText:
+      'Synthetic authorization for the exact offline laboratory repository with no external targets.',
+    emergencyContact: 'lab@example.invalid',
+    validFrom: new Date(Date.now() - 60000).toISOString(),
+    validUntil: new Date(Date.now() + 3600000).toISOString(),
+    assetIds: [asset.json().id],
+    engines: ['semgrep'],
+    mode: 'passive',
+    limitations: 'Synthetic offline source only',
+  });
+  expect(mandate.statusCode, mandate.body).toBe(201);
+  const approved = await request('POST', `${base}/mandates/${mandate.json().id}/approve`, ownerA, {
+    confirm: true,
+  });
+  expect(approved.statusCode, approved.body).toBe(200);
+  expect(
+    (
+      await request('POST', `${base}/sources`, undefined, {
+        assetId: asset.json().id,
+        name: 'Unauthenticated',
+        files: [{ path: 'app.py', content: 'x' }],
+      })
+    ).statusCode,
+  ).toBe(401);
 });

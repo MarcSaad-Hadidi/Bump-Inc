@@ -53,7 +53,7 @@ it.each(['main', 'security'])(
       expect(
         (await client.query('SELECT count(*)::int AS n FROM drizzle.__drizzle_migrations')).rows[0]
           .n,
-      ).toBe(7);
+      ).toBe(8);
       if (lineage === 'main')
         expect((await client.query('SELECT company_name FROM audits')).rows[0].company_name).toBe(
           'Synthetic preserved',

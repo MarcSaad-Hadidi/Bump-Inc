@@ -84,3 +84,5 @@ export function createMailer(env: {
 }
 
 export { type ArtifactStore, createArtifactStore } from './artifact-store.js';
+
+export { type CyberVault, createCyberVault, loadCyberVault } from './cyber-vault.js';

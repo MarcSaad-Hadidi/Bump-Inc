@@ -15,6 +15,7 @@ import { fromNodeHeaders } from 'better-auth/node';
 import { and, desc, eq, sql } from 'drizzle-orm';
 import type { FastifyInstance, FastifyRequest } from 'fastify';
 import { z } from 'zod';
+import { registerCyberRoutes } from './cyber-routes.js';
 import { registerEngagementRoutes } from './engagement-routes.js';
 import { registerExecutionRoutes } from './execution-routes.js';
 import { registerIngestionRoutes } from './ingestion-routes.js';
@@ -97,6 +98,7 @@ export async function registerIdentityRoutes(app: FastifyInstance, context: Iden
     }
   });
 
+  await registerCyberRoutes(app, database, sessionFor);
   await registerEngagementRoutes(app, database, sessionFor);
   await registerExecutionRoutes(app, database, sessionFor);
   if (context.artifactStore)

@@ -52,7 +52,14 @@ export async function assertRuntimeRole(pool: Database['pool']): Promise<void> {
           'public.execution_attempt'::regclass, 'public.execution_control'::regclass,
           'public.execution_outbox'::regclass,
           'public.audit_import'::regclass, 'public.audit_import_request'::regclass,
-          'public.audit_observation'::regclass
+          'public.audit_observation'::regclass,
+          to_regclass('public.cyber_client'), to_regclass('public.cyber_asset'),
+          to_regclass('public.cyber_source'), to_regclass('public.cyber_evidence'),
+          to_regclass('public.cyber_mandate'), to_regclass('public.cyber_audit'),
+          to_regclass('public.cyber_scan'), to_regclass('public.cyber_finding'),
+          to_regclass('public.cyber_observation'), to_regclass('public.cyber_event'),
+          to_regclass('public.cyber_role'), to_regclass('public.cyber_report'),
+          to_regclass('public.cyber_task'), to_regclass('public.cyber_retest')
         )
           AND pg_has_role(current_user, c.relowner, 'MEMBER')
       )

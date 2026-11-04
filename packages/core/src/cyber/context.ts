@@ -29,20 +29,29 @@ export async function withCyber<T>(
   database: Database,
   scope: CyberScope,
   run: (tx: Transaction, role: CyberRole) => Promise<T>,
+  options?: { isolationLevel: 'repeatable read' },
 ): Promise<T> {
-  return withTenant(database, scope, async (tx, tenantRole: TenantRole) => {
-    const [assigned] = await tx
-      .select()
-      .from(cyberRole)
-      .where(
-        and(eq(cyberRole.organizationId, scope.organizationId), eq(cyberRole.userId, scope.userId)),
-      );
-    const role: CyberRole =
-      tenantRole === 'owner' || tenantRole === 'admin'
-        ? 'admin'
-        : cyberRoleSchema.parse(assigned?.role ?? 'analyst');
-    return run(tx, role);
-  });
+  return withTenant(
+    database,
+    scope,
+    async (tx, tenantRole: TenantRole) => {
+      const [assigned] = await tx
+        .select()
+        .from(cyberRole)
+        .where(
+          and(
+            eq(cyberRole.organizationId, scope.organizationId),
+            eq(cyberRole.userId, scope.userId),
+          ),
+        );
+      const role: CyberRole =
+        tenantRole === 'owner' || tenantRole === 'admin'
+          ? 'admin'
+          : cyberRoleSchema.parse(assigned?.role ?? 'analyst');
+      return run(tx, role);
+    },
+    options,
+  );
 }
 export async function cyberEventIn(
   tx: Transaction,

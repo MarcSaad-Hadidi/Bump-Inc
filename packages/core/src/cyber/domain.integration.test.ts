@@ -3,6 +3,7 @@ import {
   createDatabase,
   cyberAsset,
   cyberFinding,
+  cyberReport,
   cyberSource,
   migrateDatabase,
   withTenant,
@@ -11,6 +12,7 @@ import { createCyberVault } from '@bump/integrations';
 import { eq } from 'drizzle-orm';
 import { afterAll, beforeAll, expect, it } from 'vitest';
 import { claimExecution } from '../execution.js';
+import { approveCyberReport, createCyberReport, readCyberReport } from './reports.js';
 import {
   approveCyberMandate,
   createCyberAsset,
@@ -363,4 +365,50 @@ it('cannot reuse an old clean audit to close a newly reopened finding', async ()
       note: 'Attempted replay of stale synthetic result B',
     }),
   ).rejects.toMatchObject({ statusCode: 409 });
+});
+
+it('freezes reviewed report snapshots, separates organizations and requires approval of the exact digest', async () => {
+  const snapshot = await readCyberSnapshot(db, scope);
+  const completed = snapshot.scans.find((s) => s.status === 'succeeded')!;
+  const input = {
+    auditId: completed.scan.auditId,
+    locale: 'fr',
+    executiveSummary: 'Synthetic reviewed summary',
+    reviewNotes: 'Synthetic offline test; no production findings.',
+  };
+  const pending = snapshot.scans.find((s) => s.status === 'queued')!;
+  await expect(
+    createCyberReport(db, scope, { ...input, auditId: pending.scan.auditId }),
+  ).rejects.toMatchObject({ code: 'audit_not_finished' });
+  const draft = await createCyberReport(db, scope, input);
+  expect(draft.snapshot.unreviewedCount).toBe(1);
+  expect(draft.snapshot.findings).toEqual([]);
+  expect(draft.approvedAt).toBeNull();
+  await expect(readCyberReport(db, other, draft.id)).rejects.toMatchObject({ statusCode: 404 });
+  await expect(readCyberReport(db, { ...scope, userId: analyst }, draft.id)).rejects.toMatchObject({
+    statusCode: 403,
+  });
+  await expect(approveCyberReport(db, scope, draft.id, '0'.repeat(64))).rejects.toMatchObject({
+    code: 'report_integrity_failed',
+  });
+  await expect(
+    withTenant(db, scope, (tx) =>
+      tx.update(cyberReport).set({ snapshot: {} }).where(eq(cyberReport.id, draft.id)),
+    ),
+  ).rejects.toThrow();
+  const observation = snapshot.findings.find((f) => f.lastAuditId === completed.scan.auditId)!;
+  await reviewCyberFinding(db, scope, observation.id, {
+    status: 'confirmed',
+    note: 'Synthetic manual verification',
+    businessImpact: 'Synthetic lab impact',
+    recommendation: 'Remove unsafe pattern',
+  });
+  expect((await readCyberReport(db, scope, draft.id)).snapshot.findings).toEqual([]);
+  const reviewed = await createCyberReport(db, scope, input);
+  expect(reviewed.snapshot.findings).toHaveLength(1);
+  const approved = await approveCyberReport(db, scope, reviewed.id, reviewed.sha256);
+  expect(approved.approvedAt).toBeInstanceOf(Date);
+  const repeated = await approveCyberReport(db, scope, reviewed.id, reviewed.sha256);
+  expect(repeated.approvedAt).toEqual(approved.approvedAt);
+  expect((await readCyberReport(db, scope, reviewed.id)).sha256).toBe(reviewed.sha256);
 });

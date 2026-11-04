@@ -1,0 +1,38 @@
+import type { CyberReportSnapshot } from '@bump/contracts';
+export const syntheticReport: CyberReportSnapshot = {
+  version: 'cyber-report-v1',
+  reportId: '10000000-0000-4000-8000-000000000001',
+  organizationId: '10000000-0000-4000-8000-000000000002',
+  locale: 'fr',
+  createdAt: '2026-11-04T12:00:00.000Z',
+  client: {
+    id: '10000000-0000-4000-8000-000000000003',
+    name: 'Laboratoire synthétique Bump',
+    contact: 'lab@example.invalid',
+  },
+  audit: {
+    id: '10000000-0000-4000-8000-000000000004',
+    title: 'Audit synthétique hors ligne',
+    createdAt: '2026-11-04T11:00:00.000Z',
+    responsible: 'Consultant de test',
+  },
+  mandate: {
+    reference: 'SYNTHETIC-ONLY',
+    signedBy: 'Responsable de laboratoire',
+    authorizedAt: '2026-11-04T10:00:00.000Z',
+    validFrom: '2026-11-04T10:00:00.000Z',
+    validUntil: '2026-11-05T10:00:00.000Z',
+    limitations: 'Laboratoire synthétique; aucun système public.',
+    emergencyContact: 'lab@example.invalid',
+    exclusions: [],
+  },
+  executiveSummary: 'Exercice synthétique. Aucun résultat client réel.',
+  reviewNotes: 'Couverture limitée aux fichiers fournis. Revue manuelle de test.',
+  assets: [],
+  scans: [],
+  findings: [],
+  tasks: [],
+  retests: [],
+  unreviewedCount: 1,
+  falsePositiveCount: 0,
+};

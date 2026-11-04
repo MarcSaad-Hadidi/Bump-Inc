@@ -57,6 +57,13 @@
       "when": 1793826000000,
       "tag": "0006_cyber_domain",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1793830000000,
+      "tag": "0007_cyber_reporting_controls",
+      "breakpoints": true
     }
   ]
 }

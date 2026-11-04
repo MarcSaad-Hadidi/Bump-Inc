@@ -174,3 +174,5 @@ export * from './cyber.js';
 export * from './engagement.js';
 export * from './execution.js';
 export * from './ingestion.js';
+
+export * from './cyber-report.js';

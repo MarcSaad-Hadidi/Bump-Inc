@@ -35,8 +35,12 @@ export async function withTenant<T>(
   database: Database,
   scope: TenantScope,
   callback: (tx: Transaction, role: TenantRole) => Promise<T>,
+  options?: { isolationLevel: 'repeatable read' },
 ): Promise<T> {
-  return database.db.transaction(async (tx) => callback(tx, await setTenantContext(tx, scope)));
+  return database.db.transaction(
+    async (tx) => callback(tx, await setTenantContext(tx, scope)),
+    options,
+  );
 }
 
 export async function assertRuntimeRole(pool: Database['pool']): Promise<void> {

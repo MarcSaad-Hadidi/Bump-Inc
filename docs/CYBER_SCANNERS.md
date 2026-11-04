@@ -48,8 +48,15 @@ Linux via `pnpm test:scanners` et ne sont pas remplacés par des fixtures.
 
 La durée maximale est 30 secondes/job, les sorties sont limitées à 1 Mio et les
 observations à 1000. Le code est préparé dans un répertoire privé temporaire.
+La disponibilité exige également la limite de swap Docker ; une limite mémoire
+sans cette capacité ne suffit pas. L’annulation force la suppression du conteneur
+avec une commande indépendante bornée et termine le client Docker par SIGKILL,
+même si le scanner ignore SIGTERM. Les sorties trop volumineuses suivent ce même arrêt.
+
 Les fichiers de contrôle `.semgrepignore`/`.gitleaksignore` téléversés ne pilotent
-pas les scanners ; les règles sont celles du runner. Les conteneurs sont supprimés
+pas les scanners ; les règles sont celles du runner. Le profil Gitleaks ignore
+les commentaires `gitleaks:allow` afin qu’un fichier fourni ne puisse masquer un secret.
+Les conteneurs sont supprimés
 à l'annulation et en nettoyage final, et les fichiers temporaires sont retirés.
 Le worker revalide membership, rôle, mandat, arrêt d'urgence et tentative pendant
 l'analyse, puis avant la sauvegarde transactionnelle. Une perte d'autorisation ou

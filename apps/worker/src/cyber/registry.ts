@@ -33,7 +33,7 @@ export const SEMGREP_RULES = `rules:
     message: Review dynamic JavaScript evaluation.
     pattern: eval(...)
 `;
-export const GITLEAKS_RULES = '[extend]\nuseDefault = true\n';
+export const GITLEAKS_RULES = '# Bump Cyber gitleaks profile v2\n[extend]\nuseDefault = true\n';
 export const SCANNER_DESCRIPTORS = (Object.keys(SCANNER_VERSIONS) as CyberEngine[]).map((id) => ({
   id,
   version: SCANNER_VERSIONS[id],

@@ -20,11 +20,13 @@ import { Queue } from 'bullmq';
 import { Redis } from 'ioredis';
 import { afterAll, beforeAll, expect, it } from 'vitest';
 import {
+  buildDockerArguments,
   createScannerAdapter,
   dockerCommand,
   nativeCapabilities,
   resourceIsolationAvailable,
 } from '../../apps/worker/src/cyber/docker.js';
+import { SCANNER_IMAGES } from '../../apps/worker/src/cyber/registry.js';
 import { createExecutionWorker, dispatchExecutions } from '../../apps/worker/src/execution.js';
 
 const fakePat =
@@ -32,7 +34,7 @@ const fakePat =
   createHash('sha256').update('SYNTHETIC-NEVER-A-REAL-CREDENTIAL').digest('hex').slice(0, 36);
 const files = [
   { path: 'app.py', content: 'value = input()\nprint(eval(value))\n' },
-  { path: 'config.py', content: `api_key = "${fakePat}"\n` },
+  { path: 'config.py', content: `api_key = "${fakePat}" # gitleaks:allow\n` },
   { path: 'Dockerfile', content: 'FROM alpine:3.20\nUSER root\n' },
   {
     path: 'package-lock.json',
@@ -291,4 +293,30 @@ it('runs the real queue pipeline, requires human review, records remediation and
   } finally {
     await worker.close();
   }
+});
+
+it('force-stops a container that ignores SIGTERM', async () => {
+  const adapter = createScannerAdapter('gitleaks'),
+    plan = await adapter.prepareExecution(files);
+  const args = buildDockerArguments(plan);
+  const imageIndex = args.indexOf(SCANNER_IMAGES.gitleaks);
+  const run = [
+    ...args.slice(0, imageIndex),
+    '--entrypoint=/bin/sh',
+    SCANNER_IMAGES.gitleaks,
+    '-c',
+    'trap "" TERM; while :; do sleep 1; done',
+  ];
+  const began = Date.now();
+  try {
+    await expect(
+      dockerCommand(run, AbortSignal.timeout(1500), 1048576, plan.name),
+    ).rejects.toThrow();
+  } finally {
+    await adapter.cleanup(plan);
+  }
+  expect(Date.now() - began).toBeLessThan(8000);
+  await expect(
+    dockerCommand(['inspect', plan.name], AbortSignal.timeout(3000), 2000),
+  ).rejects.toThrow();
 });

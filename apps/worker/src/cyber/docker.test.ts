@@ -21,6 +21,8 @@ it('uses fixed images and structured Docker confinement without a shell', () => 
     '--cpus=1',
     '--memory=1536m',
     '--redact=100',
+    '--ignore-gitleaks-allow',
+    '--sig-proxy=false',
     '--pull=never',
     '--log-driver=none',
   ])
@@ -41,12 +43,13 @@ it('rejects source traversal and extra command input before any process starts',
 it('fails closed when Docker cannot enforce any requested resource boundary', () => {
   const info = {
     MemoryLimit: true,
+    SwapLimit: true,
     CpuCfsQuota: true,
     PidsLimit: true,
     SecurityOptions: ['name=seccomp,profile=builtin'],
   };
   expect(hasDockerIsolation(info)).toBe(true);
-  for (const key of ['MemoryLimit', 'CpuCfsQuota', 'PidsLimit'])
+  for (const key of ['MemoryLimit', 'SwapLimit', 'CpuCfsQuota', 'PidsLimit'])
     expect(hasDockerIsolation({ ...info, [key]: false })).toBe(false);
   expect(
     hasDockerIsolation({ ...info, SecurityOptions: ['name=seccomp,profile=unconfined'] }),

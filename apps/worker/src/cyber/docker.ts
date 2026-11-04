@@ -45,45 +45,63 @@ export function dockerCommand(
   args: string[],
   signal: AbortSignal,
   maxBytes = 1048576,
+  containerName?: string,
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     const abort = new AbortController();
-    const stop = () => abort.abort();
-    signal.addEventListener('abort', stop, { once: true });
-    if (signal.aborted) stop();
+    let child: ReturnType<typeof spawn> | undefined;
+    let cleanup: Promise<unknown> = Promise.resolve();
+    let stopping = false;
+    const terminate = () => {
+      if (stopping) return;
+      stopping = true;
+      abort.abort();
+      child?.kill('SIGKILL');
+      if (containerName)
+        cleanup = dockerCommand(
+          ['rm', '--force', containerName],
+          AbortSignal.timeout(3000),
+          2000,
+        ).catch(() => undefined);
+    };
+    signal.addEventListener('abort', terminate, { once: true });
     let bytes = 0;
     const chunks: Buffer[] = [];
     let failed = false;
     let exceeded = false;
-    const child = spawn('docker', ['--host=unix:///var/run/docker.sock', ...args], {
+    child = spawn('docker', ['--host=unix:///var/run/docker.sock', ...args], {
       shell: false,
       signal: abort.signal,
+      killSignal: 'SIGKILL',
       stdio: ['ignore', 'pipe', 'pipe'],
     });
-    child.stdout.on('data', (chunk: Buffer) => {
+    child.stdout!.on('data', (chunk: Buffer) => {
       bytes += chunk.length;
       if (bytes > maxBytes) {
         exceeded = true;
-        abort.abort();
+        terminate();
       } else chunks.push(chunk);
     });
-    child.stderr.resume(); // Never retain or log raw scanner/daemon stderr.
+    child.stderr!.resume();
     child.on('error', () => {
       failed = true;
     });
-    child.once('close', (code) => {
-      signal.removeEventListener('abort', stop);
+    child.once('close', async (code) => {
+      signal.removeEventListener('abort', terminate);
+      await cleanup;
       if (exceeded) reject(new ScannerFailure('scanner_output_limit'));
       else if (signal.aborted) reject(new ScannerFailure('scanner_cancelled'));
       else if (failed || code !== 0) reject(new ScannerFailure('scanner_process_failed'));
       else resolve(Buffer.concat(chunks).toString('utf8'));
     });
+    if (signal.aborted) terminate();
   });
 }
 export function hasDockerIsolation(input: unknown) {
   const parsed = z
     .object({
       MemoryLimit: z.literal(true),
+      SwapLimit: z.literal(true),
       CpuCfsQuota: z.literal(true),
       PidsLimit: z.literal(true),
       SecurityOptions: z.array(z.string()),
@@ -172,6 +190,7 @@ export function buildDockerArguments(plan: ExecutionPlan): string[] {
   const args = [
     'run',
     '--rm',
+    '--sig-proxy=false',
     '--pull=never',
     '--name',
     plan.name,
@@ -250,6 +269,7 @@ export function buildDockerArguments(plan: ExecutionPlan): string[] {
       '--config',
       '/rules/gitleaks.toml',
       '--redact=100',
+      '--ignore-gitleaks-allow',
       '--no-banner',
       '--log-level=error',
       '--max-target-megabytes=1',
@@ -334,7 +354,7 @@ export function createScannerAdapter(engine: NativeEngine): ScannerAdapter {
     async execute(plan, signal) {
       if (!(await resourceIsolationAvailable()))
         throw new ScannerFailure('resource_isolation_unavailable');
-      return dockerCommand(buildDockerArguments(plan), signal);
+      return dockerCommand(buildDockerArguments(plan), signal, 1048576, plan.name);
     },
     parseResults(raw) {
       return parseCyberOutput(engine, raw);

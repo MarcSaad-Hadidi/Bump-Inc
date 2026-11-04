@@ -461,6 +461,33 @@ export function TaskForm({
   );
 }
 
+type RetestConclusion = 'present' | 'absent' | 'inconclusive';
+
+export function retestAuditCandidates(
+  data: Pick<Snapshot, 'audits' | 'scans'>,
+  finding: Pick<Finding, 'clientId' | 'assetId'> | undefined,
+  conclusion: RetestConclusion,
+) {
+  if (!finding) return [];
+  return data.audits.filter((audit) => {
+    if (audit.clientId !== finding.clientId) return false;
+    const assetScans = data.scans.filter(
+      (item) =>
+        item.scan.auditId === audit.id &&
+        item.scan.clientId === finding.clientId &&
+        item.scan.assetId === finding.assetId,
+    );
+    return (
+      assetScans.length > 0 &&
+      assetScans.every((item) =>
+        conclusion === 'inconclusive'
+          ? ['succeeded', 'dead_letter', 'denied', 'cancelled'].includes(item.status)
+          : item.status === 'succeeded',
+      )
+    );
+  });
+}
+
 export function RetestForm({
   data,
   locale,
@@ -478,17 +505,9 @@ export function RetestForm({
   const action = useAction(locale);
   const finding = data.findings.find((f) => f.id === findingId);
   const [auditId, setAuditId] = useState('');
-  const [conclusion, setConclusion] = useState<'present' | 'absent' | 'inconclusive'>(
-    'inconclusive',
-  );
-  const audits = data.audits.filter(
-    (a) =>
-      a.clientId === finding?.clientId &&
-      data.scans.some((s) => s.scan.auditId === a.id && s.scan.assetId === finding.assetId) &&
-      data.scans
-        .filter((s) => s.scan.auditId === a.id && s.scan.assetId === finding.assetId)
-        .every((s) => s.status === 'succeeded'),
-  );
+  const [conclusion, setConclusion] = useState<RetestConclusion>('inconclusive');
+  const audits = retestAuditCandidates(data, finding, conclusion);
+  const selectedAuditId = audits.some((audit) => audit.id === auditId) ? auditId : '';
   return (
     <Form
       locale={locale}
@@ -497,9 +516,15 @@ export function RetestForm({
       cancel={close}
       label={t.retest}
       action={(event) => {
+        if (!selectedAuditId) return;
         const note = formText(event.currentTarget, 'note');
         void action.run(async () => {
-          await mutate('retests', 'POST', { findingId, auditId, conclusion, note });
+          await mutate('retests', 'POST', {
+            findingId,
+            auditId: selectedAuditId,
+            conclusion,
+            note,
+          });
           close();
         });
       }}
@@ -507,9 +532,23 @@ export function RetestForm({
       <p>
         <strong>{finding?.observation.title}</strong>
       </p>
-      <Note>{t.retestNotice}</Note>
+      <Note>
+        {t.retestNotice}
+        {conclusion === 'inconclusive' && (
+          <>
+            <br />
+            {locale === 'fr'
+              ? 'Une analyse en échec, refusée ou annulée peut uniquement étayer une conclusion non concluante.'
+              : 'A failed, denied or cancelled scan can only support an inconclusive conclusion.'}
+          </>
+        )}
+      </Note>
       <Field title={t.retestAudit}>
-        <select required value={auditId} onChange={(event) => setAuditId(event.target.value)}>
+        <select
+          required
+          value={selectedAuditId}
+          onChange={(event) => setAuditId(event.target.value)}
+        >
           <option value="">
             {locale === 'fr' ? 'Choisir un audit terminé' : 'Choose a completed audit'}
           </option>
@@ -523,7 +562,10 @@ export function RetestForm({
       <Field title={t.conclusion}>
         <select
           value={conclusion}
-          onChange={(event) => setConclusion(event.target.value as typeof conclusion)}
+          onChange={(event) => {
+            setConclusion(event.target.value as RetestConclusion);
+            setAuditId('');
+          }}
         >
           {(['inconclusive', 'present', 'absent'] as const).map((value) => (
             <option key={value} value={value}>

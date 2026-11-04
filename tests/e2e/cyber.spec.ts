@@ -272,6 +272,42 @@ test('synthetic private Cyber workflow uses a real worker, human review and appr
       .getByLabel('Action à réaliser')
       .fill('Remplacer l’évaluation dynamique dans app.py, puis soumettre un nouvel instantané.');
     await save();
+    await navigation('Audits').click();
+    state = await snapshot();
+    const beforeStopCount = state.audits.length;
+    const guardedAudit = {
+      clientId: state.clients[0]!.id,
+      mandateId: state.mandates[0]!.mandate.id,
+      assetIds: [state.assets[0]!.id],
+      engines: [engine],
+      idempotencyKey: randomUUID(),
+      title: 'SYNTHÉTIQUE — tentative refusée',
+    };
+    await page.getByRole('button', { name: 'Arrêt d’urgence', exact: true }).click();
+    await dialog().getByRole('checkbox').check();
+    await dialog().getByRole('button', { name: 'Arrêt d’urgence', exact: true }).click();
+    await expect(dialog()).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Nouvel audit', exact: true })).toBeDisabled();
+    const stopped = await page.request.post(
+      `/api/cyber/organizations/${organizationId}/cyber/audits`,
+      { headers: { origin: 'http://127.0.0.1:3100' }, data: guardedAudit },
+    );
+    expect(stopped.status()).toBe(409);
+    await page.getByRole('button', { name: 'Autoriser les nouveaux jobs', exact: true }).click();
+    await dialog().getByRole('checkbox').check();
+    await dialog()
+      .getByRole('button', { name: 'Autoriser les nouveaux jobs', exact: true })
+      .click();
+    await expect(dialog()).toHaveCount(0);
+    const outside = await page.request.post(
+      `/api/cyber/organizations/${organizationId}/cyber/audits`,
+      {
+        headers: { origin: 'http://127.0.0.1:3100' },
+        data: { ...guardedAudit, assetIds: [randomUUID()], idempotencyKey: randomUUID() },
+      },
+    );
+    expect(outside.status()).toBe(403);
+    expect((await snapshot()).audits).toHaveLength(beforeStopCount);
     await upload(native, true);
     const verificationAudit = await launch('SYNTHÉTIQUE — vérification contrôlée', engine);
     await navigation('Constats').click();
@@ -295,6 +331,16 @@ test('synthetic private Cyber workflow uses a real worker, human review and appr
     state = await snapshot();
     expect(state.retests[0]?.conclusion).toBe(native ? 'absent' : 'inconclusive');
     expect(state.findings[0]?.status).toBe(native ? 'verified_fixed' : 'confirmed');
+    const comparison = await page.request.get(
+      `/api/cyber/organizations/${organizationId}/cyber/comparison?before=${initialAudit}&after=${verificationAudit}`,
+    );
+    expect(comparison.status()).toBe(200);
+    const difference = (await comparison.json()) as {
+      notObserved: string[];
+      interpretation: string;
+    };
+    expect(difference.notObserved).toHaveLength(1);
+    expect(difference.interpretation).toContain('Not observed is not proof of remediation');
 
     await navigation('Rapports').click();
     await page.getByRole('button', { name: 'Préparer un rapport', exact: true }).click();

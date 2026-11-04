@@ -1,8 +1,12 @@
 import { afterEach, expect, it, vi } from 'vitest';
 import { cyberProxyAllowed } from '../../../lib/cyber-proxy';
+import { GET as verifyEmail } from '../auth/[...path]/route';
 import { GET, POST } from './[...path]/route';
 
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => {
+  vi.unstubAllGlobals();
+  vi.unstubAllEnvs();
+});
 
 it('allows only explicit private application routes', () => {
   expect(cyberProxyAllowed('POST', 'api/auth/sign-in/email')).toBe(true);
@@ -97,4 +101,96 @@ it('refuses hostile or absent origins before proxying authenticated mutations', 
       )
     ).status,
   ).toBe(404);
+});
+
+it('forwards a verification link opened from cross-site webmail through the conventional auth route', async () => {
+  vi.stubEnv('CYBER_PUBLIC_ORIGIN', 'https://cyber.example.test');
+  vi.stubEnv('AUTH_BASE_URL', 'https://cyber.example.test');
+  vi.stubEnv('API_INTERNAL_URL', 'http://127.0.0.1:3001');
+  const callback = 'https://cyber.example.test/cyber';
+  const fetcher = vi.fn<typeof fetch>(
+    async () =>
+      new Response(null, {
+        status: 302,
+        headers: { location: callback },
+      }),
+  );
+  vi.stubGlobal('fetch', fetcher);
+  const query = `?token=synthetic-verification-token&callbackURL=${encodeURIComponent(callback)}`;
+  const response = await verifyEmail(
+    new Request(`https://cyber.example.test/api/auth/verify-email${query}`, {
+      headers: {
+        host: 'cyber.example.test',
+        'sec-fetch-site': 'cross-site',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-dest': 'document',
+        'sec-fetch-user': '?1',
+        referer: 'https://webmail.example.test/',
+      },
+    }),
+    { params: Promise.resolve({ path: ['verify-email'] }) },
+  );
+  expect(response.status).toBe(302);
+  expect(response.headers.get('location')).toBe(callback);
+  expect(fetcher).toHaveBeenCalledWith(
+    `http://127.0.0.1:3001/api/auth/verify-email${query}`,
+    expect.objectContaining({ method: 'GET', redirect: 'manual' }),
+  );
+  const forwarded = new Headers(fetcher.mock.calls[0]?.[1]?.headers);
+  expect(forwarded.get('origin')).toBe('https://cyber.example.test');
+  expect(forwarded.has('referer')).toBe(false);
+});
+
+it('keeps cross-site fetches, frames, other routes and hostile origins outside the navigation exception', async () => {
+  const fetcher = vi.fn();
+  vi.stubGlobal('fetch', fetcher);
+  const cases = [
+    { path: ['api', 'auth', 'verify-email'], mode: 'cors', dest: 'empty' },
+    { path: ['api', 'auth', 'verify-email'], mode: 'navigate', dest: 'iframe' },
+    { path: ['api', 'auth', 'verify-email'], mode: '', dest: '' },
+    { path: ['me'], mode: 'navigate', dest: 'document' },
+    {
+      path: ['api', 'auth', 'verify-email'],
+      mode: 'navigate',
+      dest: 'document',
+      host: 'attacker.test',
+    },
+    {
+      path: ['api', 'auth', 'verify-email'],
+      mode: 'navigate',
+      dest: 'document',
+      origin: 'https://attacker.test',
+    },
+  ];
+  for (const incoming of cases) {
+    const response = await GET(
+      new Request('http://127.0.0.1:3000/api/auth/verify-email?token=synthetic', {
+        headers: {
+          host: incoming.host ?? '127.0.0.1:3000',
+          'sec-fetch-site': 'cross-site',
+          'sec-fetch-mode': incoming.mode,
+          'sec-fetch-dest': incoming.dest,
+          ...(incoming.origin ? { origin: incoming.origin } : {}),
+        },
+      }),
+      { params: Promise.resolve({ path: incoming.path }) },
+    );
+    expect(response.status).toBe(403);
+  }
+  const mutation = await POST(
+    new Request('http://127.0.0.1:3000/api/cyber/api/auth/sign-in/email', {
+      method: 'POST',
+      headers: {
+        host: '127.0.0.1:3000',
+        origin: 'http://127.0.0.1:3000',
+        'sec-fetch-site': 'cross-site',
+        'sec-fetch-mode': 'navigate',
+        'sec-fetch-dest': 'document',
+      },
+      body: '{}',
+    }),
+    { params: Promise.resolve({ path: ['api', 'auth', 'sign-in', 'email'] }) },
+  );
+  expect(mutation.status).toBe(403);
+  expect(fetcher).not.toHaveBeenCalled();
 });

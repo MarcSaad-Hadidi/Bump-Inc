@@ -1,0 +1,25 @@
+# Optional local Cyber import/report environment. Native scanners use the trusted
+# Linux host worker described in docs/CYBER_OPERATIONS.md; no Docker socket in API.
+services:
+  api:
+    environment:
+      CYBER_EVIDENCE_KEY_FILE: /run/secrets/cyber-evidence
+      CYBER_WORKER_URL: http://worker:3002
+    volumes:
+      - type: bind
+        source: ${CYBER_EVIDENCE_KEY_FILE:?Run pnpm cyber:init first}
+        target: /run/secrets/cyber-evidence
+        read_only: true
+  worker:
+    environment:
+      CYBER_EVIDENCE_KEY_FILE: /run/secrets/cyber-evidence
+      CYBER_PASSIVE_ENABLED: "false"
+    volumes:
+      - type: bind
+        source: ${CYBER_EVIDENCE_KEY_FILE:?Run pnpm cyber:init first}
+        target: /run/secrets/cyber-evidence
+        read_only: true
+  web:
+    environment:
+      CYBER_PUBLIC_ORIGIN: http://127.0.0.1:3000
+      AUTH_BASE_URL: http://127.0.0.1:3001

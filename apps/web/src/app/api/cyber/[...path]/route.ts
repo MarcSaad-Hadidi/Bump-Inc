@@ -18,16 +18,23 @@ async function proxy(request: Request, context: { params: Promise<{ path: string
   } catch {
     return Response.json({ error: 'Private origin unavailable' }, { status: 503 });
   }
+  const path = (await context.params).path.join('/');
+  // Verification links opened in webmail are cross-site document navigations.
+  // Better Auth owns token/callback validation; fetches and frames stay blocked.
+  const emailVerificationNavigation =
+    request.method === 'GET' &&
+    path === 'api/auth/verify-email' &&
+    request.headers.get('sec-fetch-mode') === 'navigate' &&
+    request.headers.get('sec-fetch-dest') === 'document';
   if (
     request.headers.get('host') !== publicOrigin.host ||
-    request.headers.get('sec-fetch-site') === 'cross-site'
+    (request.headers.get('sec-fetch-site') === 'cross-site' && !emailVerificationNavigation)
   )
     return new Response(null, { status: 403 });
   const origin = request.headers.get('origin');
   if (origin && origin !== publicOrigin.origin) return new Response(null, { status: 403 });
   if (!['GET', 'HEAD'].includes(request.method) && origin !== publicOrigin.origin)
     return new Response(null, { status: 403 });
-  const path = (await context.params).path.join('/');
   if (!cyberProxyAllowed(request.method, path)) return new Response(null, { status: 404 });
   const search = new URL(request.url).search;
   try {

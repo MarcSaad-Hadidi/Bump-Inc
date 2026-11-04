@@ -1,0 +1,140 @@
+# Connecteurs Bump Cyber
+
+Ce lot dépend du domaine #39 (`ba130a7`) et de la base #38. Il n'autorise aucun
+scan de client réel ni déploiement. Les moteurs avancés ne sont pas implémentés.
+
+## Outils choisis et licences vérifiées
+
+Métadonnées de release et fichiers LICENSE officiels consultés le 2026-11-04.
+Les licences permettent l'utilisation commerciale des trois moteurs retenus,
+avec leurs obligations de notices/source lors d'une éventuelle redistribution.
+Nous référençons les images officielles, sans modifier ni redistribuer leur code.
+Aucune fonction SaaS payante ni connexion au service cloud Semgrep n'est utilisée.
+
+| Moteur                                                    | Version du lot | Licence du dépôt | Couverture réelle du connecteur                                                                                                                                        |
+| --------------------------------------------------------- | -------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Semgrep](https://github.com/semgrep/semgrep)             | 1.183.0        | LGPL-2.1         | Trois règles locales révisées : eval Python/JS et shell Python. Aucun pack de règles distant. Couverture volontairement limitée, aucune conclusion d'exploitation.     |
+| [Trivy](https://github.com/aquasecurity/trivy)            | 0.76.1         | Apache-2.0       | Vulnérabilités de dépendances et mauvaises configurations des fichiers téléversés ; CVE, versions affectées/corrigées, CVSS et références disponibles.                 |
+| [Gitleaks](https://github.com/gitleaks/gitleaks)          | 8.30.1         | MIT              | Répertoire de fichiers, configuration de règles par défaut épinglée, rédaction native à 100 % et projection sans Secret/Match/snippets/auteur.                         |
+| [Betterleaks](https://github.com/betterleaks/betterleaks) | 1.9.0 observée | MIT              | Étudié, non installé. Projet maintenu du même auteur, évolutions plus récentes ; Gitleaks conserve la continuité avec l'outillage du dépôt pour ce premier adaptateur. |
+
+Les digests des images sont inscrits dans `apps/worker/src/cyber/registry.ts`.
+Ne remplacez pas un digest sans vérifier release, licence, vulnérabilités et tests.
+Les conditions des règles et des bases d'avis restent distinctes de la licence
+du moteur. Les règles Semgrep de ce lot sont locales ; aucune licence d'un pack
+commercial n'est implicitement acquise.
+
+## Contrat et confinement
+
+`ScannerAdapter` expose validation, préparation, exécution, parsing,
+normalisation, collecte de preuve et nettoyage. Les seuls paramètres sont les
+profils révisés : aucun shell, binaire, argument ou image venant de l'utilisateur.
+Le runner produit un argv structuré avec `spawn(..., shell: false)`.
+
+Chaque conteneur : image épinglée, pull interdit au lancement, utilisateur
+65534, système de fichiers en lecture seule, code et règles montés en lecture
+seule, aucun réseau, aucune capability, no-new-privileges, seccomp du daemon,
+128 processus, 1 CPU, 1536 Mio, pas de swap supplémentaire, fichiers ouverts
+bornés, core dumps interdits et tmpfs de 128 Mio. Il ne reçoit ni clé de coffre,
+ni session, ni credentials, ni socket Docker ; les variables de proxy sont vidées.
+Le processus opérateur ayant accès au daemon Docker reste un composant privilégié
+à maintenir sur une machine de confiance dédiée.
+
+Le daemon doit déclarer la prise en charge effective des limites mémoire/CPU/PID.
+Sans ces capacités, les moteurs natifs sont **indisponibles**. Le runner local
+fourni à cette session est rootless sans cgroups utilisables : l'acceptation native
+y est bloquée, sans fallback permissif. Les tests natifs sont obligatoires en CI
+Linux via `pnpm test:scanners` et ne sont pas remplacés par des fixtures.
+
+La durée maximale est 30 secondes/job, les sorties sont limitées à 1 Mio et les
+observations à 1000. Le code est préparé dans un répertoire privé temporaire.
+Les fichiers de contrôle `.semgrepignore`/`.gitleaksignore` téléversés ne pilotent
+pas les scanners ; les règles sont celles du runner. Les conteneurs sont supprimés
+à l'annulation et en nettoyage final, et les fichiers temporaires sont retirés.
+Le worker revalide membership, rôle, mandat, arrêt d'urgence et tentative pendant
+l'analyse, puis avant la sauvegarde transactionnelle. Une perte d'autorisation ou
+de base de données interrompt l'analyse. Le contrôle de concurrence et le transport
+conservent l'outbox PostgreSQL et BullMQ existants.
+
+## Importation et contrôles passifs
+
+SARIF 2.1.0 : profil borné, règles/localisations/niveaux et outil/version déclarés.
+Il n'exécute ni URI, ni code, ni liens. Les messages et snippets ne sont pas repris.
+JSON : enveloppe `{version:1, engine:"semgrep"|"trivy"|"gitleaks",
+engineVersion:"x.y.z", report: ...sortie native...}`. Les versions importées
+portent explicitement la mention imported et ne valent pas preuve d'installation.
+Une forme inconnue échoue sans constats partiels. Les preuves brutes restent
+chiffrées, sans endpoint de téléchargement brut. Aucun secret complet ne doit
+apparaître dans les DTO, logs ou rapports.
+
+`web-passive` est désactivé par défaut (`CYBER_PASSIVE_ENABLED=true` pour
+l'opérateur autorisé). Il valide un hostname exact, toutes ses réponses A/AAAA,
+épingle l'adresse publique dans la connexion HTTPS, valide le certificat, fait
+uniquement HEAD / et lit TXT/SPF/DMARC. Les redirections ne sont pas suivies ;
+toute destination hors hôte/HTTPS est refusée. Pas de cookies, de JavaScript,
+de formulaires, de crawler ni d'exploitation. Timeouts réseau et signal d'arrêt
+sont bornés. DNS en échec reste inconnu et fait échouer le job ; ce n'est pas une
+politique absente. Les tests utilisent des réponses synthétiques, pas un domaine
+public scanné dans cette mission.
+
+## Installation et exploitation locales
+
+Linux ou WSL2, Node/pnpm épinglés, Docker avec cgroups et seccomp. Prévoir au moins
+8 Gio RAM (16 recommandés), plusieurs CPU et 10 Gio de disque libre ; estimations,
+pas des benchmarks. La DB Trivy téléchargée dans cette session occupe environ
+1,7 Gio, pour environ 132 Mio compressés. Concurrence initiale du worker : 2.
+
+```sh
+cp .env.example .env
+cp .env.test.example .env.test
+pnpm install --frozen-lockfile
+pnpm infra:up
+pnpm cyber:init
+pnpm build:packages
+pnpm db:migrate
+pnpm cyber:tools
+pnpm dev
+```
+
+Pour un volume historique, suivre aussi le bootstrap non propriétaire de
+[IDENTITY.md](IDENTITY.md), sans supprimer le volume. `cyber:init` crée des clés
+privées local/test et configure seulement les `.env` locaux existants ; aucune
+clé n'est affichée ni écrasée. Conserver une copie chiffrée de la clé : sa perte
+rend les sources/preuves illisibles. Ne jamais commettre `.env` ni `.artifacts`.
+
+`cyber:tools` télécharge les images et la DB publique Trivy, sans cible d'audit.
+Ne pas actualiser la DB pendant des jobs. Son expiration rend le moteur
+indisponible jusqu'à actualisation. La version du moteur, le pack de règles, la
+liste de fichiers analysés et la DB Trivy participent à l'empreinte de couverture.
+Un retest ne transforme pas une couverture différente en preuve de correction.
+
+Lancer les tests : `pnpm check`, `pnpm test:integration`, `pnpm test:e2e`,
+`pnpm test:scanners`, `pnpm audit:dependencies`. Les tests natifs utilisent un
+répertoire synthétique (eval, lodash ancien et faux secret généré à l'exécution),
+aucune cible externe. Arrêter avec Ctrl+C puis `pnpm infra:down`. Conserver les
+volumes et les clés ; ne pas lancer `down --volumes` sur des données à conserver.
+L'arrêt d'urgence par organisation est disponible via le moteur existant ; les
+jobs interrompus sont clôturés/récupérés par leurs leases, sans résultat partiel.
+
+Le profil Compose applicatif existant reste un contrôle de la fondation. Le mode
+initial Cyber avec scanners tourne avec API/worker sur l'hôte Linux et les moteurs
+dans leurs conteneurs. Ne pas monter le socket Docker dans l'API ni exposer le
+worker publiquement pour contourner cette séparation.
+
+## Moteurs seulement prévus
+
+| Projet officiel                                               | Release observée             | Licence/source et décision initiale                                                                                                       |
+| ------------------------------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| [ZAP](https://github.com/zaproxy/zaproxy)                     | 2.17.0                       | Apache-2.0 ; Java/conteneur ; passif d'abord, actif avec méthodes/fenêtre/approbation distinctes.                                         |
+| [Nuclei](https://github.com/projectdiscovery/nuclei)          | 3.11.1                       | MIT ; Go/conteneur ; futur catalogue de templates révisés non destructifs, licence des templates à vérifier séparément.                   |
+| [Prowler](https://github.com/prowler-cloud/prowler)           | 5.47.0                       | Apache-2.0 ; Python/conteneur ; permissions minimales en lecture seule et coffre requis, aucun credential cloud pris en charge ici.       |
+| [Nmap](https://github.com/nmap/nmap)                          | pas de release GitHub latest | NPSL 0.95 (LICENSE lu) ; conditions OEM/intégration/redistribution à résoudre avant inclusion commerciale. Non installé.                  |
+| [Greenbone](https://greenbone.github.io/docs/latest/)         | openvas-scanner 23.52.8      | Composant GPL-2.0 ; autres composants/feeds à évaluer séparément, installation lourde non minimale.                                       |
+| [osquery](https://github.com/osquery/osquery)                 | 5.24.1                       | Apache-2.0 OU GPL-2.0-only selon LICENSE ; consentement agent/inventaire et permissions adaptés.                                          |
+| [Wazuh](https://github.com/wazuh/wazuh)                       | 4.14.9                       | GPL-2.0, moteur AGPL-3.0-or-later et bibliothèques duales selon LICENSE actuel ; surveillance continue optionnelle, distincte des audits. |
+| [DefectDojo](https://github.com/DefectDojo/django-DefectDojo) | 3.5.0                        | BSD-3-Clause ; intégration/export optionnel préféré, pas de deuxième plateforme ni DB déployée.                                           |
+
+Ces releases observées ne sont ni installées ni validées fonctionnellement par
+Bump Cyber. Aucun abonnement, service payant, infrastructure publique ou scan réel
+n'a été créé. Sauvegarde/restauration, MFA/identité de production, TLS, rétention
+opérationnelle et revue d'infrastructure restent des conditions avant client réel.

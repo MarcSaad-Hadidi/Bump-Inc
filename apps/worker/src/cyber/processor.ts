@@ -97,6 +97,8 @@ export async function processCyberScan(
               .parse(JSON.parse(raw));
             coverage = paths.paths.scanned.map((v) => v.replace(/^\/src\//, ''));
           } else coverage = plan.files.map((f) => f.path);
+          if (engine === 'trivy' && plan.cache)
+            coverage.push('database:' + (await trivyDatabaseIdentity(plan.cache)));
           raw = adapter.collectEvidence(raw);
         } finally {
           await adapter.cleanup(plan);

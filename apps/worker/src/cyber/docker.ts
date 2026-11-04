@@ -212,7 +212,6 @@ export function buildDockerArguments(plan: ExecutionPlan): string[] {
   ])
     args.push('--env', `${name}=`);
   for (const value of [
-    'HOME=/tmp',
     'XDG_CACHE_HOME=/tmp/cache',
     'SEMGREP_SETTINGS_FILE=/tmp/semgrep-settings.yml',
     'SEMGREP_LOG_FILE=/tmp/semgrep.log',
@@ -292,7 +291,12 @@ export function createScannerAdapter(engine: NativeEngine): ScannerAdapter {
       return filesSchema.parse(input);
     },
     async prepareExecution(input) {
-      const files = filesSchema.parse(input);
+      const files = filesSchema
+        .parse(input)
+        .filter(
+          (f) => !['.semgrepignore', '.gitleaksignore'].includes(f.path.split('/').at(-1) ?? ''),
+        );
+      if (!files.length) throw new ScannerFailure('no_eligible_source_files');
       if (
         new Set(files.map((f) => f.path)).size !== files.length ||
         Buffer.byteLength(JSON.stringify(files)) > 524288

@@ -63,7 +63,7 @@ it.each(['main', 'security'])(
       ).toBe('audit_observation');
     } finally {
       await client?.end();
-      await admin.query(`DROP DATABASE IF EXISTS ${name} WITH (FORCE)`);
+      await admin.query(`DROP DATABASE IF EXISTS ${name}`);
       await admin.end();
     }
   },

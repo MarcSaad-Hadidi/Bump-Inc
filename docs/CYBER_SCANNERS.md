@@ -53,6 +53,17 @@ a exécuté les six tests. Ce délai ne change aucune limite ni condition d’au
 
 La durée maximale est 30 secondes/job, les sorties sont limitées à 1 Mio et les
 observations à 1000. Le code est préparé dans un répertoire privé temporaire.
+Chaque image épinglée contient BusyBox 1.37.0 et `/usr/bin/timeout`. Le profil
+utilise ce binaire comme entrypoint structuré avec `-s KILL`, le temps restant
+arrondi vers le bas (1–30 s), puis le chemin absolu du scanner. Docker `--init`
+place Tini au PID 1 : le scanner et le watchdog ne sont pas PID 1 et le watchdog
+peut imposer SIGKILL même après la mort brutale du contrôleur Node. La sortie de
+Tini termine le namespace ; `--rm` supprime le conteneur. Aucun shell ni binaire
+additionnel n’est ajouté au profil de production. BusyBox (GPL-2.0-only), musl
+et Tini (MIT) sont déjà fournis par les images/le daemon, sans modification.
+Le délai du processus commence au démarrage effectif du conteneur ; le délai
+préalable de création du daemon reste surveillé par le parent tant qu’il vit.
+Le délai absolu du job et les jetons PostgreSQL empêchent une clôture tardive.
 La disponibilité exige également la limite de swap Docker ; une limite mémoire
 sans cette capacité ne suffit pas. L’annulation force la suppression du conteneur
 avec une commande indépendante bornée et termine le client Docker par SIGKILL,
@@ -71,6 +82,41 @@ Le worker revalide membership, rôle, mandat, arrêt d'urgence et tentative pend
 l'analyse, puis avant la sauvegarde transactionnelle. Une perte d'autorisation ou
 de base de données interrompt l'analyse. Le contrôle de concurrence et le transport
 conservent l'outbox PostgreSQL et BullMQ existants.
+
+## Couverture native Trivy et retests
+
+Le profil `reviewed-default-v3-native-package-and-executed-check-inventory`
+fixe `--list-all-pkgs`, `--include-non-failures` et
+`--detection-priority precise`. Ces options ont été vérifiées dans les sources
+officielles de [Trivy 0.76.1, rapport](https://github.com/aquasecurity/trivy/blob/v0.76.1/pkg/flag/report_flags.go),
+[contrôles](https://github.com/aquasecurity/trivy/blob/v0.76.1/pkg/flag/misconf_flags.go)
+et [détection](https://github.com/aquasecurity/trivy/blob/v0.76.1/pkg/flag/scan_flags.go).
+Le mode `comprehensive` peut déduire une version minimale d’une contrainte
+Python ; cette approximation ne démontre pas la version résolue. Il n’est
+donc pas utilisé comme preuve de correction dans ce profil.
+
+L’empreinte conserve les fichiers source, le profil, l’identité de la base
+d’avis, puis les cibles, classes et types réellement renvoyés par Trivy,
+l’identité de chaque composant inventorié et les identifiants de contrôles
+exécutés. Les versions de paquet et les états PASS/FAIL sont exclus de cette
+identité pour permettre un véritable upgrade ou une correction de configuration.
+La multiplicité des composants et contrôles est conservée. Perdre un paquet,
+une cible ou un contrôle change la couverture, même si les chemins téléversés
+n’ont pas changé. Les contrôles PASS et EXCEPTION ne produisent aucun constat.
+
+Un inventaire natif absent, inconnu, incohérent avec les vulnérabilités ou
+incomplet par rapport au résumé des contrôles fait échouer le job. Un état de
+contrôle inconnu ou EXCEPTION ne peut pas établir une couverture comparable.
+Pour `requirements.txt`, seules les déclarations exactes `nom==version` du
+sous-ensemble reconnu, éventuellement avec extras et commentaires, sont
+acceptées pour cette preuve ; chaque déclaration est rapprochée de
+l’inventaire natif. Plages, wildcards, URL, inclusions d’autres fichiers,
+conditions d’environnement et continuations non prises en charge sont refusées
+avant la sauvegarde du résultat. Par exemple, remplacer `Django==1.2` par
+`Django>=1.2` laisse un manifeste partiellement analysé en mode precise, pas
+une correction vérifiée. Le profil v3 rend aussi les anciens profils non
+comparables. Les limites de 1 Mio de sortie et 1000 observations restent
+inchangées ; un inventaire devenu trop volumineux échoue sans résultat partiel.
 
 ## Importation et contrôles passifs
 

@@ -297,9 +297,29 @@ export function errorMessage(error: unknown, locale: Locale) {
         'Le coffre privé est indisponible. Contactez l’opérateur.',
         'The private vault is unavailable. Contact the operator.',
       ],
-      comparable_coverage_required: [
+      comparable_completed_coverage_required: [
         'La couverture de ce retest ne permet pas cette conclusion.',
         'This retest does not have comparable coverage for this conclusion.',
+      ],
+      completed_asset_audit_required: [
+        'Attendez la fin des analyses de cet actif avant d’enregistrer un retest.',
+        'Wait for this asset’s scans to finish before recording a retest.',
+      ],
+      retest_evidence_conflict: [
+        'Les résultats contredisent cette conclusion. Examinez les observations du retest.',
+        'The results contradict this conclusion. Review the retest observations.',
+      ],
+      retest_predates_latest_detection: [
+        'Une détection plus récente existe. Choisissez un audit de vérification ultérieur.',
+        'A newer detection exists. Choose a later verification audit.',
+      ],
+      retest_predates_resolution: [
+        'Ce contrôle précède une résolution plus récente. Choisissez un audit ultérieur.',
+        'This scan predates a newer resolution. Choose a later audit.',
+      ],
+      confirmed_finding_required: [
+        'Le constat doit être confirmé et ouvert pour suivre cette correction.',
+        'The finding must be confirmed and open to track this remediation.',
       ],
       report_approval_required: [
         'Ce rapport doit être approuvé avant téléchargement.',

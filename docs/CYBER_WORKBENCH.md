@@ -44,6 +44,12 @@ révocation des autres sessions et déconnexion. L’administrateur peut attribu
 les rôles Cyber et purger explicitement les sources/preuves expirées. Les
 changements de rôle se sérialisent avec les transactions du membre concerné.
 
+Une réponse 401 lors de l’actualisation retire le dossier affiché et ramène à
+l’authentification ; l’utilisateur peut se reconnecter sans recharger la page.
+Une réponse 403 liée au mandat ou à l’organisation conserve la session et affiche
+le refus d’accès. L’E2E révoque réellement la session dans une requête séparée,
+vérifie ce retour automatique puis la reconnexion et la déconnexion habituelle.
+
 ## Frontières HTTP et identité
 
 Le navigateur appelle un proxy Next same-origin avec allowlist de méthodes et

@@ -27,6 +27,15 @@ le code fonctionnel ; leurs contrôles courants figurent dans les
 
 ## Ce que les tests établissent
 
+Une révision d’interface suivante corrige le retour à l’authentification après
+expiration ou révocation de session. Le test navigateur révoque la session réelle
+dans une autre requête sans navigation : l’ancien code restait bloqué après
+12 secondes ; le correctif revient à la connexion, permet de se reconnecter puis
+de se déconnecter normalement. `pnpm check` reste vert avec 327 unités et les
+3 parcours Chromium renforcés passent localement (24,6s). Cette révision ne
+modifie pas l’API, la base ou les scanners ; les statuts de sa tête exacte sont
+consultables dans les checks #42/#43 liés ci-dessus.
+
 Les huit scénarios natifs exécutent réellement Semgrep 1.183.0, Trivy 0.76.1 et
 Gitleaks 8.30.1, sans réseau, sur des fichiers de laboratoire synthétiques. Ils
 vérifient les sorties normalisées, les valeurs de secrets masquées, la perte

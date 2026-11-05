@@ -422,6 +422,21 @@ test('synthetic private Cyber workflow uses a real worker, human review and appr
     expect(
       (await page.request.get(`/api/cyber/organizations/${secondId}/cyber/snapshot`)).status(),
     ).toBe(200);
+    // Revoke the real session through a separate request while leaving the
+    // mounted workspace untouched, as with expiry or another-tab sign-out.
+    const revokedSession = await page.request.post('/api/cyber/api/auth/sign-out', {
+      headers: { origin: 'http://127.0.0.1:3100' },
+      data: {},
+    });
+    expect(revokedSession.status()).toBe(200);
+    await expect(page.getByRole('heading', { name: 'Sign in', exact: true })).toBeVisible({
+      timeout: 12000,
+    });
+    expect((await page.request.get(`${reportBase}/pdf`)).status()).toBe(401);
+    await page.getByLabel('Email', { exact: true }).fill(person.email);
+    await page.getByLabel('Password', { exact: true }).fill(person.password);
+    await page.getByRole('button', { name: 'Sign in', exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'Overview', exact: true })).toBeVisible();
     await page.getByRole('button', { name: 'Open navigation', exact: true }).click();
     await page
       .getByRole('complementary')

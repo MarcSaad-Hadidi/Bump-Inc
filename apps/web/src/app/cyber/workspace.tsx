@@ -201,7 +201,12 @@ export function Workspace({
         setUpdated(new Date().toISOString());
       } else {
         setLoadError(errorMessage(snapshot.reason, locale));
-        if (snapshot.reason instanceof CyberApiError && [401, 403].includes(snapshot.reason.status))
+        if (snapshot.reason instanceof CyberApiError && snapshot.reason.status === 401) {
+          setData(null);
+          loggedOut();
+          return;
+        }
+        if (snapshot.reason instanceof CyberApiError && snapshot.reason.status === 403)
           setData(null);
       }
       // A business mutation refreshes its snapshot; polling and explicit refreshes
@@ -224,7 +229,7 @@ export function Workspace({
       }
       setRefreshing(false);
     },
-    [root, locale],
+    [root, locale, loggedOut],
   );
   useEffect(() => {
     live.current = true;

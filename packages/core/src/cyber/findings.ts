@@ -178,6 +178,39 @@ export async function recordCyberRetest(database: Database, scope: CyberMutation
     if (data.conclusion !== 'inconclusive') {
       if (scans.some((s) => s.status !== 'succeeded'))
         throw new CyberError(409, 'comparable_completed_coverage_required');
+      const [lastResolution] = await tx
+        .select({ createdAt: cyberEvent.createdAt })
+        .from(cyberEvent)
+        .where(
+          and(
+            eq(cyberEvent.organizationId, scope.organizationId),
+            eq(cyberEvent.clientId, finding.clientId),
+            eq(cyberEvent.targetId, finding.id),
+            inArray(cyberEvent.action, [
+              'retest.absent',
+              'finding.false_positive',
+              'finding.accepted_risk',
+              'finding.closed',
+            ]),
+          ),
+        )
+        .orderBy(desc(cyberEvent.createdAt), desc(cyberEvent.id))
+        .limit(1);
+      const resolved = ['verified_fixed', 'closed', 'false_positive', 'accepted_risk'].includes(
+        finding.status,
+      );
+      const reviewedResolutionAt = resolved ? finding.reviewedAt : null;
+      // Resolution history survives a new detection clearing the current review.
+      // Neither old positive nor old clean evidence may overwrite that decision.
+      if (
+        (resolved && !reviewedResolutionAt && !lastResolution) ||
+        scans.some(
+          ({ scan }) =>
+            (lastResolution && scan.createdAt <= lastResolution.createdAt) ||
+            (reviewedResolutionAt && scan.createdAt <= reviewedResolutionAt),
+        )
+      )
+        throw new CyberError(409, 'retest_predates_resolution');
       const presentScan =
         data.conclusion === 'present'
           ? scans.find(({ scan }) => scan.engine === finding.observation.engine)?.scan

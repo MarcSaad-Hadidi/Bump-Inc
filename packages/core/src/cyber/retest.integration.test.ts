@@ -3,7 +3,7 @@ import type { CyberEngine, CyberObservation } from '@bump/contracts';
 import { assertRuntimeRole, createDatabase, migrateDatabase } from '@bump/db';
 import { createCyberVault } from '@bump/integrations';
 import { afterAll, beforeAll, beforeEach, expect, it } from 'vitest';
-import { claimExecution } from '../execution.js';
+import { claimExecution, finishExecution } from '../execution.js';
 import {
   approveCyberMandate,
   createCyberAsset,
@@ -202,6 +202,8 @@ async function scenario(
       version?: string;
       coverage?: string;
       engine?: CyberEngine;
+      outcome?: 'failed' | 'cancelled';
+      pending?: 'queued' | 'running' | 'retry_wait';
     } = {},
   ) {
     const selectedEngine = options.engine ?? engine;
@@ -223,12 +225,36 @@ async function scenario(
     );
     expect(scans).toHaveLength(assets.length);
     for (const { scan } of scans) {
+      if (options.pending === 'queued') continue;
       const attempt = await claimExecution(db, {
         organizationId: fixtureScope.organizationId,
         userId: fixtureScope.userId,
         jobId: scan.executionJobId,
       });
       if (!attempt) throw new Error('Synthetic retest scan could not be claimed');
+      if (options.pending === 'running') continue;
+      if (options.pending === 'retry_wait')
+        await admin.pool.query(
+          'UPDATE execution_job SET max_attempts=2 WHERE organization_id=$1 AND id=$2',
+          [fixtureScope.organizationId, scan.executionJobId],
+        );
+      if (options.outcome || options.pending === 'retry_wait') {
+        const completed = await finishExecution(db, {
+          organizationId: fixtureScope.organizationId,
+          userId: fixtureScope.userId,
+          jobId: scan.executionJobId,
+          token: attempt.token,
+          outcome: options.outcome ?? 'failed',
+        });
+        expect(completed?.status).toBe(
+          options.pending === 'retry_wait'
+            ? 'retry_wait'
+            : options.outcome === 'cancelled'
+              ? 'cancelled'
+              : 'dead_letter',
+        );
+        continue;
+      }
       await finishCyberScan(
         db,
         vault,
@@ -407,6 +433,166 @@ async function importedPositive(fixture: Awaited<ReturnType<typeof scenario>>) {
   });
   return { finding, audit };
 }
+
+it('accepts a present retest using the native positive before the selected positive audit', async () => {
+  const fixture = await scenario('semgrep');
+  const finding = await fixture.confirmed(original);
+  const positive = await fixture.execute([original]);
+  await reviewCyberFinding(db, scope, finding.id, {
+    status: 'to_retest',
+    note: 'Synthetic human request to review the comparable positive retest',
+    businessImpact: 'Synthetic laboratory impact',
+    recommendation: 'Synthetic corrective action',
+  });
+  const retest = await recordCyberRetest(db, scope, {
+    findingId: finding.id,
+    auditId: positive.id,
+    conclusion: 'present',
+    note: 'Synthetic comparable native positive B confirms persistence after native positive A',
+  });
+  expect(retest?.conclusion).toBe('present');
+  const snapshot = await readCyberSnapshot(db, scope);
+  expect(snapshot.retests.find((item) => item.id === retest?.id)?.auditId).toBe(positive.id);
+  expect(snapshot.findings.find((item) => item.id === finding.id)?.status).toBe('confirmed');
+});
+
+it('does not borrow a future native positive baseline for an earlier present retest', async () => {
+  const fixture = await scenario('semgrep');
+  const finding = await fixture.confirmed(original);
+  const positive = await fixture.execute([original]);
+  await fixture.execute([{ ...original, engineVersion: 'synthetic-retest-v2' }], {
+    version: 'synthetic-retest-v2',
+    coverage: 'b'.repeat(64),
+  });
+  const retest = await recordCyberRetest(db, scope, {
+    findingId: finding.id,
+    auditId: positive.id,
+    conclusion: 'present',
+    note: 'Synthetic present review uses prior native evidence A, excluding later audit C',
+  });
+  expect(retest?.conclusion).toBe('present');
+});
+
+it.each([
+  { version: 'synthetic-retest-v2', coverage: coverageHash, changed: 'version' },
+  { version: engineVersion, coverage: 'b'.repeat(64), changed: 'coverage' },
+])('rejects a present retest with a noncomparable $changed', async (options) => {
+  const fixture = await scenario('semgrep');
+  const finding = await fixture.confirmed(original);
+  const positive = await fixture.execute(
+    [{ ...original, engineVersion: options.version }],
+    options,
+  );
+  await expect(
+    recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: positive.id,
+      conclusion: 'present',
+      note: 'Synthetic positive observation does not establish comparable detector coverage',
+    }),
+  ).rejects.toMatchObject({ code: 'comparable_completed_coverage_required' });
+  const before = (await readCyberSnapshot(db, scope)).findings.find(
+    (item) => item.id === finding.id,
+  );
+  const retest = await recordCyberRetest(db, scope, {
+    findingId: finding.id,
+    auditId: positive.id,
+    conclusion: 'inconclusive',
+    note: 'Synthetic incomparable positive result remains inconclusive',
+  });
+  expect(retest?.conclusion).toBe('inconclusive');
+  expect(
+    (await readCyberSnapshot(db, scope)).findings.find((item) => item.id === finding.id),
+  ).toEqual(before);
+});
+
+it.each([
+  { version: 'synthetic-retest-v2', coverage: coverageHash, changed: 'version' },
+  { version: engineVersion, coverage: 'b'.repeat(64), changed: 'coverage' },
+])('does not skip the latest prior native positive with a changed $changed', async (latest) => {
+  const fixture = await scenario('semgrep');
+  const finding = await fixture.confirmed(original);
+  await fixture.execute([{ ...original, engineVersion: latest.version }], latest);
+  const positive = await fixture.execute([original]);
+  await expect(
+    recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: positive.id,
+      conclusion: 'present',
+      note: 'Synthetic old detector/profile cannot skip the latest prior native positive',
+    }),
+  ).rejects.toMatchObject({ code: 'comparable_completed_coverage_required' });
+});
+
+it('does not use the selected native positive itself as a baseline after an import', async () => {
+  const fixture = await scenario('semgrep', false, scope, true);
+  const { finding } = await importedPositive(fixture);
+  const native = await fixture.execute([original]);
+  await expect(
+    recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: native.id,
+      conclusion: 'present',
+      note: 'Synthetic first native positive has no earlier native baseline',
+    }),
+  ).rejects.toMatchObject({ code: 'comparable_completed_coverage_required' });
+});
+
+it.each(['json', 'failed', 'cancelled'] as const)(
+  'records an inconclusive terminal %s retest without a native baseline or finding changes',
+  async (completion) => {
+    const fixture = await scenario('semgrep', false, scope, true);
+    const { finding } = await importedPositive(fixture);
+    const selected =
+      completion === 'json'
+        ? await fixture.execute([{ ...original, engineVersion: '1.183.0 (imported)' }], {
+            engine: 'json',
+          })
+        : await fixture.execute([], { outcome: completion });
+    for (const conclusion of ['absent', 'present'] as const)
+      await expect(
+        recordCyberRetest(db, scope, {
+          findingId: finding.id,
+          auditId: selected.id,
+          conclusion,
+          note: 'Synthetic missing native evidence cannot establish a favorable resolution',
+        }),
+      ).rejects.toMatchObject({ code: 'comparable_completed_coverage_required' });
+    const before = (await readCyberSnapshot(db, scope)).findings.find(
+      (item) => item.id === finding.id,
+    );
+    const retest = await recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: selected.id,
+      conclusion: 'inconclusive',
+      note: 'Synthetic terminal result preserves uncertainty without native evidence',
+    });
+    expect(retest?.conclusion).toBe('inconclusive');
+    const after = await readCyberSnapshot(db, scope);
+    expect(after.findings.find((item) => item.id === finding.id)).toEqual(before);
+    expect(after.retests).toHaveLength(1);
+  },
+);
+
+it.each(['queued', 'running', 'retry_wait'] as const)(
+  'rejects an inconclusive retest while its scan remains %s',
+  async (pending) => {
+    const fixture = await scenario('semgrep');
+    const finding = await fixture.confirmed(original);
+    const selected = await fixture.execute([], { pending });
+    await expect(
+      recordCyberRetest(db, scope, {
+        findingId: finding.id,
+        auditId: selected.id,
+        conclusion: 'inconclusive',
+        note: 'Synthetic unfinished scans are not eligible for a retest conclusion',
+      }),
+    ).rejects.toMatchObject({ code: 'completed_asset_audit_required' });
+    const after = await readCyberSnapshot(db, scope);
+    expect(after.findings.find((item) => item.id === finding.id)?.status).toBe('confirmed');
+    expect(after.retests).toHaveLength(0);
+  },
+);
 
 it('uses a native positive baseline after an imported first observation', async () => {
   const fixture = await scenario('semgrep', false, scope, true);

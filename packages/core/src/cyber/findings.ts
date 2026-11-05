@@ -10,7 +10,7 @@ import {
   type Database,
   executionJob,
 } from '@bump/db';
-import { and, desc, eq, inArray, ne, sql } from 'drizzle-orm';
+import { and, desc, eq, inArray, lt, ne, sql } from 'drizzle-orm';
 import { alias } from 'drizzle-orm/pg-core';
 import {
   CyberError,
@@ -108,64 +108,82 @@ export async function recordCyberRetest(database: Database, scope: CyberMutation
           eq(cyberScan.assetId, finding.assetId),
         ),
       );
-    if (!scans.length || scans.some((s) => s.status !== 'succeeded'))
-      throw new CyberError(409, 'comparable_completed_coverage_required');
-    // Choose the latest verified native positive before comparing the retest.
-    // Filtering by its version, coverage or date first could reuse an old baseline.
-    const positiveScan = alias(cyberScan, 'positive_native_scan');
-    const [baseline] = await tx
-      .select({
-        engine: positiveScan.engine,
-        engineVersion: positiveScan.engineVersion,
-        coverageHash: positiveScan.coverageHash,
-        scanCreatedAt: positiveScan.createdAt,
-        observedAt: cyberObservation.createdAt,
-      })
-      .from(cyberObservation)
-      .innerJoin(
-        positiveScan,
-        and(
-          eq(positiveScan.id, cyberObservation.scanId),
-          eq(positiveScan.organizationId, cyberObservation.organizationId),
-          eq(positiveScan.clientId, cyberObservation.clientId),
-          eq(positiveScan.assetId, cyberObservation.assetId),
-          eq(positiveScan.auditId, cyberObservation.auditId),
-        ),
+    if (!scans.length || scans.some((s) => ['queued', 'running', 'retry_wait'].includes(s.status)))
+      throw new CyberError(409, 'completed_asset_audit_required');
+    if (data.conclusion !== 'inconclusive') {
+      if (scans.some((s) => s.status !== 'succeeded'))
+        throw new CyberError(409, 'comparable_completed_coverage_required');
+      const presentScan =
+        data.conclusion === 'present'
+          ? scans.find(({ scan }) => scan.engine === finding.observation.engine)?.scan
+          : undefined;
+      if (data.conclusion === 'present' && !presentScan)
+        throw new CyberError(409, 'comparable_completed_coverage_required');
+      // Absence uses the latest native positive without retest-dependent prefilters.
+      // Presence instead compares against the latest positive before its selected scan.
+      // Choose that baseline before comparing versions or coverage in either case.
+      const positiveScan = alias(cyberScan, 'positive_native_scan');
+      const [baseline] = await tx
+        .select({
+          engine: positiveScan.engine,
+          engineVersion: positiveScan.engineVersion,
+          coverageHash: positiveScan.coverageHash,
+          scanCreatedAt: positiveScan.createdAt,
+          observedAt: cyberObservation.createdAt,
+        })
+        .from(cyberObservation)
+        .innerJoin(
+          positiveScan,
+          and(
+            eq(positiveScan.id, cyberObservation.scanId),
+            eq(positiveScan.organizationId, cyberObservation.organizationId),
+            eq(positiveScan.clientId, cyberObservation.clientId),
+            eq(positiveScan.assetId, cyberObservation.assetId),
+            eq(positiveScan.auditId, cyberObservation.auditId),
+          ),
+        )
+        .innerJoin(
+          executionJob,
+          and(
+            eq(executionJob.id, positiveScan.executionJobId),
+            eq(executionJob.organizationId, positiveScan.organizationId),
+            eq(executionJob.status, 'succeeded'),
+          ),
+        )
+        .where(
+          and(
+            eq(cyberObservation.organizationId, scope.organizationId),
+            eq(cyberObservation.clientId, finding.clientId),
+            eq(cyberObservation.assetId, finding.assetId),
+            eq(cyberObservation.findingId, finding.id),
+            inArray(positiveScan.engine, ['semgrep', 'trivy', 'gitleaks', 'web-passive']),
+            eq(positiveScan.engine, sql<string>`${cyberObservation.data}->>'engine'`),
+            eq(positiveScan.engineVersion, sql<string>`${cyberObservation.data}->>'engineVersion'`),
+            ne(positiveScan.coverageHash, ''),
+            presentScan
+              ? and(
+                  ne(cyberObservation.auditId, data.auditId),
+                  lt(positiveScan.createdAt, presentScan.createdAt),
+                  lt(cyberObservation.createdAt, presentScan.createdAt),
+                )
+              : undefined,
+          ),
+        )
+        .orderBy(desc(cyberObservation.createdAt), desc(cyberObservation.id))
+        .limit(1);
+      if (
+        !baseline?.coverageHash ||
+        !scans.some(
+          ({ scan }) =>
+            scan.engine === baseline.engine &&
+            scan.engineVersion === baseline.engineVersion &&
+            scan.coverageHash === baseline.coverageHash &&
+            scan.createdAt > baseline.scanCreatedAt &&
+            scan.createdAt > baseline.observedAt,
+        )
       )
-      .innerJoin(
-        executionJob,
-        and(
-          eq(executionJob.id, positiveScan.executionJobId),
-          eq(executionJob.organizationId, positiveScan.organizationId),
-          eq(executionJob.status, 'succeeded'),
-        ),
-      )
-      .where(
-        and(
-          eq(cyberObservation.organizationId, scope.organizationId),
-          eq(cyberObservation.clientId, finding.clientId),
-          eq(cyberObservation.assetId, finding.assetId),
-          eq(cyberObservation.findingId, finding.id),
-          inArray(positiveScan.engine, ['semgrep', 'trivy', 'gitleaks', 'web-passive']),
-          eq(positiveScan.engine, sql<string>`${cyberObservation.data}->>'engine'`),
-          eq(positiveScan.engineVersion, sql<string>`${cyberObservation.data}->>'engineVersion'`),
-          ne(positiveScan.coverageHash, ''),
-        ),
-      )
-      .orderBy(desc(cyberObservation.createdAt), desc(cyberObservation.id))
-      .limit(1);
-    if (
-      !baseline?.coverageHash ||
-      !scans.some(
-        ({ scan }) =>
-          scan.engine === baseline.engine &&
-          scan.engineVersion === baseline.engineVersion &&
-          scan.coverageHash === baseline.coverageHash &&
-          scan.createdAt > baseline.scanCreatedAt &&
-          scan.createdAt > baseline.observedAt,
-      )
-    )
-      throw new CyberError(409, 'comparable_completed_coverage_required');
+        throw new CyberError(409, 'comparable_completed_coverage_required');
+    }
     const [latestPositive] = await tx
       .select({ createdAt: cyberObservation.createdAt })
       .from(cyberObservation)

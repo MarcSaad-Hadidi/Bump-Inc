@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { STATUS_CODES } from 'node:http';
 import type { ApiEnv } from '@bump/contracts';
+import { CyberError } from '@bump/core';
 import { loggerOptions } from '@bump/observability';
 import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
@@ -53,6 +54,7 @@ export function buildServer(env: ApiEnv, injectedDependencies?: Dependencies) {
     }
     reply.code(statusCode).send({
       error: STATUS_CODES[statusCode] ?? 'Request failed',
+      ...(error instanceof CyberError ? { code: error.code } : {}),
       requestId: request.id,
     });
   });

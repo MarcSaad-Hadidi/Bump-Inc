@@ -1,19 +1,24 @@
 import { type CyberEngine, cyberEngineSchema, cyberId, cyberText } from '@bump/contracts';
 import {
   approveCyberMandate,
+  approveCyberReport,
   assignCyberRole,
+  CyberError,
   cancelExecution,
   compareCyberAudits,
   createCyberAsset,
   createCyberClient,
   createCyberMandate,
+  createCyberReport,
   createCyberSource,
   createCyberTask,
   launchCyberAudit,
   purgeCyberArtifacts,
   readCyberFinding,
+  readCyberReport,
   readCyberSnapshot,
   recordCyberRetest,
+  renderCyberReportHtml,
   reviewCyberFinding,
   saveCyberSource,
   updateCyberClient,
@@ -22,6 +27,7 @@ import type { Database } from '@bump/db';
 import { type CyberVault, loadCyberVault } from '@bump/integrations';
 import type { FastifyInstance, FastifyRequest } from 'fastify';
 import { z } from 'zod';
+import { renderCyberPdf } from './cyber-pdf.js';
 
 const params = z.object({ organizationId: cyberId });
 const selected = params.extend({ id: cyberId });
@@ -67,7 +73,13 @@ export async function registerCyberRoutes(
   const base = '/organizations/:organizationId/cyber';
   let vaultPromise: Promise<CyberVault> | undefined;
   const vault = () =>
-    injectedVault ? Promise.resolve(injectedVault) : (vaultPromise ??= loadCyberVault());
+    injectedVault
+      ? Promise.resolve(injectedVault)
+      : (vaultPromise ??= loadCyberVault().catch(() => {
+          vaultPromise = undefined;
+          throw new CyberError(503, 'cyber_vault_unavailable');
+        }));
+  let renderingPdf = false;
   async function scopeFor(request: FastifyRequest) {
     const { user } = await sessionFor(request);
     return { ...params.parse(request.params), userId: user.id, requestId: request.id };
@@ -168,6 +180,53 @@ export async function registerCyberRoutes(
   app.post(`${base}/retests`, async (req, reply) =>
     reply.code(201).send(await recordCyberRetest(database, await scopeFor(req), req.body)),
   );
+  app.post(`${base}/reports`, async (req, reply) =>
+    reply.code(201).send(await createCyberReport(database, await scopeFor(req), req.body)),
+  );
+  app.get(`${base}/reports/:id`, async (req) => {
+    const scope = await selectFor(req);
+    return readCyberReport(database, scope, scope.id);
+  });
+  app.post(`${base}/reports/:id/approve`, async (req) => {
+    const scope = await selectFor(req);
+    const data = z
+      .strictObject({
+        confirm: z.literal(true),
+        expectedSha256: z.string().regex(/^[a-f0-9]{64}$/),
+      })
+      .parse(req.body);
+    return approveCyberReport(database, scope, scope.id, data.expectedSha256);
+  });
+  app.get(`${base}/reports/:id/html`, async (req, reply) => {
+    const scope = await selectFor(req);
+    const report = await readCyberReport(database, scope, scope.id);
+    return reply
+      .type('text/html; charset=utf-8')
+      .header('cache-control', 'private, no-store')
+      .header('x-frame-options', 'SAMEORIGIN')
+      .header(
+        'content-security-policy',
+        "default-src 'none'; style-src 'unsafe-inline'; frame-ancestors 'self'; base-uri 'none'; form-action 'none'",
+      )
+      .send(renderCyberReportHtml(report.snapshot, !!report.approvedAt));
+  });
+  app.get(`${base}/reports/:id/pdf`, async (req, reply) => {
+    const scope = await selectFor(req);
+    const report = await readCyberReport(database, scope, scope.id);
+    if (!report.approvedAt) throw new CyberError(409, 'report_approval_required');
+    if (renderingPdf) throw new CyberError(503, 'report_generation_busy');
+    renderingPdf = true;
+    try {
+      const pdf = await renderCyberPdf(report.snapshot);
+      return reply
+        .type('application/pdf')
+        .header('cache-control', 'private, no-store')
+        .header('content-disposition', `attachment; filename="Bump-Cyber-${report.id}.pdf"`)
+        .send(pdf);
+    } finally {
+      renderingPdf = false;
+    }
+  });
   app.get(`${base}/comparison`, async (req) => {
     const scope = await scopeFor(req);
     const q = z.strictObject({ before: cyberId, after: cyberId }).parse(req.query);

@@ -16,17 +16,22 @@
     "@bump/identity": "workspace:*",
     "@bump/integrations": "workspace:*",
     "@bump/observability": "workspace:*",
+    "@bump/worker": "workspace:*",
     "@fastify/helmet": "13.2.0",
     "@fastify/rate-limit": "11.2.1",
-    "fastify": "5.12.7",
     "better-auth": "1.7.12",
+    "bullmq": "5.81.5",
     "drizzle-orm": "0.45.4",
+    "fastify": "5.12.7",
     "ioredis": "5.11.1",
-    "zod": "4.6.7",
-    "@bump/worker": "workspace:*",
-    "bullmq": "5.81.5"
+    "pdfkit": "0.20.2",
+    "zod": "4.6.7"
   },
   "files": [
-    "dist"
-  ]
+    "dist",
+    "assets"
+  ],
+  "devDependencies": {
+    "@types/pdfkit": "0.17.7"
+  }
 }

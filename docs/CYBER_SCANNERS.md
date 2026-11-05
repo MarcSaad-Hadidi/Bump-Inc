@@ -78,6 +78,10 @@ présenter une suppression source comme une correction. Son profil de couverture
 est versionné. Semgrep utilise `--disable-nosem` ; les directives ne valent pas revue humaine.
 Les conteneurs sont supprimés
 à l'annulation et en nettoyage final, et les fichiers temporaires sont retirés.
+Un SIGKILL du worker peut laisser le répertoire privé de code déchiffré sur
+l’hôte ; le watchdog ne nettoie que le conteneur. Un `TMPDIR` privé en mémoire
+ou chiffré et une récupération après incident restent des préalables à l’usage
+client ; voir [l’exploitation](CYBER_OPERATIONS.md).
 Le worker revalide membership, rôle, mandat, arrêt d'urgence et tentative pendant
 l'analyse, puis avant la sauvegarde transactionnelle. Une perte d'autorisation ou
 de base de données interrompt l'analyse. Le contrôle de concurrence et le transport

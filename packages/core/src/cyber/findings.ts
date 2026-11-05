@@ -12,6 +12,7 @@ import {
 } from '@bump/db';
 import { and, desc, eq, inArray, lt, ne, sql } from 'drizzle-orm';
 import { alias } from 'drizzle-orm/pg-core';
+import { z } from 'zod';
 import {
   CyberError,
   type CyberMutation,
@@ -79,6 +80,70 @@ export async function createCyberTask(database: Database, scope: CyberMutation, 
       .returning();
     await cyberEventIn(tx, scope, 'remediation.assigned', data.findingId, f.clientId);
     return v;
+  });
+}
+export async function updateCyberTask(
+  database: Database,
+  scope: CyberMutation,
+  id: string,
+  input: unknown,
+) {
+  const data = z
+    .strictObject({
+      status: z.enum(['planned', 'in_progress', 'to_retest']),
+      note: z.string().trim().min(1).max(4000),
+    })
+    .parse(input);
+  return withCyber(database, scope, async (tx, role) => {
+    requireCyberRole(role, ['admin', 'consultant', 'analyst']);
+    // This reference read must stay unlocked: retests lock finding then tasks.
+    // Recheck the task association after taking the same finding-first locks.
+    const [reference] = await tx
+      .select({ findingId: cyberTask.findingId, clientId: cyberTask.clientId })
+      .from(cyberTask)
+      .where(and(eq(cyberTask.organizationId, scope.organizationId), eq(cyberTask.id, id)));
+    if (!reference) throw new CyberError(404, 'task_not_found');
+    const [finding] = await tx
+      .select()
+      .from(cyberFinding)
+      .where(
+        and(
+          eq(cyberFinding.organizationId, scope.organizationId),
+          eq(cyberFinding.id, reference.findingId),
+          eq(cyberFinding.clientId, reference.clientId),
+        ),
+      )
+      .for('update');
+    if (!finding) throw new CyberError(409, 'confirmed_finding_required');
+    const [task] = await tx
+      .select()
+      .from(cyberTask)
+      .where(
+        and(
+          eq(cyberTask.organizationId, scope.organizationId),
+          eq(cyberTask.id, id),
+          eq(cyberTask.findingId, finding.id),
+          eq(cyberTask.clientId, finding.clientId),
+        ),
+      )
+      .for('update');
+    if (!task) throw new CyberError(404, 'task_not_found');
+    if (!['confirmed', 'planned', 'in_progress', 'to_retest'].includes(finding.status))
+      throw new CyberError(409, 'confirmed_finding_required');
+    const [updated] = await tx
+      .update(cyberTask)
+      .set({ status: data.status })
+      .where(eq(cyberTask.id, id))
+      .returning();
+    await cyberEventIn(
+      tx,
+      scope,
+      `remediation.${data.status}`,
+      task.findingId,
+      task.clientId,
+      data.note,
+    );
+    return updated;
   });
 }
 export async function recordCyberRetest(database: Database, scope: CyberMutation, input: unknown) {
@@ -276,6 +341,16 @@ export async function recordCyberRetest(database: Database, scope: CyberMutation
           updatedAt: new Date(),
         })
         .where(eq(cyberFinding.id, finding.id));
+    if (data.conclusion === 'absent')
+      await tx
+        .update(cyberTask)
+        .set({ status: 'verified_fixed' })
+        .where(
+          and(
+            eq(cyberTask.organizationId, scope.organizationId),
+            eq(cyberTask.findingId, finding.id),
+          ),
+        );
     await cyberEventIn(
       tx,
       scope,

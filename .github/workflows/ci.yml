@@ -143,10 +143,15 @@ jobs:
         with:
           node-version-file: .node-version
       - run: cp .env.example .env
-      - run: docker compose --profile app config --quiet
-      - run: docker compose --profile app up --build -d --wait --wait-timeout 180
+      - run: node scripts/cyber-init.mjs
+      - name: Match the local evidence key owner to the container user
+        run: sudo chown 1000:1000 .artifacts/cyber-keys/local.key
+      - run: docker compose -f compose.yaml -f compose.cyber.yaml --profile app config --quiet
+      - run: docker compose -f compose.yaml -f compose.cyber.yaml --profile app up --build -d --wait --wait-timeout 180
       - run: node scripts/compose-smoke.mjs
-      - run: docker compose --profile app logs --no-color
+        env:
+          CYBER_COMPOSE_SMOKE: "true"
+      - run: docker compose -f compose.yaml -f compose.cyber.yaml --profile app logs --no-color
         if: failure()
-      - run: docker compose --profile app down --volumes
+      - run: docker compose -f compose.yaml -f compose.cyber.yaml --profile app down --volumes
         if: always()

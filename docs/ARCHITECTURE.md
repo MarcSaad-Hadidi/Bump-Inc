@@ -48,7 +48,7 @@ Environment variables are validated on application startup or first server acces
 
 Invitations require the verified intended recipient, an unexpired grant and the inviter's current owner/admin membership at acceptance. Demotion or removal of the inviter prevents acceptance. Reissue creates a fresh invitation attributed to the current actor. Delivery occurs after transaction commit; failure preserves a pending invitation and reports failure. `packages/integrations` validates bounded plaintext mail and explicit SMTP configuration; production requires verified TLS. Local Mailpit captures messages without external delivery.
 
-The UI remains diagnostic. Local signup is explicitly configured; public production signup and initial production account provisioning are unavailable. MFA, owner transfer, organization/account deletion, advanced pagination and production mail operations are outside this slice. Cross-tenant denial, revocation, forced audit rollback and real SMTP/verification flows passed the acceptance run linked in identity validation.
+The foundation route remains diagnostic. Bump Cyber adds the private FR/EN consultant workspace at `/cyber` and the Better Auth TOTP plugin; see [Cyber architecture](CYBER_ARCHITECTURE.md), [identity](CYBER_IDENTITY.md) and [validation](CYBER_VALIDATION.md). Local signup is explicitly configured; public production signup and initial production account provisioning remain unavailable. Owner transfer, organization/account deletion, advanced pagination and production mail operations are outside the delivered slice. Cross-tenant denial, revocation, forced audit rollback and real SMTP/verification flows passed the acceptance run linked in identity validation.
 
 ## Domain evolution and security gates
 

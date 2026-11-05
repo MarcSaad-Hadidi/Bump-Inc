@@ -5,10 +5,36 @@ import { and, eq, sql } from 'drizzle-orm';
 import {
   CyberError,
   type CyberMutation,
+  type CyberScope,
   cyberEventIn,
   requireCyberRole,
   withCyber,
 } from './context.js';
+export async function readCyberRoles(database: Database, scope: CyberScope) {
+  return withCyber(database, scope, async (tx, role) => {
+    requireCyberRole(role, ['admin']);
+    const rows = await tx
+      .select({
+        userId: authSchema.member.userId,
+        tenantRole: authSchema.member.role,
+        cyberRole: cyberRole.role,
+      })
+      .from(authSchema.member)
+      .leftJoin(
+        cyberRole,
+        and(
+          eq(cyberRole.organizationId, authSchema.member.organizationId),
+          eq(cyberRole.userId, authSchema.member.userId),
+        ),
+      )
+      .where(eq(authSchema.member.organizationId, scope.organizationId))
+      .limit(100);
+    return rows.map((r) => ({
+      userId: r.userId,
+      role: ['owner', 'admin'].includes(r.tenantRole) ? 'admin' : (r.cyberRole ?? 'analyst'),
+    }));
+  });
+}
 export async function purgeCyberArtifacts(database: Database, scope: CyberMutation) {
   return withCyber(database, scope, async (tx, role) => {
     requireCyberRole(role, ['admin']);

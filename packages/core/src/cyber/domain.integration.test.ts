@@ -6,6 +6,7 @@ import {
   cyberFinding,
   cyberReport,
   cyberRetest,
+  cyberScan,
   cyberSource,
   migrateDatabase,
   withTenant,
@@ -28,6 +29,7 @@ import {
   readCyberSnapshot,
   recordCyberRetest,
   reviewCyberFinding,
+  updateCyberTask,
   withCyber,
 } from './service.js';
 
@@ -733,4 +735,55 @@ it('does not confirm a correction when its resolution event has no matching abse
   const report = await createCyberReport(db, scope, { ...scenario.input, auditId: clean.id });
   expect(report.snapshot.unreviewedCount).toBe(1);
   expect(report.snapshot.findings).toEqual([]);
+});
+
+it('records inconclusive verification without asserting a fix, and protects remediation updates', async () => {
+  const snapshot = await readCyberSnapshot(db, scope);
+  const finding = snapshot.findings.find(
+    (f) => f.status === 'confirmed' && f.observation.ruleId === 'synthetic-reappearance',
+  )!;
+  const scan = snapshot.scans.find((s) => s.scan.auditId === finding.lastAuditId)!;
+  await withTenant(db, scope, (tx) =>
+    tx.update(cyberScan).set({ coverageHash: '' }).where(eq(cyberScan.id, scan.scan.id)),
+  );
+  const input = {
+    findingId: finding.id,
+    auditId: finding.lastAuditId,
+    note: 'Synthetic imported result does not establish comparable coverage.',
+  };
+  await expect(
+    recordCyberRetest(db, scope, { ...input, conclusion: 'absent' }),
+  ).rejects.toMatchObject({ code: 'comparable_completed_coverage_required' });
+  await recordCyberRetest(db, scope, { ...input, conclusion: 'inconclusive' });
+  expect(
+    (await readCyberSnapshot(db, scope)).findings.find((f) => f.id === finding.id)?.status,
+  ).toBe('confirmed');
+  const task = await createCyberTask(db, scope, {
+    findingId: finding.id,
+    assignee: 'Synthetic lab engineer',
+    dueAt: new Date(Date.now() + 86400000).toISOString(),
+    description: 'Remove synthetic unsafe evaluation.',
+  });
+  await expect(
+    updateCyberTask(db, other, task!.id, { status: 'in_progress', note: 'Forbidden organization' }),
+  ).rejects.toMatchObject({ statusCode: 404 });
+  await expect(
+    updateCyberTask(db, scope, task!.id, {
+      status: 'verified_fixed',
+      note: 'Cannot bypass a retest',
+    }),
+  ).rejects.toThrow();
+  expect(
+    (
+      await updateCyberTask(db, { ...scope, userId: analyst }, task!.id, {
+        status: 'in_progress',
+        note: 'Synthetic work started',
+      })
+    )?.status,
+  ).toBe('in_progress');
+  expect(
+    (await readCyberSnapshot(db, scope)).events.some(
+      (e) => e.action === 'remediation.in_progress' && e.targetId === finding.id,
+    ),
+  ).toBe(true);
 });

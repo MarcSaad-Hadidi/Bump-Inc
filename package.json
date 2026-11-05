@@ -11,7 +11,7 @@
   "scripts": {
     "build:packages": "pnpm --filter \"./packages/*\" --filter @bump/worker -r build",
     "build": "pnpm -r build",
-    "dev": "pnpm build:packages && pnpm --parallel --filter \"./apps/*\" dev",
+    "dev": "pnpm build:packages && pnpm --parallel --no-bail --filter \"./apps/*\" dev",
     "lint": "biome check .",
     "format": "biome check --write .",
     "typecheck": "pnpm build:packages && pnpm -r typecheck && tsc --noEmit",
@@ -41,6 +41,7 @@
     "@bump/contracts": "workspace:*",
     "@bump/integrations": "workspace:*",
     "ioredis": "5.11.1",
-    "bullmq": "5.81.5"
+    "bullmq": "5.81.5",
+    "@bump/identity": "workspace:*"
   }
 }

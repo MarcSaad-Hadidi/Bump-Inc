@@ -2,11 +2,11 @@
 
 Le site public Bump (version 46, français et anglais) est disponible dans **[`website/`](website/README.md)**. Ce dossier contient ses propres sources, modèles 3D, musique, polices, dépendances et instructions pour un hébergement indépendant.
 
-Technology consulting platform foundation. PR 01 supplies a strict TypeScript workspace, Fastify API, PostgreSQL migrations, Redis/BullMQ worker, minimal Next.js diagnostics, local containers and automated checks. Business features remain planned in [the PR roadmap](docs/PR_ROADMAP.md).
+Le dépôt réunit Bump OS, le prototype local Loi 25 et l’espace privé **Bump Cyber** à `/cyber`. Cyber réutilise Next.js/React, Fastify, PostgreSQL/Drizzle, Redis/BullMQ et Better Auth. Ses clients, mandats, analyses, constats et rapports sont distincts du produit Loi 25. Voir [les 16 livrables et limites](docs/CYBER_DELIVERY.md), [l’architecture Cyber](docs/CYBER_ARCHITECTURE.md), [l’installation et l’exploitation](docs/CYBER_OPERATIONS.md) et [les résultats de validation](docs/CYBER_VALIDATION.md).
 
 The `loi-25` branch adds a local passive audit prototype at `/loi-25`; see [setup, scope and restrictions](docs/LOI25.md).
 
-This is an internal development foundation. Authentication and tenant isolation are not implemented. Do not expose the diagnostic applications publicly or import customer data. Production deployment has not been authorized or verified.
+L’authentification avec email vérifié, le TOTP, les contrôles de rôles et l’isolation tenant sont implémentés dans le parcours Cyber. L’exploitation de production, la conservation documentaire et les accès d’infrastructure doivent encore être validés avant des données client réelles. Aucun déploiement Cyber en production n’a été autorisé ni effectué. Les hooks Cloudflare existants du dépôt créent leurs aperçus de branche pour le site public, dont les fichiers restent inchangés.
 
 ## Local setup
 
@@ -26,12 +26,15 @@ pnpm install --frozen-lockfile
 pnpm infra:up
 pnpm build:packages
 pnpm db:migrate
+pnpm cyber:init
 pnpm dev
 ```
 
 On a POSIX shell use `cp` in place of `Copy-Item`. Examples contain local development/test configuration only. Keep environment files out of version control, and do not reuse their database credentials elsewhere. Review environment values before running migrations.
 
 Open [the diagnostic page](http://127.0.0.1:3000). It performs fresh server-side checks and displays failed or timed-out checks as unavailable. API [liveness](http://127.0.0.1:3001/health/live) checks the process; [readiness](http://127.0.0.1:3001/health/ready) also checks PostgreSQL and Redis.
+
+Pour Cyber, ouvrir [l’espace privé](http://127.0.0.1:3000/cyber), créer un compte local, vérifier le courriel dans [Mailpit](http://127.0.0.1:8025), puis créer l’organisation. `pnpm cyber:tools` prépare les trois images officielles épinglées et la base publique Trivy, sans analyser de cible. Les moteurs natifs nécessitent un daemon Docker Linux capable d’appliquer CPU, mémoire, swap, PID et seccomp ; sinon ils restent indisponibles et les imports JSON/SARIF restent proposés. Voir [les profils réellement intégrés](docs/CYBER_SCANNERS.md).
 
 `API_INTERNAL_URL` is a server-side HTTP(S) origin, normally `http://127.0.0.1:3001`; the full container stack uses `http://api:3001`. It cannot contain credentials, a non-root path, query or fragment. Next loads the root `.env` with Node's native environment-file support; shell-provided variables take precedence. Configuration must come from trusted operators.
 
@@ -54,7 +57,7 @@ pnpm test:e2e
 
 `pnpm check` runs lint, typecheck, unit tests and build. Integration tests load `.env.test`; its example uses database `bump_test` and Redis database 1. Compose initializes the test database when its PostgreSQL volume is first created. For an existing volume, create that test database explicitly without deleting development data. Browser tests use separate application ports 3100 and 3101.
 
-Integration and browser tests require PostgreSQL and Redis. They verify actual persistence and queue processing. Run them only against isolated local test services; shell-provided values override environment files. Review [validation evidence](docs/VALIDATION.md) for actual results and blockers.
+Integration and browser tests require PostgreSQL and Redis. They verify actual persistence and queue processing. Run them only against isolated local test services; shell-provided values override environment files. Les E2E utilisent 3100, 3101 et 3102 avec un worker réel. `pnpm test:scanners` exécute les trois outils natifs dans des conteneurs isolés sur le laboratoire synthétique ; l’absence de limites Docker bloque ce contrôle. Review [Cyber validation evidence](docs/CYBER_VALIDATION.md) for actual results and blockers.
 
 The browser smoke test expects healthy API dependencies. Unit tests cover unreachable API behavior, non-success health responses and invalid internal URLs. The worker's internal probe verifies queue-to-database delivery; it is not a customer job API or full execution engine.
 
@@ -66,7 +69,7 @@ GitHub Actions supplies automated checks, dependency analysis and secret scannin
 | -------------------- | ----------------------------------------------- |
 | `apps/api`           | HTTP API and health checks                      |
 | `apps/worker`        | Asynchronous job consumption                    |
-| `apps/web`           | Internal foundation diagnostics                 |
+| `apps/web`           | Diagnostics, Loi 25 et espace privé Cyber       |
 | `packages/db`        | Database schema and versioned migrations        |
 | `packages/contracts` | Shared boundary validation                      |
 | `tests/e2e`          | Essential browser behavior                      |

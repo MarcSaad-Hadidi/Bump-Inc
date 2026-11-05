@@ -10,6 +10,7 @@ import { ZodError } from 'zod';
 import { registerAuditRoutes } from './audits.js';
 import { createDependencies, type Dependencies } from './dependencies.js';
 import { registerIdentityRoutes } from './identity-routes.js';
+import { privateRateKey } from './private-rate-key.js';
 
 export function buildServer(env: ApiEnv, injectedDependencies?: Dependencies) {
   const app = Fastify({
@@ -27,7 +28,11 @@ export function buildServer(env: ApiEnv, injectedDependencies?: Dependencies) {
 
   app.register(helmet);
   // shortcut: per-process limits, add a shared store before horizontally scaling public routes.
-  app.register(rateLimit, { max: 120, timeWindow: '1 minute' });
+  app.register(rateLimit, {
+    max: 120,
+    timeWindow: '1 minute',
+    keyGenerator: (request) => privateRateKey(request, dependencies.identity?.auth),
+  });
   app.addHook('onReady', () => dependencies.start());
   app.addHook('onClose', () => dependencies.close());
   app.addHook('onRequest', async (request, reply) => {

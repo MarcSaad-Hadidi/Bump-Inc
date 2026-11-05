@@ -473,6 +473,148 @@ it('does not borrow a future native positive baseline for an earlier present ret
   expect(retest?.conclusion).toBe('present');
 });
 
+async function rejectHistoricalPresent(findingId: string, auditId: string) {
+  const before = await readCyberSnapshot(db, scope);
+  await expect(
+    recordCyberRetest(db, scope, {
+      findingId,
+      auditId,
+      conclusion: 'present',
+      note: 'Synthetic historical positive must not overwrite a later resolution',
+    }),
+  ).rejects.toMatchObject({ statusCode: 409, code: 'retest_predates_resolution' });
+  const after = await readCyberSnapshot(db, scope);
+  expect(after.findings.find((item) => item.id === findingId)).toEqual(
+    before.findings.find((item) => item.id === findingId),
+  );
+  expect(after.retests).toEqual(before.retests);
+}
+
+it.each(['verified_fixed', 'closed'] as const)(
+  'preserves a later %s resolution against historical present evidence and accepts a new positive',
+  async (resolution) => {
+    const fixture = await scenario('semgrep');
+    const finding = await fixture.confirmed(original);
+    const positive = await fixture.execute([original]);
+    const clean = await fixture.execute([]);
+    await recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: clean.id,
+      conclusion: 'absent',
+      note: 'Synthetic clean C verifies remediation after native positives A and B',
+    });
+    if (resolution === 'closed')
+      await reviewCyberFinding(db, scope, finding.id, {
+        status: 'closed',
+        note: 'Synthetic human closure following verified remediation',
+        businessImpact: 'Synthetic resolved laboratory impact',
+        recommendation: 'Synthetic continued monitoring',
+      });
+    expect(
+      (await readCyberSnapshot(db, scope)).findings.find((item) => item.id === finding.id)?.status,
+    ).toBe(resolution);
+    await rejectHistoricalPresent(finding.id, positive.id);
+
+    const reappeared = await fixture.execute([original]);
+    const reopened = (await readCyberSnapshot(db, scope)).findings.find(
+      (item) => item.id === finding.id,
+    );
+    expect(reopened?.status).toBe('to_review');
+    expect(reopened?.reviewedAt).toBeNull();
+    expect(reopened?.reviewedBy).toBeNull();
+    await rejectHistoricalPresent(finding.id, positive.id);
+    const retest = await recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: reappeared.id,
+      conclusion: 'present',
+      note: 'Synthetic new positive D after resolution remains eligible for human confirmation',
+    });
+    expect(retest?.conclusion).toBe('present');
+    expect(
+      (await readCyberSnapshot(db, scope)).findings.find((item) => item.id === finding.id)?.status,
+    ).toBe('confirmed');
+  },
+);
+
+it.each(['false_positive', 'accepted_risk'] as const)(
+  'preserves a later human %s decision against historical present evidence',
+  async (resolution) => {
+    const fixture = await scenario('semgrep');
+    const finding = await fixture.confirmed(original);
+    const positive = await fixture.execute([original]);
+    await reviewCyberFinding(db, scope, finding.id, {
+      status: resolution,
+      note: 'Synthetic independent human resolution after the selected positive audit',
+      businessImpact: 'Synthetic reviewed laboratory impact',
+      recommendation: 'Synthetic documented human resolution',
+    });
+    await rejectHistoricalPresent(finding.id, positive.id);
+  },
+);
+
+it.each(['closed', 'false_positive', 'accepted_risk'] as const)(
+  'preserves a later %s decision against historical clean evidence',
+  async (resolution) => {
+    const fixture = await scenario('semgrep');
+    const finding = await fixture.confirmed(original);
+    const clean = await fixture.execute([]);
+    const review = {
+      status: resolution === 'closed' ? 'false_positive' : resolution,
+      note: 'Synthetic human decision after the selected clean audit',
+      businessImpact: 'Synthetic reviewed laboratory impact',
+      recommendation: 'Synthetic documented human decision',
+    };
+    await reviewCyberFinding(db, scope, finding.id, review);
+    if (resolution === 'closed')
+      await reviewCyberFinding(db, scope, finding.id, { ...review, status: 'closed' });
+    const before = await readCyberSnapshot(db, scope);
+    await expect(
+      recordCyberRetest(db, scope, {
+        findingId: finding.id,
+        auditId: clean.id,
+        conclusion: 'absent',
+        note: 'Synthetic historical clean audit must not overwrite a later human decision',
+      }),
+    ).rejects.toMatchObject({ statusCode: 409, code: 'retest_predates_resolution' });
+    const after = await readCyberSnapshot(db, scope);
+    expect(after.findings.find((item) => item.id === finding.id)).toEqual(
+      before.findings.find((item) => item.id === finding.id),
+    );
+    expect(after.retests).toEqual(before.retests);
+    const retest = await recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: clean.id,
+      conclusion: 'inconclusive',
+      note: 'Synthetic historical evidence may record uncertainty without changing the decision',
+    });
+    expect(retest?.conclusion).toBe('inconclusive');
+    expect(
+      (await readCyberSnapshot(db, scope)).findings.find((item) => item.id === finding.id),
+    ).toEqual(before.findings.find((item) => item.id === finding.id));
+  },
+);
+
+it('refuses a present retest when the existing resolution has no trustworthy review timestamp', async () => {
+  const fixture = await scenario('semgrep');
+  const finding = await fixture.confirmed(original);
+  const positive = await fixture.execute([original]);
+  await reviewCyberFinding(db, scope, finding.id, {
+    status: 'accepted_risk',
+    note: 'Synthetic legacy resolution with a missing timestamp',
+    businessImpact: 'Synthetic accepted laboratory impact',
+    recommendation: 'Synthetic documented human resolution',
+  });
+  await admin.pool.query(
+    'UPDATE cyber_finding SET reviewed_at=NULL WHERE organization_id=$1 AND id=$2',
+    [organizationId, finding.id],
+  );
+  await admin.pool.query(
+    'DELETE FROM cyber_event WHERE organization_id=$1 AND client_id=$2 AND target_id=$3 AND action=$4',
+    [organizationId, fixture.client.id, finding.id, 'finding.accepted_risk'],
+  );
+  await rejectHistoricalPresent(finding.id, positive.id);
+});
+
 it.each([
   { version: 'synthetic-retest-v2', coverage: coverageHash, changed: 'version' },
   { version: engineVersion, coverage: 'b'.repeat(64), changed: 'coverage' },

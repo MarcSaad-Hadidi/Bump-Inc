@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { expect, it, vi } from 'vitest';
-import { RetestForm, retestAuditCandidates } from './review';
+import { ReportForm, RetestForm, retestAuditCandidates } from './review';
 import type { Snapshot } from './types';
 
 const at = '2026-11-01T12:00:00.000Z';
@@ -176,3 +176,53 @@ it('keeps retest candidates scoped to this finding’s client and asset with a r
   ).toEqual(['audit-matching']);
   expect(retestAuditCandidates(data, undefined, 'inconclusive')).toEqual([]);
 });
+
+it('offers terminal audits including mixed successful and failed scans in report creation', () => {
+  const data = snapshot(
+    ['succeeded', 'dead_letter', 'denied', 'cancelled', 'mixed'].map((status) =>
+      audit(`audit-${status}`),
+    ),
+    [
+      ...(['succeeded', 'dead_letter', 'denied', 'cancelled'] as const).map((status) =>
+        scan(`audit-${status}`, status),
+      ),
+      scan('audit-mixed', 'succeeded'),
+      scan('audit-mixed', 'dead_letter'),
+    ],
+  );
+  const html = renderToStaticMarkup(
+    createElement(ReportForm, {
+      data,
+      locale: 'en',
+      mutate: vi.fn(),
+      close: vi.fn(),
+      created: vi.fn(),
+    }),
+  );
+  for (const candidate of data.audits) expect(html).toContain(`<option value="${candidate.id}">`);
+});
+
+it.each(['queued', 'running', 'retry_wait'] as const)(
+  'excludes audits with a %s scan and audits without scans from report creation',
+  (status) => {
+    const data = snapshot(
+      [audit('audit-active'), audit('audit-mixed-active'), audit('audit-no-scan')],
+      [
+        scan('audit-active', status),
+        scan('audit-mixed-active', 'succeeded'),
+        scan('audit-mixed-active', status),
+      ],
+    );
+    const html = renderToStaticMarkup(
+      createElement(ReportForm, {
+        data,
+        locale: 'en',
+        mutate: vi.fn(),
+        close: vi.fn(),
+        created: vi.fn(),
+      }),
+    );
+    for (const candidate of data.audits)
+      expect(html).not.toContain(`<option value="${candidate.id}">`);
+  },
+);

@@ -603,11 +603,15 @@ export function ReportForm({
 }) {
   const t = copy[locale];
   const action = useAction(locale);
-  const audits = data.audits.filter(
-    (a) =>
-      data.scans.some((s) => s.scan.auditId === a.id) &&
-      data.scans.filter((s) => s.scan.auditId === a.id).every((s) => s.status === 'succeeded'),
-  );
+  const audits = data.audits.filter((audit) => {
+    const scans = data.scans.filter((item) => item.scan.auditId === audit.id);
+    return (
+      scans.length > 0 &&
+      scans.every((item) =>
+        ['succeeded', 'dead_letter', 'denied', 'cancelled'].includes(item.status),
+      )
+    );
+  });
   return (
     <Form
       locale={locale}
@@ -660,8 +664,8 @@ export function ReportForm({
       {!audits.length && (
         <Note warning>
           {locale === 'fr'
-            ? 'Aucun audit terminé avec succès n’est disponible.'
-            : 'No successfully completed audit is available.'}
+            ? 'Aucun audit terminé n’est disponible.'
+            : 'No completed audit is available.'}
         </Note>
       )}
     </Form>

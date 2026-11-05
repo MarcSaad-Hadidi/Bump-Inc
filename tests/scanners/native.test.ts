@@ -311,6 +311,29 @@ it('runs the real queue pipeline, requires human review, records remediation and
       dueAt: new Date(Date.now() + 86400000).toISOString(),
       description: 'Remove eval from the laboratory fixture',
     });
+    const stillPresent = await launchCyberAudit(
+      db,
+      scope,
+      {
+        clientId: client.id,
+        mandateId: mandate.id,
+        assetIds: [asset.id],
+        engines: ['semgrep'],
+        title: 'Synthetic native positive retest',
+        idempotencyKey: randomUUID(),
+      },
+      ['semgrep'],
+    );
+    await complete(stillPresent.id);
+    await recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: stillPresent.id,
+      conclusion: 'present',
+      note: 'Human review of the unchanged synthetic source: the real native scanner still detects the same finding',
+    });
+    expect(
+      (await readCyberSnapshot(db, scope)).findings.find((f) => f.id === finding.id)?.status,
+    ).toBe('confirmed');
     await createCyberSource(db, vault, scope, {
       assetId: asset.id,
       name: 'Synthetic corrected snapshot',

@@ -10,7 +10,7 @@ import {
   type Database,
   executionJob,
 } from '@bump/db';
-import { and, desc, eq, inArray, ne, sql } from 'drizzle-orm';
+import { and, desc, eq, inArray, lt, ne, sql } from 'drizzle-orm';
 import { alias } from 'drizzle-orm/pg-core';
 import { z } from 'zod';
 import {
@@ -176,10 +176,17 @@ export async function recordCyberRetest(database: Database, scope: CyberMutation
     if (!scans.length || scans.some((s) => ['queued', 'running', 'retry_wait'].includes(s.status)))
       throw new CyberError(409, 'completed_asset_audit_required');
     if (data.conclusion !== 'inconclusive') {
-      if (!scans.length || scans.some((s) => s.status !== 'succeeded'))
+      if (scans.some((s) => s.status !== 'succeeded'))
         throw new CyberError(409, 'comparable_completed_coverage_required');
-      // Choose the latest verified native positive before comparing the retest.
-      // Filtering by its version, coverage or date first could reuse an old baseline.
+      const presentScan =
+        data.conclusion === 'present'
+          ? scans.find(({ scan }) => scan.engine === finding.observation.engine)?.scan
+          : undefined;
+      if (data.conclusion === 'present' && !presentScan)
+        throw new CyberError(409, 'comparable_completed_coverage_required');
+      // Absence uses the latest native positive without retest-dependent prefilters.
+      // Presence instead compares against the latest positive before its selected scan.
+      // Choose that baseline before comparing versions or coverage in either case.
       const positiveScan = alias(cyberScan, 'positive_native_scan');
       const [baseline] = await tx
         .select({
@@ -218,6 +225,13 @@ export async function recordCyberRetest(database: Database, scope: CyberMutation
             eq(positiveScan.engine, sql<string>`${cyberObservation.data}->>'engine'`),
             eq(positiveScan.engineVersion, sql<string>`${cyberObservation.data}->>'engineVersion'`),
             ne(positiveScan.coverageHash, ''),
+            presentScan
+              ? and(
+                  ne(cyberObservation.auditId, data.auditId),
+                  lt(positiveScan.createdAt, presentScan.createdAt),
+                  lt(cyberObservation.createdAt, presentScan.createdAt),
+                )
+              : undefined,
           ),
         )
         .orderBy(desc(cyberObservation.createdAt), desc(cyberObservation.id))

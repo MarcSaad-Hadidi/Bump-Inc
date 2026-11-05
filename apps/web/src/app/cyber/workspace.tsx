@@ -175,45 +175,57 @@ export function Workspace({
         : '',
     );
   }, [read, request, root, locale]);
-  const refresh = useCallback(async () => {
-    pollRequest.current?.abort();
-    const controller = new AbortController();
-    pollRequest.current = controller;
-    requests.current.add(controller);
-    const sequence = ++generation.current;
-    setRefreshing(true);
-    const result = await Promise.allSettled([
-      api<Snapshot>(`${root}/cyber/snapshot`, 'GET', undefined, controller.signal),
-      api<Capability[]>(`${root}/cyber/engines`, 'GET', undefined, controller.signal),
-      api<ExecutionControl>(`${root}/execution-control`, 'GET', undefined, controller.signal),
-    ]);
-    requests.current.delete(controller);
-    if (!live.current || controller.signal.aborted || sequence !== generation.current) return;
-    const [snapshot, capabilities, execution] = result;
-    if (snapshot.status === 'fulfilled') {
-      setData(snapshot.value);
-      setLoadError('');
-      setUpdated(new Date().toISOString());
-    } else {
-      setLoadError(errorMessage(snapshot.reason, locale));
-      if (snapshot.reason instanceof CyberApiError && [401, 403].includes(snapshot.reason.status))
-        setData(null);
-    }
-    if (capabilities.status === 'fulfilled') {
-      setEngines(capabilities.value);
-      setEngineError('');
-    } else {
-      setEngines([]);
-      setEngineError(
-        locale === 'fr'
-          ? 'Les capacités des moteurs ne peuvent pas être vérifiées.'
-          : 'Engine capabilities could not be verified.',
-      );
-    }
-    if (execution.status === 'fulfilled') setControl(execution.value);
-    else setControl(null);
-    setRefreshing(false);
-  }, [root, locale]);
+  const refresh = useCallback(
+    async (scope: 'all' | 'snapshot' = 'all') => {
+      pollRequest.current?.abort();
+      const controller = new AbortController();
+      pollRequest.current = controller;
+      requests.current.add(controller);
+      const sequence = ++generation.current;
+      setRefreshing(true);
+      const result = await Promise.allSettled([
+        api<Snapshot>(`${root}/cyber/snapshot`, 'GET', undefined, controller.signal),
+        scope === 'all'
+          ? api<Capability[]>(`${root}/cyber/engines`, 'GET', undefined, controller.signal)
+          : null,
+        scope === 'all'
+          ? api<ExecutionControl>(`${root}/execution-control`, 'GET', undefined, controller.signal)
+          : null,
+      ]);
+      requests.current.delete(controller);
+      if (!live.current || controller.signal.aborted || sequence !== generation.current) return;
+      const [snapshot, capabilities, execution] = result;
+      if (snapshot.status === 'fulfilled') {
+        setData(snapshot.value);
+        setLoadError('');
+        setUpdated(new Date().toISOString());
+      } else {
+        setLoadError(errorMessage(snapshot.reason, locale));
+        if (snapshot.reason instanceof CyberApiError && [401, 403].includes(snapshot.reason.status))
+          setData(null);
+      }
+      // A business mutation refreshes its snapshot; polling and explicit refreshes
+      // also revalidate engine capabilities and the current execution policy.
+      if (scope === 'all') {
+        if (capabilities.status === 'fulfilled' && capabilities.value !== null) {
+          setEngines(capabilities.value);
+          setEngineError('');
+        } else {
+          setEngines([]);
+          setEngineError(
+            locale === 'fr'
+              ? 'Les capacités des moteurs ne peuvent pas être vérifiées.'
+              : 'Engine capabilities could not be verified.',
+          );
+        }
+        if (execution.status === 'fulfilled' && execution.value !== null)
+          setControl(execution.value);
+        else setControl(null);
+      }
+      setRefreshing(false);
+    },
+    [root, locale],
+  );
   useEffect(() => {
     live.current = true;
     setNotification('');
@@ -243,7 +255,7 @@ export function Workspace({
     async <T = unknown>(path: string, method = 'POST', body?: unknown) => {
       const result = await request<T>(`${root}/cyber/${path}`, method, body);
       if (live.current) {
-        await refresh();
+        await refresh('snapshot');
         if (path.startsWith('roles/')) await refreshAccess();
         notify(copy[locale].saveSuccess);
       }

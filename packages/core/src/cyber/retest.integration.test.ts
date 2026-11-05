@@ -1,8 +1,8 @@
 import { randomUUID } from 'node:crypto';
 import type { CyberEngine, CyberObservation } from '@bump/contracts';
-import { createDatabase, migrateDatabase } from '@bump/db';
+import { assertRuntimeRole, createDatabase, migrateDatabase } from '@bump/db';
 import { createCyberVault } from '@bump/integrations';
-import { afterAll, beforeAll, expect, it } from 'vitest';
+import { afterAll, beforeAll, beforeEach, expect, it } from 'vitest';
 import { claimExecution } from '../execution.js';
 import {
   approveCyberMandate,
@@ -10,11 +10,13 @@ import {
   createCyberClient,
   createCyberMandate,
   createCyberSource,
+  createCyberTask,
   finishCyberScan,
   launchCyberAudit,
   readCyberSnapshot,
   recordCyberRetest,
   reviewCyberFinding,
+  saveCyberSource,
 } from './service.js';
 
 const url = process.env.DATABASE_URL;
@@ -31,8 +33,11 @@ if (
 const db = createDatabase(url);
 const admin = createDatabase(migration);
 const userId = randomUUID();
-const organizationId = randomUUID();
-const scope = { organizationId, userId, requestId: randomUUID() };
+const organizationIds: string[] = [];
+let organizationId: string;
+let otherOrganizationId: string;
+let scope: { organizationId: string; userId: string; requestId: string };
+let otherScope: typeof scope;
 const vault = createCyberVault(Buffer.alloc(32, 7));
 const engineVersion = 'synthetic-retest-v1';
 const coverageHash = 'a'.repeat(64);
@@ -56,18 +61,30 @@ const original: CyberObservation = {
 
 beforeAll(async () => {
   await migrateDatabase(migration);
+  await assertRuntimeRole(db.pool);
   await admin.pool.query(
     'INSERT INTO "user" (id, name, email, email_verified) VALUES ($1, $2, $3, true)',
     [userId, 'Synthetic retest reviewer', `${userId}@example.invalid`],
   );
-  await admin.pool.query('INSERT INTO organization (id, name, slug) VALUES ($1, $2, $1)', [
-    organizationId,
-    'Synthetic retest workspace',
-  ]);
-  await admin.pool.query(
-    'INSERT INTO member (id, organization_id, user_id, role) VALUES ($1, $2, $3, $4)',
-    [randomUUID(), organizationId, userId, 'owner'],
-  );
+});
+
+beforeEach(async () => {
+  // Each scenario keeps the real per-tenant execution budget (30 starts/minute).
+  organizationId = randomUUID();
+  otherOrganizationId = randomUUID();
+  scope = { organizationId, userId, requestId: randomUUID() };
+  otherScope = { ...scope, organizationId: otherOrganizationId };
+  for (const org of [organizationId, otherOrganizationId]) {
+    organizationIds.push(org);
+    await admin.pool.query('INSERT INTO organization (id, name, slug) VALUES ($1, $2, $1)', [
+      org,
+      'Synthetic retest workspace',
+    ]);
+    await admin.pool.query(
+      'INSERT INTO member (id, organization_id, user_id, role) VALUES ($1, $2, $3, $4)',
+      [randomUUID(), org, userId, 'owner'],
+    );
+  }
 });
 
 afterAll(async () => {
@@ -99,8 +116,10 @@ afterAll(async () => {
       'organization_settings',
       'member',
     ])
-      await admin.pool.query(`DELETE FROM ${table} WHERE organization_id=$1`, [organizationId]);
-    await admin.pool.query('DELETE FROM organization WHERE id=$1', [organizationId]);
+      await admin.pool.query(`DELETE FROM ${table} WHERE organization_id=ANY($1::text[])`, [
+        organizationIds,
+      ]);
+    await admin.pool.query('DELETE FROM organization WHERE id=ANY($1::text[])', [organizationIds]);
     await admin.pool.query('DELETE FROM "user" WHERE id=$1', [userId]);
   } finally {
     await db.pool.end();
@@ -108,42 +127,73 @@ afterAll(async () => {
   }
 });
 
-async function scenario(engine: CyberEngine, withSecondaryAsset = false) {
-  const client = await createCyberClient(db, scope, {
+async function scenario(
+  engine: CyberEngine,
+  withSecondaryAsset = false,
+  fixtureScope = scope,
+  allowJson = false,
+) {
+  const client = await createCyberClient(db, fixtureScope, {
     name: 'Synthetic controlled retest client',
     contact: 'retest-lab@example.invalid',
   });
   const assets: Awaited<ReturnType<typeof createCyberAsset>>[] = [];
   for (let index = 0; index < (withSecondaryAsset ? 2 : 1); index++) {
-    const asset = await createCyberAsset(db, scope, {
+    const asset = await createCyberAsset(db, fixtureScope, {
       clientId: client.id,
       label: `Synthetic repository ${index + 1}`,
       target: { kind: 'repository', value: `lab/retest-${randomUUID()}` },
     });
     assets.push(asset);
-    await createCyberSource(db, vault, scope, {
+    await createCyberSource(db, vault, fixtureScope, {
       assetId: asset.id,
       name: 'Synthetic controlled source',
       files: [{ path: 'app.py', content: 'pass' }],
     });
+    if (allowJson)
+      await saveCyberSource(
+        db,
+        vault,
+        fixtureScope,
+        asset.id,
+        'Synthetic imported report',
+        'json',
+        JSON.stringify({
+          version: 1,
+          engine: 'semgrep',
+          engineVersion: '1.183.0',
+          report: {
+            version: '1.183.0',
+            errors: [],
+            results: [
+              {
+                check_id: original.ruleId,
+                path: 'app.py',
+                start: { line: 2 },
+                extra: { severity: 'ERROR' },
+              },
+            ],
+          },
+        }),
+      );
   }
-  const mandate = await createCyberMandate(db, scope, {
+  const mandate = await createCyberMandate(db, fixtureScope, {
     clientId: client.id,
     reference: 'SYNTHETIC-RETEST-ONLY',
     signedBy: 'Synthetic laboratory owner',
     authorizedAt: new Date(Date.now() - 60000).toISOString(),
-    responsibleUserId: userId,
+    responsibleUserId: fixtureScope.userId,
     authorizationText:
       'Synthetic written authorization for the exact offline laboratory repositories.',
     emergencyContact: 'retest-lab@example.invalid',
     validFrom: new Date(Date.now() - 60000).toISOString(),
     validUntil: new Date(Date.now() + 3600000).toISOString(),
     assetIds: assets.map((asset) => asset.id),
-    engines: [engine],
+    engines: allowJson ? [engine, 'json'] : [engine],
     mode: 'passive',
     limitations: 'Synthetic controlled observations only; no scanner process or network target.',
   });
-  await approveCyberMandate(db, scope, mandate.id);
+  await approveCyberMandate(db, fixtureScope, mandate.id);
 
   async function execute(
     observations: CyberObservation[],
@@ -151,29 +201,31 @@ async function scenario(engine: CyberEngine, withSecondaryAsset = false) {
       secondaryObservations?: CyberObservation[];
       version?: string;
       coverage?: string;
+      engine?: CyberEngine;
     } = {},
   ) {
+    const selectedEngine = options.engine ?? engine;
     const audit = await launchCyberAudit(
       db,
-      scope,
+      fixtureScope,
       {
         clientId: client.id,
         mandateId: mandate.id,
         assetIds: assets.map((asset) => asset.id),
-        engines: [engine],
+        engines: [selectedEngine],
         idempotencyKey: randomUUID(),
         title: 'Synthetic controlled retest audit',
       },
-      [engine],
+      [selectedEngine],
     );
-    const scans = (await readCyberSnapshot(db, scope)).scans.filter(
+    const scans = (await readCyberSnapshot(db, fixtureScope)).scans.filter(
       (item) => item.scan.auditId === audit.id,
     );
     expect(scans).toHaveLength(assets.length);
     for (const { scan } of scans) {
       const attempt = await claimExecution(db, {
-        organizationId,
-        userId,
+        organizationId: fixtureScope.organizationId,
+        userId: fixtureScope.userId,
         jobId: scan.executionJobId,
       });
       if (!attempt) throw new Error('Synthetic retest scan could not be claimed');
@@ -181,7 +233,7 @@ async function scenario(engine: CyberEngine, withSecondaryAsset = false) {
         db,
         vault,
         {
-          ...scope,
+          ...fixtureScope,
           scanId: scan.id,
           jobId: scan.executionJobId,
           token: attempt.token,
@@ -190,8 +242,9 @@ async function scenario(engine: CyberEngine, withSecondaryAsset = false) {
           raw: 'Synthetic controlled retest result',
           observations:
             scan.assetId === assets[0]!.id ? observations : (options.secondaryObservations ?? []),
-          engineVersion: options.version ?? engineVersion,
-          coverageHash: options.coverage ?? coverageHash,
+          engineVersion:
+            options.version ?? (selectedEngine === 'json' ? 'bump-json-import-1' : engineVersion),
+          coverageHash: options.coverage ?? (selectedEngine === 'json' ? '' : coverageHash),
         },
       );
     }
@@ -200,10 +253,10 @@ async function scenario(engine: CyberEngine, withSecondaryAsset = false) {
 
   async function confirmed(observation: CyberObservation) {
     await execute([observation]);
-    const finding = (await readCyberSnapshot(db, scope)).findings.find(
+    const finding = (await readCyberSnapshot(db, fixtureScope)).findings.find(
       (item) => item.clientId === client.id,
     )!;
-    await reviewCyberFinding(db, scope, finding.id, {
+    await reviewCyberFinding(db, fixtureScope, finding.id, {
       status: 'confirmed',
       note: 'Synthetic independent human confirmation',
       businessImpact: 'Synthetic laboratory impact',
@@ -211,7 +264,7 @@ async function scenario(engine: CyberEngine, withSecondaryAsset = false) {
     });
     return finding;
   }
-  return { client, execute, confirmed };
+  return { client, execute, confirmed, scope: fixtureScope };
 }
 
 it('rejects an absent retest when the same Semgrep rule moved to another line in the same file', async () => {
@@ -338,3 +391,253 @@ it.each([
     ).toBe('confirmed');
   },
 );
+
+async function importedPositive(fixture: Awaited<ReturnType<typeof scenario>>) {
+  const audit = await fixture.execute([{ ...original, engineVersion: '1.183.0 (imported)' }], {
+    engine: 'json',
+  });
+  const finding = (await readCyberSnapshot(db, fixture.scope)).findings.find(
+    (item) => item.clientId === fixture.client.id,
+  )!;
+  await reviewCyberFinding(db, fixture.scope, finding.id, {
+    status: 'confirmed',
+    note: 'Synthetic imported signal reviewed by the owner',
+    businessImpact: 'Synthetic controlled import impact',
+    recommendation: 'Synthetic corrective action',
+  });
+  return { finding, audit };
+}
+
+it('uses a native positive baseline after an imported first observation', async () => {
+  const fixture = await scenario('semgrep', false, scope, true);
+  const { finding, audit: imported } = await importedPositive(fixture);
+  const native = await fixture.execute([original]);
+  const deduplicated = (await readCyberSnapshot(db, scope)).findings.filter(
+    (item) => item.clientId === fixture.client.id,
+  );
+  expect(deduplicated).toHaveLength(1);
+  expect(deduplicated[0]?.firstAuditId).toBe(imported.id);
+  expect(deduplicated[0]?.lastAuditId).toBe(native.id);
+  const clean = await fixture.execute([]);
+  await recordCyberRetest(db, scope, {
+    findingId: finding.id,
+    auditId: clean.id,
+    conclusion: 'absent',
+    note: 'Synthetic native baseline B makes clean native audit C comparable',
+  });
+  expect(
+    (await readCyberSnapshot(db, scope)).findings.find((item) => item.id === finding.id)?.status,
+  ).toBe('verified_fixed');
+});
+
+it('uses the latest verified native version after an earlier positive native version', async () => {
+  const fixture = await scenario('semgrep');
+  const finding = await fixture.confirmed(original);
+  const latest = { version: 'synthetic-retest-v2', coverage: 'b'.repeat(64) };
+  await fixture.execute([{ ...original, engineVersion: latest.version }], latest);
+  const clean = await fixture.execute([], latest);
+  await recordCyberRetest(db, scope, {
+    findingId: finding.id,
+    auditId: clean.id,
+    conclusion: 'absent',
+    note: 'Synthetic v2 positive baseline makes clean v2 coverage comparable',
+  });
+  expect(
+    (await readCyberSnapshot(db, scope)).findings.find((item) => item.id === finding.id)?.status,
+  ).toBe('verified_fixed');
+});
+
+it.each([
+  { version: 'synthetic-retest-v2', coverage: coverageHash, changed: 'version' },
+  { version: engineVersion, coverage: 'b'.repeat(64), changed: 'coverage' },
+])(
+  'refuses an older baseline after the latest native positive changed $changed',
+  async (latest) => {
+    const fixture = await scenario('semgrep');
+    const finding = await fixture.confirmed(original);
+    await fixture.execute([{ ...original, engineVersion: latest.version }], latest);
+    const oldProfile = await fixture.execute([]);
+    await expect(
+      recordCyberRetest(db, scope, {
+        findingId: finding.id,
+        auditId: oldProfile.id,
+        conclusion: 'absent',
+        note: 'Synthetic old detector/profile must not bypass the latest native positive baseline',
+      }),
+    ).rejects.toMatchObject({ code: 'comparable_completed_coverage_required' });
+    expect(
+      (await readCyberSnapshot(db, scope)).findings.find((item) => item.id === finding.id)?.status,
+    ).toBe('confirmed');
+  },
+);
+
+it('rejects import-only history as a native baseline', async () => {
+  const fixture = await scenario('semgrep', false, scope, true);
+  const { finding } = await importedPositive(fixture);
+  const clean = await fixture.execute([]);
+  await expect(
+    recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: clean.id,
+      conclusion: 'absent',
+      note: 'Synthetic imported provenance cannot substitute a native positive baseline',
+    }),
+  ).rejects.toMatchObject({ code: 'comparable_completed_coverage_required' });
+});
+
+it('rejects a positive native baseline from after the selected retest', async () => {
+  const fixture = await scenario('semgrep', false, scope, true);
+  const { finding } = await importedPositive(fixture);
+  const clean = await fixture.execute([]);
+  await fixture.execute([original]);
+  await expect(
+    recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: clean.id,
+      conclusion: 'absent',
+      note: 'Synthetic future positive scan is not a baseline for the earlier clean audit',
+    }),
+  ).rejects.toMatchObject({ statusCode: 409 });
+});
+
+it.each([
+  { version: 'synthetic-retest-v2', coverage: coverageHash },
+  { version: engineVersion, coverage: 'b'.repeat(64) },
+])('rejects a nonmatching native baseline after an import: %j', async (options) => {
+  const fixture = await scenario('semgrep', false, scope, true);
+  const { finding } = await importedPositive(fixture);
+  await fixture.execute([{ ...original, engineVersion: options.version }], options);
+  const clean = await fixture.execute([]);
+  await expect(
+    recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: clean.id,
+      conclusion: 'absent',
+      note: 'Synthetic native version or coverage does not match the selected retest',
+    }),
+  ).rejects.toMatchObject({ code: 'comparable_completed_coverage_required' });
+});
+
+it('requires a native positive observation of this exact finding', async () => {
+  const fixture = await scenario('semgrep', false, scope, true);
+  const { finding } = await importedPositive(fixture);
+  await fixture.execute([{ ...original, ruleId: 'different-synthetic-baseline-finding' }]);
+  const clean = await fixture.execute([]);
+  await expect(
+    recordCyberRetest(db, scope, {
+      findingId: finding.id,
+      auditId: clean.id,
+      conclusion: 'absent',
+      note: 'Synthetic unrelated positive scan cannot establish this finding baseline',
+    }),
+  ).rejects.toMatchObject({ code: 'comparable_completed_coverage_required' });
+});
+
+it.each(['client', 'tenant'] as const)(
+  'does not borrow a positive native baseline from another %s',
+  async (boundary) => {
+    const fixture = await scenario('semgrep', false, scope, true);
+    const { finding } = await importedPositive(fixture);
+    const foreign = await scenario('semgrep', false, boundary === 'tenant' ? otherScope : scope);
+    await foreign.confirmed(original);
+    const clean = await fixture.execute([]);
+    await expect(
+      recordCyberRetest(db, scope, {
+        findingId: finding.id,
+        auditId: clean.id,
+        conclusion: 'absent',
+        note: 'Synthetic baseline must belong to the original finding client and tenant',
+      }),
+    ).rejects.toMatchObject({ code: 'comparable_completed_coverage_required' });
+  },
+);
+
+type Outcome<T> = { status: 'fulfilled'; value: T } | { status: 'rejected'; reason: unknown };
+async function settled<T>(operation: Promise<T>): Promise<Outcome<T>> {
+  try {
+    return { status: 'fulfilled', value: await operation };
+  } catch (reason) {
+    return { status: 'rejected', reason };
+  }
+}
+async function blockedQuery(blocker: number, patterns: string[]) {
+  let waiting: number | undefined;
+  await expect
+    .poll(
+      async () => {
+        const result = await admin.pool.query<{ pid: number }>(
+          `SELECT pid FROM pg_stat_activity WHERE datname=current_database()
+       AND $1::int=ANY(pg_blocking_pids(pid)) AND query ILIKE ANY($2::text[])`,
+          [blocker, patterns],
+        );
+        waiting = result.rows[0]?.pid;
+        return waiting !== undefined;
+      },
+      { timeout: 1500, interval: 10 },
+    )
+    .toBe(true);
+  if (!waiting) throw new Error('Expected synthetic PostgreSQL wait was not observed');
+  return waiting;
+}
+
+it('does not create a planned task after a concurrent retest verifies the finding', async () => {
+  const fixture = await scenario('semgrep');
+  const finding = await fixture.confirmed(original);
+  const clean = await fixture.execute([]);
+  const name = `cyber_create_gate_${organizationId.replaceAll('-', '')}`;
+  const key = BigInt(`0x${organizationId.replaceAll('-', '').slice(0, 15)}`).toString();
+  const gate = await admin.pool.connect();
+  let held = false;
+  let retest: ReturnType<typeof settled<Awaited<ReturnType<typeof recordCyberRetest>>>> | undefined;
+  let creation: ReturnType<typeof settled<Awaited<ReturnType<typeof createCyberTask>>>> | undefined;
+  try {
+    await admin.pool.query(`CREATE FUNCTION public."${name}"() RETURNS trigger LANGUAGE plpgsql AS $$
+      BEGIN PERFORM pg_advisory_xact_lock(TG_ARGV[0]::bigint); RETURN NEW; END $$`);
+    await admin.pool.query(`CREATE TRIGGER "${name}" BEFORE INSERT ON public.cyber_retest
+      FOR EACH ROW WHEN (NEW.organization_id='${organizationId}')
+      EXECUTE FUNCTION public."${name}"('${key}')`);
+    await gate.query('SELECT pg_advisory_lock($1::bigint)', [key]);
+    held = true;
+    const gatePid = (await gate.query<{ pid: number }>('SELECT pg_backend_pid() AS pid')).rows[0]!
+      .pid;
+    retest = settled(
+      recordCyberRetest(db, scope, {
+        findingId: finding.id,
+        auditId: clean.id,
+        conclusion: 'absent',
+        note: 'Synthetic concurrent verified correction',
+      }),
+    );
+    const retestPid = await blockedQuery(gatePid, ['%insert into "cyber_retest"%']);
+    creation = settled(
+      createCyberTask(db, scope, {
+        findingId: finding.id,
+        assignee: 'Synthetic concurrent analyst',
+        dueAt: new Date(Date.now() + 86400000).toISOString(),
+        description: 'Synthetic stale task request',
+      }),
+    );
+    await blockedQuery(retestPid, ['%insert into "cyber_task"%', '%"cyber_finding"%for update%']);
+    await gate.query('SELECT pg_advisory_unlock($1::bigint)', [key]);
+    held = false;
+    const [retested, created] = await Promise.all([retest, creation]);
+    expect(retested.status).toBe('fulfilled');
+    const snapshot = await readCyberSnapshot(db, scope);
+    expect(snapshot.findings.find((item) => item.id === finding.id)?.status).toBe('verified_fixed');
+    expect(
+      snapshot.tasks.filter((item) => item.findingId === finding.id).map((item) => item.status),
+    ).toEqual([]);
+    expect(created.status).toBe('rejected');
+    if (created.status === 'rejected') {
+      const reason = created.reason as { statusCode?: unknown; code?: unknown };
+      expect(reason.statusCode).toBe(409);
+      expect(reason.code).toBe('confirmed_finding_required');
+    }
+  } finally {
+    if (held) await gate.query('SELECT pg_advisory_unlock($1::bigint)', [key]);
+    await Promise.all([retest, creation].filter((operation) => operation !== undefined));
+    gate.release();
+    await admin.pool.query(`DROP TRIGGER IF EXISTS "${name}" ON public.cyber_retest`);
+    await admin.pool.query(`DROP FUNCTION IF EXISTS public."${name}"()`);
+  }
+});

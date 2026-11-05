@@ -126,24 +126,36 @@ export async function createEngagement(
   const parsed = scopeSchema
     .extend({ requestId: z.uuid(), revision: engagementRevisionInputSchema })
     .parse(input);
-  return withTenant(database, parsed, async (tx, role) => {
-    adminOnly(role);
-    const engagementId = randomUUID();
-    const [head] = await tx
-      .insert(engagement)
-      .values({
-        id: engagementId,
-        organizationId: parsed.organizationId,
-        createdBy: parsed.userId,
-        currentRevision: 1,
-      })
-      .returning();
-    if (!head) throw new EngagementError(409);
-    const selected = { ...parsed, engagementId };
-    const version = await insertVersion(tx, selected, 1, parsed.revision);
-    await record(tx, selected, parsed.requestId, 'engagement.created');
-    return { ...head, version };
-  });
+  return withTenant(database, parsed, (tx, role) =>
+    createEngagementInTransaction(tx, role, parsed),
+  );
+}
+
+export async function createEngagementInTransaction(
+  tx: Transaction,
+  role: TenantRole,
+  input: Scope & { requestId: string; revision: unknown },
+) {
+  const parsed = scopeSchema
+    .extend({ requestId: z.uuid(), revision: engagementRevisionInputSchema })
+    .parse(input);
+
+  adminOnly(role);
+  const engagementId = randomUUID();
+  const [head] = await tx
+    .insert(engagement)
+    .values({
+      id: engagementId,
+      organizationId: parsed.organizationId,
+      createdBy: parsed.userId,
+      currentRevision: 1,
+    })
+    .returning();
+  if (!head) throw new EngagementError(409);
+  const selected = { ...parsed, engagementId };
+  const version = await insertVersion(tx, selected, 1, parsed.revision);
+  await record(tx, selected, parsed.requestId, 'engagement.created');
+  return { ...head, version };
 }
 
 export async function amendEngagement(database: Database, input: Mutation & { revision: unknown }) {

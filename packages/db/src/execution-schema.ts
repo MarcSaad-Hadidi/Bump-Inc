@@ -39,7 +39,7 @@ export const executionJob = pgTable(
     expectedRevision: integer('expected_revision').notNull(),
     target: jsonb('target').$type<EngagementTarget>().notNull(),
     action: text('action').$type<EngagementAction>().notNull(),
-    kind: text('kind', { enum: ['synthetic', 'audit.import'] })
+    kind: text('kind', { enum: ['synthetic', 'audit.import', 'cyber.scan'] })
       .notNull()
       .default('synthetic'),
     payload: jsonb('payload').$type<ExecutionWorkInput['payload']>().notNull(),

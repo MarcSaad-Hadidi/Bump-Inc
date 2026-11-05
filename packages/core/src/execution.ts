@@ -480,7 +480,7 @@ export async function finishExecution(
       const outcome = !job.deadlineAt || job.deadlineAt <= timestamp ? 'timed_out' : scope.outcome;
       if (outcome === 'cancelled') return terminal(tx, job, 'cancelled', 'cancelled', timestamp);
       if (outcome === 'succeeded') {
-        if (job.kind === 'audit.import' && !onSuccess)
+        if (['audit.import', 'cyber.scan'].includes(job.kind) && !onSuccess)
           throw new ExecutionError(409, 'import_finalization_required');
         await onSuccess?.(tx, job);
       }

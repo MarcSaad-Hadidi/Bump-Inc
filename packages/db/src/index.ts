@@ -39,4 +39,5 @@ export function createDatabase(url: string) {
 }
 
 export { createAuditRepository } from './audits.js';
+export * from './cyber-schema.js';
 export { auditFindings, audits } from './schema.js';

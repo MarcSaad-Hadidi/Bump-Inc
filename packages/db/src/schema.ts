@@ -104,3 +104,5 @@ export const auditFindings = pgTable(
   },
   (table) => [index('audit_findings_audit_id_idx').on(table.auditId)],
 );
+
+export * from './cyber-schema.js';

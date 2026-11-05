@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { cyberScanPayloadSchema } from './cyber.js';
 import { engagementActionSchema, engagementTargetSchema } from './engagement.js';
 
 export const EXECUTION_QUEUE_NAME = 'bump-executions';
@@ -25,6 +26,10 @@ export const auditImportPayloadSchema = z.strictObject({
 });
 export const executionWorkInputSchema = z.discriminatedUnion('kind', [
   executionJobInputSchema,
+  executionJobInputSchema.extend({
+    kind: z.literal('cyber.scan'),
+    payload: cyberScanPayloadSchema,
+  }),
   executionJobInputSchema.extend({
     kind: z.literal('audit.import'),
     action: z.literal('audit.import'),

@@ -23,14 +23,16 @@ import {
   clientFor,
   cyberEventIn,
   hashCyber,
+  requireCyberRole,
   withCyber,
 } from './context.js';
-import { cyberFingerprint } from './policy.js';
+import { cyberFingerprint, engineAction } from './policy.js';
 export async function readCyberScanForExecution(
   database: Database,
   scope: CyberScope & { jobId: string; scanId: string; token: string },
 ) {
-  return withCyber(database, scope, async (tx) => {
+  return withCyber(database, scope, async (tx, role) => {
+    requireCyberRole(role, ['admin', 'consultant', 'analyst']);
     const [joined] = await tx
       .select({
         scan: cyberScan,
@@ -53,6 +55,9 @@ export async function readCyberScanForExecution(
       !joined ||
       joined.job.id !== scope.jobId ||
       joined.job.kind !== 'cyber.scan' ||
+      joined.job.action !==
+        engineAction(joined.scan.engine as import('@bump/contracts').CyberEngine) ||
+      JSON.stringify(joined.job.target) !== JSON.stringify(joined.asset.target) ||
       joined.job.status !== 'running' ||
       joined.job.actorUserId !== scope.userId ||
       joined.job.leaseToken !== scope.token ||

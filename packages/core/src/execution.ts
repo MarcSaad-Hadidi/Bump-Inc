@@ -493,7 +493,9 @@ export async function finishExecution(
             ? 'timed_out'
             : job.kind === 'audit.import'
               ? 'import_failed'
-              : 'synthetic_failure';
+              : job.kind === 'cyber.scan'
+                ? 'scanner_failed'
+                : 'synthetic_failure';
       const availableAt = retry
         ? new Date(timestamp.getTime() + Math.min(60_000, job.backoffMs * 2 ** (job.attempt - 1)))
         : job.availableAt;

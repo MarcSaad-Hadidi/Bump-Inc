@@ -29,6 +29,7 @@ const descriptor = z.object({
   id: cyberEngineSchema,
   available: z.boolean(),
   version: z.string().max(100),
+  reason: z.string().max(100).nullable().optional(),
 });
 export async function cyberCapabilities() {
   try {

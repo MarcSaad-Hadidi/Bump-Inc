@@ -2,11 +2,11 @@
 
 Le site public Bump (version 46, français et anglais) est disponible dans **[`website/`](website/README.md)**. Ce dossier contient ses propres sources, modèles 3D, musique, polices, dépendances et instructions pour un hébergement indépendant.
 
-Le dépôt réunit Bump OS, le prototype local Loi 25 et l’espace privé **Bump Cyber** à `/cyber`. Cyber réutilise Next.js/React, Fastify, PostgreSQL/Drizzle, Redis/BullMQ et Better Auth. Ses clients, mandats, analyses, constats et rapports sont distincts du produit Loi 25. Voir [l’architecture Cyber](docs/CYBER_ARCHITECTURE.md), [l’installation et l’exploitation](docs/CYBER_OPERATIONS.md) et [les résultats de validation](docs/CYBER_VALIDATION.md).
+Le dépôt réunit Bump OS, le prototype local Loi 25 et l’espace privé **Bump Cyber** à `/cyber`. Cyber réutilise Next.js/React, Fastify, PostgreSQL/Drizzle, Redis/BullMQ et Better Auth. Ses clients, mandats, analyses, constats et rapports sont distincts du produit Loi 25. Voir [les 16 livrables et limites](docs/CYBER_DELIVERY.md), [l’architecture Cyber](docs/CYBER_ARCHITECTURE.md), [l’installation et l’exploitation](docs/CYBER_OPERATIONS.md) et [les résultats de validation](docs/CYBER_VALIDATION.md).
 
 The `loi-25` branch adds a local passive audit prototype at `/loi-25`; see [setup, scope and restrictions](docs/LOI25.md).
 
-L’authentification avec email vérifié, le TOTP, les contrôles de rôles et l’isolation tenant sont implémentés dans le parcours Cyber. L’exploitation de production, la conservation documentaire et les accès d’infrastructure doivent encore être validés avant des données client réelles. Les applications de développement restent privées ; aucun déploiement n’a été autorisé ni effectué.
+L’authentification avec email vérifié, le TOTP, les contrôles de rôles et l’isolation tenant sont implémentés dans le parcours Cyber. L’exploitation de production, la conservation documentaire et les accès d’infrastructure doivent encore être validés avant des données client réelles. Aucun déploiement Cyber en production n’a été autorisé ni effectué. Les hooks Cloudflare existants du dépôt créent leurs aperçus de branche pour le site public, dont les fichiers restent inchangés.
 
 ## Local setup
 

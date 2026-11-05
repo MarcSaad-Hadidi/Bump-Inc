@@ -38,8 +38,9 @@ accès : réserver le runner à une machine de confiance et ne pas exposer son
 port de contrôle.
 
 Le daemon doit prendre en charge les limites CPU, mémoire, swap et PID, et un
-profil seccomp actif. La vérification de capacité exige notamment
-`MemoryLimit`, `SwapLimit`, `CpuCfsQuota` et `PidsLimit`. Une installation
+profil seccomp actif et un binaire init Docker disponible. La vérification de
+capacité exige notamment `MemoryLimit`, `SwapLimit`, `CpuCfsQuota`, `PidsLimit`
+et `InitBinary`. Une installation
 rootless sans cgroups utilisables reste **indisponible pour les scanners
 natifs** ; aucune exécution moins confinée ne prend le relais. C’est la limite
 du runner fourni pendant cette session. Les preuves d’exécution natives doivent
@@ -171,6 +172,19 @@ pas des images de conteneur, registres, comptes cloud ou hôtes distants. La
 sous-commande `trivy image --download-db-only` de préparation télécharge
 uniquement la base d’avis. Aucun de ces outils ne confirme une exploitation.
 
+Le profil Trivy v3 exige l’inventaire des composants et des contrôles réellement
+exécutés. Pour `requirements.txt`, seuls les noms et versions exactes `nom==version`
+(extras simples permis) sont acceptés et rapprochés de l’inventaire natif.
+Contraintes ouvertes, marqueurs conditionnels, URL, inclusions et continuations
+sont refusés : une dépendance omise par le parseur ne doit jamais attester une
+correction. Les contrôles PASS restent dans la couverture sans devenir des
+alertes. Les suppressions inline Trivy/tfsec sont refusées.
+
+Chaque scanner démarre derrière l’init Docker et un `timeout` BusyBox embarqué
+dans son image épinglée. Ce délai interne tue le processus après au plus le
+temps restant autorisé (30 secondes maximum), même si le contrôleur hôte tombe.
+L’annulation et la suppression forcée par le worker restent complémentaires.
+
 Un import JSON contient une enveloppe versionnée et la **sortie native** du
 moteur déclaré. Par exemple, une forme Semgrep sans résultat :
 
@@ -221,6 +235,10 @@ fichier hôte privé de 32 octets. Le bind mount est en lecture seule vers
 propriété du fichier pour ce compte dédié, ou une copie privée correspondante,
 et maintenir le répertoire hôte en `0700`. Ne pas rendre la clé lisible par
 tous pour régler un problème de permission : le chargeur la refuserait.
+Avec un daemon rootless, prendre en compte la correspondance des UID hôte et
+conteneur ; le nombre 1000 sur l’hôte ne garantit pas à lui seul cette lecture.
+Le parcours Compose a été vérifié en CI avec un daemon Linux rootful et la
+propriété correspondant à l’utilisateur du conteneur.
 
 Le conteneur worker actuel ne reçoit ni client Docker ni socket du daemon.
 Les scanners natifs y sont donc indisponibles ; utiliser le worker hôte pour
@@ -273,6 +291,15 @@ stop --time 1 NOM_VERIFIE` et `docker --host=unix:///var/run/docker.sock rm
 pour supprimer en masse les ressources du daemon. Ne pas faire de `prune`
 global pour cette récupération. Un arrêt manuel de conteneur ne remplace pas
 la vérification de l’état du job en base et de ses leases.
+
+Un SIGKILL du worker peut aussi laisser l’instantané de code déchiffré dans son
+répertoire `bump-cyber-*` privé sous `TMPDIR` (mode du répertoire parent `0700`).
+Le délai du conteneur ne supprime pas ces fichiers hôte. Avant des données client,
+utiliser un espace temporaire privé en mémoire ou sur disque chiffré et valider
+son nettoyage après incident. Il n’existe pas encore de purge automatique de
+ces répertoires après un crash. Ne retirer un répertoire identifié qu’après
+l’arrêt du worker, la vérification de son propriétaire et l’absence d’analyse
+en cours ; ne pas supprimer globalement le contenu de `/tmp`.
 
 ## Clés, rétention, sauvegarde et diffusion
 

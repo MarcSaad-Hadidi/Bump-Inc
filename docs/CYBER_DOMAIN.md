@@ -81,6 +81,22 @@ contredit une conclusion « absent ». Une réapparition après clôture rouvre 
 constat à examiner. Une comparaison distingue nouveaux/persistants/non observés
 et avertit des réductions de couverture. « Non observé » n'est pas « corrigé ».
 
+Pour une absence, la référence comparable est la dernière observation positive
+native vérifiée du constat. Pour une présence, elle est la dernière référence
+native antérieure au scan choisi, hors de son audit. Elle est liée à une exécution
+réussie du même client, actif et tenant et choisie **avant** de comparer le moteur,
+la version, l’empreinte et les dates du retest. `firstAuditId` conserve la provenance sans figer le moteur de
+référence : un import initial peut être suivi d’une vraie détection native,
+puis d’un retest natif comparable. Un import seul ne prouve jamais cette
+couverture. Une ancienne version ou un ancien profil ne permet pas d’ignorer
+une détection native plus récente ; une référence future est également refusée.
+
+La création et la mise à jour d’une tâche verrouillent le constat avant la tâche,
+comme les retests. Si un retest vérifie la correction pendant une création ou une
+mise à jour concurrente, l’opération devenue obsolète est refusée sans laisser une
+tâche planifiée sur un constat vérifié corrigé. Les tests utilisent de vrais
+verrous PostgreSQL et vérifient l’absence d’écriture partielle.
+
 Le contrôle d'absence est volontairement plus conservateur que le fingerprint
 de corrélation. Dans le même audit, client, actif et organisation, une observation
 interdit « absent » si elle présente le même fingerprint, le même composant et
@@ -114,7 +130,7 @@ données complètes via PostgreSQL. Pagination avancée et gros volumes restent 
 étendre avant usage massif.
 
 Ce lot ne revendique ni MVP complet, ni certification, ni disponibilité de
-scanners, ni identité/MFA de production validée. Loi25 et website restent séparés.
+scanners, ni identité/MFA de production validée. Loi 25 et website restent séparés.
 
 ## Revue et régressions
 
@@ -147,3 +163,16 @@ distincte sur le port 16383, base `/1`, afin de ne pas partager les files d'un
 autre worktree. Les trois régressions ciblées ont échoué avant correction puis
 réussi après celle-ci. Les tests Chromium historiques n'ont pas été réexécutés
 dans cette révision du domaine.
+
+Le correctif `2d2c162` du 5 novembre 2026 passe `pnpm check` avec **215 unités**
+et **148 intégrations** isolées. Les 24 cas ciblés couvrent les versions natives,
+les imports, les profils, les dates, les frontières client/tenant et la création
+concurrente de tâche. Les régressions ont échoué avant correction puis réussi ;
+aucune limite de démarrage de jobs n’a été relevée pour les faire passer.
+
+Le correctif `ee46639` conserve aussi la dernière résolution dans le journal
+persistant : une vieille preuve `present` ou `absent` ne peut écraser une
+correction, clôture, acceptation de risque ou exclusion de faux positif plus
+récente, même après une réouverture effaçant le reviewedAt courant. Un nouveau
+contrôle postérieur reste recevable ; un retest historique non concluant est
+neutre. La révision passe 215 unités, 169 intégrations complètes et 45 cas ciblés.

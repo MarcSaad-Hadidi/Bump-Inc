@@ -3,9 +3,15 @@ ENV PNPM_HOME=/pnpm
 ENV PATH=$PNPM_HOME:$PATH
 ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
-RUN corepack enable && corepack prepare pnpm@10.34.7 --activate
+RUN --mount=type=secret,id=proxy_ca \
+    export NODE_USE_ENV_PROXY=1; \
+    if [ -f /run/secrets/proxy_ca ]; then export NODE_EXTRA_CA_CERTS=/run/secrets/proxy_ca; fi; \
+    corepack enable && corepack prepare pnpm@10.34.7 --activate
 COPY . .
-RUN pnpm install --frozen-lockfile
+RUN --mount=type=secret,id=proxy_ca \
+    export NODE_USE_ENV_PROXY=1; \
+    if [ -f /run/secrets/proxy_ca ]; then export NODE_EXTRA_CA_CERTS=/run/secrets/proxy_ca; fi; \
+    pnpm install --frozen-lockfile
 RUN pnpm build
 RUN pnpm --filter @bump/api deploy --legacy --prod /out/api \
     && pnpm --filter @bump/worker deploy --legacy --prod /out/worker
@@ -13,6 +19,7 @@ RUN pnpm --filter @bump/api deploy --legacy --prod /out/api \
 FROM node:24.22.1-bookworm-slim AS api
 ENV NODE_ENV=production
 WORKDIR /app
+RUN mkdir -p /var/lib/bump/artifacts && chown node:node /var/lib/bump/artifacts && chmod 700 /var/lib/bump/artifacts
 COPY --from=build --chown=node:node /out/api/ ./
 USER node
 EXPOSE 3001
@@ -21,6 +28,7 @@ CMD ["node", "dist/index.js"]
 FROM node:24.22.1-bookworm-slim AS worker
 ENV NODE_ENV=production
 WORKDIR /app
+RUN mkdir -p /var/lib/bump/artifacts && chown node:node /var/lib/bump/artifacts && chmod 700 /var/lib/bump/artifacts
 COPY --from=build --chown=node:node /out/worker/ ./
 USER node
 EXPOSE 3002
@@ -32,6 +40,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 COPY --from=build --chown=node:node /app/apps/web/.next/standalone/ ./
 COPY --from=build --chown=node:node /app/apps/web/.next/static/ ./apps/web/.next/static/
+COPY --from=build --chown=node:node /app/apps/web/public/ ./apps/web/public/
 USER node
 EXPOSE 3000
 CMD ["node", "apps/web/server.js"]

@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+    branches: [main, "codex/cyber-**"]
 
 permissions:
   contents: read
@@ -65,8 +65,14 @@ jobs:
           --health-cmd "redis-cli ping"
           --health-interval 5s --health-timeout 3s --health-retries 20
     env:
-      DATABASE_URL: postgresql://bump:ci_disposable_database_only@127.0.0.1:5432/bump_test
+      DATABASE_URL: postgresql://bump_app:ci_disposable_runtime_only@127.0.0.1:5432/bump_test
+      MIGRATION_DATABASE_URL: postgresql://bump:ci_disposable_database_only@127.0.0.1:5432/bump_test
+      APP_DATABASE_PASSWORD: ci_disposable_runtime_only
       REDIS_URL: redis://127.0.0.1:6379/1
+      S3_TEST_ENDPOINT: http://127.0.0.1:8333
+      S3_TEST_BUCKET: bump-ingestion-test
+      S3_TEST_ACCESS_KEY_ID: bump_ci_disposable
+      S3_TEST_SECRET_ACCESS_KEY: bump_ci_s3_disposable_only
       NEXT_TELEMETRY_DISABLED: "1"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -78,13 +84,36 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
       - run: pnpm audit:dependencies
+      - run: psql "$MIGRATION_DATABASE_URL" --set=ON_ERROR_STOP=1 --set=app_password="$APP_DATABASE_PASSWORD" --file=infra/postgres/create-runtime.sql
+      - run: pnpm db:migrate
+      - name: Start disposable authenticated S3 service
+        run: >-
+          docker run --detach --name bump-s3-ci --log-driver none
+          --publish 127.0.0.1:8333:8333
+          --env AWS_ACCESS_KEY_ID="$S3_TEST_ACCESS_KEY_ID"
+          --env AWS_SECRET_ACCESS_KEY="$S3_TEST_SECRET_ACCESS_KEY"
+          --env S3_BUCKET="$S3_TEST_BUCKET"
+          chrislusf/seaweedfs:4.48 mini -dir=/data
       - run: pnpm test:integration
+      - name: Prepare pinned Cyber tools and public vulnerability DB
+        run: pnpm cyber:tools
+      - name: Real isolated Cyber scanner and queue acceptance
+        run: pnpm test:scanners
+      - name: Safe Cyber host capabilities
+        if: always()
+        run: node scripts/cyber-doctor.mjs --require-native
       # Tests use headless Chromium; install its shell only. Do not run apt on
       # every CI execution (Ubuntu runners already contain browser system libs).
       - name: Install Playwright headless Chromium
         run: pnpm exec playwright install --only-shell chromium
         timeout-minutes: 5
       - run: pnpm test:e2e
+      - name: Remove disposable S3 service
+        if: always()
+        run: |
+          if docker container inspect bump-s3-ci >/dev/null 2>&1; then
+            docker rm --force bump-s3-ci
+          fi
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()
         with:
@@ -114,10 +143,15 @@ jobs:
         with:
           node-version-file: .node-version
       - run: cp .env.example .env
-      - run: docker compose --profile app config --quiet
-      - run: docker compose --profile app up --build -d --wait --wait-timeout 180
+      - run: node scripts/cyber-init.mjs
+      - name: Match the local evidence key owner to the container user
+        run: sudo chown 1000:1000 .artifacts/cyber-keys/local.key
+      - run: docker compose -f compose.yaml -f compose.cyber.yaml --profile app config --quiet
+      - run: docker compose -f compose.yaml -f compose.cyber.yaml --profile app up --build -d --wait --wait-timeout 180
       - run: node scripts/compose-smoke.mjs
-      - run: docker compose --profile app logs --no-color
+        env:
+          CYBER_COMPOSE_SMOKE: "true"
+      - run: docker compose -f compose.yaml -f compose.cyber.yaml --profile app logs --no-color
         if: failure()
-      - run: docker compose --profile app down --volumes
+      - run: docker compose -f compose.yaml -f compose.cyber.yaml --profile app down --volumes
         if: always()

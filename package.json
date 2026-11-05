@@ -11,7 +11,7 @@
   "scripts": {
     "build:packages": "pnpm --filter \"./packages/*\" --filter @bump/worker -r build",
     "build": "pnpm -r build",
-    "dev": "pnpm build:packages && pnpm --parallel --filter \"./apps/*\" dev",
+    "dev": "pnpm build:packages && pnpm --parallel --no-bail --filter \"./apps/*\" dev",
     "lint": "biome check .",
     "format": "biome check --write .",
     "typecheck": "pnpm build:packages && pnpm -r typecheck && tsc --noEmit",
@@ -21,9 +21,13 @@
     "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
     "db:generate": "pnpm --filter @bump/db generate",
     "db:migrate": "pnpm --filter @bump/db migrate",
-    "infra:up": "docker compose up -d --wait postgres redis",
+    "infra:up": "docker compose up -d --wait postgres redis mailpit s3-test",
     "infra:down": "docker compose down",
-    "audit:dependencies": "pnpm audit --audit-level=high"
+    "audit:dependencies": "pnpm audit --audit-level=high",
+    "cyber:init": "node scripts/cyber-init.mjs",
+    "cyber:tools": "pnpm build:packages && node scripts/cyber-tools.mjs",
+    "cyber:doctor": "pnpm build:packages && node scripts/cyber-doctor.mjs",
+    "test:scanners": "pnpm build:packages && node --env-file-if-exists=.env.test node_modules/vitest/vitest.mjs run --config vitest.scanners.config.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.2",
@@ -32,6 +36,12 @@
     "tsx": "4.23.15",
     "typescript": "5.9.3",
     "vitest": "4.1.12",
-    "@bump/db": "workspace:*"
+    "@bump/db": "workspace:*",
+    "@bump/core": "workspace:*",
+    "@bump/contracts": "workspace:*",
+    "@bump/integrations": "workspace:*",
+    "ioredis": "5.11.1",
+    "bullmq": "5.81.5",
+    "@bump/identity": "workspace:*"
   }
 }

@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { STATUS_CODES } from 'node:http';
 import type { ApiEnv } from '@bump/contracts';
+import { CyberError } from '@bump/core';
 import { loggerOptions } from '@bump/observability';
 import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
@@ -8,6 +9,8 @@ import Fastify from 'fastify';
 import { ZodError } from 'zod';
 import { registerAuditRoutes } from './audits.js';
 import { createDependencies, type Dependencies } from './dependencies.js';
+import { registerIdentityRoutes } from './identity-routes.js';
+import { privateRateKey } from './private-rate-key.js';
 
 export function buildServer(env: ApiEnv, injectedDependencies?: Dependencies) {
   const app = Fastify({
@@ -25,7 +28,11 @@ export function buildServer(env: ApiEnv, injectedDependencies?: Dependencies) {
 
   app.register(helmet);
   // shortcut: per-process limits, add a shared store before horizontally scaling public routes.
-  app.register(rateLimit, { max: 120, timeWindow: '1 minute' });
+  app.register(rateLimit, {
+    max: 120,
+    timeWindow: '1 minute',
+    keyGenerator: (request) => privateRateKey(request, dependencies.identity?.auth),
+  });
   app.addHook('onReady', () => dependencies.start());
   app.addHook('onClose', () => dependencies.close());
   app.addHook('onRequest', async (request, reply) => {
@@ -52,6 +59,7 @@ export function buildServer(env: ApiEnv, injectedDependencies?: Dependencies) {
     }
     reply.code(statusCode).send({
       error: STATUS_CODES[statusCode] ?? 'Request failed',
+      ...(error instanceof CyberError ? { code: error.code } : {}),
       requestId: request.id,
     });
   });
@@ -69,6 +77,10 @@ export function buildServer(env: ApiEnv, injectedDependencies?: Dependencies) {
       return { status: 'ok' };
     });
   });
+  if (dependencies.identity) {
+    const identity = dependencies.identity;
+    app.register(async (routes) => registerIdentityRoutes(routes, identity));
+  }
 
   registerAuditRoutes(
     app,

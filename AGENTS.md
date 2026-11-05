@@ -6,7 +6,7 @@
 - Keep a modular monolith with separate worker processes. Add packages only when they have a real caller.
 - TypeScript strict; validate untrusted inputs using Zod. Never execute user/AI supplied shell commands.
 - No real customer data, secrets, audit reports, or confidential assets in this public repository or test fixtures.
-- Business endpoints and job execution require tenant membership and engagement authorization when introduced. PR01 exposes only operational health checks.
+- Business endpoints require current tenant membership. Use `withTenant` and its transaction for tenant data; migrations use a separate operator credential. Job execution additionally requires engagement authorization when introduced.
 - PostgreSQL is authoritative; Redis is transport. Migrations are reviewed SQL; do not edit migrations already applied to shared environments.
 - Logs must exclude credentials, headers, request bodies, raw URLs and raw downstream errors. Preserve safe correlation IDs.
 - Run `pnpm check`, `pnpm test:integration`, `pnpm test:e2e`, dependency audit, and secret scanning as relevant. Record actual results and unavailable checks separately.
